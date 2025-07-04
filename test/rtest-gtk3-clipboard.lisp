@@ -276,7 +276,6 @@
 
 ;;;     gtk_clipboard_request_targets
 
-
 (test gtk-clipboard-request-targets
   (flet ((request-targets (clipboard atoms n-atoms)
            (when *verbose-gtk-clipboard*
@@ -289,12 +288,8 @@
                      do (format t "    target : ~a~%"
                                   (cffi:mem-aref targets-ar
                                             'gdk:atom-as-string i)))))))
-
   (let ((clipboard (gtk:clipboard-get "CLIPBOARD")))
-
-;    (is-false (gtk:clipboard-set-text clipboard "This is some text."))
     (is-false (gtk:clipboard-request-targets clipboard #'request-targets))
-
 )))
 
 ;;;     gtk_clipboard_request_rich_text
@@ -319,4 +314,4 @@
   (let ((clipboard (gtk:clipboard-default (gdk:display-default))))
     (is (string= "CLIPBOARD" (gtk:clipboard-selection clipboard)))))
 
-;;; 2025-06-19
+;;; 2025-07-03

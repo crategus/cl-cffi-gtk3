@@ -102,18 +102,16 @@
 
 #+liber-documentation
 (setf (documentation 'clipboard 'type)
- "@version{#2025-06-19}
+ "@version{#2025-07-02}
   @begin{short}
     The @class{gtk:clipboard} object represents a clipboard of data shared
     between different processes or between different widgets in the same
     process.
   @end{short}
-  Each clipboard is identified by a name encoded as a
-  @symbol{gtk:atom-as-string} type. Conversion to and from strings can be done
-  with the @fun{gdk:atom-intern} and @fun{gdk:atom-name} functions. The default
-  clipboard corresponds to the \"CLIPBOARD\" atom. Another commonly used
-  clipboard is the \"PRIMARY\" clipboard, which, in X, traditionally contains
-  the currently selected text.
+  Each clipboard is identified by a name encoded as a @type{gdk:atom-as-string}
+  type. The default clipboard corresponds to the \"CLIPBOARD\" atom. Another
+  commonly used clipboard is the \"PRIMARY\" clipboard, which, in X,
+  aditionally contains the currently selected text.
 
   To support having a number of different formats on the clipboard at the same
   time, the clipboard mechanism allows providing callback functions instead of
@@ -146,20 +144,19 @@
   available format and converting the results into the UTF-8 encoding, which is
   the standard form for representing strings in GTK.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"owner-change\" signal}
+    @begin[clipboard::owner-change]{signal}
       @begin{pre}
 lambda (clipboard event)    :run-first
       @end{pre}
-      @begin[arg]{table}
+      @begin[arg]{simple-table}
         @entry[clipboard]{The @class{gtk:clipboard} object on which the signal
           is emitted.}
         @entry[event]{The @class{gdk:event-owner-change} event.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when GTK receives an event that indicates that the
       ownership of the selection associated with the clipboard has changed.
-  @end{dictionary}
-  @see-type{gdk:atom-as-string}
-  @see-class{gdk:event-owner-change}")
+    @end{signal}
+  @end{dictionary}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_clipboard_get
@@ -168,7 +165,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_get" clipboard-get)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[selection]{a string which identifies the clipboard to use}
   @begin{return}
     The appropriate @class{gtk:clipboard} object. If no clipboard already
@@ -180,7 +177,6 @@ lambda (clipboard event)    :run-first
   @end{short}
   See the @fun{gtk:clipboard-for-display} function for complete details.
   @see-class{gtk:clipboard}
-  @see-symbol{gdk:atom-as-string}
   @see-function{gtk:clipboard-for-display}"
   (selection gdk:atom-as-string))
 
@@ -193,7 +189,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_get_for_display" clipboard-for-display)
     (g:object clipboard :free-from-foreign nil)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[display]{a @class{gdk:display} object for which the clipboard is
     to be retrieved or created}
   @argument[selection]{a string which identifies the clipboard to use}
@@ -211,8 +207,8 @@ lambda (clipboard event)    :run-first
   backwards compatibility reasons. The currently selected object or text should
   be provided on the clipboard identified by the \"PRIMARY\" atom.
   Cut/Copy/Paste menu items conceptually copy the contents of the \"PRIMARY\"
-  clipboard to the default clipboard, i.e. they copy the selection to what the
-  user sees as the clipboard.
+  clipboard to the default clipboard, that is, they copy the selection to what
+  the user sees as the clipboard.
 
   It is possible to have arbitrary named clipboards. If you do invent new
   clipboards, you should prefix the selection name with an underscore, because
@@ -221,7 +217,6 @@ lambda (clipboard event)    :run-first
   special purpose clipboard, you might call it \"_FOO_SPECIAL_CLIPBOARD\".
   @see-class{gtk:clipboard}
   @see-class{gdk:display}
-  @see-symbol{gdk:atom-as-string}
   @see-function{gtk:clipboard-get}"
   (display (g:object gdk:display))
   (selection gdk:atom-as-string))
@@ -311,7 +306,7 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-get-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-get-func)
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @syntax{lambda (clipboard selection info)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[selection]{a @class{gtk:selection-data} instance in which the
@@ -328,12 +323,12 @@ lambda (clipboard event)    :run-first
   of the @arg{selection} argument. If the data could successfully be converted
   into then it should be stored into the @arg{selection} argument by calling the
   @fun{gtk:selection-data-set} function, or related functions such as the
-  @fun{gtk:selection-data-set-text} function. If no data is set, the requestor
-  will be informed that the attempt to get the data failed.
+  @fun{gtk:selection-data-text} function. If no data is set, the requestor will
+  be informed that the attempt to get the data failed.
   @see-class{gtk:clipboard}
   @see-class{gtk:selection-data}
   @see-function{gtk:selection-data-set}
-  @see-function{gtk:selection-data-set-text}
+  @see-function{gtk:selection-data-text}
   @see-function{gtk:clipboard-set-with-data}")
 
 (export 'clipboard-get-func)
@@ -646,7 +641,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-image (clipboard func)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[func]{a @symbol{gtk:clipboard-image-received-func} callback function
     to call when the image is received, or the retrieval fails. It will always
@@ -663,7 +658,7 @@ lambda (clipboard event)    :run-first
   was empty or if the contents of the clipboard could not be converted into an
   image.
   @see-class{gtk:clipboard}
-  @see-symbol{gtk:clipboard-image-receibed-func}"
+  @see-symbol{gtk:clipboard-image-received-func}"
   (%clipboard-request-image clipboard
                             (cffi:callback clipboard-image-received-func)
                             (glib:allocate-stable-pointer func)))
@@ -688,19 +683,19 @@ lambda (clipboard event)    :run-first
 (setf (liber:alias-for-symbol 'clipboard-targets-received-func)
       "Callback"
       (liber:symbol-documentation 'clipboard-targets-received-func)
- "@version{#2024-03-18}
+ "@version{#2025-07-03}
   @syntax{lambda (clipboard atoms n-atoms)}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[atoms]{a pointer to a foreign C array of @symbol{gdk:atom-as-string}
+  @argument[atoms]{a pointer to a foreign C array of @type{gdk:atom-as-string}
     atoms}
-  @argument[n-atoms]{an integer with the length of the atoms array}
+  @argument[n-atoms]{an integer for the length of the atoms array}
   @begin{short}
     A callback function to be called when the results of the
     @fun{gtk:clipboard-request-targets} function are received, or when the
     request fails.
   @end{short}
   @see-class{gtk:clipboard}
-  @see-class{gdk:atom-as-string}
+  @see-type{gdk:atom-as-string}
   @see-function{gtk:clipboard-request-targets}")
 
 (export 'clipboard-targets-received-func)
@@ -784,7 +779,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-rich-text (clipboard buffer func)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2027-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[func]{a @symbol{gtk:clipboard-rich-text-received-func} callback
@@ -801,6 +796,7 @@ lambda (clipboard event)    :run-first
   fail for various reasons, in particular if the clipboard was empty or if the
   contents of the clipboard could not be converted into rich text form.
   @see-class{gtk:clipboard}
+  @see-class{gtk:text-buffer}
   @see-symbol{gtk:clipboard-rich-text-received-func}"
   (%clipboard-request-rich-text
           clipboard
@@ -883,7 +879,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_for_contents" clipboard-wait-for-contents)
     (g:boxed selection-data :return)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[target]{a string representing the form into which the clipboard
     owner should convert the selection}
@@ -895,10 +891,9 @@ lambda (clipboard event)    :run-first
     Requests the contents of the clipboard using the given target.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
+  events, timeouts, and so on, may be dispatched during the wait.
   @see-class{gtk:clipboard}
-  @see-class{gtk:selection-data}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gtk:selection-data}"
   (clipboard (g:object clipboard))
   (target gdk:atom-as-string))
 
@@ -910,7 +905,7 @@ lambda (clipboard event)    :run-first
 
 (cffi:defcfun ("gtk_clipboard_wait_for_text" clipboard-wait-for-text) :string
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{return}
     The newly allocated UTF-8 string, or @code{nil} if retrieving the selection
@@ -921,7 +916,7 @@ lambda (clipboard event)    :run-first
     UTF-8 if necessary.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
+  events, timeouts, and so on, may be dispatched during the wait.
   @see-class{gtk:clipboard}"
   (clipboard (g:object clipboard)))
 
@@ -934,7 +929,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_for_image" clipboard-wait-for-image)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{return}
     The newly allocated @class{gdk-pixbuf:pixbuf} object, or @code{nil} if
@@ -945,7 +940,7 @@ lambda (clipboard event)    :run-first
     a @class{gdk-pixbuf:pixbuf} object.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
+  events, timeouts, and so on, may be dispatched during the wait.
   @see-class{gtk:clipboard}
   @see-class{gdk-pixbuf:pixbuf}"
   (clipboard (g:object clipboard)))
@@ -965,7 +960,7 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-wait-for-rich-text (clipboard buffer)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @syntax{(gtk:clipboard-wait-for-rich-text clipboard buffer) => data, format,
     length}
   @argument[clipboard]{a @class{gtk:clipboard} object}
@@ -979,10 +974,9 @@ lambda (clipboard event)    :run-first
     Requests the contents of the clipboard as rich text.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
+  events, timeouts, and so on, may be dispatched during the wait.
   @see-class{gtk:clipboard}
-  @see-class{gtk:buffer}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gtk:text-buffer}"
   (cffi:with-foreign-objects ((format :pointer) ; GdkAtom
                               (length :int))
     (let ((data (%clipboard-wait-for-rich-text clipboard
@@ -1002,7 +996,7 @@ lambda (clipboard event)    :run-first
 
 (cffi:defcfun ("gtk_clipboard_wait_for_uris" clipboard-wait-for-uris) g:strv-t
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{return}
     The list of strings, or @code{nil} if retrieving the selection data failed.
@@ -1011,7 +1005,7 @@ lambda (clipboard event)    :run-first
     Requests the contents of the clipboard as URIs.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
+  events, timeouts, and so on, may be dispatched during the wait.
   @see-class{gtk:clipboard}"
   (clipboard (g:object clipboard)))
 
@@ -1024,7 +1018,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_is_text_available"
                clipboard-wait-is-text-available) :boolean
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is text available, @em{false} otherwise.}
   @begin{short}
@@ -1032,8 +1026,8 @@ lambda (clipboard event)    :run-first
   @end{short}
   This is done by requesting the \"TARGETS\" atom and checking if it contains
   any of the supported text targets. This function waits for the data to be
-  received using the main loop, so events, timeouts, etc, may be dispatched
-  during the wait.
+  received using the main loop, so events, timeouts, and so on, may be
+  dispatched during the wait.
 
   This function is a little faster than calling the
   @fun{gtk:clipboard-wait-for-text} function since it does not need to retrieve
@@ -1051,7 +1045,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_is_image_available"
                clipboard-wait-is-image-available) :boolean
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an image available, @em{false} otherwise.}
   @begin{short}
@@ -1059,8 +1053,8 @@ lambda (clipboard event)    :run-first
   @end{short}
   This is done by requesting the \"TARGETS\" atom and checking if it contains
   any of the supported image targets. This function waits for the data to be
-  received using the main loop, so events, timeouts, etc, may be dispatched
-  during the wait.
+  received using the main loop, so events, timeouts, and so on, may be
+  dispatched during the wait.
 
   This function is a little faster than calling the
   @fun{gtk:clipboard-wait-for-image} function since it does not need to retrieve
@@ -1078,7 +1072,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_is_rich_text_available"
                clipboard-wait-is-rich-text-available) :boolean
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{@em{True} if there is rich text available, @em{false} otherwise.}
@@ -1087,8 +1081,8 @@ lambda (clipboard event)    :run-first
   @end{short}
   This is done by requesting the \"TARGETS\" atom and checking if it contains
   any of the supported rich text targets. This function waits for the data to
-  be received using the main loop, so events, timeouts, etc, may be dispatched
-  during the wait.
+  be received using the main loop, so events, timeouts, and so on, may be
+  dispatched during the wait.
 
   This function is a little faster than calling the
   @fun{gtk:clipboard-wait-for-rich-text} function since it does not need to
@@ -1108,7 +1102,7 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_is_uris_available"
                clipboard-wait-is-uris-available) :boolean
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{@em{True} if there is an URI list available, @em{false} otherwise.}
   @begin{short}
@@ -1116,7 +1110,7 @@ lambda (clipboard event)    :run-first
   @end{short}
   This is done by requesting the \"TARGETS\" atom and checking if it contains
   the URI targets. This function waits for the data to be received using the
-  main loop, so events, timeouts, etc, may be dispatched during the wait.
+  main loop, so events, timeouts, and so on, may be dispatched during the wait.
 
   This function is a little faster than calling the
   @fun{gtk:clipboard-wait-for-uris} function since it does not need to retrieve
@@ -1136,20 +1130,22 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_wait_for_targets" clipboard-wait-for-targets)
     :boolean
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{location to store an array of targets. The result stored
     here must be freed with the @fun{g:free} function}
   @argument[n-targets]{location to store the number of items in targets}
-  @return{@em{True} if any targets are present on the clipboard, otherwise
-    @em{false}.}
+  @begin{return}
+    @em{True} if any targets are present on the clipboard, otherwise @em{false}.
+  @end{return}
   @begin{short}
     Returns a list of targets that are present on the clipboard, or @code{nil}
     if there are not any targets available.
   @end{short}
   This function waits for the data to be received using the main loop, so
-  events, timeouts, etc, may be dispatched during the wait.
-  @see-class{gtk:clipboard}"
+  events, timeouts, and so on, may be dispatched during the wait.
+  @see-class{gtk:clipboard}
+  @see-function{g:free}"
   (clipboard (g:object clipboard))
   (targets :pointer)
   (n-targets :int))
@@ -1235,14 +1231,13 @@ lambda (clipboard event)    :run-first
 (cffi:defcfun ("gtk_clipboard_get_selection" clipboard-selection)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-03}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @return{The string representing the selection.}
   @begin{short}
     Gets the selection that this clipboard is for.
   @end{short}
-  @see-class{gtk:clipboard}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gtk:clipboard}"
   (clipboard (g:object clipboard)))
 
 (export 'clipboard-selection)

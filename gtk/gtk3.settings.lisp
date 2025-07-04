@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.settings.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -34,25 +34,24 @@
 ;;; Types and Values
 ;;;
 ;;;     GtkSettings
-;;;     GtkSettingsValue                                   deprecated
-;;;     GtkIMPreeditStyle                                  deprecated
-;;;     GtkIMStatusStyle                                   deprecated
+;;;     GtkIMPreeditStyle                                   deprecated
+;;;     GtkIMStatusStyle                                    deprecated
 ;;;
 ;;; Functions
 ;;;
 ;;;     gtk_settings_get_default
 ;;;     gtk_settings_get_for_screen
-;;;     gtk_settings_install_property                      deprecated
-;;;     gtk_settings_install_property_parser               deprecated
+;;;     gtk_settings_install_property                       deprecated
+;;;     gtk_settings_install_property_parser                deprecated
 ;;;     gtk_rc_property_parse_color
 ;;;     gtk_rc_property_parse_enum
 ;;;     gtk_rc_property_parse_flags
 ;;;     gtk_rc_property_parse_requisition
 ;;;     gtk_rc_property_parse_border
-;;;     gtk_settings_set_property_value                    deprecated
-;;;     gtk_settings_set_string_property                   deprecated
-;;;     gtk_settings_set_long_property                     deprecated
-;;;     gtk_settings_set_double_property                   deprecated
+;;;     gtk_settings_set_property_value                     deprecated
+;;;     gtk_settings_set_string_property                    deprecated
+;;;     gtk_settings_set_long_property                      deprecated
+;;;     gtk_settings_set_double_property                    deprecated
 ;;;     gtk_settings_reset_property
 ;;;
 ;;; Properties
@@ -156,22 +155,6 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSettingsValue
-;;;
-;;; struct GtkSettingsValue {
-;;;   /* origin should be something like "filename:linenumber" for rc files,
-;;;    * or e.g. "XProperty" for other sources
-;;;    */
-;;;   gchar *origin;
-;;;
-;;;   /* valid types are LONG, DOUBLE and STRING corresponding to the token
-;;;    * parsed, or a GSTRING holding an unparsed statement
-;;;    */
-;;;   GValue value;
-;;; };
-;;; ----------------------------------------------------------------------------
-
-;;; ----------------------------------------------------------------------------
 ;;; GtkIMPreeditStyle
 ;;; ----------------------------------------------------------------------------
 
@@ -186,7 +169,7 @@
 (setf (liber:alias-for-symbol 'im-preedit-style)
       "GEnum"
       (liber:symbol-documentation 'im-preedit-style)
- "@version{2024-3-22}
+ "@version{2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GtkIMPreeditStyle\" im-preedit-style
   (:export t
@@ -198,7 +181,7 @@
   @short{Style for input method preedit.}
   See also the @slot[gtk:settings]{gtk-im-preedit-style} property.
   @begin[Warning]{dictionary}
-    The @symbol{gtk:im-preedit-style} enumeration has been deprecated since
+    The @sym{gtk:im-preedit-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:settings}
@@ -219,7 +202,7 @@
 (setf (liber:alias-for-symbol 'im-status-style)
       "GEnum"
       (liber:symbol-documentation 'im-status-style)
- "@version{2024-3-22}
+ "@version{2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GtkIMStatusStyle\" gtk-im-status-style
   (:export t
@@ -231,7 +214,7 @@
   @short{Style for input method status.}
   See also the @slot[gtk:settings]{gtk-im-status-style} property.
   @begin[Warning]{dictionary}
-    The @symbol{gtk:im-status-style} enumeration has been deprecated since
+    The @sym{gtk:im-status-style} enumeration has been deprecated since
     version 3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:settings}
@@ -504,7 +487,7 @@
 
 #+liber-documentation
 (setf (documentation 'settings 'type)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @begin{short}
     The @class{gtk:settings} object provide a mechanism to share global settings
     between applications.
@@ -627,13 +610,13 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- settings-color-hash ----------------------------------------------------
+;;; --- gtk:settings-color-hash ------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "color-hash" 'settings) t)
  "The @code{color-hash} property of type @code{GHashTable} (Read) @br{}
-  Holds a hash table representation of the @code{gtk-color-scheme} setting,
-  mapping color names to @class{gdk:color} colors. @br{}
+  Holds a hash table representation of the @slot[gtk:settings]{gtk-color-scheme}
+  setting, mapping color names to @class{gdk:color} colors. @br{}
   @em{Warning:} The @code{color-hash} property has been deprecated since
   version 3.8 and should not be used in newly written code. Will always return
   an empty hash table.")
@@ -642,7 +625,7 @@
 (setf (liber:alias-for-function 'settings-color-hash)
       "Accessor"
       (documentation 'settings-color-hash 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-color-hash object) => setting}
   @syntax{(setf (gtk:settings-color-hash object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -661,7 +644,7 @@
   @see-class{gtk:settings}
   @see-class{gdk:color}")
 
-;;; --- settings-gtk-alternative-button-order ----------------------------------
+;;; --- gtk:settings-gtk-alternative-button-order ------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-alternative-button-order"
@@ -675,7 +658,7 @@
 (setf (liber:alias-for-function 'settings-gtk-alternative-button-order)
       "Accessor"
       (documentation 'settings-gtk-alternative-button-order 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-alternative-button-order object) => setting}
   @syntax{(setf (gtk:settings-gtk-alternative-button-order object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -688,7 +671,7 @@
   Whether buttons in dialogs should use the alternative button order.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-alternative-sort-arrows -----------------------------------
+;;; --- gtk:settings-gtk-alternative-sort-arrows -------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-alternative-sort-arrows"
@@ -704,7 +687,7 @@
 (setf (liber:alias-for-function 'settings-gtk-alternative-sort-arrows)
       "Accessor"
       (documentation 'settings-gtk-alternative-sort-arrows 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-alternative-sort-arrows object) => setting}
   @syntax{(setf (gtk:settings-gtk-alternative-sort-arrows object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -718,7 +701,7 @@
   order. When set to @em{true}, this order will be inverted.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-application-prefer-dark-theme -----------------------------
+;;; --- gtk:settings-gtk-application-prefer-dark-theme -------------------------
 
 #+liber-documentation
 (setf (documentation
@@ -734,7 +717,7 @@
 (setf (liber:alias-for-function 'settings-gtk-application-prefer-dark-theme)
       "Accessor"
       (documentation 'settings-gtk-application-prefer-dark-theme 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-application-prefer-dark-theme object) => setting}
   @syntax{(setf (gtk:settings-gtk-application-prefer-dark-theme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -748,7 +731,7 @@
   a dark variant, it will be used instead of the configured theme.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-auto-mnemonics --------------------------------------------
+;;; --- gtk:settings-gtk-auto-mnemonics ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-auto-mnemonics"
@@ -766,7 +749,7 @@
 (setf (liber:alias-for-function 'settings-gtk-auto-mnemonics)
       "Accessor"
       (documentation 'settings-gtk-auto-mnemonics 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-auto-mnemonics object) => setting}
   @syntax{(setf (gtk:settings-gtk-auto-mnemonics object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -783,7 +766,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-button-images ---------------------------------------------
+;;; --- gtk:settings-gtk-button-images -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-button-images" 'settings) t)
@@ -802,7 +785,7 @@
 (setf (liber:alias-for-function 'settings-gtk-button-images)
       "Accessor"
       (documentation 'settings-gtk-button-images 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-button-images object) => setting}
   @syntax{(setf gtk:settings-gtk-button-images object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -825,7 +808,7 @@
   @see-class{gtk:image}
   @see-function{gtk:button-always-show-image}")
 
-;;; --- settings-gtk-can-change-accels -----------------------------------------
+;;; --- gtk:settings-gtk-can-change-accels -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-can-change-accels"
@@ -843,7 +826,7 @@
 (setf (liber:alias-for-function 'settings-gtk-can-change-accels)
       "Accessor"
       (documentation 'settings-gtk-can-change-accels 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-can-change-accels object) => setting}
   @syntax{(setf gtk:settings-gtk-can-change-accels object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -858,13 +841,13 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-color-palette ---------------------------------------------
+;;; --- gtk:settings-gtk-color-palette -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-color-palette" 'settings) t)
  "The @code{gtk-color-palette} property of type @code{:string} (Read / Write)
   @br{}
-  Palette to use in the deprecated color selector. @br{}
+  The palette to use in the deprecated color selector. @br{}
   @em{Warning:} The @code{gtk-color-palette} property has been deprecated since
   version 3.10 and should not be used in newly written code. Only used by
   the deprecated color selector widget.")
@@ -873,11 +856,11 @@
 (setf (liber:alias-for-function 'settings-gtk-color-palette)
       "Accessor"
       (documentation 'settings-gtk-color-palette 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-color-palette object) => setting}
   @syntax{(setf gtk:settings-gtk-color-palette object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the palette to use}
+  @argument[setting]{a string for the palette to use}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-color-palette} slot of the
     @class{gtk:settings} class.
@@ -890,13 +873,13 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-color-scheme ----------------------------------------------
+;;; --- gtk:settings-gtk-color-scheme ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-color-scheme" 'settings) t)
  "The @code{gtk-color-scheme} property of type @code{:string} (Read / Write)
   @br{}
-  A palette of named colors for use in themes. @br{}
+  The palette of named colors for use in themes. @br{}
   @em{Warning:}
   The @code{gtk-color-scheme} property has been deprecated since version 3.8
   and should not be used in newly written code. Color scheme support was
@@ -908,11 +891,11 @@
 (setf (liber:alias-for-function 'settings-gtk-color-scheme)
       "Accessor"
       (documentation 'settings-gtk-color-scheme 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-color-scheme object) => setting}
   @syntax{(setf gtk:settings-gtk-color-scheme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with a palette of named colors}
+  @argument[setting]{a string for a palette of named colors}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-color-scheme} slot of the
     @class{gtk:settings} class.
@@ -926,7 +909,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-cursor-aspect-ratio ---------------------------------------
+;;; --- gtk:settings-gtk-cursor-aspect-ratio -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-aspect-ratio"
@@ -941,11 +924,12 @@
 (setf (liber:alias-for-function 'settings-gtk-cursor-aspect-ratio)
       "Accessor"
       (documentation 'settings-gtk-cursor-aspect-ratio 'function)
- "@version{2023-3-7}
+ "@version{2025-05-07}
   @syntax{(gtk:settings-gtk-cursor-aspect-ratio object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-aspect-ratio object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a float with the aspect ratio of the text caret}
+  @argument[setting]{a number coerced to a single float for the aspect ratio
+    of the text caret}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-cursor-aspect-ratio} slot of the
     @class{gtk:settings} class.
@@ -953,21 +937,22 @@
   The aspect ratio of the text caret.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-cursor-blink ----------------------------------------------
+;;; --- gtk:settings-gtk-cursor-blink ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-blink" 'settings) t)
  "The @code{gtk-cursor-blink} property of type @code{:boolean} (Read / Write)
   @br{}
-  Whether the cursor should blink. Also see the @code{gtk-cursor-blink-timeout}
-  setting, which allows more flexible control over cursor blinking. @br{}
+  Whether the cursor should blink. Also see the
+  @slot[gtk:settings]{gtk-cursor-blink-timeout} setting, which allows more
+  flexible control over cursor blinking. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-cursor-blink)
       "Accessor"
       (documentation 'settings-gtk-cursor-blink 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-cursor-blink object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-blink object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -982,14 +967,14 @@
   @see-class{gtk:settings}
   @see-function{gtk:settings-gtk-cursor-blink-timeout}")
 
-;;; --- settings-gtk-cursor-blink-time -----------------------------------------
+;;; --- gtk:settings-gtk-cursor-blink-time -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-blink-time"
                                                'settings) t)
  "The @code{gtk-cursor-blink-time} property of type @code{:int} (Read / Write)
   @br{}
-  Length of the cursor blink cycle, in milliseconds. @br{}
+  The length of the cursor blink cycle, in milliseconds. @br{}
   Allowed values: >= 100 @br{}
   Default value: 1200")
 
@@ -997,11 +982,11 @@
 (setf (liber:alias-for-function 'settings-gtk-cursor-blink-time)
       "Accessor"
       (documentation 'settings-gtk-cursor-blink-time 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-cursor-blink-time object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-blink-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the length of the cursor blink cycle,
+  @argument[setting]{an integer for the length of the cursor blink cycle,
     in milliseconds}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-cursor-blink-time} slot of the
@@ -1010,16 +995,17 @@
   Length of the cursor blink cycle, in milliseconds.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-cursor-blink-timeout --------------------------------------
+;;; --- gtk:settings-gtk-cursor-blink-timeout ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-blink-timeout"
                                                'settings) t)
  "The @code{gtk-cursor-blink-timeout} property of type @code{:int}
   (Read / Write) @br{}
-  Time after which the cursor stops blinking, in seconds. The timer is reset
+  The time after which the cursor stops blinking, in seconds. The timer is reset
   after each user interaction. Setting this to zero has the same effect as
-  setting the @code{gtk-cursor-blink} property to @em{false}. @br{}
+  setting the @slot[gtk:settings]{gtk-cursor-blink} property to @em{false}.
+  @br{}
   Allowed values: >= 1 @br{}
   Default value: 10")
 
@@ -1027,11 +1013,11 @@
 (setf (liber:alias-for-function 'settings-gtk-cursor-blink-timeout)
       "Accessor"
       (documentation 'settings-gtk-cursor-blink-timeout 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-cursor-blink-timeout object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-blink-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the time after which the cursor stops
+  @argument[setting]{an integer for the time after which the cursor stops
     blinking, in seconds}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-cursor-blink-timeout} slot of the
@@ -1043,24 +1029,24 @@
   @see-class{gtk:settings}
   @see-function{gtk:settings-gtk-cursor-blink}")
 
-;;; --- settings-gtk-cursor-theme-name -----------------------------------------
+;;; --- gtk:settings-gtk-cursor-theme-name -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-theme-name"
                                                'settings) t)
  "The @code{gtk-cursor-theme-name} property of type @code{:string}
   (Read / Write) @br{}
-  Name of the cursor theme to use, or @code{nil} to use the default theme.")
+  The name of the cursor theme to use, or @code{nil} to use the default theme.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-cursor-theme-name)
       "Accessor"
       (documentation 'settings-gtk-cursor-theme-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-cursor-theme-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the cursor theme name}
+  @argument[setting]{a string for the cursor theme name}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-cursor-theme-name} slot of the
     @class{gtk:settings} class.
@@ -1068,14 +1054,14 @@
   Name of the cursor theme to use, or @code{nil} to use the default theme.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-cursor-theme-size -----------------------------------------
+;;; --- gtk:settings-gtk-cursor-theme-size -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-cursor-theme-size"
                                                'settings) t)
  "The @code{gtk-cursor-theme-size} property of type @code{:int} (Read / Write)
   @br{}
-  Size to use for cursors, or 0 to use the default size. @br{}
+  The size to use for cursors, or 0 to use the default size. @br{}
   Allowed values: [0,128] @br{}
   Default value: 0")
 
@@ -1083,11 +1069,11 @@
 (setf (liber:alias-for-function 'settings-gtk-cursor-theme-size)
       "Accessor"
       (documentation 'settings-gtk-cursor-theme-size 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-cursor-theme-size object) => setting}
   @syntax{(setf (gtk:settings-gtk-cursor-theme-size object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the size to use for cursors}
+  @argument[setting]{an integer for the size to use for cursors}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-cursor-theme-size} slot of the
     @class{gtk:settings} class.
@@ -1122,11 +1108,11 @@
 (setf (liber:alias-for-function 'settings-gtk-decoration-layout)
       "Accessor"
       (documentation 'settings-gtk-decoration-layout 'function)
- "@version{2024-3-20}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-decoration-layout object) => setting}
   @syntax{(setf gtk:settings-gtk-decoration-layout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the settings for buttons}
+  @argument[setting]{a string for the settings of buttons}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-decoration-layout} slot of the
     @class{gtk:settings} class.
@@ -1157,7 +1143,7 @@
   @see-function{gtk:header-bar-decoration-layout}
   @see-function{gtk:window-decorated}")
 
-;;; --- settings-gtk-dialogs-use-header ----------------------------------------
+;;; --- gtk:settings-gtk-dialogs-use-header ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-dialogs-use-header"
@@ -1174,7 +1160,7 @@
 (setf (liber:alias-for-function 'settings-gtk-dialogs-use-header)
       "Accessor"
       (documentation 'settings-gtk-dialogs-use-header 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-dialogs-use-header object) => setting}
   @syntax{(setf gtk:settings-gtk-dialogs-use-header object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1190,14 +1176,14 @@
   @see-class{gtk:settings}
   @see-class{gtk:dialog}")
 
-;;; --- settings-gtk-dnd-drag-threshold ----------------------------------------
+;;; --- gtk:settings-gtk-dnd-drag-threshold ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-dnd-drag-threshold"
                                                'settings) t)
  "The @code{gtk-dnd-drag-threshold} property of type @code{:int} (Read / Write)
   @br{}
-  Number of pixels the cursor can move before dragging. @br{}
+  The number of pixels the cursor can move before dragging. @br{}
   Allowed values: >= 1 @br{}
   Default value: 8")
 
@@ -1205,11 +1191,11 @@
 (setf (liber:alias-for-function 'settings-gtk-dnd-drag-threshold)
       "Accessor"
       (documentation 'settings-gtk-dnd-drag-threshold 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-dnd-drag-threshold object) => setting}
   @syntax{(setf gtk:settings-gtk-dnd-drag-threshold object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the number of pixels the cursor can move}
+  @argument[setting]{an integer for the number of pixels the cursor can move}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-dnd-drag-threshold} slot of the
     @class{gtk:settings} class.
@@ -1217,14 +1203,14 @@
   Number of pixels the cursor can move before dragging.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-double-click-distance -------------------------------------
+;;; --- gtk:settings-gtk-double-click-distance ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-double-click-distance"
                                                'settings) t)
  "The @code{gtk-double-click-distance} property of type @code{:int}
   (Read / Write) @br{}
-  Maximum distance in pixels allowed between two clicks for them to be
+  The maximum distance in pixels allowed between two clicks for them to be
   considered a double click. @br{}
   Allowed values: >= 0 @br{}
   Default value: 5")
@@ -1233,11 +1219,11 @@
 (setf (liber:alias-for-function 'settings-gtk-double-click-distance)
       "Accessor"
       (documentation 'settings-gtk-double-click-distance 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-double-click-distance object) => setting}
   @syntax{(setf gtk:settings-gtk-double-click-distance object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the maximum distance in pixels}
+  @argument[setting]{an integer for the maximum distance in pixels}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-double-click-distance} slot of the
     @class{gtk:settings} class.
@@ -1246,14 +1232,14 @@
   considered a double click.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-double-click-time -----------------------------------------
+;;; --- gtk:settings-gtk-double-click-time -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-double-click-time"
                                                'settings) t)
  "The @code{gtk-double-click-time} property of type @code{:int} (Read / Write)
   @br{}
-  Maximum time allowed between two clicks for them to be considered a double
+  The maximum time allowed between two clicks for them to be considered a double
   click, in milliseconds. @br{}
   Allowed values: >= 0 @br{}
   Default value: 250")
@@ -1262,12 +1248,11 @@
 (setf (liber:alias-for-function 'settings-gtk-double-click-time)
       "Accessor"
       (documentation 'settings-gtk-double-click-time 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-double-click-time object) => setting}
   @syntax{(setf gtk:settings-gtk-double-click-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the maximum time allowed between two
-    clicks}
+  @argument[setting]{an integer for the maximum time allowed between two clicks}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-double-click-time} slot of the
     @class{gtk:settings} class.
@@ -1276,7 +1261,7 @@
   click, in milliseconds.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-accels ---------------------------------------------
+;;; --- gtk:settings-gtk-enable-accels -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-accels"
@@ -1291,7 +1276,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-accels)
       "Accessor"
       (documentation 'settings-gtk-enable-accels 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-accels object) => setting}
   @syntax{(setf gtk:settings-gtk-enable-accels object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1305,7 +1290,7 @@
   activated.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-animations -----------------------------------------
+;;; --- gtk:settings-gtk-enable-animations -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-animations"
@@ -1319,7 +1304,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-animations)
       "Accessor"
       (documentation 'settings-gtk-enable-animations 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-animations object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-animations object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1331,7 +1316,7 @@
   Whether to enable toolkit-wide animations. The default value is @em{true}.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-event-sounds ---------------------------------------
+;;; --- gtk:settings-gtk-enable-event-sounds -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-event-sounds"
@@ -1348,7 +1333,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-event-sounds)
       "Accessor"
       (documentation 'settings-gtk-enable-event-sounds 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-event-sounds object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-event-sounds object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1363,7 +1348,7 @@
   comes with the @code{libcanberra} library.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-input-feedback-sounds ------------------------------
+;;; --- gtk:settings-gtk-enable-input-feedback-sounds --------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-input-feedback-sounds"
@@ -1380,7 +1365,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-input-feedback-sounds)
       "Accessor"
       (documentation 'settings-gtk-enable-input-feedback-sounds 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-input-feedback-sounds object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-input-feedback-sounds object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1395,7 +1380,7 @@
   the one that comes with the @code{libcanberra} library.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-mnemonics ------------------------------------------
+;;; --- gtk:settings-gtk-enable-mnemonics --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-mnemonics"
@@ -1414,7 +1399,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-mnemonics)
       "Accessor"
       (documentation 'settings-gtk-enable-mnemonics 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-mnemonics object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-mnemonics object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1433,7 +1418,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-primary-paste --------------------------------------
+;;; --- gtk:settings-gtk-enable-primary-paste ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-primary-paste"
@@ -1448,7 +1433,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-primary-paste)
       "Accessor"
       (documentation 'settings-gtk-enable-primary-paste 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-primary-paste object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-primary-paste object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1462,7 +1447,7 @@
   content at the cursor location.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-enable-tooltips -------------------------------------------
+;;; --- gtk:settings-gtk-enable-tooltips ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-enable-tooltips"
@@ -1479,7 +1464,7 @@
 (setf (liber:alias-for-function 'settings-gtk-enable-tooltips)
       "Accessor"
       (documentation 'settings-gtk-enable-tooltips 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-enable-tooltips object) => setting}
   @syntax{(setf (gtk:settings-gtk-enable-tooltips object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1495,7 +1480,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-entry-password-hint-timeout -------------------------------
+;;; --- gtk:settings-gtk-entry-password-hint-timeout ---------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-entry-password-hint-timeout"
@@ -1511,7 +1496,7 @@
 (setf (liber:alias-for-function 'settings-gtk-entry-password-hint-timeout)
       "Accessor"
       (documentation 'settings-gtk-entry-password-hint-timeout 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-entry-password-hint-timeout object) => setting}
   @syntax{(setf (gtk:settings-gtk-entry-password-hint-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1525,7 +1510,7 @@
   a good value for enabling it.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-entry-select-on-focus -------------------------------------
+;;; --- gtk:settings-gtk-entry-select-on-focus ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-entry-select-on-focus"
@@ -1539,7 +1524,7 @@
 (setf (liber:alias-for-function 'settings-gtk-entry-select-on-focus)
       "Accessor"
       (documentation 'settings-gtk-entry-select-on-focus 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-entry-select-on-focus object) => setting}
   @syntax{(setf (gtk:settings-gtk-entry-select-on-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1551,14 +1536,14 @@
   Whether to select the contents of an entry when it is focused.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-error-bell ------------------------------------------------
+;;; --- gtk:settings-gtk-error-bell --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-error-bell"
                                                'settings) t)
  "The @code{gtk-error-bell} property of type @code{:boolean} (Read / Write)
   @br{}
-  When @em{true}, keyboard navigation and other input-related errors will cause
+  If @em{true}, keyboard navigation and other input-related errors will cause
   a beep. Since the error bell is implemented using the @fun{gdk:window-beep}
   function, the windowing system may offer ways to configure the error bell in
   many ways, such as flashing the window or similar visual effects. @br{}
@@ -1568,7 +1553,7 @@
 (setf (liber:alias-for-function 'settings-gtk-error-bell)
       "Accessor"
       (documentation 'settings-gtk-error-bell 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-error-bell object) => setting}
   @syntax{(setf (gtk:settings-gtk-error-bell object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1584,14 +1569,14 @@
   @see-class{gtk:settings}
   @see-function{gdk:window-beep}")
 
-;;; --- settings-gtk-fallback-icon-theme ---------------------------------------
+;;; --- gtk:settings-gtk-fallback-icon-theme -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-fallback-icon-theme"
                                                'settings) t)
  "The @code{gtk-fallback-icon-theme} property of type @code{:string}
   (Read / Write) @br{}
-  Name of an icon theme to fall back to. @br{}
+  The name of an icon theme to fall back to. @br{}
   @em{Warning:} The @code{gtk-fallback-icon-theme} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -1601,11 +1586,11 @@
 (setf (liber:alias-for-function 'settings-gtk-fallback-icon-theme)
       "Accessor"
       (documentation 'settings-gtk-fallback-icon-theme 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-fallback-icon-theme object) => setting}
   @syntax{(setf (gtk:settings-gtk-fallback-icon-theme object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the name of an icon theme}
+  @argument[setting]{a string for the name of an icon theme}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-fallback-icon-theme} slot of the
     @class{gtk:settings} class.
@@ -1618,15 +1603,15 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-file-chooser-backend --------------------------------------
+;;; --- gtk:settings-gtk-file-chooser-backend ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-file-chooser-backend"
                                                'settings) t)
  "The @code{gtk-file-chooser-backend} property of type @code{:string}
   (Read / Write) @br{}
-  Name of the backend to use by default for the @class{gtk:file-chooser} widget.
-  @br{}
+  The name of the backend to use by default for the @class{gtk:file-chooser}
+  widget. @br{}
   @em{Warning:} The @code{gtk-file-chooser-backend} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. The @class{gtk:file-chooser} widget uses GIO by default. @br{}
@@ -1636,11 +1621,11 @@
 (setf (liber:alias-for-function 'settings-gtk-file-chooser-backend)
       "Accessor"
       (documentation 'settings-gtk-file-chooser-backend 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-file-chooser-backend object) => setting}
   @syntax{(setf (gtk:settings-gtk-file-chooser-backend object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the backend to use by default}
+  @argument[setting]{a string for the backend to use by default}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-file-chooser-backend} slot of the
     @class{gtk:settings} class.
@@ -1654,22 +1639,22 @@
   @see-class{gtk:settings}
   @see-class{gtk:file-chooser}")
 
-;;; --- settings-gtk-font-name -------------------------------------------------
+;;; --- gtk:settings-gtk-font-name ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-font-name" 'settings) t)
  "The @code{gtk-font-name} property of type @code{:string} (Read / Write) @br{}
-  Name of default font to use.")
+  The name of default font to use.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-font-name)
       "Accessor"
       (documentation 'settings-gtk-font-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-font-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-font-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the name of the default font to use}
+  @argument[setting]{a string for the name of the default font to use}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-font-name} slot of the
     @class{gtk:settings} class.
@@ -1677,25 +1662,25 @@
   Name of the default font to use.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-fontconfig-timestamp --------------------------------------
+;;; --- gtk:settings-gtk-fontconfig-timestamp ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-fontconfig-timestamp"
                                                'settings) t)
  "The @code{gtk-fontconfig-timestamp} property of type @code{:uint}
   (Read / Write) @br{}
-  Timestamp of the current fontconfig configuration. @br{}
+  The timestamp of the current fontconfig configuration. @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-fontconfig-timestamp)
       "Accessor"
       (documentation 'settings-gtk-fontconfig-timestamp 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-fontconfig-timestamp object) => setting}
   @syntax{(setf (gtk:settings-gtk-fontconfig-timestamp object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an unsigned integer with the timestamp}
+  @argument[setting]{an unsigned integer for the timestamp}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-fontconfig-timestamp} slot of the
     @class{gtk:settings} class.
@@ -1703,13 +1688,13 @@
   Timestamp of the current fontconfig configuration.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-icon-sizes ------------------------------------------------
+;;; --- gtk:settings-gtk-icon-sizes --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-icon-sizes"
                                                'settings) t)
  "The @code{gtk-icon-sizes} property of type @code{:string} (Read / Write) @br{}
-  A list of icon sizes, e.g.
+  The list of icon sizes, for example,
   @code{\"gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48\"}. @br{}
   @em{Warning:} The @code{gtk-icon-sizes} property has been deprecated since
   version 3.10 and should not be used in newly written code. This setting is
@@ -1720,11 +1705,11 @@
 (setf (liber:alias-for-function 'settings-gtk-icon-sizes)
       "Accessor"
       (documentation 'settings-gtk-icon-sizes 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-icon-sizes object) => setting}
   @syntax{(setf (gtk:settings-gtk-icon-sizes object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with a list of icon sizes}
+  @argument[setting]{a string for a list of icon sizes}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-icon-sizes} slot of the
     @class{gtk:settings} class.
@@ -1737,24 +1722,24 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-icon-theme-name -------------------------------------------
+;;; --- gtk:settings-gtk-icon-theme-name ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-icon-theme-name"
                                                'settings) t)
  "The @code{gtk-icon-theme-name} property of type @code{:string} (Read / Write)
   @br{}
-  Name of the icon theme to use.")
+  The name of the icon theme to use.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-icon-theme-name)
       "Accessor"
       (documentation 'settings-gtk-icon-theme-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-icon-theme-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-icon-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the icon theme name}
+  @argument[setting]{a string for the icon theme name}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-icon-theme-name} slot of the
     @class{gtk:settings} class.
@@ -1762,7 +1747,7 @@
   Name of the icon theme to use.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-im-module -------------------------------------------------
+;;; --- gtk:settings-gtk-im-module ---------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-im-module" 'settings) t)
@@ -1772,18 +1757,18 @@
   method from the IM context menu. This also can be a colon-separated list of
   input methods, which GTK will try in turn until it finds one available on
   the system. See the @class{gtk:im-context} class and the
-  @code{gtk-show-input-method-menu} setting. @br{}
+  @slot[gtk:settings]{gtk-show-input-method-menu} setting. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-im-module)
       "Accessor"
       (documentation 'settings-gtk-im-module 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-im-module object) => setting}
   @syntax{(setf (gtk:settings-gtk-im-module object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the IM module}
+  @argument[setting]{a string for the IM module}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-im-module} slot of the
     @class{gtk:settings} class.
@@ -1798,12 +1783,12 @@
   @see-class{gtk:im-context}
   @see-function{gtk:settings-gtk-show-input-method-menu}")
 
-;;; --- settings-gtk-im-preedit-style ------------------------------------------
+;;; --- gtk:settings-gtk-im-preedit-style --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-im-preedit-style"
                                                'settings) t)
- "The @code{gtk-im-preedit-style} property of type @symbol{gtk:im-preedit-style}
+ "The @code{gtk-im-preedit-style} property of type @sym{gtk:im-preedit-style}
   (Read / Write) @br{}
   How to draw the input method preedit string. @br{}
   @em{Warning:} The @code{gtk-im-preedit-style} property has been deprecated
@@ -1815,11 +1800,11 @@
 (setf (liber:alias-for-function 'settings-gtk-im-preedit-style)
       "Accessor"
       (documentation 'settings-gtk-im-preedit-style 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-im-preedit-style object) => setting}
   @syntax{(setf (gtk:settings-gtk-im-preedit-style object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a @symbol{gtk:im-preedit-style} value}
+  @argument[setting]{a @sym{gtk:im-preedit-style} value}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-im-preedit-style} slot of the
     @class{gtk:settings} class.
@@ -1833,12 +1818,12 @@
   @see-class{gtk:settings}
   @see-symbol{gtk:im-preedit-style}")
 
-;;; --- settings-gtk-im-status-style -------------------------------------------
+;;; --- gtk:settings-gtk-im-status-style ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-im-status-style"
                                                'settings) t)
- "The @code{gtk-im-status-style} property of type @symbol{gtk-im-status-style}
+ "The @code{gtk-im-status-style} property of type @sym{gtk-im-status-style}
   (Read / Write) @br{}
   How to draw the input method statusbar. @br{}
   @em{Warning:} The @code{gtk-im-status-style} property has been deprecated
@@ -1850,11 +1835,11 @@
 (setf (liber:alias-for-function 'settings-gtk-im-status-style)
       "Accessor"
       (documentation 'settings-gtk-im-status-style 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-im-status-style object) => setting}
   @syntax{(setf (gtk:settings-gtk-im-status-style object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a @symbol{gtk:im-status-style} value}
+  @argument[setting]{a @sym{gtk:im-status-style} value}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-im-status-style} slot of the
     @class{gtk:settings} class.
@@ -1868,24 +1853,24 @@
   @see-class{gtk:settings}
   @see-symbol{gtk:im-status-style}")
 
-;;; --- settings-gtk-key-theme-name --------------------------------------------
+;;; --- gtk:settings-gtk-key-theme-name ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-key-theme-name"
                                                'settings) t)
  "The @code{gtk-key-theme-name} property of type @code{:string} (Read / Write)
   @br{}
-  Name of the key theme to load.")
+  The name of the key theme to load.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-key-theme-name)
       "Accessor"
       (documentation 'settings-gtk-key-theme-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-key-theme-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-key-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the key theme name}
+  @argument[setting]{a string for the key theme name}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-key-theme-name} slot of the
     @class{gtk:settings} class.
@@ -1893,14 +1878,14 @@
   Name of the key theme to load.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-keynav-cursor-only ----------------------------------------
+;;; --- gtk:settings-gtk-keynav-cursor-only ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-keynav-cursor-only"
                                                'settings) t)
  "The @code{gtk-keynav-cursor-only} property of type @code{:boolean}
   (Read / Write) @br{}
-  When @em{true}, keyboard navigation should be able to reach all widgets by
+  If @em{true}, keyboard navigation should be able to reach all widgets by
   using the cursor keys only. the @kbd{Tab}, @kbd{Shift} etc. keys cannot be
   expected to be present on the used input device. @br{}
   @em{Warning:} The @code{gtk-keynav-cursor-only} property has been deprecated
@@ -1913,7 +1898,7 @@
 (setf (liber:alias-for-function 'settings-gtk-keynav-cursor-only)
       "Accessor"
       (documentation 'settings-gtk-keynav-cursor-only 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-keynav-cursor-only object) => setting}
   @syntax{(setf (gtk:settings-gtk-keynav-cursor-only object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1934,7 +1919,7 @@
   @see-class{gtk:settings}
   @see-function{gdk:event-source-device}")
 
-;;; --- settings-gtk-keynav-use-caret ------------------------------------------
+;;; --- gtk:settings-gtk-keynav-use-caret --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-keynav-use-caret"
@@ -1949,7 +1934,7 @@
 (setf (liber:alias-for-function 'settings-gtk-keynav-use-caret)
       "Accessor"
       (documentation 'settings-gtk-keynav-use-caret 'function)
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @syntax{(gtk:settings-gtk-keynav-use-caret object) => setting}
   @syntax{(setf (gtk:settings-gtk-keynav-use-caret object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1963,7 +1948,7 @@
   if it is not editable. This is useful when using a screen reader.
   @see-class{gtk:settings}")
 
-;;;  --- settings-gtk-keynav-wrap-around ---------------------------------------
+;;;  --- gtk:settings-gtk-keynav-wrap-around -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-keynav-wrap-around"
@@ -1981,7 +1966,7 @@
 (setf (liber:alias-for-function 'settings-gtk-keynav-wrap-around)
       "Accessor"
       (documentation 'settings-gtk-keynav-wrap-around 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-keynav-wrap-around object) => setting}
   @syntax{(setf (gtk:settings-gtk-keynav-wrap-around object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1999,7 +1984,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-label-select-on-focus -------------------------------------
+;;; --- gtk:settings-gtk-label-select-on-focus ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-label-select-on-focus"
@@ -2013,7 +1998,7 @@
 (setf (liber:alias-for-function 'settings-gtk-label-select-on-focus)
       "Accessor"
       (documentation 'settings-gtk-label-select-on-focus 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-label-select-on-focus object) => setting}
   @syntax{(setf (gtk:settings-gtk-label-select-on-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2026,7 +2011,7 @@
   Whether to select the contents of a selectable label when it is focused.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-long-press-time -------------------------------------------
+;;; --- gtk:settings-gtk-long-press-time ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-long-press-time"
@@ -2041,11 +2026,11 @@
 (setf (liber:alias-for-function 'settings-gtk-long-press-time)
       "Accessor"
       (documentation 'settings-gtk-long-press-time 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-long-press-time object) => setting}
   @syntax{(setf (gtk:settings-gtk-long-press-time object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an unsigned integer with the time for a button or touch
+  @argument[setting]{an unsigned integer for the time for a button or touch
     press to be considered a \"long press\"}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-long-press-time} slot of the
@@ -2054,14 +2039,14 @@
   The time for a button or touch press to be considered a \"long press\".
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-menu-bar-accel --------------------------------------------
+;;; --- gtk:settings-gtk-menu-bar-accel ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-menu-bar-accel"
                                                'settings) t)
  "The @code{gtk-menu-bar-accel} property of type @code{:string} (Read / Write)
   @br{}
-  Keybinding to activate the menu bar. @br{}
+  The keybinding to activate the menu bar. @br{}
   @em{Warning:} The @code{gtk-menu-bar-accel} property has been deprecated since
   version 3.10 and should not be used in newly written code. This setting can
   still be used for application overrides, but will be ignored in the future.
@@ -2072,11 +2057,11 @@
 (setf (liber:alias-for-function 'settings-gtk-menu-bar-accel)
       "Accessor"
       (documentation 'settings-gtk-menu-bar-accel 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-menu-bar-accel object) => setting}
   @syntax{(setf (gtk:settings-gtk-menu-bar-accel object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the keybinding to activate the menu bar}
+  @argument[setting]{a string for the keybinding to activate the menu bar}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-menu-bar-accel} slot of the
     @class{gtk:settings} class.
@@ -2089,14 +2074,14 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-menu-bar-popup-delay --------------------------------------
+;;; --- gtk:settings-gtk-menu-bar-popup-delay ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-menu-bar-popup-delay"
                                                'settings) t)
  "The @code{gtk-menu-bar-popup-delay} property of type @code{:int}
   (Read / Write) @br{}
-  Delay before the submenus of a menu bar appear. @br{}
+  The delay before the submenus of a menu bar appear. @br{}
   @em{Warning:} The @code{gtk-menu-bar-popup-delay} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -2107,11 +2092,11 @@
 (setf (liber:alias-for-function 'settings-gtk-menu-bar-popup-delay)
       "Accessor"
       (documentation 'settings-gtk-menu-bar-popup-delay 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-menu-bar-popup-delay object) => setting}
   @syntax{(setf (gtk:settings-gtk-menu-bar-popup-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the delay before the submenus of a menu
+  @argument[setting]{an integer for the delay before the submenus of a menu
     bar appear}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-menu-bar-popup-delay} slot of the
@@ -2125,7 +2110,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-menu-images -----------------------------------------------
+;;; --- gtk:settings-gtk-menu-images -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-menu-images"
@@ -2146,7 +2131,7 @@
 (setf (liber:alias-for-function 'settings-gtk-menu-images)
       "Accessor"
       (documentation 'settings-gtk-menu-images 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-menu-images object) => setting}
   @syntax{(setf (gtk:settings-gtk-menu-images object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2169,7 +2154,7 @@
   @see-class{gtk:menu-item}
   @see-class{g:menu}")
 
-;;; --- settings-gtk-menu-popdown-delay ----------------------------------------
+;;; --- gtk:settings-gtk-menu-popdown-delay ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-menu-popdown-delay"
@@ -2188,11 +2173,11 @@
 (setf (liber:alias-for-function 'settings-gtk-menu-popdown-delay)
       "Accessor"
       (documentation 'settings-gtk-menu-popdown-delay 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-menu-popdown-delay object) => setting}
   @syntax{(setf (gtk:settings-gtk-menu-popdown-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the before hiding a submenu}
+  @argument[setting]{an integer for the time before hiding a submenu}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-menu-popdown-delay} slot of the
     @class{gtk:settings} class.
@@ -2206,14 +2191,14 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-menu-popup-delay ------------------------------------------
+;;; --- gtk:settings-gtk-menu-popup-delay --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-menu-popup-delay"
                                                'settings) t)
  "The @code{gtk-menu-popup-delay} property of type @code{:int} (Read / Write)
   @br{}
-  Minimum time the pointer must stay over a menu item before the submenu
+  The minimum time the pointer must stay over a menu item before the submenu
   appear. @br{}
   @em{Warning:} The @code{gtk-menu-popup-delay} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
@@ -2225,11 +2210,11 @@
 (setf (liber:alias-for-function 'settings-gtk-menu-popup-delay)
       "Accessor"
       (documentation 'settings-gtk-menu-popup-delay 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-menu-popup-delay object) => setting}
   @syntax{(setf (gtk:settings-gtk-menu-popup-delay object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the minimum time the pointer must stay
+  @argument[setting]{an integer for the minimum time the pointer must stay
     over a menu item before the submenu appear}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-menu-popup-delay} slot of the
@@ -2243,23 +2228,23 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-modules ---------------------------------------------------
+;;; --- gtk:settings-gtk-modules -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-modules" 'settings) t)
  "The @code{gtk-modules} property of type @code{:string} (Read / Write) @br{}
-  List of currently active GTK modules. @br{}
+  The list of currently active GTK modules. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-modules)
       "Accessor"
       (documentation 'settings-gtk-modules 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-modules object) => setting}
   @syntax{(setf (gtk:settings-gtk-modules object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with a list of currently active GTK modules}
+  @argument[setting]{a string for a list of currently active GTK modules}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-modules} slot of the
     @class{gtk:settings} class.
@@ -2267,7 +2252,7 @@
   List of currently active GTK modules.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-overlay-scrolling -----------------------------------------
+;;; --- gtk:settings-gtk-overlay-scrolling -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-overlay-scrolling"
@@ -2282,7 +2267,7 @@
 (setf (liber:alias-for-function 'settings-gtk-overlay-scrolling)
       "Accessor"
       (documentation 'settings-gtk-overlay-scrolling 'function)
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @syntax{(gtk:settings-gtk-overlay-scrolling object) => setting}
   @syntax{(setf (gtk:settings-gtk-overlay-scrolling object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2296,7 +2281,7 @@
   set to @em{false}, scrolled windows will have permanent scrollbars.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-primary-button-warps-slider -------------------------------
+;;; --- gtk:settings-gtk-primary-button-warps-slider ---------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-primary-button-warps-slider"
@@ -2311,7 +2296,7 @@
 (setf (liber:alias-for-function 'settings-gtk-primary-button-warps-slider)
       "Accessor"
       (documentation 'settings-gtk-primary-button-warps-slider 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-primary-button-warps-slider object) => setting}
   @syntax{(setf (gtk:settings-gtk-primary-button-warps-slider object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2326,14 +2311,14 @@
   @see-class{gtk:settings}
   @see-class{gtk:range}")
 
-;;; --- settings-gtk-print-backends --------------------------------------------
+;;; --- gtk:settings-gtk-print-backends ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-print-backends"
                                                'settings) t)
  "The @code{gtk-print-backends} property of type @code{:string} (Read / Write)
   @br{}
-  A comma-separated list of print backends to use in the print dialog.
+  The comma-separated list of print backends to use in the print dialog.
   Available print backends depend on the GTK installation, and may include
   @code{\"file\"}, @code{\"cups\"}, @code{\"lpr\"} or @code{\"papi\"}. @br{}
   Default value: @code{\"file,cups\"}")
@@ -2342,11 +2327,11 @@
 (setf (liber:alias-for-function 'settings-gtk-print-backends)
       "Accessor"
       (documentation 'settings-gtk-print-backends 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-print-backends object) => setting}
   @syntax{(setf (gtk:settings-gtk-print-backends object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with a list of print backends}
+  @argument[setting]{a string for a list of print backends}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-print-backends} slot of the
     @class{gtk:settings} class.
@@ -2356,14 +2341,14 @@
   @code{\"file\"}, @code{\"cups\"}, @code{\"lpr\"} or @code{\"papi\"}.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-print-preview-command -------------------------------------
+;;; --- gtk:settings-gtk-print-preview-command ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-print-preview-command"
                                                'settings) t)
  "The @code{gtk-print-preview-command} property of type @code{:string}
   (Read / Write) @br{}
-  A command to run for displaying the print preview. The command should
+  The command to run for displaying the print preview. The command should
   contain a @code{f} placeholder, which will get replaced by the path to the
   PDF file. The command may also contain a @code{s} placeholder, which will get
   replaced by the path to a file containing the print settings in the format
@@ -2377,11 +2362,11 @@
 (setf (liber:alias-for-function 'settings-gtk-print-preview-command)
       "Accessor"
       (documentation 'settings-gtk-print-preview-command 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-print-preview-command object) => setting}
   @syntax{(setf (gtk:settings-gtk-print-preview-command object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with a command to run for displaying the print
+  @argument[setting]{a string for a command to run for displaying the print
     preview}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-print-preview-command} slot of the
@@ -2397,7 +2382,7 @@
   @see-class{gtk:settings}
   @see-function{gtk:print-settings-to-file}")
 
-;;; --- settings-gtk-recent-files-enabled --------------------------------------
+;;; --- gtk:settings-gtk-recent-files-enabled ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-recent-files-enabled"
@@ -2412,7 +2397,7 @@
 (setf (liber:alias-for-function 'settings-gtk-recent-files-enabled)
       "Accessor"
       (documentation 'settings-gtk-recent-files-enabled 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-recent-files-enabled object) => setting}
   @syntax{(setf (gtk:settings-gtk-recent-files-enabled object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2426,7 +2411,7 @@
   list. If set to @em{false}, the list will always be empty.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-recent-files-limit ----------------------------------------
+;;; --- gtk:settings-gtk-recent-files-limit ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-recent-files-limit"
@@ -2446,11 +2431,11 @@
 (setf (liber:alias-for-function 'settings-gtk-recent-files-limit)
       "Accessor"
       (documentation 'settings-gtk-recent-files-limit 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-recent-files-limit object) => setting}
   @syntax{(setf (gtk:settings-gtk-recent-files-limit object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the number of recently used files}
+  @argument[setting]{an integer for the number of recently used files}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-recent-files-limit} slot of the
     @class{gtk:settings} class.
@@ -2466,7 +2451,7 @@
   @see-class{gtk:recent-chooser}
   @see-class{gtk:file-chooser}")
 
-;;; --- settings-gtk-recent-files-max-age --------------------------------------
+;;; --- gtk:settings-gtk-recent-files-max-age ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-recent-files-max-age"
@@ -2484,11 +2469,11 @@
 (setf (liber:alias-for-function 'settings-gtk-recent-files-max-age)
       "Accessor"
       (documentation 'settings-gtk-recent-files-max-age 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-recent-files-max-age object) => setting}
   @syntax{(setf (gtk:settings-gtk-recent-files-max-age object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the maximum age, in days}
+  @argument[setting]{an integer for the maximum age, in days}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-recent-files-max-page} slot of the
     @class{gtk:settings} class.
@@ -2499,29 +2484,29 @@
   removed.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-scrolled-window-placement ---------------------------------
+;;; --- gtk:settings-gtk-scrolled-window-placement -----------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-scrolled-window-placement"
                                                'settings) t)
  "The @code{gtk-scrolled-window-placement} property of type
-  @symbol{gtk:corner-type} (Read / Write) @br{}
+  @sym{gtk:corner-type} (Read / Write) @br{}
   Where the contents of scrolled windows are located with respect to the
   scrollbars, if not overridden by the scrolled window's own placement. @br{}
   @em{Warning:} The @code{gtk-scrolled-window-placement} property has been
   deprecated since version 3.10 and should not be used in newly written code.
   This setting is ignored. @br{}
-  Default value: @code{:top-left}")
+  Default value: @val[gtk:corner-type]{:top-left}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-scrolled-window-placement)
       "Accessor"
       (documentation 'settings-gtk-scrolled-window-placement 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-scrolled-window-placement object) => setting}
   @syntax{(setf (gtk:settings-gtk-scrolled-window-placement object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a @symbol{gtk:corner-type} value}
+  @argument[setting]{a @sym{gtk:corner-type} value}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-scrolled-window-placement} slot of
     the @class{gtk:settings} class.
@@ -2536,7 +2521,7 @@
   @see-class{gtk:settings}
   @see-symbol{gtk:corner-type}")
 
-;;; --- settings-gtk-shell-shows-app-menu --------------------------------------
+;;; --- gtk:settings-gtk-shell-shows-app-menu ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-shell-shows-app-menu"
@@ -2551,7 +2536,7 @@
 (setf (liber:alias-for-function 'settings-gtk-shell-shows-app-menu)
       "Accessor"
       (documentation 'settings-gtk-shell-shows-app-menu 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-shell-shows-app-menu object) => setting}
   @syntax{(setf (gtk:settings-gtk-shell-shows-app-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2565,7 +2550,7 @@
   menu, @em{false} if the application should display it itself.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-shell-shows-desktop ---------------------------------------
+;;; --- gtk:settings-gtk-shell-shows-desktop -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-shell-shows-desktop"
@@ -2580,7 +2565,7 @@
 (setf (liber:alias-for-function 'settings-gtk-shell-shows-desktop)
       "Accessor"
       (documentation 'settings-gtk-shell-shows-desktop 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-shell-shows-desktop object) => setting}
   @syntax{(setf (gtk:settings-gtk-shell-shows-desktop object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2594,7 +2579,7 @@
   @em{false} if not.
   @see-class{gtk:settings}")
 
-;;; settings-gtk-shell-shows-menubar -------------------------------------------
+;;; --- gtk:settings-gtk-shell-shows-menubar -----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-shell-shows-menubar"
@@ -2609,7 +2594,7 @@
 (setf (liber:alias-for-function 'settings-gtk-shell-shows-menubar)
       "Accessor"
       (documentation 'settings-gtk-shell-shows-menubar 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-shell-shows-menubar object) => setting}
   @syntax{(setf (gtk:settings-gtk-shell-shows-menubar object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2623,7 +2608,7 @@
   @em{false} if the application should display it itself.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-show-input-method-menu ------------------------------------
+;;; --- gtk:settings-gtk-show-input-method-menu --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-show-input-method-menu"
@@ -2641,7 +2626,7 @@
 (setf (liber:alias-for-function 'settings-gtk-show-input-method-menu)
       "Accessor"
       (documentation 'settings-gtk-show-input-method-menu 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-show-input-method-menu object) => setting}
   @syntax{(setf (gtk:settings-gtk-show-input-method-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2660,7 +2645,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-show-unicode-menu -----------------------------------------
+;;; --- gtk:settings-gtk-show-unicode-menu -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-show-unicode-menu"
@@ -2678,7 +2663,7 @@
 (setf (liber:alias-for-function 'settings-gtk-show-unicode-menu)
       "Accessor"
       (documentation 'settings-gtk-show-unicode-menu 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-show-unicode-menu object) => setting}
   @syntax{(setf (gtk:settings-gtk-show-unicode-menu object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2696,7 +2681,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-sound-theme-name ------------------------------------------
+;;; --- gtk:settings-gtk-sound-theme-name --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-sound-theme-name"
@@ -2712,11 +2697,11 @@
 (setf (liber:alias-for-function 'settings-gtk-sound-theme-name)
       "Accessor"
       (documentation 'settings-gtk-sound-theme-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-sound-theme-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-sound-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the sound theme name}
+  @argument[setting]{a string for the sound theme name}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-sound-theme-name} slot of the
     @class{gtk:settings} class.
@@ -2727,7 +2712,7 @@
   comes with the @code{libcanberra} library.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-split-cursor ----------------------------------------------
+;;; --- gtk:settings-gtk-split-cursor ------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-split-cursor" 'settings) t)
@@ -2741,7 +2726,7 @@
 (setf (liber:alias-for-function 'settings-gtk-split-cursor)
       "Accessor"
       (documentation 'settings-gtk-split-cursor 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-split-cursor object) => setting}
   @syntax{(setf (gtk:settings-gtk-split-cursor object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -2755,7 +2740,7 @@
   right-to-left text.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-theme-name ------------------------------------------------
+;;; --- gtk:settings-gtk-theme-name --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-theme-name" 'settings) t)
@@ -2766,11 +2751,11 @@
 (setf (liber:alias-for-function 'settings-gtk-theme-name)
       "Accessor"
       (documentation 'settings-gtk-theme-name 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-theme-name object) => setting}
   @syntax{(setf (gtk:settings-gtk-theme-name object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the theme name}
+  @argument[setting]{a string for the theme name}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-theme-name} slot of the
     @class{gtk:settings} class.
@@ -2778,14 +2763,14 @@
   Name of the theme to load.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-timeout-expand --------------------------------------------
+;;; --- gtk:settings-gtk-timeout-expand ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-timeout-expand"
                                                'settings) t)
  "The @code{gtk-timeout-expand} property of type @code{:int} (Read / Write)
   @br{}
-  Expand value for timeouts, when a widget is expanding a new region. @br{}
+  The expand value for timeouts, when a widget is expanding a new region. @br{}
   @em{Warning:} The @code{gtk-timeout-expand} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -2796,11 +2781,11 @@
 (setf (liber:alias-for-function 'settings-gtk-timeout-expand)
       "Accessor"
       (documentation 'settings-gtk-timeout-expand 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-timeout-expand object) => setting}
   @syntax{(setf (gtk:settings-gtk-timeout-expand object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the expand value for timeouts}
+  @argument[setting]{an integer for the expand value for timeouts}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-timeout-expand} slot of the
     @class{gtk:settings} class.
@@ -2812,14 +2797,14 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; settings-gtk-timeout-initial -----------------------------------------------
+;;; --- gtk:settings-gtk-timeout-initial ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-timeout-initial"
                                                'settings) t)
  "The @code{gtk-timeout-initial} property of type @code{:int} (Read / Write)
   @br{}
-  Starting value for timeouts, when button is pressed. @br{}
+  The starting value for timeouts, when button is pressed. @br{}
   @em{Warning:} The @code{gtk-timeout-initial} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -2830,11 +2815,11 @@
 (setf (liber:alias-for-function 'settings-gtk-timeout-initial)
       "Accessor"
       (documentation 'settings-gtk-timeout-initial 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-timeout-initial object) => setting}
   @syntax{(setf (gtk:settings-gtk-timeout-initial object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the starting value for timeouts}
+  @argument[setting]{an integer for the starting value for timeouts}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-timeout-initial} slot of the
     @class{gtk:settings} class.
@@ -2846,14 +2831,14 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-timeout-repeat --------------------------------------------
+;;; --- gtk:settings-gtk-timeout-repeat ----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-timeout-repeat"
                                                'settings) t)
  "The @code{gtk-timeout-repeat} property of type @code{:int} (Read / Write)
   @br{}
-  Repeat value for timeouts, when button is pressed. @br{}
+  The repeat value for timeouts, when button is pressed. @br{}
   @em{Warning:} The @code{gtk-timeout-repeat} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -2864,11 +2849,11 @@
 (setf (liber:alias-for-function 'settings-gtk-timeout-repeat)
       "Accessor"
       (documentation 'settings-gtk-timeout-repeat 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-timeout-repeat object) => setting}
   @syntax{(setf (gtk:settings-gtk-timeout-repeat object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the repeat value for timeouts}
+  @argument[setting]{an integer for the repeat value of timeouts}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-timeout-repeat} slot of the
     @class{gtk:settings} class.
@@ -2880,7 +2865,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-titlebar-double-click -------------------------------------
+;;; --- gtk:settings-gtk-titlebar-double-click ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-titlebar-double-click"
@@ -2896,11 +2881,11 @@
 (setf (liber:alias-for-function 'settings-gtk-titlebar-double-click )
       "Accessor"
       (documentation 'settings-gtk-titlebar-double-click 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-titlebar-double-click object) => setting}
   @syntax{(setf (gtk:settings-gtk-titlebar-double-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with an action}
+  @argument[setting]{a string for an action}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-titlebar-double-click} slot of the
     @class{gtk:settings} class.
@@ -2910,7 +2895,7 @@
   \"minimize\", \"toggle-maximize\", \"menu\", \"lower\" or \"none\".
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-titlebar-middle-click -------------------------------------
+;;; --- gtk:settings-gtk-titlebar-middle-click ---------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-titlebar-middle-click"
@@ -2926,11 +2911,11 @@
 (setf (liber:alias-for-function 'settings-gtk-titlebar-middle-click)
       "Accessor"
       (documentation 'settings-gtk-titlebar-middle-click 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-titlebar-middle-click object) => setting}
   @syntax{(setf (gtk:settings-gtk-titlebar-middle-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with an action}
+  @argument[setting]{a string for an action}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-titlebar-middle-click} slot of the
     @class{gtk:settings} class.
@@ -2940,7 +2925,7 @@
   \"minimize\", \"toggle-maximize\", \"menu\", \"lower\" or \"none\". @br{}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-titlebar-right-click --------------------------------------
+;;; --- gtk:settings-gtk-titlebar-right-click ----------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-titlebar-right-click"
@@ -2956,11 +2941,11 @@
 (setf (liber:alias-for-function 'settings-gtk-titlebar-right-click)
       "Accessor"
       (documentation 'settings-gtk-titlebar-right-click 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-titlebar-right-click object) => setting}
   @syntax{(setf (gtk:settings-gtk-titlebar-right-click object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with an action}
+  @argument[setting]{a string for an action}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-titlebar-right-click} slot of the
     @class{gtk:settings} class.
@@ -2970,28 +2955,28 @@
   \"minimize\", \"toggle-maximize\", \"menu\", \"lower\" or \"none\".
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-toolbar-icon-size -----------------------------------------
+;;; --- gtk:settings-gtk-toolbar-icon-size -------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-toolbar-icon-size"
                                                'settings) t)
- "The @code{gtk-toolbar-icon-size} property of type @symbol{gtk:icon-size}
+ "The @code{gtk-toolbar-icon-size} property of type @sym{gtk:icon-size}
   (Read / Write) @br{}
   The size of icons in default toolbars. @br{}
   @em{Warning:} The @code{gtk-toolbar-icon-size} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
-  Default value: @code{:large-toolbar}")
+  Default value: @val[gtk:icon-size]{:large-toolbar}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-toolbar-icon-size)
       "Accessor"
       (documentation 'settings-gtk-toolbar-icon-size 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-toolbar-icon-size object) => size}
   @syntax{(setf (gtk:settings-gtk-toolbar-icon-size object) size)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[size]{a @symbol{gtk:icon-size} value with the icon size}
+  @argument[size]{a @sym{gtk:icon-size} value for the icon size}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-toolbar-icon-size} slot of the
     @class{gtk:settings} class.
@@ -3003,28 +2988,28 @@
   @see-class{gtk:settings}
   @see-symbol{gtk:icon-size}")
 
-;;; --- settings-gtk-toolbar-style ---------------------------------------------
+;;; --- gtk:settings-gtk-toolbar-style -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-toolbar-style"
                                                'settings) t)
- "The @code{gtk-toolbar-style} property of type @symbol{gtk:toolbar-style}
+ "The @code{gtk-toolbar-style} property of type @sym{gtk:toolbar-style}
   (Read / Write) @br{}
   The size of icons in default toolbars. @br{}
   @em{Warning:} The @code{gtk-toolbar-style} property has been deprecated since
   version 3.10 and should not be used in newly written code. This setting is
   ignored. @br{}
-  Default value: @code{:both}")
+  Default value: @val[gtk:toolbar-style]{:both}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-toolbar-style)
       "Accessor"
       (documentation 'settings-gtk-toolbar-style 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-toolbar-style object) => style}
   @syntax{(setf (gtk:settings-gtk-toolbar-style object) style)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[style]{a @symbol{gtk:toolbar-style} value with the size of icons}
+  @argument[style]{a @sym{gtk:toolbar-style} value for the size of icons}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-toolbar-style} slot of the
     @class{gtk:settings} class.
@@ -3037,14 +3022,14 @@
   @see-class{gtk:toolbar}
   @see-function{gtk:toolbar-toolbar-style}")
 
-;;; --- settings-gtk-tooltip-browse-mode-timeout -------------------------------
+;;; --- gtk:settings-gtk-tooltip-browse-mode-timeout ---------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-tooltip-browse-mode-timeout"
                                                'settings) t)
  "The @code{gtk-tooltip-browse-mode-timeout} property of type @code{:int}
   (Read / Write) @br{}
-  Amount of time, in milliseconds, after which the browse mode will be
+  The amount of time, in milliseconds, after which the browse mode will be
   disabled. @br{}
   @em{Warning:} The @code{gtk-tooltip-browse-mode-timeout} property has been
   deprecated since version 3.10 and should not be used in newly written code.
@@ -3056,11 +3041,11 @@
 (setf (liber:alias-for-function 'settings-gtk-tooltip-browse-mode-timeout)
       "Accessor"
       (documentation 'settings-gtk-tooltip-browse-mode-timeout 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-tooltip-browse-mode-timeout object) => setting}
   @syntax{(setf (gtk:settings-gtk-tooltip-browse-mode-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the amount of time, in milliseconds}
+  @argument[setting]{an integer for the amount of time, in milliseconds}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-tooltip-browse-mode-timeout} slot
     of the @class{gtk:settings} class.
@@ -3074,7 +3059,7 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-tooltip-browse-timeout ------------------------------------
+;;; --- gtk:settings-gtk-tooltip-browse-timeout --------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-tooltip-browse-timeout"
@@ -3097,11 +3082,11 @@
 (setf (liber:alias-for-function 'settings-gtk-tooltip-browse-timeout)
       "Accessor"
       (documentation 'settings-gtk-tooltip-browse-timeout 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-tooltip-browse-timeout object) => setting}
   @syntax{(setf (gtk:settings-gtk-tooltip-browse-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the amount of time, in milliseconds}
+  @argument[setting]{an integer for the amount of time, in milliseconds}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-tooltip-browse-timeout} slot of the
     @class{gtk:settings} class.
@@ -3119,15 +3104,15 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-tooltip-timeout -------------------------------------------
+;;; --- gtk:settings-gtk-tooltip-timeout ---------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-tooltip-timeout"
                                                'settings) t)
  "The @code{gtk-tooltip-timeout} property of type @code{:int} (Read / Write)
   @br{}
-  Time, in milliseconds, after which a tooltip could appear if the cursor is
-  hovering on top of a widget. @br{}
+  The time, in milliseconds, after which a tooltip could appear if the cursor
+  is hovering on top of a widget. @br{}
   @em{Warning:} The @code{gtk-tooltip-timeout} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
@@ -3138,12 +3123,11 @@
 (setf (liber:alias-for-function 'settings-gtk-tooltip-timeout)
       "Accessor"
       (documentation 'settings-gtk-tooltip-timeout 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-tooltip-timeout object) => setting}
   @syntax{(setf (gtk:settings-gtk-tooltip-timeout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the time after which a tooltip could
-    appear}
+  @argument[setting]{an integer for the time after which a tooltip could appear}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-tooltip-timeout} slot of the
     @class{gtk:settings} class.
@@ -3156,14 +3140,14 @@
   @end{dictionary}
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-touchscreen-mode ------------------------------------------
+;;; --- gtk:settings-gtk-touchscreen-mode --------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-touchscreen-mode"
                                                'settings) t)
  "The @code{gtk-touchscreen-mode} property of type @code{:boolean}
   (Read / Write) @br{}
-  When @em{true}, there are no motion notify events delivered on this screen,
+  If @em{true}, there are no motion notify events delivered on this screen,
   and widgets cannot use the pointer hovering them for any essential
   functionality. @br{}
   @em{Warning:} The @code{gtk-touchscreen-mode} property is deprecated since
@@ -3176,7 +3160,7 @@
 (setf (liber:alias-for-function 'settings-gtk-touchscreen-mode)
       "Accessor"
       (documentation 'settings-gtk-touchscreen-mode 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-touchscreen-mode object) => setting}
   @syntax{(setf (gtk:settings-gtk-touchscreen-mode object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -3198,28 +3182,28 @@
   @see-class{gtk:settings}
   @see-function{gdk:event-source-device}")
 
-;;; --- settings-gtk-visible-focus ---------------------------------------------
+;;; --- gtk:settings-gtk-visible-focus -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-visible-focus" 'settings) t)
- "The @code{gtk-visible-focus} property of type @symbol{gtk:policy-type}
+ "The @code{gtk-visible-focus} property of type @sym{gtk:policy-type}
   (Read / Write) @br{}
   Whether focus rectangles should be always visible, never visible, or
   hidden until the user starts to use the keyboard. @br{}
   @em{Warning:} The @code{gtk-visible-focus} property has been deprecated since
   version 3.10 and should not be used in newly written code. This setting is
   ignored. @br{}
-  Default value: @code{:always}")
+  Default value: @val[gtk:policy-type]{:always}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-visible-focus)
       "Accessor"
       (documentation 'settings-gtk-visible-focus 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-visible-focus object) => setting}
   @syntax{(setf (gtk:settings-gtk-visible-focus object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a @symbol{gtk:policy-type} value whether focus rectangles
+  @argument[setting]{a @sym{gtk:policy-type} value whether focus rectangles
     should be visible}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-visible-focus} slot of the
@@ -3234,7 +3218,7 @@
   @see-class{gtk:settings}
   @see-symbol{gtk:policy-type}")
 
-;;; --- settings-gtk-xft-antialias ---------------------------------------------
+;;; --- gtk:settings-gtk-xft-antialias -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-xft-antialias"
@@ -3248,7 +3232,7 @@
 (setf (liber:alias-for-function 'settings-gtk-xft-antialias)
       "Accessor"
       (documentation 'settings-gtk-xft-antialias 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-xft-antialias object) => setting}
   @syntax{(setf (gtk:settings-gtk-xft-antialias object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -3260,12 +3244,12 @@
   Whether to antialias Xft fonts: 0 = no, 1 = yes, -1 = default.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-xft-dpi ---------------------------------------------------
+;;; --- gtk:settings-gtk-xft-dpi -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-xft-dpi" 'settings) t)
  "The @code{gtk-xft-dpi} property of type @code{:int} (Read / Write) @br{}
-  Resolution for Xft, in 1024 * dots/inch. -1 to use default value. @br{}
+  The resolution for Xft, in 1024 * dots/inch. -1 to use default value. @br{}
   Allowed values: [-1,1048576] @br{}
   Default value: -1")
 
@@ -3273,11 +3257,11 @@
 (setf (liber:alias-for-function 'settings-gtk-xft-dpi)
       "Accessor"
       (documentation 'settings-gtk-xft-dpi 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-xft-dpi object) => setting}
   @syntax{(setf (gtk:settings-gtk-xft-dpi object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{an integer with the resolution for Xft}
+  @argument[setting]{an integer for the resolution for Xft}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-xft-dpi} slot of the
     @class{gtk:settings} class.
@@ -3285,7 +3269,7 @@
   Resolution for Xft, in 1024 * dots/inch. -1 to use default value.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-xft-hinting -----------------------------------------------
+;;; --- gtk:settings-gtk-xft-hinting -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-xft-hinting" 'settings) t)
@@ -3298,7 +3282,7 @@
 (setf (liber:alias-for-function 'settings-gtk-xft-hinting)
       "Accessor"
       (documentation 'settings-gtk-xft-hinting 'function)
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @syntax{(gtk:settings-gtk-xft-hinting object) => setting}
   @syntax{(setf (gtk:settings-gtk-xft-hinting object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -3310,7 +3294,7 @@
   Whether to hint Xft fonts: 0 = no, 1 = yes, -1 = default.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-xft-hintstyle ---------------------------------------------
+;;; --- gtk:settings-gtk-xft-hintstyle -----------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-xft-hintstyle"
@@ -3325,11 +3309,11 @@
 (setf (liber:alias-for-function 'settings-gtk-xft-hintstyle)
       "Accessor"
       (documentation 'settings-gtk-xft-hintstyle 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-xft-hintstyle object) => setting}
   @syntax{(setf (gtk:settings-gtk-xft-hintstyle object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the deegree of hinting}
+  @argument[setting]{a string for the deegree of hinting}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-xft-hintstyle} slot of the
     @class{gtk:settings} class.
@@ -3338,12 +3322,12 @@
   @code{hintmedium}, or @code{hintfull}.
   @see-class{gtk:settings}")
 
-;;; --- settings-gtk-xft-rgba ----------------------------------------------
+;;; --- gtk:settings-gtk-xft-rgba ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-xft-rgba" 'settings) t)
  "The @code{gtk-xft-rgba} property of type @code{:string} (Read / Write) @br{}
-  Type of subpixel antialiasing:
+  The type of subpixel antialiasing:
   @code{none}, @code{rgb}, @code{bgr}, @code{vrgb}, @code{vbgr}. @br{}
   Default value: @code{nil}")
 
@@ -3351,11 +3335,11 @@
 (setf (liber:alias-for-function 'settings-gtk-xft-rgba)
       "Accessor"
       (documentation 'settings-gtk-xft-rgba 'function)
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @syntax{(gtk:settings-gtk-xft-rgba object) => setting}
   @syntax{(setf (gtk:settings-gtk-xft-rgba object) setting)}
   @argument[object]{a @class{gtk:settings} object}
-  @argument[setting]{a string with the type of subpixel antialiasing}
+  @argument[setting]{a string for the type of subpixel antialiasing}
   @begin{short}
     Accessor of the @slot[gtk:settings]{gtk-xft-rgba} slot of the
     @class{gtk:settings} class.
@@ -3365,14 +3349,14 @@
   @see-class{gtk:settings}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_settings_get_default () -> settings-default
+;;; gtk_settings_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_settings_get_default" settings-default) (g:object settings)
  #+liber-documentation
- "@version{2023-3-7}
+ "@version{2025-07-03}
   @begin{return}
-    A @class{gtk:settings} object. If there is no default screen, then returns
+    The @class{gtk:settings} object. If there is no default screen, then returns
     @code{nil}.
   @end{return}
   @begin{short}
@@ -3386,13 +3370,13 @@
 (export 'settings-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_settings_get_for_screen () -> settings-for-screen
+;;; gtk_settings_get_for_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_settings_get_for_screen" settings-for-screen)
     (g:object settings)
  #+liber-documentation
- "@version{2023-3-7}
+ "@version{2023-03-07}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The @class{gtk:settings} object.}
   @begin{short}

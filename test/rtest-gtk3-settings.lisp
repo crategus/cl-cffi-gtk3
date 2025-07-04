@@ -5,8 +5,6 @@
 
 ;;; --- Types and Values ------------------------------------------------------
 
-;;;     GtkSettingsValue                                   deprecated
-
 ;;;     GtkIMPreeditStyle
 
 (test gtk-im-preedit-style
@@ -452,4 +450,4 @@
 ;;;     gtk_settings_set_double_property                   deprecated
 ;;;     gtk_settings_reset_property ()
 
-;;; 2024-9-21
+;;; 2025-07-03
