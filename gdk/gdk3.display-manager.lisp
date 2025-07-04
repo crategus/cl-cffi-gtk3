@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.display-manager.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -74,7 +74,7 @@
 
 #+liber-documentation
 (setf (documentation 'display-manager 'type)
- "@version{#2023-3-7}
+ "@version{#2025-06-29}
   @begin{short}
     The purpose of the @class{gdk:display-manager} singleton object is to offer
     notification when displays appear or disappear or the default display
@@ -116,16 +116,17 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"display-opened\" signal}
+    @begin[display-manager::display-opened]{signal}
       @begin{pre}
 lambda (manager display)    :run-last
       @end{pre}
       The signal is emitted when a display is opened.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gdk:display-manager} object on which the
           signal is emitted.}
         @entry[display]{The opened @class{gdk:display} object.}
-      @end{table}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gdk:display-manager-default-display}
   @see-class{gdk:display}
@@ -135,7 +136,7 @@ lambda (manager display)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- display-manager-default-display ----------------------------------------
+;;; --- gdk:display-manager-default-display ------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "default-display"
@@ -171,7 +172,7 @@ lambda (manager display)    :run-last
   @see-class{gdk:display-manager}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_manager_get ()
+;;; gdk_display_manager_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_manager_get" display-manager-get)
@@ -196,7 +197,7 @@ lambda (manager display)    :run-last
 (export 'display-manager-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_manager_list_displays ()
+;;; gdk_display_manager_list_displays
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_manager_list_displays" display-manager-list-displays)
@@ -213,7 +214,7 @@ lambda (manager display)    :run-last
 (export 'display-manager-list-displays)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_manager_open_display ()
+;;; gdk_display_manager_open_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_manager_open_display" display-manager-open-display)

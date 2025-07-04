@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.window.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -259,7 +259,7 @@
 (setf (liber:alias-for-symbol 'window-type)
       "GEnum"
       (liber:symbol-documentation 'window-type)
- "@version{2023-2-26}
+ "@version{2025-07-01}
   @begin{declaration}
 (gobject:define-genum \"GdkWindowType\" window-type
   (:export t
@@ -273,13 +273,13 @@
   (:subsurface 6))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:root]{Root window, this window has no parent, covers the entire
         screen, and is created by the window system.}
       @entry[:toplevel]{Toplevel window, used to implement the
         @class{gtk:window} class.}
-      @entry[:child]{Child window, used to implement e.g. the @class{gtk:entry}
-        class.}
+      @entry[:child]{Child window, used to implement, for example the
+        @class{gtk:entry} class.}
       @entry[:temp]{Override redirect temporary window, used to implement the
         @class{gtk:menu} class.}
       @entry[:foreign]{Foreign window.}
@@ -288,7 +288,7 @@
       @entry[:subsurface]{Subsurface-based window. This window is visually tied
         to a toplevel, and is moved/stacked with it. Currently this window type
         is only implemented in Wayland.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Describes the kind of the window.}
   @see-class{gdk:window}
@@ -310,7 +310,7 @@
 (setf (liber:alias-for-symbol 'window-window-class)
       "GEnum"
       (liber:symbol-documentation 'window-window-class)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkWindowWindowClass\" window-window-class
   (:export t
@@ -319,10 +319,10 @@
   (:input-only 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:input-output]{Window for graphics and events.}
       @entry[:input-only]{Window for events only.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     @code{:input-output} windows are the standard kind of window you might
@@ -355,7 +355,7 @@
 (setf (liber:alias-for-symbol 'window-hints)
       "GFlags"
       (liber:symbol-documentation 'window-hints)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkWindowHints\" window-hints
   (:export t
@@ -371,7 +371,7 @@
   (:user-size 256))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:pos]{Indicates that the program has positioned the window.}
       @entry[:min-size]{Min size fields are set.}
       @entry[:max-size]{Max size fields are set.}
@@ -383,7 +383,7 @@
         by the user.}
       @entry[:user-size]{Indicates that the window's size was explicitly set by
         the user.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to indicate which fields of a @symbol{gdk:geometry} instance should
@@ -423,7 +423,7 @@
 (setf (liber:alias-for-symbol 'gravity)
       "GEnum"
       (liber:symbol-documentation 'gravity)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkGravity\" gravity
   (:export t
@@ -440,7 +440,7 @@
   :static)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:north-west]{The reference point is at the top left corner.}
       @entry[:north]{The reference point is in the middle of the top edge.}
       @entry[:north-east]{The reference point is at the top right corner.}
@@ -452,7 +452,7 @@
       @entry[:south-east]{The reference point is at the lower right corner.}
       @entry[:static]{The reference point is at the top left corner of the
         window itself, ignoring window manager decorations.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Defines the reference point of a window and the meaning of coordinates
@@ -484,7 +484,45 @@
 (setf (liber:alias-for-symbol 'geometry)
       "CStruct"
       (liber:symbol-documentation 'geometry)
- "@version{2023-2-26}
+ "@version{2025-06-29}
+  @begin{declaration}
+(cffi:defcstruct geometry
+  (min-width :int)
+  (min-height :int)
+  (max-width :int)
+  (max-height :int)
+  (base-width :int)
+  (base-height :int)
+  (width-increment :int)
+  (height-increment :int)
+  (min-aspect :double)
+  (max-aspect :double)
+  (win-gravity gravity))
+  @end{declaration}
+  @begin{values}
+    @begin[code]{simple-table}
+      @entry[min-width]{An integer with the minimum width of window or -1 to
+        use requisition, with the @class{gtk:window} widget only.}
+      @entry[min-height]{An integer with the minimum height of window or -1 to
+        use requisition, with the @class{gtk:window} widget only.}
+      @entry[max-width]{An integer with the maximum width of window or -1 to
+        use requisition, with the @class{gtk:window} widget only.}
+      @entry[max-height]{An integer with the maximum height of window or -1 to
+        use requisition, with the @class{gtk:window} widget only.}
+      @entry[base-width]{An integer with the allowed window widths are
+        @code{base-width} + @code{width-inc} * @code{N} where @code{N} is any
+        integer, -1 is allowed with the @class{gtk:window} widget.}
+      @entry[base-height]{An integer with the allowed window widths are
+        @code{base-height} + @code{height-inc} * @code{N} where @code{N} is any
+        integer, -1 is allowed with the @class{gtk:window} widget.}
+      @entry[width-increment]{An integer with the width resize increment.}
+      @entry[height-increment]{An integer with the height resize increment.}
+      @entry[min-aspect]{A double float with the minimum width/height ratio.}
+      @entry[max-aspect]{A double float with the maximum width/height ratio.}
+      @entry[win-gravity]{A @symbol{gdk:gravity} value for the window gravity,
+        see the @fun{gtk:window-gravity} function.}
+    @end{simple-table}
+  @end{values}
   @begin{short}
     The @symbol{gdk:geometry} structure gives the window manager information
     about a window's geometry constraints.
@@ -543,42 +581,6 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   the entire window. The most common use of these hints is probably to set
   @code{min-aspect} and @code{max-aspect} to the same value, thus forcing the
   window to keep a constant aspect ratio.
-  @begin{pre}
-(cffi:defcstruct geometry
-  (min-width :int)
-  (min-height :int)
-  (max-width :int)
-  (max-height :int)
-  (base-width :int)
-  (base-height :int)
-  (width-increment :int)
-  (height-increment :int)
-  (min-aspect :double)
-  (max-aspect :double)
-  (win-gravity gravity))
-  @end{pre}
-  @begin[code]{table}
-    @entry[min-width]{An integer with the minimum width of window or -1 to use
-      requisition, with the @class{gtk:window} widget only.}
-    @entry[min-height]{An integer with the minimum height of window or -1 to
-      use requisition, with the @class{gtk:window} widget only.}
-    @entry[max-width]{An integer with the maximum width of window or -1 to use
-      requisition, with the @class{gtk:window} widget only.}
-    @entry[max-height]{An integer with the maximum height of window or -1 to
-      use requisition, with the @class{gtk:window} widget only.}
-    @entry[base-width]{An integer with the allowed window widths are
-      @code{base-width} + @code{width-inc} * @code{N} where @code{N} is any
-      integer, -1 is allowed with the @class{gtk:window} widget.}
-    @entry[base-height]{An integer with the allowed window widths are
-      @code{base-height} + @code{height-inc} * @code{N} where @code{N} is any
-      integer, -1 is allowed with the @class{gtk:window} widget.}
-    @entry[width-increment]{An integer with the width resize increment.}
-    @entry[height-increment]{An integer with the height resize increment.}
-    @entry[min-aspect]{A double float with the minimum width/height ratio.}
-    @entry[max-aspect]{A double float with the maximum width/height ratio.}
-    @entry[win-gravity]{A @symbol{gdk:gravity} value for the window gravity,
-      see the @fun{gtk:window-gravity} function.}
-  @end{table}
   @see-class{gdk:window}
   @see-class{gtk:window}
   @see-function{gdk:window-set-geometry-hints}
@@ -608,7 +610,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'anchor-hints)
       "GFlags"
       (liber:symbol-documentation 'anchor-hints)
- "@version{2023-3-13}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkAnchorHints\" anchor-hints
   (:export t
@@ -624,7 +626,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:resize 48)) ; :resize-x | :resize-y
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:flip-x]{Allow flipping anchors horizontally.}
       @entry[:fliy-y]{Allow flipping anchors vertically.}
       @entry[:slide-x]{Allow sliding window horizontally.}
@@ -634,7 +636,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       @entry[:flip]{Allow flipping anchors on both axes.}
       @entry[:slide]{Allow sliding window on both axes.}
       @entry[:resize]{Allow resizing window on both axes.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Positioning hints for aligning a window relative to a rectangle.
@@ -673,7 +675,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-edge)
       "GEnum"
       (liber:symbol-documentation 'window-edge)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkWindowEdge\" window-edge
   (:export t
@@ -688,7 +690,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:south-east 7))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:north-west]{The top left corner.}
       @entry[:north]{The top edge.}
       @entry[:north-east]{The top right corner.}
@@ -697,7 +699,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       @entry[:south-west]{The lower left corner.}
       @entry[:south]{The lower edge.}
       @entry[:south-east]{The lower right corner.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Determines a window edge or corner.
@@ -730,7 +732,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-type-hint)
       "GEnum"
       (liber:symbol-documentation 'window-type-hint)
- "@version{2023-2-26}
+ "@version{2025-07-01}
   @begin{declaration}
 (gobject:define-genum \"GdkWindowTypeHint\" window-type-hint
   (:export t
@@ -751,7 +753,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:dnd 13))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{Normal toplevel window.}
       @entry[:dialog]{Dialog window.}
       @entry[:menu]{Window used to implement a menu. GTK uses this hint only
@@ -764,14 +766,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       @entry[:dock]{Used for creating dock or panel windows.}
       @entry[:desktop]{Used for creating the desktop background window.}
       @entry[:dropdown-menu]{A menu that belongs to a menubar.}
-      @entry[:popup-menu]{A menu that does not belong to a menubar, e.g. a
-        context menu.}
+      @entry[:popup-menu]{A menu that does not belong to a menubar, for
+        example, a context menu.}
       @entry[:tooltip]{A tooltip.}
       @entry[:notification]{A notification - typically a \"bubble\" that
         belongs to a status icon.}
       @entry[:combo]{A popup from a combo box.}
       @entry[:dnd]{A window that is used to implement a DND cursor.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These are hints for the window manager that indicate what type of function
@@ -785,7 +787,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkWindowAttr
+;;; GdkWindowAttr
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcstruct window-attr
@@ -808,11 +810,8 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attr)
       "CStruct"
       (liber:symbol-documentation 'window-attr)
- "@version{2023-2-26}
-  @begin{short}
-    Attributes to use for a newly created window.
-  @end{short}
-  @begin{pre}
+ "@version{2025-06-29}
+  @begin{declaration}
 (cffi:defcstruct window-attr
   (title :string)
   (event-mask event-mask)
@@ -828,30 +827,35 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (wmclass-class :string)
   (override-redirect :boolean)
   (type-hint window-type-hint))
-  @end{pre}
-  @begin[code]{table}
-    @entry[title]{A string with the title of the window for toplevel windows.}
-    @entry[event-mask]{a @symbol{gdk:event-mask} value, see the
-      @fun{gdk:window-events} function.}
-    @entry[x]{An integer with the x coordinate relative to parent window,
-      see the @fun{gdk:window-move} function.}
-    @entry[y]{An integer with the y coordinate relative to parent window,
-      see the @fun{gdk:window-move} function.}
-    @entry[width]{An integer with the width of the window.}
-    @entry[height]{An integer with the height of window.}
-    @entry[wclass]{A @symbol{gdk:window-window-class} value,
-      @code{:input-output} for a normal window or @code{:input-only} for an
-      invisible window that receives events.}
-    @entry[visual]{A @class{gdk:visual} object for the window.}
-    @entry[window-type]{A @symbol{gdk:window-type} value.}
-    @entry[cursor]{A @class{gdk:cursor} object for the window, see the
-      @fun{gdk:window-cursor} function.}
-    @entry[wmclass-name]{A string, do not use.}
-    @entry[wmclass-class]{A string, do not use.}
-    @entry[override-redirect]{@em{True} to bypass the window manager.}
-    @entry[type-hint]{A @symbol{gdk:window-type-hint} value of the function of
-      the window.}
-  @end{table}
+  @end{declaration}
+  @begin{values}
+    @begin[code]{simple-table}
+      @entry[title]{A string with the title of the window for toplevel windows.}
+      @entry[event-mask]{a @symbol{gdk:event-mask} value, see the
+        @fun{gdk:window-events} function.}
+      @entry[x]{An integer with the x coordinate relative to parent window,
+        see the @fun{gdk:window-move} function.}
+      @entry[y]{An integer with the y coordinate relative to parent window,
+        see the @fun{gdk:window-move} function.}
+      @entry[width]{An integer with the width of the window.}
+      @entry[height]{An integer with the height of window.}
+      @entry[wclass]{A @symbol{gdk:window-window-class} value,
+        @code{:input-output} for a normal window or @code{:input-only} for an
+        invisible window that receives events.}
+      @entry[visual]{A @class{gdk:visual} object for the window.}
+      @entry[window-type]{A @symbol{gdk:window-type} value.}
+      @entry[cursor]{A @class{gdk:cursor} object for the window, see the
+        @fun{gdk:window-cursor} function.}
+      @entry[wmclass-name]{A string, do not use.}
+      @entry[wmclass-class]{A string, do not use.}
+      @entry[override-redirect]{@em{True} to bypass the window manager.}
+      @entry[type-hint]{A @symbol{gdk:window-type-hint} value of the function
+        of the window.}
+    @end{simple-table}
+  @end{values}
+  @begin{short}
+    Attributes to use for a newly created window.
+  @end{short}
   @see-class{gdk:visual}
   @see-function{gdk:window-move}
   @see-function{gdk:window-cursor}
@@ -879,7 +883,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attributes-type)
       "GFlags"
       (liber:symbol-documentation 'window-attributes-type)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkWindowAttributesType\" window-attributes-type
   (:export t
@@ -894,7 +898,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:type-hint 256))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:title]{Honor the @code{title} field.}
       @entry[:x]{Honor the @code{x} coordinate field.}
       @entry[:y]{Honor the @code{y} coordinate field.}
@@ -904,7 +908,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
         fields.}
       @entry[:noredir]{Honor the @code{override-redirect} field.}
       @entry[:type-hint]{Honor the @code{type-hint} field.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to indicate which fields in the @symbol{gdk:window-attr} structure
@@ -934,7 +938,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'fullscreen-mode)
       "GEnum"
       (liber:symbol-documentation 'fullscreen-mode)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkFullscreenMode\" fullscreen-mode
   (:export t
@@ -943,10 +947,10 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:on-all-monitors 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:current-monitor]{Fullscreen on current monitor only.}
       @entry[:all-monitors]{Span across all monitors when fullscreen.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Indicates which monitor (in a multi-head setup) a window should span over
@@ -972,7 +976,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'filter-return)
       "GEnum"
       (liber:symbol-documentation 'filter-return)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkFilterReturn\" filter-return
   (:export t
@@ -982,12 +986,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:remove 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:continue]{Event not handled, continue processing.}
       @entry[:translate]{Native event translated into a GDK event and stored in
         the event structure that was passed in.}
       @entry[:remove]{Event handled, terminate processing.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Specifies the result of applying a @code{GdkFilterFunc} to a native event.
@@ -1013,7 +1017,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'modifier-intent)
       "GEnum"
       (liber:symbol-documentation 'modifier-intent)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkModifierIntent\" modifier-intent
   (:export t
@@ -1027,7 +1031,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:default-mod-mask 6))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:primary-accelerator]{The primary modifier used to invoke menu
         accelerators.}
       @entry[:context-menu]{The modifier used to invoke context menus. Note
@@ -1049,7 +1053,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
         in accelerators. Needed because the @kbd{Command} key is mapped to
         @code{MOD2} on OSX, which is widely used, but on X11 @code{MOD2} is the
         @kbd{NumLock} key and using that for a mod key is problematic at best.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     This enumeration is used with the @fun{gdk:keymap-modifier-mask} function
@@ -1082,7 +1086,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'wm-decoration)
       "GFlags"
       (liber:symbol-documentation 'wm-decoration)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkWMDecoration\" wm-decoration
   (:export t
@@ -1096,7 +1100,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:maximize 64))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:all]{All decorations should be applied.}
       @entry[:border]{A frame should be drawn around the window.}
       @entry[:resizeh]{The frame should have resize handles.}
@@ -1104,7 +1108,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       @entry[:menu]{A button for opening a menu should be included.}
       @entry[:minimize]{A minimize button should be included.}
       @entry[:maximize]{A maximize button should be included.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These are hints originally defined by the Motif toolkit.
@@ -1131,7 +1135,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'wm-function)
       "GFlags"
       (liber:symbol-documentation 'wm-function)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkWMFunction\" wm-function
   (:export t
@@ -1144,14 +1148,14 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   (:close 32))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:all]{All functions should be offered.}
       @entry[:resize]{The window should be resizable.}
       @entry[:move]{The window should be movable.}
       @entry[:minimize]{The window should be minimizable.}
       @entry[:maximize]{The window should be maximizable.}
       @entry[:close]{The window should be closable.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These are hints originally defined by the Motif toolkit.
@@ -1175,7 +1179,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     "cursor" "GdkCursor" t t)))
 
 (setf (documentation 'window 'type)
- "@version{2023-2-26}
+ "@version{2025-06-29}
   @begin{short}
     Onscreen display areas in the target window system.
   @end{short}
@@ -1211,10 +1215,20 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     offscreen window are available as a surface, via the
     @fun{gdk:offscreen-window-surface} function.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"create-surface\" signal}
+    @begin[window::create-surface]{signal}
       @begin{pre}
 lambda (window width height)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[window]{The @class{gdk:window} offscreen window on which the
+          signal is emitted.}
+        @entry[width]{The integer with the width of the offscreen surface to
+          create.}
+        @entry[height]{The integer with the height of the offscreen surface
+          to create.}
+        @entry[Returns]{The newly created @symbol{cairo:surface-t} instance
+          for the offscreen window.}
+      @end{simple-table}
       The signal is emitted when an offscreen window needs its surface
       (re)created, which happens either when the the window is first drawn to,
       or when the window is being resized. The first signal handler that returns
@@ -1222,39 +1236,40 @@ lambda (window width height)    :run-last
       surface will be used. Note that it is not possible to access the window's
       previous surface from within any callback of this signal. Calling the
       @fun{gdk:offscreen-window-surface} function will lead to a crash.
-      @begin[code]{table}
-        @entry[window]{The @class{gdk:window} offscreen window on which the
-          signal is emitted.}
-        @entry[width]{An integer with the width of the offscreen surface to
-          create.}
-        @entry[height]{An integer with the height of the offscreen surface
-          to create.}
-        @entry[Returns]{The newly created @symbol{cairo:surface-t} instance
-          for the offscreen window.}
-      @end{table}
-    @subheading{The \"from-embedder\" signal}
+    @end{signal}
+    @begin[window::from-embedder]{signal}
       @begin{pre}
 lambda (window xembedder yembedder xoffscreen yoffscreen)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[window]{The @class{gdk:window} offscreen window on which the
+          signal is emitted.}
+        @entry[xembedder]{The double float with the x coordinate in the
+          embedder window.}
+        @entry[yembedder]{The double float with the y coordinate in the
+          embedder window.}
+        @entry[xoffscreen]{The double float return location for the x coordinate
+          in the offscreen window.}
+        @entry[yoffscreen]{The double float return location for the y coordinate
+          in the offscreen window.}
+      @end{simple-table}
       The signal is emitted to translate coordinates in the embedder of an
       offscreen window to the offscreen window. See also the \"to-embedder\"
       signal.
-      @begin[code]{table}
-        @entry[window]{The @class{gdk:window} offscreen window on which the
-          signal is emitted.}
-        @entry[xembedder]{An double float with the x coordinate in the
-          embedder window.}
-        @entry[yembedder]{An double float with the y coordinate in the
-          embedder window.}
-        @entry[xoffscreen]{A double float return location for the x coordinate
-          in the offscreen window.}
-        @entry[yoffscreen]{A double float return location for the y coordinate
-          in the offscreen window.}
-      @end{table}
-    @subheading{The \"moved-to-rect\" signal}
+    @end{signal}
+    @begin[window::moved-to-rect]{signal}
       @begin{pre}
 lambda (window flipped final xflipped yflipped)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[window]{The @class{gdk:window} object that moved.}
+        @entry[flipped]{The position of @arg{window} after any possible flipping
+          or @code{nil} if the backend cannot obtain it.}
+        @entry[final]{The final position of @code{window} or @code{nil} if the
+          backend cannot obtain it.}
+        @entry[xflipped]{@em{True} if the anchors were flipped horizontally.}
+        @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
+      @end{simple-table}
       Emitted when the position of window is finalized after being moved to a
       destination rectangle. @arg{window} might be flipped over the destination
       rectangle in order to keep it on-screen, in which case @arg{xflipped}
@@ -1263,46 +1278,40 @@ lambda (window flipped final xflipped yflipped)    :run-first
       possible sliding. @arg{final} is @arg{flipped}, but possibly translated
       in the case that flipping is still ineffective in keeping window
       on-screen. Since 3.22
-      @begin[code]{table}
-        @entry[window]{The @class{gdk:window} object that moved.}
-        @entry[flipped]{The position of @arg{window} after any possible flipping
-          or @code{nil} if the backend cannot obtain it.}
-        @entry[final]{The final position of @code{window} or @code{nil} if the
-          backend cannot obtain it.}
-        @entry[xflipped]{@em{True} if the anchors were flipped horizontally.}
-        @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
-      @end{table}
-    @subheading{The \"pick-embedded-child\" signal}
+    @end{signal}
+    @begin[window::pick-embedded-child]{signal}
       @begin{pre}
 lambda (window x y)    :run-last
       @end{pre}
-      The signal is emitted to find an embedded child at the given position.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} object on which the signal is
           emitted.}
-        @entry[x]{A double float with the x coordinate in the window.}
-        @entry[y]{A double float with the y coordinate in the window.}
+        @entry[x]{The double float with the x coordinate in the window.}
+        @entry[y]{The double float with the y coordinate in the window.}
         @entry[Returns]{The @class{gdk:window} object of the embedded child at
           @arg{x}, @arg{y}, or @code{nil}.}
-      @end{table}
-    @subheading{The \"to-embedder\" signal}
+      @end{simple-table}
+      The signal is emitted to find an embedded child at the given position.
+    @end{signal}
+    @begin[window::to-embedder]{signal}
       @begin{pre}
 lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
       @end{pre}
-      The signal is emitted to translate coordinates in an offscreen window to
-      its embedder. See also the @code{\"from-embedder\"} signal.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} object with the offscreen window
           on which the signal is emitted.}
-        @entry[xoffscreen]{A double float with the x coordinate in the
+        @entry[xoffscreen]{The double float with the x coordinate in the
           offscreen window.}
-        @entry[yoffscreen]{A double float with the y coordinate in the
+        @entry[yoffscreen]{The double float with the y coordinate in the
           offscreen window.}
-        @entry[xembedder]{A double float return location for the x coordinate
+        @entry[xembedder]{The double float return location for the x coordinate
           in the embedder window.}
-        @entry[yembedder]{A double float return location for the y coordinate
+        @entry[yembedder]{The double float return location for the y coordinate
           in the embedder window.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted to translate coordinates in an offscreen window to
+      its embedder. See also the @code{\"from-embedder\"} signal.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gdk:window-new}
   @see-slot{gdk:window-cursor}
@@ -1384,7 +1393,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_destroy ()
+;;; gdk_window_destroy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_destroy" window-destroy) :void
@@ -1407,7 +1416,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-destroy)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_window_type () -> window-window-type
+;;; gdk_window_get_window_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_window_type" window-window-type) window-type
@@ -1426,7 +1435,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-window-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_display () -> window-display
+;;; gdk_window_get_display
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_display" window-display) (g:object display)
@@ -1444,7 +1453,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-display)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_screen () -> window-screen
+;;; gdk_window_get_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_screen" window-screen) (g:object screen)
@@ -1462,7 +1471,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_visual () -> window-visual
+;;; gdk_window_get_visual
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_visual" window-visual) (g:object visual)
@@ -1480,7 +1489,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-visual)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_at_pointer ()
+;;; gdk_window_at_pointer
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_at_pointer" %window-at-pointer) (g:object window)
@@ -1518,7 +1527,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-at-pointer)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_show ()
+;;; gdk_window_show
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_show" window-show) :void
@@ -1544,7 +1553,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-show)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_show_unraised ()
+;;; gdk_window_show_unraised
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_show_unraised" window-show-unraised) :void
@@ -1568,7 +1577,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-show-unraised)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_hide ()
+;;; gdk_window_hide
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_hide" window-hide) :void
@@ -1588,7 +1597,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-hide)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_is_destroyed ()
+;;; gdk_window_is_destroyed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_is_destroyed" window-is-destroyed) :boolean
@@ -1606,7 +1615,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-is-destroyed)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_is_visible ()
+;;; gdk_window_is_visible
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_is_visible" window-is-visible) :boolean
@@ -1626,7 +1635,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-is-visible)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_is_viewable ()
+;;; gdk_window_is_viewable
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_is_viewable" window-is-viewable) :boolean
@@ -1645,7 +1654,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-is-viewable)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_is_input_only ()
+;;; gdk_window_is_input_only
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_is_input_only" window-is-input-only) :boolean
@@ -1662,7 +1671,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-is-input-only)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_is_shaped ()
+;;; gdk_window_is_shaped
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_is_shaped" window-is-shaped) :boolean
@@ -1679,7 +1688,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-is-shaped)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_state () -> window-state
+;;; gdk_window_get_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_state" window-state) window-state
@@ -1698,7 +1707,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_withdraw ()
+;;; gdk_window_withdraw
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_withdraw" window-withdraw) :void
@@ -1718,7 +1727,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-withdraw)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_iconify ()
+;;; gdk_window_iconify
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_iconify" window-iconify) :void
@@ -1742,7 +1751,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-iconify)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_deiconify ()
+;;; gdk_window_deiconify
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_deiconify" window-deiconify) :void
@@ -1767,7 +1776,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-deiconify)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_stick ()
+;;; gdk_window_stick
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_stick" window-stick) :void
@@ -1795,7 +1804,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-stick)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_unstick ()
+;;; gdk_window_unstick
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_unstick" window-unstick) :void
@@ -1814,7 +1823,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-unstick)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_maximize ()
+;;; gdk_window_maximize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_maximize" window-maximize) :void
@@ -1841,7 +1850,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-maximize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_unmaximize ()
+;;; gdk_window_unmaximize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_unmaximize" window-unmaximize) :void
@@ -1868,7 +1877,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-unmaximize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_fullscreen ()
+;;; gdk_window_fullscreen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_fullscreen" window-fullscreen) :void
@@ -1896,7 +1905,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-fullscreen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_fullscreen_on_monitor ()
+;;; gdk_window_fullscreen_on_monitor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_fullscreen_on_monitor" window-fullscreen-on-monitor) :void
@@ -1920,7 +1929,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-fullscreen-on-monitor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_unfullscreen ()
+;;; gdk_window_unfullscreen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_unfullscreen" window-unfullscreen) :void
@@ -1945,8 +1954,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-unfullscreen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_fullscreen_mode ()
-;;; gdk_window_set_fullscreen_mode () -> window-fullscreen-mode
+;;; gdk_window_get_fullscreen_mode
+;;; gdk_window_set_fullscreen_mode
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-fullscreen-mode) (mode window)
@@ -1994,7 +2003,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-fullscreen-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_keep_above ()
+;;; gdk_window_set_keep_above
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_keep_above" window-set-keep-above) :void
@@ -2020,7 +2029,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-set-keep-above)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_keep_below ()
+;;; gdk_window_set_keep_below
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_keep_below" window-set-keep-below) :void
@@ -2046,7 +2055,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-set-keep-below)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_opacity ()
+;;; gdk_window_set_opacity
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_opacity" window-set-opacity) :void
@@ -2074,8 +2083,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-set-opacity)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_composited ()
-;;; gdk_window_set_composited () -> window-composited
+;;; gdk_window_get_composited
+;;; gdk_window_set_composited
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-composited) (composited window)
@@ -2130,8 +2139,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-composited)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_pass_through ()
-;;; gdk_window_set_pass_through () -> window-pass-through
+;;; gdk_window_get_pass_through
+;;; gdk_window_set_pass_through
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-pass-through) (pass-through window)
@@ -2175,7 +2184,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-pass-through)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_move ()
+;;; gdk_window_move
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_move" window-move) :void
@@ -2206,7 +2215,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-move)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_resize ()
+;;; gdk_window_resize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_resize" window-resize) :void
@@ -2238,7 +2247,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-resize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_move_resize ()
+;;; gdk_window_move_resize
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_move_resize" window-move-resize) :void
@@ -2268,7 +2277,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-move-resize)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_scroll ()
+;;; gdk_window_scroll
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_scroll" window-scroll) :void
@@ -2297,7 +2306,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-scroll)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_move_to_rect ()
+;;; gdk_window_move_to_rect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_move_to_rect" window-move-to-rect) :void
@@ -2347,7 +2356,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-move-to-rect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_move_region ()
+;;; gdk_window_move_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_move_region" window-move-region) :void
@@ -2375,7 +2384,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-move-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_flush ()
+;;; gdk_window_flush
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_flush" window-flush) :void
@@ -2395,7 +2404,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-flush)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_has_native ()
+;;; gdk_window_has_native
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_has_native" window-has-native) :boolean
@@ -2415,7 +2424,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-has-native)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_ensure_native ()
+;;; gdk_window_ensure_native
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_ensure_native" window-ensure-native) :void
@@ -2439,7 +2448,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-ensure-native)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_reparent ()
+;;; gdk_window_reparent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_reparent" window-reparent) :void
@@ -2462,7 +2471,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-reparent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_raise ()
+;;; gdk_window_raise
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_raise" window-raise) :void
@@ -2485,7 +2494,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-raise)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_lower ()
+;;; gdk_window_lower
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_lower" window-lower) :void
@@ -2514,7 +2523,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-lower)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_restack ()
+;;; gdk_window_restack
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_restack" window-restack) :void
@@ -2546,7 +2555,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-restack)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_focus ()
+;;; gdk_window_focus
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_focus" window-focus) :void
@@ -2569,7 +2578,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-focus)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_register_dnd ()
+;;; gdk_window_register_dnd
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_register_dnd" window-register-dnd) :void
@@ -2583,7 +2592,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-register-dnd)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_resize_drag ()
+;;; gdk_window_begin_resize_drag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_resize_drag" window-begin-resize-drag) :void
@@ -2619,7 +2628,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-resize-drag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_resize_drag_for_device ()
+;;; gdk_window_begin_resize_drag_for_device
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_resize_drag_for_device"
@@ -2659,7 +2668,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-resize-drag-for-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_move_drag ()
+;;; gdk_window_begin_move_drag
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_move_drag" window-begin-move-drag) :void
@@ -2690,7 +2699,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-move-drag)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_move_drag_for_device ()
+;;; gdk_window_begin_move_drag_for_device
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_move_drag_for_device"
@@ -2725,7 +2734,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-move-drag-for-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_show_window_menu ()
+;;; gdk_window_show_window_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_show_window_menu" window-show-window-menu) :boolean
@@ -2749,7 +2758,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-show-window-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_constrain_size ()
+;;; gdk_window_constrain_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_constrain_size" %window-constrain-size) :void
@@ -2792,7 +2801,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-constrain-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_beep ()
+;;; gdk_window_beep
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_beep" window-beep) :void
@@ -2812,7 +2821,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-beep)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_scale_factor () -> window-scale-factor
+;;; gdk_window_get_scale_factor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_scale_factor" window-scale-factor) :int
@@ -2840,7 +2849,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-scale-factor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_opaque_region ()
+;;; gdk_window_set_opaque_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_opaque_region" window-set-opaque-region) :void
@@ -3006,7 +3015,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; gdk_window_mark_paint_from_clip (GdkWindow *window,
 ;;;                                  cairo_t *cr);
 ;;;
-;;; If you call this during a paint (e.g. between
+;;; If you call this during a paint (for example, between
 ;;; gdk_window_begin_paint_region() and gdk_window_end_paint() then GDK will
 ;;; mark the current clip region of the window as being drawn. This is required
 ;;; when mixing GL rendering via gdk_cairo_draw_from_gl() and cairo rendering,
@@ -3028,7 +3037,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_clip_region () -> window-clip-region
+;;; gdk_window_get_clip_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_clip_region" window-clip-region)
@@ -3055,7 +3064,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-clip-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_paint_rect ()
+;;; gdk_window_begin_paint_rect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_paint_rect" window-begin-paint-rect) :void
@@ -3083,7 +3092,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-paint-rect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_paint_region ()
+;;; gdk_window_begin_paint_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_paint_region" window-begin-paint-region) :void
@@ -3147,7 +3156,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-paint-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_end_paint ()
+;;; gdk_window_end_paint
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_end_paint" window-end-paint) :void
@@ -3175,7 +3184,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-end-paint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_begin_draw_frame ()
+;;; gdk_window_begin_draw_frame
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_begin_draw_frame" window-begin-draw-frame)
@@ -3224,7 +3233,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-begin-draw-frame)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_end_draw_frame ()
+;;; gdk_window_end_draw_frame
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_end_draw_frame" window-end-draw-frame) :void
@@ -3249,7 +3258,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-end-draw-frame)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_visible_region () -> window-visible-region
+;;; gdk_window_get_visible_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_visible_region" window-visible-region)
@@ -3308,7 +3317,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; This can be used to record the invalidated region, which is useful if you
 ;;; are keeping an offscreen copy of some region and want to keep it up to date.
 ;;; You can also modify the invalidated region in case you’re doing some effect
-;;; where e.g. a child widget appears in multiple places.
+;;; where, for example, a child widget appears in multiple places.
 ;;;
 ;;; Parameters
 ;;;
@@ -3322,7 +3331,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_invalidate_rect ()
+;;; gdk_window_invalidate_rect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_invalidate_rect" window-invalidate-rect) :void
@@ -3347,7 +3356,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-invalidate-rect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_invalidate_region ()
+;;; gdk_window_invalidate_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_invalidate_region" window-invalidate-region) :void
@@ -3387,7 +3396,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (export 'window-invalidate-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; GdkWindowChildFunc ()
+;;; GdkWindowChildFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback window-child-func :boolean
@@ -3400,27 +3409,23 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (setf (liber:alias-for-symbol 'window-child-func)
       "Callback"
       (liber:symbol-documentation 'window-child-func)
- "@version{#2023-5-14}
+ "@version{#2025-06-29}
+  @syntax{lambda (window) => result}
+  @argument[window]{a @class{gdk:window} object}
+  @argument[result]{@em{true} to invalidate @arg{window} recursively}
   @begin{short}
     A callback function of this type is passed to the
     @fun{gdk:window-invalidate-maybe-recurse} function.
   @end{short}
   It gets called for each child of the window to determine whether to
   recursively invalidate it or not.
-  @begin{pre}
-lambda (window)
-  @end{pre}
-  @begin[code]{table}
-    @entry[window]{A @class{gdk:window} object.}
-    @entry[Returns]{@em{True} to invalidate @arg{window} recursively.}
-  @end{table}
   @see-class{gdk:window}
   @see-class{gdk:window-invalidate-maybe-recurse}")
 
 (export 'window-child-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_invalidate_maybe_recurse ()
+;;; gdk_window_invalidate_maybe_recurse
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_invalidate_maybe_recurse"
@@ -3472,7 +3477,7 @@ lambda (window)
 (export 'window-invalidate-maybe-recurse)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_update_area () -> window-update-area
+;;; gdk_window_get_update_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_update_area" window-update-area)
@@ -3499,7 +3504,7 @@ lambda (window)
 (export 'window-update-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_freeze_updates ()
+;;; gdk_window_freeze_updates
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_freeze_updates" window-freeze-updates) :void
@@ -3521,7 +3526,7 @@ lambda (window)
 (export 'window-freeze-updates)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_thaw_updates ()
+;;; gdk_window_thaw_updates
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_thaw_updates" window-thaw-updates) :void
@@ -3538,7 +3543,7 @@ lambda (window)
 (export 'window-thaw-updates)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_process_all_updates ()
+;;; gdk_window_process_all_updates
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_process_all_updates" window-process-all-updates) :void
@@ -3557,7 +3562,7 @@ lambda (window)
 (export 'window-process-all-updates)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_process_updates ()
+;;; gdk_window_process_updates
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_process_updates" window-process-updates) :void
@@ -3588,7 +3593,7 @@ lambda (window)
 (export 'window-process-updates)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_debug_updates ()
+;;; gdk_window_set_debug_updates
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_debug_updates" window-set-debug-updates) :void
@@ -3629,7 +3634,7 @@ lambda (window)
 (export 'window-set-debug-updates)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_enable_synchronized_configure ()
+;;; gdk_window_enable_synchronized_configure
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_enable_synchronized_configure"
@@ -3652,7 +3657,7 @@ lambda (window)
 (export 'window-enable-synchronized-configure)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_configure_finished ()
+;;; gdk_window_configure_finished
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_configure_finished" window-configure-finished) :void
@@ -3674,7 +3679,7 @@ lambda (window)
 (export 'window-configure-finished)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_frame_clock () -> window-frame-clock
+;;; gdk_window_get_frame_clock
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_frame_clock" window-frame-clock)
@@ -3695,8 +3700,8 @@ lambda (window)
 (export 'window-frame-clock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_user_data ()
-;;; gdk_window_set_user_data () -> window-user-data
+;;; gdk_window_get_user_data
+;;; gdk_window_set_user_data
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-user-data) (data window)
@@ -3741,7 +3746,7 @@ lambda (window)
 (export 'window-user-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_override_redirect ()
+;;; gdk_window_set_override_redirect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_override_redirect" window-set-override-redirect) :void
@@ -3767,8 +3772,8 @@ lambda (window)
 (export 'window-set-override-redirect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_accept_focus ()
-;;; gdk_window_set_accept_focus () -> window-accept-focus
+;;; gdk_window_get_accept_focus
+;;; gdk_window_set_accept_focus
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-accept-focus) (setting window)
@@ -3800,8 +3805,8 @@ lambda (window)
 (export 'window-accept-focus)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_focus_on_map ()
-;;; gdk_window_set_focus_on_map () -> window-focus-on-map
+;;; gdk_window_get_focus_on_map
+;;; gdk_window_set_focus_on_map
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-focus-on-map) (setting window)
@@ -3923,7 +3928,7 @@ lambda (window)
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_shape_combine_region ()
+;;; gdk_window_shape_combine_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_shape_combine_region" window-shape-combine-region) :void
@@ -3960,7 +3965,7 @@ lambda (window)
 (export 'window-shape-combine-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_child_shapes ()
+;;; gdk_window_set_child_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_child_shapes" window-set-child-shapes) :void
@@ -3980,7 +3985,7 @@ lambda (window)
 (export 'window-set-child-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_merge_child_shapes ()
+;;; gdk_window_merge_child_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_merge_child_shapes" window-merge-child-shapes) :void
@@ -4005,7 +4010,7 @@ lambda (window)
 (export 'window-merge-child-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_input_shape_combine_region ()
+;;; gdk_window_input_shape_combine_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_input_shape_combine_region"
@@ -4045,7 +4050,7 @@ lambda (window)
 (export 'window-input-shape-combine-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_child_input_shapes ()
+;;; gdk_window_set_child_input_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_child_input_shapes" window-set-child-input-shapes)
@@ -4066,7 +4071,7 @@ lambda (window)
 (export 'window-set-child-input-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_merge_child_input_shapes ()
+;;; gdk_window_merge_child_input_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_merge_child_input_shapes"
@@ -4093,7 +4098,7 @@ lambda (window)
 (export 'window-merge-child-input-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_static_gravities ()
+;;; gdk_window_set_static_gravities
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_static_gravities" window-set-static-gravities)
@@ -4121,7 +4126,7 @@ lambda (window)
 (export 'window-set-static-gravities)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_title ()
+;;; gdk_window_set_title
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_title" window-set-title) :void
@@ -4144,7 +4149,7 @@ lambda (window)
 (export 'window-set-title)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_background ()
+;;; gdk_window_set_background
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_background" window-set-background) :void
@@ -4177,7 +4182,7 @@ lambda (window)
 (export 'window-set-background)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_background_rgba ()
+;;; gdk_window_set_background_rgba
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_background_rgba" window-set-background-rgba) :void
@@ -4202,8 +4207,8 @@ lambda (window)
 (export 'window-set-background-rgba)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_background_pattern ()
-;;; gdk_window_set_background_pattern () -> window-background-pattern
+;;; gdk_window_get_background_pattern
+;;; gdk_window_set_background_pattern
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-background-pattern) (pattern window)
@@ -4264,7 +4269,7 @@ lambda (window)
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_geometry () -> window-geometry
+;;; gdk_window_get_geometry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_geometry" %window-geometry) :void
@@ -4321,7 +4326,7 @@ lambda (window)
 (export 'window-geometry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_geometry_hints ()
+;;; gdk_window_set_geometry_hints
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_geometry_hints" window-set-geometry-hints) :void
@@ -4366,7 +4371,7 @@ lambda (window)
 (export 'window-set-geometry-hints)
 
 ;;; -------------------------------------------------------------_---------------
-;;; gdk_window_get_width () -> window-width
+;;; gdk_window_get_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_width" window-width) :int
@@ -4388,7 +4393,7 @@ lambda (window)
 (export 'window-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_height () -> window-height
+;;; gdk_window_get_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_height" window-height) :int
@@ -4410,7 +4415,7 @@ lambda (window)
 (export 'window-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_icon_list ()
+;;; gdk_window_set_icon_list
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_icon_list" window-set-icon-list) :void
@@ -4436,8 +4441,8 @@ lambda (window)
 (export 'window-set-icon-list)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_modal_hint ()
-;;; gdk_window_set_modal_hint () -> window-modal-hint
+;;; gdk_window_get_modal_hint
+;;; gdk_window_set_modal_hint
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-modal-hint) (modal window)
@@ -4473,8 +4478,8 @@ lambda (window)
 (export 'window-modal-hint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_type_hint ()
-;;; gdk_window_set_type_hint () -> window-type-hint
+;;; gdk_window_get_type_hint
+;;; gdk_window_set_type_hint
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-type-hint) (hint window)
@@ -4510,7 +4515,7 @@ lambda (window)
 (export 'window-type-hint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_shadow_width ()
+;;; gdk_window_set_shadow_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_shadow_width" window-set-shadow-width) :void
@@ -4542,7 +4547,7 @@ lambda (window)
 (export 'window-set-shadow-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_skip_taskbar_hint ()
+;;; gdk_window_set_skip_taskbar_hint
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_skip_taskbar_hint" window-set-skip-taskbar-hint) :void
@@ -4565,7 +4570,7 @@ lambda (window)
 (export 'window-set-skip-taskbar-hint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_skip_pager_hint ()
+;;; gdk_window_set_skip_pager_hint
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_skip_pager_hint" window-set-skip-pager-hint) :void
@@ -4590,7 +4595,7 @@ lambda (window)
 (export 'window-set-skip-pager-hint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_urgency_hint ()
+;;; gdk_window_set_urgency_hint
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_urgency_hint" window-set-urgency-hint) :void
@@ -4608,7 +4613,7 @@ lambda (window)
 (export 'window-set-urgency-hint)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_position () -> window-position
+;;; gdk_window_get_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_position" %window-position) :void
@@ -4645,7 +4650,7 @@ lambda (window)
 (export 'window-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_root_origin () -> window-root-origin
+;;; gdk_window_get_root_origin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_root_origin" %window-root-origin) :void
@@ -4674,7 +4679,7 @@ lambda (window)
 (export 'window-root-origin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_frame_extents () -> window-frame-extents
+;;; gdk_window_get_frame_extents
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_frame_extents" %window-frame-extents) :void
@@ -4706,7 +4711,7 @@ lambda (window)
 (export 'window-frame-extents)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_origin () -> window-origin
+;;; gdk_window_get_origin
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_origin" %window-origin) :int
@@ -4738,7 +4743,7 @@ lambda (window)
 (export 'window-origin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_root_coords () -> window-root-coords
+;;; gdk_window_get_root_coords
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_root_coords" %window-root-coords) :void
@@ -4773,7 +4778,7 @@ lambda (window)
 (export 'window-root-coords)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_pointer () -> window-pointer        not exported
+;;; gdk_window_get_pointer                                  not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_pointer" %window-pointer) (g:object window)
@@ -4817,7 +4822,7 @@ lambda (window)
 (export 'window-pointer)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_device_position () -> window-device-position
+;;; gdk_window_get_device_position
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_device_position" %window-device-position)
@@ -4862,8 +4867,7 @@ lambda (window)
 (export 'window-device-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_device_position_double ()
-;;; -> window-device-position-double
+;;; gdk_window_get_device_position_double
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_device_position_double"
@@ -4906,7 +4910,7 @@ lambda (window)
 (export 'window-device-position-double)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_parent () -> window-parent
+;;; gdk_window_get_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_parent" window-parent) (g:object window)
@@ -4936,7 +4940,7 @@ lambda (window)
 (export 'window-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_toplevel () -> window-toplevel
+;;; gdk_window_get_toplevel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_toplevel" window-toplevel) (g:object window)
@@ -4961,7 +4965,7 @@ lambda (window)
 (export 'window-toplevel)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_children () -> window-children
+;;; gdk_window_get_children
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_children" window-children)
@@ -4983,7 +4987,7 @@ lambda (window)
 (export 'window-children)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_children_with_user_data ()
+;;; gdk_window_get_children_with_user_data
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_children_with_user_data"
@@ -5008,7 +5012,7 @@ lambda (window)
 (export 'window-children-with-user-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_peek_children ()
+;;; gdk_window_peek_children
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_peek_children" window-peek-children)
@@ -5028,8 +5032,8 @@ lambda (window)
 (export 'window-peek-children)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_events ()
-;;; gdk_window_set_events () -> window-events
+;;; gdk_window_get_events
+;;; gdk_window_set_events
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-events) (event-mask window)
@@ -5063,7 +5067,7 @@ lambda (window)
 (export 'window-events)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_icon_name ()
+;;; gdk_window_set_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_icon_name" window-set-icon-name) :void
@@ -5092,7 +5096,7 @@ lambda (window)
 (export 'window-set-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_transient_for ()
+;;; gdk_window_set_transient_for
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_transient_for" window-set-transient-for) :void
@@ -5119,7 +5123,7 @@ lambda (window)
 (export 'window-set-transient-for)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_role ()
+;;; gdk_window_set_role
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_role" window-set-role) :void
@@ -5148,7 +5152,7 @@ lambda (window)
 (export 'window-set-role)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_startup_id ()
+;;; gdk_window_set_startup_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_startup_id" window-set-startup-id) :void
@@ -5168,8 +5172,8 @@ lambda (window)
 (export 'window-set-startup-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_group ()
-;;; gdk_window_set_group () -> window-group
+;;; gdk_window_get_group
+;;; gdk_window_set_group
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-group) (leader window)
@@ -5209,8 +5213,8 @@ lambda (window)
 (export 'window-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_decorations ()
-;;; gdk_window_set_decorations () -> window-decorations
+;;; gdk_window_get_decorations
+;;; gdk_window_set_decorations
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-decorations) (decorations window)
@@ -5260,7 +5264,7 @@ lambda (window)
 (export 'window-decorations)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_set_functions ()
+;;; gdk_window_set_functions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_set_functions" window-set-functions) :void
@@ -5289,7 +5293,7 @@ lambda (window)
 (export 'window-set-functions)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_get_default_root_window () -> default-root-window
+;;; gdk_get_default_root_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_get_default_root_window" default-root-window) (g:object window)
@@ -5305,8 +5309,8 @@ lambda (window)
 (export 'default-root-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_support_multidevice ()
-;;; gdk_window_set_support_multidevice () -> window-support-multidevice
+;;; gdk_window_get_support_multidevice
+;;; gdk_window_set_support_multidevice
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-support-multidevice) (support-multidevice window)
@@ -5340,8 +5344,8 @@ lambda (window)
 (export 'window-support-multidevice)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_device_cursor ()
-;;; gdk_window_set_device_cursor () -> window-device-cursor
+;;; gdk_window_get_device_cursor
+;;; gdk_window_set_device_cursor
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-device-cursor) (cursor window device)
@@ -5387,8 +5391,8 @@ lambda (window)
 (export 'window-device-cursor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_device_events ()
-;;; gdk_window_set_device_events () -> window-device-events
+;;; gdk_window_get_device_events
+;;; gdk_window_set_device_events
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-device-events) (event-mask window device)
@@ -5425,8 +5429,8 @@ lambda (window)
 (export 'window-device-events)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_source_events ()
-;;; gdk_window_set_source_events () -> window-source-events
+;;; gdk_window_get_source_events
+;;; gdk_window_set_source_events
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-source-events) (event-mask window source)
@@ -5465,8 +5469,8 @@ lambda (window)
 (export 'window-source-events)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_event_compression ()
-;;; gdk_window_set_event_compression () -> window-event-compression
+;;; gdk_window_get_event_compression
+;;; gdk_window_set_event_compression
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf window-event-compression) (event-compression window)
@@ -5476,9 +5480,10 @@ lambda (window)
                         :void)
   event-compression)
 
-(cffi:defcfun ("gdk_window_get_event_compression" window-event-compression) :boolean
+(cffi:defcfun ("gdk_window_get_event_compression" window-event-compression)
+    :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-07-01}
   @syntax{(gdk:window-event-compression window) => event-compression}
   @syntax{(setf (gdk:window-event-compression window) event-compression)}
   @argument[window]{a @class{gdk:window} object}
@@ -5489,16 +5494,16 @@ lambda (window)
   @end{short}
   If @em{true} only the most recent event will be delivered.
 
-  Some types of applications, e.g. paint programs, need to see all motion
-  events and will benefit from turning off event compression. By default, event
-  compression is enabled.
+  Some types of applications, such as paint programs, need to see all motion
+  events and will benefit from turning off event compression. Event compression
+  is enabled by default.
   @see-class{gdk:window}"
   (window (g:object window)))
 
 (export 'window-event-compression)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_offscreen_window_get_surface () -> offscreen-window-surface
+;;; gdk_offscreen_window_get_surface
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_offscreen_window_get_surface" offscreen-window-surface)
@@ -5520,8 +5525,8 @@ lambda (window)
 (export 'offscreen-window-surface)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_offscreen_window_get_embedder ()
-;;; gdk_offscreen_window_set_embedder () -> offscreen-window-embedder
+;;; gdk_offscreen_window_get_embedder
+;;; gdk_offscreen_window_set_embedder
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf offscreen-window-embedder) (embedder window)
@@ -5558,7 +5563,7 @@ lambda (window)
 (export 'offscreen-window-embedder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_geometry_changed ()
+;;; gdk_window_geometry_changed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_geometry_changed" window-geometry-changed) :void
@@ -5577,7 +5582,7 @@ lambda (window)
 (export 'window-geometry-changed)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_coords_from_parent ()
+;;; gdk_window_coords_from_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_coords_from_parent" %window-coords-from-parent) :void
@@ -5636,7 +5641,7 @@ lambda (window)
 (export 'window-coords-from-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_coords_to_parent ()
+;;; gdk_window_coords_to_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_coords_to_parent" %window-coords-to-parent) :void
@@ -5694,7 +5699,7 @@ lambda (window)
 (export 'window-coords-to-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_effective_parent () -> window-effective-parent
+;;; gdk_window_get_effective_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_effective_parent" window-effective-parent)
@@ -5718,7 +5723,7 @@ lambda (window)
 (export 'window-effective-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_window_get_effective_toplevel () -> window-effective-toplevel
+;;; gdk_window_get_effective_toplevel
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_window_get_effective_toplevel" window-effective-toplevel)

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.device.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -152,7 +152,7 @@
 (setf (liber:alias-for-symbol 'input-source)
       "GEnum"
       (liber:symbol-documentation 'input-source)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkInputSource\" input-source
   (:export t
@@ -168,7 +168,7 @@
   :tablet-pad)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:mouse]{The device is a mouse. This will be reported for the core
         pointer, even if it is something else, such as a trackball.}
       @entry[:pen]{The device is a stylus of a graphics tablet or similar
@@ -187,7 +187,7 @@
       @entry[:tablet-pad]{The device is a \"pad\", a collection of buttons,
         rings and strips found in drawing tablets. This device type has been
         added in 3.22.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     An enumeration describing the type of an input device in general terms.
@@ -209,7 +209,7 @@
 (setf (liber:alias-for-symbol 'input-mode)
       "GEnum"
       (liber:symbol-documentation 'input-mode)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkInputMode\" input-mode
   (:export t
@@ -219,7 +219,7 @@
   (:window 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:disabled]{The device is disabled and will not report any events.}
       @entry[:screen]{The device is enabled. The device's coordinate space maps
         to the entire screen.}
@@ -227,7 +227,7 @@
         mapped to a single window. The manner in which this window is chosen is
         undefined, but it will typically be the same way in which the focus
         window for key events is determined.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     An enumeration that describes the mode of an input device.
@@ -257,7 +257,7 @@
 (setf (liber:alias-for-symbol 'axis-use)
       "GEnum"
       (liber:symbol-documentation 'axis-use)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkAxisUse\" axis-use
   (:export t
@@ -275,7 +275,7 @@
   :last)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:ignore]{The axis is ignored.}
       @entry[:x]{The axis is used as the x axis.}
       @entry[:y]{The axis is used as the y axis.}
@@ -289,7 +289,7 @@
         Since 3.22}
       @entry[:slider]{The axis is used for pen slider information. Since 3.22}
       @entry[:last]{A constant equal to the numerically highest axis value.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     An enumeration describing the way in which a device axis (valuator) maps
@@ -318,7 +318,7 @@
 (setf (liber:alias-for-symbol 'axis-flags)
       "GFlags"
       (liber:symbol-documentation 'axis-flags)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkAxisFlags\" axis-flags
   (:export t
@@ -334,7 +334,7 @@
   (:slider   #.(ash 1 9)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:x]{x axis is present.}
       @entry[:y]{y axis is present.}
       @entry[:pressure]{Pressure axis is present.}
@@ -344,7 +344,7 @@
       @entry[:distance]{Distance axis is present.}
       @entry[:rotation]{z-axis rotation is present.}
       @entry[:slider]{Slider axis is present.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Flags describing the current capabilities of a device/tool.
@@ -371,7 +371,7 @@
 (setf (liber:alias-for-symbol 'device-tool-type)
       "GEnum"
       (liber:symbol-documentation 'device-tool-type)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkDeviceToolType\" device-tool-type
   (:export t
@@ -386,7 +386,7 @@
   :lens)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:unkown]{Tool is of an unknown type.}
       @entry[:pen]{Tool is a standard tablet stylus.}
       @entry[:eraser]{Tool is standard tablet eraser.}
@@ -395,7 +395,7 @@
       @entry[:airbrush]{Tool is an airbrush stylus.}
       @entry[:mouse]{Tool is a mouse.}
       @entry[:lens]{Tool is a lens cursor.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Indicates the specific type of tool being used being a tablet. Such as an
@@ -418,7 +418,7 @@
 (setf (liber:alias-for-symbol 'device-type)
       "GEnum"
       (liber:symbol-documentation 'device-type)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkDeviceType\" device-type
   (:export t
@@ -428,13 +428,13 @@
   (:floating 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:master]{Device is a master (or virtual) device. There will be an
         associated focus indicator on the screen.}
       @entry[:slave]{Device is a slave (or physical) device.}
       @entry[:floating]{Device is a physical device, currently not attached to
         any virtual device.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Indicates the device type. See above for more information about the meaning
@@ -457,7 +457,7 @@
 (setf (liber:alias-for-symbol 'grab-ownership)
       "GEnum"
       (liber:symbol-documentation 'grab-ownership)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkGrabOwnership\" grab-ownership
   (:export t
@@ -467,13 +467,13 @@
   (:application 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{All other events of the device are allowed.}
       @entry[:window]{Other events of the device are blocked for the grab
         window.}
       @entry[:application]{Other events of the device are blocked for the whole
         application.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Defines how device grabs interact with other devices.
@@ -492,17 +492,17 @@
 (setf (liber:alias-for-symbol 'time-coord)
       "CStruct"
       (liber:symbol-documentation 'time-coord)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (cffi:defcstruct gdk:time-coord
   (time :uint32)
   (axes :double :count 128))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[time]{The timestamp for this event.}
       @entry[axes]{The values of the axes of the device.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The @symbol{gdk:time-coord} structure stores a single event in a motion
@@ -531,7 +531,7 @@
 (setf (liber:alias-for-symbol 'grab-status)
       "GEnum"
       (liber:symbol-documentation 'grab-status)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkGrabStatus\" grab-status
   (:export t
@@ -543,7 +543,7 @@
   :frozen)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:success]{The resource was successfully grabbed.}
       @entry[:already-grabbed]{The resource is actively grabbed by another
         client.}
@@ -554,7 +554,7 @@
       @entry[:frozen]{The resource is frozen by an active grab of another
         client.}
       @entry[:failed]{The grab failed for some other reason.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Returned by the @fun{gdk:seat-grab} function to indicate success or the
@@ -671,18 +671,18 @@
 (setf (liber:alias-for-function 'device-tool-serial)
       "Accessor"
       (documentation 'device-tool-serial 'function)
- "@version{2024-6-27}
+ "@version{2025-07-01}
   @syntax{(gdk:device-tool-serial object) => serial}
   @argument[object]{a @class{gdk:device-tool} object}
-  @argument[serial]{an unsigned integer with the serial number of the device
+  @argument[serial]{an unsigned integer for the serial number of the device
     tool}
   @begin{short}
     Accessor of the @slot[gdk:device-tool]{serial} slot of the
     @class{gdk:device-tool} class.
   @end{short}
   The @fun{gdk:device-tool-serial} function gets the serial number of the device
-  tool. This value can be used to identify a physical tool, e.g. a tablet pen,
-  across program executions.
+  tool. This value can be used to identify a physical tool, for example a tablet
+  pen, across program executions.
   @see-class{gdk:device-tool}")
 
 ;;; --- gdk:device-tool-tool-type ----------------------------------------------
@@ -769,7 +769,7 @@
 
 #+liber-documentation
 (setf (documentation 'device 'type)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{short}
     The @class{gdk:device} object represents a single input device, such as a
     keyboard, a mouse, a touchpad, etc.
@@ -779,30 +779,31 @@
   the various kinds of master and slave devices, and their
   relationships.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[device::changed]{signal}
       @begin{pre}
 lambda (device)   :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[device]{The @class{gdk:device} object that changed.}
+      @end{simple-table}
       The signal is emitted either when the @class{gdk:device} object has
       changed the number of either axes or keys. For example In X this will
       normally happen when the slave device routing events through the master
       device changes, for example, user switches from the USB mouse to a tablet,
       in that case the master device will change to reflect the new slave device
       axes and keys.
-      @begin[code]{table}
-        @entry[device]{The @class{gdk:device} object that changed.}
-      @end{table}
-    @subheading{The \"tool-changed\" signal}
+    @end{signal}
+    @begin[device::tool-changed]{signal}
       @begin{pre}
 lambda (device tool)    :run-last
       @end{pre}
-      The signal is emitted on pen/eraser devices whenever tools enter or leave
-      proximity.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[device]{The @class{gdk:device} object that changed.}
         @entry[tool]{The new @class{gdk:device-tool} current device tool.}
-      @end{table}
-      Since 3.22
+      @end{simple-table}
+      The signal is emitted on pen/eraser devices whenever tools enter or leave
+      proximity. Since 3.22
+    @end{signal}
   @end{dictionary}
   @see-slot{gdk:device-associated-device}
   @see-slot{gdk:device-axes}
@@ -1203,7 +1204,7 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-vendor-id)
       "Accessor"
       (documentation 'device-vendor-id 'function)
- "@version{2024-6-27}
+ "@version{2025-07-01}
   @syntax{(gdk:device-vendor-id object) => vendor-id}
   @argument[object]{a @class{gdk:device} object}
   @argument[vendor-id]{a string with the vendor ID}
@@ -1216,8 +1217,8 @@ lambda (device tool)    :run-last
   from the device, and is thus constant for it.
 
   This function, together with the @fun{gdk:device-product-id} function, can be
-  used to e.g. compose @code{GSettings} paths to store settings for this
-  device.
+  used to, for example, compose @code{GSettings} paths to store settings for
+  this device.
   @begin[Examples]{dictionary}
     @begin{pre}
 static GSettings *

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.monitor.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,11 +93,11 @@
 (setf (liber:alias-for-symbol 'subpixel-layout)
       "GEnum"
       (liber:symbol-documentation 'subpixel-layout)
- "@version{2023-3-6}
+ "@version{2025-06-29}
   @begin{declaration}
-(gobject:define-genum \"GdkSubPixelLayout\" sub-pixel-layout
+(gobject:define-genum \"GdkSubpixelLayout\" subpixel-layout
   (:export t
-   :type-initializer \"gdk_sub_pixel_layout_get_type\")
+   :type-initializer \"gdk_subpixel_layout_get_type\")
   :unkown
   :none
   :horizontal-rgb
@@ -106,14 +106,14 @@
   :vertical-bgr)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:unkown]{The layout is not known.}
       @entry[:none]{Not organized in this way.}
       @entry[:horizontal-rgb]{The layout is horizontal, the order is RGB.}
       @entry[:horizontal-bgr]{The layout is horizontal, the order is BGR.}
       @entry[:vertical-rgb]{The layout is vertical, the order is RGB.}
       @entry[:verticla-bgr]{The layout is vertical, the order is BGR.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     This enumeration describes how the red, green and blue components of
@@ -123,7 +123,7 @@
   @see-class{gdk:monitor}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkMonitor
+;;; GdkMonitor
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GdkMonitor" monitor
@@ -164,7 +164,7 @@
 
 #+liber-documentation
 (setf (documentation 'monitor 'type)
- "@version{2023-3-6}
+ "@version{2025-06-29}
   @begin{short}
     The @class{gdk:monitor} object represents the individual outputs that are
     associated with a @class{gdk:display} object.
@@ -178,14 +178,15 @@
   earlier APIs in the @class{gdk:screen} class to obtain monitor-related
   information.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"invalidate\" signal}
-    @begin{pre}
+    @begin[monitor::invalidate]{signal}
+      @begin{pre}
 lambda (monitor)    :run-first
-    @end{pre}
-    @begin[code]{table}
-      @entry[monitor]{The @class{gdk:monitor} object on which the signal is
-        emitted.}
-    @end{table}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[monitor]{The @class{gdk:monitor} object on which the signal is
+          emitted.}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gdk:monitor-display}
   @see-slot{gdk:monitor-geometry}
@@ -204,7 +205,7 @@ lambda (monitor)    :run-first
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- monitor-display --------------------------------------------------------
+;;; --- gdk:monitor-display ----------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'monitor) t)
@@ -231,7 +232,7 @@ lambda (monitor)    :run-first
   @see-class{gdk:monitor}
   @see-class{gdk:display}")
 
-;;; --- monitor-geometry -------------------------------------------------------
+;;; --- gdk:monitor-geometry ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "geometry" 'monitor) t)
@@ -262,7 +263,7 @@ lambda (monitor)    :run-first
   @see-class{gdk:rectangle}
   @see-function{gdk:monitor-scale-factor}")
 
-;;; --- monitor-height-mm ------------------------------------------------------
+;;; --- gdk:monitor-height-mm --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height-mm" 'monitor) t)
@@ -289,7 +290,7 @@ lambda (monitor)    :run-first
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-manufacturer ---------------------------------------------------
+;;; --- gdk:monitor-manufacturer -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "manufacturer" 'monitor) t)
@@ -316,7 +317,7 @@ lambda (monitor)    :run-first
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-model ----------------------------------------------------------
+;;; --- gdk:monitor-model ------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "model" 'monitor) t)
@@ -342,7 +343,7 @@ lambda (monitor)    :run-first
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-refresh-rate ---------------------------------------------------
+;;; --- gdk:monitor-refresh-rate -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "refresh-rate" 'monitor) t)
@@ -370,7 +371,7 @@ lambda (monitor)    :run-first
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-scale-factor ---------------------------------------------------
+;;; --- gdk:monitor-scale-factor -----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale-factor" 'monitor) t)
@@ -404,7 +405,7 @@ lambda (monitor)    :run-first
   @see-class{gdk:monitor}
   @see-function{gdk:window-scale-factor}")
 
-;;; --- monitor-subpixel-layout ------------------------------------------------
+;;; --- gdk:monitor-subpixel-layout --------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "subpixel-layout" 'monitor) t)
@@ -434,7 +435,7 @@ lambda (monitor)    :run-first
   @see-class{gdk:monitor}
   @see-symbol{gdk:subpixel-layout}")
 
-;;; --- monitor-width-mm -------------------------------------------------------
+;;; --- gdk:monitor-width-mm ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-mm" 'monitor) t)
@@ -461,7 +462,7 @@ lambda (monitor)    :run-first
   Since 3.22
   @see-class{gdk:monitor}")
 
-;;; --- monitor-workarea -------------------------------------------------------
+;;; --- gkd:monitor-workarea ---------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "workarea" 'monitor) t)
@@ -499,7 +500,7 @@ lambda (monitor)    :run-first
   @see-function{gdk:monitor-scale-factor}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_monitor_is_primary ()
+;;; gdk_monitor_is_primary
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_monitor_is_primary" monitor-is-primary) :boolean

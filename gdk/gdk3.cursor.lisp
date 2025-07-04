@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.cursor.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -159,7 +159,7 @@
 (setf (liber:alias-for-symbol 'cursor-type)
       "GEnum"
       (liber:symbol-documentation 'cursor-type)
- "@version{2024-6-29}
+ "@version{2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GdkCursorType\" cursor-type
   (:export t
@@ -246,7 +246,7 @@
   (:cursor-is-pixmap -1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:x-cursor]{@image[cursor-x-cursor]{}}
       @entry[:arrow]{@image[cursor-arrow]{}}
       @entry[:based-arrow-down]{@image[cursor-based-arrow-down]{}}
@@ -328,7 +328,7 @@
       @entry[:blank-cursor]{Blank cursor.}
       @entry[:cursor-is-pixmap]{Type of cursors constructed with the
         @fun{gdk:cursor-new-from-pixbuf} function.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The standard cursors available.
@@ -576,7 +576,7 @@
 (cffi:defcfun ("gdk_cursor_new_from_name" cursor-new-from-name)
     (g:object cursor)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2025-07-03}
   @argument[display]{a @class{gdk:display} object for which the cursor will be
     created}
   @argument[name]{a string with the name of the cursor}
@@ -587,7 +587,7 @@
   @end{short}
   A recommended set of cursor names that will work across different platforms
   can be found in the CSS specification:
-  @begin{table}
+  @begin{simple-table}
     @entry[\"none\"]{}
     @entry[\"default\"]{@image[cursor-default]{}}
     @entry[\"help\"]{@image[cursor-help]{}}
@@ -623,7 +623,7 @@
     @entry[\"nwse-resize\"]{@image[cursor-nwse-resize]{}}
     @entry[\"zoom-in\"]{@image[cursor-zoom-in]{}}
     @entry[\"zoom-out\"]{@image[cursor-zoom-out]{}}
-  @end{table}
+  @end{simple-table}
   @begin[Examples]{dictionary}
     @begin{pre}
 (gdk:cursor-new-from-name (gdk:display-default) \"wait\")

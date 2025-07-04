@@ -1,10 +1,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.rgba.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
@@ -63,7 +63,7 @@
 (setf (liber:alias-for-class 'rgba)
       "GBoxed"
       (documentation 'rgba 'type)
- "@version{2025-1-15}
+ "@version{2025-07-03}
   @begin{declaration}
 (define-gboxed-cstruct gdk:rgba \"GdkRGBA\"
   (:export t
@@ -74,14 +74,14 @@
   (alpha :double :initform 0.0d0))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[red]{The intensity of the red channel from 0.0 to 1.0 inclusive.}
       @entry[green]{The intensity of the green channel from 0.0 to 1.0
         inclusive.}
       @entry[blue]{The intensity of the blue channel from 0.0 to 1.0 inclusive.}
       @entry[alpha]{The opacity of the color from 0.0 for completely translucent
         to 1.0 for opaque.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The @class{gdk:rgba} structure is used to represent a (possibly translucent)

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.visual.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,7 +85,7 @@
 (setf (liber:alias-for-symbol 'visual-type)
       "GEnum"
       (liber:symbol-documentation 'visual-type)
- "@version{2024-6-28}
+ "@version{2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GdkVisualType\" visual-type
   (:export t
@@ -98,7 +98,7 @@
   (:direct-color 5))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:static-gray]{Each pixel value indexes a grayscale value directly.}
       @entry[:grayscale]{Each pixel is an index into a color map that maps pixel
         values into grayscale values. The color map can be changed by an
@@ -116,7 +116,7 @@
         components as for @code{:true-color}, but the components are mapped via
         a color table into the final output table instead of being converted
         directly.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     A set of values that describe the manner in which the pixel values for a
@@ -141,7 +141,7 @@
 (setf (liber:alias-for-symbol 'byte-order)
       "GEnum"
       (liber:symbol-documentation 'byte-order)
- "@version{2024-6-28}
+ "@version{2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GdkByteOrder\" byte-order
   (:export t
@@ -150,14 +150,14 @@
   (:msb-first 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:lsb-first]{The values are stored with the least-significant byte
         first. For instance, the 32-bit value @code{0xffeecc} would be stored in
         memory as @code{0xcc}, @code{0xee}, @code{0xff}, @code{0x00}.}
       @entry[:msb-first]{The values are stored with the most-significant byte
         first. For instance, the 32-bit value @code{0xffeecc} would be stored
         in memory as @code{0x00}, @code{0xcc}, @code{0xee}, @code{0xff}.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     A set of values describing the possible byte-orders for storing pixel

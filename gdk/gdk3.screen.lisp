@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.screen.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -109,7 +109,7 @@
 
 #+liber-documentation
 (setf (documentation 'screen 'type)
- "@version{2024-6-27}
+ "@version{2025-06-29}
   @begin{short}
     The @class{gdk:screen} object is the GDK representation of the screen on
     which windows can be displayed and on which the pointer moves.
@@ -124,36 +124,39 @@
   the @fun{gdk:screen-system-visual} function or the dimensions of the physical
   monitors with the @fun{gdk:monitor-geometry} function.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"composited-changed\" signal}
+    @begin[screen::composited-changed]{signal}
       @begin{pre}
 lambda (screen)    :run-last
       @end{pre}
-      The signal is emitted when the composited status of the screen changes.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[screen]{The @class{gdk:screen} object on which the signal is
           emitted.}
-      @end{table}
-    @subheading{The \"monitors-changed\" signal}
+      @end{simple-table}
+      The signal is emitted when the composited status of the screen changes.
+    @end{signal}
+    @begin[screen::monitors-changed]{signal}
       @begin{pre}
 lambda (screen)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[screen]{The @class{gdk:screen} object on which the signal is
+          emitted.}
+      @end{simple-table}
       The signal is emitted when the number, size or position of the monitors
       attached to the screen change. Only for X11 and OS X for now. A future
       implementation for Win32 may be a possibility.
-      @begin[code]{table}
-        @entry[screen]{The @class{gdk:screen} object on which the signal is
-          emitted.}
-      @end{table}
-    @subheading{The \"size-changed\" signal}
+    @end{signal}
+    @begin[screen::size-changed]{signal}
       @begin{pre}
 lambda (screen)    :run-last
       @end{pre}
-      The signal is emitted when the pixel width or height of a the screen
-      changes.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[screen]{The @class{gdk:screen} object on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted when the pixel width or height of a the screen
+      changes.
+    @end{signal}
   @end{dictionary}
   @see-slot{gdk:screen-font-options}
   @see-slot{gdk:screen-resolution}

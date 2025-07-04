@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.drag-and-drop.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -99,7 +99,7 @@
 (setf (liber:alias-for-symbol 'drag-cancel-reason)
       "GEnum"
       (liber:symbol-documentation 'drag-cancel-reason)
- "@version{2024-6-28}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkDragCancelReason\" drag-cancel-reason
   (:export t
@@ -109,11 +109,11 @@
   :error)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:no-target]{There is no suitable drop target.}
       @entry[:user-cancelled]{Drag cancelled by the user.}
       @entry[:error]{Unspecified error.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used in the @class{gdk:drag-context} object to indicate the reason of a
@@ -140,7 +140,7 @@
 (setf (liber:alias-for-symbol 'drag-protocol)
       "GEnum"
       (liber:symbol-documentation 'drag-protocol)
- "@version{2024-6-28}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-genum \"GdkDragProtocol\" drag-protocol
   (:export t
@@ -154,7 +154,7 @@
   (:local 6))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No protocol.}
       @entry[:motif]{The Motif DND protocol.}
       @entry[:xdnd]{The Xdnd protocol.}
@@ -163,7 +163,7 @@
       @entry[:win32-dropfiles]{The simple @code{WM_DROPFILES} protocol.}
       @entry[:ole2]{The complex OLE2 DND protocol (not implemented).}
       @entry[:local]{Intra-application DND.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used in the @class{gdk:drag-context} object to indicate the protocol
@@ -189,7 +189,7 @@
 (setf (liber:alias-for-symbol 'drag-action)
       "GFlags"
       (liber:symbol-documentation 'drag-action)
- "@version{2024-6-28}
+ "@version{2025-06-29}
   @begin{declaration}
 (gobject:define-gflags \"GdkDragAction\" drag-action
   (:export t
@@ -202,7 +202,7 @@
   (:ask 32))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:default]{Means nothing, and should not be used.}
       @entry[:copy]{Copy the data.}
       @entry[:move]{Move the data, that is, first copy it, then delete it from
@@ -213,7 +213,7 @@
       @entry[:private]{Special action which tells the source that the
         destination will do something that the source does not understand.}
       @entry[:ask]{Ask the user what to do with the data.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used in the @class{gdk:drag-context} object to indicate what the
@@ -234,7 +234,7 @@
 
 #+liber-documentation
 (setf (documentation 'drag-context 'type)
- "@version{2024-6-28}
+ "@version{2025-06-29}
   @begin{short}
     The @class{gdk:drag-context} class and the correspondig functions provide a
     low level interface for drag and drop.
@@ -246,59 +246,64 @@
   and so they are not normally needed in GTK applications. See the Drag and
   Drop section of the GTK documentation for more information.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"action-changed\" signal}
-    @begin{pre}
+    @begin[drag-context::action-changed]{signal}
+      @begin{pre}
  lambda (context action)    :run-last
-    @end{pre}
-    A new action is being chosen for the drag and drop operation. The signal
-    will only be emitted if the @class{gtk-drag-context} object manages the
-    drag and drop operation. See the @fun{gdk:drag-context-manage-dnd} function
-    for more information. Since 3.20
-    @begin[code]{table}
-      @entry[context]{The @class{gdk:drag-context} object on which the signal
-        is emitted.}
-      @entry[action]{The @symbol{gdk:drag-action} value currently chosen.}
-    @end{table}
-    @subheading{The \"cancel\" signal}
-    @begin{pre}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[context]{The @class{gdk:drag-context} object on which the signal
+          is emitted.}
+        @entry[action]{The @symbol{gdk:drag-action} value currently chosen.}
+      @end{simple-table}
+      A new action is being chosen for the drag and drop operation. The signal
+      will only be emitted if the @class{gtk-drag-context} object manages the
+      drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
+      function for more information. Since 3.20
+    @end{signal}
+    @begin[drag-context::cancel]{signal}
+      @begin{pre}
  lambda (context reason)    :run-last
-    @end{pre}
-    The drag and drop operation was cancelled. The signal will only be emitted
-    if the @class{gdk:drag-context} object manages the drag and drop operation.
-    See the @fun{gdk:drag-context-manage-dnd} function for more information.
-    Since 3.20
-    @begin[code]{table}
-      @entry[context]{The @class{gdk:drag-context} object on which the signal
-        is emitted.}
-      @entry[reason]{The @symbol{gdk:drag-cancel-reason} value the drag context
-        was cancelled.}
-    @end{table}
-    @subheading{The \"dnd-finished\" signal}
-    @begin{pre}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[context]{The @class{gdk:drag-context} object on which the signal
+          is emitted.}
+        @entry[reason]{The @symbol{gdk:drag-cancel-reason} value the drag
+          context was cancelled.}
+      @end{simple-table}
+      The drag and drop operation was cancelled. The signal will only be emitted
+      if the @class{gdk:drag-context} object manages the drag and drop
+      operation. See the @fun{gdk:drag-context-manage-dnd} function for more
+      information. Since 3.20
+    @end{signal}
+    @begin[drag-context::dnd-finished]{signal}
+      @begin{pre}
  lambda (context)    :run-last
-    @end{pre}
-    The drag and drop operation was finished, the drag destination finished
-    reading all data. The drag source can now free all miscellaneous data. This
-    signal will only be emitted if the @class{gdk:drag-context} object manages
-    the drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
-    function for more information. Since 3.20
-    @begin[code]{table}
-      @entry[context]{The @class{gdk:drag-context} object on which the signal
-        is emitted.}
-    @end{table}
-    @subheading{The \"drop-performed\" signal}
-    @begin{pre}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[context]{The @class{gdk:drag-context} object on which the signal
+          is emitted.}
+      @end{simple-table}
+      The drag and drop operation was finished, the drag destination finished
+      reading all data. The drag source can now free all miscellaneous data.
+      This signal will only be emitted if the @class{gdk:drag-context} object
+      manages the drag and drop operation. See the
+      @fun{gdk:drag-context-manage-dnd} function for more information.
+      Since 3.20
+    @end{signal}
+    @begin[drag-context::drop-performed]{signal}
+      @begin{pre}
  lambda (context time)    :run-last
-    @end{pre}
-    The drag and drop operation was performed on an accepting client. This
-    signal will only be emitted if the @class{gdk:drag-context} object manages
-    the drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
-    function for more information. Since 3.20
-    @begin[code]{table}
-      @entry[context]{The @class{gdk:drag-context} object on which the signal
-        is emitted.}
-      @entry[time]{The integer with the time at which the drop happened.}
-    @end{table}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[context]{The @class{gdk:drag-context} object on which the signal
+          is emitted.}
+        @entry[time]{The integer with the time at which the drop happened.}
+      @end{simple-table}
+      The drag and drop operation was performed on an accepting client. This
+      signal will only be emitted if the @class{gdk:drag-context} object manages
+      the drag and drop operation. See the @fun{gdk:drag-context-manage-dnd}
+      function for more information. Since 3.20
+    @end{signal}
   @end{dictionary}
   @see-symbol{gdk:drag-cancel-reason}
   @see-symbol{gdk:drag-protocol}
@@ -311,14 +316,13 @@
 
 (cffi:defcfun ("gdk_drag_get_selection" drag-selection) atom-as-string
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-03}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The string for the selection, or @code{\"NONE\"}.}
   @begin{short}
     Returns the selection atom for the current source window.
   @end{short}
-  @see-class{gdk:drag-context}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gdk:drag-context}"
   (context (g:object drag-context)))
 
 (export 'drag-selection)
@@ -494,7 +498,7 @@
 (export 'drag-begin)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_drag_begin_for_device ()
+;;; gdk_drag_begin_for_device
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_drag_begin_for_device" %drag-begin-for-device)
@@ -538,14 +542,12 @@
 
 (defun drag-begin-from-point (window device targets x y)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-03}
   @argument[window]{a @class{gdk:window} source window for this drag}
   @argument[device]{a @class{gdk:device} object that controls this drag}
-  @argument[targets]{a list of strings with the offered targets}
-  @argument[x]{an integer with the x coordinate where the drag nominally
-    started}
-  @argument[y]{an integer with the y coordinate where the drag nominally
-    started}
+  @argument[targets]{a list of strings for the offered targets}
+  @argument[x]{an integer for the x coordinate where the drag nominally started}
+  @argument[y]{an integer for the y coordinate where the drag nominally started}
   @return{The newly created @class{gdk:drag-context} object.}
   @begin{short}
     Starts a drag and creates a new drag context for it.
@@ -553,8 +555,7 @@
   This function is called by the drag source.
   @see-class{gdk:drag-context}
   @see-class{gdk:window}
-  @see-class{gdk:device}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gdk:device}"
   (%drag-begin-from-point window
                           device
                           (mapcar #'atom-intern targets)
@@ -765,14 +766,13 @@
 (cffi:defcfun ("gdk_drag_context_list_targets" drag-context-list-targets)
     (g:list-t atom-as-string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-03}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The list of strings with the targets.}
   @begin{short}
     Retrieves the list of targets of the drag context.
   @end{short}
-  @see-class{gdk:drag-context}
-  @see-symbol{gdk:atom-as-string}"
+  @see-class{gdk:drag-context}"
   (context (g:object drag-context)))
 
 (export 'drag-context-list-targets)

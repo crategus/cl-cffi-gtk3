@@ -68,7 +68,7 @@
 (in-package :gdk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GdkSeatCapabilities
+;;; GdkSeatCapabilities
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GdkSeatCapabilities" seat-capabilities
@@ -86,7 +86,7 @@
 (setf (liber:alias-for-symbol 'seat-capabilities)
       "GFlags"
       (liber:symbol-documentation 'seat-capabilities)
- "@version{#2023-3-7}
+ "@version{#2025-07-01}
   @begin{declaration}
 (gobject:define-gflags \"GdkSeatCapabilities\" seat-capabilities
   (:export t
@@ -100,15 +100,15 @@
   (:all 15))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No input capabilities.}
-      @entry[:pointer]{The seat has a pointer, e.g. mouse.}
+      @entry[:pointer]{The seat has a pointer, for example mouse.}
       @entry[:touch]{The seat has touchscreen(s) attached.}
       @entry[:tablet-stylus]{The seat has drawing tablet(s) attached.}
       @entry[:keyboard]{The seat has keyboard(s) attached.}
       @entry[:all-pointing]{The union of all pointing capabilities.}
       @entry[:all]{The union of all capabilities.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Flags describing the seat capabilities.
@@ -116,7 +116,7 @@
   @see-class{gdk:seat}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkSeat
+;;; GdkSeat
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GdkSeat" seat
@@ -130,7 +130,7 @@
 
 #+liber-documentation
 (setf (documentation 'seat 'type)
- "@version{#2023-3-7}
+ "@version{#2025-06-29}
   @begin{short}
     The @class{gdk:seat} object represents a collection of input devices that
     belong to a user.
@@ -138,50 +138,55 @@
 
   Since 3.20
   @begin[Signal Details]{dictionary}
-    @subheading{The \"device-added\" signal}
+    @begin[seat::device-added]{signal}
       @begin{pre}
 lambda (seat device)    :run-last
       @end{pre}
-      The signal is emitted when a new input device is related to this seat.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[seat]{The @class{gdk:seat} object on which the signal is
           emitted.}
         @entry[device]{The newly added @class{gdk:device} object.}
-      @end{table}
-    @subheading{The \"device-removed\" signal}
+      @end{simple-table}
+      The signal is emitted when a new input device is related to this seat.
+    @end{signal}
+    @begin[seat::device-removed]{signal}
       @begin{pre}
 lambda (seat device)    :run-last
       @end{pre}
-      The signal is emitted when an input device is removed, e.g. unplugged.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[seat]{The @class{gdk:seat} object on which the signal is
           emitted.}
         @entry[device]{The just removed @class{gdk:device} object.}
-      @end{table}
-    @subheading{The \"tool-added\" signal}
+      @end{simple-table}
+      The signal is emitted when an input device is removed, for example
+      unplugged.
+    @end{signal}
+    @begin[seat::tool-added]{signal}
       @begin{pre}
 lambda (seat tool)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[seat]{The @class{gdk:seat} object on which the signal is
+          emitted.}
+        @entry[tool]{The new @class{gdk:device-tool} object known to the seat.}
+      @end{simple-table}
       The signal is emitted whenever a new tool is made known to the seat. The
       tool may later be assigned to a device, i.e. on proximity with a tablet.
       The device will emit the @code{\"tool-changed\"} signal accordingly. A
       same tool may be used by several devices.
-      @begin[code]{table}
-        @entry[seat]{The @class{gdk:seat} object on which the signal is
-          emitted.}
-        @entry[tool]{The new @class{gdk:device-tool} object known to the seat.}
-      @end{table}
-    @subheading{The \"tool-removed\" signal}
+     @end{signal}
+    @begin[seat::tool-removed]{signal}
       @begin{pre}
 lambda (seat tool)    :run-last
       @end{pre}
-      The signal is emitted whenever a tool is no longer known to this seat.
-      Since 3.22
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[seat]{The @class{gdk:seat} object on which the signal is
           emitted.}
         @entry[tool]{The just removed @class{gdk:device-tool} object.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted whenever a tool is no longer known to this seat.
+      Since 3.22
+    @end{signal}
   @end{dictionary}
   @see-class{gdk:display}
   @see-class{gdk:device}")
@@ -190,7 +195,7 @@ lambda (seat tool)    :run-last
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- seat-display -----------------------------------------------------------
+;;; --- gdk:seat-display -------------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "display" 'seat) t)
@@ -215,7 +220,7 @@ lambda (seat tool)    :run-last
   @see-class{gdk:display}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GdkSeatGrabPrepareFunc ()
+;;; GdkSeatGrabPrepareFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback seat-grab-prepare-func :void
@@ -229,25 +234,21 @@ lambda (seat tool)    :run-last
 (setf (liber:alias-for-symbol 'seat-grab-prepare-func)
       "Callback"
       (liber:symbol-documentation 'seat-grab-prepare-func)
- "@version{#2023-5-14}
+ "@version{#2025-06-29}
+  @syntax{lambda (seat window)}
+  @argument[seat]{a @class{gdk:seat} object being grabbed}
+  @argument[window]{a @class{gdk:window} object being grabbed}
   @begin{short}
     Type of the callback function used to set up @arg{window} so it can be
     grabbed.
   @end{short}
   A typical action would be ensuring the window is visible, although there is
   room for other initialization actions.
-  @begin{pre}
-lambda (seat window)
-  @end{pre}
-  @begin[code]{table}
-    @entry[seat]{The @class{gdk:seat} object being grabbed.}
-    @entry[window]{The @class{gdk:window} object being grabbed.}
-  @end{table}
   @see-class{gdk:seat}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_grab ()
+;;; gdk_seat_grab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_grab" %seat-grab) grab-status
@@ -262,10 +263,10 @@ lambda (seat window)
 
 (defun seat-grab (seat window capabilities owner-events cursor event func)
  #+liber-documentation
- "@version{#2023-5-14}
+ "@version{#2025-07-01}
   @argument[seat]{a @class{gdk:seat} object}
   @argument[window]{a @class{gdk:window} object which will own the grab}
-  @argument[capabilities]{a @symbol{gdk:seat-capabilities} value with the
+  @argument[capabilities]{a @sym{gdk:seat-capabilities} value with the
     capabilities that will be grabbed}
   @argument[owner-events]{if @em{false} then all device events are reported
     with respect to @arg{window} and are only reported if selected by the event
@@ -279,11 +280,13 @@ lambda (seat window)
     elsewhere}
   @argument[event]{a @class{gdk:event} event that is triggering the grab, or
     @code{nil} if none is available}
-  @argument[func]{a @symbol{gdk:seat-grab-prepare-func} callback function to
+  @argument[func]{a @sym{gdk:seat-grab-prepare-func} callback function to
     prepare the window to be grabbed, it can be @code{nil} if @arg{window} is
     visible before this call}
-  @return{The @code{:success} value of the @symbol{gdk:grab-status} enumeration
-    if the grab was successful.}
+  @begin{return}
+    The @val[gdk:grap-status]{:success} value of the @symbol{gdk:grab-status}
+    enumeration if the grab was successful.
+  @end{return}
   @begin{short}
     Grabs the seat so that all events corresponding to the given capabilities
     are passed to this application until the seat is ungrabbed with the
@@ -291,10 +294,11 @@ lambda (seat window)
   @end{short}
   This overrides any previous grab on the seat by this client.
 
-  As a rule of thumb, if a grab is desired over @code{:pointer}, all other
-  \"pointing\" capabilities, e.g. @code{:touch}, should be grabbed too, so the
+  As a rule of thumb, if a grab is desired over
+  @val[gdk:seat-capabilities]{:pointer}, all other \"pointing\" capabilities,
+  for example @val[gdk:seat-capabilities]{:touch}, should be grabbed too, so the
   user is able to interact with all of those while the grab holds, you should
-  thus use @code{:all-pointing} most commonly.
+  thus use @val[gdk:seat-capabilities]{:all-pointing} most commonly.
 
   Grabs are used for operations which need complete control over the events
   corresponding to the given capabilities. For example in GTK this is used
@@ -340,7 +344,7 @@ lambda (seat window)
 (export 'seat-grab)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_ungrab ()
+;;; gdk_seat_ungrab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_ungrab" seat-ungrab) :void
@@ -355,7 +359,7 @@ lambda (seat window)
 (export 'seat-ungrab)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_get_capabilities () -> seat-capabilities
+;;; gdk_seat_get_capabilities
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_get_capabilities" seat-capabilities) seat-capabilities
@@ -373,7 +377,7 @@ lambda (seat window)
 (export 'seat-capabilities)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_get_pointer () -> seat-pointer
+;;; gdk_seat_get_pointer
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_get_pointer" seat-pointer) (g:object device)
@@ -391,7 +395,7 @@ lambda (seat window)
 (export 'seat-pointer)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_get_keyboard () -> seat-keyboard
+;;; gdk_seat_get_keyboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_get_keyboard" seat-keyboard) (g:object device)
@@ -409,7 +413,7 @@ lambda (seat window)
 (export 'seat-keyboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_seat_get_slaves () -> seat-slaves
+;;; gdk_seat_get_slaves
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_seat_get_slaves" seat-slaves) (g:list-t (g:object device))

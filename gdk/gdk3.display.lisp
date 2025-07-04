@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.display.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -115,7 +115,7 @@
 
 #+liber-documentation
 (setf (documentation 'display 'type)
- "@version{2023-3-4}
+ "@version{2025-06-29}
   @begin{short}
     The @class{gdk:display} object purpose is two fold:
     @begin{itemize}
@@ -136,76 +136,82 @@
   @class{gdk:device-manager} object. Every display has a device manager, which
   you can obtain using the @fun{gdk:display-device-manager} function.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"closed\" signal}
+    @begin[display::closed]{signal}
       @begin{pre}
 lambda (display is-error)    :run-last
       @end{pre}
-      The signal is emitted when the connection to the windowing system for
-      @arg{display} is closed.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
-       @entry[is-error]{A boolean that is @em{true} if @arg{display} was closed
-         due to an error.}
-      @end{table}
-    @subheading{The \"monitor-added\" signal}
+       @entry[is-error]{The boolean that is @em{true} if @arg{display} was
+         closed due to an error.}
+      @end{simple-table}
+      The signal is emitted when the connection to the windowing system for
+      @arg{display} is closed.
+    @end{signal}
+    @begin[display::monitor-added]{signal}
       @begin{pre}
 lambda (display monitor)    :run-last
       @end{pre}
-      The signal is emitted whenever a monitor is added. Since 3.22
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
         @entry[monitor]{The @class{gdk:monitor} object that was just added.}
-      @end{table}
-    @subheading{The \"monitor-removed\" signal}
+      @end{simple-table}
+      The signal is emitted whenever a monitor is added. Since 3.22
+    @end{signal}
+    @begin[didplay::monitor-removed]{signal}
       @begin{pre}
 lambda (display monitor)    :run-last
       @end{pre}
-      The signal is emitted whenever a monitor is removed. Since 3.22
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
         @entry[monitor]{The @class{gdk:monitor} object that was just removed.}
-      @end{table}
-    @subheading{The \"opened\" signal}
+      @end{simple-table}
+      The signal is emitted whenever a monitor is removed. Since 3.22
+    @end{signal}
+    @begin[display::opened]{signal}
       @begin{pre}
 lambda (display)   :run-last
       @end{pre}
-      The signal is emitted when the connection to the windowing system for
       @arg{display} is opened.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
-      @end{table}
-    @subheading{The \"seat-added\" signal}
+      @end{simple-table}
+      The signal is emitted when the connection to the windowing system for
+    @end{signal}
+    @begin[display::seat-added]{signal}
       @begin{pre}
 lambda (display seat)    :run-last
       @end{pre}
       The signal is emitted whenever a new seat is made known to the windowing
       system. Since 3.20
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
         @entry[seat]{The @class{gdk:seat} object that was just added.}
-      @end{table}
-    @subheading{The \"seat-removed\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[display::seat-removed]{signal}
       @begin{pre}
 lambda (display seat)    :run-last
       @end{pre}
-      The signal is emitted whenever a seat is removed by the windowing system.
-      Since 3.20
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[display]{The @class{gdk:display} object on which the signal is
           emitted.}
         @entry[seat]{The @class{gdk:seat} object that was just removed.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted whenever a seat is removed by the windowing system.
+      Since 3.20
+    @end{signal}
   @end{dictionary}
   @see-class{gdk:screen}
   @see-class{gdk:device-manager}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_open ()
+;;; gdk_display_open
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_open" display-open) (g:object display)
@@ -223,7 +229,7 @@ lambda (display seat)    :run-last
 (export 'display-open)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_default () -> display-default
+;;; gdk_display_get_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_default" display-default)
@@ -247,7 +253,7 @@ lambda (display seat)    :run-last
 (export 'display-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_name () -> display-name
+;;; gdk_display_get_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_name" display-name) :string
@@ -264,7 +270,7 @@ lambda (display seat)    :run-last
 (export 'display-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_n_screens () -> display-n-screens
+;;; gdk_display_get_n_screens
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_n_screens" display-n-screens) :int
@@ -284,7 +290,7 @@ lambda (display seat)    :run-last
 (export 'display-n-screens)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_screen () -> display-screen
+;;; gdk_display_get_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_screen" display-screen) (g:object screen)
@@ -308,7 +314,7 @@ lambda (display seat)    :run-last
 (export 'display-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_default_screen () -> display-default-screen
+;;; gdk_display_get_default_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_default_screen" display-default-screen)
@@ -325,7 +331,7 @@ lambda (display seat)    :run-last
 (export 'display-default-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_device_manager () -> display-device-manager
+;;; gdk_display_get_device_manager
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_device_manager" display-device-manager)
@@ -369,7 +375,7 @@ lambda (display seat)    :run-last
 ;;;     a GdkDisplay.
 ;;;
 ;;; time_ :
-;;;     a timestap (e.g. GDK_CURRENT_TIME).
+;;;     a timestap (for example GDK_CURRENT_TIME).
 ;;;
 ;;; Since 2.2
 ;;; ----------------------------------------------------------------------------
@@ -419,7 +425,7 @@ lambda (display seat)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_device_is_grabbed ()
+;;; gdk_display_device_is_grabbed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_device_is_grabbed" display-device-is-grabbed) :boolean
@@ -441,7 +447,7 @@ lambda (display seat)    :run-last
 (export 'display-device-is-grabbed)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_beep ()
+;;; gdk_display_beep
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_beep" display-beep) :void
@@ -455,7 +461,7 @@ lambda (display seat)    :run-last
 (export 'display-beep)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_sync ()
+;;; gdk_display_sync
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_sync" display-sync) :void
@@ -479,7 +485,7 @@ lambda (display seat)    :run-last
 (export 'display-sync)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_flush ()
+;;; gdk_display_flush
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_flush" display-flush) :void
@@ -503,7 +509,7 @@ lambda (display seat)    :run-last
 (export 'display-flush)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_close ()
+;;; gdk_display_close
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_close" display-close) :void
@@ -520,7 +526,7 @@ lambda (display seat)    :run-last
 (export 'display-close)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_is_closed ()
+;;; gdk_display_is_closed
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_is_closed" display-is-closed) :boolean
@@ -535,7 +541,7 @@ lambda (display seat)    :run-last
 (export 'display-is-closed)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_event () -> display-event
+;;; gdk_display_get_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_event" display-event) (g:boxed event :return)
@@ -558,7 +564,7 @@ lambda (display seat)    :run-last
 (export 'display-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_peek_event ()
+;;; gdk_display_peek_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_peek_event" display-peek-event)
@@ -584,7 +590,7 @@ lambda (display seat)    :run-last
 (export 'display-peek-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_put_event ()
+;;; gdk_display_put_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_put_event" display-put-event) :void
@@ -605,7 +611,7 @@ lambda (display seat)    :run-last
 (export 'display-put-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_has_pending ()
+;;; gdk_display_has_pending
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_has_pending" display-has-pending) :boolean
@@ -623,7 +629,7 @@ lambda (display seat)    :run-last
 (export 'display-has-pending)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_set_double_click_time ()
+;;; gdk_display_set_double_click_time
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_set_double_click_time"
@@ -647,7 +653,7 @@ lambda (display seat)    :run-last
 (export 'display-set-double-click-time)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_set_double_click_distance ()
+;;; gdk_display_set_double_click_distance
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_set_double_click_distance"
@@ -801,7 +807,7 @@ lambda (display seat)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_cursor_color ()
+;;; gdk_display_supports_cursor_color
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_cursor_color"
@@ -821,7 +827,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-cursor-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_cursor_alpha ()
+;;; gdk_display_supports_cursor_alpha
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_cursor_alpha"
@@ -841,7 +847,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-cursor-alpha)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_default_cursor_size () -> display-default-cursor-size
+;;; gdk_display_get_default_cursor_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_default_cursor_size"
@@ -863,7 +869,7 @@ lambda (display seat)    :run-last
 (export 'display-default-cursor-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_maximal_cursor_size () -> display-maximal-cursor-size
+;;; gdk_display_get_maximal_cursor_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_maximal_cursor_size"
@@ -898,7 +904,7 @@ lambda (display seat)    :run-last
 (export 'display-maximal-cursor-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_default_group () -> display-default-group
+;;; gdk_display_get_default_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_default_group" display-default-group)
@@ -921,7 +927,7 @@ lambda (display seat)    :run-last
 (export 'display-default-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_selection_notification ()
+;;; gdk_display_supports_selection_notification
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_selection_notification"
@@ -942,7 +948,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-selection-notification)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_request_selection_notification ()
+;;; gdk_display_request_selection_notification
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_request_selection_notification"
@@ -966,7 +972,7 @@ lambda (display seat)    :run-last
 (export 'display-request-selection-notification)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_clipboard_persistence ()
+;;; gdk_display_supports_clipboard_persistence
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_clipboard_persistence"
@@ -987,7 +993,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-clipboard-persistence)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_store_clipboard ()
+;;; gdk_display_store_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_store_clipboard" %display-store-clipboard) :void
@@ -1028,7 +1034,7 @@ lambda (display seat)    :run-last
 (export 'display-store-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_shapes ()
+;;; gdk_display_supports_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_shapes" display-supports-shapes) :boolean
@@ -1047,7 +1053,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_input_shapes ()
+;;; gdk_display_supports_input_shapes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_input_shapes"
@@ -1068,7 +1074,7 @@ lambda (display seat)    :run-last
 (export 'display-supports-input-shapes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_supports_composite ()
+;;; gdk_display_supports_composite
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_supports_composite" display-supports-composite)
@@ -1117,7 +1123,7 @@ lambda (display seat)    :run-last
 (export 'display-app-launch-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_notify_startup_complete ()
+;;; gdk_display_notify_startup_complete
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_notify_startup_complete"
@@ -1144,7 +1150,7 @@ lambda (display seat)    :run-last
 (export 'display-notify-startup-complete)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_default_seat () -> display-default-seat
+;;; gdk_display_get_default_seat
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_default_seat" display-default-seat)
@@ -1163,7 +1169,7 @@ lambda (display seat)    :run-last
 (export 'display-default-seat)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_list_seats ()
+;;; gdk_display_list_seats
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_list_seats" display-list-seats)
@@ -1182,7 +1188,7 @@ lambda (display seat)    :run-last
 (export 'display-list-seats)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_n_monitors () -> display-n-monitors
+;;; gdk_display_get_n_monitors
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_n_monitors" display-n-monitors) :int
@@ -1201,7 +1207,7 @@ lambda (display seat)    :run-last
 (export 'display-n-monitors)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_monitor () -> display-monitor
+;;; gdk_display_get_monitor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_monitor" display-monitor) (g:object monitor)
@@ -1222,7 +1228,7 @@ lambda (display seat)    :run-last
 (export 'display-monitor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_primary_monitor () -> display-primary-monitor
+;;; gdk_display_get_primary_monitor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_primary_monitor" display-primary-monitor)
@@ -1270,7 +1276,7 @@ lambda (display seat)    :run-last
 (export 'display-monitor-at-point)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_display_get_monitor_at_window () -> display-monitor-at-window
+;;; gdk_display_get_monitor_at_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_display_get_monitor_at_window" display-monitor-at-window)

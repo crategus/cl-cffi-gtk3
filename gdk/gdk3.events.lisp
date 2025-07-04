@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.events.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -217,7 +217,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_events_pending ()
+;;; gdk_events_pending
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_events_pending" events-pending) :boolean
@@ -241,7 +241,7 @@
 (export 'events-pending)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_peek ()
+;;; gdk_event_peek
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_peek" event-peek) (g:boxed event :return)
@@ -263,7 +263,7 @@
 (export 'event-peek)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get ()
+;;; gdk_event_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get" event-get) (g:boxed event :return)
@@ -284,7 +284,7 @@
 (export 'event-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_put ()
+;;; gdk_event_put
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_put" event-put) :void
@@ -303,7 +303,7 @@
 (export 'event-put)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_new ()
+;;; gdk_event_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_new" %event-new) (g:boxed event)
@@ -395,7 +395,7 @@
 (export 'event-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_copy ()
+;;; gdk_event_copy
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline event-copy))
@@ -428,7 +428,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_axis () -> event-axis
+;;; gdk_event_get_axis
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_axis" %event-axis) :boolean
@@ -454,7 +454,7 @@
 (export 'event-axis)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_button ()
+;;; gdk_event_get_button
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_button" %event-button) :boolean
@@ -478,7 +478,7 @@
 (export 'event-button)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_click_count () -> event-click-count
+;;; gdk_event_get_click_count
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_click_count" %event-click-count) :boolean
@@ -504,7 +504,7 @@
 (export 'event-click-count)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_coords () -> events-coords
+;;; gdk_event_get_coords
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_coords" %event-coords) :boolean
@@ -535,7 +535,7 @@
 (export 'event-coords)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_keycode () -> event-keycode
+;;; gdk_event_get_keycode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_keycode" %event-keycode) :boolean
@@ -559,7 +559,7 @@
 (export 'event-keycode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_keyval () -> event-keyval
+;;; gdk_event_get_keyval
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_keyval" %event-keyval) :boolean
@@ -583,7 +583,7 @@
 (export 'event-keyval)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_root_coords ()
+;;; gdk_event_get_root_coords
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_root_coords" %event-root-coords) :boolean
@@ -612,7 +612,7 @@
 (export 'event-root-coords)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_scroll_direction ()
+;;; gdk_event_get_scroll_direction
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_scroll_direction" %event-get-scroll-direction) :boolean
@@ -635,7 +635,7 @@
 (export 'event-get-scroll-direction)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_scroll_deltas () -> event-scroll-deltas
+;;; gdk_event_get_scroll_deltas
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_scroll_deltas" %event-scroll-deltas) :boolean
@@ -667,20 +667,20 @@
 (export 'event-scroll-deltas)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_is_scroll_stop_event ()
+;;; gdk_event_is_scroll_stop_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_is_scroll_stop_event" event-is-scroll-stop-event) :boolean
- "@version{2023-3-13}
+ "@version{2025-07-01}
   @argument[event]{a @class{gdk:event} instance}
-  @return{A boolean whether a scroll event is a stop scroll event.}
+  @return{The boolean whether a scroll event is a stop scroll event.}
   @begin{short}
     Check whether a scroll event is a stop scroll event.
   @end{short}
   Scroll sequences with smooth scroll information may provide a stop scroll
-  event once the interaction with the device finishes, e.g. by lifting a finger.
-  This stop scroll event is the signal that a widget may trigger kinetic
-  scrolling based on the current velocity.
+  event once the interaction with the device finishes, for example, by lifting
+  a finger. This stop scroll event is the signal that a widget may trigger
+  kinetic scrolling based on the current velocity.
 
   Stop scroll events always have a a delta of 0/0.
   @see-class{gdk:event}"
@@ -689,7 +689,7 @@
 (export 'event-is-scroll-stop-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_state () -> event-state
+;;; gdk_event_get_state
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_state" %event-state) :boolean
@@ -717,7 +717,7 @@
 (export 'event-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_time () -> event-time
+;;; gdk_event_get_time
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_time" event-time) :uint32
@@ -781,7 +781,7 @@
 ;; Implemented as the accessor event-type
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_event_sequence () -> event-event-sequence
+;;; gdk_event_get_event_sequence
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_event_sequence" event-event-sequence)
@@ -804,7 +804,7 @@
 (export 'event-event-sequence)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_request_motions ()
+;;; gdk_event_request_motions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_request_motions" event-request-motions) :void
@@ -836,7 +836,7 @@
 (export 'event-request-motions)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_events_get_angle () -> events-angle
+;;; gdk_events_get_angle
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_events_get_angle" %events-angle) :boolean
@@ -863,7 +863,7 @@
 (export 'events-angle)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_events_get_center () -> events-center
+;;; gdk_events_get_center
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_events_get_center" %events-center) :boolean
@@ -893,7 +893,7 @@
 (export 'events-center)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_events_get_distance () -> events-distance
+;;; gdk_events_get_distance
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_events_get_distance" %events-distance) :boolean
@@ -919,7 +919,7 @@
 (export 'events-distance)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_triggers_context_menu ()
+;;; gdk_event_triggers_context_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_triggers_context_menu" event-triggers-context-menu)
@@ -948,7 +948,7 @@
 (export 'event-triggers-context-menu)
 
 ;; -----------------------------------------------------------------------------
-;;; gdk_event_get_seat ()
+;;; gdk_event_get_seat
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_seat" event-seat) (g:object gdk-seat)
@@ -965,7 +965,7 @@
 (export 'event-seat)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_scancode () -> event-scancode
+;;; gdk_event_get_scancode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_scancode" event-scancode) :int
@@ -984,7 +984,7 @@
 (export 'event-scancode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_pointer_emulated () -> event-pointer-emulated
+;;; gdk_event_get_pointer_emulated
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_pointer_emulated" event-pointer-emulated) :boolean
@@ -1001,7 +1001,7 @@
 (export 'event-pointer-emulated)
 
 ;;; ----------------------------------------------------------------------------
-;;; GdkEventFunc ()
+;;; GdkEventFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback event-func :void
@@ -1015,24 +1015,20 @@
 (setf (liber:alias-for-symbol 'event-func)
       "Callback"
       (liber:symbol-documentation 'event-func)
- "@version{#2023-2-26}
+ "@version{#2025-07-03}
+  @syntax{lambda (event)}
+  @argument[event]{a @class{gdk:event} instance to process}
   @begin{short}
     Specifies the type of callback function passed to the
     @fun{gdk:event-handler-set} function to handle all GDK events.
   @end{short}
-  @begin{pre}
-lambda (event)
-  @end{pre}
-  @begin[code]{table}
-    @entry[event]{a @class{gdk:event} instance to process}
-  @end{table}
   @see-class{gdk:event}
   @see-function{gdk:event-handler-set}")
 
 (export 'event-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_handler_set ()
+;;; gdk_event_handler_set
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_handler_set" %event-handler-set) :void
@@ -1060,8 +1056,8 @@ lambda (event)
 (export 'event-handler-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_get_show_events ()
-;;; gdk_set_show_events () -> show-events
+;;; gdk_get_show_events
+;;; gdk_set_show_events
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf show-events) (show-events)
@@ -1088,8 +1084,8 @@ lambda (event)
 (export 'show-events)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_set_screen ()
-;;; gdk_event_get_screen () -> event-screen
+;;; gdk_event_set_screen
+;;; gdk_event_get_screen
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf event-screen) (screen event)
@@ -1126,8 +1122,8 @@ lambda (event)
 (export 'event-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_device ()
-;;; gdk_event_set_device () -> event-device
+;;; gdk_event_get_device
+;;; gdk_event_set_device
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf event-device) (device event)
@@ -1160,8 +1156,8 @@ lambda (event)
 (export 'event-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_source_device ()
-;;; gdk_event_set_source_device () -> event-source-device
+;;; gdk_event_get_source_device
+;;; gdk_event_set_source_device
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf event-source-device) (device event)
@@ -1204,8 +1200,8 @@ lambda (event)
 (export 'event-source-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_event_get_device_tool ()
-;;; gdk_event_set_device_tool () -> event-device-tool
+;;; gdk_event_get_device_tool
+;;; gdk_event_set_device_tool
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf event-device-tool) (tool event)
@@ -1216,7 +1212,7 @@ lambda (event)
   tool)
 
 (cffi:defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
- "@version{#2023-3-13}
+ "@version{#205-07-01}
   @syntax{(gdk:event-device-tool event) => tool}
   @syntax{(setf (gdk:event-device-tool event) tool)}
   @argument[event]{a @class{gdk:event} instance}
@@ -1224,15 +1220,16 @@ lambda (event)
   @begin{short}
     Accessor of the device tool representing the tool that caused the event.
   @end{short}
-  If the event was generated by a device that supports different tools (e.g. a
-  tablet), the @fun{gdk:event-device-tool} function will return a
+  If the event was generated by a device that supports different tools, for
+  example a tablet, the @fun{gdk:event-device-tool} function will return a
   @class{gdk:device-tool} object representing the tool that caused the event.
   Otherwise, @code{nil} will be returned. The @setf{gdk:event-device-tool}
   function sets the device tool for this event, should be rarely used.
-
-  Note: The @class{gdk:device-tool} object will be constant during the
-  application lifetime, if settings must be stored persistently across runs,
-  see the @fun{gdk:device-tool-serial} function.
+  @begin[Notes]{dictionary}
+    The @class{gdk:device-tool} object will be constant during the application
+    lifetime, if settings must be stored persistently across runs, see the
+    @fun{gdk:device-tool-serial} function.
+  @end{dictionary}
   @see-class{gdk:event}
   @see-class{gdk:device-tool}
   @see-function{gdk:device-tool-serial}"
@@ -1241,7 +1238,7 @@ lambda (event)
 (export 'event-device-tool)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_setting_get () -> setting-get
+;;; gdk_setting_get
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Consider to implement a macro for using a gvalue.

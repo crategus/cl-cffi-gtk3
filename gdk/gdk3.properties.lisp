@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk.properties.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -283,8 +283,8 @@
 ;;; saves memory, but can only be used if the string will always exist. It can
 ;;; be used with statically allocated strings in the main program, but not with
 ;;; statically allocated memory in dynamically loaded modules, if you expect to
-;;; ever unload the module again (e.g. do not use this function in GTK+ theme
-;;; engines).
+;;; ever unload the module again (for example, do not use this function in GTK
+;;; theme engines).
 ;;;
 ;;; atom_name :
 ;;;     a static string

@@ -2,8 +2,8 @@
 ;;; gdk3.key-values.lisp
 ;;;
 ;;; The documentation in this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -100,9 +100,9 @@
 
 #+liber-documentation
 (setf (documentation 'keymap 'type)
- "@version{2023-3-4}
+ "@version{2025-07-01}
   @begin{short}
-    A @class{gdk:keymap} object defines the translation from keyboard state,
+    The @class{gdk:keymap} object defines the translation from keyboard state,
     including a hardware key, a modifier mask, and active keyboard group, to a
     keyval.
   @end{short}
@@ -114,9 +114,9 @@
   Key values are the codes which are sent whenever a key is pressed or released.
   They appear in the @code{keyval} field of the @class{gdk:event-key}
   structure, which is passed to signal handlers for the
-  @code{\"key-press-event\"} and @code{\"key-release-event\"} signals. The
-  complete list of key values can be found in the @file{gdk/gdkkeysyms.h} header
-  file.
+  @sig[gtk:widget]{key-press-event} and @sig[gtk:widget]{key-release-event}
+  signals. The complete list of key values can be found in the
+  @file{gdk/gdkkeysyms.h} header file.
 
   Key values are regularly updated from the upstream X.org X11 implementation,
   so new values are added regularly. They will be prefixed with GDK_KEY_
@@ -163,47 +163,50 @@
   a keyboard state - consisting of hardware keycode pressed, active modifiers,
   and active group - applies the appropriate rules, and returns the group/level
   to be used to index the keymap, along with the modifiers which did not affect
-  the group and level, i.e. it returns \"unconsumed modifiers\". The keyboard
-  group may differ from the effective group used for keymap lookups because
-  some keys do not have multiple groups - e.g. the @kbd{Enter} key is always in
-  group 0 regardless of keyboard state.
+  the group and level, that is, it returns \"unconsumed modifiers\". The
+  keyboard group may differ from the effective group used for keymap lookups
+  because some keys do not have multiple groups - for example, the @kbd{Enter}
+  key is always in group 0 regardless of keyboard state.
 
   Note that the @fun{gdk:keymap-translate-keyboard-state} function also returns
-  the keyval, i.e. it goes ahead and performs the keymap lookup in addition to
-  telling you which effective group/level values were used for the lookup.
+  the keyval, that is, it goes ahead and performs the keymap lookup in addition
+  to telling you which effective group/level values were used for the lookup.
   The @class{gdk:event-key} event already contains this keyval, however, so you
   do not normally need to call the @fun{gdk:keymap-translate-keyboard-state}
   function just to get the keyval.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"direction-changed\" signal}
+    @begin[keymap::direction-changed]{signal}
       @begin{pre}
 lambda (keymap)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[keymap]{The @class{gdk:keymap} object on which the signal is
+          emitted.}
+      @end{simple-table}
       The signal gets emitted when the direction of the keymap changes.
-      @begin[code]{table}
-        @entry[keymap]{The @class{gdk:keymap} object on which the signal is
-          emitted.}
-      @end{table}
-    @subheading{The \"keys-changed\" signal}
+    @end{signal}
+    @begin[keymap::keys-changed]{signal}
       @begin{pre}
 lambda (keymap)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[keymap]{The @class{gdk:keymap} object on which the signal is
+          emitted.}
+      @end{simple-table}
       The signal is emitted when the mapping represented by keymap changes.
-      @begin[code]{table}
-        @entry[keymap]{The @class{gdk:keymap} object on which the signal is
-          emitted.}
-      @end{table}
-    @subheading{The \"state-changed\" signal}
+    @end{signal}
+    @begin[keymap::state-changed]{signal}
       @begin{pre}
 lambda (keymap)    :run-last
       @end{pre}
-      The signal is emitted when the state of the keyboard changes, e.g. when
-      Caps Lock is turned on or off. See the @fun{gdk:keymap-caps-lock-state}
-      function.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[keymap]{The @class{gdk:keymap} object on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted when the state of the keyboard changes, for
+      example, when @kbd{Caps Lock} is turned on or off. See the
+      @fun{gdk:keymap-caps-lock-state} function.
+    @end{signal}
   @end{dictionary}
   @see-class{gdk:event-key}")
 
@@ -663,22 +666,22 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_modifier_mask" keymap-modifier-mask) modifier-type
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-07-01}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[intent]{a value of the @symbol{gdk:modifier-intent} enumeration for
+  @argument[intent]{a value of the @sym{gdk:modifier-intent} enumeration for
     the use case for the modifier mask}
-  @return{The @symbol{gdk:modifier-type} modifier mask used for @arg{intent}.}
+  @return{The @sym{gdk:modifier-type} modifier mask used for @arg{intent}.}
   @begin{short}
     Returns the modifier mask the windowing system backend of the keymap uses
     for a particular purpose.
   @end{short}
 
   Note that this function always returns real hardware modifiers, not virtual
-  ones, e.g. it will return @code{:mod1-mask} rather than @code{:meta-mask} if
-  the backend maps @code{MOD1} to @code{META}), so there are use cases where
-  the return value of this function has to be transformed by the
-  @fun{gdk:keymap-add-virtual-modifiers} function in order to contain the
-  expected result.
+  ones, for example, it will return @val[gdk:modifier-type]{:mod1-mask} rather
+  than @val[gdk:modifier-mask]{:meta-mask} if the backend maps @code{MOD1} to
+  @code{META}), so there are use cases where the return value of this function
+  has to be transformed by the @fun{gdk:keymap-add-virtual-modifiers} function
+  in order to contain the expected result.
   @see-class{gdk:keymap}
   @see-symbol{gdk:modifier-type}
   @see-symbol{gdk:modifier-intent}

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.device-manager.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -78,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'device-manager 'type)
- "@version{2024-6-29}
+ "@version{2025-06-29}
   @begin{short}
     In addition to a single pointer and keyboard for user interface input, GDK
     contains support for a variety of input devices, including graphics tablets,
@@ -183,43 +183,46 @@
   supersedes the @class{gdk:device-manager} object and should be preferred in
   newly written code.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"device-added\" signal}
+    @begin[device-manager::device-added]{signal}
       @begin{pre}
  lambda (manager device)    :run-last
       @end{pre}
-      The signal is emitted either when a new master pointer is created, or
-      when a slave (hardware) input device is plugged in.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gdk:device-manager} object on which the
           signal is emitted.}
         @entry[device]{The newly added @class{gdk:device} object.}
-      @end{table}
-    @subheading{The \"device-changed\" signal}
+      @end{simple-table}
+      The signal is emitted either when a new master pointer is created, or
+      when a slave (hardware) input device is plugged in.
+    @end{signal}
+    @begin[device-manager::device-changed]{signal}
       @begin{pre}
  lambda (manager device)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[manager]{The @class{gdk:device-manager} object on which the
+          signal is emitted.}
+        @entry[device]{The @class{gdk:device} object that changed.}
+      @end{simple-table}
       The signal is emitted whenever a device has changed in the hierarchy,
       either slave devices being disconnected from their master device or
       connected to another one, or master devices being added or removed a
       slave device. If a slave device is detached from all master devices its
       @symbol{gdk:device-type} value will change to the @code{:floating} value,
       if it is attached, it will change to the @code{:slave} value.
-      @begin[code]{table}
-        @entry[manager]{The @class{gdk:device-manager} object on which the
-          signal is emitted.}
-        @entry[device]{The @class{gdk:device} object that changed.}
-      @end{table}
-    @subheading{The \"device-removed\" signal}
+    @end{signal}
+    @begin[device-manager::device-removed]{signal}
       @begin{pre}
  lambda (manager device)    :run-last
       @end{pre}
-      The signal is emitted either when a master pointer is removed, or when a
-      slave (hardware) input device is unplugged.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gdk:device-manager} object on which the
           signal is emitted.}
         @entry[device]{The just removed @class{gdk:device} object.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted either when a master pointer is removed, or when a
+      slave (hardware) input device is unplugged.
+    @end{signal}
   @end{dictionary}
   @see-slot{gdk:device-manager-display}
   @see-class{gdk:device}
