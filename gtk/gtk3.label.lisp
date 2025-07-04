@@ -1559,7 +1559,7 @@ lambda (label menu)    :run-last
 
 (cffi:defcfun ("gtk_label_get_current_uri" label-current-uri) :string
  #+liber-documentation
- "@version{2025-06-28}
+ "@version{2025-07-02}
   @argument[label]{a @class{gtk:label} widget}
   @begin{return}
     The string with the currently active URI.

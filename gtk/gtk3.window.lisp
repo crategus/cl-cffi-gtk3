@@ -316,7 +316,7 @@
       @entry[:none]{No influence is made on placement.}
       @entry[:center]{Windows should be placed in the center of the screen.}
       @entry[:mouse]{Windows should be placed at the current mouse position.}
-      @entry[:center-always]{Keep window centered as it changes size, etc.}
+      @entry[:center-always]{Keep window centered as it changes size.}
       @entry[:center-on-parent]{Center the window on its transient parent.
         See the @fun{gtk:window-transient-for} function.}
     @end{simple-table}
@@ -2044,10 +2044,10 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_mnemonic_activate" window-mnemonic-activate) :boolean
  #+liber-documentation
- "@version{#2025-06-23}
+ "@version{#2025-07-03}
   @argument[window]{a @class{gtk:window} widget}
   @argument[keyval]{an unsigned integer for the mnemonic}
-  @argument[modifier]{a @sym{gdk:modifier-type} value with the modifiers}
+  @argument[modifier]{a @sym{gdk:modifier-type} value for the modifiers}
   @return{@em{True} if the activation is done.}
   @begin{short}
     Activates the targets associated with the mnemonic.
@@ -2495,7 +2495,7 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_unfullscreen" window-unfullscreen) :void
  #+liber-documentation
- "@version{#2024-06-27}
+ "@version{#2024-06-30}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to toggle off the fullscreen state for the window.
@@ -2507,8 +2507,7 @@ lambda (window widget)    :run-last
   normal state. Just do not write code that crashes if not.
 
   You can track the fullscreen state via the
-  @sig[gtk:widget]{\"window-state-event\"} signal on the @class{gtk:widget}
-  object.
+  @sig[gtk:widget]{window-state-event} signal on the @class{gtk:widget} object.
   @see-class{gtk:window}
   @see-class{gtk:widget}"
   (window (g:object window)))

@@ -212,7 +212,7 @@
 
 #+liber-documentation
 (setf (documentation 'notebook 'type)
- "@version{#2025-06-27}
+ "@version{#2025-06-28}
   @begin{short}
     The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
@@ -298,44 +298,44 @@ notebook
     direction.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[level-bar:detachable]{property}
+    @begin[notebook:detachable]{property}
       The @code{detachable} child property of type @code{:boolean}
       (Read / Write) @br{}
       Whether the tab is detachable. @br{}
       Default value: @em{false}
     @end{property}
-    @begin[level-bar:menu-label]{property}
+    @begin[notebook:menu-label]{property}
       The @code{menu-label} child property of type @code{:string}
       (Read / Write) @br{}
       The string displayed in the menu entry of the child page. @br{}
       Default value: @code{nil}
     @end{property}
-    @begin[level-bar:position]{property}
+    @begin[notebook:position]{property}
       The @code{position} child property of type @code{:int} (Read / Write)
       @br{}
       The index of the child page in the parent. @br{}
       Allowed values: >= 0 @br{}
       Default value: 0
     @end{property}
-    @begin[level-bar:reorderable]{property}
+    @begin[notebook:reorderable]{property}
       The @code{reorderable} child property of type @code{:boolean}
       (Read / Write) @br{}
       Whether the tab is reorderable by user action. @br{}
       Default value: @em{false}
     @end{property}
-    @begin[level-bar:tab-expand]{property}
+    @begin[notebook:tab-expand]{property}
       The @code{tab-expand} child property of type @code{:boolean}
       (Read / Write) @br{}
       Whether to expand the tab of the child page. @br{}
       Default value: @em{false}
     @end{property}
-    @begin[level-bar:tab-fill]{property}
+    @begin[notebook:tab-fill]{property}
       The @code{tab-fill} child property of type @code{:boolean}
       (Read / Write) @br{}
       Whether the tab of the child page should fill the allocated area. @br{}
       Default value: @em{true}
     @end{property}
-    @begin[level-bar:tab-label]{property}
+    @begin[notebook:tab-label]{property}
       The @code{tab-label} child property of type @code{:string}
       (Read / Write) @br{}
       The string displayed on the tab label of the child page. @br{}

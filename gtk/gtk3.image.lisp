@@ -677,7 +677,7 @@
 
 (defun image-get-icon-set (image)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-06-30}
   @argument[image]{a @class{gtk:image} widget}
   @begin{return}
     @arg{icon-set} -- a @class{gtk:icon-set} instance @br{}
@@ -687,8 +687,9 @@
     Gets the icon set and icon size being displayed by the @class{gtk:image}
     widget.
   @end{short}
-  The storage type of the image must be the @code{:empty} or @code{:icon-set}
-  type. See the @fun{gtk:image-storage-type} function.
+  The storage type of the image must be the @val[gtk:image-type]{:empty} or
+  @val[gtk:image-type]{:icon-set} type. See the @fun{gtk:image-storage-type}
+  function.
   @begin[Warning]{dictionary}
     The @fun{gtk:image-get-icon-set} function has been deprecated since version
     3.10 and should not be used in newly written code. Use the

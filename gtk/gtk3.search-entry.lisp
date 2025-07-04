@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.seach-entry.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -64,7 +64,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSearchEntry
+;;; GtkSearchEntry
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkSearchEntry" search-entry
@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'search-entry 'type)
- "@version{2024-1-2}
+ "@version{2025-07-02}
   @begin{short}
     The @class{gtk:search-entry} class is a subclass of the @class{gtk:entry}
     class that has been tailored for use as a search entry.
@@ -98,67 +98,71 @@
   To make filtering appear more reactive, it is a good idea to not react to
   every change in the entry text immediately, but only after a short delay.
   To support this, the @class{gtk:search-entry} widget emits the
-  @code{\"search-changed\"} signal which can be used instead of the
-  @code{\"changed\"} signal.
+  @sig[gtk:search-entry]{search-changed} signal which can be used instead of
+  the @sig[gtk:editable]{changed} signal.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"next-match\" signal}
+    @begin[search-entry::next-match]{signal}
       @begin{pre}
  lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
+          was emitted.}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates a move to the next match for the current search string.
       Applications should connect to it, to implement moving between matches.
       The default bindings for this signal is the @kbd{Ctrl-g} key.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
-          was emitted.}
-      @end{table}
-    @subheading{The \"previous-match\" signal}
+    @end{signal}
+    @begin[search-entry::previous-match]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
+          was emitted.}
+        @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates a move to the previous match for the current search string.
       Applications should connect to it, to implement moving between matches.
       The default bindings for this signal is the @kbd{Ctrl-Shift-g} key.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
-          was emitted.}
-        @end{table}
-    @subheading{The \"search-changed\" signal}
+    @end{signal}
+    @begin[search-entry::search-changed]{signal}
       @begin{pre}
 lambda (entry)    :run-last
       @end{pre}
-      The signal is emitted with a short delay of 150 milliseconds after the
-      last change to the entry text.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[entry]{The @class{gtk:search-entry} widget on which the signal
           was emitted.}
-      @end{table}
-    @subheading{The \"stop-search\" signal}
+      @end{simple-table}
+      The signal is emitted with a short delay of 150 milliseconds after the
+      last change to the entry text.
+    @end{signal}
+    @begin[search-entry::stop-search]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
+          was emitted.}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user stops
       a search via keyboard input. Applications should connect to it, to
       implement hiding the search entry in this case. The default bindings for
       this signal is the @kbd{Escape} key.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:search-entry} widget on which the signal
-          was emitted.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-class{gtk:entry}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_entry_new ()
+;;; gtk_search_entry_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline search-entry-new))
 
 (defun search-entry-new ()
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @return{The new @class{gtk:search-entry} widget.}
   @begin{short}
     Creates a search entry, with a find icon when the search field is empty,
@@ -170,18 +174,20 @@ lambda (entry)    :action
 (export 'search-entry-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_entry_handle_event ()
+;;; gtk_search_entry_handle_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_search_entry_handle_event" search-entry-handle-event)
     :boolean
  #+liber-documentation
- "@version{#2023-12-19}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry-search} widget}
-  @argument[event]{a @class{gdk:event} instance with key event}
-  @return{The @var{gdk:+event-stop+} value if the key press event resulted
+  @argument[event]{a @class{gdk:event} instance for key event}
+  @begin{return}
+    The @var{gdk:+event-stop+} value if the key press event resulted
     in a search beginning or continuing, the @var{gdk:+event-propagate+}
-    value otherwise.}
+    value otherwise.
+  @end{return}
   @begin{short}
     This function should be called when the toplevel window which contains the
     search entry received a key event.

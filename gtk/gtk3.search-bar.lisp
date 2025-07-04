@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.search-bar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,7 +67,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSearchBar
+;;; GtkSearchBar
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Replace the example with Lisp code
@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'search-bar 'type)
- "@version{#2023-2-16}
+ "@version{#2023-02-16}
   @begin{short}
     The @class{gtk:search-bar} widget is a container made to have a search entry
     built-in, possibly with additional connex widgets, such as drop-down menus,
@@ -196,11 +196,11 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-search-mode-enabled)
       "Accessor"
       (documentation 'search-bar-search-mode-enabled 'function)
- "@version{#2023-2-16}
+ "@version{#2025-06-28}
   @syntax{(gtk:search-bar-search-mode-enabled object) => search-mode}
   @syntax{(setf (gtk:search-bar-search-mode-enabled object) search-mode)}
   @argument[object]{a @class{gtk:search-bar} widget}
-  @argument[search-mode]{a boolean with the state of the search mode}
+  @argument[search-mode]{a boolean for the state of the search mode}
   @begin{short}
     Accessor of the @slot[gtk:search-bar]{search-mode-enabled} slot of the
     @class{gtk:search-bar} class.
@@ -222,7 +222,7 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-show-close-button)
       "Accessor"
       (documentation 'search-bar-show-close-button 'function)
- "@version{#2023-2-16}
+ "@version{#2023-02-16}
   @syntax{(gtk:search-bar-show-close-button object) => visible}
   @syntax{(setf (gtk:search-bar-show-close-button object) visible)}
   @argument[object]{a @class{gtk:search-bar} widget}
@@ -239,12 +239,12 @@ main (gint argc,
   @see-class{gtk:search-bar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_bar_new ()
+;;; gtk_search_bar_new
 ;;; ----------------------------------------------------------------------------
 
 (defun search-bar-new ()
  #+liber-documentation
- "@version{#2023-2-16}
+ "@version{#2023-02-16}
   @return{The new @class{gtk:search-bar} widget.}
   @begin{short}
     Creates a search bar.
@@ -258,12 +258,12 @@ main (gint argc,
 (export 'search-bar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_bar_connect_entry ()
+;;; gtk_search_bar_connect_entry
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_search_bar_connect_entry" search-bar-connect-entry) :void
  #+liber-documentation
- "@version{#2023-2-16}
+ "@version{#2023-02-16}
   @argument[search-bar]{a @class{gtk:search-bar} widget}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
@@ -279,31 +279,33 @@ main (gint argc,
 (export 'search-bar-connect-entry)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_bar_get_search_mode ()
+;;; gtk_search_bar_get_search_mode
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as the accessor search-bar-search-mode-enabled
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_bar_set_search_mode ()
+;;; gtk_search_bar_set_search_mode
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as the accessor search-bar-search-mode-enabled
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_search_bar_handle_event ()
+;;; gtk_search_bar_handle_event
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Replace the example with Lisp code
 
 (cffi:defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
  #+liber-documentation
- "@version{#2023-12-19}
+ "@version{#2025-06-28}
   @argument[searchbar]{a @class{gtk:search-bar} widget}
   @argument[event]{a @class{gdk:event} instance containing key press events}
-  @return{The @var{gdk:+event-stop+} value if the key press event resulted
-    in text being entered in the search entry, and revealing the search bar if
-    necessary, @var{gdk:+event-propagate+} otherwise.}
+  @begin{return}
+    The @var{gdk:+event-stop+} value if the key press event resulted in text
+    being entered in the search entry, and revealing the search bar if
+    necessary, @var{gdk:+event-propagate+} otherwise.
+  @end{return}
   @begin{short}
     This function should be called when the toplevel window which contains the
     search bar received a key event.

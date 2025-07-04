@@ -261,7 +261,7 @@
 
 #+liber-documentation
 (setf (documentation 'about-dialog 'type)
- "@version{2025-06-24}
+ "@version{2025-07-01}
   @begin{short}
     The @class{gtk:about-dialog} widget offers a simple way to display
     information about a program like its logo, name, copyright, website and
@@ -295,9 +295,9 @@
                        :title \"About ExampleCode\")
   @end{pre}
   It is also possible to show a @class{gtk:about-dialog} widget like any other
-  @class{gtk:dialog} widget, e.g. using the @fun{gtk:dialog-run} function. In
-  this case, you might need to know that the Close button returns the
-  @val[gtk:response-type]{:cancel} response ID.
+  @class{gtk:dialog} widget, for example using the @fun{gtk:dialog-run}
+  function. In this case, you might need to know that the Close button returns
+  the @val[gtk:response-type]{:cancel} response ID.
   @begin[Signal Details]{dictionary}
     @begin[about-dialog::activate-link]{signal}
       @begin{pre}

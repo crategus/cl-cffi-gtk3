@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.editable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -82,7 +82,7 @@
 (setf (liber:alias-for-class 'editable)
       "Interface"
       (documentation 'editable 'type)
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @begin{short}
     The @class{gtk:editable} interface is an interface which should be
     implemented by text editing widgets, such as the @class{gtk:entry} widget
@@ -109,24 +109,31 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[editable::changed]{signal}
       @begin{pre}
 lambda (editable)    :run-last
       @end{pre}
-      The signal is emitted at the end of a single user visible operation on the
-      contents of the @class{gtk:editable} widget. E.g., a paste operation that
-      replaces the contents of the selection will cause only one signal
-      emission, even though it is implemented by first deleting the selection,
-      then inserting the new content, and may cause multiple
-      @code{\"notify::text\"} signals to be emitted.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[editable]{The @class{gtk:editable} widget which received the
           signal.}
-      @end{table}
-    @subheading{The \"delete-text\" signal}
+      @end{simple-table}
+      The signal is emitted at the end of a single user visible operation on
+      the contents of the @class{gtk:editable} widget. For example, a paste
+      operation that replaces the contents of the selection will cause only one
+      signal emission, even though it is implemented by first deleting the
+      selection, then inserting the new content, and may cause multiple
+      @sig[g:object]{notify::text} signals to be emitted.
+    @end{signal}
+    @begin[editable::delete-text]{signal}
       @begin{pre}
 lambda (editable start end)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[editable]{The @class{gtk:editable} widget which received the
+          signal.}
+        @entry[start]{The integer with the starting position.}
+        @entry[end]{The integer with the end position.}
+      @end{simple-table}
       The signal is emitted when text is deleted from the widget by the user.
       The default handler for this signal will normally be responsible for
       deleting the text, so by connecting to this signal and then stopping the
@@ -134,37 +141,33 @@ lambda (editable start end)    :run-last
       modify the range of deleted text, or prevent it from being deleted
       entirely. The @arg{start} and @arg{end} parameters are interpreted as for
       the @fun{gtk:editable-delete-text} function.
-      @begin[code]{table}
-        @entry[editable]{The @class{gtk:editable} widget which received the
-          signal.}
-        @entry[start]{An integer with the starting position.}
-        @entry[end]{An integer with the end position.}
-      @end{table}
-    @subheading{The \"insert-text\" signal}
+    @end{signal}
+    @begin[editable::insert-text]{signal}
       @begin{pre}
 lambda (editable text length position)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[editable]{The @class{gtk:editable} widget which received the
+          signal.}
+        @entry[text]{The string with the new text to insert.}
+        @entry[length]{The integer with the length of the new text, in bytes,
+           or -1 if @arg{text} is nul-terminated.}
+        @entry[position]{The pointer to the position, in characters, at which
+          to insert the new text. This is an in-out parameter. After the signal
+          emission is finished, it should point after the newly inserted text.}
+      @end{simple-table}
       The signal is emitted when text is inserted into the widget by the user.
       The default handler for this signal will normally be responsible for
       inserting the text, so by connecting to this signal and then stopping the
       signal with the @fun{g:signal-stop-emission} function, it is possible to
       modify the inserted text, or prevent it from being inserted entirely.
-      @begin[code]{table}
-        @entry[editable]{The @class{gtk:editable} widget which received the
-          signal.}
-        @entry[text]{A string with the new text to insert.}
-        @entry[length]{An integer with the length of the new text, in bytes, or
-          -1 if @arg{text} is nul-terminated.}
-        @entry[position]{A pointer to the position, in characters, at which to
-          insert the new text. This is an in-out parameter. After the signal
-          emission is finished, it should point after the newly inserted text.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-class{gtk:entry}
   @see-class{gtk:spin-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_select_region ()
+;;; gtk_editable_select_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_select_region" %editable-select-region) :void
@@ -174,10 +177,10 @@ lambda (editable text length position)    :run-last
 
 (defun editable-select-region (editable &key (start 0) (end -1))
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @argument[editable]{a @class{gtk:editable} widget}
-  @argument[start]{an integer with the start of region}
-  @argument[end]{an integer with the end of region}
+  @argument[start]{an integer for the start of region}
+  @argument[end]{an integer for the end of region}
   @begin{short}
     Selects a region of text.
   @end{short}
@@ -193,7 +196,7 @@ lambda (editable text length position)    :run-last
 (export 'editable-select-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_get_selection_bounds ()
+;;; gtk_editable_get_selection_bounds
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_get_selection_bounds" %editable-selection-bounds)
@@ -203,18 +206,17 @@ lambda (editable text length position)    :run-last
   (end (:pointer :int)))
 
 (defun editable-selection-bounds (editable)
- "@version{2023-2-13}
+ "@version{2025-06-28}
+  @syntax{(gtk:editable-selection-bounds editable) => start, end}
   @argument[editable]{a @class{gtk:editable} widget}
-  @begin{return}
-    @code{start} -- an integer with the starting position, or @code{nil} @br{}
-    @code{end} -- an integer with the end position, or @code{nil}
-  @end{return}
+  @argument[start]{an integer for the starting position}
+  @argument[end]{an integer for the end position}
   @begin{short}
     Retrieves the selection bound of the editable.
   @end{short}
   The @arg{start} value will be filled with the start of the selection and
-  the @arg{end} value with end. If no text was selected both will be identical
-  and @code{nil} will be returned.
+  the @arg{end} value with end. If no text was selected @code{nil} will be
+  returned.
 
   Note that positions are specified in characters, not bytes.
   @see-class{gtk:editable}"
@@ -226,38 +228,38 @@ lambda (editable text length position)    :run-last
 (export 'editable-selection-bounds)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_insert_text ()
+;;; gtk_editable_insert_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_insert_text" %editable-insert-text) :void
   (editable (g:object editable))
   (text :string)
-  (length :int)
-  (position (:pointer :int)))
+  (len :int)
+  (pos (:pointer :int)))
 
-(defun editable-insert-text (editable text position)
+(defun editable-insert-text (editable text pos)
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @argument[editable]{a @class{gtk:editable} widget}
-  @argument[text]{a string with the text to append}
-  @argument[position]{an integer with the position the text will be inserted at}
-  @return{An integer with the position after the newly inserted text.}
+  @argument[text]{a string for the text to append}
+  @argument[pos]{an integer for the position the text will be inserted at}
+  @return{The integer with the position after the newly inserted text.}
   @begin{short}
     Inserts @arg{text} into the contents of the widget, at position
-    @arg{position}.
+    @arg{pos}.
   @end{short}
-  Note that @arg{position} is in characters, not in bytes. The function
+  Note that @arg{pos} is in characters, not in bytes. The function
   returns the position to point after the newly inserted text.
   @see-class{gtk:editable}"
-  (cffi:with-foreign-object (pos :int)
-    (setf (cffi:mem-ref pos :int) position)
-    (%editable-insert-text editable text -1 pos)
-    (cffi:mem-ref pos :int)))
+  (cffi:with-foreign-object (pos1 :int)
+    (setf (cffi:mem-ref pos1 :int) pos)
+    (%editable-insert-text editable text -1 pos1)
+    (cffi:mem-ref pos1 :int)))
 
 (export 'editable-insert-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_delete_text ()
+;;; gtk_editable_delete_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_delete_text" %editable-delete-text) :void
@@ -267,10 +269,10 @@ lambda (editable text length position)    :run-last
 
 (defun editable-delete-text (editable &key (start 0) (end -1))
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @argument[editable]{a @class{gtk:editable} widget}
-  @argument[start]{an integer with the start position}
-  @argument[end]{an integer with the end position}
+  @argument[start]{an integer for the start position}
+  @argument[end]{an integer for the end position}
   @begin{short}
     Deletes a sequence of characters.
   @end{short}
@@ -285,7 +287,7 @@ lambda (editable text length position)    :run-last
 (export 'editable-delete-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_get_chars ()
+;;; gtk_editable_get_chars
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_get_chars" %editable-get-chars) :string
@@ -295,11 +297,11 @@ lambda (editable text length position)    :run-last
 
 (defun editable-chars (editable &key (start 0) (end -1))
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @argument[editable]{a @class{gtk:editable} object}
-  @argument[start]{an integer with the start of text}
-  @argument[end]{an integer with the end of text}
-  @return{A string with the contents of the widget.}
+  @argument[start]{an integer for the start of text}
+  @argument[end]{an integer for the end of text}
+  @return{The string with the contents of the widget.}
   @begin{short}
     Retrieves a sequence of characters.
   @end{short}
@@ -315,12 +317,12 @@ lambda (editable text length position)    :run-last
 (export 'editable-chars)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_cut_clipboard ()
+;;; gtk_editable_cut_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_cut_clipboard" editable-cut-clipboard) :void
  #+liber-documentation
- "@version{#2023-2-13}
+ "@version{#2023-02-13}
   @argument[editable]{a @class{gtk:editable} widget}
   @begin{short}
     Removes the contents of the currently selected content in the editable and
@@ -332,12 +334,12 @@ lambda (editable text length position)    :run-last
 (export 'editable-cut-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_copy_clipboard ()
+;;; gtk_editable_copy_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_copy_clipboard" editable-copy-clipboard) :void
  #+liber-documentation
- "@version{#2023-2-13}
+ "@version{#2023-02-13}
   @argument[editable]{a @class{gtk:editable} widget}
   @begin{short}
     Copies the contents of the currently selected content in the editable and
@@ -349,12 +351,12 @@ lambda (editable text length position)    :run-last
 (export 'editable-copy-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_paste_clipboard ()
+;;; gtk_editable_paste_clipboard
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_paste_clipboard" editable-paste-clipboard) :void
  #+liber-documentation
- "@version{#2023-2-13}
+ "@version{#2023-02-13}
   @argument[editable]{a @class{gtk:editable} widget}
   @begin{short}
     Pastes the content of the clipboard to the current position of the cursor
@@ -366,12 +368,12 @@ lambda (editable text length position)    :run-last
 (export 'editable-paste-clipboard)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_delete_selection ()
+;;; gtk_editable_delete_selection
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_editable_delete_selection" editable-delete-selection) :void
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2023-02-13}
   @argument[editable]{a @class{gtk:editable} widget}
   @begin{short}
     Deletes the currently selected text of the editable.
@@ -383,8 +385,8 @@ lambda (editable text length position)    :run-last
 (export 'editable-delete-selection)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_set_position ()
-;;; gtk_editable_get_position ()
+;;; gtk_editable_set_position
+;;; gtk_editable_get_position
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf editable-position) (position editable)
@@ -396,17 +398,16 @@ lambda (editable text length position)    :run-last
 
 (cffi:defcfun ("gtk_editable_get_position" editable-position) :int
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2025-06-28}
   @syntax{(gtk:editable-position editable) => position}
   @syntax{(setf (gtk:editable-position editable) position)}
   @argument[editable]{a @class{gtk:editable} widget}
-  @argument[position]{an integer with the position of the cursor}
+  @argument[position]{an integer for the position of the cursor}
   @begin{short}
-    Accessor of the cursor position in the editable.
+    The @fun{gtk:editable-position} function retrieves the current position of
+    the cursor relative to the start of the content of the editable.
   @end{short}
-  The @fun{gtk:editable-position} function retrieves the current position of
-  the cursor relative to the start of the content of the editable. The
-  @setf{gtk:editable-position} function sets the cursor position in the
+  The @setf{gtk:editable-position} function sets the cursor position in the
   editable to the given value.
 
   The cursor is displayed before the character with the given (base 0) index
@@ -420,8 +421,8 @@ lambda (editable text length position)    :run-last
 (export 'editable-position)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_editable_set_editable ()
-;;; gtk_editable_get_editable ()
+;;; gtk_editable_set_editable
+;;; gtk_editable_get_editable
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf editable-editable) (setting editable)
@@ -433,7 +434,7 @@ lambda (editable text length position)    :run-last
 
 (cffi:defcfun ("gtk_editable_get_editable" editable-editable) :boolean
  #+liber-documentation
- "@version{2023-2-13}
+ "@version{2023-02-13}
   @syntax{(gtk:editable-editable editable) => setting}
   @syntax{(setf (gtk:editable-editable editable) setting)}
   @argument[editable]{a @class{gtk:editable} widget}

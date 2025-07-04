@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.entry.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -226,7 +226,7 @@
 (setf (liber:alias-for-symbol 'entry-icon-position)
       "GEnum"
       (liber:symbol-documentation 'entry-icon-position)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkEntryIconPosition\" entry-icon-position
   (:export t
@@ -235,12 +235,12 @@
   (:secondary 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:primary]{At the beginning of the entry, depending on the text
         direction.}
       @entry[:secondary]{At the end of the entry, depending on the text
         direction.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Specifies the side of the entry at which an icon is placed.
@@ -269,7 +269,7 @@
 (setf (liber:alias-for-symbol 'input-purpose)
       "GEnum"
       (liber:symbol-documentation 'input-purpose)
- "@version{2024-3-21}
+ "@version{2025-06-28}
   @begin{declaration}
 (gobject:define-genum \"GtkInputPurpose\" input-purpose
   (:export t
@@ -286,7 +286,7 @@
   (:pin 9))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:free-form]{Allow any character.}
       @entry[:alpha]{Allow only alphabetic characters.}
       @entry[:digits]{Allow only digits.}
@@ -297,7 +297,7 @@
       @entry[:name]{Edited field expects the name of a person.}
       @entry[:password]{Like @code{:free-form}, but characters are hidden.}
       @entry[:pin]{Like @code{:digits}, but characters are hidden.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes primary purpose of the input widget.
@@ -311,9 +311,10 @@
   that is expressed by the purpose. The application is expected to validate
   the entry contents, even if it specified a purpose.
 
-  The difference between the @code{:digits} and @code{:number} values is that
-  the former accepts only digits while the latter also some punctuation, like
-  commas or points, plus, minus, and 'e' or 'E' as in 3.14E+000.
+  The difference between the @val[gtk:input-purpose]{:digits} and
+  @val[gtk:input-purpose]{:number} values is that the former accepts only digits
+  while the latter also some punctuation, like commas or points, plus, minus,
+  and 'e' or 'E' as in 3.14E+000.
 
   This enumeration may be extended in the future. Input methods should
   interpret unknown values as 'free form'.
@@ -321,7 +322,7 @@
   @see-symbol{gtk:input-hints}")
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkInputHints
+;;; GtkInputHints
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkInputHints" input-hints
@@ -344,7 +345,7 @@
 (setf (liber:alias-for-symbol 'input-hints)
       "GFlags"
       (liber:symbol-documentation 'input-hints)
- "@version{2024-3-21}
+ "@version{2025-06-28}
   @begin{declaration}
 (gobject:define-gflags \"GtkInputHints\" input-hints
   (:export t
@@ -363,7 +364,7 @@
   (:no-emoji            #.(ash 1 10)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No special behaviour suggested.}
       @entry[:spellcheck]{Suggest checking for typos.}
       @entry[:no-spellcheck]{Suggest not checking for typos.}
@@ -374,22 +375,23 @@
         word.}
       @entry[:uppercase-sentences]{Suggest to capitalize the first word of each
         sentence.}
-      @entry[:inhibit-osk]{Suggest to not show an onscreen keyboard, e.g. for a
-        calculator that already has all the keys.}
+      @entry[:inhibit-osk]{Suggest to not show an onscreen keyboard, for
+        example, for a calculator that already has all the keys.}
       @entry[:vertical-writing]{The text is vertical.}
       @entry[:emoji]{Suggest offering Emoji support.}
       @entry[:no-emoji]{Suggest not offering Emoji support.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes hints that might be taken into account by input methods or
     applications.
   @end{short}
   Note that input methods may already tailor their behaviour according to the
-  @symbol{gtk:input-purpose} value of the entry.
+  @sym{gtk:input-purpose} value of the entry.
 
   Some common sense is expected when using these flags - mixing
-  @code{:lowercase} with any of the uppercase hints makes no sense.
+  @val[gtk:input-hints]{:lowercase} with any of the uppercase hints makes no
+  sense.
 
   This flags may be extended in the future. Input methods should ignore
   unknown values.
@@ -397,7 +399,7 @@
   @see-symbol{gtk:input-purpose}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEntry
+;;; GtkEntry
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEntry" entry
@@ -564,7 +566,7 @@
 
 #+liber-documentation
 (setf (documentation 'entry 'type)
- "@version{2023-3-4}
+ "@version{2025-07-02}
   @begin{short}
     The @class{gtk:entry} widget is a single line text entry widget.
   @end{short}
@@ -594,171 +596,184 @@
   @fun{gtk:entry-set-icon-from-gicon} function or one of the various other
   functions that set an icon from a stock ID, an icon name or a pixbuf. To
   trigger an action when the user clicks an icon, connect to the
-  @code{\"icon-press\"} signal. To allow DND operations from an icon, use the
-  @fun{gtk:entry-set-icon-drag-source} function. To set a tooltip on an icon,
-  use the @fun{gtk:entry-icon-tooltip-text} function or the corresponding
+  @sig[gtk:entry]{icon-press} signal. To allow DND operations from an icon, use
+  the @fun{gtk:entry-set-icon-drag-source} function. To set a tooltip on an
+  icon, use the @fun{gtk:entry-icon-tooltip-text} function or the corresponding
   function for markup.
 
   Note that functionality or information that is only available by clicking on
   an icon in an entry may not be accessible at all to users which are not able
   to use a mouse or other pointing device. It is therefore recommended that
-  any such functionality should also be available by other means, e.g. via the
-  context menu of the entry.
+  any such functionality should also be available by other means, for example
+  via the context menu of the entry.
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[icon-prelight]{entry}
-        The @code{icon-prelight} style property of type @code{:boolean} (Read)
-        @br{}
-        The prelight style property determines whether activatable icons
-        prelight on mouseover. @br{}
-        @em{Warning:} The @code{icon-prelight} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS to control the appearance of prelighted icons. The value
-        of this style property is ignored.
-      @end{entry}
-      @begin[inner-border]{entry}
-        The @code{inner-border} style property of type @class{gtk:border} (Read)
-        @br{}
-        Sets the border of the text area between the text and the frame. @br{}
-        @em{Warning:} The @code{inner-border} style property has been deprecated
-        since version 3.4 and should not be used in newly written code. Use the
-        standard border and padding CSS properties through objects like
-        the @class{gtk:style-context} and @class{gtk:css-provider} objects. The
-        value of this style property is ignored.
-      @end{entry}
-      @begin[invisible-char]{entry}
-        The @code{invisible-char} style property of type @code{:uint} (Read)
-        @br{}
-        The invisible character is used when masking entry contents in
-        \"password mode\". When it is not explicitly set with the
-        @code{invisible-char} property, GTK determines the character to use
-        from a list of possible candidates, depending on availability in the
-        current font. This style property allows the theme to prepend a
-        character to the list of candidates. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[progress-border]{entry}
-        The @code{progress-border} style property of type @class{gtk:border}
-        (Read) @br{}
-        The border around the progress bar in the entry. @br{}
-        @em{Warning:} The @code{progress-border} style property has been
-        deprecated since version 3.4 and should not be used in newly written
-        code. Use the standard margin CSS property through objects like the
-        @class{gtk:style-context} and @class{gtk:css-provider} objects. The
-        value of this style property is ignored.
-      @end{entry}
-    @end{table}
+    @begin[entry:icon-prelight]{property}
+      The @code{icon-prelight} style property of type @code{:boolean} (Read)
+      @br{}
+      The prelight style property determines whether activatable icons
+      prelight on mouseover. @br{}
+      @em{Warning:} The @code{icon-prelight} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS to control the appearance of prelighted icons. The value
+      of this style property is ignored.
+    @end{property}
+    @begin[entry:inner-border]{property}
+      The @code{inner-border} style property of type @class{gtk:border} (Read)
+      @br{}
+      Sets the border of the text area between the text and the frame. @br{}
+      @em{Warning:} The @code{inner-border} style property has been deprecated
+      since version 3.4 and should not be used in newly written code. Use the
+      standard border and padding CSS properties through objects like
+      the @class{gtk:style-context} and @class{gtk:css-provider} objects. The
+      value of this style property is ignored.
+    @end{property}
+    @begin[entry:invisible-char]{property}
+      The @code{invisible-char} style property of type @code{:uint} (Read) @br{}
+      The invisible character is used when masking entry contents in
+      \"password mode\". When it is not explicitly set with the
+      @code{invisible-char} property, GTK determines the character to use
+      from a list of possible candidates, depending on availability in the
+      current font. This style property allows the theme to prepend a
+      character to the list of candidates. @br{}
+      Default value: 0
+    @end{property}
+    @begin[entry:progress-border]{property}
+      The @code{progress-border} style property of type @class{gtk:border}
+      (Read) @br{}
+      The border around the progress bar in the entry. @br{}
+      @em{Warning:} The @code{progress-border} style property has been
+      deprecated since version 3.4 and should not be used in newly written
+      code. Use the standard margin CSS property through objects like the
+      @class{gtk:style-context} and @class{gtk:css-provider} objects. The
+      value of this style property is ignored.
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[entry::activate]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget on which the signal is
+          emitted.}
+      @end{simple-table}
       A keybinding signal which gets emitted when the user activates the entry.
       Applications should not connect to it, but may emit it with the
       @fun{g:signal-emit} function if they need to control activation
       programmatically. The default bindings for this signal are all forms of
       the @kbd{Enter} key.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget on which the signal is
-          emitted.}
-      @end{table}
-    @subheading{The \"backspace\" signal}
+    @end{signal}
+    @begin[entry::backspace]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted when the user asks for it. The
       default bindings for this signal are the @kbd{Backspace} and
       @kbd{Shift-Backspace} keys.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-      @end{table}
-    @subheading{The \"copy-clipboard\" signal}
+    @end{signal}
+    @begin[entry::copy-clipboard]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted to copy the selection to the
       clipboard. The default bindings for this signal are the @kbd{Ctrl-c} and
       @kbd{Ctrl-Insert} keys.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-      @end{table}
-    @subheading{The \"cut-clipboard\" signal}
+    @end{signal}
+    @begin[entry::cut-clipboard]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted to cut the selection to the
       clipboard. The default bindings for this signal are the @kbd{Ctrl-x} and
       @kbd{Shift-Delete} keys.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-      @end{table}
-    @subheading{The \"delete-from-cursor\" signal}
+    @end{signal}
+    @begin[entry::delete-from-cursor]{signal}
       @begin{pre}
 lambda (entry type count)    :action
       @end{pre}
-      A keybinding signal which gets emitted when the user initiates a text
-      deletion. If the type is @code{:chars} of the @symbol{gtk:delete-type}
-      enumeration, GTK deletes the selection if there is one, otherwise it
-      deletes the requested number of characters. The default bindings for this
-      signal are the @kbd{Delete} key for deleting a character and the
-      @kbd{Ctrl-Delete} key for deleting a word.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[entry]{The @class{gtk:entry} widget which received the signal.}
         @entry[type]{The granularity of the deletion, as a value of the
-          @symbol{gtk:delete-type} enumeration.}
-        @entry[count]{An integer with the number of type units to delete.}
-      @end{table}
-    @subheading{The \"icon-press\" signal}
+          @sym{gtk:delete-type} enumeration.}
+        @entry[count]{The integer with the number of type units to delete.}
+      @end{simple-table}
+      A keybinding signal which gets emitted when the user initiates a text
+      deletion. If the type is @val[gtk:delete-type]{:chars} of the
+      @sym{gtk:delete-type} enumeration, GTK deletes the selection if there
+      is one, otherwise it deletes the requested number of characters. The
+      default bindings for this signal are the @kbd{Delete} key for deleting a
+      character and the @kbd{Ctrl-Delete} key for deleting a word.
+    @end{signal}
+    @begin[entry::icon-press]{signal}
       @begin{pre}
 lambda (entry pos event)    :run-last
       @end{pre}
-      The signal is emitted when an activatable icon is clicked.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[entry]{The @class{gtk:entry} widget on which the signal is
           emitted.}
         @entry[pos]{The position of the clicked icon as a value of the
-          @symbol{gtk:entry-icon-position} enumeration.}
+          @sym{gtk:entry-icon-position} enumeration.}
         @entry[event]{The @class{gdk:event} button press event.}
-      @end{table}
-    @subheading{The \"icon-release\" signal}
+      @end{simple-table}
+      The signal is emitted when an activatable icon is clicked.
+    @end{signal}
+    @begin[entry::icon-release]{signal}
       @begin{pre}
 lambda (entry pos event)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget on which the signal is
+          emitted.}
+        @entry[pos]{The position of the clicked icon as a value of the
+          @sym{gtk:entry-icon-position} enumeration.}
+        @entry[event]{The @class{gdk:event} button release event.}
+      @end{simple-table}
       The signal is emitted on the button release from a mouse click over an
       activatable icon.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget on which the signal is
-          emitted.}
-        @entry[pos]{The position of the clicked icon as a value of the
-          @symbol{gtk:entry-icon-position} enumeration.}
-        @entry[event]{The @class{gdk:event} button release event.}
-      @end{table}
-    @subheading{The \"insert-at-cursor\" signal}
+    @end{signal}
+    @begin[entry::insert-at-cursor]{signal}
       @begin{pre}
 lambda (entry string)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+        @entry[string]{The string to insert.}
+      @end{simple-table}
       A keybinding signal which gets emitted when the user initiates the
       insertion of a fixed string at the cursor. The signal has no default
       bindings.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-        @entry[string]{The string to insert.}
-      @end{table}
-    @subheading{The \"insert-emoji\" signal}
+    @end{signal}
+    @begin[entry::insert-emoji]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted to present the Emoji chooser for
       the entry. The default bindings for this signal are the @kbd{Ctrl-.} and
       @kbd{Ctrl-;} keys.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-      @end{table}
-    @subheading{The \"move-cursor\" signal}
+    @end{signal}
+    @begin[entry::move-cursor]{signal}
       @begin{pre}
 lambda (entry step count extend)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+        @entry[step]{The granularity of the move, as a value of the
+          @sym{gtk:movement-step} enumeration.}
+        @entry[count]{The integer with the number of step units to move.}
+        @entry[extend]{@em{True} if the move should extend the selection.}
+      @end{simple-table}
       A keybinding signal which gets emitted when the user initiates a cursor
       movement. If the cursor is not visible in the entry, this signal causes
       the viewport to be moved instead. Applications should not connect to it,
@@ -772,60 +787,59 @@ lambda (entry step count extend)    :action
         @item{@kbd{Ctrl}-arrow key combinations move by words/paragraphs.}
         @item{@kbd{Home}/@kbd{End} keys move to the ends of the buffer.}
       @end{itemize}
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-        @entry[step]{The granularity of the move, as a value of the
-          @symbol{gtk:movement-step} enumeration.}
-        @entry[count]{An integer with the number of step units to move.}
-        @entry[extend]{@em{True} if the move should extend the selection.}
-      @end{table}
-    @subheading{The \"paste-clipboard\" signal}
+    @end{signal}
+    @begin[entry::paste-clipboard]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @ckass{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted to paste the contents of the
       clipboard into the text view. The default bindings for this signal are
       the @kbd{Ctrl-v} and @kbd{Shift-Insert} keys.
-      @begin[code]{table}
-        @entry[entry]{The @ckass{gtk:entry} widget which received the signal.}
-      @end{table}
-    @subheading{The \"populate-popup\" signal}
+    @end{signal}
+    @begin[entry::populate-popup]{signal}
       @begin{pre}
 lambda (entry widget)    :run-last
       @end{pre}
-      The signal gets emitted before showing the context menu of the entry. If
-      you need to add items to the context menu, connect to this signal and
-      append your items to the widget, which will be a @class{gtk:menu} widget
-      in this case. If the @code{populate-all} property is @em{true}, this
-      signal will also be emitted to populate touch popups. In this case, widget
-      will be a different container, e.g. a @class{gtk:toolbar} widget. The
-      signal handler should not make assumptions about the type of the widget.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[entry]{The @class{gtk:entry} widget on which the signal is
           emitted.}
         @entry[widget]{The @class{gtk:widget} container that is being
           populated.}
-      @end{table}
-    @subheading{The \"preedit-changed\" signal}
+      @end{simple-table}
+      The signal gets emitted before showing the context menu of the entry. If
+      you need to add items to the context menu, connect to this signal and
+      append your items to the widget, which will be a @class{gtk:menu} widget
+      in this case. If the @slot[gtk:text-view]{populate-all} property is
+      @em{true}, this signal will also be emitted to populate touch popups. In
+      this case, widget will be a different container, for example a
+      @class{gtk:toolbar} widget. The signal handler should not make assumptions
+      about the type of the widget.
+    @end{signal}
+    @begin[entry::preedit-changed]{signal}
       @begin{pre}
 lambda (entry preedit)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+        @entry[preedit]{The current preedit string.}
+      @end{simple-table}
       If an input method is used, the typed text will not immediately be
       committed to the buffer. So if you are interested in the text, connect to
       this signal.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-        @entry[preedit]{The current preedit string.}
-      @end{table}
-    @subheading{The \"toggle-overwrite\" signal}
+    @end{signal}
+    @begin[entry::toggle-overwrite]{signal}
       @begin{pre}
 lambda (entry)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
+      @end{simple-table}
       A keybinding signal which gets emitted to toggle the overwrite mode of
       the entry. The default bindings for this signal is the @kbd{Insert} key.
-      @begin[code]{table}
-        @entry[entry]{The @class{gtk:entry} widget which received the signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:entry-new}
   @see-constructor{gtk:entry-new-with-buffer}
@@ -898,7 +912,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-activates-default)
       "Accessor"
       (documentation 'entry-activates-default 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-activates-default object) => setting}
   @syntax{(setf (gtk:entry-activates-default object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -918,7 +932,7 @@ lambda (entry)    :action
 
   If the @arg{setting} argument is @em{true}, the entry calls the
   @fun{gtk:window-activate-default} function on the window containing the entry,
-  in the default handler for the @code{\"activate\"} signal.
+  in the default handler for the @sig[gtk:entry]{activate} signal.
   @see-class{gtk:entry}
   @see-function{gtk:window-activate-default}")
 
@@ -928,14 +942,14 @@ lambda (entry)    :action
 (setf (documentation (liber:slot-documentation "attributes" 'entry) t)
  "The @code{attributes} property of type @class{pango:attr-list} (Read / Write)
   @br{}
-  A list of Pango attributes to apply to the text of the entry. This is mainly
+  The list of Pango attributes to apply to the text of the entry. This is mainly
   useful to change the size or weight of the text.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-attributes)
       "Accessor"
       (documentation 'entry-attributes 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-attributes object) => attrs}
   @syntax{(setf (gtk:entry-attributes object) attrs)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -956,13 +970,13 @@ lambda (entry)    :action
 (setf (documentation (liber:slot-documentation "buffer" 'entry) t)
  "The @code{buffer} property of type @class{gtk:entry-buffer}
   (Read / Write / Construct) @br{}
-  Text buffer object which actually stores entry text.")
+  The text buffer object which actually stores entry text.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-buffer)
       "Accessor"
       (documentation 'entry-buffer 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-buffer object) => buffer}
   @syntax{(setf (gtk:entry-buffer object) buffer)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -992,7 +1006,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-caps-lock-warning)
       "Accessor"
       (documentation 'entry-caps-lock-warning 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-caps-lock-warning object) => setting}
   @syntax{(setf (gtk:entry-caps-lock-warning object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1019,7 +1033,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-completion)
       "Accessor"
       (documentation 'entry-completion 'function)
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @syntax{(gtk:entry-completion object) => completion}
   @syntax{(setf (gtk:entry-completion object) completion)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1051,11 +1065,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-cursor-position)
       "Accessor"
       (documentation 'entry-cursor-position 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-cursor-position object) => position}
   @syntax{(setf (gtk:entry-cursor-position object) position)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[position]{an integer with the current position of the insertion
+  @argument[position]{an integer for the current position of the insertion
     cursor in chars}
   @begin{short}
     Accessor of the @slot[gtk:entry]{cursor-position} slot of the
@@ -1076,7 +1090,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-editable)
       "Accessor"
       (documentation 'entry-editable 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-editable object) => editable}
   @syntax{(setf (gtk:entry-editable object) editable)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1102,7 +1116,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-enable-emoji-completion)
       "Accessor"
       (documentation 'entry-enable-emoji-completion 'function)
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @syntax{(gtk:entry-enable-emoji-completion object) => enable}
   @syntax{(setf (gtk:entry-enable-emoji-completion object) enable)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1126,7 +1140,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-has-frame)
       "Accessor"
       (documentation 'entry-has-frame 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-has-frame object) => setting}
   @syntax{(setf (gtk:entry-has-frame object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1155,7 +1169,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-im-module)
       "Accessor"
       (documentation 'entry-im-module 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-im-module object) => setting}
   @syntax{(setf (gtk:entry-im-module object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1190,7 +1204,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-inner-border)
       "Accessor"
       (documentation 'entry-inner-border 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-inner-border object) => border}
   @syntax{(setf (gtk:entry-inner-border object) border)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1225,20 +1239,20 @@ lambda (entry)    :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-hints" 'entry) t)
- "The @code{input-hints} property of type @symbol{gtk:input-hints}
-  (Read / Write) @br{}
-  Additional hints, beyond the @code{input-purpose} property, that allow
-  input methods to fine-tune their behaviour.")
+ "The @code{input-hints} property of type @sym{gtk:input-hints} (Read / Write)
+  @br{}
+  Additional hints, beyond the @slot[gtk:entry]{input-purpose} property, that
+  allow input methods to fine-tune their behaviour.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-input-hints)
       "Accessor"
       (documentation 'entry-input-hints 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-input-hints object) => hints}
   @syntax{(setf (gtk:entry-input-hints object) hints)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[hints]{a value of the @symbol{gtk:input-hints} enumeration}
+  @argument[hints]{a value of the @sym{gtk:input-hints} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:entry]{input-hints} slot of the @class{gtk:entry}
     class.
@@ -1254,23 +1268,24 @@ lambda (entry)    :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-purpose" 'entry) t)
- "The @code{input-purpose} property of type @symbol{gtk:input-purpose}
+ "The @code{input-purpose} property of type @sym{gtk:input-purpose}
   (Read / Write) @br{}
   The purpose of this text field. This property can be used by on-screen
   keyboards and other input methods to adjust their behaviour. Note that setting
-  the purpose to the @code{:password} or @code{:pin} values is independent from
-  setting the @code{visibility} property. @br{}
-  Default value: @code{:free-form}")
+  the purpose to the @val[gtk:input-purpose]{:password} or
+  @val[gtk:input-purpose]{:pin} values is independent from setting the
+  @slot[gtk:entry]{visibility} property. @br{}
+  Default value: @val[gtk:input-purpose]{:free-form}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-input-purpose)
       "Accessor"
       (documentation 'entry-input-purpose 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-input-purpose object) => purpose}
   @syntax{(setf (gtk:entry-input-purpose object) purpose)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[purpose]{a value of the @symbol{gtk:input-purpose} enumeration}
+  @argument[purpose]{a value of the @sym{gtk:input-purpose} enumeration}
   @begin{short}
     Accessor of the slot @slot[gtk:entry]{input-purpose} of the
     @class{gtk:entry} class.
@@ -1299,7 +1314,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-invisible-char)
       "Accessor"
       (documentation 'entry-invisible-char 'function)
- "@version{2023-3-4}
+ "@version{2025-07-02}
   @syntax{(gtk:entry-invisible-char object) => char}
   @syntax{(setf (gtk:entry-invisble-char object) char)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1314,7 +1329,7 @@ lambda (entry)    :action
   place of the actual text when the @fun{gtk:entry-visibility} function has
   been called to set text visibility to @em{false}.
 
-  I.e. this is the character used in \"password mode\" to show the user how
+  That is, this is the character used in \"password mode\" to show the user how
   many characters have been typed. By default, GTK picks the best invisible
   char available in the current font. If you set the invisible char to 0, then
   the user will get no feedback at all. There will be no text on the screen as
@@ -1336,7 +1351,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-invisible-char-set)
       "Accessor"
       (documentation 'entry-invisible-char-set 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-invisible-char-set object) => setting}
   @syntax{(setf (gtk:entry-invisible-char-set object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1354,7 +1369,7 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "max-length" 'entry) t)
  "The @code{max-length} property of type @code{:int} (Read / Write) @br{}
-  Maximum number of characters for this entry. Zero if no maximum. @br{}
+  The maximum number of characters for this entry. Zero if no maximum. @br{}
   Allowed values: [0,65535] @br{}
   Default value: 0")
 
@@ -1362,11 +1377,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-max-length)
       "Accessor"
       (documentation 'entry-max-length 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-max-length object) => max}
   @syntax{(setf (gtk:entry-max-length object) max)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[max]{an integer with the maximum length of the entry, or 0 for no
+  @argument[max]{an integer for the maximum length of the entry, or 0 for no
     maximum, the value passed in will be clamped to the range [0, 65536]}
   @begin{short}
     Accessor of the @slot[gtk:entry]{max-length} slot of the @class{gtk:entry}
@@ -1402,11 +1417,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-max-width-chars)
       "Accessor"
       (documentation 'entry-max-width-chars 'function)
- "@version{2023-3-13}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-max-width-chars object) => n-chars}
   @syntax{(setf (gtk:entry-max-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:entry} object}
-  @argument[n-chars]{an integer with the maximum width, in characters}
+  @argument[n-chars]{an integer for the maximum width, in characters}
   @begin{short}
     Accessor of the @slot[gtk:entry]{max-width-chars} slot of the
     @class{gtk:entry} class.
@@ -1422,14 +1437,14 @@ lambda (entry)    :action
 (setf (documentation (liber:slot-documentation "overwrite-mode" 'entry) t)
  "The @code{overwrite-mode} property of type @code{:boolean} (Read / Write)
   @br{}
-  If text is overwritten when typing in the entry. @br{}
+  Whether text is overwritten when typing in the entry. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-overwrite-mode)
       "Accessor"
       (documentation 'entry-overwrite-mode 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-overwrite-mode object) => overwrite}
   @syntax{(setf (gtk:entry-overwrite-mode object) overwrite)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1458,7 +1473,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-placeholder-text)
       "Accessor"
       (documentation 'entry-placeholder-text 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-placeholder-text object) => text}
   @syntax{(setf (gtk:entry-placeholder-text object) text)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1484,26 +1499,26 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "populate-all" 'entry) t)
  "The @code{populate-all} property of type @code{:boolean} (Read / Write) @br{}
-  If @em{true}, the @code{\"populate-popup\"} signal is also emitted for touch
-  popups. @br{}
+  If @em{true}, the @sig[gtk:entry]{populate-popup} signal is also emitted for
+  touch popups. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-populate-all)
       "Accessor"
       (documentation 'entry-populate-all 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-populate-all object) => setting}
   @syntax{(setf (gtk:entry-populate-all object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[setting]{a boolean whether the @code{\"populate\"} signal is also
-    emitted for touch popups}
+  @argument[setting]{a boolean whether the @sig[gtk:entry]{populate-popup}
+    signal is also emitted for touch popups}
   @begin{short}
     Accessor of the @slot[gtk:entry]{populate-all} slot of the @class{gtk:entry}
     class.
   @end{short}
-  If the @code{setting} argument is @em{true}, the @code{\"populate-popup\"}
-  signal is also emitted for touch popups.
+  If the @code{setting} argument is @em{true}, the
+  @sig[gtk:entry]{populate-popup} signal is also emitted for touch popups.
   @see-class{gtk:entry}")
 
 ;;; --- gtk:entry-primary-icon-activatable -------------------------------------
@@ -1513,17 +1528,17 @@ lambda (entry)    :action
                                                 'entry) t)
  "The @code{primary-icon-activatable} property of type @code{:boolean}
   (Read / Write) @br{}
-  Whether the primary icon is activatable. GTK emits the @code{\"icon-press\"}
-  and @code{\"icon-release\"} signals only on sensitive, activatable icons.
-  Sensitive, but non-activatable icons can be used for purely informational
-  purposes. @br{}
+  Whether the primary icon is activatable. GTK emits the
+  @sig[gtk:entry]{icon-press} and @sig[gtk:entry]{icon-release} signals only on
+  sensitive, activatable icons. Sensitive, but non-activatable icons can be
+  used for purely informational purposes. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-primary-icon-activatable)
       "Accessor"
       (documentation 'entry-primary-icon-activatable 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-activatable object) => activatable}
   @syntax{(setf (gtk:entry-primary-icon-activatable object) activatable)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1532,10 +1547,10 @@ lambda (entry)    :action
     Accessor of the @slot[gtk:entry]{primary-icon-activatable} slot of the
     @class{gtk:entry} class.
   @end{short}
-  Whether the primary icon is activatable. GTK emits the @code{\"icon-press\"}
-  and @code{\"icon-release\"} signals only on sensitive, activatable icons.
-  Sensitive, but non-activatable icons can be used for purely informational
-  purposes.
+  Whether the primary icon is activatable. GTK emits the
+  @sig[gtk:entry]{icon-press} and @sig[gtk:entry]{icon-release} signals only on
+  sensitive, activatable icons. Sensitive, but non-activatable icons can be
+  used for purely informational purposes.
   @see-class{gtk:entry}
   @see-function{gtk:entry-icon-activatable}")
 
@@ -1551,7 +1566,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-primary-icon-gicon)
       "Accessor"
       (documentation 'entry-primary-icon-gicon 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-primary-icon-gicon object) => icon}
   @syntax{(setf (gtk:entry-primary-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1577,11 +1592,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-primary-icon-name)
       "Accessor"
       (documentation 'entry-primary-icon-name 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-name object) => name}
   @syntax{(setf (gtk:entry-primary-icon-name object) name)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[name]{a string with the icon name}
+  @argument[name]{a string for the icon name}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-name} slot of the
     @class{gtk:entry} class.
@@ -1597,13 +1612,13 @@ lambda (entry)    :action
 (setf (documentation (liber:slot-documentation "primary-icon-pixbuf" 'entry) t)
  "The @code{primary-icon-pixbuf} property of type @class{gdk-pixbuf:pixbuf}
   (Read / Write) @br{}
-  A pixbuf to use as the primary icon for the entry.")
+  The pixbuf to use as the primary icon for the entry.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-primary-icon-pixbuf)
       "Accessor"
       (documentation 'entry-primary-icon-pixbuf 'function)
- "@version{2023-3-12}
+ "@version{2023-03-12}
   @syntax{(gtk:entry-primary-icon-pixbuf object) => pixbuf}
   @syntax{(setf (gtk:entry-primary-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1624,17 +1639,17 @@ lambda (entry)    :action
  "The @code{primary-icon-sensitive} property of type @code{:boolean}
   (Read / Write) @br{}
   Whether the primary icon is sensitive. An insensitive icon appears grayed out.
-  GTK does not emit the \"icon-press\" and @code{\"icon-release\"} signals and
-  does not allow drag and drop from insensitive icons. An icon should be set
-  insensitive if the action that would trigger when clicked is currently not
-  available. @br{}
+  GTK does not emit the @sig[gtk:entry]{icon-press} and
+  @sig[gtk:entry]{icon-release} signals and does not allow drag and drop from
+  insensitive icons. An icon should be set insensitive if the action that would
+  trigger when clicked is currently not available. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-primary-icon-sensitive)
       "Accessor"
       (documentation 'entry-primary-icon-sensitive 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-sensitive object) => sensitive}
   @syntax{(setf (gtk:entry-primary-icon-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1644,10 +1659,10 @@ lambda (entry)    :action
     @class{gtk:entry} class.
   @end{short}
   Whether the primary icon is sensitive. An insensitive icon appears grayed out.
-  GTK does not emit the @code{\"icon-press\"} and @code{\"icon-release\"}
-  signals and does not allow drag and drop from insensitive icons. An icon
-  should be set insensitive if the action that would trigger when clicked is
-  currently not available.
+  GTK does not emit the @sig[gtk:entry]{icon-press} and
+  @sig[gtk:entry]{icon-release} signals and does not allow drag and drop from
+  insensitive icons. An icon should be set insensitive if the action that would
+  trigger when clicked is currently not available.
   @see-class{gtk:entry}
   @see-function{gtk:entry-icon-sensitive}
   @see-function{gtk:entry-secondary-icon-sensitive}")
@@ -1661,18 +1676,18 @@ lambda (entry)    :action
   The stock ID to use for the primary icon for the entry. @br{}
   @em{Warning:} The @code{primary-icon-stock} property has been deprecated
   since version 3.10 and should not be used in newly written code. Use the
-  @code{primary-icon-name} property instead. @br{}
+  @slot[gtk:entry]{primary-icon-name} property instead. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-primary-icon-stock)
       "Accessor"
       (documentation 'entry-primary-icon-stock 'function)
- "@version{2023-3-4}
+ "@version{2025-07-02}
   @syntax{(gtk:entry-primary-icon-stock object) => stock}
   @syntax{(setf (gtk:entry-primary-icon-stock object) stock)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[stock]{a string with the stock ID to use for the primary icon}
+  @argument[stock]{a string for the stock ID to use for the primary icon}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-stock} slot of the
     @class{gtk:entry} class.
@@ -1681,7 +1696,7 @@ lambda (entry)    :action
   @begin[Warning]{dictionary}
     The @code{primary-icon-stock} property has been deprecated since version
     3.10 and should not be used in newly written code. Use the
-    @code{primary-icon-name} property instead.
+    @slot[gtk:entry]{primary-icon-name} property instead.
   @end{dictionary}
   @see-class{gtk:entry}
   @see-function{gtk:entry-primary-icon-name}")
@@ -1691,20 +1706,20 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "primary-icon-storage-type"
                                                'entry) t)
- "The @code{primary-icon-storage-type} property of type @symbol{gtk:image-type}
+ "The @code{primary-icon-storage-type} property of type @sym{gtk:image-type}
   (Read) @br{}
   The representation which is used for the primary icon of the entry. @br{}
-  Default value: @code{:empty}")
+  Default value: @val[gtk:image-type]{:empty}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-primary-icon-storage-type)
       "Accessor"
       (documentation 'entry-primary-icon-storage-type 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-storage-type object) => type}
   @syntax{(setf (gtk:entry-primary-icon-storage-type object) type)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[type]{a value of the @symbol{gtk:image-type} enumeration}
+  @argument[type]{a value of the @sym{gtk:image-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-storage-type} slot of the
     @class{gtk:entry} class.
@@ -1729,11 +1744,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-primary-icon-tooltip-markup)
       "Accessor"
       (documentation 'entry-primary-icon-tooltip-markup 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-tooltip-markup object) => markup}
   @syntax{(setf (gtk:entry-primary-icon-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[markup]{a string with the contents of the tooltip}
+  @argument[markup]{a string for the contents of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-tooltip-markup} slot of the
     @class{gtk:entry} class.
@@ -1758,11 +1773,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-primary-icon-tooltip-text)
       "Accessor"
       (documentation 'entry-primary-icon-tooltip-text 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-primary-icon-tooltip-text object) => text}
   @syntax{(setf (gtk:entry-primary-icon-tooltip-text object) text)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[text]{a string with the contents of the tooltip}
+  @argument[text]{a string for the contents of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:entry]{primary-icon-tooltip-text} slot of the
     @class{gtk:entry} class.
@@ -1787,12 +1802,12 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-progress-fraction)
       "Accessor"
       (documentation 'entry-progress-fraction 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-progress-fraction object) => fraction}
   @syntax{(setf (gtk:entry-progress-fraction object) fraction)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[fraction]{a double float with the fraction of the task that is
-    been completed}
+  @argument[fraction]{a number coerced to a double float for the fraction of
+    the task that is been completed}
   @begin{short}
     Accessor of the @slot[gtk:entry]{progress-fraction} slot of the
     @class{gtk:entry} class.
@@ -1818,11 +1833,12 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-progress-pulse-step)
       "Accessor"
       (documentation 'entry-progress-pulse-step 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-progress-pulse-step object) => step}
   @syntax{(setf (gtk:entry-progress-pulse-step object) step)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[step]{a double float with the fraction between 0.0 and 1.0}
+  @argument[step]{a number coerced to a double float for the fraction between
+    0.0 and 1.0}
   @begin{short}
     Accessor of the @slot[gtk:entry]{progress-pulse-step} slot of the
     @class{gtk:entry} class.
@@ -1847,11 +1863,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-scroll-offset)
       "Accessor"
       (documentation 'entry-scroll-offset 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-scroll-offset object) => offset}
   @syntax{(setf (gtk:entry-scroll-offset object) offset)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[offset]{an integer with the number of pixels of the entry scrolled
+  @argument[offset]{an integer for the number of pixels of the entry scrolled
     off}
   @begin{short}
     Accessor of the @slot[gtk:entry]{scroll-offset} slot of the
@@ -1867,17 +1883,17 @@ lambda (entry)    :action
                                                'entry) t)
  "The @code{secondary-icon-activatable} property of type @code{:boolean}
   (Read / Write) @br{}
-  Whether the secondary icon is activatable. GTK emits the @code{\"icon-press\"}
-  and @code{\"icon-release\"} signals only on sensitive, activatable icons.
-  Sensitive, but non-activatable icons can be used for purely informational
-  purposes. @br{}
+  Whether the secondary icon is activatable. GTK emits the
+  @sig[gtk:entry]{icon-press} and @sig[gtk:entry]{icon-release} signals only on
+  sensitive, activatable icons. Sensitive, but non-activatable icons can be used
+  for purely informational purposes. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-secondary-icon-activatable)
       "Accessor"
       (documentation 'entry-secondary-icon-activatable 'function)
- "@version{2023-3-4}
+ "@version{2025-07-02}
   @syntax{(gtk:entry-secondary-icon-activatable object) => activatable}
   @syntax{(setf (gtk:entry-secondary-icon-activatable object) activatable)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1886,10 +1902,10 @@ lambda (entry)    :action
     Accessor of the @slot[gtk:entry]{secondary-icon-activatable} slot of the
     @class{gtk:entry} class.
   @end{short}
-  Whether the secondary icon is activatable. GTK emits the @code{\"icon-press\"}
-  and @code{\"icon-release\"} signals only on sensitive, activatable icons.
-  Sensitive, but non-activatable icons can be used for purely informational
-  purposes.
+  Whether the secondary icon is activatable. GTK emits the
+  @sig[gtk:entry]{icon-press} and @sig[gtk:entry]{icon-release} signals only on
+  sensitive, activatable icons. Sensitive, but non-activatable icons can be used
+  for purely informational purposes.
   @see-class{gtk:entry}
   @see-function{gtk:entry-icon-activatable}")
 
@@ -1905,7 +1921,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-gicon)
       "Accessor"
       (documentation 'entry-secondary-icon-gicon 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-secondary-icon-gicon object) => icon}
   @syntax{(setf (gtk:entry-secondary-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1932,11 +1948,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-name)
       "Accessor"
       (documentation 'entry-secondary-icon-name 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-secondary-icon-name object) => name}
   @syntax{(setf (gtk:entry-secondary-icon-name object) name)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[name]{a string with the icon name}
+  @argument[name]{a string for the icon name}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-name} slot of the
     @class{gtk:entry} class.
@@ -1959,7 +1975,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-pixbuf)
       "Accessor"
       (documentation 'entry-secondary-icon-pixbuf 'function)
- "@version{2023-3-12}
+ "@version{2023-03-12}
   @syntax{(gtk:entry-secondary-icon-pixbuf object) => pixbuf}
   @syntax{(setf (gtk:entry-secondary-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -1981,17 +1997,17 @@ lambda (entry)    :action
  "The @code{secondary-icon-sensitive} property of type @code{:boolean}
   (Read / Write) @br{}
   Whether the secondary icon is sensitive. An insensitive icon appears grayed
-  out. GTK does not emit the @code{\"icon-press\"} and @code{\"icon-release\"}
-  signals and does not allow drag and drop from insensitive icons. An icon
-  should be set insensitive if the action that would trigger when clicked is
-  currently not available. @br{}
+  out. GTK does not emit the @sig[gtk:entry]{icon-press} and
+  @sig[gtk:entry]{icon-release} signals and does not allow drag and drop from
+  insensitive icons. An icon should be set insensitive if the action that would
+  trigger when clicked is currently not available. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-secondary-icon-sensitive)
       "Accessor"
       (documentation 'entry-secondary-icon-sensitive 'function)
- "@version{2023-3-4}
+ "@version{2025-07-02}
   @syntax{(gtk:entry-secondary-icon-sensitive object) => sensitive}
   @syntax{(setf (gtk:entry-secondary-icon-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2001,10 +2017,10 @@ lambda (entry)    :action
     @class{gtk:entry} class.
   @end{short}
   Whether the secondary icon is sensitive. An insensitive icon appears grayed
-  out. GTK does not emit the @code{\"icon-press\"} and @code{\"icon-release\"}
-  signals and does not allow drag and drop from insensitive icons. An icon
-  should be set insensitive if the action that would trigger when clicked is
-  currently not available.
+  out. GTK does not emit the @sig[gtk:entry]{icon-press} and
+  @sig[gtk:entry]{icon-release} signals and does not allow drag and drop from
+  insensitive icons. An icon should be set insensitive if the action that would
+  trigger when clicked is currently not available.
   @see-class{gtk:entry}
   @see-function{gtk:entry-icon-sensitive}")
 
@@ -2017,18 +2033,18 @@ lambda (entry)    :action
   The stock ID to use for the secondary icon for the entry. @br{}
   @em{Warning:} The @code{secondary-icon-stock} property has been deprecated
   since version 3.10 and should not be used in newly written code. Use the
-  @code{secondary-icon-name} property instead. @br{}
+  @slot[gtk:entry]{secondary-icon-name} property instead. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-secondary-icon-stock)
       "Accessor"
       (documentation 'entry-secondary-icon-stock 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-secondary-icon-stock object) => stock}
   @syntax{(setf (gtk:entry-secondary-icon-stock object) stock)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[stock]{a string with the stock ID to use for the icon}
+  @argument[stock]{a string for the stock ID to use for the icon}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-stock} slot of the
     @class{gtk:entry} class.
@@ -2047,20 +2063,20 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "secondary-icon-storage-type"
                                                'entry) t)
- "The @code{secondary-icon-storage-type} property of type
-  @symbol{gtk:image-type} (Read) @br{}
+ "The @code{secondary-icon-storage-type} property of type @sym{gtk:image-type}
+  (Read) @br{}
   The representation which is used for the secondary icon of the entry. @br{}
-  Default value: @code{:empty}")
+  Default value: @val[gtk:image-type]{:empty}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-secondary-icon-storage-type)
       "Accessor"
       (documentation 'entry-secondary-icon-storage-type 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-secondary-icon-storage-type object) => type}
   @syntax{(setf (gtk:entry-secondary-icon-storage-type object) type)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[type]{a value of the @symbol{gtk:image-type} enumeration}
+  @argument[type]{a value of the @sym{gtk:image-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-storage-type} slot of the
     @class{gtk:entry} class.
@@ -2086,11 +2102,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-tooltip-markup)
       "Accessor"
       (documentation 'entry-secondary-icon-tooltip-markup 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-secondary-icon-tooltip-markup object) => markup}
   @syntax{(setf (gtk:entry-secondary-icon-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[markup]{a string with the contents of the tooltip}
+  @argument[markup]{a string for the contents of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-tooltip-markup} slot of the
     @class{gtk:entry} class.
@@ -2115,11 +2131,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-secondary-icon-tooltip-text)
       "Accessor"
       (documentation 'entry-secondary-icon-tooltip-text 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-secondary-icon-tooltip-text object) => text}
   @syntax{(setf (gtk:entry-secondary-icon-tooltip-text object) text)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[text]{a string with the contents of the tooltip}
+  @argument[text]{a string for the contents of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:entry]{secondary-icon-tooltip-text} slot of the
     @class{gtk:entry} class.
@@ -2144,11 +2160,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-selection-bound)
       "Accessor"
       (documentation 'entry-selection-bound 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-selection-bound object) => bound}
   @syntax{(setf (gtk:entry-selection-bound object) bound)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[bound]{an integer with the position of the opposite end of the
+  @argument[bound]{an integer for the position of the opposite end of the
     selection from the cursor in chars}
   @begin{short}
     Accessor of the @slot[gtk:entry]{selection-bound} slot of the
@@ -2161,25 +2177,25 @@ lambda (entry)    :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'entry) t)
- "The @code{shadow-type} property of type @symbol{gtk:shadow-type}
-  (Read / Write) @br{}
-  Which kind of shadow to draw around the entry when \"has-frame\" is set to
-  @em{true}. @br{}
+ "The @code{shadow-type} property of type @sym{gtk:shadow-type} (Read / Write)
+  @br{}
+  Which kind of shadow to draw around the entry when the
+  @slot[gtk:entry]{has-frame} property is set to @em{true}. @br{}
   @em{Warning:} The @code{shadow-type} property has been deprecated since
   version 3.20 and should not be used in newly written code. Use CSS to
   determine the style of the border. The value of this style property is
   ignored. @br{}
-  Default value: @code{:in}")
+  Default value: @val[gtk:shadow-type]{:in}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-shadow-type)
       "Accessor"
       (documentation 'entry-shadow-type 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-shadow-type object) => type}
   @syntax{(setf (gtk:entry-shadow-type object) type)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[type]{a value of the @symbol{gtk:shadow-type} enumeration}
+  @argument[type]{a value of the @sym{gtk:shadow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:entry]{shadow-type} slot of the @class{gtk:entry}
     class.
@@ -2207,7 +2223,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-show-emoji-icon)
       "Accessor"
       (documentation 'entry-show-emoji-icon 'function)
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @syntax{(gtk:entry-show-emoji-icon object) => setting}
   @syntax{(setf (gtk:entry-show-emoji-icon object) setting)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2224,13 +2240,13 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "tabs" 'entry) t)
  "The @code{tabs} property of type @class{pango:tab-array} (Read / Write) @br{}
-  A list of tabstop locations to apply to the text of the entry.")
+  The list of tabstop locations to apply to the text of the entry.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'entry-tabs)
       "Accessor"
       (documentation 'entry-tabs 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-tabs object) => tabs}
   @syntax{(setf (gtk:entry-tabs object) tabs)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2257,11 +2273,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-text)
       "Accessor"
       (documentation 'entry-text 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-text object) => text}
   @syntax{(setf (gtk:entry-text object) text)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[text]{a string with the contents of the entry}
+  @argument[text]{a string for the contents of the entry}
   @begin{short}
     Accessor of the @slot[gtk:entry]{text} slot of the @class{gtk:entry} class.
   @end{short}
@@ -2291,10 +2307,10 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-text-length)
       "Accessor"
       (documentation 'entry-text-length 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-text-length object) => length}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[length]{an unsigned integer with the length of the text}
+  @argument[length]{an unsigned integer for the length of the text}
   @begin{short}
     Accessor of the @slot[gtk:entry]{text-length} slot of the @class{gtk:entry}
     class.
@@ -2321,7 +2337,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-truncate-multiline)
       "Accessor"
       (documentation 'entry-truncate-multiline 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-truncate-multiline object) => truncate}
   @syntax{(setf (gtk:entry-truncate-multiline object) truncate)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2346,7 +2362,7 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-visibility)
       "Accessor"
       (documentation 'entry-visibility 'function)
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @syntax{(gtk:entry-visibility object) => visible}
   @syntax{(setf (gtk:entry-visibility object) visible)}
   @argument[object]{a @class{gtk:entry} widget}
@@ -2374,7 +2390,7 @@ lambda (entry)    :action
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "width-chars" 'entry) t)
  "The @code{width-chars} property of tpye @code{:int} (Read / Write) @br{}
-  Number of characters to leave space for in the entry. @br{}
+  The number of characters to leave space for in the entry. @br{}
   Allowed values: >= -1 @br{}
   Default value: -1")
 
@@ -2382,11 +2398,11 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-width-chars)
       "Accessor"
       (documentation 'entry-width-chars 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-width-chars object) => n-chars}
   @syntax{(setf (gtk:entry-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[n-chars]{an integer with the width in chars}
+  @argument[n-chars]{an integer for the width in chars}
   @begin{short}
     Accessor of the @slot[gtk:entry]{width-chars} slot of the @class{gtk:entry}
     class.
@@ -2415,11 +2431,12 @@ lambda (entry)    :action
 (setf (liber:alias-for-function 'entry-xalign)
       "Accessor"
       (documentation 'entry-xalign 'function)
- "@version{2023-3-4}
+ "@version{2025-06-28}
   @syntax{(gtk:entry-xalign object) => xalign}
   @syntax{(setf (gtk:entry-xalign object) xalign)}
   @argument[object]{a @class{gtk:entry} widget}
-  @argument[xalign]{a float with the horizontal alignment}
+  @argument[xalign]{a number coerced to a single float for the horizontal
+    alignment}
   @begin{short}
     Accessor of the @slot[gtk:entry]{xalign} slot of the @class{gtk:entry}
     class.
@@ -2429,14 +2446,14 @@ lambda (entry)    :action
   @see-class{gtk:entry}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_new ()
+;;; gtk_entry_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline entry-new))
 
 (defun entry-new ()
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @return{The new @class{gtk:entry} widget.}
   @begin{short}
     Creates a new entry.
@@ -2447,14 +2464,14 @@ lambda (entry)    :action
 (export 'entry-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_new_with_buffer ()
+;;; gtk_entry_new_with_buffer
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline entry-new-with-buffer))
 
 (defun entry-new-with-buffer (buffer)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[buffer]{a @class{gtk:entry-buffer} object to use for the entry}
   @return{The new @class{gtk:entry} widget.}
   @begin{short}
@@ -2468,7 +2485,7 @@ lambda (entry)    :action
 (export 'entry-new-with-buffer)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_text_area () -> entry-text-area
+;;; gtk_entry_get_text_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_text_area" %entry-get-text-area) :void
@@ -2477,7 +2494,7 @@ lambda (entry)    :action
 
 (defun entry-text-area (entry)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @return{The @class{gdk:rectangle} instance with the text area.}
   @begin{short}
@@ -2498,13 +2515,13 @@ lambda (entry)    :action
 (export 'entry-text-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_unset_invisible_char ()
+;;; gtk_entry_unset_invisible_char
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_unset_invisible_char" entry-unset-invisible-char)
     :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Unsets the invisible char previously set with the
@@ -2518,8 +2535,8 @@ lambda (entry)    :action
 (export 'entry-unset-invisible-char)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_alignment ()
-;;; gtk_entry_get_alignment () -> entry-alignment
+;;; gtk_entry_set_alignment
+;;; gtk_entry_get_alignment
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-alignment) (align entry)
@@ -2527,12 +2544,12 @@ lambda (entry)    :action
 
 (defun entry-alignment (entry)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @syntax{(gtk:entry-alignment entry) => align}
   @syntax{(setf (gtk:entry-alignment entry) align)}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[align]{a float with the horizontal alignment, from 0.0 (left) to
-    1.0 (right), reversed for RTL layouts}
+  @argument[align]{a number coerced to a single float for the horizontal
+    alignment, from 0.0 (left) to 1.0 (right), reversed for RTL layouts}
   @begin{short}
     Accessor of the horizontal positioning of the entry.
   @end{short}
@@ -2548,21 +2565,21 @@ lambda (entry)    :action
 (export 'entry-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_layout () -> entry-layout
+;;; gtk_entry_get_layout
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_layout" entry-layout) (g:object pango-layout)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
   @argument[entry]{a @class{gtk:entry} widget}
   @return{The @class{pango:layout} object for the entry.}
   @begin{short}
     Gets the Pango layout used to display the entry.
   @end{short}
-  The Pano layout is useful to e.g. convert text positions to pixel positions,
-  in combination with the @fun{gtk:entry-layout-offsets} function. The returned
-  Pango layout is owned by the entry and must not be modified or freed by the
-  caller.
+  The Pano layout is useful to, for example, convert text positions to pixel
+  positions, in combination with the @fun{gtk:entry-layout-offsets} function.
+  The returned Pango layout is owned by the entry and must not be modified or
+  freed by the caller.
 
   Keep in mind that the Pango layout text may contain a preedit string, so the
   @fun{gtk:entry-layout-index-to-text-index} and
@@ -2578,7 +2595,7 @@ lambda (entry)    :action
 (export 'entry-layout)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_layout_offsets () -> entry-layout-offsets
+;;; gtk_entry_get_layout_offsets
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_layout_offsets" %entry-get-layout-offsets) :void
@@ -2588,25 +2605,23 @@ lambda (entry)    :action
 
 (defun entry-layout-offsets (entry)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
+  @syntax{(gtk:entry-layout-offsets entry) => x, y}
   @argument[entry]{a @class{gtk:entry} widget}
-  @begin{return}
-    @code{x} -- an integer with the x offset of the Pango layout, or @code{nil}
-    @br{}
-    @code{y} -- an integer with the y offset of the Pango layout, or @code{nil}
-  @end{return}
+  @argument[x]{an integer for the x offset of the Pango layout}
+  @argument[y]{an integer for the y offset of the Pango layout}
   @begin{short}
     Obtains the position of the Pango layout used to render text in the entry,
     in widget coordinates.
   @end{short}
-  Useful if you want to line up the text in an entry with some other text, e.g.
-  when using the entry to implement editable cells in a sheet widget. Also
-  useful to convert mouse events into coordinates inside the Pango layout, e.g.
-  to take some action if some part of the entry text is clicked.
+  Useful if you want to line up the text in an entry with some other text, for
+  example, when using the entry to implement editable cells in a sheet widget.
+  Also useful to convert mouse events into coordinates inside the Pango layout,
+  for example, to take some action if some part of the entry text is clicked.
 
   Note that as the user scrolls around in the entry the offsets will change.
-  You will need to connect to the @code{\"notify::scroll-offset\"} signal to
-  track this. Remember when using the @class{pango:layout} functions you need
+  You will need to connect to the @sig[g:object]{notify::scroll-offset} signal
+  to track this. Remember when using the @class{pango:layout} functions you need
   to convert to and from pixels using the @fun{pango:pixels} function or
   the @var{pango:+scale+} constant.
 
@@ -2628,15 +2643,15 @@ lambda (entry)    :action
 (export 'entry-layout-offsets)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_layout_index_to_text_index ()
+;;; gtk_entry_layout_index_to_text_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_layout_index_to_text_index"
                entry-layout-index-to-text-index) :int
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[index]{an integer with the byte index into the entry layout
+  @argument[index]{an integer for the byte index into the entry layout
     text}
   @return{Byte index into the entry contents.}
   @begin{short}
@@ -2655,15 +2670,15 @@ lambda (entry)    :action
 (export 'entry-layout-index-to-text-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_text_index_to_layout_index ()
+;;; gtk_entry_text_index_to_layout_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_text_index_to_layout_index"
                entry-text-index-to-layout-index) :int
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[index]{an integer with the byte index into the entry contents}
+  @argument[index]{an integer for the byte index into the entry contents}
   @return{The integer with the byte index into the entry layout text.}
   @begin{short}
     Converts from a position in the Pango layout of the entry, returned by the
@@ -2679,8 +2694,8 @@ lambda (entry)    :action
 (export 'entry-text-index-to-layout-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_cursor_hadjustment ()
-;;; gtk_entry_get_cursor_hadjustment () -> entry-cursor-hadjustment
+;;; gtk_entry_set_cursor_hadjustment
+;;; gtk_entry_get_cursor_hadjustment
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-cursor-hadjustment) (adjustment entry)
@@ -2693,7 +2708,7 @@ lambda (entry)    :action
 (cffi:defcfun ("gtk_entry_get_cursor_hadjustment" entry-cursor-hadjustment)
     (g:object adjustment)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @syntax{(gtk:entry-cursor-hadjustment entry) => adjustment}
   @syntax{(setf (gtk:entry-cursor-hadjustment entry) adjustment)}
   @argument[entry]{a @class{gtk:entry} widget}
@@ -2716,12 +2731,12 @@ lambda (entry)    :action
 (export 'entry-cursor-hadjustment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_progress_pulse ()
+;;; gtk_entry_progress_pulse
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_progress_pulse" entry-progress-pulse) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Indicates that some progress is made, but you do not know how much.
@@ -2738,13 +2753,13 @@ lambda (entry)    :action
 (export 'entry-progress-pulse)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_im_context_filter_keypress ()
+;;; gtk_entry_im_context_filter_keypress
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_im_context_filter_keypress"
                entry-im-context-filter-keypress) :boolean
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @argument[event]{a @class{gdk:event} key event}
   @return{@em{True} if the input method handled the key event.}
@@ -2771,12 +2786,12 @@ lambda (entry)    :action
 (export 'entry-im-context-filter-keypress)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_reset_im_context ()
+;;; gtk_entry_reset_im_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_reset_im_context" entry-reset-im-context) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Reset the input method context of the entry if needed.
@@ -2789,15 +2804,15 @@ lambda (entry)    :action
 (export 'entry-reset-im-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_from_pixbuf ()
+;;; gtk_entry_set_icon_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_set_icon_from_pixbuf" entry-set-icon-from-pixbuf)
     :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object, or @code{nil}}
   @begin{short}
     Sets the icon shown in the specified position using a pixbuf.
@@ -2814,15 +2829,15 @@ lambda (entry)    :action
 (export 'entry-set-icon-from-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_from_stock ()
+;;; gtk_entry_set_icon_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-set-icon-from-stock (entry pos stock)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[stock]{a string with the name of the stock item, or @code{nil}}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[stock]{a string for the name of the stock item, or @code{nil}}
   @begin{short}
     Sets the icon shown in the entry at the specified position from a stock
     image.
@@ -2848,16 +2863,16 @@ lambda (entry)    :action
 (export 'entry-set-icon-from-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_from_icon_name ()
+;;; gtk_entry_set_icon_from_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_set_icon_from_icon_name"
                entry-set-icon-from-icon-name) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[name]{a string with the icon name, or @code{nil}}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[name]{a string for the icon name, or @code{nil}}
   @begin{short}
     Sets the icon shown in the entry at the specified position from the current
     icon theme.
@@ -2874,15 +2889,15 @@ lambda (entry)    :action
 (export 'entry-set-icon-from-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_from_gicon ()
+;;; gtk_entry_set_icon_from_gicon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_set_icon_from_gicon" entry-set-icon-from-gicon) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[icon]{a @class{g:icon} object with the icon to set, or @code{nil}}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[icon]{a @class{g:icon} object for the icon to set, or @code{nil}}
   @begin{short}
     Sets the icon shown in the entry at the specified position from the current
     icon theme.
@@ -2900,20 +2915,22 @@ lambda (entry)    :action
 (export 'entry-set-icon-from-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_storage_type () -> entry-icon-storage-type
+;;; gtk_entry_get_icon_storage_type
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-icon-storage-type (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @return{The @symbol{gtk:image-type} value with the image representation being
-    used.}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @begin{return}
+    The @sym{gtk:image-type} value with the image representation being used.
+  @end{return}
   @begin{short}
     Gets the type of representation being used by the icon to store image data.
   @end{short}
-  If the icon has no image data, the return value will be @code{:empty}.
+  If the icon has no image data, the return value will be
+  @val[gtk:image-type]{:empty}.
   @see-class{gtk:entry}
   @see-symbol{gtk:entry-icon-position}
   @see-symbol{gtk:image-type}"
@@ -2927,16 +2944,16 @@ lambda (entry)    :action
 (export 'entry-icon-storage-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_pixbuf () -> entry-icon-pixbuf
+;;; gtk_entry_get_icon_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-icon-pixbuf (entry pos)
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @begin{return}
-    A @class{gdk-pixbuf:pixbuf} object, or @code{nil} if no icon is set for
+    The @class{gdk-pixbuf:pixbuf} object, or @code{nil} if no icon is set for
     this position.
   @end{return}
   @begin{short}
@@ -2959,22 +2976,22 @@ lambda (entry)    :action
 (export 'entry-icon-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_stock () -> entry-icon-stock
+;;; gtk_entry_get_icon_stock
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-icon-stock (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-03}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @begin{return}
-    A stock ID, or @code{nil} if no icon is set or if the icon was not set from
-    a stock ID.
+    The string with the stock ID, or @code{nil} if no icon is set or if the icon
+    was not set from a stock ID.
   @end{return}
   @begin{short}
     Retrieves the stock ID used for the icon, or @code{nil} if there is no icon
-    or if the icon was set by some other method, e.g., by Pixbuf, icon name or
-    GIcon.
+    or if the icon was set by some other method, for example, by Pixbuf, icon
+    name or GIcon.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:entry-icon-stock} function has been deprecated since version
@@ -2994,22 +3011,22 @@ lambda (entry)    :action
 (export 'entry-icon-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_name () -> entry-icon-name
+;;; gtk_entry_get_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-icon-name (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @begin{return}
-    An icon name, or @code{nil} if no icon is set or if the icon was not set
-    from an icon name.
+    The string with the icon name, or @code{nil} if no icon is set or if the
+    icon was not set from an icon name.
   @end{return}
   @begin{short}
     Retrieves the icon name used for the icon, or @code{nil} if there is no icon
-    or if the icon was set by some other method, e.g., by Pixbuf, stock or
-    GIcon.
+    or if the icon was set by some other method, for example, by Pixbuf, stock
+    or GIcon.
   @end{short}
   @see-class{gtk:entry}
   @see-symbol{gtk:entry-icon-position}"
@@ -3023,20 +3040,22 @@ lambda (entry)    :action
 (export 'entry-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_gicon () -> entry-icon-gicon
+;;; gtk_entry_get_icon_gicon
 ;;; ----------------------------------------------------------------------------
 
 (defun entry-icon-gicon (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @return{The @class{g:icon} object, or @code{nil} if no icon is set or if the
-    icon is not a @class{g:icon} object.}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @begin{return}
+    The @class{g:icon} object, or @code{nil} if no icon is set or if the
+    icon is not a @class{g:icon} object.
+  @end{return}
   @begin{short}
     Retrieves the @class{g:icon} object used for the icon, or @code{nil} if
-    there is no icon or if the icon was set by some other method, e.g., by
-    stock, Pixbuf, or icon name.
+    there is no icon or if the icon was set by some other method, for example,
+    by stock ID, Pixbuf, or icon name.
   @end{short}
   @see-class{gtk:entry}
   @see-class{g:icon}
@@ -3051,8 +3070,8 @@ lambda (entry)    :action
 (export 'entry-icon-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_activatable ()
-;;; gtk_entry_get_icon_activatable () -> entry-icon-activatable
+;;; gtk_entry_set_icon_activatable
+;;; gtk_entry_get_icon_activatable
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-icon-activatable) (activatable entry pos)
@@ -3065,11 +3084,11 @@ lambda (entry)    :action
 
 (defun entry-icon-activatable (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @syntax{(gtk:entry-icon-activatable entry pos) => activatable}
   @syntax{(setf (gtk:entry-icon-activatable entry pos) activatable)}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @argument[activatable]{@em{true} if the icon should be activatable}
   @begin{short}
     Accessor of the activatable property of the icon in the entry.
@@ -3089,8 +3108,8 @@ lambda (entry)    :action
 (export 'entry-icon-activatable)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_sensitive ()
-;;; gtk_entry_get_icon_sensitive () -> entry-icon-sensitive
+;;; gtk_entry_set_icon_sensitive
+;;; gtk_entry_get_icon_sensitive
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-icon-sensitive) (sensitive entry pos)
@@ -3103,11 +3122,11 @@ lambda (entry)    :action
 
 (defun entry-icon-sensitive (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @syntax{(gtk:entry-icon-sensitive entry pos) => sensitive}
   @syntax{(setf (gtk:entry-icon-sensitive entry pos) sensitive)}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
   @argument[sensitive]{specifies whether the icon should appear sensitive or
     insensitive}
   @begin{short}
@@ -3128,22 +3147,23 @@ lambda (entry)    :action
 (export 'entry-icon-sensitive)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_at_pos () -> entry-icon-at-pos
+;;; gtk_entry_get_icon_at_pos
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_icon_at_pos" entry-icon-at-pos) :int
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[x]{an integer with the x coordinate of the position to find}
-  @argument[y]{an integer with the y coordinate of the position to find}
+  @argument[x]{an integer for the x coordinate of the position to find}
+  @argument[y]{an integer for the y coordinate of the position to find}
   @return{The integer with the index of the icon at the given position, or -1.}
   @begin{short}
     Finds the icon at the given position and return its index.
   @end{short}
   The coordinates of the posistion are relative to the top left corner of the
-  entry. If x, y does not lie inside an icon, -1 is returned. This function is
-  intended for use in a @code{\"query-tooltip\"} signal handler.
+  entry. If @arg{x}, @arg{y} does not lie inside an icon, -1 is returned. This
+  function is intended for use in a @sig[gtk:widget]{query-tooltip} signal
+  handler.
   @see-class{gtk:entry}"
   (entry (g:object entry))
   (x :int)
@@ -3152,8 +3172,8 @@ lambda (entry)    :action
 (export 'entry-icon-at-pos)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_tooltip_text ()
-;;; gtk_entry_get_icon_tooltip_text () -> entry-icon-tooltip-text
+;;; gtk_entry_set_icon_tooltip_text
+;;; gtk_entry_get_icon_tooltip_text
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-icon-tooltip-text) (tooltip entry pos)
@@ -3166,12 +3186,12 @@ lambda (entry)    :action
 
 (defun entry-icon-tooltip-text (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @syntax{(gtk:entry-icon-tooltip-text entry pos) => tooltip}
   @syntax{(setf (gtk:entry-icon-tooltip-text entry pos) tooltip)}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[tooltip]{a string with the contents of the tooltip for the icon, or
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[tooltip]{a string for the contents of the tooltip for the icon, or
     @code{nil}}
   @begin{short}
     Accessor of the tooltip text on the icon in the entry.
@@ -3197,8 +3217,8 @@ lambda (entry)    :action
 (export 'entry-icon-tooltip-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_tooltip_markup ()
-;;; gtk_entry_get_icon_tooltip_markup () -> entry-icon-tooltip-markup
+;;; gtk_entry_set_icon_tooltip_markup
+;;; gtk_entry_get_icon_tooltip_markup
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf entry-icon-tooltip-markup) (tooltip entry pos)
@@ -3211,12 +3231,12 @@ lambda (entry)    :action
 
 (defun entry-icon-tooltip-markup (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @syntax{(gtk:entry-icon-tooltip-markup entry pos) => tooltip}
   @syntax{(setf (gtk:entry-icon-tooltip-markup entry pos) tooltip)}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[tooltip]{a string with the contents of the tooltip for the icon, or
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[tooltip]{a string for the contents of the tooltip for the icon, or
     @code{nil}}
   @begin{short}
     Accessor of the tooltip markup on the icon in the entry.
@@ -3244,32 +3264,32 @@ lambda (entry)    :action
 (export 'entry-icon-tooltip-markup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_set_icon_drag_source ()
+;;; gtk_entry_set_icon_drag_source
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_set_icon_drag_source" entry-set-icon-drag-source)
     :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-02}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @argument[tlist]{a @class{gtk:target-list} instance with the targets (data
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @argument[tlist]{a @class{gtk:target-list} instance for the targets (data
     formats) in which the data can be provided}
-  @argument[actions]{a @symbol{gdk:drag-action} bitmask with the allowed drag
+  @argument[actions]{a @sym{gdk:drag-action} bitmask for the allowed drag
     actions}
   @begin{short}
     Sets up the icon at the given position so that GTK will start a drag
     operation when the user clicks and drags the icon.
   @end{short}
   To handle the drag operation, you need to connect to the usual
-  @code{\"drag-data-get\"} or possibly @code{\"drag-data-delete\"} signal, and
-  use the @fun{gtk:entry-current-icon-drag-source} function in your signal
-  handler to find out if the drag was started from an icon.
+  @sig[gtk:widget]{drag-data-get} or possibly @sig[gtk:widget]{drag-data-delete}
+  signal, and use the @fun{gtk:entry-current-icon-drag-source} function in your
+  signal handler to find out if the drag was started from an icon.
 
   By default, GTK uses the icon as the drag icon. You can use the
-  @code{\"drag-begin\"} signal to set a different icon. Note that you have to
-  use the @fun{g:signal-connect-after} function to ensure that your signal
-  handler gets executed after the default handler.
+  @sig[gtk:widget]{drag-begin} signal to set a different icon. Note that you
+  have to use the @fun{g:signal-connect-after} function to ensure that your
+  signal handler gets executed after the default handler.
   @see-class{gtk:entry}
   @see-class{gtk:target-list}
   @see-symbol{gdk:drag-action}
@@ -3284,14 +3304,13 @@ lambda (entry)    :action
 (export 'entry-set-icon-drag-source)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_current_icon_drag_source ()
-;;; -> entry-current-icon-drag-source
+;;; gtk_entry_get_current_icon_drag_source
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_current_icon_drag_source"
                entry-current-icon-drag-source) :int
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{return}
     An integer with the index of the icon which is the source of the current
@@ -3308,7 +3327,7 @@ lambda (entry)    :action
 (export 'entry-current-icon-drag-source)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_get_icon_area () -> entry-icon-area
+;;; gtk_entry_get_icon_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_get_icon_area" %entry-get-icon-area) :void
@@ -3318,11 +3337,12 @@ lambda (entry)    :action
 
 (defun entry-icon-area (entry pos)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-06-28}
   @argument[entry]{a @class{gtk:entry} widget}
-  @argument[pos]{a @symbol{gtk:entry-icon-position} value}
-  @return{@code{area} -- a @class{gdk:rectangle} instance with the area of the
-    icon}
+  @argument[pos]{a @sym{gtk:entry-icon-position} value}
+  @begin{return}
+    The @class{gdk:rectangle} instance with the area of the icon.
+  @end{return}
   @begin{short}
     Gets the area where the icon of the entry at @arg{pos} is drawn.
   @end{short}
@@ -3341,13 +3361,13 @@ lambda (entry)    :action
 (export 'entry-icon-area)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_entry_grab_focus_without_selecting ()
+;;; gtk_entry_grab_focus_without_selecting
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_entry_grab_focus_without_selecting"
                entry-grab-focus-without-selecting) :void
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2023-03-04}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Causes entry to have keyboard focus.
