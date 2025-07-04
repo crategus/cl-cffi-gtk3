@@ -1,10 +1,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tree-view-drag-and-drop.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2023 Dieter Kaiser
 ;;;
@@ -72,7 +72,7 @@
 (setf (liber:alias-for-class 'tree-drag-source)
       "Interface"
       (documentation 'tree-drag-source 'type)
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @begin{short}
     GTK supports drag and drop in tree views with a high-level and a low-level
     API.
@@ -133,15 +133,15 @@
           (path (g:boxed tree-path)))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_drag_source_drag_data_delete ()
+;;; gtk_tree_drag_source_drag_data_delete
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_drag_source_drag_data_delete"
                tree-drag-source-drag-data-delete) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[source]{a @class{gtk:tree-drag-source} object}
-  @argument[path]{a @class{gtk:tree-path} instance with the row that was being
+  @argument[path]{a @class{gtk:tree-path} instance for the row that was being
     dragged}
   @return{@em{True} if the row was successfully deleted.}
   @begin{short}
@@ -159,20 +159,20 @@
 (export 'tree-drag-source-drag-data-delete)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_drag_source_drag_data_get ()
+;;; gtk_tree_drag_source_drag_data_get
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_drag_source_drag_data_get"
                tree-drag-source-drag-data-get) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[source]{a @class{gtk:tree-drag-source} object}
-  @argument[path]{a @class{gtk:tree-path} insance with the row that was dragged}
+  @argument[path]{a @class{gtk:tree-path} instance for the row that was dragged}
   @argument[data]{a @class{gtk:selection-data} instance to fill with data from
     the dragged row}
   @return{@em{True} if data of the required type was provided.}
   @begin{short}
-    Asks the @class{gtk:tree-drag-source} object to fill in @arg{data} with a
+    Asks the @class{gtk:tree-drag-source} object to fill in @arg{data} for a
     representation of the row at @arg{path}.
   @end{short}
   The @fun{gtk:selection-data-target} function gives the required type of the
@@ -187,16 +187,16 @@
 (export 'tree-drag-source-drag-data-get)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_drag_source_row_draggable ()
+;;; gtk_tree_drag_source_row_draggable
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_drag_source_row_draggable"
                tree-drag-source-row-draggable) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[source]{a @class{gtk:tree-drag-source} object}
-  @argument[path]{a @class{gtk:tree-path} instance with the row on which user
-    is initiating a drag}
+  @argument[path]{a @class{gtk:tree-path} instance for the row on which user is
+    initiating a drag}
   @return{@em{True} if the row can be dragged.}
   @begin{short}
     Asks the @class{gtk:tree-drag-source} object whether a particular row can
@@ -223,7 +223,7 @@
 (setf (liber:alias-for-class 'tree-drag-dest)
       "Interface"
       (documentation 'tree-drag-dest 'type)
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @begin{short}
     GTK supports Drag-and-Drop in tree views with a high-level and a low-level
     API.
@@ -277,18 +277,18 @@
               (selection-data (g:boxed selection-data)))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_drag_dest_drag_data_received ()
+;;; gtk_tree_drag_dest_drag_data_received
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_drag_dest_drag_data_received"
                tree-drag-dest-drag-data-received) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[dest]{a @class{gtk:tree-drag-dest} object}
-  @argument[path]{a @class{gtk:tree-path} instance with the row to drop in
-    front of}
-  @argument[data]{a @class{gtk:selection-data} instance with the data to drop}
-  @return{A boolen whether a new row was created before position @arg{dest}.}
+  @argument[path]{a @class{gtk:tree-path} instance for the row to drop in front
+    of}
+  @argument[data]{a @class{gtk:selection-data} instance for the data to drop}
+  @return{The boolean whether a new row was created before position @arg{dest}.}
   @begin{short}
     Asks the @class{gtk:tree-drag-dest} object to insert a row before the path
     @arg{dest}, deriving the contents of the row from @arg{data}.
@@ -307,23 +307,23 @@
 (export 'tree-drag-dest-drag-data-received)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_drag_dest_row_drop_possible ()
+;;; gtk_tree_drag_dest_row_drop_possible
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_drag_dest_row_drop_possible"
                tree-drag-dest-row-drop-possible) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[dest]{a @class{gtk:tree-drag-dest} object}
-  @argument[path]{a @class{gtk:tree-path} instance with the destination row}
-  @argument[data]{a @class{gtk:selection-data} instance with the data being
+  @argument[path]{a @class{gtk:tree-path} instance for the destination row}
+  @argument[data]{a @class{gtk:selection-data} instance for the data being
     dragged}
   @return{@em{True} if a drop is possible before @arg{dest}.}
   @begin{short}
     Determines whether a drop is possible before the given @arg{dest}, at the
     same depth as @arg{dest}.
   @end{short}
-  I.e., can we drop the data in @arg{data} at that location. The argument
+  That is, can we drop the data in @arg{data} at that location. The argument
   @arg{dest} does not have to exist. The return value will almost certainly be
   @em{false} if the parent of @arg{dest} does not exist, though.
   @see-class{gtk:tree-drag-dest}
@@ -336,17 +336,19 @@
 (export 'tree-drag-dest-row-drop-possible)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_set_row_drag_data ()
+;;; gtk_tree_set_row_drag_data
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_set_row_drag_data" tree-set-row-drag-data) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[data]{a @class{gtk:selection-data} instance}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[path]{a @class{gtk:tree-path} instance with a row in @arg{model}}
-  @return{@em{True} if @arg{data} had the proper target type to allow us to
-    set a tree row.}
+  @argument[path]{a @class{gtk:tree-path} instance for a row in @arg{model}}
+  @begin{return}
+    @em{True} if @arg{data} had the proper target type to allow us to set a
+    tree row.
+  @end{return}
   @begin{short}
     Sets selection data of target type @code{GTK_TREE_MODEL_ROW}.
   @end{short}
@@ -361,17 +363,19 @@
 (export 'tree-set-row-drag-data)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_get_row_drag_data ()
+;;; gtk_tree_get_row_drag_data
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_get_row_drag_data" tree-get-row-drag-data) :boolean
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-04}
   @argument[data]{a @class{gtk:selection-data} instance}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[path]{a @class{gtk:tree-path} with a row in @arg{model}.}
-  @return{@em{True} if @arg{data} had target type @code{GTK_TREE_MODEL_ROW} and
-  is otherwise valid.}
+  @argument[path]{a @class{gtk:tree-path} for a row in @arg{model}}
+  @begin{return}
+    @em{True} if @arg{data} had target type @code{GTK_TREE_MODEL_ROW} and is
+    otherwise valid.
+  @end{return}
   @begin{short}
     Obtains a tree_model and path from selection data of target type
     @code{GTK_TREE_MODEL_ROW}.
