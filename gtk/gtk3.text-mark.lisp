@@ -59,7 +59,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTextMark
+;;; GtkTextMark
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkTextMark" text-mark
@@ -76,7 +76,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-mark 'type)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @begin{short}
     The @class{gtk:text-mark} object is like a bookmark in a text buffer.
   @end{short}
@@ -128,7 +128,7 @@
 (setf (liber:alias-for-function 'text-mark-left-gravity)
       "Accessor"
       (documentation 'text-mark-left-gravity 'function)
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @syntax{(gtk:text-mark-left-gravity object) => gravity}
   @argument[object]{a @class{gtk:text-mark} object}
   @return{@em{True} if the text mark has left gravity.}
@@ -153,10 +153,10 @@
 (setf (liber:alias-for-function 'text-mark-name)
       "Accessor"
       (documentation 'text-mark-name 'function)
- "@version{#2023-3-15}
+ "@version{#2025-07-01}
   @syntax{(gtk:text-mark-name object) => name}
   @argument[object]{a @class{gtk:text-mark} object}
-  @argument[name]{a string with the name of the text mark}
+  @argument[name]{a string for the name of the text mark}
   @begin{short}
     Accessor of the @slot[gtk:text-mark]{name} slot of the
     @class{gtk:text-mark} class.
@@ -166,13 +166,13 @@
   @see-class{gtk:text-mark}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_new ()
+;;; gtk_text_mark_new
 ;;; ----------------------------------------------------------------------------
 
 (defun text-mark-new (name gravity)
  #+liber-documentation
- "@version{#2023-3-15}
-  @argument[name]{a string with the name of the text mark or @code{nil}}
+ "@version{#2025-07-01}
+  @argument[name]{a string for the name of the text mark or @code{nil}}
   @argument[gravity]{a boolean whether the text mark should have left gravity}
   @return{New @class{gtk:text-mark} object.}
   @begin{short}
@@ -201,8 +201,8 @@
 (export 'text-mark-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_set_visible ()
-;;; gtk_text_mark_get_visible ()
+;;; gtk_text_mark_set_visible
+;;; gtk_text_mark_get_visible
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf text-mark-visible) (visibility mark)
@@ -214,7 +214,7 @@
 
 (cffi:defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @syntax{(gtk:text-mark-visible mark) => visibility}
   @syntax{(setf (gtk:text-mark-visible mark) visibility)}
   @argument[mark]{a @class{gtk:text-mark} object}
@@ -237,12 +237,12 @@
 (export 'text-mark-visible)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_get_deleted ()
+;;; gtk_text_mark_get_deleted
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{A boolean whether the text mark is deleted.}
   @begin{short}
@@ -259,13 +259,13 @@
 (export 'text-mark-deleted)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_mark_get_buffer ()
+;;; gtk_text_mark_get_buffer
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_mark_get_buffer" text-mark-buffer)
     (g:object text-buffer)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2023-03-15}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{The @class{gtk:text-buffer} object of the text mark.}
   @begin{short}

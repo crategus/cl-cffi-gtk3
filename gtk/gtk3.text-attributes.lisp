@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.text-attributes.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2020 - 2024 Dieter Kaiser
+;;; Copyright (C) 2020 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -148,7 +148,7 @@
 (setf (liber:alias-for-class 'text-attributes)
       "GBoxed"
       (documentation 'text-attributes 'type)
- "@version{#2021-8-19}
+ "@version{#2025-07-01}
   @begin{short}
     Using the @class{gtk:text-attributes} structure directly should rarely be
     necessary.
@@ -181,41 +181,41 @@
   (letter-spacing :int)
   (font-features :string))
   @end{pre}
-  @begin[code]{table}
+  @begin[code]{simple-table}
     @entry[appearance]{Pointer to a @code{GtkTextAppearance} structure for
       text.}
-    @entry[justification]{A value of the @symbol{gtk:justification} enumeration
+    @entry[justification]{The value of the @sym{gtk:justification} enumeration
       for text.}
-    @entry[direction]{A value of the @symbol{gtk:text-direction} enumeration
+    @entry[direction]{The value of the @sym{gtk:text-direction} enumeration
       for text.}
     @entry[font]{The @class{pango:font-description} structure for text.}
-    @entry[font-scale]{A double float with the font scale factor.}
-    @entry[left-margin]{An integer with the width of the left margin,
+    @entry[font-scale]{The double float with the font scale factor.}
+    @entry[left-margin]{The integer with the width of the left margin,
       in pixels.}
-    @entry[right-margin]{An integer with the width of the right margin,
+    @entry[right-margin]{The integer with the width of the right margin,
       in pixels.}
-    @entry[indent]{An integer with the amount to indent the paragraph,
+    @entry[indent]{the integer with the amount to indent the paragraph,
       in pixels.}
-    @entry[pixels-above-lines]{An integer with the pixels of blank space above
+    @entry[pixels-above-lines]{The integer with the pixels of blank space above
       paragraphs.}
-    @entry[pixels-below-lines]{An integer with the pixels of blank space below
+    @entry[pixels-below-lines]{The integer with the pixels of blank space below
       paragraphs.}
-    @entry[pixels-inside-wrap]{An integer with the pixels of blank space
+    @entry[pixels-inside-wrap]{The integer with the pixels of blank space
       between wrapped lines in a paragraph.}
     @entry[tabs]{Pointer to a custom @class{pango-tab-array} structure for
       this text.}
-    @entry[wrap-mode]{A value of the @symbol{gtk:wrap-mode} enumeration for
+    @entry[wrap-mode]{The value of the @sym{gtk:wrap-mode} enumeration for
       text.}
     @entry[language]{Pointer to a @class{pango:language} structure for text.}
-    @entry[invisible]{An unsigned integer whether to hide the text.}
+    @entry[invisible]{The unsigned integer whether to hide the text.}
     @entry[bg-full-height]{Whether background is fit to full line height rather
       than baseline +/- ascent/descent (font height).}
     @entry[editable]{Whether the text is editable.}
     @entry[no-fallback]{Whether to disable font fallback.}
-    @entry[letter-spacing]{An integer with the extra space to insert between
+    @entry[letter-spacing]{The integer with the extra space to insert between
       graphemes, in Pango units.}
-    @entry[font-features]{A string with font features.}
-  @end{table}
+    @entry[font-features]{The string with font features.}
+  @end{simple-table}
   @see-slot{gtk:text-attributes-appearance}
   @see-slot{gtk:text-attributes-justification}
   @see-slot{gtk:text-attributes-direction}
