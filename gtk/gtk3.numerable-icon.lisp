@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.numerable-icon.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2014 - 2024 Dieter Kaiser
+;;; Copyright (C) 2014 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -76,7 +76,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkNumerableIcon
+;;; GtkNumerableIcon
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkNumerableIcon" numerable-icon
@@ -189,11 +189,11 @@
 (setf (liber:alias-for-function 'numerable-icon-background-icon-name)
       "Accessor"
       (documentation 'numerable-icon-background-icon-name 'function)
- "@version{2024-12-31}
+ "@version{2025-07-05}
   @syntax{(gtk:numerable-icon-background-icon-name object) => name}
   @syntax{(setf (gtk:numerable-icon-background-icon-name object) name)}
   @argument[object]{a @class{gtk:numerable-icon} object}
-  @argument[name]{a string with an icon name, or @code{nil}}
+  @argument[name]{a string for an icon name, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:numerable-icon]{background-icon-name} slot of the
     @class{gtk:numerable-icon} class.
@@ -211,7 +211,7 @@
   method called between the @fun{gtk:numerable-icon-background-icon-name} and
   @fun{gtk:numerable-icon-background-icon} functions has always priority.
   @begin[Warning]{dictionary}
-    The @fun{gtk:numerable-icon-backgroun-icon-name} function has been
+    The @fun{gtk:numerable-icon-background-icon-name} function has been
     deprecated since version 3.14 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:numerable-icon}
@@ -268,11 +268,11 @@
 (setf (liber:alias-for-function 'numerable-icon-label)
       "Accessor"
       (documentation 'numerable-icon-label 'function)
- "@version{2024-12-31}
+ "@version{2025-07-05}
   @syntax{(gtk:numerable-icon-label object) => label}
   @syntax{(setf (gtk:numerable-icon-label object) label)}
   @argument[object]{a @class{gtk:numerable-icon} object}
-  @argument[label]{a string with a short label, or @code{nil}}
+  @argument[label]{a string for a short label, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:numerable-icon]{label} slot of the
     @class{gtk:numerable-icon} class.
@@ -288,7 +288,7 @@
   rendered very well.
 
   If this method is called, and a number was already set on the icon, it will
-  automatically be reset to zero before rendering the label, i.e. the last
+  automatically be reset to zero before rendering the label, that is, the last
   method called between the @fun{gtk:numerable-icon-label} and
   @fun{gtk:numerable-icon-count} functions has always priority.
   @begin[Warning]{dictionary}

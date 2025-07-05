@@ -127,7 +127,7 @@
 (setf (liber:alias-for-symbol 'icon-lookup-flags)
       "GFlags"
       (liber:symbol-documentation 'icon-lookup-flags)
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @begin{declaration}
 (gobject:define-gflags \"GtkIconLookupFlags\" icon-lookup-flags
   (:export t
@@ -143,12 +143,13 @@
   (:dir-rtl          #.(ash 1 8)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:no-svg]{Never get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
-        object supports them. Cannot be used together with @code{:force-svg}.}
+        object supports them. Cannot be used together with the
+        @val[gtk:icon-lookup-flags]{:force-svg} value.}
       @entry[:force-svg]{Get SVG icons, even if the @class{gdk-pixbuf:pixbuf}
-        object does not support them. Cannot be used together with
-        @code{:no-svg}.}
+        object does not support them. Cannot be used together with the
+        @val[gtk:icon-lookup-flags]{:no-svg} value.}
       @entry[:use-builtin]{When passed to the @fun{gtk:icon-theme-lookup-icon}
         function includes built-in icons as well as files. For a built-in icon,
         the @fun{gtk:icon-info-filename} function returns @code{nil} and you
@@ -166,7 +167,7 @@
         text direction.}
       @entry[:dir-rtl]{Try to load a variant of the icon for right-to-left text
         direction.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to specify options for the @fun{gtk:icon-theme-lookup-icon} function.
@@ -213,7 +214,7 @@
 
 #+liber-documentation
 (setf (documentation 'icon-theme 'type)
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @begin{short}
     The @class{gtk:icon-theme} class provides a facility for looking up icons by
     name and size.
@@ -237,7 +238,7 @@
     @end{item}
     @begin{item}
       Stock images can only be loaded at the symbolic sizes defined by the
-      @symbol{gtk:icon-size} enumeration, or by custom sizes defined by the
+      @sym{gtk:icon-size} enumeration, or by custom sizes defined by the
       @fun{gtk:icon-size-register} function, while named icons are more
       flexible and any pixel size can be specified.
     @end{item}
@@ -274,15 +275,16 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[icon-theme::chaned]{signal}
       @begin{pre}
 lambda (theme)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[theme]{The @class{gtk:icon-theme} object.}
-      @end{table}
+      @end{simple-table}
       Emitted when the current icon theme is switched or GTK detects that a
       change has occurred in the contents of the current icon theme.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:icon-theme-new}
   @see-class{gtk:icon-info}")
@@ -569,11 +571,11 @@ lambda (theme)    :run-last
 (cffi:defcfun ("gtk_icon_theme_lookup_icon" icon-theme-lookup-icon)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the behavior
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
     of the icon lookup}
   @begin{return}
     The @class{gtk:icon-info} instance containing information about the icon,
@@ -606,20 +608,20 @@ lambda (theme)    :run-last
                icon-theme-lookup-icon-for-scale)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
   @argument[scale]{an integer for the desired scale}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @begin{return}
     The @class{gtk:icon-info} instance containing information about the icon,
     or @code{nil} if the icon was not found.
   @end{return}
   @begin{short}
     Looks up a named icon for a particular window scale and returns a
-    @symbol{gtk:icon-info} instance containing information such as the filename
+    @sym{gtk:icon-info} instance containing information such as the filename
     of the icon.
   @end{short}
   The icon can then be rendered into a pixbuf using the
@@ -645,19 +647,19 @@ lambda (theme)    :run-last
 (cffi:defcfun ("gtk_icon_theme_choose_icon" icon-theme-choose-icon)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[names]{list of strings for the icon names to lookup}
   @argument[size]{an integer for the desired icon size}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @begin{return}
     The @class{gtk:icon-info} instance containing information about the icon,
     or @code{nil} if the icon was not found.
   @end{return}
   @begin{short}
-    Looks up a named icon and returns a @symbol{gtk:icon-info} instance
-    containing information such as the filename of the icon.
+    Looks up a named icon and returns a @sym{gtk:icon-info} instance containing
+    information such as the filename of the icon.
   @end{short}
   The icon can then be rendered into a pixbuf using the
   @fun{gtk:icon-info-load-icon} function. The @fun{gtk:icon-theme-load-icon}
@@ -685,20 +687,20 @@ lambda (theme)    :run-last
                icon-theme-choose-icon-for-scale)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[names]{list of strings for icon names to lookup}
   @argument[size]{an integer for the desired icon size}
-  @argument[scale]{an integet for the desired scale}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[scale]{an integer for the desired scale}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @begin{return}
-    The @symbol{gtk:icon-info} instance containing information about the icon,
+    The @sym{gtk:icon-info} instance containing information about the icon,
     or @code{nil} if the icon was not found.
   @end{return}
   @begin{short}
     Looks up a named icon for a particular window scale and returns a
-    @symbol{gtk:icon-info} instance containing information such as the filename
+    @sym{gtk:icon-info} instance containing information such as the filename
     of the icon.
   @end{short}
   The icon can then be rendered into a pixbuf using the
@@ -727,18 +729,18 @@ lambda (theme)    :run-last
 (cffi:defcfun ("gtk_icon_theme_lookup_by_gicon" icon-theme-lookup-by-gicon)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{#2025-06-20}
+ "@version{#2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[icon]{a @class{g:icon} object to look up}
   @argument[size]{an integer for the desired icon size}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @begin{return}
-    The @class{gtk:icon-info} instance containing information about the icon, or
-    @code{nil} if the icon was not found.
+    The @class{gtk:icon-info} instance containing information about the icon,
+    or @code{nil} if the icon was not found.
   @end{return}
   @begin{short}
-    Looks up an icon and returns a @symbol{gtk:icon-info} instance containing
+    Looks up an icon and returns a @sym{gtk:icon-info} instance containing
     information such as the filename of the icon.
   @end{short}
   The icon can then be rendered into a pixbuf using the
@@ -763,19 +765,19 @@ lambda (theme)    :run-last
                icon-theme-lookup-by-gicon-for-scale)
     (gobject:object icon-info :return)
  #+liber-documentation
- "@version{#2025-06-20}
+ "@version{#2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[icon]{a @class{g:icon} object to look up}
   @argument[size]{an integer for the desired icon size}
   @argument[scale]{an integer for the desired scale}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @begin{return}
-    The @symbol{gtk:icon-info} instance containing information about the icon,
+    The @sym{gtk:icon-info} instance containing information about the icon,
     or @code{nil} if the icon was not found.
   @end{return}
   @begin{short}
-    Looks up an icon and returns a @symbol{gtk:icon-info} instance containing
+    Looks up an icon and returns a @sym{gtk:icon-info} instance containing
     information such as the filename of the icon.
   @end{short}
   The icon can then be rendered into a pixbuf using the
@@ -807,13 +809,13 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-icon (theme name size flags)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size, the resulting icon may
     not be exactly this size}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
   @return{The rendered icon as a @class{gdk-pixbuf:pixbuf} object.}
   @begin{short}
     Looks up an icon in an icon theme, scales it to the given size and renders
@@ -824,12 +826,12 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-icon} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the @code{\"style-updated\"}
-  signal. If for some reason you do not want to update the icon when the icon
-  theme changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy}
-  function to make a private copy of the pixbuf returned by this function.
-  Otherwise GTK may need to keep the old icon theme loaded, which would be a
-  waste of memory.
+  icon. This is usually done by connecting to the
+  @sig[gtk:widget]{style-updated} signal. If for some reason you do not want to
+  update the icon when the icon theme changes, you should consider using the
+  @fun{gdk-pixbuf:pixbuf-copy} function to make a private copy of the pixbuf
+  returned by this function. Otherwise GTK may need to keep the old icon theme
+  loaded, which would be a waste of memory.
   @see-class{gtk:icon-theme}
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
@@ -857,13 +859,13 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-icon-for-scale (theme name size scale flags)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
   @argument[scale]{an integer for the desired scale}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} flags modifying the
-    behavior of the icon lookup}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} flags modifying the behavior
+    of the icon lookup}
   @return{The rendered icon as a @class{gdk-pixbuf:pixbuf} object.}
   @begin{short}
     Looks up an icon in an icon theme for a particular window scale, scales it
@@ -876,12 +878,12 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-icon} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the @code{\"style-updated\"}
-  signal. If for some reason you do not want to update the icon when the icon
-  theme changes, you should consider using the @fun{gdk-pixbuf:pixbuf-copy}
-  function to make a private copy of the pixbuf returned by this function.
-  Otherwise GTK may need to keep the old icon theme loaded, which would be a
-  waste of memory.
+  icon. This is usually done by connecting to the
+  @sig[gtk:widget]{style-updated} signal. If for some reason you do not want to
+  update the icon when the icon theme changes, you should consider using the
+  @fun{gdk-pixbuf:pixbuf-copy} function to make a private copy of the pixbuf
+  returned by this function. Otherwise GTK may need to keep the old icon theme
+  loaded, which would be a waste of memory.
   @see-class{gtk:icon-theme}
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
@@ -909,16 +911,16 @@ lambda (theme)    :run-last
 
 (defun icon-theme-load-surface (theme name size scale window flags)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of the icon to lookup}
   @argument[size]{an integer for the desired icon size}
   @argument[scale]{an integer for the desired scale}
   @argument[window]{a @class{gdk:window} object to optimize drawing for, or
     @code{nil}}
-  @argument[flags]{a @symbol{gtk:icon-lookup-flags} value modifying the
-    behavior of the icon lookup}
-  @return{The rendered icon as a @symbol{cairo:surface-t} instance.}
+  @argument[flags]{a @sym{gtk:icon-lookup-flags} value modifying the behavior
+    of the icon lookup}
+  @return{The rendered icon as a @sym{cairo:surface-t} instance.}
   @begin{short}
     Looks up an icon in an icon theme for a particular window scale, scales it
     to the given size and renders it into a Cairo surface.
@@ -928,8 +930,8 @@ lambda (theme)    :run-last
   @fun{gtk:icon-info-load-surface} function.
 
   Note that you probably want to listen for icon theme changes and update the
-  icon. This is usually done by connecting to the @code{\"style-updated\"}
-  signal.
+  icon. This is usually done by connecting to the
+  @sig[gtk:widget]{style-updated} signal.
   @see-class{gtk:icon-theme}
   @see-symbol{cairo:surface-t}
   @see-symbol{gtk:icon-lookup-flags}
@@ -1174,8 +1176,8 @@ lambda (theme)    :run-last
 
 (cffi:defcfun ("gtk_icon_info_get_base_scale" icon-info-base-scale) :int
  #+liber-documentation
- "@version{2025-06-20}
-  @argument[info]{a @symbol{gtk:icon-info} instance}
+ "@version{2025-07-05}
+  @argument[info]{a @sym{gtk:icon-info} instance}
   @return{The integer with the base scale.}
   @begin{short}
     Gets the base scale for the icon.
@@ -1203,15 +1205,13 @@ lambda (theme)    :run-last
 
 (cffi:defcfun ("gtk_icon_info_get_filename" icon-info-filename) :string
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[info]{a @class{gtk:icon-info} instance}
-  @begin{return}
-    The string with the filename for the icon.
-  @end{return}
+  @return{The string with the filename for the icon.}
   @begin{short}
     Gets the filename for the icon.
   @end{short}
-  If the @code{:use-builtin} flag was passed to the
+  If the @val[gtk:icon-lookup-flags]{:use-builtin} flag was passed to the
   @fun{gtk:icon-theme-lookup-icon} function, there may be no filename if a
   built-in icon is returned. In this case, you should use the
   @fun{gtk:icon-info-builtin-pixbuf} function.
@@ -1246,7 +1246,8 @@ lambda (theme)    :run-last
     Gets the built-in image for this icon, if any.
   @end{short}
   To allow GTK to use built-in icon images, you must pass the
-  @code{:use-builtin} flag to the @fun{gtk:icon-theme-lookup-icon} function.
+  @val[gtk:icon-lookup-flags]{:use-builtin} flag to the
+  @fun{gtk:icon-theme-lookup-icon} function.
   @begin[Warning]{dictionary}
     The @fun{gtk:icon-info-builtin-pixbuf} function has been deprecated
     since version 3.14 and should not be used in newly written code. Use the
@@ -1271,8 +1272,8 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-icon (info)
  #+liber-documentation
- "@version{2025-06-20}
-  @argument[info]{a @symbol{gtk:icon-info} instance}
+ "@version{2025-07-05}
+  @argument[info]{a @sym{gtk:icon-info} instance}
   @return{The @class{gdk-pixbuf:pixbuf} object with the rendered icon.}
   @begin{short}
     Renders an icon previously looked up in an icon theme using the
@@ -1286,9 +1287,9 @@ lambda (theme)    :run-last
   GTK will avoid scaling icons that it considers sufficiently close to the
   requested size or for which the source image would have to be scaled up too
   far. This maintains sharpness. This behaviour can be changed by passing the
-  @code{:force-size} flag when obtaining the @symbol{gtk:icon-info} instance.
-  If this flag has been specified, the pixbuf returned by this function will be
-  scaled to the exact size.
+  @val[gtk:icon-lookup-flags]{:force-size} flag when obtaining the
+  @sym{gtk:icon-info} instance. If this flag has been specified, the pixbuf
+  returned by this function will be scaled to the exact size.
   @see-class{gtk:icon-info}
   @see-class{gdk-pixbuf:pixbuf}
   @see-symbol{gtk:icon-lookup-flags}
@@ -1310,10 +1311,10 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-surface (info window)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-05}
   @argument[info]{a @class{gtk:icon-info} instance}
   @argument[window]{a @class{gdk:window} object to optimize drawing for}
-  @return{The @symbol{cairo:surface-t} instance with the rendered icon.}
+  @return{The @sym{cairo:surface-t} instance with the rendered icon.}
   @begin{short}
     Renders an icon previously looked up in an icon theme using the
     @fun{gtk:icon-theme-lookup-icon} function.
@@ -1324,10 +1325,10 @@ lambda (theme)    :run-last
   differ slightly from their nominal sizes, and in addition GTK will avoid
   scaling icons that it considers sufficiently close to the requested size or
   for which the source image would have to be scaled up too far. This maintains
-  sharpness. This behaviour can be changed by passing the @code{:force-size}
-  flag when obtaining the @class{gtk:icon-info} instance. If this flag has been
-  specified, the pixbuf returned by this function will be scaled to the exact
-  size.
+  sharpness. This behaviour can be changed by passing the
+  @val[gtk:icon-lookup-flags]{:force-size} flag when obtaining the
+  @class{gtk:icon-info} instance. If this flag has been specified, the pixbuf
+  returned by this function will be scaled to the exact size.
   @see-class{gtk:icon-info}
   @see-class{gdk:window}
   @see-symbol{cairo:surface-t}

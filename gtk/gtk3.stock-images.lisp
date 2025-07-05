@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.stock-images.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'icon-size)
       "GEnum"
       (liber:symbol-documentation 'icon-size)
- "@version{2024-3-22}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkIconSize\" icon-size
   (:export t
@@ -137,7 +137,7 @@
   (:dialog 6))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:invalid]{Invalid size.}
       @entry[:menu]{Size appropriate for menus (16 px).}
       @entry[:small-toolbar]{Size appropriate for small toolbars (16 px).}
@@ -145,7 +145,7 @@
       @entry[:button]{Size appropriate for buttons (16 px).}
       @entry[:dnd]{Size appropriate for drag and drop (32 px).}
       @entry[:dialog]{Size appropriate for dialogs (48 px).}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Built-in stock icon sizes.}
   @see-class{gtk:icon-theme}")
@@ -165,7 +165,13 @@
 (setf (liber:alias-for-class 'icon-source)
       "GBoxed"
       (documentation 'icon-source 'type)
- "@version{#2023-3-27}
+ "@version{2025-07-05}
+  @begin{declaration}
+(glib:define-gboxed-opaque icon-source \"GtkIconSource\"
+  :export t
+  :type-initializer \"gtk_icon_source_get_type\"
+  :alloc (%icon-source-new))
+  @end{declaration}
   @begin{short}
     The @class{gtk:icon-source} structure is opaque, and has no user visible
     fields.
@@ -192,17 +198,24 @@
 (setf (liber:alias-for-class 'icon-set)
       "GBoxed"
       (documentation 'icon-set 'type)
- "@version{#2023-3-27}
+ "@version{2025-07-05}
+  @begin{declaration}
+(glib:define-gboxed-opaque icon-set \"GtkIconSet\"
+  :export t
+  :type-initializer \"gtk_icon_set_get_type\"
+  :alloc (%icon-set-new))
+  @end{declaration}
   @begin{short}
     The @class{gtk:icon-set} structure is opaque, and has no user visible
     fields.
   @end{short}
-  It manages a set of variants of a particular icon, i.e. a @class{gtk:icon-set}
-  instance contains variants for different sizes and widget states.
+  It manages a set of variants of a particular icon, that is, a
+  @class{gtk:icon-set} instance contains variants for different sizes and widget
+  states.
   @see-class{gtk:icon-factory}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkIconFactory
+;;; GtkIconFactory
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkIconFactory" icon-factory
@@ -214,12 +227,12 @@
 
 #+liber-documentation
 (setf (documentation 'icon-factory 'type)
- "@version{#2023-3-27}
+ "@version{2025-07-05}
   @begin{short}
-    An icon factory manages a collection of @class{gtk:icon-set} instances.
+    The icon factory manages a collection of @class{gtk:icon-set} instances.
   @end{short}
   A @class{gtk:icon-set} instance manages a set of variants of a particular
-  icon, i.e. a @class{gtk:icon-set} instance contains variants for different
+  icon, that is, a @class{gtk:icon-set} instance contains variants for different
   sizes and widget states. Icons in an icon factory are named by a stock ID,
   which is a simple string identifying the icon. Each @code{GtkStyle} object
   has a list of @class{gtk:icon-factory} objects derived from the current theme.
@@ -237,20 +250,20 @@
     The @class{gtk:icon-factory} object supports a custom @code{<sources>}
     element, which can contain multiple @code{<source>} elements. The following
     attributes are allowed:
-    @begin[code]{table}
-      @entry[stock-id]{A string with the stock ID of the source. This attribute
+    @begin[code]{simple-table}
+      @entry[stock-id]{A string for the stock ID of the source. This attribute
         is mandatory.}
-      @entry[filename]{A string with the filename of the source. This attribute
+      @entry[filename]{A string for the filename of the source. This attribute
         is optional.}
-      @entry[icon-name]{A string with the icon name for the source. This
+      @entry[icon-name]{A string for the icon name for the source. This
         attribute is optional.}
-      @entry[size]{A value of the @symbol{gtk:icon-size} enumeration with the
-        size of the icon. This attribute is optional.}
-      @entry[direction]{A value of the @symbol{gtk:text-direction} enumeration
-        with the direction of the source. This attribute is optional.}
-      @entry[state]{A value of the @symbol{gtk:state-type} enumeration with the
+      @entry[size]{A value of the @sym{gtk:icon-size} enumeration for the size
+        of the icon. This attribute is optional.}
+      @entry[direction]{A value of the @sym{gtk:text-direction} enumeration for
+        the direction of the source. This attribute is optional.}
+      @entry[state]{A value of the @sym{gtk:state-type} enumeration for the
         state of the source. This attribute is optional.}
-    @end{table}
+    @end{simple-table}
     @b{Example:} A @class{gtk:icon-factory} UI definition fragment.
     @begin{pre}
 <object class=\"GtkIconFactory\" id=\"iconfactory1\">
@@ -304,21 +317,21 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_factory_add ()
+;;; gtk_icon_factory_add
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_factory_add" icon-factory-add) :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @argument[factory]{a @class{gtk:icon-factory} object}
-  @argument[stock-id]{a string with the icon name}
+  @argument[stock-id]{a string for the icon name}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @begin{short}
     Adds the given @arg{iconset} to the icon factory, under the name
     @arg{stock-id}.
   @end{short}
-  The @arg{stock-id} argument should be namespaced for your application, e.g.
-  \"myapp-whatever-icon\". Normally applications create a
+  The @arg{stock-id} argument should be namespaced for your application, for
+  example, \"myapp-whatever-icon\". Normally applications create a
   @class{gtk:icon-factory} object, then add it to the list of default factories
   with the @fun{gtk:icon-factory-add-default} function. Then they pass the
   @arg{stock-id} argument to widgets such as a @class{gtk:image} widget to
@@ -343,12 +356,12 @@
 (export 'icon-factory-add)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_factory_add_default ()
+;;; gtk_icon_factory_add_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_factory_add_default" icon-factory-add-default) :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[factory]{a @class{gtk:icon-factory} object}
   @begin{short}
     Adds an icon factory to the list of icon factories searched by the
@@ -371,14 +384,14 @@
 (export 'icon-factory-add-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_factory_lookup ()
+;;; gtk_icon_factory_lookup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_factory_lookup" icon-factory-lookup) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @argument[factory]{a @class{gtk:icon-factory} object}
-  @argument[stock-id]{a string with an icon name}
+  @argument[stock-id]{a string for an icon name}
   @return{The @class{gtk:icon-set} instance of @arg{stock-id}.}
   @begin{short}
     Looks up @arg{stock-id} in the icon factory, returning an icon set if
@@ -401,14 +414,14 @@
 (export 'icon-factory-lookup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_factory_lookup_default ()
+;;; gtk_icon_factory_lookup_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_factory_lookup_default" icon-factory-lookup-default)
     (g:boxed icon-set :return)
  #+liber-documentation
- "@version{#2023-3-27}
-  @argument[stock-id]{a string with an icon name}
+ "@version{#2025-07-05}
+  @argument[stock-id]{a string for an icon name}
   @return{The @class{gtk:icon-set} instance, or @code{nil}.}
   @begin{short}
     Looks for an icon in the list of default icon factories.
@@ -454,13 +467,13 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_factory_remove_default ()
+;;; gtk_icon_factory_remove_default
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_factory_remove_default" icon-factory-remove-default)
     :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[factory]{a @class{gtk:icon-factory} object previously added with
     the @fun{gtk:icon-factory-add-default} function}
   @begin{short}
@@ -481,12 +494,12 @@
 (export 'icon-factory-remove-default)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_set_add_source ()
+;;; gtk_icon_set_add_source
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_set_add_source" icon-set-add-source) :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[source]{a @class{gtk:icon-source} instance}
   @begin{short}
@@ -548,12 +561,12 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_set_new ()
+;;; gtk_icon_set_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_set_new" icon-set-new) (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @return{The new @class{gtk:icon-set} instance.}
   @begin{short}
     Creates a new icon set.
@@ -581,13 +594,13 @@
 (export 'icon-set-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_set_new_from_pixbuf ()
+;;; gtk_icon_set_new_from_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_set_new_from_pixbuf" icon-set-new-from-pixbuf)
     (g:boxed icon-set)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{The new @class{gtk:icon-set} instance.}
   @begin{short}
@@ -629,25 +642,25 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_set_render_icon ()
+;;; gtk_icon_set_render_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_set_render_icon" icon-set-render-icon)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[style]{a @code{GtkStyle} object associated with @arg{widget},
     or @code{nil}}
-  @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration}
-  @argument[state]{a value of the @symbol{gtk:state-type} enumeration with the
+  @argument[direction]{a value of the @sym{gtk:text-direction} enumeration}
+  @argument[state]{a value of the @sym{gtk:state-type} enumeration for the
     state of the widget}
-  @argument[size]{a @symbol{gtk:icon-size} value, a size of -1 means render at
+  @argument[size]{a @sym{gtk:icon-size} value, a size of -1 means render at
     the size of the source and do not scale}
   @argument[widget]{a @class{gtk:widget} object that will display the icon, or
     @code{nil}, the only use that is typically made of this is to determine the
     appropriate @class{gdk:screen} object}
-  @argument[detail]{a string with the detail to pass to the theme engine, or
+  @argument[detail]{a string for the detail to pass to the theme engine, or
     @code{nil}, note that passing a detail of anything but @code{nil} will
     disable caching}
   @return{The @class{gdk-pixbuf:pixbuf} object to be displayed.}
@@ -684,17 +697,17 @@
 (export 'icon-set-render-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_set_render_icon_pixbuf ()
+;;; gtk_icon_set_render_icon_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_set_render_icon_pixbuf" icon-set-render-icon-pixbuf)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @argument[iconset]{a @class{gtk:icon-set} instance}
   @argument[context]{a @class{gtk:style-context} object}
-  @argument[size]{a @symbol{gtk:icon-size} value, a size of -1 means render
-    at the size of the source and do not scale}
+  @argument[size]{a @sym{gtk:icon-size} value, a size of -1 means render at
+    the size of the source and do not scale}
   @return{The @class{gdk-pixbuf:pixbuf} object to be displayed.}
   @begin{short}
     Renders an icon using the @fun{gtk:render-icon-pixbuf} function.
@@ -988,8 +1001,8 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_source_get_filename ()
-;;; gtk_icon_source_set_filename () -> icon-source-filename
+;;; gtk_icon_source_get_filename
+;;; gtk_icon_source_set_filename
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf icon-source-filename) (filename source)
@@ -1002,11 +1015,11 @@
 (cffi:defcfun ("gtk_icon_source_get_filename" icon-source-filename)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @syntax{(gtk:icon-source-filename source) => filename}
   @syntax{(setf (gtk:icon-source-filename source) filename)}
   @argument[source]{a @class{gtk:icon-source} instance}
-  @argument[filename]{a string with the image file to use}
+  @argument[filename]{a string for the image file to use}
   @begin{short}
     Accessor of the filename of a @class{gtk:icon-source} instance.
   @end{short}
@@ -1047,8 +1060,8 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_source_get_icon_name ()
-;;; gtk_icon_source_set_icon_name () -> icon-source-icon-name
+;;; gtk_icon_source_get_icon_name
+;;; gtk_icon_source_set_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf icon-source-icon-name) (name source)
@@ -1061,11 +1074,11 @@
 (cffi:defcfun ("gtk_icon_source_get_icon_name" icon-source-icon-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2025-07-05}
   @syntax{(gtk:icon-source-icon-name source) => name}
   @syntax{(setf (gtk:icon-source-icon-name source) name)}
   @argument[source]{a @class{gtk:icon-source} instance}
-  @argument[name]{a string with the name of the icon to use}
+  @argument[name]{a string for the name of the icon to use}
   @begin{short}
     Accessor of the icon name of a @class{gtk:icon-source} instance.
   @end{short}
@@ -1157,12 +1170,12 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_icon_source_new ()
+;;; gtk_icon_source_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_icon_source_new" icon-source-new) (g:boxed icon-source)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @return{The new @class{gtk:icon-source} instance.}
   @begin{short}
     Creates a new icon source.

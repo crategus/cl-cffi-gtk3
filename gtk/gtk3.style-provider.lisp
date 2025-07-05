@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.style-provider.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,7 +65,7 @@
 (setf (liber:alias-for-variable '+priority-fallback+)
       "Constant"
       (documentation '+priority-fallback+ 'variable)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @variable-value{1}
   @begin{short}
     The priority used for default style information that is used in the absence
@@ -85,7 +85,7 @@
 (setf (liber:alias-for-variable '+priority-theme+)
       "Constant"
       (documentation '+priority-theme+ 'variable)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @variable-value{200}
   @begin{short}
     The priority used for style information provided by themes.
@@ -104,7 +104,7 @@
 (setf (liber:alias-for-variable '+priority-settings+)
       "Constant"
       (documentation '+priority-settings+ 'variable)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @variable-value{400}
   @begin{short}
     The priority used for style information provided via a @class{gtk:settings}
@@ -128,7 +128,7 @@
 (setf (liber:alias-for-variable '+priority-application+)
       "Constant"
       (documentation '+priority-application+ 'variable)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @variable-value{600}
   @begin{short}
     A priority that can be used when adding a @class{gtk:style-provider} object
@@ -148,7 +148,7 @@
 (setf (liber:alias-for-variable '+priority-user+)
       "Constant"
       (documentation '+priority-user+ 'variable)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @variable-value{800}
   @begin{short}
     The priority used for the style information from the @file{~/.gtk-3.0.css}
@@ -173,7 +173,7 @@
 (setf (liber:alias-for-class 'style-provider)
       "Interface"
       (documentation 'style-provider 'type)
- "@version{2023-3-27}
+ "@version{2023-03-27}
   @begin{short}
     The @class{gtk:style-provider} interface is an interface used to provide
     style information to a @class{gtk:style-context} object.
@@ -211,12 +211,12 @@
 
 (defun style-provider-style-property (provider path state pspec)
  #+liber-documentation
- "@version{2023-3-27}
+ "@version{2025-07-05}
   @argument[provider]{a @class{gtk:style-provider} object}
-  @argument[path]{a @symbol{gtk:widget-path} instance to query}
-  @argument[state]{a @symbol{gtk:state-flags} value to query the style property
+  @argument[path]{a @sym{gtk:widget-path} instance to query}
+  @argument[state]{a @sym{gtk:state-flags} value to query the style property
     for}
-  @argument[pspec]{a @symbol{g:param-spec} instance to query}
+  @argument[pspec]{a @sym{g:param-spec} instance to query}
   @return{Returns the value of the style property.}
   @begin{short}
     Looks up the value of a widget style property as defined by the provider

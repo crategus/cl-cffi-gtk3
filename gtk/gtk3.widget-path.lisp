@@ -2,8 +2,8 @@
 ;;; gtk3.widget-path.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2013 - 2025 Dieter Kaiser
@@ -81,7 +81,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkRegionFlags
+;;; GtkRegionFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkRegionFlags" region-flags
@@ -98,7 +98,7 @@
 (setf (liber:alias-for-symbol 'region-flags)
       "GFlags"
       (liber:symbol-documentation 'region-flags)
- "@version{#2024-3-21}
+ "@version{#2024-03-21}
   @begin{declaration}
 (gobject:define-gflags \"GtkRegionFlags\" region-flags
   (:export t
@@ -111,14 +111,14 @@
   (:sorted #.(ash 1 5)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:even]{Region has an even number within a set.}
       @entry[:odd]{Region has an odd number within a set.}
       @entry[:first]{Region is the first one within a set.}
       @entry[:last]{Region is the last one within a set.}
       @entry[:only]{Region is the only one within a set.}
       @entry[:sorted]{Region is part of a sorted area.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes a region within a widget.
@@ -140,7 +140,7 @@
 (setf (liber:alias-for-class 'widget-path)
       "GBoxed"
       (documentation 'widget-path 'type)
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @begin{short}
     The @class{gtk:widget-path} structure is a boxed type that represents a
     widget hierarchy from the topmost widget, typically a toplevel, to any
@@ -192,7 +192,7 @@
 
 (cffi:defcfun ("gtk_widget_path_append_type" widget-path-append-type) :int
  #+liber-documentation
- "@version{2025-3-8}
+ "@version{2025-03-08}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[gtype]{a @class{g:type-t} type ID for the widget to append}
   @return{The integer with the position where the element was inserted.}
@@ -207,20 +207,20 @@
 (export 'widget-path-append-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_append_with_siblings ()
+;;; gtk_widget_path_append_with_siblings
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_append_with_siblings"
                widget-path-append-with-siblings) :int
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[siblings]{a @class{gtk:widget-path} instance describing a list of
     siblings, this path may not contain any siblings itself and it must not be
     modified afterwards}
-  @argument[index]{an unsigned integer with the index into @arg{siblings} for
+  @argument[index]{an unsigned integer for the index into @arg{siblings} for
     where the added element is positioned}
-  @return{An integer with the position where the element was inserted.}
+  @return{The integer with the position where the element was inserted.}
   @begin{short}
     Appends a widget type with all its siblings to the widget hierarchy
     represented by @arg{path}.
@@ -241,16 +241,16 @@
 (export 'widget-path-append-with-siblings)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_append_for_widget ()
+;;; gtk_widget_path_append_for_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_append_for_widget"
                widget-path-append-for-widget) :int
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[widget]{a @class{gtk:widget} object to append to the widget path}
-  @return{An integer with the position where the data was inserted.}
+  @return{The integer with the position where the data was inserted.}
   @begin{short}
     Appends the data from @arg{widget} to the widget hierarchy represented by
     @arg{path}.
@@ -266,13 +266,13 @@
 (export 'widget-path-append-for-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_copy ()
+;;; gtk_widget_path_copy
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_copy" widget-path-copy)
     (g:boxed widget-path :return)
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @argument[path]{a @class{gtk:widget-path} instance}
   @return{Returns a copy of @arg{path}.}
   @short{Returns a copy of a widget path.}
@@ -326,13 +326,13 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_get_object_type () -> widget-path-object-type
+;;; gtk_widget_path_get_object_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_get_object_type" widget-path-object-type)
     g:type-t
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @argument[path]{a @class{gtk:widget-path} instance}
   @return{The @class{g:type-t} type ID of the object.}
   @begin{short}
@@ -346,12 +346,12 @@
 (export 'widget-path-object-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_has_parent ()
+;;; gtk_widget_path_has_parent
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_has_parent" widget-path-has-parent) :boolean
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[gtype]{a @class{g:type-t} type ID of the widget to check in parents}
   @return{@em{True} if any parent is of @arg{gtype} type.}
@@ -367,12 +367,12 @@
 (export 'widget-path-has-parent)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_is_type ()
+;;; gtk_widget_path_is_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_is_type" widget-path-is-type) :boolean
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[gtype]{a @class{g:type-t} type ID of the widget to match}
   @return{@em{True} if the widget represented by @arg{path} is of @arg{gtype}
@@ -389,16 +389,16 @@
 (export 'widget-path-is-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_add_class ()
+;;; gtk_widget_path_iter_add_class
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_add_class" widget-path-iter-add-class)
     :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
-  @argument[name]{a string with a class name}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
+  @argument[name]{a string for a class name}
   @begin{short}
     Adds the class name to the widget at position @arg{pos} in the hierarchy
     defined in @arg{path}.
@@ -413,17 +413,17 @@
 (export 'widget-path-iter-add-class)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_add_region ()
+;;; gtk_widget_path_iter_add_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_add_region" widget-path-iter-add-region)
     :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
-  @argument[name]{a string with the region name}
-  @argument[flags]{a @symbol{gtk:region-flags} value affecting the region}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
+  @argument[name]{a string for the region name}
+  @argument[flags]{a @sym{gtk:region-flags} value affecting the region}
   @begin{short}
     Adds the region name to the widget at position @arg{pos} in the hierarchy
     defined in @arg{path}.
@@ -449,15 +449,15 @@
 (export 'widget-path-iter-add-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_clear_classes ()
+;;; gtk_widget_path_iter_clear_classes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_clear_classes"
                widget-path-iter-clear-classes) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
   @begin{short}
     Removes all classes from the widget at position @arg{pos} in the hierarchy
     defined in @arg{path}.
@@ -469,15 +469,15 @@
 (export 'widget-path-iter-clear-classes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_clear_regions ()
+;;; gtk_widget_path_iter_clear_regions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_clear_regions"
                widget-path-iter-clear-regions) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
   @begin{short}
     Removes all regions from the widget at position @arg{pos} in the hierarchy
     defined in @arg{path}.
@@ -494,8 +494,8 @@
 (export 'widget-path-iter-clear-regions)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_name ()
-;;; gtk_widget_path_iter_set_name ()
+;;; gtk_widget_path_iter_get_name
+;;; gtk_widget_path_iter_set_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-name) (value path pos)
@@ -507,12 +507,12 @@
 
 (cffi:defcfun ("gtk_widget_path_iter_get_name" widget-path-iter-name) :string
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @syntax{(gtk:widget-path-iter-name path pos) => name}
   @syntax{(setf (gtk:widget-path-iter-name path pos) name)}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position, -1 for the path head}
-  @argument[name]{a string with the widget name}
+  @argument[pos]{an integer for the position, -1 for the path head}
+  @argument[name]{a string for the widget name}
   @begin{short}
     Accessor of the widget name.
   @end{short}
@@ -527,8 +527,8 @@
 (export 'widget-path-iter-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_object_name ()
-;;; gtk_widget_path_iter_set_object_name ()
+;;; gtk_widget_path_iter_get_object_name
+;;; gtk_widget_path_iter_set_object_name
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-object-name) (value path pos)
@@ -541,12 +541,12 @@
 (cffi:defcfun ("gtk_widget_path_iter_get_object_name"
                widget-path-iter-object-name) :string
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @syntax{(gtk:widget-path-iter-object-name path pos) => name}
   @syntax{(setf (gtk:widget-path-iter-object-name path pos) name)}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position, -1 for the path head}
-  @argument[name]{a string with the object name to set or @code{nil} to unset}
+  @argument[pos]{an integer for the position, -1 for the path head}
+  @argument[name]{a string for the object name to set or @code{nil} to unset}
   @begin{short}
     Accessor of the object name.
   @end{short}
@@ -561,8 +561,8 @@
 (export 'widget-path-iter-object-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_object_type ()
-;;; gtk_widget_path_iter_set_object_type ()
+;;; gtk_widget_path_iter_get_object_type
+;;; gtk_widget_path_iter_set_object_type
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-object-type) (value path pos)
@@ -575,11 +575,11 @@
 (cffi:defcfun ("gtk_widget_path_iter_get_object_type"
                widget-path-iter-object-type) g:type-t
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @syntax{(gtk:widget-path-iter-object-type path pos) => gtype}
   @syntax{(setf (gtk:widget-path-iter-object-type path pos) gtype)}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position, -1 for the path head}
+  @argument[pos]{an integer for the position, -1 for the path head}
   @argument[gtype]{a @class{g:type-t} type ID}
   @begin{short}
     Accessor of the object type.
@@ -604,18 +604,20 @@
 (export 'widget-path-iter-object-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_siblings ()
+;;; gtk_widget_path_iter_get_siblings
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_get_siblings" widget-path-iter-siblings)
     (g:boxed widget-path)
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to get the siblings for, -1 for
+  @argument[pos]{an integer for the position to get the siblings for, -1 for
     the path head}
-  @return{A @class{gtk:widget-path} instance with the list of siblings for the
-    element at @arg{pos}.}
+  @begin{return}
+    The @class{gtk:widget-path} instance with the list of siblings for the
+    element at @arg{pos}.
+  @end{return}
   @begin{short}
     Returns the list of siblings for the element at @arg{pos}.
   @end{short}
@@ -627,18 +629,20 @@
 (export 'widget-path-iter-siblings)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_sibling_index ()
+;;; gtk_widget_path_iter_get_sibling_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_get_sibling_index"
                widget-path-iter-sibling-index) :uint
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to get the sibling index for,
+  @argument[pos]{an integer for the position to get the sibling index for,
     -1 for the path head}
-  @return{An unsigned integer with the index into the list of siblings for the
-    element at @arg{pos}.}
+  @begin{return}
+    The unsigned integer with the index into the list of siblings for the
+    element at @arg{pos}.
+  @end{return}
   @begin{short}
     Returns the index into the list of siblings for the element at @arg{pos} as
     returned by the @fun{gtk:widget-path-iter-siblings} function.
@@ -653,8 +657,8 @@
 (export 'widget-path-iter-sibling-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_get_state ()
-;;; gtk_widget_path_iter_set_state ()
+;;; gtk_widget_path_iter_get_state
+;;; gtk_widget_path_iter_set_state
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf widget-path-iter-state) (value path pos)
@@ -667,12 +671,12 @@
 (cffi:defcfun ("gtk_widget_path_iter_get_state"
                widget-path-iter-state) state-flags
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @syntax{(gtk:widget-path-iter-state path pos) => state}
   @syntax{(setf (gtk:widget-path-iter-state path pos) state)}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position , -1 for the path head}
-  @argument[state]{a @symbol{gtk:state-flags} value to set or unset}
+  @argument[pos]{an integer for the position , -1 for the path head}
+  @argument[state]{a @sym{gtk:state-flags} value to set or unset}
   @begin{short}
     Accessor of the state flags.
   @end{short}
@@ -705,16 +709,16 @@
 (export 'widget-path-iter-state)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_has_class ()
+;;; gtk_widget_path_iter_has_class
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_has_class" widget-path-iter-has-class)
     :boolean
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to query, -1 for the path head}
-  @argument[name]{a string with a class name}
+  @argument[pos]{an integer for the position to query, -1 for the path head}
+  @argument[name]{a string for a class name}
   @return{@em{True} if the class name is defined for the widget at @arg{pos}.}
   @begin{short}
     Returns @em{true} if the widget at position @arg{pos} has the class name
@@ -728,16 +732,16 @@
 (export 'widget-path-iter-has-class)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_has_name ()
+;;; gtk_widget_path_iter_has_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_has_name" widget-path-iter-has-name)
     :boolean
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to query, -1 for the path head}
-  @argument[name]{a string with a widget name}
+  @argument[pos]{an integer for the position to query, -1 for the path head}
+  @argument[name]{a string for a widget name}
   @return{@em{True} if the widget at @arg{pos} has this name.}
   @begin{short}
     Returns @em{true} if the widget at position @arg{pos} has the name
@@ -837,7 +841,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_has_region ()
+;;; gtk_widget_path_iter_has_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_has_region" %widget-path-iter-has-region)
@@ -849,11 +853,11 @@
 
 (defun widget-path-iter-has-region (path pos name)
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to query, -1 for the path head}
-  @argument[name]{a string with a region name}
-  @return{Returns the @symbol{gtk:region-flags} region flags.}
+  @argument[pos]{an integer for the position to query, -1 for the path head}
+  @argument[name]{a string for a region name}
+  @return{Returns the @sym{gtk:region-flags} region flags.}
   @begin{short}
     Returns the region flags corresponding to the widget found at the position
     @arg{pos} in the widget hierarchy defined by @arg{path}.
@@ -872,15 +876,15 @@
 (export 'widget-path-iter-has-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_list_classes ()
+;;; gtk_widget_path_iter_list_classes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_list_classes"
                widget-path-iter-list-classes) g:strv-t
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to query, -1 for the path head}
+  @argument[pos]{an integer for the position to query, -1 for the path head}
   @return{Returns a list of strings with the class names.}
   @begin{short}
     Returns a list of strings with all the class names defined for the widget
@@ -893,15 +897,15 @@
 (export 'widget-path-iter-list-classes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_list_regions ()
+;;; gtk_widget_path_iter_list_regions
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_list_regions"
                widget-path-iter-list-regions) g:strv-t
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to query, -1 for the path head}
+  @argument[pos]{an integer for the position to query, -1 for the path head}
   @return{Returns a list of strings with the region names.}
   @begin{short}
     Returns a list with all the region names defined for the widget at position
@@ -919,16 +923,16 @@
 (export 'widget-path-iter-list-regions)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_remove_class ()
+;;; gtk_widget_path_iter_remove_class
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_remove_class"
                widget-path-iter-remove-class) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
-  @argument[name]{a string with a class name}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
+  @argument[name]{a string for a class name}
   @begin{short}
     Removes the class name from the widget at position @arg{pos} in the
     hierarchy defined in @arg{path}.
@@ -941,16 +945,16 @@
 (export 'widget-path-iter-remove-class)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_iter_remove_region ()
+;;; gtk_widget_path_iter_remove_region
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_iter_remove_region"
                widget-path-iter-remove-region) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @argument[pos]{an integer with the position to modify, -1 for the path head}
-  @argument[name]{a string with a region name}
+  @argument[pos]{an integer for the position to modify, -1 for the path head}
+  @argument[name]{a string for a region name}
   @begin{short}
     Removes the region name from the widget at position @arg{pos} in the
     hierarchy defined in @arg{path}.
@@ -968,13 +972,13 @@
 (export 'widget-path-iter-remove-region)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_length ()
+;;; gtk_widget_path_length
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_length" widget-path-length) :int
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @return{An integer with the number of elements in the path.}
+  @return{Tje integer with the number of elements in the path.}
   @begin{short}
     Returns the number of widget types between the represented widget and its
     topmost container.
@@ -985,25 +989,25 @@
 (export 'widget-path-length)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_new ()
+;;; gtk_widget_path_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_new" widget-path-new) (g:boxed widget-path)
  #+liber-documentation
- "@version{#2023-3-30}
-  @return{A newly created, empty, @class{gtk:widget-path} instance.}
+ "@version{#2025-07-05}
+  @return{The newly created, empty, @class{gtk:widget-path} instance.}
   @short{Returns an empty widget path.}
   @see-class{gtk:widget-path}")
 
 (export 'widget-path-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_prepend_type ()
+;;; gtk_widget_path_prepend_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_prepend_type" widget-path-prepend-type) :void
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2023-03-30}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[gtype]{a @class{g:type-t} type ID to prepend}
   @begin{short}
@@ -1017,14 +1021,14 @@
 (export 'widget-path-prepend-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_widget_path_to_string ()
+;;; gtk_widget_path_to_string
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_to_string" widget-path-to-string) :string
  #+liber-documentation
- "@version{#2023-3-30}
+ "@version{#2025-07-05}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @return{A new string describing @arg{path}.}
+  @return{The new string describing @arg{path}.}
   @begin{short}
     Dumps the widget path into a string representation.
   @end{short}

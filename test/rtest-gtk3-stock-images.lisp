@@ -5,65 +5,6 @@
 
 ;;; --- Types and Values -------------------------------------------------------
 
-;;;     GtkIconSource
-
-(test gtk-icon-source-boxed
-  ;; Check type
-  (is (g:type-is-boxed "GtkIconSource"))
-  ;; Check type initializer
-  (is (eq (g:gtype "GtkIconSource")
-          (g:gtype (cffi:foreign-funcall "gtk_icon_source_get_type" :size))))
-  ;; Check registered name
-  (is (eq 'gtk:icon-source
-          (glib:symbol-for-gtype "GtkIconSource"))))
-
-;;;     GtkIconFactory
-
-(test gtk-icon-factory-class
-  ;; Check type
-  (is (g:type-is-object "GtkIconFactory"))
-  ;; Check registered name
-  (is (eq 'gtk:icon-factory
-          (glib:symbol-for-gtype "GtkIconFactory")))
-  ;; Check type initializer
-  (is (eq (g:gtype "GtkIconFactory")
-          (g:gtype (cffi:foreign-funcall "gtk_icon_factory_get_type" :size))))
-  ;; Check parent
-  (is (eq (g:gtype "GObject")
-          (g:type-parent "GtkIconFactory")))
-  ;; Check children
-  (is (equal '()
-             (glib-test:list-children "GtkIconFactory")))
-  ;; Check interfaces
-  (is (equal '("GtkBuildable")
-             (glib-test:list-interfaces "GtkIconFactory")))
-  ;; Check class properties
-  (is (equal '()
-             (glib-test:list-properties "GtkIconFactory")))
-  ;; Check signals
-  (is (equal '()
-             (glib-test:list-signals "GtkIconFactory")))
-  ;; Check class definition
-  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconFactory" GTK:ICON-FACTORY
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES ("GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_icon_factory_get_type")
-                       NIL)
-             (gobject:get-gtype-definition "GtkIconFactory"))))
-
-;;;     GtkIconSet
-
-(test gtk-icon-set-boxed
-  ;; Check type
-  (is (g:type-is-boxed "GtkIconSet"))
-  ;; Check type initializer
-  (is (eq (g:gtype "GtkIconSet")
-          (g:gtype (cffi:foreign-funcall "gtk_icon_set_get_type" :size))))
-  ;; Check registered name
-  (is (eq 'gtk:icon-set
-          (glib:symbol-for-gtype "GtkIconSet"))))
-
 ;;;     GtkIconSize
 
 (test gtk-icon-size
@@ -100,6 +41,65 @@
                        (:DND 5)
                        (:DIALOG 6))
              (gobject:get-gtype-definition "GtkIconSize"))))
+
+;;;     GtkIconSource
+
+(test gtk-icon-source-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkIconSource"))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkIconSource")
+          (g:gtype (cffi:foreign-funcall "gtk_icon_source_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:icon-source
+          (glib:symbol-for-gtype "GtkIconSource"))))
+
+;;;     GtkIconSet
+
+(test gtk-icon-set-boxed
+  ;; Check type
+  (is (g:type-is-boxed "GtkIconSet"))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkIconSet")
+          (g:gtype (cffi:foreign-funcall "gtk_icon_set_get_type" :size))))
+  ;; Check registered name
+  (is (eq 'gtk:icon-set
+          (glib:symbol-for-gtype "GtkIconSet"))))
+
+;;;     GtkIconFactory
+
+(test gtk-icon-factory-class
+  ;; Check type
+  (is (g:type-is-object "GtkIconFactory"))
+  ;; Check registered name
+  (is (eq 'gtk:icon-factory
+          (glib:symbol-for-gtype "GtkIconFactory")))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkIconFactory")
+          (g:gtype (cffi:foreign-funcall "gtk_icon_factory_get_type" :size))))
+  ;; Check parent
+  (is (eq (g:gtype "GObject")
+          (g:type-parent "GtkIconFactory")))
+  ;; Check children
+  (is (equal '()
+             (glib-test:list-children "GtkIconFactory")))
+  ;; Check interfaces
+  (is (equal '("GtkBuildable")
+             (glib-test:list-interfaces "GtkIconFactory")))
+  ;; Check class properties
+  (is (equal '()
+             (glib-test:list-properties "GtkIconFactory")))
+  ;; Check signals
+  (is (equal '()
+             (glib-test:list-signals "GtkIconFactory")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkIconFactory" GTK:ICON-FACTORY
+                       (:SUPERCLASS G:OBJECT
+                        :EXPORT T
+                        :INTERFACES ("GtkBuildable")
+                        :TYPE-INITIALIZER "gtk_icon_factory_get_type")
+                       NIL)
+             (gobject:get-gtype-definition "GtkIconFactory"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -152,4 +152,4 @@
 ;;;     gtk_icon_source_set_state
 ;;;     gtk_icon_source_set_state_wildcarded
 
-;;; 2024-9-23
+;;; 2025-07-05
