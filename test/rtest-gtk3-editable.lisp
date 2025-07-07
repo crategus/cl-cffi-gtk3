@@ -18,20 +18,68 @@
           (g:gtype (cffi:foreign-funcall "gtk_editable_get_type" :size))))
   ;; Check interface properties
   (is (equal '()
-             (glib-test:list-interface-properties "GtkPrintOperationPreview")))
+             (glib-test:list-interface-properties "GtkEditable")))
   ;; Check interface definition
-  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkPrintOperationPreview"
-                                         GTK:PRINT-OPERATION-PREVIEW
-                       (:EXPORT T
-                        :TYPE-INITIALIZER
-                        "gtk_print_operation_preview_get_type"))
-             (gobject:get-gtype-definition "GtkPrintOperationPreview"))))
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkEditable" GTK:EDITABLE
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_editable_get_type"))
+             (gobject:get-gtype-definition "GtkEditable"))))
 
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     changed
+
+(test gtk-editable-changed-signal
+  (let* ((name "changed")
+         (gtype (g:gtype "GtkEditable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
 ;;;     delete-text
+
+(test gtk-editable-delete-text-signal
+  (let* ((name "delete-text")
+         (gtype (g:gtype "GtkEditable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("gint" "gint")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
 ;;;     insert-text
+
+(test gtk-editable-insert-text-signal
+  (let* ((name "insert-text")
+         (gtype (g:gtype "GtkEditable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("gchararray" "gint" "gpointer")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -39,8 +87,12 @@
 ;;;     gtk_editable_get_selection_bounds
 
 (test gtk-editable-select-region/selection-bounds
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     (is-false (gtk:editable-select-region entry :start 8 :end 12))
     (is (equal '(8 12)
                (multiple-value-list (gtk:editable-selection-bounds entry))))
@@ -52,81 +104,147 @@
     ;; Use defalut value for :end
     (is-false (gtk:editable-select-region entry :start 8))
     (is (equal '(8 18)
-               (multiple-value-list (gtk:editable-selection-bounds entry))))))
+               (multiple-value-list (gtk:editable-selection-bounds entry))))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;;     gtk_editable_insert_text
 ;;;     gtk_editable_delete_text
 
 (test gtk-editable-insert/delete-text
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     ;; Delete text
     (is-false (gtk:editable-delete-text entry :start 8 :end 12))
     (is (string= "This is  text." (gtk:editable-chars entry)))
     ;; Insert text
     (is (= 13 (gtk:editable-insert-text entry "extra" 8)))
-    (is (string= "This is extra text." (gtk:editable-chars entry)))))
+    (is (string= "This is extra text." (gtk:editable-chars entry)))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;;     gtk_editable_get_chars
 
 (test gtk-editable-chars
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     (is (string= "This is some text." (gtk:editable-chars entry)))
     (is (string= "some text." (gtk:editable-chars entry :start 8)))
-    (is (string= "some" (gtk:editable-chars entry :start 8 :end 12)))))
+    (is (string= "some" (gtk:editable-chars entry :start 8 :end 12)))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;;     gtk_editable_cut_clipboard
-;;;     gtk_editable_copy_clipboard
 ;;;     gtk_editable_paste_clipboard
 
-;; TODO: We have no clipboard. Can we improve this?
+(test gtk-editable-cut/copy-clipboard
+  (glib-test:with-check-memory (window buffer entry :strong 2)
+    (let (clipboard)
+      (is (typep (setf window (gtk:window-new :toplevel)) 'gtk:window))
+      (is (typep (setf clipboard
+                       (gtk:clipboard-default (gtk:widget-display window)))
+                 'gtk:clipboard))
+      (is (typep (setf buffer
+                       (gtk:entry-buffer-new "This is some text."))
+                 'gtk:entry-buffer))
+      (is (typep (setf entry
+                       (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
+      ;; Put ENTRY in the toplevel window to access a clipboard
+      (is-false (gtk:container-add window entry))
+      ;; Cut into clipboard
+      (is-false (gtk:editable-select-region entry :start 8 :end 12))
+      (is-false (gtk:editable-cut-clipboard entry))
+      (is (string= "some" (gtk:clipboard-wait-for-text clipboard)))
+      (is (string= "This is  text." (gtk:editable-chars entry)))
+      ;; Paste from clipboard
+      (is-false (gtk:editable-paste-clipboard entry))
+      (is (string= "some" (gtk:clipboard-wait-for-text clipboard)))
+      (is (string= "This is some text." (gtk:editable-chars entry)))
+      ;; Remove references
+      (is-false (setf (gtk:entry-buffer entry) nil))
+      (is-false (gtk:widget-destroy window)))))
 
-;; (sbcl:7881): Gtk-CRITICAL **: 22:45:52.234: gtk_widget_get_clipboard:
-;; assertion 'gtk_widget_has_screen (widget)' failed
+;;;     gtk_editable_copy_clipboard
 
-;; (sbcl:7881): Gtk-CRITICAL **: 22:45:52.234: gtk_clipboard_set_text:
-;; assertion 'clipboard != NULL' failed
-
-#+nil
-(test gtk-editable-cut/copy/paste-clipboard
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
-    (is-false (gtk:editable-select-region entry :start 8 :end 12))
-    (is-false (gtk:editable-cut-clipboard entry))
-    (is-false (gtk:editable-chars entry))))
+(test gtk-editable-copy-clipboard
+  (glib-test:with-check-memory (window buffer entry :strong 2)
+    (let (clipboard)
+      (is (typep (setf window (gtk:window-new :toplevel)) 'gtk:window))
+      (is (typep (setf clipboard
+                       (gtk:clipboard-default (gtk:widget-display window)))
+                 'gtk:clipboard))
+      (is (typep (setf buffer
+                       (gtk:entry-buffer-new "This is some text."))
+                 'gtk:entry-buffer))
+      (is (typep (setf entry
+                       (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
+      ;; Put ENTRY in the toplevel window to access a clipboard
+      (is-false (gtk:container-add window entry))
+      ;; Copy into clipboard
+      (is-false (gtk:editable-select-region entry :start 8 :end 12))
+      (is-false (gtk:editable-copy-clipboard entry))
+      (is (string= "some" (gtk:clipboard-wait-for-text clipboard)))
+      (is (string= "This is some text." (gtk:editable-chars entry)))
+      ;; Remove references
+      (is-false (setf (gtk:entry-buffer entry) nil))
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gtk_editable_delete_selection
 
-(test gtk-editable-select-region/selection-bounds
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
+(test gtk-editable-delete-selection
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     ;; No text selected
     (is-false (gtk:editable-delete-selection entry))
     (is (string= "This is some text." (gtk:editable-chars entry)))
     ;; Select text and delete the selection
     (is-false (gtk:editable-select-region entry :start 8 :end 12))
     (is-false (gtk:editable-delete-selection entry))
-    (is (string= "This is  text." (gtk:editable-chars entry)))))
+    (is (string= "This is  text." (gtk:editable-chars entry)))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;;     gtk_editable_set_position
 ;;;     gtk_editable_get_position
 
 (test gtk-editable-position
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     (is (= 0 (gtk:editable-position entry)))
     (is (= 8 (setf (gtk:editable-position entry) 8)))
-    (is (= 8 (gtk:editable-position entry)))))
+    (is (= 8 (gtk:editable-position entry)))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
 ;;;     gtk_editable_set_editable
 ;;;     gtk_editable_get_editable
 
 (test gtk-editable-editable
-  (let* ((buffer (gtk:entry-buffer-new "This is some text."))
-         (entry (gtk:entry-new-with-buffer buffer)))
-    (is-true (gtk:editable-editable entry))
+  (glib-test:with-check-memory (buffer entry)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "This is some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry
+                     (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
     (is-false (setf (gtk:editable-editable entry) nil))
-    (is-false (gtk:editable-editable entry))))
+    (is-false (gtk:editable-editable entry))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
 
-;;; 2024-9-22
+;;; 2025-07-07
