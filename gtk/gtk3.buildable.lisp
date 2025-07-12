@@ -69,7 +69,7 @@
 (setf (liber:alias-for-class 'buildable)
       "Interface"
       (documentation 'buildable 'type)
- "@version{#2023-03-15}
+ "@version{2025-07-11}
   @begin{short}
     Interface for objects that can be built by a @class{gtk:builder} UI
     description.
@@ -106,7 +106,7 @@
 
 (cffi:defcfun ("gtk_buildable_get_name" buildable-name) :string
  #+liber-documentation
- "@version{#2025-06-05}
+ "@version{2025-07-11}
   @syntax{(gtk:buildable-name buildable) => name}
   @syntax{(setf (gtk:buildable-name buildable) name)}
   @argument[buildable]{a @class{gtk:buildable} widget}
@@ -137,7 +137,7 @@
 
 (defun buildable-add-child (buildable builder child &optional type)
  #+liber-documentation
- "@version{#2025-06-05}
+ "@version{2025-07-11}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[child]{a @class{g:object} child widget to add}
@@ -318,7 +318,7 @@
 (cffi:defcfun ("gtk_buildable_get_internal_child" buildable-internal-child)
     g:object
  #+liber-documentation
- "@version{#2025-06-24}
+ "@version{2025-07-11}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[name]{a string for the name of the child}

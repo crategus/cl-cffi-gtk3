@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'application-window 'type)
- "@version{2025-06-23}
+ "@version{2025-07-11}
   @begin{short}
     The @class{gtk:application-window} class is a @class{gtk:window} subclass
     that offers some extra functionality for better integration with
@@ -229,7 +229,7 @@
 (setf (liber:alias-for-function 'application-window-show-menubar)
       "Accessor"
       (documentation 'application-window-show-menubar 'function)
- "@version{2024-03-15}
+ "@version{2025-07-11}
   @syntax{(gtk:application-window-show-menubar object) => show}
   @syntax{(setf (gtk:application-window-show-menubar object) show)}
   @argument[window]{a @class{gtk:application-window} widget}
@@ -251,7 +251,7 @@
 (cffi:defcfun ("gtk_application_window_new" application-window-new)
     (g:object widget)
  #+liber-documentation
- "@version{2023-03-11}
+ "@version{2025-07-11}
   @argument[application]{a @class{gtk:application} instance}
   @return{The newly created @class{gtk:application-window} widget.}
   @short{Creates a new application window.}
@@ -267,7 +267,7 @@
 
 (cffi:defcfun ("gtk_application_window_get_id" application-window-id) :uint
  #+liber-documentation
- "@version{2023-03-11}
+ "@version{2025-07-11}
   @argument[window]{a @class{gtk:application-window} widget}
   @begin{return}
     The unique ID for @arg{window}, or 0 if @arg{window} has not yet been
@@ -298,7 +298,7 @@
 (cffi:defcfun ("gtk_application_window_get_help_overlay"
                application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2025-06-02}
+ "@version{2025-07-11}
   @syntax{(gtk:application-window-help-overlay window) => overlay}
   @syntax{(setf (gtk:application-window-help-overlay window) overlay)}
   @argument[window]{a @class{gtk:application-window} widget}

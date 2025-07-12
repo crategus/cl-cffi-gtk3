@@ -119,7 +119,10 @@
 ;;; ---  Properties ------------------------------------------------------------
 
 (test gtk-builder-properties
-  (let ((builder (make-instance 'gtk:builder :from-string *dialog*)))
+  (glib-test:with-check-memory (builder)
+    (is (typep (setf builder
+                     (make-instance 'gtk:builder :from-string *dialog*))
+               'gtk:builder))
     (is-false (gtk:builder-translation-domain builder))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -127,38 +130,48 @@
 ;;;     gtk_builder_new
 
 (test gtk-builder-new
-  ;; gtk:builder-new is implemented with make-instance
-  (is (typep (gtk:builder-new) 'gtk:builder))
-  ;; Check Lisp extension for initializing gtk:builder
-  (let ((builder (make-instance 'gtk:builder :from-string *dialog*)))
-    (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog)))
-  (let* ((path (glib-sys:sys-path "test/resource/rtest-application.ui"))
-         (builder (make-instance 'gtk:builder
-                                 :from-file (namestring path))))
-    (is (typep (gtk:builder-object builder "menubar") 'g:menu))))
+  (glib-test:with-check-memory (builder :strong 2)
+    (let ((path (glib-sys:sys-path "test/resource/rtest-application.ui")))
+      ;; gtk:builder-new is implemented with make-instance
+      (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
+      ;; Check Lisp extension for initializing gtk:builder
+      (is (typep (setf builder
+                       (make-instance 'gtk:builder :from-string *dialog*))
+                 'gtk:builder))
+      (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
+      ;; Create builder from file
+      (is (typep (setf builder
+                       (make-instance 'gtk:builder
+                                      :from-file (namestring path)))
+                 'gtk:builder))
+      (is (typep (gtk:builder-object builder "menubar") 'g:menu)))))
 
 ;;;     gtk_builder_new_from_file
 
 (test gtk-builder-new-from-file
-  (is (typep (gtk:builder-new-from-file
-               (glib-sys:sys-path "test/resource/rtest-application.ui"))
-             'gtk:builder)))
+  (glib-test:with-check-memory (builder)
+    (let ((path (glib-sys:sys-path "test/resource/rtest-application.ui")))
+      (is (typep (setf builder
+                       (gtk:builder-new-from-file path)) 'gtk:builder)))))
 
 ;;;     gtk_builder_new_from_resource
 
 (test gtk-builder-new-from-resource
-  (let* ((path (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
-         (resource (g:resource-load path)))
-    (is-false (g:resources-register resource))
-    (is (typep
-            (gtk:builder-new-from-resource "/com/crategus/test/rtest-dialog.ui")
-            'gtk:builder))
-    (is-false (g:resources-unregister resource))))
+  (glib-test:with-check-memory (builder)
+    (let* ((path (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
+           (resource (g:resource-load path)))
+      (is-false (g:resources-register resource))
+      (is (typep (setf builder
+                       (gtk:builder-new-from-resource "/com/crategus/test/rtest-dialog.ui"))
+                 'gtk:builder))
+      (is-false (g:resources-unregister resource)))))
 
 ;;;     gtk_builder_new_from_string
 
 (test gtk-builder-new-from-string
-  (is (typep (gtk:builder-new-from-string *menus*) 'gtk:builder)))
+  (glib-test:with-check-memory (builder)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *menus*)) 'gtk:builder))))
 
 ;;;     gtk_builder_add_callback_symbol
 ;;;     gtk_builder_add_callback_symbols
@@ -167,25 +180,28 @@
 ;;;     gtk_builder_add_from_file
 
 (test gtk-builder-add-from-file
-  (let ((builder (gtk:builder-new)))
+  (glib-test:with-check-memory (builder)
+    (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
     (is-true (gtk:builder-add-from-file builder
                  (glib-sys:sys-path "test/resource/rtest-application.ui")))))
 
 ;;;     gtk_builder_add_from_resource
 
 (test gtk-builder-add-from-resource
-  (let* ((filename (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
-         (resource (g:resource-load filename))
-         (builder (gtk:builder-new)))
+  (glib-test:with-check-memory (builder)
+    (let* ((filename (glib-sys:sys-path "test/resource/rtest-resource.gresource"))
+           (resource (g:resource-load filename)))
+    (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
     (is-false (g:resources-register resource))
     (is-true (gtk:builder-add-from-resource builder
-                                          "/com/crategus/test/rtest-dialog.ui"))
-    (is-false (g:resources-unregister resource))))
+                                            "/com/crategus/test/rtest-dialog.ui"))
+    (is-false (g:resources-unregister resource)))))
 
 ;;;     gtk_builder_add_from_string
 
 (test gtk-builder-add-from-string
-  (let ((builder (gtk:builder-new)))
+  (glib-test:with-check-memory (builder)
+    (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
     (is-true (gtk:builder-add-from-string builder *menus*))))
 
 ;;;     gtk_builder_add_objects_from_file
@@ -199,21 +215,22 @@
                (mapcar 'type-of (gtk:builder-objects builder))))))
 
 (test gtk-builder-add-objects-from-file.2
-  (let ((builder (gtk:builder-new))
-        (path (glib-sys:sys-path "test/resource/rtest-dialog2.ui")))
-    (is-true (gtk:builder-add-objects-from-file builder path
-                                                        "button_cancel"
-                                                        "button_ok"))
-    (is (typep (gtk:builder-object builder "button_cancel") 'gtk:button))
-    (is (typep (gtk:builder-object builder "button_ok") 'gtk:button))
-
-    (is (equal '(GTK:BUTTON GTK:BUTTON)
-               (mapcar 'type-of (gtk:builder-objects builder))))))
+  (glib-test:with-check-memory (builder :strong 2)
+    (let ((path (glib-sys:sys-path "test/resource/rtest-dialog2.ui")))
+      (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
+      (is-true (gtk:builder-add-objects-from-file builder path
+                                                          "button_cancel"
+                                                          "button_ok"))
+      (is (typep (gtk:builder-object builder "button_cancel") 'gtk:button))
+      (is (typep (gtk:builder-object builder "button_ok") 'gtk:button))
+      (is (equal '(GTK:BUTTON GTK:BUTTON)
+                 (mapcar 'type-of (gtk:builder-objects builder)))))))
 
 ;;;     gtk_builder_add_objects_from_string
 
 (test gtk-builder-add-objects-from-string
-  (let ((builder (gtk:builder-new)))
+  (glib-test:with-check-memory (builder :strong 4)
+    (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
     (is-true (gtk:builder-add-objects-from-string builder *dialog* "dialog1"))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
@@ -225,15 +242,17 @@
 ;;;     gtk_builder_object
 
 (test gtk-builder-object
-  (let ((builder (gtk:builder-new-from-string *dialog*)))
+  (glib-test:with-check-memory (builder :strong 2)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *dialog*)) 'gtk:builder))
     (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
     (is (typep (gtk:builder-object builder "ok_button") 'gtk:button))))
 
 ;;;     gtk_builder_objects
 
 (test gtk-builder-objects
-  (let ((builder (gtk:builder-new)))
-    (is (typep builder 'gtk:builder))
+  (glib-test:with-check-memory (builder :strong 6)
+    (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
     (is (equal '() (gtk:builder-objects builder)))
     (is-true (gtk:builder-add-from-string builder *menus*))
     (is (equal '(g:menu g:menu)
@@ -249,7 +268,9 @@
 ;;;     gtk_builder_get_type_from_name
 
 (test gtk-builder-type-from-name
-  (let ((builder (gtk:builder-new-from-string *dialog*)))
+  (glib-test:with-check-memory (builder)
+    (is (typep (setf builder
+                     (gtk:builder-new-from-string *dialog*)) 'gtk:builder))
     (is (eq (g:gtype "GtkDialog")
             (gtk:builder-type-from-name builder "GtkDialog")))
     (is (eq (g:gtype "GtkButton")
@@ -258,4 +279,4 @@
 ;;;     gtk_builder_value_from_string
 ;;;     gtk_builder_value_from_string_type
 
-;;; 2024-9-21
+;;; 2025-07-11
