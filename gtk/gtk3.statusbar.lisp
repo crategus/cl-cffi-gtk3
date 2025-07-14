@@ -85,7 +85,7 @@
  nil)
 
 (setf (documentation 'statusbar 'type)
- "@version{2025-06-17}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:statusbar} widget is usually placed along the bottom of the
     main @class{gtk:window} widget of the application.
@@ -142,7 +142,7 @@
 lambda (statusbar context text)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[statusbar]{The @class{gtk:statusbar} widget which received the
+        @entry[statusbar]{The @class{gtk:statusbar} widget that received the
           signal.}
         @entry[context]{The unsigned integer with the context ID of the
           relevant message/statusbar.}
@@ -156,7 +156,7 @@ lambda (statusbar context text)    :run-last
 lambda (statusbar context text)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[statusbar]{The @class{gtk:statusbar} widget which received the
+        @entry[statusbar]{The @class{gtk:statusbar} widget that received the
           signal.}
         @entry[context]{The unsigned integer with the context ID of the
           relevant message/statusbar.}

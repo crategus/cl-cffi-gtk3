@@ -184,7 +184,7 @@
 
 #+liber-documentation
 (setf (documentation 'level-bar 'type)
- "@version{#2025-06-28}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:level-bar} widget is a bar widget that can be used as a
     level indicator.
@@ -299,7 +299,7 @@ levelbar[.discrete]
 lambda (levelbar name)    :detailed
       @end{pre}
       @begin[code]{simple-table}
-        @entry[levelbar]{The @class{gtk:level-bar} widget which received the
+        @entry[levelbar]{The @class{gtk:level-bar} widget that received the
           signal.}
         @entry[name]{The string with the name of the offset that changed value.}
       @end{simple-table}

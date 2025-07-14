@@ -914,8 +914,8 @@
 (cffi:defcfun ("gtk_image_new_from_stock" image-new-from-stock)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-28}
-  @argument[stock-id]{a string with the stock icon name}
+ "@version{#2025-07-07}
+  @argument[stock-id]{a string for the stock icon name}
   @argument[icon-size]{a stock icon size from the @sym{gtk:icon-size}
     enumeration}
   @return{The new @class{gtk:image} widget displaying the stock icon.}
@@ -971,8 +971,8 @@
 (cffi:defcfun ("gtk_image_new_from_icon_name" image-new-from-icon-name)
     (g:object image)
  #+liber-documentation
- "@version{#2025-06-28}
-  @argument[name]{a string with an icon name}
+ "@version{#2025-07-07}
+  @argument[name]{a string for an icon name}
   @argument[size]{a @sym{gtk:icon-size} value for the icon size}
   @return{The new @class{gtk:image} widget displaying the themed icon.}
   @begin{short}
@@ -1138,9 +1138,9 @@
 
 (cffi:defcfun ("gtk_image_set_from_stock" image-set-from-stock) :void
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-07}
   @argument[image]{a @class{gtk:image} widget}
-  @argument[stock-id]{a string with a stock icon name}
+  @argument[stock-id]{a string for a stock icon name}
   @argument[icon-size]{a stock icon size of type @sym{gtk:icon-size}}
   @begin{short}
     See the @fun{gtk:image-new-from-stock} function for details.

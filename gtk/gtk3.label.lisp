@@ -219,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'label 'type)
- "@version{2025-06-28}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:label} widget displays a small amount of text.
   @end{short}
@@ -413,7 +413,7 @@ lambda (label uri)    :run-last
 lambda (label)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[label]{The @class{gtk:label} widget which received the signal.}
+        @entry[label]{The @class{gtk:label} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to copy the selection
       to the clipboard. The default binding for this signal is the @kbd{Ctrl-c}
@@ -424,8 +424,8 @@ lambda (label)    :action
 lambda (label step count extend)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[label]{The @class{gtk:label} widget which received the signal.}
-        @entry[step]{The granularity of the move, as a value of the
+        @entry[label]{The @class{gtk:label} widget that received the signal.}
+        @entry[step]{The granularity of the move as a value of the
           @sym{gtk:movement-step} enumeration.}
         @entry[count]{The integer with the number of step units to move.}
         @entry[extend]{@em{True} if the move should extend the selection.}
