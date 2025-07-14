@@ -944,9 +944,9 @@ lambda (listbox)    :action
 (setf (liber:alias-for-symbol 'list-box-update-header-func)
       "Callback"
       (liber:symbol-documentation 'list-box-update-header-func)
- "@version{#2025-06-27}
+ "@version{#2025-07-07}
   @syntax{lambda (row before)}
-  @argument[row]{a @class{gtk:list-box-row} widget with the row to update}
+  @argument[row]{a @class{gtk:list-box-row} widget for the row to update}
   @argument[before]{a @class{gtk:list-box-row} widget before @arg{row}, or
     @code{nil} if it is the first row}
   @begin{short}

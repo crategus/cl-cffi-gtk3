@@ -529,7 +529,7 @@
 lambda (window)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[window]{The @class{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       activates the default widget of the window.
@@ -539,7 +539,7 @@ lambda (window)    :action
 lambda (window)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[window]{The @class{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       activates the currently focused widget of the window.
@@ -551,8 +551,8 @@ lambda (window toggle)    :action
       @begin[code]{simple-table}
         @entry[window]{The @class{gtk:window} widget on which the signal is
           emitted.}
-        @entry[toggle]{The boolean which toggles the debugger.}
-        @entry[Returns]{The boolean which is @em{true} if the key binding was
+        @entry[toggle]{The boolean that toggles the debugger.}
+        @entry[Returns]{The boolean that is @em{true} if the key binding was
           handled.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user enables
@@ -567,7 +567,7 @@ lambda (window toggle)    :action
 lambda (window)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[window]{The @class{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget that received the signal.}
       @end{simple-table}
       The signal gets emitted when the set of accelerators or mnemonics that are
       associated with the window changes.
@@ -577,7 +577,7 @@ lambda (window)    :run-first
 lambda (window widget)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[window]{The @class{gtk:window} widget which received the signal.}
+        @entry[window]{The @class{gtk:window} widget that received the signal.}
         @entry[widget]{The newly focused @class{gtk:widget} object.}
       @end{simple-table}
       The signal is emitted whenever the currently focused widget in this window
@@ -700,7 +700,7 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-attached-to)
       "Accessor"
       (documentation 'window-attached-to 'function)
- "@version{2024-03-16}
+ "@version{2025-07-14}
   @syntax{(gtk:window-attached-to object) => widget}
   @syntax{(setf (gtk:window-attached-to object) widget)}
   @argument[object]{a @class{gtk:window} widget}
@@ -714,7 +714,7 @@ lambda (window widget)    :run-last
   @setf{gtk:window-attached-to} function marks the window as attached to
   @arg{widget}. This creates a logical binding between the window and the widget
   it belongs to, which is used by GTK to propagate information such as styling
-  or accessibility to the window as if it was a children of @arg{widget}.
+  or accessibility to the window as if it was a child of @arg{widget}.
 
   Examples of places where specifying this relation is useful are for instance
   a @class{gtk:menu} widget created by a @class{gtk:combo-box} widget, a
@@ -949,7 +949,8 @@ lambda (window widget)    :run-last
   Whether focus rectangles are currently visible in the window. This property
   is maintained by GTK based on the @slot[gtk:settings]{gtk-visible-focus}
   setting and user input and should not be set by applications.
-  @see-class{gtk:window}")
+  @see-class{gtk:window}
+  @see-function{gtk:settings-gtk-visible-focus}")
 
 ;;; --- gtk:window-gravity -----------------------------------------------------
 
@@ -2282,7 +2283,7 @@ lambda (window widget)    :run-last
 
 (cffi:defcfun ("gtk_window_iconify" window-iconify) :void
  #+liber-documentation
- "@version{#2024-06-27}
+ "@version{#2024-07-11}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
     Asks to iconify, for example, minimize, the specified window.
@@ -2290,7 +2291,7 @@ lambda (window widget)    :run-last
   Note that you should not assume the window is definitely iconified afterward,
   because other entities, for example, the user or window manager, could
   deiconify it again, or there may not be a window manager in which case
-  iconification is not possible, etc. But normally the window will end up
+  iconification is not possible, and so on. But normally the window will end up
   iconified. Just do not write code that crashes if not.
 
   It is permitted to call this function before showing a window, in which case

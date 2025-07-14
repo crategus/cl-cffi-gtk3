@@ -473,8 +473,8 @@
 
 (defun box-new (orientation &optional (spacing 0))
  #+liber-documentation
- "@version{2025-06-06}
-  @argument[orientation]{a @sym{gtk:orientation} value with the orientation}
+ "@version{2025-07-07}
+  @argument[orientation]{a @sym{gtk:orientation} value for the orientation}
   @argument[spacing]{an optional integer for the number of pixels to place by
     default between children}
   @return{The new @class{gtk:box} widget.}

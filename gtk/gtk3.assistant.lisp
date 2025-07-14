@@ -193,7 +193,7 @@
 
 #+liber-documentation
 (setf (documentation 'assistant 'type)
- "@version{2025-06-24}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:assistant} widget is used to represent a generally complex
     operation splitted in several steps, guiding the user through its pages and
@@ -294,7 +294,7 @@
 lambda (assistant)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
+        @entry[assistant]{The @class{gtk:assistant} widget that received the
           signal.}
     @end{simple-table}
       The signal is emitted when the Apply button is clicked. The default
@@ -312,7 +312,7 @@ lambda (assistant)    :run-last
 lambda (assistant)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
+        @entry[assistant]{The @class{gtk:assistant} widget that received the
           signal.}
       @end{simple-table}
       The signal is emitted when the Cancel button is clicked.
@@ -322,7 +322,7 @@ lambda (assistant)    :run-last
 lambda (assistant)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
+        @entry[assistant]{The @class{gtk:assistant} widget that received the
           signal.}
       @end{simple-table}
       The signal is emitted either when the Close button of a summary page is
@@ -334,7 +334,7 @@ lambda (assistant)    :run-last
 lambda (assistant)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
+        @entry[assistant]{The @class{gtk:assistant} widget that received the
           signal.}
       @end{simple-table}
       No documentation.
@@ -344,7 +344,7 @@ lambda (assistant)    :action
 lambda (assistant page)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[assistant]{The @class{gtk:assistant} widget which received the
+        @entry[assistant]{The @class{gtk:assistant} widget that received the
           signal.}
       @entry[page]{The @class{gtk:widget} widget for the current page.}
       @end{simple-table}
@@ -903,12 +903,12 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-complete (assistant page)
  #+liber-documentation
- "@version{2024-04-09}
+ "@version{2024-07-06}
   @syntax{(gtk:assistant-page-complete assistant page) => complete}
   @syntax{(setf (gtk:assistant-page-complete assistant page) complete)}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of @arg{assistant}}
-  @argument[complete]{a boolean with the completeness status of the page}
+  @argument[complete]{a boolean for the completeness status of the page}
   @begin{short}
     The @fun{gtk:assistant-page-complete} function gets whether the page is
     complete.
