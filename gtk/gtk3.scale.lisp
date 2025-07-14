@@ -111,7 +111,7 @@
 
 #+liber-documentation
 (setf (documentation 'scale 'type)
- "@version{2025-07-02}
+ "@version{2025-07-10}
   @begin{short}
     The @class{gtk:scale} widget is a slider control used to select a numeric
     value.
@@ -161,36 +161,29 @@
     The @class{gtk:scale} implementation has a main CSS node with name
     @code{scale} and a subnode for its contents, with subnodes named
     @code{trough} and @code{slider}. The main node gets the @code{.fine-tune}
-    style class added when the scale is in 'fine-tuning' mode.
-
-    If the scale has an origin, see the @fun{gtk:scale-has-origin} function,
-    there is a subnode with name @code{highlight} below the trough node that
-    is used for rendering the highlighted part of the trough.
-
-    If the scale is showing a fill level, see the
-    @fun{gtk:range-show-fill-level} function, there is a subnode with name
-    @code{fill} below the trough node that is used for rendering the filled in
-    part of the trough.
+    style class added when the scale is in 'fine-tuning' mode. If the scale has
+    an origin, see the @fun{gtk:scale-has-origin} function, there is a subnode
+    with name @code{highlight} below the trough node that is used for rendering
+    the highlighted part of the trough. If the scale is showing a fill level,
+    see the @fun{gtk:range-show-fill-level} function, there is a subnode with
+    name @code{fill} below the trough node that is used for rendering the filled
+    in part of the trough.
 
     If marks are present, there is a marks subnode before or after the contents
     node, below which each mark gets a node with name @code{mark}. The marks
-    nodes get either the @code{.top} or @code{.bottom} style class.
-
-    The mark node has a subnode named @code{indicator}. If the mark has text,
-    it also has a subnode named @code{label}. When the mark is either above or
-    left of the scale, the label subnode is the first when present. Otherwise,
-    the indicator subnode is the first.
-
-    The main CSS node gets the @code{marks-before} and/or @code{marks-after}
-    style classes added depending on what marks are present.
-
-    If the scale is displaying the value, see the @code{draw-value} property,
-    there is subnode with name @code{value}.
+    nodes get either the @code{.top} or @code{.bottom} style class. The mark
+    node has a subnode named @code{indicator}. If the mark has text, it also has
+    a subnode named @code{label}. When the mark is either above or left of the
+    scale, the label subnode is the first when present. Otherwise, the indicator
+    subnode is the first. The main CSS node gets the @code{marks-before} and/or
+    @code{marks-after} style classes added depending on what marks are present.
+    If the scale is displaying the value, see the @slot[gtk:scale]{draw-value}
+    property, there is subnode with name @code{value}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
     @begin[scale:slider-length]{property}
       The @code{slider-length} style property of type @code{:int} (Read) @br{}
-      Length of the slider of the scale. @br{}
+      The length for the slider of the scale. @br{}
       @em{Warning:} The @code{slider-length} style property has been
       deprecated since version 3.20 and should not be used in newly written
       code. Use min-height/min-width CSS properties on the slider element
@@ -200,7 +193,7 @@
     @end{property}
     @begin[scale:value-spacing]{property}
       The @code{value-spacing} style property of type @code{:int} (Read) @br{}
-      Space between value text and the slider/trough area. @br{}
+      The space between value text and the slider/trough area. @br{}
       @em{Warning:} The @code{value-spacing} style property has been
       deprecated since version 3.20 and should not be used in newly written
       code. Use min-height/min-width CSS properties on the value element
@@ -215,9 +208,9 @@
 lambda (scale value)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[scale]{The @class{gtk:scale} widget which received the signal.}
-        @entry[value]{A double float with the value to format.}
-        @entry[Returns]{String representing the value.}
+        @entry[scale]{The @class{gtk:scale} widget that received the signal.}
+        @entry[value]{The double float for the value to format.}
+        @entry[Returns]{The string representing the value.}
       @end{simple-table}
       Signal which allows you to change how the scale value is displayed.
       Connect a signal handler which returns an allocated string representing
@@ -262,7 +255,7 @@ format_value_callback (GtkScale *scale,
 (setf (liber:alias-for-function 'scale-digits)
       "Accessor"
       (documentation 'scale-digits 'function)
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @syntax{(gtk:scale-digits object) => digits}
   @syntax{(setf (gtk:scale-digits object) digits)}
   @argument[object]{a @class{gtk:scale} widget}
@@ -291,11 +284,11 @@ format_value_callback (GtkScale *scale,
 (setf (liber:alias-for-function 'scale-draw-value)
       "Accessor"
       (documentation 'scale-draw-value 'function)
- "@version{#2023-03-24}
-  @syntax{(gtk:scale-draw-value object) => draw-value}
-  @syntax{(setf (gtk:scale-digits object) draw-value)}
+ "@version{#2025-07-10}
+  @syntax{(gtk:scale-draw-value object) => setting}
+  @syntax{(setf (gtk:scale-digits object) setting)}
   @argument[object]{a @class{gtk:scale} widget}
-  @argument[draw-value]{@em{true} to draw the value}
+  @argument[setting]{@em{true} to draw the value}
   @begin{short}
     Accessor of the @slot[gtk:scale]{draw-value} slot of the @class{gtk:scale}
     class.
@@ -318,11 +311,11 @@ format_value_callback (GtkScale *scale,
 (setf (liber:alias-for-function 'scale-has-origin)
       "Accessor"
       (documentation 'scale-has-origin 'function)
- "@version{#2023-03-24}
-  @syntax{(gtk:scale-has-origin object) => has-origin}
-  @syntax{(setf (gtk:scale-digits object) has-origin)}
+ "@version{#2025-07-10}
+  @syntax{(gtk:scale-has-origin object) => setting}
+  @syntax{(setf (gtk:scale-digits object) setting)}
   @argument[object]{a @class{gtk:scale} widget}
-  @argument[has-origin]{@em{true} if the scale has an origin}
+  @argument[setting]{@em{true} if the scale has an origin}
   @begin{short}
     Accessor of the @slot[gtk:scale]{has-origin} slot of the @class{gtk:scale}
     class.
@@ -348,7 +341,7 @@ format_value_callback (GtkScale *scale,
 (setf (liber:alias-for-function 'scale-value-pos)
       "Accessor"
       (documentation 'scale-value-pos 'function)
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @syntax{(gtk:scale-value-pos object) => pos}
   @syntax{(setf (gtk:scale-digits object) pos)}
   @argument[object]{a @class{gtk:scale} widget}
@@ -371,9 +364,9 @@ format_value_callback (GtkScale *scale,
 
 (defun scale-new (orientation adjustment)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @argument[orientation]{a value of the @sym{gtk:orientation} enumeration}
-  @argument[adjustment]{a @class{gtk:adjustment} object which sets the range
+  @argument[adjustment]{a @class{gtk:adjustment} object that sets the range
     of the scale, or @code{nil} to create a new adjustment}
   @return{The new @class{gtk:scale} widget.}
   @short{Creates a new scale widget.}
@@ -392,7 +385,7 @@ format_value_callback (GtkScale *scale,
 
 (defun scale-new-with-range (orientation min max step)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @argument[orientation]{a value of the @sym{gtk:orientation} enumeration}
   @argument[min]{a number coerced to a double float for the minimum value}
   @argument[max]{a number coerced to a double float for the maximum value}
@@ -428,11 +421,11 @@ format_value_callback (GtkScale *scale,
 
 (cffi:defcfun ("gtk_scale_get_layout" scale-layout) (g:object pango-layout)
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{#2025-07-10}
   @argument[scale]{a @class{gtk:scale} widget}
   @begin{return}
     The @class{pango-layout} instance for this scale, or @code{nil} if the
-    @slot[gtk:scale]{draw-value} property is @code{nil}.
+    @slot[gtk:scale]{draw-value} property is @em{false}.
   @end{return}
   @short{Gets the Pango layout used to display the scale.}
   @see-class{gtk:scale}"
@@ -451,18 +444,17 @@ format_value_callback (GtkScale *scale,
 
 (defun scale-layout-offsets (scale)
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{#2025-07-10}
+  @syntax{(gtk:scale-layout-offets scale) => x, y}
   @argument[scale]{a @class{gtk:scale} widget}
-  @begin{return}
-    @arg{x} -- an integer with the x offset of layout, or @code{nil} @br{}
-    @arg{y} -- an integer with the y offset of layout, or @code{nil}
-  @end{return}
+  @argument[x]{an integer for the x offset of the Pango layout}
+  @argument[y]{an integer for the y offset of the Pango layout}
   @begin{short}
     Obtains the coordinates where the scale will draw the Pango layout
     representing the text in the scale.
   @end{short}
-  Remember when using the @class{pango-layout} functions you need to convert
-  to and from pixels using the @fun{pango-pixels} function or the
+  Remember when using the @class{pango:layout} functions you need to convert
+  to and from pixels using the @fun{pango:pixels} function or the
   @var{pango:+scale+} constant. If the @slot[gtk:scale]{draw-value} property
   is @code{nil}, the return values are undefined.
   @see-class{gtk:scale}
@@ -487,7 +479,7 @@ format_value_callback (GtkScale *scale,
 
 (defun scale-add-mark (scale value pos markup)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @argument[scale]{a @class{gtk:scale} widget}
   @argument[value]{a number coerced to a double float for the value at which
     the mark is placed, must be between the lower and upper limits of the
@@ -496,7 +488,7 @@ format_value_callback (GtkScale *scale,
   @argument[markup]{a string for the text to be shown at the mark, using Pango
     markup, or @code{nil}}
   @begin{short}
-    Adds a mark at value.
+    Adds a mark at @arg{value}.
   @end{short}
   A mark is indicated visually by drawing a tick mark next to the scale, and
   GTK makes it easy for the user to position the scale exactly at the marks
@@ -521,7 +513,7 @@ format_value_callback (GtkScale *scale,
 
 (cffi:defcfun ("gtk_scale_clear_marks" scale-clear-marks) :void
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{#2025-07-10}
   @argument[scale]{a @class{gtk:scale} widget}
   @begin{short}
     Removes any marks that have been added with the @fun{gtk:scale-add-mark}

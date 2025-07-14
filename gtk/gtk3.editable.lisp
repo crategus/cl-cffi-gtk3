@@ -82,7 +82,7 @@
 (setf (liber:alias-for-class 'editable)
       "Interface"
       (documentation 'editable 'type)
- "@version{2025-07-07}
+ "@version{2025-07-08}
   @begin{short}
     The @class{gtk:editable} interface is an interface which should be
     implemented by text editing widgets, such as the @class{gtk:entry} widget
@@ -114,7 +114,7 @@
 lambda (editable)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[editable]{The @class{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget that received the
           signal.}
       @end{simple-table}
       The signal is emitted at the end of a single user visible operation on
@@ -129,10 +129,10 @@ lambda (editable)    :run-last
 lambda (editable start end)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[editable]{The @class{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget that received the
           signal.}
-        @entry[start]{The integer with the start position.}
-        @entry[end]{The integer with the end position.}
+        @entry[start]{The integer for the start position.}
+        @entry[end]{The integer for the end position.}
       @end{simple-table}
       The signal is emitted when text is deleted from the widget by the user.
       The default handler for this signal will normally be responsible for
@@ -147,10 +147,10 @@ lambda (editable start end)    :run-last
 lambda (editable text length pos)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[editable]{The @class{gtk:editable} widget which received the
+        @entry[editable]{The @class{gtk:editable} widget that received the
           signal.}
-        @entry[text]{The string with the new text to insert.}
-        @entry[length]{The integer with the length of the new text, in bytes,
+        @entry[text]{The string for the new text to insert.}
+        @entry[length]{The integer for the length of the new text, in bytes,
            or -1 if @arg{text} is nul-terminated.}
         @entry[pos]{The pointer to an integer with the position, in characters,
           at which to insert the new text. This is an in-out parameter. After
@@ -237,11 +237,11 @@ lambda (editable text length pos)    :run-last
 
 (defun editable-insert-text (editable text pos)
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-07-08}
   @argument[editable]{a @class{gtk:editable} widget}
   @argument[text]{a string for the text to append}
   @argument[pos]{an integer for the position the text will be inserted at}
-  @return{The integer with the position after the newly inserted text.}
+  @return{The integer for the position after the newly inserted text.}
   @begin{short}
     Inserts @arg{text} into the contents of the widget, at position
     @arg{pos}.
@@ -294,11 +294,11 @@ lambda (editable text length pos)    :run-last
 
 (defun editable-chars (editable &key (start 0) (end -1))
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-07-08}
   @argument[editable]{a @class{gtk:editable} object}
   @argument[start]{an integer for the start position, the default value is 0}
   @argument[end]{an integer for the end position, the default value is -1}
-  @return{The string with the contents of the widget.}
+  @return{The string for the contents of the editable widget.}
   @begin{short}
     Retrieves a sequence of characters.
   @end{short}

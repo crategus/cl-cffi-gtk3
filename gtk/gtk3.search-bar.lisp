@@ -35,14 +35,17 @@
 ;;;
 ;;;     GtkSearchBar
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_search_bar_get_search_mode
+;;;     gtk_search_bar_set_search_mode
+;;;     gtk_search_bar_get_show_close_button
+;;;     gtk_search_bar_set_show_close_button
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_search_bar_new
 ;;;     gtk_search_bar_connect_entry
-;;;     gtk_search_bar_get_search_mode                     Accessor
-;;;     gtk_search_bar_set_search_mode                     Accessor
-;;;     gtk_search_bar_get_show_close_button               Accessor
-;;;     gtk_search_bar_set_show_close_button               Accessor
 ;;;     gtk_search_bar_handle_event
 ;;;
 ;;; Properties
@@ -87,7 +90,7 @@
 
 #+liber-documentation
 (setf (documentation 'search-bar 'type)
- "@version{#2023-02-16}
+ "@version{2025-07-10}
   @begin{short}
     The @class{gtk:search-bar} widget is a container made to have a search entry
     built-in, possibly with additional connex widgets, such as drop-down menus,
@@ -100,7 +103,7 @@
 
   For keyboard presses to start a search, events will need to be forwarded from
   the toplevel window that contains the search bar. See the
-  @func{gtk:search-bar-handle-event} function for example code. Common shortcuts
+  @fun{gtk:search-bar-handle-event} function for example code. Common shortcuts
   such as the @kbd{Ctrl+F} key should be handled as an application action, or
   through the menu items.
 
@@ -196,11 +199,11 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-search-mode-enabled)
       "Accessor"
       (documentation 'search-bar-search-mode-enabled 'function)
- "@version{#2025-06-28}
-  @syntax{(gtk:search-bar-search-mode-enabled object) => search-mode}
-  @syntax{(setf (gtk:search-bar-search-mode-enabled object) search-mode)}
+ "@version{2025-07-10}
+  @syntax{(gtk:search-bar-search-mode-enabled object) => setting}
+  @syntax{(setf (gtk:search-bar-search-mode-enabled object) setting)}
   @argument[object]{a @class{gtk:search-bar} widget}
-  @argument[search-mode]{a boolean for the state of the search mode}
+  @argument[setting]{a boolean for the state of the search mode}
   @begin{short}
     Accessor of the @slot[gtk:search-bar]{search-mode-enabled} slot of the
     @class{gtk:search-bar} class.
@@ -222,7 +225,7 @@ main (gint argc,
 (setf (liber:alias-for-function 'search-bar-show-close-button)
       "Accessor"
       (documentation 'search-bar-show-close-button 'function)
- "@version{#2023-02-16}
+ "@version{2025-07-10}
   @syntax{(gtk:search-bar-show-close-button object) => visible}
   @syntax{(setf (gtk:search-bar-show-close-button object) visible)}
   @argument[object]{a @class{gtk:search-bar} widget}
@@ -244,7 +247,7 @@ main (gint argc,
 
 (defun search-bar-new ()
  #+liber-documentation
- "@version{#2023-02-16}
+ "@version{2025-07-10}
   @return{The new @class{gtk:search-bar} widget.}
   @begin{short}
     Creates a search bar.
@@ -263,8 +266,8 @@ main (gint argc,
 
 (cffi:defcfun ("gtk_search_bar_connect_entry" search-bar-connect-entry) :void
  #+liber-documentation
- "@version{#2023-02-16}
-  @argument[search-bar]{a @class{gtk:search-bar} widget}
+ "@version{#2025-07-10}
+  @argument[searchbar]{a @class{gtk:search-bar} widget}
   @argument[entry]{a @class{gtk:entry} widget}
   @begin{short}
     Connects the entry widget passed as the one to be used in this search bar.
@@ -273,7 +276,7 @@ main (gint argc,
   the entry is not the direct child of the search bar.
   @see-class{gtk:search-bar}
   @see-class{gtk:entry}"
-  (search-bar (g:object search-bar))
+  (searchbar (g:object search-bar))
   (entry (g:object entry)))
 
 (export 'search-bar-connect-entry)
@@ -298,7 +301,7 @@ main (gint argc,
 
 (cffi:defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @argument[searchbar]{a @class{gtk:search-bar} widget}
   @argument[event]{a @class{gdk:event} instance containing key press events}
   @begin{return}

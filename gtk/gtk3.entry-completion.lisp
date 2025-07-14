@@ -103,7 +103,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEntryCompletion
+;;; GtkEntryCompletion
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEntryCompletion" entry-completion
@@ -142,7 +142,7 @@
 
 #+liber-documentation
 (setf (documentation 'entry-completion 'type)
- "@version{2025-06-28}
+ "@version{2025-07-09}
   @begin{short}
     The @class{gtk:entry-completion} object is an auxiliary object to be used
     in conjunction with the @class{gtk:entry} widget to provide the completion
@@ -196,9 +196,9 @@
 lambda (widget index)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[widget]{The @class{gtk:entry-completion} object which received
+        @entry[widget]{The @class{gtk:entry-completion} object that received
           the signal.}
-        @entry[index]{The integer with the index of the activated action.}
+        @entry[index]{The integer for the index of the activated action.}
       @end{simple-table}
       Gets emitted when an action is activated.
     @end{signal}
@@ -207,7 +207,7 @@ lambda (widget index)    :run-last
 lambda (widget model iter)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[widget]{The @class{gtk:entry-completion} object which received
+        @entry[widget]{The @class{gtk:entry-completion} object that received
           the signal.}
         @entry[model]{The @class{gtk:tree-model} object containing the matches.}
         @entry[iter]{The @class{gtk:tree-iter} iterator positioned at the
@@ -225,9 +225,9 @@ lambda (widget model iter)    :run-last
 lambda (widget prefix)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[widget]{The @class{gtk:entry-completion} object which received
+        @entry[widget]{The @class{gtk:entry-completion} object that received
           the signal.}
-        @entry[prefix]{The string with the common prefix of all possible
+        @entry[prefix]{The string for the common prefix of all possible
           completions.}
         @entry[Returns]{@em{True} if the signal has been handled.}
       @end{simple-table}
@@ -243,7 +243,7 @@ lambda (widget prefix)    :run-last
 lambda (widget model iter)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[widget]{The @class{gtk:entry-completion} object which received
+        @entry[widget]{The @class{gtk:entry-completion} object that received
           the signal.}
         @entry[model]{The @class{gtk:tree-model} object containing the matches.}
         @entry[iter]{The @class{gtk:tree-iter} iterator positioned at the
@@ -260,7 +260,7 @@ lambda (widget model iter)    :run-last
 lambda (widget)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[widget]{The @class{gtk:entry-completion} object which received
+        @entry[widget]{The @class{gtk:entry-completion} object that received
           the signal.}
       @end{simple-table}
       Gets emitted when the entry completion is out of suggestions.
@@ -306,7 +306,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-cell-area)
       "Accessor"
       (documentation 'entry-completion-cell-area 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-cell-area object) => area}
   @syntax{(setf (gtk:entry-completion-cell-area object) area)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -341,7 +341,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-inline-completion)
       "Accessor"
       (documentation 'entry-completion-inline-completion 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-inline-completion object) => setting}
   @syntax{(setf (gtk:entry-completion-inline-completion object) setting)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -372,7 +372,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-inline-selection)
       "Accessor"
       (documentation 'entry-completion-inline-selection 'function)
- "@version{2024-03-16}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-inline-selection object) => setting}
   @syntax{(setf (gtk:entry-completion-inline-selection object) setting)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -394,7 +394,7 @@ lambda (widget)    :run-last
                                                'entry-completion) t)
  "The @code{minimum-key-length} property of type @code{:int} (Read / Write)
   @br{}
-  Minimum length of the search key in order to look up matches. @br{}
+  The minimum length of the search key in order to look up matches. @br{}
   Allowed values: >= 0 @br{}
   Default value: 1")
 
@@ -402,7 +402,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-minimum-key-length)
       "Accessor"
       (documentation 'entry-completion-minimum-key-length 'function)
- "@version{2025-07-02}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-minimum-key-length object) => length}
   @syntax{(setf (gtk:entry-completion-minimum-key-length object) length)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -433,7 +433,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-model)
       "Accessor"
       (documentation 'entry-completion-model 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-model object) => model}
   @syntax{(setf (gtk:entry-completion-model object) model)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -465,7 +465,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-popup-completion)
       "Accessor"
       (documentation 'entry-completion-popup-completion 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-popup object) => setting}
   @syntax{(setf (gtk:entry-completion-popup object) setting)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -495,7 +495,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-popup-set-width)
       "Accessor"
       (documentation 'entry-completion-popup-set-width 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-popup-set-width object) => setting}
   @syntax{(setf (gtk:entry-completion-popup-set-width object) setting)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -527,7 +527,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-popup-single-match)
       "Accessor"
       (documentation 'entry-completion-popup-single-match 'function)
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-popup-single-match object) => setting}
   @syntax{(setf (gtk:entry-completion-popup-single-match object) setting)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -560,7 +560,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-function 'entry-completion-text-column)
       "Accessor"
       (documentation 'entry-completion-text-column 'function)
- "@version{2025-06-28}
+ "@version{2025-07-09}
   @syntax{(gtk:entry-completion-text-column) => column}
   @syntax{(setf (gtk:entry-completion-text-column object) column)}
   @argument[object]{a @class{gtk:entry-completion} object}
@@ -597,7 +597,7 @@ lambda (widget)    :run-last
 
 (defun entry-completion-new ()
  #+liber-documentation
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @return{The newly created @class{gtk:entry-completion} object.}
   @short{Creates a new entry completion.}
   @see-class{gtk:entry-completion}
@@ -614,7 +614,7 @@ lambda (widget)    :run-last
 
 (defun entry-completion-new-with-area (area)
  #+liber-documentation
- "@version{2024-03-17}
+ "@version{2025-07-09}
   @argument[area]{a @class{gtk:cell-area} object used to layout cells}
   @return{The newly created @class{gtk:entry-completion} object.}
   @begin{short}
@@ -637,7 +637,7 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_get_entry" entry-completion-entry)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @begin{return}
     The @class{gtk:widget} entry the entry completion has been attached to.
@@ -664,7 +664,7 @@ lambda (widget)    :run-last
 (setf (liber:alias-for-symbol 'entry-completion-match-func)
       "Callback"
       (liber:symbol-documentation 'entry-completion-match-func)
- "@version{#2024-03-17}
+ "@version{#2025-07-09}
   @syntax{lambda (completion key iter) => result}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[key]{a string to match, normalized and case-folded}
@@ -699,7 +699,7 @@ lambda (widget)    :run-last
 
 (defun entry-completion-set-match-func (completion func)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[func]{a @sym{gtk:entry-completion-match-func} callback function
     to use}
@@ -731,11 +731,11 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_compute_prefix"
                entry-completion-compute-prefix) :string
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[key]{a string for the text to complete for}
   @begin{return}
-    The string with the common prefix all rows starting with key or @code{nil}
+    The string for the common prefix all rows starting with key or @code{nil}
     if no row matches key.
   @end{return}
   @begin{short}
@@ -758,7 +758,7 @@ lambda (widget)    :run-last
 
 (cffi:defcfun ("gtk_entry_completion_complete" entry-completion-complete) :void
  #+liber-documentation
- "@version{#2023-02-11}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @begin{short}
     Requests a completion operation, or in other words a refiltering of the
@@ -778,9 +778,9 @@ lambda (widget)    :run-last
                entry-completion-completion-prefix)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-02-11}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
-  @return{A string with the prefix for the current completion.}
+  @return{The string for the prefix for the current completion.}
   @begin{short}
     Get the original text entered by the user that triggered the completion or
     @code{nil} if there is no completion ongoing.
@@ -797,7 +797,7 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_insert_prefix"
                entry-completion-insert-prefix) :void
  #+liber-documentation
- "@version{#2023-02-11}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @begin{short}
     Requests a prefix insertion.
@@ -814,7 +814,7 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_insert_action_text"
                entry-completion-insert-action-text) :void
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[index]{an integer for the index of the item to insert}
   @argument[text]{a string for the text of the item to insert}
@@ -839,7 +839,7 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_insert_action_markup"
                entry-completion-insert-action-markup) :void
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[index]{an integer for the index of the item to insert}
   @argument[markup]{a string for the markup of the item to insert}
@@ -861,7 +861,7 @@ lambda (widget)    :run-last
 (cffi:defcfun ("gtk_entry_completion_delete_action"
                entry-completion-delete-action) :void
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-09}
   @argument[completion]{a @class{gtk:entry-completion} object}
   @argument[index]{an integer for the index of the item to delete}
   @begin{short}

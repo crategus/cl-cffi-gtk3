@@ -162,12 +162,12 @@
                      (gtk:entry-buffer-new "first second third"))
                'gtk:entry-buffer))
     (g:signal-connect buffer "deleted-text"
-        (lambda (object position n-chars)
+        (lambda (object pos nchars)
           (is (eq buffer object))
           (is (string= "first second third"
                        (gtk:entry-buffer-text object)))
-          (is (= 6 position))
-          (is (= 7 n-chars))
+          (is (= 6 pos))
+          (is (= 7 nchars))
           nil))
     (is-false (gtk:entry-buffer-emit-deleted-text buffer 6 7))))
 
@@ -179,12 +179,12 @@
                      (gtk:entry-buffer-new "first second third"))
                'gtk:entry-buffer))
     (g:signal-connect buffer "inserted-text"
-        (lambda (object position text n-chars)
+        (lambda (object pos text nchars)
           (is (eq buffer object))
-          (is (= 6 position))
+          (is (= 6 pos))
           (is (equal "text" text))
-          (is (= 7 n-chars))
+          (is (= 7 nchars))
           nil))
     (gtk:entry-buffer-emit-inserted-text buffer 6 "text" 7)))
 
-;;; 2025-1-5
+;;; 2025-07-08

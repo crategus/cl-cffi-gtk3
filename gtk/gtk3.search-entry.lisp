@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'search-entry 'type)
- "@version{2025-07-02}
+ "@version{2025-07-10}
   @begin{short}
     The @class{gtk:search-entry} class is a subclass of the @class{gtk:entry}
     class that has been tailored for use as a search entry.
@@ -89,11 +89,9 @@
 
   It will show an inactive symbolic \"find\" icon when the search entry is
   empty, and a symbolic \"clear\" icon when there is text. Clicking on the
-  \"clear\" icon will empty the search entry.
-
-  Note that the search/clear icon is shown using a secondary icon, and thus
-  does not work if you are using the secondary icon position for some other
-  purpose.
+  \"clear\" icon will empty the search entry. Note that the search/clear icon
+  is shown using a secondary icon, and thus does not work if you are using the
+  secondary icon position for some other purpose.
 
   To make filtering appear more reactive, it is a good idea to not react to
   every change in the entry text immediately, but only after a short delay.
@@ -162,7 +160,7 @@ lambda (entry)    :action
 
 (defun search-entry-new ()
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{2025-07-10}
   @return{The new @class{gtk:search-entry} widget.}
   @begin{short}
     Creates a search entry, with a find icon when the search field is empty,
@@ -180,9 +178,9 @@ lambda (entry)    :action
 (cffi:defcfun ("gtk_search_entry_handle_event" search-entry-handle-event)
     :boolean
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-07-10}
   @argument[entry]{a @class{gtk:entry-search} widget}
-  @argument[event]{a @class{gdk:event} instance for key event}
+  @argument[event]{a @class{gdk:event} instance for the key event}
   @begin{return}
     The @var{gdk:+event-stop+} value if the key press event resulted
     in a search beginning or continuing, the @var{gdk:+event-propagate+}
@@ -200,7 +198,9 @@ lambda (entry)    :action
   search, the @var{gdk:+event-stop+} value will be returned. The caller
   should ensure that the entry is shown in this case, and not propagate the
   event further.
-  @see-class{gtk:search-entry}"
+  @see-class{gtk:search-entry}
+  @see-class{gdk:event}
+  @see-function{gtk:search-bar-handle}"
   (entry (g:object search-entry))
   (event (g:boxed gdk:event)))
 

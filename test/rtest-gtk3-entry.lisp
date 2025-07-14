@@ -185,114 +185,368 @@
              (glib-test:list-signals "GtkEntry")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkEntry" GTK:ENTRY
-                       (:SUPERCLASS GTK:WIDGET
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkCellEditable"
-                         "GtkEditable")
-                        :TYPE-INITIALIZER "gtk_entry_get_type")
-                       ((ACTIVATES-DEFAULT ENTRY-ACTIVATES-DEFAULT
-                         "activates-default" "gboolean" T T)
-                        (ATTRIBUTES ENTRY-ATTRIBUTES
-                         "attributes" "PangoAttrList" T T)
-                        (BUFFER ENTRY-BUFFER "buffer" "GtkEntryBuffer" T T)
-                        (CAPS-LOCK-WARNING ENTRY-CAPS-LOCK-WARNING
-                         "caps-lock-warning" "gboolean" T T)
-                        (COMPLETION ENTRY-COMPLETION
-                         "completion" "GtkEntryCompletion" T T)
-                        (CURSOR-POSITION ENTRY-CURSOR-POSITION
-                         "cursor-position" "gint" T NIL)
-                        (EDITABLE ENTRY-EDITABLE "editable" "gboolean" T T)
-                        (ENABLE-EMOJI-COMPLETION ENTRY-ENABLE-EMOJI-COMPLETION
-                         "enable-emoji-completion" "gboolean" T T)
-                        (HAS-FRAME ENTRY-HAS-FRAME "has-frame" "gboolean" T T)
-                        (IM-MODULE ENTRY-IM-MODULE "im-module" "gchararray" T T)
-                        (INNER-BORDER ENTRY-INNER-BORDER
-                         "inner-border" "GtkBorder" T T)
-                        (INPUT-HINTS ENTRY-INPUT-HINTS
-                         "input-hints" "GtkInputHints" T T)
-                        (INPUT-PURPOSE ENTRY-INPUT-PURPOSE
-                         "input-purpose" "GtkInputPurpose" T T)
-                        (INVISIBLE-CHAR ENTRY-INVISIBLE-CHAR
-                         "invisible-char" "guint" T T)
-                        (INVISIBLE-CHAR-SET ENTRY-INVISIBLE-CHAR-SET
-                         "invisible-char-set" "gboolean" T T)
-                        (MAX-LENGTH ENTRY-MAX-LENGTH "max-length" "gint" T T)
-                        (MAX-WIDTH-CHARS ENTRY-MAX-WIDTH-CHARS
-                         "max-width-chars" "gint" T T)
-                        (OVERWRITE-MODE ENTRY-OVERWRITE-MODE
-                         "overwrite-mode" "gboolean" T T)
-                        (PLACEHOLDER-TEXT ENTRY-PLACEHOLDER-TEXT
-                         "placeholder-text" "gchararray" T T)
-                        (POPULATE-ALL ENTRY-POPULATE-ALL
-                         "populate-all" "gboolean" T T)
-                        (PRIMARY-ICON-ACTIVATABLE ENTRY-PRIMARY-ICON-ACTIVATABLE
-                         "primary-icon-activatable" "gboolean" T T)
-                        (PRIMARY-ICON-GICON ENTRY-PRIMARY-ICON-GICON
-                         "primary-icon-gicon" "GIcon" T T)
-                        (PRIMARY-ICON-NAME ENTRY-PRIMARY-ICON-NAME
-                         "primary-icon-name" "gchararray" T T)
-                        (PRIMARY-ICON-PIXBUF ENTRY-PRIMARY-ICON-PIXBUF
-                         "primary-icon-pixbuf" "GdkPixbuf" T T)
-                        (PRIMARY-ICON-SENSITIVE ENTRY-PRIMARY-ICON-SENSITIVE
-                         "primary-icon-sensitive" "gboolean" T T)
-                        (PRIMARY-ICON-STOCK ENTRY-PRIMARY-ICON-STOCK
-                         "primary-icon-stock" "gchararray" T T)
-                        (PRIMARY-ICON-STORAGE-TYPE
-                         ENTRY-PRIMARY-ICON-STORAGE-TYPE
-                         "primary-icon-storage-type" "GtkImageType" T NIL)
-                        (PRIMARY-ICON-TOOLTIP-MARKUP
-                         ENTRY-PRIMARY-ICON-TOOLTIP-MARKUP
-                         "primary-icon-tooltip-markup" "gchararray" T T)
-                        (PRIMARY-ICON-TOOLTIP-TEXT
-                         ENTRY-PRIMARY-ICON-TOOLTIP-TEXT
-                         "primary-icon-tooltip-text" "gchararray" T T)
-                        (PROGRESS-FRACTION ENTRY-PROGRESS-FRACTION
-                         "progress-fraction" "gdouble" T T)
-                        (PROGRESS-PULSE-STEP ENTRY-PROGRESS-PULSE-STEP
-                         "progress-pulse-step" "gdouble" T T)
-                        (SCROLL-OFFSET ENTRY-SCROLL-OFFSET
-                         "scroll-offset" "gint" T NIL)
-                        (SECONDARY-ICON-ACTIVATABLE
-                         ENTRY-SECONDARY-ICON-ACTIVATABLE
-                         "secondary-icon-activatable" "gboolean" T T)
-                        (SECONDARY-ICON-GICON ENTRY-SECONDARY-ICON-GICON
-                         "secondary-icon-gicon" "GIcon" T T)
-                        (SECONDARY-ICON-NAME ENTRY-SECONDARY-ICON-NAME
-                         "secondary-icon-name" "gchararray" T T)
-                        (SECONDARY-ICON-PIXBUF ENTRY-SECONDARY-ICON-PIXBUF
-                         "secondary-icon-pixbuf" "GdkPixbuf" T T)
-                        (SECONDARY-ICON-SENSITIVE
-                         ENTRY-SECONDARY-ICON-SENSITIVE
-                         "secondary-icon-sensitive" "gboolean" T T)
-                        (SECONDARY-ICON-STOCK ENTRY-SECONDARY-ICON-STOCK
-                         "secondary-icon-stock" "gchararray" T T)
-                        (SECONDARY-ICON-STORAGE-TYPE
-                         ENTRY-SECONDARY-ICON-STORAGE-TYPE
-                         "secondary-icon-storage-type" "GtkImageType" T NIL)
-                        (SECONDARY-ICON-TOOLTIP-MARKUP
-                         ENTRY-SECONDARY-ICON-TOOLTIP-MARKUP
-                         "secondary-icon-tooltip-markup" "gchararray" T T)
-                        (SECONDARY-ICON-TOOLTIP-TEXT
-                         ENTRY-SECONDARY-ICON-TOOLTIP-TEXT
-                         "secondary-icon-tooltip-text" "gchararray" T T)
-                        (SELECTION-BOUND ENTRY-SELECTION-BOUND
-                         "selection-bound" "gint" T NIL)
-                        (SHADOW-TYPE ENTRY-SHADOW-TYPE
-                         "shadow-type" "GtkShadowType" T T)
-                        (SHOW-EMOJI-ICON ENTRY-SHOW-EMOJI-ICON
-                         "show-emoji-icon" "gboolean" T T)
-                        (TABS ENTRY-TABS "tabs" "PangoTabArray" T T)
-                        (TEXT ENTRY-TEXT "text" "gchararray" T T)
-                        (TEXT-LENGTH ENTRY-TEXT-LENGTH
-                         "text-length" "guint" T NIL)
-                        (TRUNCATE-MULTILINE ENTRY-TRUNCATE-MULTILINE
-                         "truncate-multiline" "gboolean" T T)
-                        (VISIBILITY ENTRY-VISIBILITY
-                         "visibility" "gboolean" T T)
-                        (WIDTH-CHARS ENTRY-WIDTH-CHARS "width-chars" "gint" T T)
-                        (XALIGN ENTRY-XALIGN "xalign" "gfloat" T T)))
+                      (:SUPERCLASS GTK:WIDGET
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkCellEditable"
+                        "GtkEditable")
+                       :TYPE-INITIALIZER "gtk_entry_get_type")
+                      ((ACTIVATES-DEFAULT ENTRY-ACTIVATES-DEFAULT
+                        "activates-default" "gboolean" T T)
+                       (ATTRIBUTES ENTRY-ATTRIBUTES
+                        "attributes" "PangoAttrList" T T)
+                       (BUFFER ENTRY-BUFFER "buffer" "GtkEntryBuffer" T T)
+                       (CAPS-LOCK-WARNING ENTRY-CAPS-LOCK-WARNING
+                        "caps-lock-warning" "gboolean" T T)
+                       (COMPLETION ENTRY-COMPLETION
+                        "completion" "GtkEntryCompletion" T T)
+                       (CURSOR-POSITION ENTRY-CURSOR-POSITION
+                        "cursor-position" "gint" T NIL)
+                       (EDITABLE ENTRY-EDITABLE "editable" "gboolean" T T)
+                       (ENABLE-EMOJI-COMPLETION ENTRY-ENABLE-EMOJI-COMPLETION
+                        "enable-emoji-completion" "gboolean" T T)
+                       (HAS-FRAME ENTRY-HAS-FRAME "has-frame" "gboolean" T T)
+                       (IM-MODULE ENTRY-IM-MODULE "im-module" "gchararray" T T)
+                       (INNER-BORDER ENTRY-INNER-BORDER
+                        "inner-border" "GtkBorder" T T)
+                       (INPUT-HINTS ENTRY-INPUT-HINTS
+                        "input-hints" "GtkInputHints" T T)
+                       (INPUT-PURPOSE ENTRY-INPUT-PURPOSE
+                        "input-purpose" "GtkInputPurpose" T T)
+                       (INVISIBLE-CHAR ENTRY-INVISIBLE-CHAR
+                        "invisible-char" "guint" T T)
+                       (INVISIBLE-CHAR-SET ENTRY-INVISIBLE-CHAR-SET
+                        "invisible-char-set" "gboolean" T T)
+                       (MAX-LENGTH ENTRY-MAX-LENGTH "max-length" "gint" T T)
+                       (MAX-WIDTH-CHARS ENTRY-MAX-WIDTH-CHARS
+                        "max-width-chars" "gint" T T)
+                       (OVERWRITE-MODE ENTRY-OVERWRITE-MODE
+                        "overwrite-mode" "gboolean" T T)
+                       (PLACEHOLDER-TEXT ENTRY-PLACEHOLDER-TEXT
+                        "placeholder-text" "gchararray" T T)
+                       (POPULATE-ALL ENTRY-POPULATE-ALL
+                        "populate-all" "gboolean" T T)
+                       (PRIMARY-ICON-ACTIVATABLE ENTRY-PRIMARY-ICON-ACTIVATABLE
+                        "primary-icon-activatable" "gboolean" T T)
+                       (PRIMARY-ICON-GICON ENTRY-PRIMARY-ICON-GICON
+                        "primary-icon-gicon" "GIcon" T T)
+                       (PRIMARY-ICON-NAME ENTRY-PRIMARY-ICON-NAME
+                        "primary-icon-name" "gchararray" T T)
+                       (PRIMARY-ICON-PIXBUF ENTRY-PRIMARY-ICON-PIXBUF
+                        "primary-icon-pixbuf" "GdkPixbuf" T T)
+                       (PRIMARY-ICON-SENSITIVE ENTRY-PRIMARY-ICON-SENSITIVE
+                        "primary-icon-sensitive" "gboolean" T T)
+                       (PRIMARY-ICON-STOCK ENTRY-PRIMARY-ICON-STOCK
+                        "primary-icon-stock" "gchararray" T T)
+                       (PRIMARY-ICON-STORAGE-TYPE
+                        ENTRY-PRIMARY-ICON-STORAGE-TYPE
+                        "primary-icon-storage-type" "GtkImageType" T NIL)
+                       (PRIMARY-ICON-TOOLTIP-MARKUP
+                        ENTRY-PRIMARY-ICON-TOOLTIP-MARKUP
+                        "primary-icon-tooltip-markup" "gchararray" T T)
+                       (PRIMARY-ICON-TOOLTIP-TEXT
+                        ENTRY-PRIMARY-ICON-TOOLTIP-TEXT
+                        "primary-icon-tooltip-text" "gchararray" T T)
+                       (PROGRESS-FRACTION ENTRY-PROGRESS-FRACTION
+                        "progress-fraction" "gdouble" T T)
+                       (PROGRESS-PULSE-STEP ENTRY-PROGRESS-PULSE-STEP
+                        "progress-pulse-step" "gdouble" T T)
+                       (SCROLL-OFFSET ENTRY-SCROLL-OFFSET
+                        "scroll-offset" "gint" T NIL)
+                       (SECONDARY-ICON-ACTIVATABLE
+                        ENTRY-SECONDARY-ICON-ACTIVATABLE
+                        "secondary-icon-activatable" "gboolean" T T)
+                       (SECONDARY-ICON-GICON ENTRY-SECONDARY-ICON-GICON
+                        "secondary-icon-gicon" "GIcon" T T)
+                       (SECONDARY-ICON-NAME ENTRY-SECONDARY-ICON-NAME
+                        "secondary-icon-name" "gchararray" T T)
+                       (SECONDARY-ICON-PIXBUF ENTRY-SECONDARY-ICON-PIXBUF
+                        "secondary-icon-pixbuf" "GdkPixbuf" T T)
+                       (SECONDARY-ICON-SENSITIVE
+                        ENTRY-SECONDARY-ICON-SENSITIVE
+                        "secondary-icon-sensitive" "gboolean" T T)
+                       (SECONDARY-ICON-STOCK ENTRY-SECONDARY-ICON-STOCK
+                        "secondary-icon-stock" "gchararray" T T)
+                       (SECONDARY-ICON-STORAGE-TYPE
+                        ENTRY-SECONDARY-ICON-STORAGE-TYPE
+                        "secondary-icon-storage-type" "GtkImageType" T NIL)
+                       (SECONDARY-ICON-TOOLTIP-MARKUP
+                        ENTRY-SECONDARY-ICON-TOOLTIP-MARKUP
+                        "secondary-icon-tooltip-markup" "gchararray" T T)
+                       (SECONDARY-ICON-TOOLTIP-TEXT
+                        ENTRY-SECONDARY-ICON-TOOLTIP-TEXT
+                        "secondary-icon-tooltip-text" "gchararray" T T)
+                       (SELECTION-BOUND ENTRY-SELECTION-BOUND
+                        "selection-bound" "gint" T NIL)
+                       (SHADOW-TYPE ENTRY-SHADOW-TYPE
+                        "shadow-type" "GtkShadowType" T T)
+                       (SHOW-EMOJI-ICON ENTRY-SHOW-EMOJI-ICON
+                        "show-emoji-icon" "gboolean" T T)
+                       (TABS ENTRY-TABS "tabs" "PangoTabArray" T T)
+                       (TEXT ENTRY-TEXT "text" "gchararray" T T)
+                       (TEXT-LENGTH ENTRY-TEXT-LENGTH
+                        "text-length" "guint" T NIL)
+                       (TRUNCATE-MULTILINE ENTRY-TRUNCATE-MULTILINE
+                        "truncate-multiline" "gboolean" T T)
+                       (VISIBILITY ENTRY-VISIBILITY
+                        "visibility" "gboolean" T T)
+                       (WIDTH-CHARS ENTRY-WIDTH-CHARS "width-chars" "gint" T T)
+                       (XALIGN ENTRY-XALIGN "xalign" "gfloat" T T)))
              (gobject:get-gtype-definition "GtkEntry"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     activate
+
+(test gtk-entry-activate-signal
+  (let* ((name "activate")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     backspace
+
+(test gtk-entry-backspace-signal
+  (let* ((name "backspace")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     copy-clipboard
+
+(test gtk-entry-copy-clipboard-signal
+  (let* ((name "copy-clipboard")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     cut-clipboard
+
+(test gtk-entry-cut-clipboard-signal
+  (let* ((name "cut-clipboard")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     delete-from-cursor
+
+(test gtk-entry-delete-from-cursor-signal
+  (let* ((name "delete-from-cursor")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkDeleteType" "gint")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     icon-press
+
+(test gtk-entry-icon-press-signal
+  (let* ((name "icon-press")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkEntryIconPosition" "GdkEvent")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     icon-release
+
+(test gtk-entry-icon-release-signal
+  (let* ((name "icon-release")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkEntryIconPosition" "GdkEvent")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     insert-at-cursor
+
+(test gtk-entry-insert-at-cursor-signal
+  (let* ((name "insert-at-cursor")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("gchararray")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     insert-emoji
+
+(test gtk-entry-insert-emoji-signal
+  (let* ((name "insert-emoji")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     move-cursor
+
+(test gtk-entry-move-cursor-signal
+  (let* ((name "move-cursor")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkMovementStep" "gint" "gboolean")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     paste-clipboard
+
+(test gtk-entry-paste-clipboard-signal
+  (let* ((name "paste-clipboard")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     populate-popup
+
+(test gtk-entry-populate-popup-signal
+  (let* ((name "populate-popup")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkWidget")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     preedit-changed
+
+(test gtk-entry-preedit-changed-signal
+  (let* ((name "preedit-changed")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("gchararray")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     toggle-overwrite
+
+(test gtk-entry-toggle-overwrite-signal
+  (let* ((name "toggle-overwrite")
+         (gtype (g:gtype "GtkEntry"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -312,7 +566,7 @@
     (is-false (gtk:entry-inner-border entry))
     (is-false (gtk:entry-input-hints entry))
     (is (eq :free-form (gtk:entry-input-purpose entry)))
-    #-windows
+    #+crategus
     (is (= 8226 (gtk:entry-invisible-char entry)))
     #+windows
     (is (= 9679 (gtk:entry-invisible-char entry)))
@@ -363,37 +617,122 @@
 ;;;     invisible-char
 ;;;     progress-border
 
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     activate
-;;;     backspace
-;;;     copy-clipboard
-;;;     cut-clipboard
-;;;     delete-from-cursor
-;;;     icon-press
-;;;     icon-release
-;;;     insert-at-cursor
-;;;     insert-emoji
-;;;     move-cursor
-;;;     paste-clipboard
-;;;     populate-popup
-;;;     preedit-changed
-;;;     toggle-overwrite
+(test gtk-entry-style-properties
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (make-instance 'gtk:entry)) 'gtk:entry))
+    (is-true (gtk:widget-style-property entry "icon-prelight"))
+    (is-false (gtk:widget-style-property entry "inner-border"))
+    (is (= 0 (gtk:widget-style-property entry "invisible-char")))
+    (is-false (gtk:widget-style-property entry "progress-border"))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_entry_new
+
+(test gtk-entry-new
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))))
+
 ;;;     gtk_entry_new_with_buffer
+
+(test gtk-entry-new-with-buffer
+  (glib-test:with-check-memory (entry buffer)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "With some text."))
+               'gtk:entry-buffer))
+    (is (typep (setf entry (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
+
 ;;;     gtk_entry_get_text_area
+
+(test gtk-entry-text-area
+  (glib-test:with-check-memory (entry buffer)
+    (is (typep (setf buffer
+                     (gtk:entry-buffer-new "Some text")) 'gtk:entry-buffer))
+    (is (typep (setf entry (gtk:entry-new-with-buffer buffer)) 'gtk:entry))
+    (is (typep (gtk:entry-text-area entry) 'gdk:rectangle))
+    ;; Remove references
+    (is-false (setf (gtk:entry-buffer entry) nil))))
+
 ;;;     gtk_entry_unset_invisible_char
+
+#+crategus
+(test gtk-entry-unset-invisible-char
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    ;; Set and retrieve the invisible char
+    (is (eq #\bullet (code-char (gtk:entry-invisible-char entry))))
+    (is (eq #\* (code-char (setf (gtk:entry-invisible-char entry) 42))))
+    (is (eq #\* (code-char (gtk:entry-invisible-char entry))))
+    ;; Unset the invisible char
+    (is-false (gtk:entry-unset-invisible-char entry))
+    (is (eq #\bullet (code-char (gtk:entry-invisible-char entry))))))
+
+#+windows
+(test gtk-entry-unset-invisible-char
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    ;; Set and retrieve the invisible char
+    (is (eq #\black_circle (code-char (gtk:entry-invisible-char entry))))
+    (is (eq #\* (code-char (setf (gtk:entry-invisible-char entry) 42))))
+    (is (eq #\* (code-char (gtk:entry-invisible-char entry))))
+    ;; Unset the invisible char
+    (is-false (gtk:entry-unset-invisible-char entry))
+    (is (eq #\black_circle (code-char (gtk:entry-invisible-char entry))))))
+
 ;;;     gtk_entry_set_alignment
 ;;;     gtk_entry_get_alignment
+
+(test gtk-entry-alignment
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    (is (= 0.0 (gtk:entry-alignment entry)))
+    (is (= 4/5 (setf (gtk:entry-alignment entry) 8/10)))
+    (is (= 0.8 (gtk:entry-alignment entry)))))
+
 ;;;     gtk_entry_get_layout
+
+(test gtk-entry-layout
+  (glib-test:with-check-memory (entry :strong 1)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    (is (typep (gtk:entry-layout entry) 'pango:layout))))
+
 ;;;     gtk_entry_get_layout_offsets
+
+#+crategus
+(test gtk-entry-layout-offsets
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    (is (equal '(1 -7)
+               (multiple-value-list (gtk:entry-layout-offsets entry))))))
+
+#+windows
+(test gtk-entry-layout-offsets
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    (is (equal '(1 -6)
+               (multiple-value-list (gtk:entry-layout-offsets entry))))))
+
 ;;;     gtk_entry_layout_index_to_text_index
 ;;;     gtk_entry_text_index_to_layout_index
+
+(test gtk-entry-layout-index-to-text-index
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    ;; Text index and layout index are identical at this point
+    (is (= 5 (gtk:entry-layout-index-to-text-index entry 5)))
+    (is (= 5 (gtk:entry-text-index-to-layout-index entry 5)))))
+
 ;;;     gtk_entry_set_cursor_hadjustment
 ;;;     gtk_entry_get_cursor_hadjustment
+
+(test gtk-entry-cursor-hadjustment
+  (glib-test:with-check-memory (entry)
+    (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
+    ;; We have no adjustment at this point
+    (is-false (gtk:entry-cursor-hadjustment entry))))
+
 ;;;     gtk_entry_progress_pulse
 ;;;     gtk_entry_im_context_filter_keypress
 ;;;     gtk_entry_reset_im_context
@@ -420,4 +759,4 @@
 ;;;     gtk_entry_get_icon_area
 ;;;     gtk_entry_grab_focus_without_selecting
 
-;;; 2025-06-02
+;;; 2025-07-11

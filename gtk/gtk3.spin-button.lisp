@@ -229,7 +229,7 @@
 
 #+liber-documentation
 (setf (documentation 'spin-button 'type)
- "@version{2025-07-02}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:spin-button} widget is an ideal way to allow the user to set
     the value of some attribute.
@@ -351,7 +351,7 @@ lambda (spinbutton new-value)    :run-last
 lambda (spinbutton)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
+        @entry[spinbutton]{The @class{gtk:spin-button} widget that received
           the signal.}
         @entry[Returns]{@em{True} if the value has been displayed.}
       @end{simple-table}
@@ -414,7 +414,7 @@ lambda (spinbutton)    :run-last
 lambda (spinbutton)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[spinbutton]{The @class{gtk:spin-button} widget which received
+        @entry[spinbutton]{The @class{gtk:spin-button} widget that received
           the signal.}
       @end{simple-table}
       Is emitted right after the spin button wraps from its maximum to minimum
