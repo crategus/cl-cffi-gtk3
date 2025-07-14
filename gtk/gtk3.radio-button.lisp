@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-button 'type)
- "@version{#2025-06-28}
+ "@version{#2025-07-14}
   @begin{short}
     A single radio button performs the same basic function as a
     @class{gtk:check-button} widget, as its position in the object hierarchy
@@ -191,7 +191,7 @@ button.radio
 lambda (button)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:radio-button} widget which received the
+        @entry[button]{The @class{gtk:radio-button} widget that received the
           signal.}
       @end{simple-table}
       Emitted when the group of radio buttons that a radio button belongs to

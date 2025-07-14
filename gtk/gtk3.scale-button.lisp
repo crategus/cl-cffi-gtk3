@@ -107,7 +107,7 @@
 
 #+liber-documentation
 (setf (documentation 'scale-button 'type)
- "@version{#2025-06-28}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:scale-button} widget provides a button which pops up a scale
     widget.
@@ -127,7 +127,7 @@
 lambda (button)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:scale-button} widget which received the
+        @entry[button]{The @class{gtk:scale-button} widget that received the
           signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to popdown the scale
@@ -138,7 +138,7 @@ lambda (button)    :action
 lambda (button)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:scale-button} widget which received the
+        @entry[button]{The @class{gtk:scale-button} widget that received the
           signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to popup the scale
@@ -150,7 +150,7 @@ lambda (button)    :action
 lambda (button value)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:scale-button} widget which received the
+        @entry[button]{The @class{gtk:scale-button} widget that received the
           signal.}
         @entry[value]{The double float with the new value.}
       @end{simple-table}

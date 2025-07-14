@@ -94,7 +94,7 @@
 
 #+liber-documentation
 (setf (documentation 'switch 'type)
- "@version{#2025-06-18}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:switch} widget is a widget that has two states: on or off.
   @end{short}
@@ -113,50 +113,49 @@
     is using any style classes.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[slider-height]{entry}
-        The @code{slider-height} style property of type @code{:int} (Read) @br{}
-        The minimum height of the switch handle, in pixels. @br{}
-        @em{Warning:} The @code{slider-height} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the CSS @code{min-height} property instead. @br{}
-        Allowed values: >= 22 @br{}
-        Default value: 22
-      @end{entry}
-      @begin[slider-width]{entry}
-        The @code{slider-width} style property of type @code{:int} (Read) @br{}
-        The minimum width of the switch handle, in pixels. @br{}
-        @em{Warning:} The @code{slider-width} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. Use the
-        CSS @code{min-height} property instead. @br{}
-        Allowed values: >= 36 @br{}
-        Default value: 36
-      @end{entry}
-    @end{table}
+    @begin[switch:slider-height]{property}
+      The @code{slider-height} style property of type @code{:int} (Read) @br{}
+      The minimum height of the switch handle, in pixels. @br{}
+      @em{Warning:} The @code{slider-height} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the CSS @code{min-height} property instead. @br{}
+      Allowed values: >= 22 @br{}
+      Default value: 22
+    @end{property}
+    @begin[switch:slider-width]{property}
+      The @code{slider-width} style property of type @code{:int} (Read) @br{}
+      The minimum width of the switch handle, in pixels. @br{}
+      @em{Warning:} The @code{slider-width} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. Use the
+      CSS @code{min-height} property instead. @br{}
+      Allowed values: >= 36 @br{}
+      Default value: 36
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[switch::activate]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:switch} widget which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:switch} widget that received the signal.}
+      @end{simple-table}
       The signal on the switch is an action signal and emitting it causes the
       switch to animate. Applications should never connect to this signal, but
-      use the @code{\"notify::active\"} signal.
-    @subheading{The \"state-set\" signal}
+      use the @sig[g:object]{notify::active} signal.
+    @end{signal}
+    @begin[switch::state-set]{signal}
       @begin{pre}
 lambda (widget state)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:switch} widget which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:switch} widget that received the signal.}
         @entry[state]{The boolean with the state of the switch.}
         @entry[Returns]{@em{True} to stop the signal emission.}
-      @end{table}
+      @end{simple-table}
       The signal on the switch is emitted to change the underlying state. It is
       emitted when the user changes the switch position. The default handler
-      keeps the state in sync with the @code{active} property.
+      keeps the state in sync with the @slot[gtk:switch]{active} property.
 
       To implement delayed state change, applications can connect to this
       signal, initiate the change of the underlying state, and call the
@@ -165,8 +164,9 @@ lambda (widget state)    :run-last
       default handler from running.
 
       Visually, the underlying state is represented by the trough color of the
-      switch, while the @code{active} property is represented by the position
-      of the switch.
+      switch, while the @slot[gtk:switch]{active} property is represented by
+      the position of the switch.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:switch-new}
   @see-slot{gtk:switch-active}")
@@ -208,14 +208,14 @@ lambda (widget state)    :run-last
 (setf (documentation (liber:slot-documentation "state" 'switch) t)
  "The @code{state} property of type @code{:boolean} (Read / Write) @br{}
   The backend state that is controlled by the switch. See the
-  @code{\"state-set\"} signal for details. @br{}
+  @sig[gtk:switch]{state-set} signal for details. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'switch-state)
       "Accessor"
       (documentation 'switch-state 'function)
- "@version{#2025-06-18}
+ "@version{#2025-06-28}
   @syntax{(gtk:switch-state object) => state)}
   @syntax{(setf (gtk:switch-state object) state)}
   @argument[object]{a @class{gtk:switch} widget}
@@ -229,8 +229,7 @@ lambda (widget state)    :run-last
 
   Normally, this is the same as the @slot[gtk:switch]{active} property, unless
   the switch is set up for delayed state changes. This function is typically
-  called from a @code{\"state-set\"} signal handler. See the
-  @code{\"state-set\"} signal for details.
+  called from a @sig[gtk:switch]{state-set} signal handler.
   @see-class{gtk:switch}
   @see-function{gtk:switch-active}")
 

@@ -105,7 +105,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-button 'type)
- "@version{2025-06-27}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:toggle-button} widget is a @class{gtk:button} widget which
     will remain \"pressed-in\" when clicked.
@@ -183,7 +183,7 @@
 lambda (togglebutton)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[togglebutton]{The @class{gtk:toggle-button} widget which received
+        @entry[togglebutton]{The @class{gtk:toggle-button} widget that received
           the signal.}
       @end{simple-table}
       Should be connected if you wish to perform an action whenever the

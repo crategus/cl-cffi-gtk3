@@ -171,7 +171,7 @@
 
 #+liber-documentation
 (setf (documentation 'button 'type)
- "@version{2025-06-28}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:button} widget emits a signal when clicked on.
   @end{short}
@@ -284,7 +284,7 @@
 lambda (button)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       The signal on the @class{gtk:button} widget is an action signal and
       emitting it causes the button to animate press then release. Applications
@@ -296,7 +296,7 @@ lambda (button)    :action
 lambda (button)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       Emitted when the button has been activated (pressed and released).
     @end{signal}
@@ -305,7 +305,7 @@ lambda (button)    :action
 lambda (button)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       Emitted when the pointer enters the button. @br{}
       @em{Warning:} The @sig[gtk:button]{enter} signal has been deprecated
@@ -318,7 +318,7 @@ lambda (button)    :run-first
 lambda (button)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       Emitted when the pointer leaves the button. @br{}
       @em{Warning:} The @sig[gtk:button]{leave} signal has been deprecated
@@ -331,7 +331,7 @@ lambda (button)    :run-first
 lambda (button)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       Emitted when the button is pressed. @br{}
       @em{Warning:} The @sig[gtk:button]{pressed} signal has been deprecated
@@ -344,7 +344,7 @@ lambda (button)    :run-first
 lambda (button)    :run-first
       @end{pre}
       @begin[code]{simple-table}
-        @entry[button]{The @class{gtk:button} widget which received the signal.}
+        @entry[button]{The @class{gtk:button} widget that received the signal.}
       @end{simple-table}
       Emitted when the button is released. @br{}
       @em{Warning:} The @sig[gtk:button]{released} signal has been deprecated
