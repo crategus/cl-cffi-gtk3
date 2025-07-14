@@ -657,15 +657,15 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_get_char_count" text-buffer-char-count) :int
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-07-11}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{The integer with the number of characters in the text buffer.}
+  @return{The integer for the number of characters in the text buffer.}
   @begin{short}
     Gets the number of characters in the text buffer.
   @end{short}
-  Note that characters and bytes are not the same, you cannot e.g. expect the
-  contents of the text buffer in string form to be this many bytes long. The
-  character count is cached, so this function is very fast.
+  Note that characters and bytes are not the same, you cannot, for example,
+  expect the contents of the text buffer in string form to be this many bytes
+  long. The character count is cached, so this function is very fast.
   @see-class{gtk:text-buffer}
   @see-function{gtk:text-buffer-line-count}"
   (buffer (g:object text-buffer)))
@@ -1252,7 +1252,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_insert_pixbuf" text-buffer-insert-pixbuf) :void
  #+liber-documentation
- "@version{#2023-03-12}
+ "@version{#2025-07-11}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the pixbuf}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
@@ -1263,7 +1263,7 @@ lambda (buffer tag start end)    :run-last
   obtaining the buffer contents as a string, will be represented by the Unicode
   \"object replacement character\" @code{0xFFFC}. Note that the \"slice\"
   variants for obtaining portions of the text buffer as a string include this
-  character for pixbufs, but the \"text\" variants do not, e.g. see the
+  character for pixbufs, but the \"text\" variants do not, for example, see the
   @fun{gtk:text-buffer-get-slice} and @fun{gtk:text-buffer-get-text} functions.
   @see-class{gtk:text-buffer}
   @see-class{gdk-pixbuf:pixbuf}
@@ -1287,7 +1287,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-child-anchor (buffer position &optional anchor)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-07-11}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the anchor}
   @argument[anchor]{an optional @class{gtk:text-child-anchor} object}
@@ -1299,7 +1299,7 @@ lambda (buffer tag start end)    :run-last
   obtaining the buffer contents as a string, will be represented by the Unicode
   \"object replacement character\" @code{0xFFFC}. Note that the \"slice\"
   variants for obtaining portions of the text buffer as a string include this
-  character for anchors, but the \"text\" variants do not, e.g. see the
+  character for anchors, but the \"text\" variants do not, for example, see the
   @fun{gtk:text-buffer-get-slice} and @fun{gtk:text-buffer-get-text} functions.
   Consider the @fun{gtk:text-buffer-create-child-anchor} function as a more
   convenient alternative to this function. The text buffer will add a reference
@@ -2116,17 +2116,16 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-bounds (buffer)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-07-11}
+  @syntax{(gtk:text-buffer-bounds buffer) => start, end}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @begin{return}
-    @arg{start} -- a @class{gtk:text-iter} iterator with the first position in
-      the text buffer @br{}
-    @arg{end} -- a @class{gtk:text-iter} iterator with the end position in the
-      text buffer
-  @end{return}
+  @argument[start]{a @class{gtk:text-iter} iterator for the first position in
+    the text buffer}
+  @argument[end]{a @class{gtk:text-iter} iterator for the end position in the
+    text buffer}
   @begin{short}
-    Retrieves the first and last iterators in the text buffer, i.e. the entire
-    text buffer lies within the range [@arg{start}, @arg{end}).
+    Retrieves the first and last iterators in the text buffer, that is, the
+    entire text buffer lies within the range [@arg{start}, @arg{end}).
   @end{short}
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-iter}"
@@ -2550,7 +2549,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_deserialize_get_can_create_tags"
                text-buffer-deserialize-can-create-tags) :boolean
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2025-07-11}
   @syntax{(gtk:text-buffer-deserialize-can-create-tags buffer format) => create}
   @syntax{(setf (gtk:text-buffer-deserialize-can-create-tags buffer format) create)}
   @argument[buffer]{a @class{gtk:text-buffer} object}
@@ -2570,10 +2569,10 @@ lambda (buffer tag start end)    :run-last
   format is essentially a dump of the internal structure of the source buffer,
   including its tag names.
 
-  You should allow creation of tags only if you know what you are doing, e.g.
-  if you defined a tagset name for your application text buffers and you know
-  that it is fine to receive new tags from these buffers, because you know that
-  your application can handle the newly created tags.
+  You should allow creation of tags only if you know what you are doing, for
+  example, if you defined a tagset name for your application text buffers and
+  you know that it is fine to receive new tags from these buffers, because you
+  know that your application can handle the newly created tags.
   @see-class{gtk:text-buffer}
   @see-function{gtk:text-buffer-register-deserialize-tagset}"
   (buffer (g:object text-buffer))

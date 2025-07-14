@@ -109,7 +109,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTextAttributes
+;;; GtkTextAttributes
 ;;; ----------------------------------------------------------------------------
 
 ;; This implementation crashes the testsuite, when copying the structure.
@@ -289,12 +289,12 @@
 (setf (liber:alias-for-function 'text-attributes-justification)
       "Accessor"
       (documentation 'text-attributes-justification 'function)
- "@version{#2021-8-19}
+ "@version{#2025-07-11}
   @begin{short}
     Accessor of the @code{justification} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  A value of the @symbol{gtk:justification} enumeration for text.
+  A value of the @sym{gtk:justification} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:justification}")
 
@@ -304,12 +304,12 @@
 (setf (liber:alias-for-function 'text-attributes-direction)
       "Accessor"
       (documentation 'text-attributes-direction 'function)
- "@version{#2021-8-19}
+ "@version{#2025-07-11}
   @begin{short}
     Accessor of the @code{direction} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  A value of the @symbol{gtk:text-direction} enumeration for text.
+  A value of the @sym{gtk:text-direction} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:text-direction}")
 
@@ -448,12 +448,12 @@
 (setf (liber:alias-for-function 'text-attributes-wrap-mode)
       "Accessor"
       (documentation 'text-attributes-wrap-mode 'function)
- "@version{#2021-8-19}
+ "@version{#2025-07-11}
   @begin{short}
     Accessor of the @code{wrap-mode} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  A value of the @symbol{gtk:wrap-mode} enumeration for text.
+  A value of the @sym{gtk:wrap-mode} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:wrap-mode}")
 
@@ -563,8 +563,8 @@
 
 (defun text-attributes-new ()
  #+liber-documentation
- "@version{#2021-8-19}
-  @return{A new @class{gtk:text-attributes} instance.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:text-attributes} instance.}
   @begin{short}
     Creates a @class{gtk:text-attributes} instance, which describes a set of
     properties on some text.
@@ -578,9 +578,9 @@
 
 (defun text-attributes-copy (src)
  #+liber-documentation
- "@version{#2021-8-19}
+ "@version{#2025-07-07}
   @argument[src]{a @class{gtk:text-attributes} instance to be copied}
-  @return{A copy of @arg{src}.}
+  @return{The copy of @arg{src}.}
   @begin{short}
     Copies @arg{src} and returns a new @class{gtk:text-attributes} instance.
   @end{short}

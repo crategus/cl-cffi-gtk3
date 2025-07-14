@@ -426,7 +426,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-view 'type)
- "@version{2025-07-01}
+ "@version{2025-07-14}
   @begin{short}
     GTK has a powerful framework for multiline text editing.
   @end{short}
@@ -473,8 +473,7 @@ textview.view
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user asks
       for it. The default bindings for this signal are the @kbd{Backspace} and
@@ -485,8 +484,7 @@ lambda (view)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to copy the
       selection to the clipboard. The default bindings for this signal are the
@@ -497,8 +495,7 @@ lambda (view)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to cut the selection
       to the clipboard. The default bindings for this signal are the
@@ -509,8 +506,7 @@ lambda (view)    :action
 lambda (view granularity count)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[granularity]{The granularity of the deletion, as a value of the
           @sym{gtk:delete-type} enumeration.}
         @entry[count]{The integer with the number of type units to delete.}
@@ -528,8 +524,7 @@ lambda (view granularity count)    :action
 lambda (view granularity location start end)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[granularity]{The granularity as a value of the
           @sym{gtk:text-extend-selection} enumeration.}
         @entry[location]{The @class{gtk:text-iter} iterator where to extend the
@@ -549,8 +544,7 @@ lambda (view granularity location start end)    :run-last
 lambda (view text)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[text]{The string with the text to insert.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
@@ -562,8 +556,7 @@ lambda (view text)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       This signal is a keybinding signal which gets emitted to present the Emoji
       chooser for the text view. The default bindings for this signal are
@@ -574,8 +567,7 @@ lambda (view)    :action
 lambda (view step count extend)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[step]{The granularity of the move, as a value of the
           @sym{gtk:movement-step} enumeration.}
         @entry[count]{An integer with the number of step units to move.}
@@ -600,15 +592,14 @@ lambda (view step count extend)    :action
 lambda (view step count)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[step]{The granularity of the move, as a value of the
           @sym{gtk:movement-step} enumeration.}
         @entry[count]{The integer with the number of step units to move.}
       @end{simple-table}
       The signal is a keybinding signal which can be bound to key combinations
-      to allow the user to move the viewport, i.e. change what part of the text
-      view is visible in a containing scrolled window. There are no default
+      to allow the user to move the viewport, that is, change what part of the
+      text view is visible in a containing scrolled window. There are no default
       bindings for this signal.
     @end{signal}
     @begin[text-view::paste-clipboard]{signal}
@@ -616,8 +607,7 @@ lambda (view step count)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to paste the
       contents of the clipboard into the text view. The default bindings for
@@ -637,9 +627,9 @@ lambda (view popup)    :run-last
       append your items to the popup, which will be a @class{gtk:menu} widget
       in this case. If the @code{populate-all} property is @em{true}, this
       signal will also be emitted to populate touch popups. In this case, popup
-      will be a different container, e.g. a @class{gtk:toolbar} widget. The
-      signal handler should not make assumptions about the type of the widget,
-      but check whether popup is a @class{gtk:menu} widget or
+      will be a different container, for example, a @class{gtk:toolbar} widget.
+      The signal handler should not make assumptions about the type of the
+      widget, but check whether popup is a @class{gtk:menu} widget or
       @class{gtk:toolbar} widget or another kind of container.
     @end{signal}
     @begin[text-view::preedit-changed]{signal}
@@ -647,8 +637,7 @@ lambda (view popup)    :run-last
 lambda (view preedit)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} object which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} object that received the signal.}
         @entry[preedit]{A string with the current preedit text.}
       @end{simple-table}
       If an input method is used, the typed text will not immediately be
@@ -661,8 +650,7 @@ lambda (view preedit)    :action
 lambda (view select)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[select]{@em{True} to select, @em{false} to unselect.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to select or unselect
@@ -675,8 +663,7 @@ lambda (view select)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates setting the \"anchor\" mark. The \"anchor\" mark gets placed at
@@ -688,8 +675,7 @@ lambda (view)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       This signal is a keybinding signal which gets emitted to toggle the
       visibility of the cursor. The default binding for this signal is @kbd{F7}.
@@ -699,8 +685,7 @@ lambda (view)    :action
 lambda (view)    :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[view]{The @class{gtk:text-view} widget which received the
-          signal.}
+        @entry[view]{The @class{gtk:text-view} widget that received the signal.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted to toggle the
       overwrite mode of the text view. The default bindings for this signal is
@@ -1881,7 +1866,8 @@ lambda (view)    :action
   @fun{gtk:text-view-window-to-buffer-coords} function.
 
   Note that this is different from the @fun{gtk:text-view-iter-at-location}
-  function, which returns cursor locations, i.e. positions between characters.
+  function, which returns cursor locations, that is, positions between
+  characters.
   @see-class{gtk:text-view}
   @see-class{gtk:text-iter}
   @see-function{gtk:text-view-window-to-buffer-coords}

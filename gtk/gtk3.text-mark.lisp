@@ -2,8 +2,8 @@
 ;;; gtk3.text-mark.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -214,20 +214,19 @@
 
 (cffi:defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
- "@version{#2023-03-15}
+ "@version{#2025-07-11}
   @syntax{(gtk:text-mark-visible mark) => visibility}
   @syntax{(setf (gtk:text-mark-visible mark) visibility)}
   @argument[mark]{a @class{gtk:text-mark} object}
   @argument[visibility]{a boolean whether the text mark is visible}
   @return{@em{True} if the text mark is visible.}
   @begin{short}
-    Accessor for the visibility of a text mark.
+    The @fun{gtk:text-mark-visible} function returns @em{true} if the text mark
+    is visible, that is, a cursor is displayed for it.
   @end{short}
-  The @fun{gtk:text-mark-visible} function returns @em{true} if the text mark
-  is visible, i.e. a cursor is displayed for it. The
-  @setf{gtk:text-mark-visible} function sets the visibility.
+  The @setf{gtk:text-mark-visible} function sets the visibility.
 
-  The insertion point is normally visible, i.e. you can see it as a vertical
+  The insertion point is normally visible, that is, you can see it as a vertical
   bar. Also, the text widget uses a visible text mark to indicate where a drop
   will occur when dragging-and-dropping text. Most other text marks are not
   visible. Text marks are not visible by default.
@@ -242,9 +241,9 @@
 
 (cffi:defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
  #+liber-documentation
- "@version{#2023-03-15}
+ "@version{#2025-07-07}
   @argument[mark]{a @class{gtk:text-mark} object}
-  @return{A boolean whether the text mark is deleted.}
+  @return{The boolean whether the text mark is deleted.}
   @begin{short}
     Returns @em{true} if the text mark has been removed from its text buffer
     with the @fun{gtk:text-buffer-delete-mark} function.

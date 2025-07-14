@@ -1250,12 +1250,12 @@
 
 (cffi:defcfun ("gtk_text_iter_is_end" text-iter-is-end) :boolean
  #+liber-documentation
- "@version{2024-06-24}
+ "@version{2025-07-11}
   @argument[iter]{a @class{gtk:text-iter} instance}
   @return{@em{True} if the iterator is the end iterator.}
   @begin{short}
-    Returns @em{true} if the iterator is the end iterator, i.e. one past the
-    last dereferenceable iterator in the text buffer.
+    Returns @em{true} if the iterator is the end iterator, that is, one past
+    the last dereferenceable iterator in the text buffer.
   @end{short}
   The @fun{gtk:text-iter-is-end} function is the most efficient way to check
   whether an iterator is the end iterator.

@@ -412,7 +412,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-tag 'type)
- "@version{2025-07-01}
+ "@version{2025-07-11}
   @begin{short}
     You may wish to begin by reading the text widget conceptual overview which
     gives an overview of all the objects and data types related to the text
@@ -424,9 +424,9 @@
   @fun{gtk:text-buffer-create-tag} function is the best way to create tags.
 
   For each property of the @class{gtk:text-tag} class, there is a \"set\"
-  property, e.g. \"font-set\" corresponds to \"font\". These \"set\" properties
-  reflect whether a property has been set or not. They are maintained by GTK
-  and you should not set them independently.
+  property, for example, \"font-set\" corresponds to \"font\". These \"set\"
+  properties reflect whether a property has been set or not. They are maintained
+  by GTK and you should not set them independently.
   @begin[Signal Details]{dictionary}
     @begin[text-tag::event]{signal}
       @begin{pre}
@@ -855,7 +855,7 @@ lambda (tag object event iter)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "family" 'text-tag) t)
  "The @code{family} property of type @code{:string} (Read / Write) @br{}
-  Name of the font family, e.g. Sans, Helvetica, Times, Monospace. @br{}
+  Name of the font family, for example, Sans, Helvetica, Times, Monospace. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -871,7 +871,7 @@ lambda (tag object event iter)    :run-last
     Accessor of the @slot[gtk:text-tag]{family} slot of the
     @class{gtk:text-tag} class.
   @end{short}
-  Name of the font family, e.g. Sans, Helvetica, Times, Monospace.
+  Name of the font family, for example, Sans, Helvetica, Times, Monospace.
   @see-class{gtk:text-tag}
   @see-function{gtk:text-tag-family-set}")
 
@@ -905,8 +905,8 @@ lambda (tag object event iter)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "font" 'text-tag) t)
  "The @code{font} property of type @code{:string} (Read / Write) @br{}
-  Font description as string, e.g. \"Sans Italic 12\". Note that the initial
-  value of this property depends on the internals of the
+  Font description as string, for example \"Sans Italic 12\". Note that the
+  initial value of this property depends on the internals of the
   @class{pango:font-description} structure. @br{}
   Default value: @code{nil}")
 
@@ -923,8 +923,8 @@ lambda (tag object event iter)    :run-last
     Accessor of the @slot[gtk:text-tag]{font} slot of the
     @class{gtk:text-tag} class.
   @end{short}
-  Font description as string, e.g. \"Sans Italic 12\". Note that the initial
-  value of this property depends on the internals of the
+  Font description as string, for example, \"Sans Italic 12\". Note that the
+  initial value of this property depends on the internals of the
   @class{pango:font-description} structure.
   @see-class{gtk:text-tag}
   @see-class{pango:font-description}")
@@ -1862,9 +1862,9 @@ lambda (tag object event iter)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "scale" 'text-tag) t)
  "The @code{scale} property of type @code{:double} (Read / Write) @br{}
-  Font size as a scale factor relative to the default font size. This properly
-  adapts to theme changes etc. so is recommended. Pango predefines some scales
-  such as the @var{pango:+scale-x-large+} value. @br{}
+  The font size as a scale factor relative to the default font size. This
+  properly adapts to theme changes, and so on, so is recommended. Pango
+  predefines some scales such as the @var{pango:+scale-x-large+} value. @br{}
   Allowed values: >= 0 @br{}
   Default value: 1")
 
@@ -1872,7 +1872,7 @@ lambda (tag object event iter)    :run-last
 (setf (liber:alias-for-function 'text-tag-scale)
       "Accessor"
       (documentation 'text-tag-scale 'function)
- "@version{2025-06-30}
+ "@version{2025-07-11}
   @syntax{(gtk:text-tag-scale object) => scale}
   @syntax{(setf (gtk:text-tag-scale object) scale)}
   @argument[object]{a @class{gtk:text-tag} object}
@@ -1883,8 +1883,8 @@ lambda (tag object event iter)    :run-last
     @class{gtk:text-tag} class.
   @end{short}
   Font size as a scale factor relative to the default font size. This property
-  adapts to theme changes etc. so is recommended. Pango predefines some scales
-  such as the @var{pango:+scale-x-large+} value.
+  adapts to theme changes, and so on, so is recommended. Pango predefines some
+  scales such as the @var{pango:+scale-x-large+} value.
   @see-class{gtk:text-tag}
   @see-varialble{pango:+scale-x-large+}
   @see-function{gtk:text-tag-scale-set}")
