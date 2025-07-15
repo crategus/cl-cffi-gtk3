@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tree-store.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTreeStore
+;;; GtkTreeStore
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkTreeStore" tree-store
@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'tree-store 'type)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @begin{short}
     The @class{gtk:tree-store} object is a list model for use with a
     @class{gtk:tree-view} widget.
@@ -132,14 +132,14 @@
     (tree-store-set-column-types store column-types)))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_new ()
+;;; gtk_tree_store_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline tree-store-new))
 
 (defun tree-store-new (&rest types)
  #+liber-documentation
- "@version{2024-3-12}
+ "@version{2024-03-12}
   @argument[types]{all @class{g:type-t} type IDs for the columns, from first to
     last}
   @return{The new @class{gtk:tree-store} object.}
@@ -180,7 +180,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_set_column_types ()
+;;; gtk_tree_store_set_column_types
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_set_column_types" %tree-store-set-column-types)
@@ -191,7 +191,7 @@
 
 (defun tree-store-set-column-types (store types)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[types]{a list @class{g:type-t} type IDs, one for each column}
   @begin{short}
@@ -214,12 +214,12 @@
 (export 'tree-store-set-column-types)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_set ()
+;;; gtk_tree_store_set
 ;;; ----------------------------------------------------------------------------
 
 (defun tree-store-set (store iter &rest values)
  #+liber-documentation
- "@version{2024-3-12}
+ "@version{2024-03-12}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
@@ -298,7 +298,7 @@
 ;; Implementation not needed
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_set_value ()
+;;; gtk_tree_store_set_value
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_set_value" %tree-store-set-value) :void
@@ -309,12 +309,12 @@
 
 (defun tree-store-set-value (store iter column value)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-06}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator for the row being
     modified}
-  @argument[column]{an integer with the column number to modify}
-  @argument[value]{new value for the cell}
+  @argument[column]{an integer for the column number to modify}
+  @argument[value]{a new value for the cell}
   @begin{short}
     Sets the data in the cell specified by @arg{iter} and @arg{column}.
   @end{short}
@@ -333,18 +333,18 @@
 (export 'tree-store-set-value)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_set_valuesv ()
+;;; gtk_tree_store_set_valuesv
 ;;; ----------------------------------------------------------------------------
 
 ;; This function is for internal use only and not exported.
 
 (cffi:defcfun ("gtk_tree_store_set_valuesv" %tree-store-set-valuesv) :void
  #+liber-documentation
- "@version{#2013-7-4}
+ "@version{#2025-07-11}
   @argument[tree-store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} for the row being modified}
   @argument[columns]{an array of column numbers}
-  @argument[values]{an array of @symbol{g:value}'s}
+  @argument[values]{an array of @sym{g:value}'s}
   @argument[n-values]{the length of the columns and values arrays}
   @begin{short}
     A variant of the @fun{gtk:tree-store-set} function which takes the columns
@@ -361,12 +361,12 @@
   (n-values :int))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_remove ()
+;;; gtk_tree_store_remove
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_remove" tree-store-remove) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is still valid, @code{nil} if not.}
@@ -384,7 +384,7 @@
 (export 'tree-store-remove)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_insert ()
+;;; gtk_tree_store_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_insert" %tree-store-insert) :void
@@ -395,10 +395,10 @@
 
 (defun tree-store-insert (store parent position)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-06}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
-  @argument[position]{an integer with the position to insert the new row}
+  @argument[position]{an integer for the position to insert the new row}
   @return{The @class{gtk:tree-iter} iterator to the new row.}
   @begin{short}
     Creates a new row at @arg{position}.
@@ -422,7 +422,7 @@
 (export 'tree-store-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_insert_before ()
+;;; gtk_tree_store_insert_before
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_insert_before" %tree-store-insert-before) :void
@@ -433,7 +433,7 @@
 
 (defun tree-store-insert-before (store parent sibling)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[sibling]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
@@ -460,7 +460,7 @@
 (export 'tree-store-insert-before)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_insert_after ()
+;;; gtk_tree_store_insert_after
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_insert_after" %tree-store-insert-after) :void
@@ -471,7 +471,7 @@
 
 (defun tree-store-insert-after (store parent sibling)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @argument[sibling]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
@@ -498,15 +498,15 @@
 (export 'tree-store-insert-after)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_insert_with_values ()
+;;; gtk_tree_store_insert_with_values
 ;;; ----------------------------------------------------------------------------
 
 (defun tree-store-insert-with-values (store parent position &rest values)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-06}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
-  @argument[position]{an integer with the position to insert the new row, or -1
+  @argument[position]{an integer for the position to insert the new row, or -1
     to append after existing rows}
   @argument[values]{pairs of column number and value}
   @return{The @class{gtk:tree-iter} iterator.}
@@ -524,13 +524,14 @@
   (gtk:tree-store-set store iter values)
   .. )
   @end{pre}
-  with the different that the former will only emit a @code{\"row-inserted\"}
-  signal, while the latter will emit @code{\"row-inserted\"},
-  @code{\"row-changed\"} and if the tree store is sorted,
-  @code{\"rows-reordered\"} signals. Since emitting the
-  @code{\"rows-reordered\"} signal repeatedly can affect the performance of the
-  program, the @fun{gtk:tree-store-insert-with-values} function should generally
-  be preferred when inserting rows in a sorted tree store.
+  with the different that the former will only emit a
+  @sig[gtk:tree-model]{row-inserted} signal, while the latter will emit
+  @sig[gtk:tree-model]{row-inserted}, @sig[gtk:tree-model]{row-changed} and if
+  the tree store is sorted, @sig[gtk:tree-model]{ows-reordered} signals. Since
+  emitting the @sig[gtk:tree-model]{rows-reordered} signal repeatedly can affect
+  the performance of the program, the @fun{gtk:tree-store-insert-with-values}
+  function should generally be preferred when inserting rows in a sorted tree
+  store.
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}
   @see-function{gtk:tree-store-insert}
@@ -560,7 +561,7 @@
 (export 'tree-store-insert-with-values)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_insert_with_valuesv ()
+;;; gtk_tree_store_insert_with_valuesv
 ;;; ----------------------------------------------------------------------------
 
 ;; This function is for internal use and not exported.
@@ -568,7 +569,7 @@
 (cffi:defcfun ("gtk_tree_store_insert_with_valuesv"
                %tree-store-insert-with-valuesv) :void
  #+liber-documentation
- "@version{#2013-3-27}
+ "@version{#2013-03-27}
   @argument[tree_store]{A GtkTreeStore}
   @argument[iter]{An unset GtkTreeIter to set the new row, or NULL.}
   @argument[parent]{A valid GtkTreeIter, or NULL.}
@@ -591,7 +592,7 @@
   (n-values :int))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_prepend ()
+;;; gtk_tree_store_prepend
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_prepend" %tree-store-prepend) :void
@@ -601,7 +602,7 @@
 
 (defun tree-store-prepend (store parent)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
   @return{The @class{gtk:tree-iterator} iterator.}
@@ -624,7 +625,7 @@
 (export 'tree-store-prepend)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_append ()
+;;; gtk_tree_store_append
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_append" %tree-store-append) :void
@@ -634,10 +635,10 @@
 
 (defun tree-store-append (store parent)
  #+liber-documentation
- "@version{2024-3-12}
+ "@version{2024-03-12}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[parent]{a valid @class{gtk:tree-iter} iterator, or @code{nil}}
-  @return{The @class{gtk:tree-iter} iterator of the appended row.}
+  @return{The @class{gtk:tree-iter} iterator for the appended row.}
   @begin{short}
     Appends a new row to the tree store.
   @end{short}
@@ -657,12 +658,12 @@
 (export 'tree-store-append)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_is_ancestor ()
+;;; gtk_tree_store_is_ancestor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_is_ancestor" tree-store-is-ancestor) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
   @argument[descendant]{a valid @class{gtk:tree-iter} iterator}
@@ -681,20 +682,20 @@
 (export 'tree-store-is-ancestor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_iter_depth ()
+;;; gtk_tree_store_iter_depth
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_iter_depth" tree-store-iter-depth) :int
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a valid @class{gtk:tree-iter} iterator}
-  @return{The depth of @arg{iter}.}
+  @return{The integer for the depth of @arg{iter}.}
   @begin{short}
     Returns the depth of @arg{iter}.
   @end{short}
   This will be 0 for anything on the root level, 1 for anything down a level,
-  etc.
+  and so on.
   @see-class{gtk:tree-store}
   @see-class{gtk:tree-iter}"
   (store (g:object tree-store))
@@ -703,12 +704,12 @@
 (export 'tree-store-iter-depth)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_clear ()
+;;; gtk_tree_store_clear
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_clear" tree-store-clear) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @short{Removes all rows from the tree store.}
   @see-class{gtk:tree-store}"
@@ -717,12 +718,12 @@
 (export 'tree-store-clear)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_iter_is_valid ()
+;;; gtk_tree_store_iter_is_valid
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_iter_is_valid" tree-store-iter-is-valid) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @return{@em{True} if @arg{iter} is valid, @code{nil} if @arg{iter} is
@@ -742,7 +743,7 @@
 (export 'tree-store-iter-is-valid)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_reorder ()
+;;; gtk_tree_store_reorder
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_reorder" %tree-store-reorder) :void
@@ -752,7 +753,7 @@
 
 (defun tree-store-reorder (store parent order)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:list-store} object}
   @argument[parent]{a @class{gtk:tree-iter} iterator}
   @argument[order]{a list of integer mapping the new position of each child row
@@ -774,12 +775,12 @@
 (export 'tree-store-reorder)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_swap ()
+;;; gtk_tree_store_swap
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_swap" tree-store-swap) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[a]{a @class{gtk:tree-iter} iterator}
   @argument[b]{another @class{gtk:tree-iter} iterator}
@@ -796,12 +797,12 @@
 (export 'tree-store-swap)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_move_before ()
+;;; gtk_tree_store_move_before
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_move_before" tree-store-move-before) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store}}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator or @code{nil}}
@@ -821,12 +822,12 @@
 (export 'tree-store-move-before)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_store_move_after ()
+;;; gtk_tree_store_move_after
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_store_move_after" tree-store-move-after) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[store]{a @class{gtk:tree-store} object}
   @argument[iter]{a @class{gtk:tree-iter} iterator}
   @argument[position]{a @class{gtk:tree-iter} iterator}

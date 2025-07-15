@@ -283,9 +283,9 @@ lambda (table tag)    :run-last
 
 (cffi:defcfun ("gtk_text_tag_table_get_size" text-tag-table-size) :int
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{#2025-07-15}
   @argument[table]{a @class{gtk:text-tag-table} object}
-  @return{The integer with the number of tags in @arg{table}.}
+  @return{The integer for the number of tags in @arg{table}.}
   @begin{short}
     Returns the size of the number of tags in the tag table.
   @end{short}

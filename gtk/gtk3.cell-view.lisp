@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.cell-view.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -42,17 +42,17 @@
 ;;;     gtk_cell_view_new_with_text
 ;;;     gtk_cell_view_new_with_markup
 ;;;     gtk_cell_view_new_with_pixbuf
-;;;     gtk_cell_view_set_model                            Accessor
-;;;     gtk_cell_view_get_model                            Accessor
+;;;     gtk_cell_view_set_model                             Accessor
+;;;     gtk_cell_view_get_model                             Accessor
 ;;;     gtk_cell_view_set_displayed_row
 ;;;     gtk_cell_view_get_displayed_row
 ;;;     gtk_cell_view_get_size_of_row
-;;;     gtk_cell_view_set_background_color                 deprecated
-;;;     gtk_cell_view_set_background_rgba                  Accessor
-;;;     gtk_cell_view_set_draw_sensitive                   Accessor
-;;;     gtk_cell_view_get_draw_sensitive                   Accessor
-;;;     gtk_cell_view_set_fit_model                        Accessor
-;;;     gtk_cell_view_get_fit_model                        Accessor
+;;;     gtk_cell_view_set_background_color                  deprecated
+;;;     gtk_cell_view_set_background_rgba                   Accessor
+;;;     gtk_cell_view_set_draw_sensitive                    Accessor
+;;;     gtk_cell_view_get_draw_sensitive                    Accessor
+;;;     gtk_cell_view_set_fit_model                         Accessor
+;;;     gtk_cell_view_get_fit_model                         Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -82,7 +82,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCellView
+;;; GtkCellView
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCellView" cell-view
@@ -123,9 +123,9 @@
 
 #+liber-documentation
 (setf (documentation 'cell-view 'type)
- "@version{#2023-3-16}
+ "@version{#2025-07-07}
   @begin{short}
-    A @class{gtk:cell-view} widget displays a single row of a
+    The @class{gtk:cell-view} widget displays a single row of a
     @class{gtk:tree-model} object using a @class{gtk:cell-area} object and
     @class{gtk:cell-area-context} object.
   @end{short}
@@ -135,8 +135,8 @@
   displayed will be properly aligned with each other like the aligned cells in
   the menus of a @class{gtk:combo-box} widget.
 
-  The @class{gtk:cell-view} widget is a @class{gtk:orientable} widget in order to
-  decide in which orientation the underlying @class{gtk:cell-area-context}
+  The @class{gtk:cell-view} widget is a @class{gtk:orientable} widget in order
+  to decide in which orientation the underlying @class{gtk:cell-area-context}
   object should be allocated. Taking the @class{gtk:combo-box} menu as an
   example, cell views should be oriented horizontally if the menus are listed
   top-to-bottom and thus all share the same width but may have separate
@@ -173,14 +173,14 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "background" 'cell-view) t)
  "The @code{background} property of type @code{:string} (Write) @br{}
-  Background color as a string. @br{}
+  The background color as a string. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-view-background)
       "Accessor"
       (documentation 'cell-view-background 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-background object) => background}
   @syntax{(setf (gtk:cell-view-background object) background)}
   @argument[object]{a @class{gtk:cell-view} widget}
@@ -200,13 +200,13 @@
   The @class{gdk:color} background color. @br{}
   @em{Warning:} The @code{background-gdk} property has been deprecated since
   version 3.4 and should not be used in newly written code. Use the
-  @code{background-rgba} property instead.")
+  @slot[gtk:cell-view]{background-rgba} property instead.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-view-background-gdk)
       "Accessor"
       (documentation 'cell-view-background-gdk 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-background object) => background-gdk}
   @syntax{(setf (gtk:cell-view-background object) background-gdk)}
   @argument[object]{a @class{gtk:cell-view} widget}
@@ -236,7 +236,7 @@
 (setf (liber:alias-for-function 'cell-view-background-rgba)
       "Accessor"
       (documentation 'cell-view-background-rgba 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-background-rgba object) => rgba}
   @syntax{(setf (gtk:cell-view-background-rgba object) rgba)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -264,7 +264,7 @@
 (setf (liber:alias-for-function 'cell-view-background-set)
       "Accessor"
       (documentation 'cell-view-background-set 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-background-set object) => setting}
   @syntax{(setf (gtk:cell-view-background-set object) setting)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -289,7 +289,7 @@
 (setf (liber:alias-for-function 'cell-view-cell-area)
       "Accessor"
       (documentation 'cell-view-cell-area 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-cell-area object) => cellarea}
   @syntax{(setf (gtk:cell-view-cell-area object) cellarea)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -325,7 +325,7 @@
 (setf (liber:alias-for-function 'cell-view-cell-area-context)
       "Accessor"
       (documentation 'cell-view-cell-area-context 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-cell-area-context object) => context}
   @syntax{(setf (gtk:cell-view-cell-area-context object) context)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -360,7 +360,7 @@
 (setf (liber:alias-for-function 'cell-view-draw-sensitive)
       "Accessor"
       (documentation 'cell-view-draw-sensitive 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-draw-sensitive object) => draw-sensitive}
   @syntax{(setf (gtk:cell-view-draw-sensitive object) draw-sensitive)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -395,7 +395,7 @@
 (setf (liber:alias-for-function 'cell-view-fit-model)
       "Accessor"
       (documentation 'cell-view-fit-model 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-fit-model object) => fit-model}
   @syntax{(setf (gtk:cell-view-fit-model object) fit-model)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -426,7 +426,7 @@
 (setf (liber:alias-for-function 'cell-view-model)
       "Accessor"
       (documentation 'cell-view-model 'function)
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @syntax{(gtk:cell-view-model object) => model}
   @syntax{(setf (gtk:cell-view-model object) model)}
   @argument[object]{a @class{gtk:cell-view} object}
@@ -444,15 +444,15 @@
   @see-class{gtk:tree-model}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_new ()
+;;; gtk_cell_view_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline cell-view-new))
 
 (defun cell-view-new ()
  #+liber-documentation
- "@version{#2023-3-16}
-  @return{A new @class{gtk:cell-view} widget.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view.
   @end{short}
@@ -462,18 +462,18 @@
 (export 'cell-view-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_new_with_context ()
+;;; gtk_cell_view_new_with_context
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline cell-view-new-with-context))
 
 (defun cell-view-new-with-context (cellarea context)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-07-07}
   @argument[cellarea]{a @class{gtk:cell-area} object to layout cells}
   @argument[context]{a @class{gtk:cell-area-context} object in which to
     calculate cell geometry}
-  @return{A newly created @class{gtk:cell-view} widget.}
+  @return{The newly created @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view with a specific cell area to layout cells and a
     specific cell area context.
@@ -491,15 +491,15 @@
 (export 'cell-view-new-with-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_new_with_text ()
+;;; gtk_cell_view_new_with_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_view_new_with_text" cell-view-new-with-text)
     (g:object cell-view)
  #+liber-documentation
- "@version{#2023-3-16}
-  @argument[text]{a string with the text to display in the cell view}
-  @return{A newly created @class{gtk:cell-view} widget.}
+ "@version{#2025-07-07}
+  @argument[text]{a string for the text to display in the cell view}
+  @return{The newly created @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view, adds a @class{gtk:cell-renderer-text} object to it,
     and makes its show text.
@@ -511,15 +511,15 @@
 (export 'cell-view-new-with-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_new_with_markup ()
+;;; gtk_cell_view_new_with_markup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_view_new_with_markup" cell-view-new-with-markup)
     (g:object cell-view)
  #+liber-documentation
- "@version{#2023-3-16}
-  @argument[markup]{a string with the text to display in the cell view}
-  @return{A newly created @class{gtk:cell-view} widget.}
+ "@version{#2025-07-07}
+  @argument[markup]{a string for the text to display in the cell view}
+  @return{The newly created @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view, adds a @class{gtk:cell-renderer-text} object to it,
     and makes it show markup.
@@ -532,16 +532,16 @@
 (export 'cell-view-new-with-markup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_new_with_pixbuf ()
+;;; gtk_cell_view_new_with_pixbuf
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_view_new_with_pixbuf" cell-view-new-with-pixbuf)
     (g:object cell-view)
   #+liber-documentation
- "@version{#2023-3-16}
-  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object with the image to
+ "@version{#2025-07-07}
+  @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object for the image to
     display in the cell view}
-  @return{A newly created @class{gtk:cell-view} widget.}
+  @return{The newly created @class{gtk:cell-view} widget.}
   @begin{short}
     Creates a new cell view, adds a @class{gtk:cell-renderer-pixbuf} object to
     it, and makes its show pixbuf.
@@ -554,8 +554,8 @@
 (export 'cell-view-new-with-pixbuf)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_set_displayed_row ()
-;;  gtk_cell_view_get_displayed_row ()
+;;; gtk_cell_view_set_displayed_row
+;;  gtk_cell_view_get_displayed_row
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf cell-view-displayed-row) (path cellview)
@@ -568,19 +568,19 @@
 (cffi:defcfun ("gtk_cell_view_get_display_row" cell-view-displayed-row)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2025-07-07}
   @syntax{(gtk:cell-view-display-row cellview) => path}
   @syntax{(setf (gtk:cell-view-display-row cellview) path)}
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance or @code{nil} to unset}
   @begin{short}
-    The @fun{gtk:cell-view-display-row} function returns a @class{gtk:tree-path}
-    instance referring to the currently displayed row.
+    The @fun{gtk:cell-view-displayed-row} function returns a
+    @class{gtk:tree-path} instance referring to the currently displayed row.
   @end{short}
   If no row is currently displayed, @code{nil} is returned.
 
-  The @setf{gtk:cell-view-display-row} function sets the row of the model that
-  is currently displayed by the cell view. If the path is unset, then the
+  The @setf{gtk:cell-view-displayed-row} function sets the row of the model
+  that is currently displayed by the cell view. If the path is unset, then the
   contents of the cell view \"stick\" at their last value. This is not normally
   a desired result, but may be a needed intermediate state if say, the model
   for the cell view becomes temporarily empty.
@@ -591,7 +591,7 @@
 (export 'cell-view-displayed-row)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_view_get_size_of_row ()
+;;; gtk_cell_view_get_size_of_row
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_view_get_size_of_row" %cell-view-size-of-row) :boolean
@@ -601,7 +601,7 @@
 
 (defun cell-view-size-of-row (cellview path)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[cellview]{a @class{gtk:cell-view} widget}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{short}

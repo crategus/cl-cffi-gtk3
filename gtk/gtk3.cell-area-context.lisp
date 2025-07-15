@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.cell-area-context.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -91,7 +91,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-area-context 'type)
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @begin{short}
     The @class{gtk:cell-area-context} object is created by a given
     @class{gtk:cell-area} implementation via its @code{create_context()} virtual
@@ -132,9 +132,9 @@
 (setf (liber:alias-for-function 'cell-area-context-area)
       "Accessor"
       (documentation 'cell-area-context-area 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
   @syntax{(gtk:cell-area-context-area object) => area}
-  @argument[context]{a @class{gtk:cell-area-context} object}
+  @argument[object]{a @class{gtk:cell-area-context} object}
   @argument[area]{a @class{gtk:cell-area} object}
   @begin{short}
     Accessor of the @slot[gtk:cell-area-context]{area} slot of the
@@ -168,11 +168,11 @@
 (setf (liber:alias-for-function 'cell-area-context-minimum-height)
       "Accessor"
       (documentation 'cell-area-context-minimum-height 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
   @syntax{(gtk:cell-area-context-minimum-height object) => height}
   @syntax{(setf (gtk:cell-area-context-minimum-height object) height}
-  @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[height]{an integer with the minimum height}
+  @argument[object]{a @class{gtk:cell-area-context} object}
+  @argument[height]{an integer for the minimum height}
   @begin{short}
     Accessor of the @slot[gtk:cell-area-context]{minimum-height} slot of the
     @class{gtk:cell-area-context} class.
@@ -201,11 +201,11 @@
 (setf (liber:alias-for-function 'cell-area-context-minimum-width)
       "Accessor"
       (documentation 'cell-area-context-minimum-width 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
   @syntax{(gtk:cell-area-context-minimum-width object) => width}
   @syntax{(setf (gtk:cell-area-context-minimum-width object) width}
-  @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[width]{an integer with the minimum width}
+  @argument[object]{a @class{gtk:cell-area-context} object}
+  @argument[width]{an integer for the minimum width}
   @begin{short}
     Accessor of the @slot[gtk:cell-area-context]{minimum-width} slot of the
     @class{gtk:cell-area-context} class.
@@ -234,11 +234,11 @@
 (setf (liber:alias-for-function 'cell-area-context-natural-height)
       "Accessor"
       (documentation 'cell-area-context-natural-height 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
   @syntax{(gtk:cell-area-context-natural-height object) => height}
   @syntax{(setf (gtk:cell-area-context-natural-height object) height}
-  @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[height]{an integer with the natural height}
+  @argument[object]{a @class{gtk:cell-area-context} object}
+  @argument[height]{an integer for the natural height}
   @begin{short}
     Accessor of the @slot[gtk:cell-area-context]{natural-height} slot of the
     @class{gtk:cell-area-context} class.
@@ -267,11 +267,11 @@
 (setf (liber:alias-for-function 'cell-area-context-natural-width)
       "Accessor"
       (documentation 'cell-area-context-natural-width 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
   @syntax{(gtk:cell-area-context-natural-width object) => width}
   @syntax{(setf (gtk:cell-area-context-natural-width object) width}
-  @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[width]{an integer with the natural width}
+  @argument[object]{a @class{gtk:cell-area-context} object}
+  @argument[width]{an integer for the natural width}
   @begin{short}
     Accessor of the @slot[gtk:cell-area-context]{natural-width} slot of the
     @class{gtk:cell-area-context} class.
@@ -285,17 +285,17 @@
   @see-function{gtk:cell-area-preferred-width}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_allocate ()
+;;; gtk_cell_area_context_allocate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_allocate" cell-area-context-allocate)
     :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-07}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[width]{an integer with the allocated width for all
+  @argument[width]{an integer for the allocated width for all
     @class{gtk:tree-model} rows rendered with context, or -1}
-  @argument[height]{an integer with the allocated height for all
+  @argument[height]{an integer for the allocated height for all
     @class{gtk:tree-model} rows rendered with context, or -1}
   @begin{short}
     Allocates a width and/or a height for all rows which are to be rendered
@@ -319,12 +319,12 @@
 (export 'cell-area-context-allocate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_reset ()
+;;; gtk_cell_area_context_reset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_reset" cell-area-context-reset) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @argument[context]{a @class{gtk:cell-area-context} object}
   @begin{short}
     Resets any previously cached request and allocation data.
@@ -353,7 +353,7 @@
 (export 'cell-area-context-reset)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_preferred_width ()
+;;; gtk_cell_area_context_get_preferred_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_preferred_width"
@@ -364,13 +364,12 @@
 
 (defun cell-area-context-preferred-width (context)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
+  @syntax{(gtk:cell-area-context-preferred-width context) => minimum-width,
+    natural-width}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @begin{return}
-    @code{minimum-width} -- an integer with the minimum width, or @code{nil}
-    @br{}
-    @code{natural-width} -- an integer with the natural width, or @code{nil}
-  @end{return}
+  @argument[minimum-width]{an integer for the minimum width, or @code{nil}}
+  @argument{natural-width]{an integer for the natural width, or @code{nil}}
   @begin{short}
     Gets the accumulative preferred width for all rows which have been requested
     with this context.
@@ -389,7 +388,7 @@
 (export 'cell-area-context-preferred-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_preferred_height ()
+;;; gtk_cell_area_context_get_preferred_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_preferred_height"
@@ -400,13 +399,12 @@
 
 (defun cell-area-context-preferred-height (context)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
+  @syntax{(gtk:cell-area-context-preferred-height context) => minimum-height,
+    natural-height}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @begin{return}
-    @code{minimum-height} -- an integer with the minimum height, or @code{nil}
-    @br{}
-    @code{natural-height} -- an integer with the natural height, or @code{nil}
-  @end{return}
+  @argument[minimum-height]{an integer for the minimum height, or @code{nil}}
+  @argument[natural-height]{an integer for the natural height, or @code{nil}}
   @begin{short}
     Gets the accumulative preferred height for all rows which have been
     requested with this context.
@@ -425,7 +423,7 @@
 (export 'cell-area-context-preferred-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_preferred_height_for_width ()
+;;; gtk_cell_area_context_get_preferred_height_for_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_preferred_height_for_width"
@@ -437,14 +435,13 @@
 
 (defun cell-area-context-preferred-height-for-width (context width)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
+  @syntax{(gtk:cell-area-context-preferred-height-for-width context width)
+    => minimum-height, natural-height}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[width]{an integer with a proposed width for allocation}
-  @begin{return}
-    @code{minimum-height} -- an integer with the minimum height, or @code{nil}
-    @br{}
-    @code{natural-height} -- an integer with the natural height, or @code{nil}
-  @end{return}
+  @argument[width]{an integer for a proposed width for allocation}
+  @argument[minimum-height]{an integer for the minimum height, or @code{nil}}
+  @argument[natural-height]{an integer for the natural height, or @code{nil}}
   @begin{short}
     Gets the accumulative preferred height for @arg{width} for all rows which
     have been requested for the same said width with this context.
@@ -466,7 +463,7 @@
 (export 'cell-area-context-preferred-height-for-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_preferred_width_for_height ()
+;;; gtk_cell_area_context_get_preferred_width_for_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_preferred_width_for_height"
@@ -478,14 +475,13 @@
 
 (defun cell-area-context-preferred-width-for-height (context height)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
+  @syntax{(gtk:cell-area-context-preferred-width-for-height context height)
+    => minimum-width, natural-width}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[height]{an integer with a proposed height for allocation}
-  @begin{return}
-    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
-      @br{}
-    @arg{natural-width} -- an integer with the natural width, or @code{nil}
-  @end{return}
+  @argument[height]{an integer for a proposed height for allocation}
+  @argument[minimum-width]{an integer for the minimum width, or @code{nil}}
+  @argument[natural-width]{an integer for the natural width, or @code{nil}}
   @begin{short}
     Gets the accumulative preferred width for @arg{height} for all rows which
     have been requested for the same said height with this context.
@@ -507,7 +503,7 @@
 (export 'cell-area-context-preferred-width-for-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_get_allocation ()
+;;; gtk_cell_area_context_get_allocation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_get_allocation"
@@ -518,12 +514,11 @@
 
 (defun cell-area-context-allocation (context)
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-14}
+  @syntax{(gtk:cell-area-contest-allocation context) => width, height}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @begin{return}
-    @code{width} -- an integer with the allocated width, or @code{nil} @br{}
-    @code{height} -- an integer with the allocated height, or @code{nil}
-  @end{return}
+  @argument[width]{an integer for the allocated width, or @code{nil}}
+  @argument[height]{an integer for the allocated height, or @code{nil}}
   @begin{short}
     Fetches the current allocation size for @arg{context}.
   @end{short}
@@ -540,17 +535,17 @@
 (export 'cell-area-context-allocation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_push_preferred_width ()
+;;; gtk_cell_area_context_push_preferred_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_push_preferred_width"
                cell-area-context-push-preferred-width) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-07}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[minimum-width]{an integer with the proposed new minimum width for
+  @argument[minimum-width]{an integer for the proposed new minimum width for
     @arg{context}}
-  @argument[natural-width]{an integer with the proposed new natural width for
+  @argument[natural-width]{an integer for the proposed new natural width for
     @arg{context}}
   @begin{short}
     Causes the minimum and/or natural width to grow if the new proposed sizes
@@ -571,17 +566,17 @@
 (export 'cell-area-context-push-preferred-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_area_context_push_preferred_height ()
+;;; gtk_cell_area_context_push_preferred_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_area_context_push_preferred_height"
                cell-area-context-push-preferred-height) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2025-07-07}
   @argument[context]{a @class{gtk:cell-area-context} object}
-  @argument[minimum-height]{an integer with the proposed new minimum height for
+  @argument[minimum-height]{an integer for the proposed new minimum height for
     @arg{context}}
-  @argument[natural-height]{an integer with the proposed new natural height for
+  @argument[natural-height]{an integer for the proposed new natural height for
     @arg{context}}
   @begin{short}
     Causes the minimum and/or natural height to grow if the new proposed sizes

@@ -112,7 +112,7 @@
 
 #+liber-documentation
 (setf (documentation 'info-bar 'type)
- "@version{#2025-06-28}
+ "@version{#2025-07-15}
   @begin{short}
     The @class{gtk:info-bar} widget can be used to show messages to the user
     without showing a dialog.
@@ -132,9 +132,9 @@
   and add your widgets to the container.
 
   Similar to @class{gtk:message-dialog} widget, the contents of an info bar can
-  by classified as error message, warning, informational message, etc, by using
-  the @fun{gtk:info-bar-message-type} function. GTK uses the message type to
-  determine the background color of the message area.
+  by classified as error message, warning, informational message, and so on, by
+  using the @fun{gtk:info-bar-message-type} function. GTK uses the message type
+  to determine the background color of the message area.
   @begin[Examples]{dictionary}
     Simple info bar usage.
     @begin{pre}
@@ -244,7 +244,7 @@ lambda (infobar response)    :run-last
       @begin[code]{simple-table}
         @entry[infobar]{The @class{gtk:info-bar} widget on which the signal is
           emitted.}
-        @entry[response]{The integer with the response ID.}
+        @entry[response]{The integer for the response ID.}
       @end{simple-table}
       Emitted when an action widget is clicked or the application programmer
       calls the @fun{gtk:dialog-response} function. The @arg{response} argument

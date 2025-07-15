@@ -1177,9 +1177,9 @@
 
 (cffi:defcfun ("gtk_text_iter_get_chars_in_line" text-iter-chars-in-line) :int
  #+liber-documentation
- "@version{2024-06-24}
+ "@version{2025-07-15}
   @argument[iter]{a @class{gtk:text-iter} instance}
-  @return{The integer with the number of characters in the line.}
+  @return{The integer for the number of characters in the line.}
   @begin{short}
     Returns the number of characters in the line containing the iterator,
     including the paragraph delimiters.
@@ -1197,9 +1197,9 @@
 
 (cffi:defcfun ("gtk_text_iter_get_bytes_in_line" text-iter-bytes-in-line) :int
  #+liber-documentation
- "@version{2024-06-24}
+ "@version{2025-07-15}
   @argument[iter]{a @class{gtk:text-iter} instance}
-  @return{The integer with the number of bytes in the line.}
+  @return{The integer for the number of bytes in the line.}
   @begin{short}
     Returns the number of bytes in the line containing the iterator, including
     the paragraph delimiters.

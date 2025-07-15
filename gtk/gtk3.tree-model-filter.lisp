@@ -70,7 +70,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTreeModelFilter
+;;; GtkTreeModelFilter
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkTreeModelFilter" tree-model-filter
@@ -149,10 +149,10 @@
   building, for all nodes which are exposed as visible nodes to
   the @class{gtk:tree-model-filter} objects clients, the child level (if any)
   and take a reference on the first node in this level. Furthermore, for every
-  @code{\"row-inserted\"}, @code{\"row-changed\"} or @code{\"row-deleted\"}
-  signal, also these which were not handled because the node was not cached, the
-  @class{gtk:tree-model-filter} object will check if the visibility state of
-  any parent node has changed.
+  @sig[gtk:tree-model]{row-inserted}, @sig[gtk:tree-model]{row-changed} or
+  @sig[gtk:tree-model]{row-deleted} signal, also these which were not handled
+  because the node was not cached, the @class{gtk:tree-model-filter} object
+  will check if the visibility state of any parent node has changed.
 
   Beware, however, that this explicit support is limited to these two cases.
   For example, if you want a node to be visible only if two nodes in a child's

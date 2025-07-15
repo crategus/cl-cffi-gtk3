@@ -223,7 +223,7 @@
 
 #+liber-documentation
 (setf (documentation 'dialog 'type)
- "@version{2025-06-23}
+ "@version{2025-07-15}
   @begin{short}
     Dialogs are a convenient way to prompt the user for a small amount of input,
     for example, to display a message, ask a question, or anything else that
@@ -428,7 +428,7 @@ lambda (dialog response)    :run-last
       @begin[code]{simple-table}
         @entry[dialog]{The @class{gtk:dialog} widget on which the signal is
           emitted.}
-        @entry[response]{The integer with the response ID.}
+        @entry[response]{The integer for the response ID.}
       @end{simple-table}
       Emitted when an action widget is clicked, the dialog receives a delete
       event, or the application programmer calls the @fun{gtk:dialog-response}
@@ -627,7 +627,7 @@ lambda (dialog response)    :run-last
     Note that even though the recursive main loop gives the effect of a modal
     dialog, because it prevents the user from interacting with other windows in
     the same window group while the dialog is run, callbacks such as timeouts,
-    IO channel watches, DND drops, etc, will be triggered during a
+    IO channel watches, DND drops, and so on, will be triggered during a
     @fun{gtk:dialog-run} function call.
   @end{dictionary}
   @see-class{gtk:dialog}
@@ -725,11 +725,11 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_add_action_widget" dialog-add-action-widget) :void
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2025-07-15}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[child]{an activatable @class{gtk:widget} widget}
-  @argument[response]{a response ID for @arg{child}, which is a positive
-    integer or a value of the @sym{gtk:response-type} enumeration}
+  @argument[response]{a response ID for @arg{child}, that is a positive integer
+    or a value of the @sym{gtk:response-type} enumeration}
   @begin{short}
     Adds an activatable child widget to the action area of the dialog,
     connecting a signal handler that will emit the @sig[gtk:dialog]{response}
@@ -756,10 +756,10 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_set_default_response" dialog-set-default-response)
     :void
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2025-07-15}
   @argument[dialog]{a @class{gtk:dialog} widget}
-  @argument[response]{a response ID, which is a positive integer or a value
-    of the @sym{gtk:response-type} enumeration}
+  @argument[response]{a response ID, that is a positive integer or a value of
+  the @sym{gtk:response-type} enumeration}
   @begin{short}
     Sets the last widget in the action area of the dialog with the given
     @arg{response} value as the default widget for the dialog.
@@ -781,7 +781,7 @@ lambda (dialog response)    :run-last
  #+liber-documentation
  "@version{2025-06-23}
   @argument[dialog]{a @class{gtk:dialog} widget}
-  @argument[response]{a response ID, which is a positive integer or a value
+  @argument[response]{a response ID, that is a positive integer or a value
     of the @sym{gtk:response-type} enumeration}
   @argument[setting]{@em{true} for sensitive}
   @begin{short}
@@ -805,12 +805,12 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget)
     :int
  #+liber-documentation
- "@version{#2025-06-23}
+ "@version{#2025-07-15}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[widget]{a @class{gtk:widget} widget in the action area of
     @arg{dialog}}
   @begin{return}
-    The response ID of @arg{widget}, which is a positive integer or a value of
+    The response ID of @arg{widget}, that is a positive integer or a value of
     the @sym{gtk:response-type} enumeration, the value is
     @val[gtk:response-type]{:none} if @arg{widget} does not have a response ID
     set.
@@ -834,9 +834,9 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_widget_for_response" dialog-widget-for-response)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-23}
+ "@version{#2025-07-15}
   @argument[dialog]{a @class{gtk:dialog} widget}
-  @argument[response]{a response ID, which is a positive integer or a value
+  @argument[response]{a response ID, that is a positive integer or a value
     of the @sym{gtk:response-type} enumeration}
   @begin{return}
     The @class{gtk:widget} button that uses the given @arg{response} value,
@@ -890,7 +890,7 @@ lambda (dialog response)    :run-last
   @argument[dialog]{a @class{gtk:dialog} widget}
   @begin{return}
     The @class{gtk:box} content area with a @val[gtk:orientation]{:vertical}
-     orientation.
+    orientation.
   @end{return}
   @short{Returns the content area of the dialog.}
   @see-class{gtk:dialog}
@@ -961,7 +961,7 @@ lambda (dialog response)    :run-last
  #+liber-documentation
  "@version{#2023-03-17}
   @argument[dialog]{a @class{gtk:dialog} widget}
-  @argument[response]{a list of response IDs, which are positive integer or
+  @argument[response]{a list of response IDs, that are positive integer or
     values of the @sym{gtk:response-type} enumeration}
   @begin{short}
     Sets an alternative button order.

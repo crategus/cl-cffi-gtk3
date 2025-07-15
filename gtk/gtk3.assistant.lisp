@@ -212,8 +212,8 @@
   the @sym{gtk:assistant-page-type} enumeration and handle buttons yourself.
   @begin[GtkAssistant as GtkBuildable]{dictionary}
     The @class{gtk:assistant} implementation of the @class{gtk:buildable}
-    interface exposes the action area as internal children with the
-    name @code{\"action_area\"}. To add pages to an assistant in a
+    interface exposes the action area as internal child with the name
+    @code{\"action_area\"}. To add pages to an assistant in a
     @class{gtk:builder} object, simply add it as a @code{<child>} to the
     @class{gtk:assistant} widget and set its child properties as necessary.
   @end{dictionary}
@@ -614,9 +614,9 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_get_n_pages" assistant-n-pages) :int
  #+liber-documentation
- "@version{#2024-03-16}
+ "@version{#2025-07-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
-  @return{The integer with the number of pages in @arg{assistant}.}
+  @return{The integer for the number of pages in @arg{assistant}.}
   @short{Returns the number of pages in the assistant.}
   @see-class{gtk:assistant}"
   (assistant (g:object assistant)))
@@ -655,10 +655,10 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_prepend_page" assistant-prepend-page) :int
  #+liber-documentation
- "@version{#2023-03-15}
+ "@version{#2025-07-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of the assistant}
-  @return{The integer with the index starting at 0 of the inserted page.}
+  @return{The integer for the index starting at 0 of the inserted page.}
   @begin{short}
     Prepends a page to the assistant.
   @end{short}
@@ -678,10 +678,10 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_append_page" assistant-append-page) :int
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2025-07-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of the assistant}
-  @return{The integer with the index starting at 0 of the inserted page.}
+  @return{The integer for the index starting at 0 of the inserted page.}
   @begin{short}
     Appends a page to the assistant.
   @end{short}
@@ -701,12 +701,12 @@ lambda (assistant page)    :run-last
 
 (cffi:defcfun ("gtk_assistant_insert_page" assistant-insert-page) :int
  #+liber-documentation
- "@version{#2025-06-06}
+ "@version{#2025-07-15}
   @argument[assistant]{a @class{gtk:assistant} widget}
   @argument[page]{a @class{gtk:widget} page of the assistant}
   @argument[position]{an integer for the index starting at 0 at which to
     insert @arg{page}, or -1 to append @arg{page} to the assistant}
-  @return{The index starting from 0 of the inserted page.}
+  @return{The integer for the index starting from 0 of the inserted page.}
   @begin{short}
     Inserts a page in the assistant at a given position.
   @end{short}
@@ -903,7 +903,7 @@ lambda (assistant page)    :run-last
 
 (defun assistant-page-complete (assistant page)
  #+liber-documentation
- "@version{2024-07-06}
+ "@version{2024-07-15}
   @syntax{(gtk:assistant-page-complete assistant page) => complete}
   @syntax{(setf (gtk:assistant-page-complete assistant page) complete)}
   @argument[assistant]{a @class{gtk:assistant} widget}

@@ -212,7 +212,7 @@
 
 #+liber-documentation
 (setf (documentation 'notebook 'type)
- "@version{#2025-06-28}
+ "@version{#2025-07-15}
   @begin{short}
     The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
@@ -426,7 +426,7 @@ lambda (notebook offset)    :action
       @end{pre}
       @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
-        @entry[offset]{The integer with the offset to step forward or backward
+        @entry[offset]{The integer for the offset to step forward or backward
           for a negative integer.}
       @end{simple-table}
     @end{signal}
@@ -438,8 +438,8 @@ lambda (notebook page x y)    :run-last
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} tab of @arg{notebook} that is being
           detached.}
-        @entry[x]{The integer with the x coordinate where the drop happens.}
-        @entry[y]{The integer with the y coordinate where the drop happens.}
+        @entry[x]{The integer for the x coordinate where the drop happens.}
+        @entry[y]{The integer for the y coordinate where the drop happens.}
         @entry[Returns]{The @class{gtk:notebook} widget that @arg{page} should
           be added to, or @code{nil}.}
       @end{simple-table}
@@ -931,7 +931,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-add-page (notebook child tab &key (position :end) menu)
  #+liber-documentation
- "@version{#2026-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget to use as the content of
     the page}
@@ -944,7 +944,7 @@ lambda (notebook page num)    :run-last
   @argument[menu]{a @class{gtk:widget} object to use as a label for the
     page-switch menu, if that is enabled}
   @begin{return}
-    The integer with the index starting from 0 of the added page in the
+    The integer for the index starting from 0 of the added page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1031,14 +1031,14 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_append_page" notebook-append-page) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{the @class{gtk:widget} child to use as the content of the
     page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
     or @code{nil} to use the default label, \"page N\"}
   @begin{return}
-    The integer with the index starting from 0 of the appended page in the
+    The integer for the index starting from 0 of the appended page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1059,7 +1059,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_append_page_menu" notebook-append-page-menu) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1067,7 +1067,7 @@ lambda (notebook page num)    :run-last
   @argument[menu]{a @class{gtk:widget} object to use as a label for the
     page-switch menu, if that is enabled}
   @begin{return}
-    The integer with the index starting from 0 of the appended page in the
+    The integer for the index starting from 0 of the appended page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1097,13 +1097,13 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_prepend_page" notebook-prepend-page) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
     or @code{nil} to use the default label, 'page N'}
   @begin{return}
-    The integer with the index starting from 0 of the prepended page in the
+    The integer for the index starting from 0 of the prepended page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1124,7 +1124,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_prepend_page_menu" notebook-prepend-page-menu) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1132,7 +1132,7 @@ lambda (notebook page num)    :run-last
   @argument[menu]{a @class{gtk:widget} object to use as a label for the
     page-switch menu, if that is enabled}
   @begin{return}
-    The integer with the index starting from 0 of the prepended page in the
+    The integer for the index starting from 0 of the prepended page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1162,7 +1162,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_insert_page" notebook-insert-page) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1170,7 +1170,7 @@ lambda (notebook page num)    :run-last
   @argument[position]{an integer for the index starting at 0 at which to
     insert the page, or -1 to append the page after all other pages}
   @begin{return}
-    The integer with the index starting from 0 of the inserted page in the
+    The integer for the index starting from 0 of the inserted page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1192,7 +1192,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_insert_page_menu" notebook-insert-page-menu) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1202,7 +1202,7 @@ lambda (notebook page num)    :run-last
   @argument[position]{an integer for the index starting at 0 at which to
     insert the page, or -1 to append the page after all other pages}
   @begin{return}
-    The integer with the index starting from 0 of the inserted page in the
+    The integer for the index starting from 0 of the inserted page in the
     notebook, or -1 if the function fails.
   @end{return}
   @begin{short}
@@ -1538,9 +1538,9 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_get_n_pages" notebook-n-pages) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-07-15}
   @argument[notebook]{a @class{gtk:notebook} widget}
-  @return{The integer with the number of pages in the notebook.}
+  @return{The integer for the number of pages in the notebook.}
   @short{Gets the number of pages in a notebook.}
   @see-class{gtk:notebook}"
   (notebook (g:object notebook)))

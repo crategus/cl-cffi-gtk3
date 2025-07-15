@@ -638,9 +638,9 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_get_line_count" text-buffer-line-count) :int
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-07-15}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @return{The integer with the number of lines in the text buffer.}
+  @return{The integer for the number of lines in the text buffer.}
   @begin{short}
     Obtains the number of lines in the text buffer.
   @end{short}

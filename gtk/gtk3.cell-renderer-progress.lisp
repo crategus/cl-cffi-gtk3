@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.cell-renderer-progress.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -59,7 +59,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCellRendererProgress
+;;; GtkCellRendererProgress
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCellRendererProgress" cell-renderer-progress
@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-progress 'type)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @begin{short}
     The @class{gtk:cell-renderer-progress} object renders a numeric value as a
     progress bar in a cell.
@@ -120,7 +120,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-inverted)
       "Accessor"
       (documentation 'cell-renderer-progress-inverted 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-inverted object) => setting}
   @syntax{(setf (gtk:cell-renderer-progress-inverted object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -152,7 +152,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-pulse)
       "Accessor"
       (documentation 'cell-renderer-progress-pulse 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-pulse object) => pulse}
   @syntax{(setf (gtk:cell-renderer-progress-pulse object) pulse)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -184,7 +184,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-text)
       "Accessor"
       (documentation 'cell-renderer-progress-text 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-text object) => text}
   @syntax{(setf (gtk:cell-renderer-progress-text object) text)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -214,7 +214,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-text-xalign)
       "Accessor"
       (documentation 'cell-renderer-progress-text-xalign 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-text-xalign object) => align}
   @syntax{(setf (gtk:cell-renderer-progress-text-xalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -242,7 +242,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-text-yalign)
       "Accessor"
       (documentation 'cell-renderer-progress-text-yalign 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-text-yalign object) => align}
   @syntax{(setf (gtk:cell-renderer-progress-text-yalign object) align)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -270,7 +270,7 @@
 (setf (liber:alias-for-function 'cell-renderer-progress-value)
       "Accessor"
       (documentation 'cell-renderer-progress-value 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-progress-value object) => value}
   @syntax{(setf (gtk:cell-renderer-progress-value object) value)}
   @argument[object]{a @class{gtk:cell-renderer-progress} object}
@@ -284,14 +284,14 @@
   @see-class{gtk:cell-renderer-progress}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_progress_new ()
+;;; gtk_cell_renderer_progress_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline cell-renderer-progress-new))
 
 (defun cell-renderer-progress-new ()
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @return{The new @class{gtk:cell-renderer-progress} object.}
   @begin{short}
     Creates a new cell renderer progress object.

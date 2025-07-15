@@ -378,7 +378,7 @@
 
 #+liber-documentation
 (setf (documentation 'tree-view 'type)
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @begin{short}
     The @class{gtk:tree-view} widget displays any object that implements the
     @class{gtk:tree-model} interface.
@@ -572,7 +572,7 @@ lambda (view step direction)    :action
           @val[gtk:movement-step]{:visual-positions} and
           @val[gtk:movement-step]{:logical-positions} values are treated
           identically.}
-        @entry[direction]{The integer with the direction to move: +1 to move
+        @entry[direction]{The integer for the direction to move: +1 to move
           forwards and -1 to move backwards. The resulting movement is undefined
           for all other values.}
         @entry[Returns]{@em{True} if @arg{step} is supported, @em{false}
@@ -1427,10 +1427,10 @@ lambda (view)    :action
 
 (cffi:defcfun ("gtk_tree_view_append_column" tree-view-append-column) :int
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[column]{a @class{gtk:tree-view-column} object to add}
-  @return{The integer with the number of columns in @arg{view} after appending.}
+  @return{The integer for the number of columns in @arg{view} after appending.}
   @begin{short}
     Appends @arg{column} to the list of columns in the tree view.
   @end{short}
@@ -1451,10 +1451,10 @@ lambda (view)    :action
 
 (cffi:defcfun ("gtk_tree_view_remove_column" tree-view-remove-column) :int
  #+liber-documentation
- "@version{2024-03-10}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[column]{a @class{gtk:tree-view-column} object to remove}
-  @return{The integer with the number of columns in @arg{view} after removing.}
+  @return{The integer for the number of columns in @arg{view} after removing.}
   @short{Removes a column from the tree view.}
   @see-class{gtk:tree-view}
   @see-class{gtk:tree-view-column}"
@@ -1469,11 +1469,11 @@ lambda (view)    :action
 
 (cffi:defcfun ("gtk_tree_view_insert_column" tree-view-insert-column) :int
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[column]{a @class{gtk:tree-view-column} object to be inserted}
   @argument[pos]{an integer for the position to insert @arg{column} in}
-  @return{The integer with the number of columns in @arg{view} after insertion.}
+  @return{The integer for the number of columns in @arg{view} after insertion.}
   @begin{short}
     This inserts the column into the tree view at the given position.
   @end{short}
@@ -1500,7 +1500,7 @@ lambda (view)    :action
                                                 title
                                                 renderer &rest attributes)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[pos]{an integer for the position to insert the new column in}
   @argument[title]{a string for the title to set the header to}
@@ -1509,7 +1509,7 @@ lambda (view)    :action
   @argument[attribute]{a string for the name of a property of @arg{renderer}}
   @argument[colnum]{an integer for the column in the model with the value for
     @arg{attribute}}
-  @return{The integer with the number of columns in @arg{view} after insertion.}
+  @return{The integer for the number of columns in @arg{view} after insertion.}
   @begin{short}
     Creates a new @class{gtk:tree-view-column} object and inserts it into the
     tree view at @arg{pos}.
@@ -1560,14 +1560,14 @@ lambda (view)    :action
 
 (defun tree-view-insert-column-with-data-func (view pos title renderer func)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[pos]{an integer for the position to insert the new column in}
   @argument[title]{an string for the title to set the header to}
   @argument[renderer]{a @class{gtk:cell-renderer} object}
   @argument[func]{a @sym{gtk:tree-cell-data-func} callback function to set
     the attributes of @arg{renderer}}
-  @return{The integer with the number of columns in @arg{view} after insertion.}
+  @return{The integer for the number of columns in @arg{view} after insertion.}
   @begin{short}
     Convenience function that inserts a new column into the tree view with the
     given cell renderer and a @sym{gtk:tree-cell-data-func} callback function
@@ -1630,9 +1630,9 @@ lambda (view)    :action
 
 (cffi:defcfun ("gtk_tree_view_get_n_columns" tree-view-n-columns) :int
  #+liber-documentation
- "@version{2024-03-12}
+ "@version{2025-07-15}
   @argument[view]{a @class{gtk:tree-view} widget}
-  @return{The integer with the number of columns in @arg{view}.}
+  @return{The integer for the number of columns in @arg{view}.}
   @short{Queries the number of columns in the given tree view.}
   @see-class{gtk:tree-view}"
   (view (g:object tree-view)))

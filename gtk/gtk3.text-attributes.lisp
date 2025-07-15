@@ -148,7 +148,7 @@
 (setf (liber:alias-for-class 'text-attributes)
       "GBoxed"
       (documentation 'text-attributes 'type)
- "@version{#2025-07-01}
+ "@version{#2025-07-15}
   @begin{short}
     Using the @class{gtk:text-attributes} structure directly should rarely be
     necessary.
@@ -189,18 +189,18 @@
     @entry[direction]{The value of the @sym{gtk:text-direction} enumeration
       for text.}
     @entry[font]{The @class{pango:font-description} structure for text.}
-    @entry[font-scale]{The double float with the font scale factor.}
-    @entry[left-margin]{The integer with the width of the left margin,
+    @entry[font-scale]{The double float for the font scale factor.}
+    @entry[left-margin]{The integer for the width of the left margin,
       in pixels.}
-    @entry[right-margin]{The integer with the width of the right margin,
+    @entry[right-margin]{The integer for the width of the right margin,
       in pixels.}
-    @entry[indent]{the integer with the amount to indent the paragraph,
+    @entry[indent]{The integer for the amount to indent the paragraph,
       in pixels.}
-    @entry[pixels-above-lines]{The integer with the pixels of blank space above
+    @entry[pixels-above-lines]{The integer for the pixels of blank space above
       paragraphs.}
-    @entry[pixels-below-lines]{The integer with the pixels of blank space below
+    @entry[pixels-below-lines]{The integer for the pixels of blank space below
       paragraphs.}
-    @entry[pixels-inside-wrap]{The integer with the pixels of blank space
+    @entry[pixels-inside-wrap]{The integer for the pixels of blank space
       between wrapped lines in a paragraph.}
     @entry[tabs]{Pointer to a custom @class{pango-tab-array} structure for
       this text.}
@@ -212,7 +212,7 @@
       than baseline +/- ascent/descent (font height).}
     @entry[editable]{Whether the text is editable.}
     @entry[no-fallback]{Whether to disable font fallback.}
-    @entry[letter-spacing]{The integer with the extra space to insert between
+    @entry[letter-spacing]{The integer for the extra space to insert between
       graphemes, in Pango units.}
     @entry[font-features]{The string with font features.}
   @end{simple-table}

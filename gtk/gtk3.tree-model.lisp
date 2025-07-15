@@ -449,9 +449,9 @@
 
 (cffi:defcfun ("gtk_tree_path_get_depth" tree-path-depth) :int
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2025-07-15}
   @argument[path]{a @class{gtk:tree-path} instance}
-  @return{The integer with the depth of @arg{path}.}
+  @return{The integer for the depth of @arg{path}.}
   @short{Returns the current depth of the tree path.}
   @see-class{gtk:tree-path}"
   (path (g:boxed tree-path)))
@@ -494,11 +494,11 @@
 
 (cffi:defcfun ("gtk_tree_path_compare" tree-path-compare ) :int
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-07-15}
   @argument[path1]{a @class{gtk:tree-path} instance}
   @argument[path2]{a @class{gtk:tree-path} instance to compare with}
   @begin{return}
-    The integer with the relative positions of @arg{path1} and @arg{path2}.
+    The integer for the relative positions of @arg{path1} and @arg{path2}.
   @end{return}
   @begin{short}
     Compares two paths.
@@ -1140,9 +1140,9 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_get_n_columns" tree-model-n-columns) :int
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{#2025-07-15}
   @argument[model]{a @class{gtk:tree-model} object}
-  @return{The integer with the number of columns.}
+  @return{The integer for the number of columns.}
   @begin{short}
     Returns the number of columns supported by @arg{model}.
   @end{short}

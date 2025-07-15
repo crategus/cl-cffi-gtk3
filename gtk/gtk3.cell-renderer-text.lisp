@@ -263,30 +263,31 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-text 'type)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @begin{short}
     The @class{gtk:cell-renderer-text} object renders a given text in its cell,
     using the font, color and style information provided by its properties.
   @end{short}
   The text will be ellipsized if it is too long and the
   @slot[gtk:cell-renderer-text]{ellipsize} property allows it. If the
-  @slot[gtk:cell-renderer-text]{mode} property is @code{:editable}, the
-  @class{gtk:cell-renderer-text} object allows to edit its text using a
-  @class{gtk:entry} widget.
+  @slot[gtk:cell-renderer-text]{mode} property is
+  @val[gtk:cell-renderer-mode]{:editable}, the @class{gtk:cell-renderer-text}
+  object allows to edit its text using a @class{gtk:entry} widget.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"edited\" signal}
+    @begin[cell-renderer-text::edited]{signal}
       @begin{pre}
 lambda (renderer path text)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[renderer]{The @class{gtk:cell-renderer-text} object which
           received the signal.}
         @entry[path]{The string with the path identifying the edited cell.}
         @entry[text]{The string with the new text.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted after @arg{renderer} has been edited. It is the
       responsibility of the application to update the model and store @arg{text}
       at the position indicated by @arg{path}.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:cell-renderer-text-new}
   @see-slot{gtk:cell-renderer-text-align-set}
@@ -356,7 +357,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-align-set)
       "Accessor"
       (documentation 'cell-renderer-text-align-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-align-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-align-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -373,23 +374,23 @@ lambda (renderer path text)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "alignment"
                                                'cell-renderer-text) t)
- "The @code{alignment} property of type @symbol{pango:alignment} (Read / Write)
+ "The @code{alignment} property of type @sym{pango:alignment} (Read / Write)
   @br{}
   Specifies how to align the lines of text with respect to each other. Note that
   this property describes how to align the lines of text in case there are
   several of them. The @slot[gtk:cell-renderer]{xalign} property on the other
   hand, sets the horizontal alignment of the whole text. @br{}
-  Default value: @code{:left}")
+  Default value: @val[pango:alignment]{:left}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-alignment)
       "Accessor"
       (documentation 'cell-renderer-text-alignment 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-alignment object) => alignment}
   @syntax{(setf (gtk:cell-renderer-text-alignment object) alignment)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[alignment]{a value of the @symbol{pango:alignment} enumeration}
+  @argument[alignment]{a value of the @sym{pango:alignment} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{alignment} slot of the
     @class{gtk:cell-renderer-text} class.
@@ -523,7 +524,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-background-set)
       "Accessor"
       (documentation 'cell-renderer-text-background-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-background-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-background-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -548,7 +549,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-editable)
       "Accessor"
       (documentation 'cell-renderer-text-editable 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-editable object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-editable object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -573,7 +574,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-editable-set)
       "Accessor"
       (documentation 'cell-renderer-text-editable-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-editable-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-editable-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -590,31 +591,31 @@ lambda (renderer path text)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize"
                                                'cell-renderer-text) t)
- "The @code{ellipsize} property of type @symbol{pango:ellipsize-mode}
+ "The @code{ellipsize} property of type @sym{pango:ellipsize-mode}
   (Read / Write) @br{}
   Specifies the preferred place to ellipsize the string, if the cell renderer
   does not have enough room to display the entire string. Setting it to
-  @code{:none} turns off ellipsizing. See the
+  @val[pango:ellipsize-mode]{:none} turns off ellipsizing. See the
   @slot[gtk:cell-renderer-text]{wrap-width} property for another way of making
   the text fit into a given width. @br{}
-  Default value: @code{:none}")
+  Default value: @val[pango:ellipsize-mode]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-ellipsize)
       "Accessor"
       (documentation 'cell-renderer-text-ellipsize 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-ellipsize object) => mode}
   @syntax{(setf (gtk:cell-renderer-text-ellipsize object) mode)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[mode]{a @symbol{pango:ellipsize-mode} value}
+  @argument[mode]{a @sym{pango:ellipsize-mode} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{ellipsize} slot of the
     @class{gtk:cell-renderer-text} class.
   @end{short}
   Specifies the preferred place to ellipsize the string, if the cell renderer
   does not have enough room to display the entire string. Setting it to
-  @code{:none} turns off ellipsizing. See the
+  @val[pango:ellipsize-mode]{:none} turns off ellipsizing. See the
   @slot[gtk:cell-renderer-text]{wrap-width} property for another way of making
   the text fit into a given width.
   @see-class{gtk:cell-renderer-text}
@@ -634,7 +635,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-ellipsize-set)
       "Accessor"
       (documentation 'cell-renderer-text-ellipsize-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-ellipsize-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-ellipsize-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -685,7 +686,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-family-set)
       "Accessor"
       (documentation 'cell-renderer-text-family-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-family-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-family-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -815,7 +816,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-foreground-rgba)
       "Accessor"
       (documentation 'cell-renderer-text-foreground-rgba 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-foreground-rgba object) => foreground}
   @syntax{(setf (gtk:cell-renderer-text-foreground-rgba object) foreground)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -842,7 +843,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-foreground-set)
       "Accessor"
       (documentation 'cell-renderer-text-foreground-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-foreground-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-foreground-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -896,7 +897,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-language-set)
       "Accessor"
       (documentation 'cell-renderer-text-language-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-language-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-language-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1038,7 +1039,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-rise-set)
       "Accessor"
       (documentation 'cell-renderer-text-rise-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-rise-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-rise-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1089,7 +1090,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-scale-set)
       "Accessor"
       (documentation 'cell-renderer-text-scale-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-scale-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-scale-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1116,7 +1117,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-single-paragraph-mode)
       "Accessor"
       (documentation 'cell-renderer-text-single-paragraph-mode 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-single-paragraph-mode object) => mode}
   @syntax{(setf (gtk:cell-renderer-text-single-paragraph-mode object) mode)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1193,7 +1194,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-size-set)
       "Accessor"
       (documentation 'cell-renderer-text-size-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-size-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-size-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1208,22 +1209,20 @@ lambda (renderer path text)    :run-last
 ;;; --- gtk:cell-renderer-text-stretch -----------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "stretch"
-                                               'cell-renderer-text) t)
- "The @code{stretch} property of type @symbol{pango:stretch} (Read / Write)
-  @br{}
+(setf (documentation (liber:slot-documentation "stretch" 'cell-renderer-text) t)
+ "The @code{stretch} property of type @sym{pango:stretch} (Read / Write) @br{}
   The font stretch. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[pango:stretch]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-stretch)
       "Accessor"
       (documentation 'cell-renderer-text-stretch 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-stretch object) => stretch}
   @syntax{(setf (gtk:cell-renderer-text-stretch object) stretch)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[stretch]{a @symbol{pango:stretch} value}
+  @argument[stretch]{a @sym{pango:stretch} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{stretch} slot of the
     @class{gtk:cell-renderer-text} class.
@@ -1245,7 +1244,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-stretch-set)
       "Accessor"
       (documentation 'cell-renderer-text-stretch-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-stretch-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-stretch-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1270,7 +1269,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-strikethrough)
       "Accessor"
       (documentation 'cell-renderer-text-strikethrough 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-strikethrough object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-strikethrough object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1296,7 +1295,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-strikethrough-set)
       "Accessor"
       (documentation 'cell-renderer-text-strikethrough-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-strikethrough-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-strikethrough-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1312,19 +1311,19 @@ lambda (renderer path text)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "style" 'cell-renderer-text) t)
- "The @code{style} property of type @symbol{pango:style} (Read / Write) @br{}
+ "The @code{style} property of type @sym{pango:style} (Read / Write) @br{}
   The font style. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[pango:style]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-style)
       "Accessor"
       (documentation 'cell-renderer-text-style 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-style object) => style}
   @syntax{(setf (gtk:cell-renderer-text-style object) style)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[style]{a @symbol{pango:style} value}
+  @argument[style]{a @sym{pango:style} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{style} slot of the
     @class{gtk:cell-renderer-text} class.
@@ -1346,7 +1345,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-style-set)
       "Accessor"
       (documentation 'cell-renderer-text-style-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-style-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-style-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1387,20 +1386,20 @@ lambda (renderer path text)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "underline"
                                                'cell-renderer-text) t)
- "The @code{underline} property of type @symbol{pango:underline} (Read / Write)
+ "The @code{underline} property of type @sym{pango:underline} (Read / Write)
   @br{}
   The style of underline for this text. @br{}
-  Default value: @code{:none}")
+  Default value: @val[pango:underline]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-underline)
       "Accessor"
       (documentation 'cell-renderer-text-underline 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-underline object) => underline}
   @syntax{(setf (gtk:cell-renderer-text-underline object) underline)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[underline]{a @symbol{pango:underline} value}
+  @argument[underline]{a @sym{pango:underline} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{underline} slot of the
     @class{gtk:cell-renderer-text} class.
@@ -1422,7 +1421,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-underline-set)
       "Accessor"
       (documentation 'cell-renderer-text-underline-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-underline-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-underline-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1438,20 +1437,19 @@ lambda (renderer path text)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "variant" 'cell-renderer-text) t)
- "The @code{variant} property of type @symbol{pango:variant} (Read / Write)
-  @br{}
+ "The @code{variant} property of type @sym{pango:variant} (Read / Write) @br{}
   The font variant. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[pango:variant]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-variant)
       "Accessor"
       (documentation 'cell-renderer-text-variant 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-variant object) => variant}
   @syntax{(setf (gtk:cell-renderer-text-variant object) variant)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[variant]{a @symbol{pango:variant} value}
+  @argument[variant]{a @sym{pango:variant} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{variant} slot of the
     @class{gtk:cell-renderer-text} class.
@@ -1473,7 +1471,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-variant-set)
       "Accessor"
       (documentation 'cell-renderer-text-variant-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-variant-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-variant-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1523,7 +1521,7 @@ lambda (renderer path text)    :run-last
 (setf (liber:alias-for-function 'cell-renderer-text-weight-set)
       "Accessor"
       (documentation 'cell-renderer-text-weight-set 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-text-weight-set object) => setting}
   @syntax{(setf (gtk:cell-renderer-text-weight-set object) setting)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
@@ -1570,23 +1568,23 @@ lambda (renderer path text)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "wrap-mode"
                                                'cell-renderer-text) t)
- "The @code{wrap-mode} property of type @symbol{pango:wrap-mode} (Read / Write)
+ "The @code{wrap-mode} property of type @sym{pango:wrap-mode} (Read / Write)
   @br{}
   Specifies how to break the string into multiple lines, if the cell renderer
   does not have enough room to display the entire string. This property has no
   effect unless the @slot[gtk:cell-renderer-text]{wrap-width} property is set.
   @br{}
-  Default value: @code{:char}")
+  Default value: @val[pango:wrap-mode]{:char}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'cell-renderer-text-wrap-mode)
       "Accessor"
       (documentation 'cell-renderer-text-wrap-mode 'function)
- "@version{2025-06-10}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-text-wrap-mode object) => mode}
   @syntax{(setf (gtk:cell-renderer-text-wrap-mode object) mode)}
   @argument[object]{a @class{gtk:cell-renderer-text} object}
-  @argument[mode]{a @symbol{pango:wrap-mode} value}
+  @argument[mode]{a @sym{pango:wrap-mode} value}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-text]{wrap-mode} slot of the
     @class{gtk:cell-renderer-text} class.

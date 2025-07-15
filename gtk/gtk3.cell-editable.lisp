@@ -2,8 +2,8 @@
 ;;; gtk3.cell-editable.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -73,43 +73,45 @@
 (setf (liber:alias-for-class 'cell-editable)
       "Interface"
       (documentation 'cell-editable 'type)
- "@version{2024-3-17}
+ "@version{2025-07-01}
   @begin{short}
     The @class{gtk:cell-editable} interface must be implemented for widgets to
     be usable when editing the contents of a @class{gtk:tree-view} cell.
   @end{short}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"editing-done\" signal}
+    @begin[cell-editable::editing-done]{signal}
       @begin{pre}
 lambda (editable)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[editable]{The @class{gtk:cell-editable} object on which the
+          signal was emitted.}
+      @end{simple-table}
       The signal is a sign for the cell renderer to update its value from the
       @arg{editable} argument. Implementations of the @class{gtk:cell-editable}
       interface are responsible for emitting the signal when they are done
-      editing, e.g. the @class{gtk:entry} widget is emitting it when the user
-      presses the @kbd{Enter} key. The @fun{gtk:cell-editable-editing-done}
-      function is a convenience method for emitting the @code{\"editing-done\"}
-      signal.
-      @begin[code]{table}
-        @entry[editable]{The @class{gtk:cell-editable} object on which the
-          signal was emitted.}
-      @end{table}
-    @subheading{The \"remove-widget\" signal}
+      editing, for example, the @class{gtk:entry} widget is emitting it when the
+      user presses the @kbd{Enter} key. The @fun{gtk:cell-editable-editing-done}
+      function is a convenience method for emitting the
+      @sig[gtk:cell-editable]{editing-done} signal.
+    @end{signal}
+    @begin[cell-editable::remove-widget]{signal}
       @begin{pre}
 lambda (editable)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[editable]{The @class{gtk:cell-editable} object on which the
+          signal was emitted.}
+      @end{simple-table}
       The signal is meant to indicate that the cell is finished editing, and
       the widget may now be destroyed. Implementations of the
       @class{gtk:cell-editable} interface are responsible for emitting the
       signal when they are done editing. It must be emitted after the
-      @code{\"editing-done\"} signal, to give the cell renderer a chance to
-      update the value of the cell before the widget is removed. The
+      @sig[gtk:cell-editable]{editing-done} signal, to give the cell renderer a
+      chance to update the value of the cell before the widget is removed. The
       @fun{gtk:cell-editable-remove-widget} function is a convenience method
-      for emitting the @code{\"remove-widget\"} signal.
-      @begin[code]{table}
-        @entry[editable]{The @class{gtk:cell-editable} object on which the
-          signal was emitted.}
-      @end{table}
+      for emitting the @sig[gtk:cell-editable]{remove-widget} signal.
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:cell-editable-editing-canceled}
   @see-function{gtk:cell-editable-editing-done}
@@ -131,7 +133,7 @@ lambda (editable)    :run-last
 (setf (liber:alias-for-function 'cell-editable-editing-canceled)
       "Accessor"
       (documentation 'cell-editable-editing-canceled 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-editable-editing-canceled object) => canceled}
   @syntax{(setf (gtk:cell-editable-editing-canceled object) canceled)}
   @argument[object]{a @class{gtk:cell-editable} object}
@@ -144,13 +146,13 @@ lambda (editable)    :run-last
   @see-class{gtk:cell-editable}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_editable_start_editing ()
+;;; gtk_cell_editable_start_editing
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_editable_start_editing" cell-editable-start-editing)
     :void
  #+liber-documentation
- "@version{#2024-3-17}
+ "@version{#2024-03-17}
   @argument[editable]{a @class{gtk:cell-editable} object}
   @argument[event]{a @class{gdk:event} instance, or @code{nil}}
   @begin{short}
@@ -166,16 +168,16 @@ lambda (editable)    :run-last
 (export 'cell-editable-start-editing)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_editable_editing_done ()
+;;; gtk_cell_editable_editing_done
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_editable_editing_done" cell-editable-editing-done)
     :void
  #+liber-documentation
- "@version{#2024-3-17}
+ "@version{#2025-07-07}
   @argument[editable]{a @class{gtk:cell-editable} object}
   @begin{short}
-    Emits the @code{\"editing-done\"} signal.
+    Emits the @sig[gtk:cell-editable]{editing-done} signal.
   @end{short}
   @see-class{gtk:cell-editable}"
   (editable (g:object cell-editable)))
@@ -183,16 +185,16 @@ lambda (editable)    :run-last
 (export 'cell-editable-editing-done)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_editable_remove_widget ()
+;;; gtk_cell_editable_remove_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_cell_editable_remove_widget" cell-editable-remove-widget)
     :void
  #+liber-documentation
- "@version{#2024-3-17}
+ "@version{#2025-07-07}
   @argument[editable]{a @class{gtk:cell-editable} object}
   @begin{short}
-    Emits the @code{\"remove-widget\"} signal.
+    Emits the @sig[gtk:cell-editable]{remove-widget} signal.
   @end{short}
   @see-class{gtk:cell-editable}"
   (editable (g:object cell-editable)))

@@ -261,7 +261,7 @@
 
 #+liber-documentation
 (setf (documentation 'about-dialog 'type)
- "@version{2025-07-01}
+ "@version{2025-07-15}
   @begin{short}
     The @class{gtk:about-dialog} widget offers a simple way to display
     information about a program like its logo, name, copyright, website and
@@ -306,7 +306,7 @@ lambda (dialog uri)    :run-last
       @begin[code]{simple-table}
         @entry[dialog]{The @class{gtk:about-dialog} widget on which the signal
           was emitted.}
-        @entry[uri]{The string with the URI that is activated.}
+        @entry[uri]{The string for the URI that is activated.}
         @entry[Returns]{@em{True} if the link has been activated.}
       @end{simple-table}
       The signal which gets emitted to activate a URI. Applications may connect
@@ -489,11 +489,12 @@ lambda (dialog uri)    :run-last
  "The @code{license} property of type @code{:string} (Read / Write) @br{}
   The license of the program. This string is displayed in a text view in a
   secondary dialog, therefore it is fine to use a long multi-paragraph text.
-  Note that the text is only wrapped in the text view if the @code{wrap-license}
-  property is set to @em{true}. Otherwise the text itself must contain the
-  intended linebreaks. When setting this property to a non-@code{nil} value, the
-  @code{license-type} property is set to the @val[gtk:license]{:custom} value of
-  the @sym{gtk:license} enumeration as a side effect. @br{}
+  Note that the text is only wrapped in the text view if the
+  @slot[gtk:abaout-dialog]{wrap-license} property is set to @em{true}. Otherwise
+  the text itself must contain the intended linebreaks. When setting this
+  property to a non-@code{nil} value, the @val[gtk:about-dialog]{license-type}
+  property is set to the @val[gtk:license]{:custom} value of the
+  @sym{gtk:license} enumeration as a side effect. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
@@ -535,7 +536,7 @@ lambda (dialog uri)    :run-last
 (setf (liber:alias-for-function 'about-dialog-license-type)
       "Accessor"
       (documentation 'about-dialog-license-type 'function)
- "@version{2025-06-24}
+ "@version{2025-07-15}
   @syntax{(gtk:about-dialog-license-type object) => type}
   @syntax{(setf (gtk:about-dialog-license-type object) type)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -544,9 +545,8 @@ lambda (dialog uri)    :run-last
     Accessor of the @slot[gtk:about-dialog]{license-type} slot of the
     @class{gtk:about-dialog} class.
   @end{short}
-  The @fun{gtk:about-dialog-license-type} function retrieves the license type
-  of type @sym{gtk:license}. The @setf{gtk:about-dialog-license-type} function
-  sets the license of of the application showing the about dialog from a list
+  The @fun{gtk:about-dialog-license-type} function retrieves the license type.
+  The @setf{gtk:about-dialog-license-type} function sets the license from a list
   of known licenses. This function overrides the license set using the
   @fun{gtk:about-dialog-license} function.
   @see-class{gtk:about-dialog}
@@ -566,12 +566,11 @@ lambda (dialog uri)    :run-last
 (setf (liber:alias-for-function 'about-dialog-logo)
       "Accessor"
       (documentation 'about-dialog-logo 'function)
- "@version{2025-06-05}
+ "@version{2025-07-15}
   @syntax{(gtk:about-dialog-logo object) => logo}
   @syntax{(setf (gtk:about-dialog-logo object) logo)}
   @argument[object]{a @class{gtk:about-dialog} widget}
-  @argument[logo]{a @class{gdk-pixbuf:pixbuf} object for the logo of the
-    about box}
+  @argument[logo]{a @class{gdk-pixbuf:pixbuf} object for the logo}
   @begin{short}
     Accessor of the @slot[gtk:about-dialog]{logo} slot of the
     @class{gtk:about-dialog} class.
@@ -598,7 +597,7 @@ lambda (dialog uri)    :run-last
 (setf (liber:alias-for-function 'about-dialog-logo-icon-name)
       "Accessor"
       (documentation 'about-dialog-logo-icon-name 'function)
- "@version{2025-06-05}
+ "@version{2025-07-15}
   @syntax{(gtk:about-dialog-logo-icon-name object) => name}
   @syntax{(setf (gtk:about-dialog-logo-icon-name object) name)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -610,8 +609,8 @@ lambda (dialog uri)    :run-last
   The @fun{gtk:about-dialog-logo-icon-name} function returns the icon name
   displayed as logo in the about dialog. The
   @setf{gtk:about-dialog-logo-icon-name} function sets the pixbuf to be
-  displayed as logo in the about dialog. If it is @code{nil}, the default window
-  icon set with the @fun{gtk:window-set-default-icon} function will be used.
+  displayed as logo. If it is @code{nil}, the default window icon set with the
+  @fun{gtk:window-set-default-icon} function will be used.
   @see-class{gtk:about-dialog}
   @see-function{gtk:window-set-default-icon}")
 
@@ -753,7 +752,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 (setf (liber:alias-for-function 'about-dialog-website-label)
       "Accessor"
       (documentation 'about-dialog-website-label 'function)
- "@version{2025-06-05}
+ "@version{2025-07-15}
   @syntax{(gtk:about-dialog-website-label object) => label}
   @syntax{(setf (gtk:about-dialog-website-label object) label)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -765,7 +764,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
   @end{short}
   The @fun{gtk:about-dialog-website-label} function returns the label used for
   the website link. The @setf{gtk:about-dialog-website-label} function sets the
-  label to be used for the website link.
+  label.
   @see-class{gtk:about-dialog}")
 
 ;;; --- gtk:about-dialog-wrap-license ------------------------------------------
@@ -780,7 +779,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
 (setf (liber:alias-for-function 'about-dialog-wrap-license)
       "Accessor"
       (documentation 'about-dialog-wrap-license 'function)
- "@version{2024-03-16}
+ "@version{2025-07-15}
   @syntax{(gtk:about-dialog-wrap-license object) => setting}
   @syntax{(setf (gtk:about-dialog-wrap-license object) setting)}
   @argument[object]{a @class{gtk:about-dialog} widget}
@@ -792,7 +791,7 @@ gtk_about_dialog_set_translator_credits (about, _(\"translator-credits\"));
   The @fun{gtk:about-dialog-wrap-license} function returns whether the license
   text in the about dialog is automatically wrapped. The
   @setf{gtk:about-dialog-wrap-license} function sets whether the license text
-  in the about dialog is automatically wrapped.
+  is automatically wrapped.
   @see-class{gtk:about-dialog}")
 
 ;;; ----------------------------------------------------------------------------

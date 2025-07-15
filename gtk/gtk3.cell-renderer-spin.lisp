@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.cell-renderer-spin.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -57,7 +57,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCellRendererSpin
+;;; GtkCellRendererSpin
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCellRendererSpin" cell-renderer-spin
@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-spin 'type)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @begin{short}
     The @class{gtk:cell-renderer-spin} object renders text in a cell like
     the @class{gtk:cell-renderer-text} object from which it is derived.
@@ -93,7 +93,7 @@
   object also has the @slot[gtk:cell-renderer-spin]{climb-rate} and
   @slot[gtk:cell-renderer-spin]{digits} properties to display. Other
   @class{gtk:spin-button} properties can be set in a handler for the
-  @code{\"editing-started\"} signal.
+  @sig[gtk:cell-renderer]{editing-started} signal.
   @see-constructor{gtk:cell-renderer-spin-new}
   @see-slot{gtk:cell-renderer-spin-adjustment}
   @see-slot{gtk:cell-renderer-spin-climb-rate}
@@ -119,7 +119,7 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-adjustment)
       "Accessor"
       (documentation 'cell-renderer-spin-adjustment 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-spin-adjustment object) => adjustment}
   @syntax{(setf (gtk:cell-renderer-spin-adjustment object) adjustment)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
@@ -147,11 +147,11 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-climb-rate)
       "Accessor"
       (documentation 'cell-renderer-spin-climb-rate 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-spin-climb-rate object) => rate}
   @syntax{(setf (gtk:cell-renderer-spin-climb-rate object) rate)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
-  @argument[rate]{a double float with the acceleration rate}
+  @argument[rate]{a number coerced to a double float for the acceleration rate}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-spin]{climb-rate} slot of the
     @class{gtk:cell-renderer-spin} class.
@@ -172,11 +172,11 @@
 (setf (liber:alias-for-function 'cell-renderer-spin-digits)
       "Accessor"
       (documentation 'cell-renderer-spin-digits 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-spin-digits object) => digits}
   @syntax{(setf (gtk:cell-renderer-spin-digits object) digits)}
   @argument[object]{a @class{gtk:cell-renderer-spin} object}
-  @argument[digits]{an unsigned integer with the number of decimal places to
+  @argument[digits]{an unsigned integer for the number of decimal places to
     display}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-spin]{digits} slot of the
@@ -186,15 +186,15 @@
   @see-class{gtk:cell-renderer-spin}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_spin_new ()
+;;; gtk_cell_renderer_spin_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline cell-renderer-spin-new))
 
 (defun cell-renderer-spin-new ()
  #+liber-documentation
- "@version{2023-2-21}
-  @return{A new @class{gtk:cell-renderer-spin} object.}
+ "@version{2025-07-07}
+  @return{The new @class{gtk:cell-renderer-spin} object.}
   @short{Creates a new cell renderer spin object.}
   @see-class{gtk:cell-renderer-spin}"
   (make-instance 'cell-renderer-spin))

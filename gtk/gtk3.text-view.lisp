@@ -426,7 +426,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-view 'type)
- "@version{2025-07-14}
+ "@version{2025-07-15}
   @begin{short}
     GTK has a powerful framework for multiline text editing.
   @end{short}
@@ -509,7 +509,7 @@ lambda (view granularity count)    :action
         @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[granularity]{The granularity of the deletion, as a value of the
           @sym{gtk:delete-type} enumeration.}
-        @entry[count]{The integer with the number of type units to delete.}
+        @entry[count]{The integer for the number of type units to delete.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates a text deletion. If the granularity is @code{:chars}, GTK
@@ -595,7 +595,7 @@ lambda (view step count)    :action
         @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[step]{The granularity of the move, as a value of the
           @sym{gtk:movement-step} enumeration.}
-        @entry[count]{The integer with the number of step units to move.}
+        @entry[count]{The integer for the number of step units to move.}
       @end{simple-table}
       The signal is a keybinding signal which can be bound to key combinations
       to allow the user to move the viewport, that is, change what part of the

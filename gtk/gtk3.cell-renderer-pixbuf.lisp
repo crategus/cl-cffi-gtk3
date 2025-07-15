@@ -63,7 +63,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCellRendererPixbuf
+;;; GtkCellRendererPixbuf
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCellRendererPixbuf" cell-renderer-pixbuf
@@ -104,7 +104,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-pixbuf 'type)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @begin{short}
     The @class{gtk:cell-renderer-pixbuf} object can be used to render an image
     in a cell.
@@ -146,7 +146,7 @@
                                                'cell-renderer-pixbuf) t)
  "The @code{follow-state} property of type @code{:boolean} (Read / Write) @br{}
   Specifies whether the rendered pixbuf should be colorized according to the
-  @symbol{gtk:cell-renderer-state} flags. @br{}
+  @sym{gtk:cell-renderer-state} flags. @br{}
   @em{Warning:} The @code{follow-state} property has been deprecated since
   version 3.16 and should not be used in newly written code. Cell renderers
   always follow state. @br{}
@@ -156,7 +156,7 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-follow-state)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-follow-state 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-follow-state object) => state}
   @syntax{(setf (gtk:cell-renderer-pixbuf-follow-state object) state)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
@@ -166,7 +166,7 @@
     @class{gtk:cell-renderer-pixbuf} class.
   @end{short}
   Specifies whether the rendered pixbuf should be colorized according to the
-  @symbol{gtk:cell-renderer-state} flags.
+  @sym{gtk:cell-renderer-state} flags.
   @begin[Warning]{dictionary}
     The @slot[gtk:cell-renderer-pixbuf]{follow-state} property has been
     deprecated since version 3.16 and should not be used in newly written code.
@@ -187,7 +187,7 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-gicon)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-gicon 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-pixbuf-gicon object) => icon}
   @syntax{(setf (gtk:cell-renderer-pixbuf-gicon object) icon)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
@@ -215,11 +215,11 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-icon-name)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-icon-name 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-icon-name object) => name}
   @syntax{(setf (gtk:cell-renderer-pixbuf-icon-name object) name)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[name]{a string with the name of the themed icon to display}
+  @argument[name]{a string for the name of the themed icon to display}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{icon-name} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
@@ -244,7 +244,7 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-pixbuf)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-pixbuf 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-pixbuf-pixbuf object) => pixbuf}
   @syntax{(setf (gtk:cell-renderer-pixbuf-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
@@ -270,7 +270,7 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-pixbuf-expander-closed)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-pixbuf-expander-closed 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-pixbuf-pixbuf-expander-closed object) => pixbuf}
   @syntax{(setf (gtk:cell-renderer-pixbuf-pixbuf-expander-closed object) pixbuf)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
@@ -296,7 +296,7 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-pixbuf-expander-open)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-pixbuf-expander-open 'function)
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @syntax{(gtk:cell-renderer-pixbuf-pixbuf-expander-open object) => pixbuf}
   @syntax{(setf (gtk:cell-renderer-pixbuf-pixbuf-expander-open object) pixbuf)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
@@ -322,11 +322,11 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-stock-detail)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-stock-detail 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-stock-detail object) => detail}
   @syntax{(setf (gtk:cell-renderer-pixbuf-stock-detail object) detail)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[detail]{a string with the render detail.}
+  @argument[detail]{a string for the render detail.}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{stock-detail} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
@@ -350,11 +350,11 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-stock-id)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-stock-id 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-stock-id object) => id}
   @syntax{(setf (gtk:cell-renderer-pixbuf-stock-id object) id)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[id]{a string with the stock ID}
+  @argument[id]{a string for the stock ID}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{stock-id} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
@@ -374,7 +374,7 @@
 (setf (documentation (liber:slot-documentation "stock-size"
                                                'cell-renderer-pixbuf) t)
  "The @code{stock-size} property of type @code{:uint} (Read / Write) @br{}
-  The @symbol{gtk:icon-size} value that specifies the size of the rendered icon.
+  The @sym{gtk:icon-size} value that specifies the size of the rendered icon.
   @br{}
   Default value: @code{1}")
 
@@ -382,16 +382,16 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-stock-size)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-stock-size 'function)
- "@version{2024-3-17}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-stock-size object) => size}
   @syntax{(setf (gtk:cell-renderer-pixbuf-stock-size object) size)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[size]{an unsigned integer with sitze that the size of the icon}
+  @argument[size]{an unsigned integer for sitze that the size of the icon}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{stock-size} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
   @end{short}
-  The @symbol{gtk:icon-size} value that specifies the size of the rendered icon.
+  The @sym{gtk:icon-size} value that specifies the size of the rendered icon.
   @see-class{gtk:cell-renderer-pixbuf}
   @see-symbol{gtk:icon-size}")
 
@@ -408,11 +408,11 @@
 (setf (liber:alias-for-function 'cell-renderer-pixbuf-surface)
       "Accessor"
       (documentation 'cell-renderer-pixbuf-surface 'function)
- "@version{2025-06-05}
+ "@version{2025-07-07}
   @syntax{(gtk:cell-renderer-pixbuf-surface object) => surface}
   @syntax{(setf (gtk:cell-renderer-pixbuf-surface object) surface)}
   @argument[object]{a @class{gtk:cell-renderer-pixbuf} object}
-  @argument[surface]{a @symbol{cairo:surface-t} instance to render}
+  @argument[surface]{a @sym{cairo:surface-t} instance to render}
   @begin{short}
     Accessor of the @slot[gtk:cell-renderer-pixbuf]{surface} slot of the
     @class{gtk:cell-renderer-pixbuf} class.
@@ -422,14 +422,14 @@
   @see-symbol{cairo:surface-t}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_cell_renderer_pixbuf_new ()
+;;; gtk_cell_renderer_pixbuf_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline cell-renderer-pixbuf-new))
 
 (defun cell-renderer-pixbuf-new ()
  #+liber-documentation
- "@version{2024-3-17}
+ "@version{2024-03-17}
   @return{The new @class{gtk:cell-renderer-pixbuf} object.}
   @begin{short}
     Creates a new cell renderer pixbuf.

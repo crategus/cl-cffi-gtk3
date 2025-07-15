@@ -107,7 +107,7 @@
 
 #+liber-documentation
 (setf (documentation 'scale-button 'type)
- "@version{#2025-07-14}
+ "@version{#2025-07-15}
   @begin{short}
     The @class{gtk:scale-button} widget provides a button which pops up a scale
     widget.
@@ -152,7 +152,7 @@ lambda (button value)    :run-last
       @begin[code]{simple-table}
         @entry[button]{The @class{gtk:scale-button} widget that received the
           signal.}
-        @entry[value]{The double float with the new value.}
+        @entry[value]{The double float for the new value.}
       @end{simple-table}
       The signal is emitted when the value field has changed.
     @end{signal}

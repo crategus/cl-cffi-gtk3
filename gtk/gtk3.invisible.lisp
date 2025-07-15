@@ -104,7 +104,7 @@
 (setf (liber:alias-for-function 'invisible-screen)
       "Accessor"
       (documentation 'invisible-screen 'function)
- "@version{2024-03-17}
+ "@version{2025-07-15}
   @syntax{(gtk:invisible-screen object) => screen}
   @syntax{(setf (gtk:invisible-screen object) screen)}
   @argument[object]{a @class{gtk:invisible} widget}
@@ -114,8 +114,8 @@
     @class{gtk:invisible} class.
   @end{short}
   The @fun{gtk:invisible-screen} function returns the screen associated with
-  the invisible widget. The @setf{gtk:invisible-screen} function sets the screen
-  where the invisible widget will be displayed.
+  the invisible widget. The @setf{gtk:invisible-screen} function sets the
+  screen.
   @see-class{gtk:invisible}
   @see-class{gdk:screen}")
 
@@ -127,14 +127,14 @@
 
 (defun invisible-new ()
  #+liber-documentation
- "@version{2024-03-17}
+ "@version{2025-07-15}
   @return{The new @class{gtk:invisible} widget.}
   @begin{short}
     Creates a new invisible widget.
   @end{short}
-  The @slot[gtk:invisible]{screen} slot is initialized to the default screen.
-  See the @fun{gtk:invisible-new-for-screen} function to create a new invisible
-  widget for a specified screen.
+  The @slot[gtk:invisible]{screen} property is initialized to the default
+  screen. See the @fun{gtk:invisible-new-for-screen} function to create a new
+  invisible widget for a specified screen.
   @see-class{gtk:invisible}
   @see-class{gdk:screen}
   @see-function{gtk:invisible-new-for-screen}
@@ -151,8 +151,8 @@
 
 (defun invisible-new-for-screen (screen)
  #+liber-documentation
- "@version{2024-03-17}
-  @argument[screen]{a @class{gdk:screen} object which identifies the screen on
+ "@version{2025-07-15}
+  @argument[screen]{a @class{gdk:screen} object that identifies the screen on
     which the @class{gtk:invisible} widget will be created}
   @return{The newly created @class{gtk:invisible} widget.}
   @begin{short}

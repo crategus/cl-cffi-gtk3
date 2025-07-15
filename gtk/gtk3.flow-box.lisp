@@ -193,7 +193,7 @@ lambda (child)    :action
 
 #+liber-documentation
 (setf (documentation 'flow-box 'type)
- "@version{2025-06-24}
+ "@version{2025-07-15}
   @begin{short}
     The @class{gtk:flow-box} widget positions child widgets in sequence
     according to its orientation.
@@ -269,9 +269,9 @@ lambda (flowbox step count)    :action
       @begin[code]{simple-table}
         @entry[flowbox]{The @class{gtk:flow-box} widget on which the signal is
           emitted.}
-        @entry[step]{The granularity to the move, as a value of the
+        @entry[step]{The granularity to the move as a value of the
           @sym{gtk:movement-step} enumeration.}
-        @entry[count]{The integer with the number of step units to move.}
+        @entry[count]{The integer for the number of step units to move.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event. @em{False} to propagate the event further.}
       @end{simple-table}
@@ -1163,10 +1163,10 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_child_get_index" flow-box-child-index) :int
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-07-15}
   @argument[child]{a @class{gtk:flow-box-child} widget}
   @begin{return}
-    The integer with the index of the child, or -1 if the child is not in a
+    The integer for the index of the child, or -1 if the child is not in a
     flow box.
   @end{return}
   @begin{short}

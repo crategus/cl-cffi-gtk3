@@ -231,9 +231,9 @@
 
 (cffi:defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
   #+liber-documentation
- "@version{#2023-03-15}
+ "@version{#2025-07-15}
   @argument[label]{a @class{gtk:accel-label} widget}
-  @return{The integer with the width needed to display the accelerator key(s).}
+  @return{The integer for the width needed to display the accelerator key(s).}
   @begin{short}
     Returns the width needed to display the accelerator key(s).
   @end{short}

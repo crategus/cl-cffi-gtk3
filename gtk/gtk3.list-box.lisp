@@ -258,7 +258,7 @@ lambda (row)    :action
 
 #+liber-documentation
 (setf (documentation 'list-box 'type)
- "@version{2025-06-24}
+ "@version{2025-07-15}
   @begin{short}
     The @fun{gtk:list-box} widget is a vertical container that contains
     @class{gtk:list-box-row} children.
@@ -312,7 +312,7 @@ lambda (listbox step count)    :action
         @entry[listbox]{The @class{gtk:list-box} widget on which the signal is
           emitted.}
         @entry[step]{The value of the @sym{gtk:movement-step} enumeration.}
-        @entry[count]{The integer with the number of steps to move.}
+        @entry[count]{The integer for the number of steps to move.}
       @end{simple-table}
     @end{signal}
     @begin[list-box::row-activated]{signal}
@@ -1335,10 +1335,10 @@ lambda (listbox)    :action
 
 (cffi:defcfun ("gtk_list_box_row_get_index" list-box-row-index) :int
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2024-07-15}
   @argument[row]{a @class{gtk:list-box-row} widget}
   @begin{return}
-    The integer with the index of the row in the list box, or -1 if the row is
+    The integer for the index of the row in the list box, or -1 if the row is
     not in the list box.
   @end{return}
   @short{Gets the current index of the row in its list box.}

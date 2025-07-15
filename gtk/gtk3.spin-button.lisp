@@ -884,9 +884,9 @@ lambda (spinbutton)    :run-last
 
 (defun spin-button-value-as-int (spinbutton)
  #+liber-documentation
- "@version{#2023-03-12}
+ "@version{#2025-07-15}
   @argument[spinbutton]{a @class{gtk:spin-button} widget}
-  @return{The integer with the value of @arg{spin-button}.}
+  @return{The integer for the value of @arg{spin-button}.}
   @begin{short}
     Gets the value of the spin button represented as an integer.
   @end{short}

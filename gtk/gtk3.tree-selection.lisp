@@ -470,9 +470,9 @@ lambda (selection)    :run-first
 (cffi:defcfun ("gtk_tree_selection_count_selected_rows"
                tree-selection-count-selected-rows) :int
  #+liber-documentation
- "@version{#2023-02-19}
+ "@version{#2025-07-15}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @return{The integer with the number of rows selected.}
+  @return{The integer for the number of rows selected.}
   @short{Returns the number of rows that have been selected in the tree.}
   @see-class{gtk:tree-selection}
   @see-function{gtk:tree-selection-selected-rows}"
