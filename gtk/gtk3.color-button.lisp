@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.color-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -86,7 +86,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkColorButton
+;;; GtkColorButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkColorButton" color-button
@@ -119,7 +119,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-button 'type)
- "@version{2023-6-14}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:color-button} widget is a button which displays the currently
     selected color and allows to open a color selection dialog to change the
@@ -135,8 +135,8 @@
   @end{dictionary}
   @begin[Examples]{dictionary}
     The example shows a color button. The button is initialized with the color
-    \"Blue\". The handler for the @code{\"color-set\"} signal prints the
-    selected color on the console.
+    \"Blue\". The handler for the @sig[gtk:color-button]{color-set} signal
+    prints the selected color on the console.
     @begin{pre}
 (defun example-color-button ()
   (gtk:within-main-loop
@@ -160,19 +160,20 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"color-set\" signal}
+    @begin[color-button::color-set]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[button]{The @class{gtk:color-button} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the user selects a color. When handling this
       signal, use the @fun{gtk:color-chooser-rgba} function to find out which
       color was just selected. Note that this signal is only emitted when the
       user changes the color. If you need to react to programmatic color
-      changes as well, use the @code{\"notify::color\"} signal.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:color-button} widget which received the
-          signal.}
-      @end{table}
+      changes as well, use the @sig[g:object]{notify::color} signal.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:color-button-new}
   @see-constructor{gtk:color-button-new-with-color}
@@ -379,7 +380,7 @@ lambda (button)    :run-first
   @see-function{gtk:color-chooser-use-alpha}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_button_new ()
+;;; gtk_color_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-button-new))
@@ -400,7 +401,7 @@ lambda (button)    :run-first
 (export 'color-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_button_new_with_color ()
+;;; gtk_color_button_new_with_color
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-button-new-with-color))
@@ -425,7 +426,7 @@ lambda (button)    :run-first
 (export 'color-button-new-with-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_button_new_with_rgba ()
+;;; gtk_color_button_new_with_rgba
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline color-button-new-with-rgba))

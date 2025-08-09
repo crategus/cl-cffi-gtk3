@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.pad-controller.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,7 +72,7 @@
 (setf (liber:alias-for-symbol 'pad-action-type)
       "GEnum"
       (liber:symbol-documentation 'pad-action-type)
- "@version{2024-3-22}
+ "@version{2025-07-01}
   @begin{declaration}
 (gobject:define-genum \"GtkPadActionType\" pad-action-type
   (:export t
@@ -82,11 +82,11 @@
   :strip)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:button]{Action is triggered by a pad button.}
       @entry[:ring]{Action is triggered by a pad ring.}
       @entry[:strip]{Action is triggered by a pad strip.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The type of a pad action.
@@ -94,13 +94,13 @@
   @see-class{gtk:pad-controller}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPadActionEntry                               not exported
+;;; GtkPadActionEntry                                       not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; We pass the entries as Lisp lists. This structure is not needed.
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPadController
+;;; GtkPadController
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPadController" pad-controller
@@ -117,7 +117,7 @@
 
 #+liber-documentation
 (setf (documentation 'pad-controller 'type)
- "@version{2024-4-5}
+ "@version{2025-06-28}
   @begin{short}
     The @class{gtk:pad-controller} object is an event controller for the pads
     found in drawing tablets.
@@ -127,7 +127,7 @@
 
   These buttons and sensors have no implicit meaning, and by default they
   perform no action, this event controller is provided to map those to
-  @class{g:action} objects, thus letting the application give those a more
+  @class{g:action} instances, thus letting the application give those a more
   semantic meaning.
 
   Buttons and sensors are not constrained to triggering a single action, some
@@ -226,7 +226,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_pad_controller_new ()
+;;; gtk_pad_controller_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_pad_controller_new" pad-controller-new)
@@ -268,7 +268,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 (export 'pad-controller-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_pad_controller_set_action_entries ()
+;;; gtk_pad_controller_set_action_entries
 ;;; ----------------------------------------------------------------------------
 
 (defun pad-controller-set-action-entries (controller entries)
@@ -292,22 +292,22 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 (export 'pad-controller-set-action-entries)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_pad_controller_set_action ()
+;;; gtk_pad_controller_set_action
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_pad_controller_set_action" pad-controller-set-action) :void
  #+liber-documentation
- "@version{2024-4-5}
+ "@version{2025-07-07}
   @argument[controller]{a @class{gtk:pad-controller} object}
-  @argument[type]{a @symbol{gtk:pad-action-type} value with the pad feature
-    that will trigger the action}
-  @argument[index]{an integer with the 0-indexed button/ring/strip number that
+  @argument[type]{a @sym{gtk:pad-action-type} value for the pad feature that
     will trigger the action}
-  @argument[mode]{an integer with the mode that will trigger the action, or -1
+  @argument[index]{an integer for the 0-indexed button/ring/strip number that
+    will trigger the action}
+  @argument[mode]{an integer for the mode that will trigger the action, or -1
     for all modes}
-  @argument[label]{a string with the Human readable description of the action,
+  @argument[label]{a string for the Human readable description of the action,
     the string should be deemed user visible}
-  @argument[name]{a string with the action name that will be activated in the
+  @argument[name]{a string for the action name that will be activated in the
     @class{g:action-group} instance}
   @begin{short}
     Adds an individual action to @arg{controller}.

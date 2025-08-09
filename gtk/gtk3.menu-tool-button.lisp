@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.menu-tool-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkMenuToolButton
+;;; GtkMenuToolButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkMenuToolButton" menu-tool-button
@@ -90,9 +90,9 @@
 
 #+liber-documentation
 (setf (documentation 'menu-tool-button 'type)
- "@version{#2023-2-27}
+ "@version{#2025-06-27}
   @begin{short}
-    A @class{gtk:menu-tool-button} widget is a @class{gtk:tool-item} that
+    The @class{gtk:menu-tool-button} widget is a @class{gtk:tool-item} that
     contains a button and a small additional button with an arrow.
   @end{short}
   When clicked, the arrow button pops up a dropdown menu.
@@ -116,19 +116,20 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"show-menu\" signal}
+    @begin[menu-tool-button::show-menu]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[button]{The @class{gtk:menu-tool-button} widget on which the
+          signal is emitted.}
+      @end{simple-table}
       The signal is emitted before the menu is shown. It can be used to populate
       the menu on demand, using the @fun{gtk:menu-tool-button-menu} function.
       Note that even if you populate the menu dynamically in this way, you must
       set an empty menu on the @class{gtk:menu-tool-button} widget beforehand,
       since the arrow is made insensitive if the menu is not set.
-      @begin[code]{table}
-        @entry[button]{The @class{gtk:menu-tool-button} widget on which the
-          signal is emitted.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:menu-tool-button-new}
   @see-constructor{gtk:menu-tool-button-new-from-stock}
@@ -201,8 +202,8 @@ lambda (button)    :run-first
 
 (defun menu-tool-button-new-from-stock (stock-id)
  #+liber-documentation
- "@version{#2023-2-27}
-  @argument[stock-id]{a string with the name of a stock item}
+ "@version{#2025-07-07}
+  @argument[stock-id]{a string for the name of a stock item}
   @return{The new @class{gtk:menu-tool-button} widget.}
   @begin{short}
     Creates a new menu tool button.
@@ -228,9 +229,9 @@ lambda (button)    :run-first
 (cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_text"
                menu-tool-button-set-arrow-tooltip-text) :void
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-07}
   @argument[button]{a @class{gtk:menu-tool-button} widget}
-  @argument[text]{a string with the text to be used as tooltip text for
+  @argument[text]{a string for the text to be used as tooltip text for
     @arg{button}'s arrow button}
   @begin{short}
     Sets the tooltip text to be used as tooltip for the arrow button which pops
@@ -252,9 +253,9 @@ lambda (button)    :run-first
 (cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_markup"
                menu-tool-button-set-arrow-tooltip-markup) :void
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-07}
   @argument[button]{a @class{gtk:menu-tool-button} widget}
-  @argument[markup]{a string with the markup text to be used as tooltip text
+  @argument[markup]{a string for the markup text to be used as tooltip text
     for @arg{button}'s arrow button}
   @begin{short}
     Sets the tooltip markup text to be used as tooltip for the arrow button

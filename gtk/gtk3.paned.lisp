@@ -144,9 +144,9 @@
   handle that the user can drag to adjust the division. It does not draw any
   relief around the children or around the separator. The space in which the
   separator is called the gutter. Often, it is useful to put each child widget
-  inside a @class{gtk:frame} widget with the shadow type set to the @code{:in}
-  value so that the gutter appears as a ridge. No separator is drawn if one of
-  the children is missing.
+  inside a @class{gtk:frame} widget with the shadow type set to the
+  @val[gtk:shadow-type]{:in} value so that the gutter appears as a ridge. No
+  separator is drawn if one of the children is missing.
 
   Each child widget has two child properties that can be set, the
   @prop[gtk:paned]{resize} and @prop[gtk:paned]{shrink} child properties. If the
@@ -682,9 +682,9 @@ lambda (widget)    :action
 (cffi:defcfun ("gtk_paned_get_handle_window" paned-handle-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{2023-03-05}
+ "@version{2025-07-17}
   @argument[paned]{a @class{gtk:paned} widget}
-  @return{The @class{gdk:window} handle window of the paned widget.}
+  @return{The @class{gdk:window} handle window for the paned widget.}
   @begin{short}
     Returns the GDK window of the handle.
   @end{short}

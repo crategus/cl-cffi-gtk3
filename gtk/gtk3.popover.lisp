@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.popover.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -105,7 +105,7 @@
 (setf (liber:alias-for-symbol 'popover-constraint)
       "GEnum"
       (liber:symbol-documentation 'popover-constraint)
- "@version{2024-6-26}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkPopoverConstraint\" gtk:popover-constraint
   (:export t
@@ -114,12 +114,12 @@
   :window)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{Do not constrain the popover position beyond what is imposed
         by the implementation.}
       @entry[:window]{Constrain the popover to the boundaries of the window that
         it is attached to.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes constraints to positioning of popovers.
@@ -158,7 +158,7 @@
 
 #+liber-documentation
 (setf (documentation 'popover 'type)
- "@version{2024-6-26}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:popover} widget is a bubble-like context window, primarily
     meant to provide context-dependent information or options.
@@ -224,16 +224,17 @@
     differentiate from plain popovers.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"closed\" signal}
+    @begin[popover::closed]{signal}
       @begin{pre}
 lambda (popover)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[popover]{The @class{gtk:popover} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the popover is dismissed either through API or
       user interaction.
-      @begin[code]{table}
-        @entry[popover]{The @class{gtk:popover} widget which received the
-          signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:popover-new}
   @see-constructor{gtk:popover-new-from-model}
@@ -253,21 +254,20 @@ lambda (popover)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "constrain-to" 'popover) t)
- "The @code{constrain-to} property of type @symbol{gtk:popover-constraint}
+ "The @code{constrain-to} property of type @sym{gtk:popover-constraint}
   (Read / Write) @br{}
   Sets a constraint for the popover position. @br{}
-  Default value: @code{:window}")
+  Default value: @val[gtk:popover-constraint]{:window}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'popover-constrain-to)
       "Accessor"
       (documentation 'popover-constrain-to 'function)
- "@version{2024-6-26}
+ "@version{2025-07-11}
   @syntax{(gtk:popover-constrain-to object) => constraint}
   @syntax{(setf (gtk:popover-constrain-to object) constraint)}
   @argument[object]{a @class{gtk:popover} widget}
-  @argument[constraint]{a value of the @symbol{gtk:popover-constraint}
-    enumeration}
+  @argument[constraint]{a value of the @sym{gtk:popover-constraint} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:popover]{constrain-to} slot of the
     @class{gtk:popover} class.
@@ -343,21 +343,21 @@ lambda (popover)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "position" 'popover) t)
- "The @code{position} property of type @symbol{gtk:position-type} (Read / Write)
+ "The @code{position} property of type @sym{gtk:position-type} (Read / Write)
   @br{}
   Sets the preferred position of the popover. @br{}
-  Default value: @code{:top}")
+  Default value: @val[gtk:position-type]{:top}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'popover-position)
       "Accessor"
       (documentation 'popover-position 'function)
- "@version{2024-6-26}
+ "@version{2025-07-05}
   @syntax{(gtk:popover-pointing-to object) => position}
   @syntax{(setf (gtk:popover-pointing-to object) position)}
   @argument[object]{a @class{gtk:popover} widget}
-  @argument[position]{a @symbol{gtk:position-type} value with the preferred
-    popover position}
+  @argument[position]{a @sym{gtk:position-type} value for the preferred popover
+    position}
   @begin{short}
     Accessor of the @slot[gtk:popover]{position} slot of the
     @class{gtk:popover} class.
@@ -512,11 +512,11 @@ lambda (popover)    :run-last
 
 (defun popover-bind-model (popover model &optional namespace)
  #+liber-documentation
- "@version{2024-6-26}
+ "@version{2025-07-05}
   @argument[popover]{a @class{gtk:popover} widget}
   @argument[model]{a @class{g:menu-model} object to bind to or @code{nil} to
     remove the binding}
-  @argument[namespace]{a string with the namespace for actions in @arg{model},
+  @argument[namespace]{a string for the namespace for actions in @arg{model},
     the default value is @code{nil}}
   @begin{short}
     Establishes a binding between a popover and a menu model.

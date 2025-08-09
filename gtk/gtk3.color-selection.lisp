@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.color-selection.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -92,7 +92,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkColorSelection
+;;; GtkColorSelection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkColorSelection" color-selection
@@ -118,7 +118,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-selection 'type)
- "@version{2023-6-14}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:color-selection} widget is used to select a color.
   @end{short}
@@ -130,16 +130,17 @@
     should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"color-changed\" signal}
+    @begin[color-selection::color-changed]{signal}
       @begin{pre}
 lambda (selection)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[selection]{The @class{gtk:color-selection} widget that received
+        the signal.}
+      @end{simple-table}
       The signal is emitted when the color changes in the color selector
       according to its update policy.
-      @begin[code]{table}
-        @entry[selection]{The @class{gtk:color-selection} widget which received
-        the signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:color-selection-new}
   @see-slot{gtk:color-selection-current-alpha}
@@ -319,13 +320,13 @@ lambda (selection)    :run-first
   @see-class{gtk:color-selection}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_new ()
+;;; gtk_color_selection_new
 ;;; ----------------------------------------------------------------------------
 
 (defun color-selection-new ()
  #+liber-documentation
- "@version{2023-6-14}
-  @return{A new @class{gtk:color-selection} widget.}
+ "@version{2025-07-07}
+  @return{The new @class{gtk:color-selection} widget.}
   @short{Creates a new color selector.}
   @begin[Warning]{dictionary}
     The @fun{gtk:color-selection-new} function is deprecated since version 3.4
@@ -337,8 +338,8 @@ lambda (selection)    :run-first
 (export 'color-selection-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_get_previous_alpha ()
-;;; gtk_color_selection_set_previous_alpha ()
+;;; gtk_color_selection_get_previous_alpha
+;;; gtk_color_selection_set_previous_alpha
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf color-selection-previous-alpha) (alpha selection)
@@ -375,8 +376,8 @@ lambda (selection)    :run-first
 (export 'color-selection-previous-alpha)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_get_previous_color ()
-;;; gtk_color_selection_set_previous_color ()
+;;; gtk_color_selection_get_previous_color
+;;; gtk_color_selection_set_previous_color
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf color-selection-previous-color) (color selection)
@@ -423,8 +424,8 @@ lambda (selection)    :run-first
 (export 'color-selection-previous-color)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_get_previous_rgba ()
-;;; gtk_color_selection_set_previous_rgba ()
+;;; gtk_color_selection_get_previous_rgba
+;;; gtk_color_selection_set_previous_rgba
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf color-selection-previous-rgba) (rgba selection)
@@ -470,7 +471,7 @@ lambda (selection)    :run-first
 (export 'color-selection-previous-rgba)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_is_adjusting ()
+;;; gtk_color_selection_is_adjusting
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_color_selection_is_adjusting" color-selection-is-adjusting)
@@ -495,7 +496,7 @@ lambda (selection)    :run-first
 (export 'color-selection-is-adjusting)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_palette_from_string ()             not exported
+;;; gtk_color_selection_palette_from_string                 not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_color_selection_palette_from_string"
@@ -536,7 +537,7 @@ lambda (selection)    :run-first
             (finally (g:free colors-ar))))))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_selection_palette_to_string ()               not exported
+;;; gtk_color_selection_palette_to_string                   not exported
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: Check the implementation, is this correct?

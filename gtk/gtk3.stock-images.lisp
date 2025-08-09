@@ -452,12 +452,12 @@
 ;;;
 ;;; Creates a new GtkIconFactory. An icon factory manages a collection of
 ;;; GtkIconSets; a GtkIconSet manages a set of variants of a particular icon
-;;; (i.e. a GtkIconSet contains variants for different sizes and widget states).
-;;; Icons in an icon factory are named by a stock ID, which is a simple string
-;;; identifying the icon. Each GtkStyle has a list of GtkIconFactorys derived
-;;; from the current theme; those icon factories are consulted first when
-;;; searching for an icon. If the theme does not set a particular icon, GTK
-;;; looks for the icon in a list of default icon factories, maintained by
+;;; (that is, a GtkIconSet contains variants for different sizes and widget
+;;; states). Icons in an icon factory are named by a stock ID, which is a simple
+;;; string identifying the icon. Each GtkStyle has a list of GtkIconFactorys
+;;; derived from the current theme; those icon factories are consulted first
+;;; when searching for an icon. If the theme does not set a particular icon,
+;;; GTK looks for the icon in a list of default icon factories, maintained by
 ;;; gtk_icon_factory_add_default() and gtk_icon_factory_remove_default().
 ;;; Applications with icons should add a default icon factory with their icons,
 ;;; which will allow themes to override the icons for the application.
@@ -508,10 +508,10 @@
   @end{short}
   Icon sets have a list of @class{gtk:icon-source} instances, which they use as
   base icons for rendering icons in different states and sizes. Icons are
-  scaled, made to look insensitive, etc. in the @fun{gtk:icon-set-render-icon}
-  function, but a @class{gtk:icon-set} instance needs base images to work with.
-  The base images and when to use them are described by a
-  @class{gtk:icon-source} instance.
+  scaled, made to look insensitive, and so on, in the
+  @fun{gtk:icon-set-render-icon} function, but a @class{gtk:icon-set} instance
+  needs base images to work with. The base images and when to use them are
+  described by a @class{gtk:icon-source} instance.
 
   An example of when you would use this function: a web browser's \"Back to
   Previous Page\" icon might point in a different direction in Hebrew and in
@@ -609,8 +609,8 @@
   @end{short}
   If you do not add any additional @class{gtk:icon-source} instance to the icon
   set, all variants of the icon will be created from @arg{pixbuf}, using
-  scaling, pixelation, etc. as required to adjust the icon size or make the
-  icon look insensitive/prelighted.
+  scaling, pixelation, and so on, as required to adjust the icon size or make
+  the icon look insensitive/prelighted.
   @begin[Warning]{dictionary}
     The @fun{gtk:icon-set-new-from-pixbuf} function has been deprecated since
     version 3.10 and should not be used in newly written code. Use the
@@ -803,10 +803,10 @@
 ;;; Obtains the pixel size of a semantic icon size, possibly modified by user
 ;;; preferences for the default GtkSettings. (See
 ;;; gtk_icon_size_lookup_for_settings().) Normally size would be
-;;; GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function isn't normally
-;;; needed, gtk_widget_render_icon_pixbuf() is the usual way to get an icon for
-;;; rendering, then just look at the size of the rendered pixbuf. The rendered
-;;; pixbuf may not even correspond to the width/height returned by
+;;; GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, and so on. This function isn't
+;;; normally needed, gtk_widget_render_icon_pixbuf() is the usual way to get an
+;;; icon for rendering, then just look at the size of the rendered pixbuf. The
+;;; rendered pixbuf may not even correspond to the width/height returned by
 ;;; gtk_icon_size_lookup(), because themes are free to render the pixbuf however
 ;;; they like, including changing the usual size.
 ;;;
@@ -836,10 +836,10 @@
 ;;;
 ;;; Obtains the pixel size of a semantic icon size, possibly modified by user
 ;;; preferences for a particular GtkSettings. Normally size would be
-;;; GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, etc. This function isn't normally
-;;; needed, gtk_widget_render_icon_pixbuf() is the usual way to get an icon for
-;;; rendering, then just look at the size of the rendered pixbuf. The rendered
-;;; pixbuf may not even correspond to the width/height returned by
+;;; GTK_ICON_SIZE_MENU, GTK_ICON_SIZE_BUTTON, and so on. This function isn't
+;;; normally needed, gtk_widget_render_icon_pixbuf() is the usual way to get an
+;;; icon for rendering, then just look at the size of the rendered pixbuf. The
+;;; rendered pixbuf may not even correspond to the width/height returned by
 ;;; gtk_icon_size_lookup(), because themes are free to render the pixbuf however
 ;;; they like, including changing the usual size.
 ;;;
@@ -872,8 +872,8 @@
 ;;; gtk_icon_size_register has been deprecated since version 3.10 and
 ;;; should not be used in newly written code. Use GtkIconTheme instead.
 ;;;
-;;; Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU, etc.
-;;; Returns the integer for the size.
+;;; Registers a new icon size, along the same lines as GTK_ICON_SIZE_MENU, and
+;;; so on. Returns the integer for the size.
 ;;;
 ;;; name :
 ;;;     name of the icon size

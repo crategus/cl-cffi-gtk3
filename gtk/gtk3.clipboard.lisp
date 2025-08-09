@@ -347,12 +347,12 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-set-with-data (clipboard targets func)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[targets]{a list of target entries containing information about the
     available forms for the clipboard data}
-  @argument[func]{a @symbol{gtk:clipboard-get-func} callback function to call
-    to get the actual clipboard data}
+  @argument[func]{a @sym{gtk:clipboard-get-func} callback function to call to
+    get the actual clipboard data}
   @begin{return}
     @em{True} if setting the clipboard data succeeded. If setting the
     clipboard data failed the provided callback functions will be ignored.
@@ -509,14 +509,14 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-contents (clipboard target func)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[target]{a string representing the form into which the clipboard
     owner should convert the selection}
-  @argument[func]{a @symbol{gtk:clipboard-received-func} callback function to
-    call when the results are received, or the retrieval fails, if the
-    retrieval fails the @arg{length} field of the @class{gtk:selection-data}
-    instance will be negative}
+  @argument[func]{a @sym{gtk:clipboard-received-func} callback function to call
+    when the results are received, or the retrieval fails, if the retrieval
+    fails the @arg{length} field of the @class{gtk:selection-data} instance
+    will be negative}
   @begin{short}
     Requests the contents of the clipboard as the given target.
   @end{short}
@@ -575,9 +575,9 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-text (clipboard func)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[func]{a @symbol{gtk:clipboard-text-received-func} callback function
+  @argument[func]{a @sym{gtk:clipboard-text-received-func} callback function
     to call when the text is received, or the retrieval fails, it will always
     be called one way or the other}
   @begin{short}
@@ -641,11 +641,11 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-image (clipboard func)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[func]{a @symbol{gtk:clipboard-image-received-func} callback function
+  @argument[func]{a @sym{gtk:clipboard-image-received-func} callback function
     to call when the image is received, or the retrieval fails. It will always
-    be called one way or the other.}
+    be called one way or the other}
   @begin{short}
     Requests the contents of the clipboard as image.
   @end{short}
@@ -711,10 +711,10 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-targets (clipboard func)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[func]{a @symbol{gtk:clipboard-targets-received-func} callback
-    function to call when the targets are received, or the retrieval fails}
+  @argument[func]{a @sym{gtk:clipboard-targets-received-func} callback function
+    to call when the targets are received, or the retrieval fails}
   @begin{short}
     Requests the contents of the clipboard as a list of supported targets.
   @end{short}
@@ -779,12 +779,12 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-rich-text (clipboard buffer func)
  #+liber-documentation
- "@version{#2027-07-03}
+ "@version{#2027-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @argument[buffer]{a @class{gtk:text-buffer} object}
-  @argument[func]{a @symbol{gtk:clipboard-rich-text-received-func} callback
-    function to call when the text is received, or the retrieval fails. It
-    will always be called one way or the other.}
+  @argument[func]{a @sym{gtk:clipboard-rich-text-received-func} callback
+    function to call when the text is received, or the retrieval fails, it
+    will always be called one way or the other}
   @begin{short}
     Requests the contents of the clipboard as rich text.
   @end{short}
@@ -849,9 +849,9 @@ lambda (clipboard event)    :run-first
 
 (defun clipboard-request-uris (clipboard func)
  #+liber-documentation
- "@version{#2024-12-29}
+ "@version{#2025-07-11}
   @argument[clipboard]{a @class{gtk:clipboard} object}
-  @argument[func]{a @symbol{gtk:clipboard-uri-received-func} callback function
+  @argument[func]{a @sym{gtk:clipboard-uri-received-func} callback function
     to call when the URIs are received, or the retrieval fails, it will always
     be called one way or the other}
   @begin{short}

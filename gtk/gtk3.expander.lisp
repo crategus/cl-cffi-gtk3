@@ -129,7 +129,7 @@
 
 #+liber-documentation
 (setf (documentation 'expander 'type)
- "@version{#2025-06-27}
+ "@version{#2025-07-17}
   @begin{short}
     The @class{gtk:expander} widget allows the user to hide or show its child
     by clicking on an expander triangle similar to the triangles used in a
@@ -220,7 +220,7 @@ expander
 lambda (expander)   :action
       @end{pre}
       @begin[code]{simple-table}
-        @entry[expander]{The @class{gtk:expander} widget which receives the
+        @entry[expander]{The @class{gtk:expander} widget that receives the
           signal.}
       @end{simple-table}
     @end{signal}
@@ -333,7 +333,7 @@ lambda (expander)   :action
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label-widget" 'expander) t)
- "The @code{label-widget} property of type @code{gtk:widget} (Read / Write)
+ "The @code{label-widget} property of type @class{gtk:widget} (Read / Write)
   @br{}
   The widget to display in place of the usual expander label.")
 

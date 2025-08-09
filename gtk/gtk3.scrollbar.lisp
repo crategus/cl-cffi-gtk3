@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.scrollbar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -67,7 +67,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkScrollbar
+;;; GtkScrollbar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkScrollbar" scrollbar
@@ -129,67 +129,65 @@
     @code{.dragging}, @code{.hovering}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[fixed-slider-length]{entry}
-        The @code{fixed-slider-length} style property of type @code{:boolean}
-        (Read) @br{}
-        Do not change slider size, just lock it to the minimum length. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[has-backward-stepper]{entry}
-        The @code{has-backward-stepper} style property of type @code{:boolean}
-        (Read)@br{}
-        Display the standard backward arrow button. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[has-forward-stepper]{entry}
-        The @code{has-forward-stepper} style property of type @code{:boolean}
-        (Read) @br{}
-        Display the standard forward arrow button. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[has-secondary-backward-stepper]{entry}
-        The @code{has-secondary-backward-stepper} style property of type
-        @code{:boolean} (Read) @br{}
-        Display a second backward arrow button on the opposite end of the
-        scrollbar. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[has-secondary-forward-stepper]{entry}
-        The @code{has-secondary-forward-stepper} style property of type
-        @code{:boolean} (Read) @br{}
-        Display a second forward arrow button on the opposite end of the
-        scrollbar. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[min-slider-length]{entry}
-        The @code{min-slider-length} style property of type @code{:int} (Read)
-        @br{}
-        Minimum length of scrollbar slider. @br{}
-        @em{Warning:} The @code{min-slider-length} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use min-height/min-width CSS properties on the slider element
-        instead. The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 21
-      @end{entry}
-    @end{table}
+    @begin[scrollbar:fixed-slider-length]{property}
+      The @code{fixed-slider-length} style property of type @code{:boolean}
+      (Read) @br{}
+      Do not change slider size, just lock it to the minimum length. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[scrollbar:has-backward-stepper]{property}
+      The @code{has-backward-stepper} style property of type @code{:boolean}
+      (Read)@br{}
+      Display the standard backward arrow button. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[scrollbar:has-forward-stepper]{property}
+      The @code{has-forward-stepper} style property of type @code{:boolean}
+      (Read) @br{}
+      Display the standard forward arrow button. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[scrollbar:has-secondary-backward-stepper]{property}
+      The @code{has-secondary-backward-stepper} style property of type
+      @code{:boolean} (Read) @br{}
+      Display a second backward arrow button on the opposite end of the
+      scrollbar. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[scrollbar:has-secondary-forward-stepper]{property}
+      The @code{has-secondary-forward-stepper} style property of type
+      @code{:boolean} (Read) @br{}
+      Display a second forward arrow button on the opposite end of the
+      scrollbar. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[scrollbar:min-slider-length]{property}
+      The @code{min-slider-length} style property of type @code{:int} (Read)
+      @br{}
+      Minimum length of scrollbar slider. @br{}
+      @em{Warning:} The @code{min-slider-length} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use min-height/min-width CSS properties on the slider element
+      instead. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 21
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:scrollbar-new}
   @see-class{gtk:adjustment}
   @see-class{gtk:scrolled-window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_scrollbar_new ()
+;;; gtk_scrollbar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline scrollbar-new))
 
 (defun scrollbar-new (orientation &optional (adjustment nil))
  #+liber-documentation
- "@version{#2023-3-24}
-  @argument[orientation]{a @symbol{gtk:orientation} value for the orientation
-    of the scrollbar}
+ "@version{#2025-07-11}
+  @argument[orientation]{a @sym{gtk:orientation} value for the orientation of
+    the scrollbar}
   @argument[adjustment]{an optional @class{gtk:adjustment} object to use,
     the default is to create a new adjustment}
   @return{The new @class{gtk:scrollbar} widget.}

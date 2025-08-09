@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tool-shell.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -76,15 +76,15 @@
   @see-class{gtk:tool-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_ellipsize_mode ()
+;;; gtk_tool_shell_get_ellipsize_mode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_ellipsize_mode" tool-shell-ellipsize-mode)
     pango:ellipsize-mode
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The current @symbol{pango:ellipsize-mode} value of @arg{shell}.}
+  @return{The current @sym{pango:ellipsize-mode} value for @arg{shell}.}
   @begin{short}
     Retrieves the current ellipsize mode for the tool shell.
   @end{short}
@@ -98,14 +98,14 @@
 (export 'tool-shell-ellipsize-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_icon_size ()
+;;; gtk_tool_shell_get_icon_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_icon_size" tool-shell-icon-size) icon-size
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The current @symbol{gtk:icon-size} value for icons of @arg{shell}.}
+  @return{The current @sym{gtk:icon-size} value for icons of @arg{shell}.}
   @begin{short}
     Retrieves the icon size for the tool shell.
   @end{short}
@@ -119,15 +119,15 @@
 (export 'tool-shell-icon-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_orientation ()
+;;; gtk_tool_shell_get_orientation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_orientation" tool-shell-orientation)
     orientation
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The current @symbol{gtk:orientation} value of @arg{shell}.}
+  @return{The current @sym{gtk:orientation} value for @arg{shell}.}
   @begin{short}
     Retrieves the current orientation for the tool shell.
   @end{short}
@@ -141,15 +141,15 @@
 (export 'tool-shell-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_relief_style ()
+;;; gtk_tool_shell_get_relief_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_relief_style" tool-shell-relief-style)
     relief-style
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The @symbol{gtk:relief-style} value of buttons on @arg{shell}.}
+  @return{The @sym{gtk:relief-style} value for buttons on @arg{shell}.}
   @begin{short}
     Returns the relief style of buttons on the tool shell.
   @end{short}
@@ -163,14 +163,14 @@
 (export 'tool-shell-relief-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_style ()
+;;; gtk_tool_shell_get_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_style" tool-shell-style) toolbar-style
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The current @symbol{gtk:toolbar-style} value of @arg{shell}.}
+  @return{The current @sym{gtk:toolbar-style} value for @arg{shell}.}
   @begin{short}
     Retrieves whether the tool shell has text, icons, or both.
   @end{short}
@@ -184,15 +184,15 @@
 (export 'tool-shell-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_alignment ()
+;;; gtk_tool_shell_get_text_alignment
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_alignment" tool-shell-text-alignment)
     :float
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-07}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{A float with the current text alignment of @arg{shell}.}
+  @return{The single float for the current text alignment of @arg{shell}.}
   @begin{short}
     Retrieves the current text alignment for the tool shell.
   @end{short}
@@ -205,15 +205,15 @@
 (export 'tool-shell-text-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_orientation ()
+;;; gtk_tool_shell_get_text_orientation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_orientation"
                tool-shell-text-orientation) orientation
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @argument[shell]{a @class{gtk:tool-shell} widget}
-  @return{The current @symbol{gtk:orientation} value of @arg{shell}.}
+  @return{The current @sym{gtk:orientation} value for @arg{shell}.}
   @begin{short}
     Retrieves the current text orientation for the tool shell.
   @end{short}
@@ -227,7 +227,7 @@
 (export 'tool-shell-text-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_rebuild_menu ()
+;;; gtk_tool_shell_rebuild_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_rebuild_menu" tool-shell-rebuild-menu) :void
@@ -250,7 +250,7 @@
 (export 'tool-shell-rebuild-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_shell_get_text_size_group ()
+;;; gtk_tool_shell_get_text_size_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)

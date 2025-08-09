@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.arrow.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2021 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -65,7 +65,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkArrow
+;;; GtkArrow
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkArrow" arrow
@@ -110,15 +110,12 @@
     direction.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[arrow-scaling]{entry}
-        The @code{arrow-scaling} style property of type @code{:float}
-        (Read) @br{}
-        Amount of space used up by the arrow. @br{}
-        Allowed values: [0,1] @br{}
-        Default value: 0.7
-      @end{entry}
-    @end{table}
+    @begin[arrow:arrow-scaling]{property}
+      The @code{arrow-scaling} style property of type @code{:float} (Read) @br{}
+      Amount of space used up by the arrow. @br{}
+      Allowed values: [0,1] @br{}
+      Default value: 0.7
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:arrow-new}
   @see-slot{gtk:arrow-arrow-type}
@@ -134,20 +131,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "arrow-type" 'arrow) t)
- "The @code{arrow-type} property of type @symbol{gtk:arrow-type}
-  (Read / Write) @br{}
+ "The @code{arrow-type} property of type @sym{gtk:arrow-type} (Read / Write)
+  @br{}
   The direction the arrow should point. @br{}
-  Default value: @code{:right}")
+  Default value: @val[gtk:arrow-type]{:right}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'arrow-arrow-type)
       "Accessor"
       (documentation 'arrow-arrow-type 'function)
- "@version{2023-12-30}
+ "@version{2025-07-07}
   @syntax{(gtk:arrow-arrow-type object) => arrow-type}
   @syntax{(setf (gtk:arrow-arrow-type object) arrow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
-  @argument[arrow-type]{a value of the @symbol{gtk:arrow-type} enumeration}
+  @argument[arrow-type]{a value of the @sym{gtk:arrow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:arrow]{arrow-type} slot of the @class{gtk:arrow}
     class.
@@ -166,20 +163,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'arrow) t)
- "The @code{shadow-type} property of type @symbol{gtk:shadow-type}
-  (Read / Write) @br{}
+ "The @code{shadow-type} property of type @sym{gtk:shadow-type} (Read / Write)
+  @br{}
   Appearance of the shadow surrounding the arrow. @br{}
-  Default value: @code{:out}")
+  Default value: @val[gtk:shadow-type]{:out}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'arrow-shadow-type)
       "Accessor"
       (documentation 'arrow-shadow-type 'function)
- "@version{2023-12-30}
+ "@version{2025-07-07}
   @syntax{(gtk:arrow-shadow-type object) => shadow-type}
   @syntax{(setf (gtk:arrow-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:arrow} widget}
-  @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
+  @argument[shadow-type]{a value of the @sym{gtk:shadow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:arrow]{shadow-type} slot of the @class{gtk:arrow}
     class.
@@ -195,16 +192,16 @@
   @see-symbol{gtk:shadow-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_arrow_new ()
+;;; gtk_arrow_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline arrow-new))
 
 (defun arrow-new (arrow-type shadow-type)
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[arrow-type]{a @symbol{gtk:arrow-type} value}
-  @argument[shadow-type]{a @symbol{gtk:shadow-type} value}
+ "@version{2025-07-07}
+  @argument[arrow-type]{a @sym{gtk:arrow-type} value}
+  @argument[shadow-type]{a @sym{gtk:shadow-type} value}
   @return{The new @class{gtk:arrow} widget.}
   @short{Creates a new arrow.}
   @begin[Warning]{dictionary}
@@ -223,17 +220,17 @@
 (export 'arrow-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_arrow_set ()
+;;; gtk_arrow_set
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline arrow-set))
 
 (defun arrow-set (arrow arrow-type shadow-type)
  #+liber-documentation
- "@version{2023-12-30}
+ "@version{2025-07-07}
   @argument[arrow]{a @class{gtk:arrow} widget}
-  @argument[arrow-type]{a value of the @symbol{gtk:arrow-type} enumeration}
-  @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
+  @argument[arrow-type]{a value of the @sym{gtk:arrow-type} enumeration}
+  @argument[shadow-type]{a value of the @sym{gtk:shadow-type} enumeration}
   @short{Sets the direction and style of the arrow.}
   @begin[Warning]{dictionary}
     The @fun{gtk:arrow-set} function has been deprecated since version 3.14 and

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.font-chooser-widget.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFontChooserWidget
+;;; GtkFontChooserWidget
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkFontChooserWidget" font-chooser-widget
@@ -135,15 +135,15 @@
   @see-function{g:action}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_font_chooser_widget_new ()
+;;; gtk_font_chooser_widget_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline font-chooser-widget-new))
 
 (defun font-chooser-widget-new ()
  #+liber-documentation
- "@version{2023-6-16}
-  @return{A new @class{gtk:font-chooser-widget} widget.}
+ "@version{2025-07-07}
+  @return{The new @class{gtk:font-chooser-widget} widget.}
   @short{Creates a new font chooser widget.}
   @see-class{gtk:font-chooser-widget}"
   (make-instance 'font-chooser-widget))

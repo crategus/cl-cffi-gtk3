@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.font-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFontButton
+;;; GtkFontButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkFontButton" font-button
@@ -120,7 +120,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-button 'type)
- "@version{2023-6-16}
+ "@version{2025-07-15}
   @begin{short}
     The @class{gtk:font-button} widget is a button which displays the currently
     selected font and allows to open a font chooser dialog to change the font.
@@ -133,19 +133,20 @@
     @code{button} and @code{.font} style class.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"font-set\" signal}
+    @begin[font-button::font-set]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:font-button} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the user selects a font. When handling this
       signal, use the @fun{gtk:font-chooser-font} function to find out which
       font was just selected. Note that this signal is only emitted when the
       user changes the font. If you need to react to programmatic font changes
-      as well, use the @code{\"notify::font-name\"} signal.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:font-button} widget which received the
-          signal.}
-      @end{table}
+      as well, use the @sig[g:object]{notify::font-name} signal.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:font-button-new}
   @see-constructor{gtk:font-button-new-with-font}
@@ -177,11 +178,11 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-font-name)
       "Accessor"
       (documentation 'font-button-font-name 'function)
- "@version{2023-6-16}
+ "@version{2025-07-04}
   @syntax{(gtk:font-button-font-name object) => fontname}
   @syntax{(setf (gtk:font-button-font-name object) fontname)}
   @argument[object]{a @class{gtk:font-button} widget}
-  @argument[fontname]{a string with the name of the font to display in the font
+  @argument[fontname]{a string for the name of the font to display in the font
     chooser dialog}
   @begin{short}
     Accessor of the @slot[gtk:font-button]{font-name} slot of the
@@ -190,7 +191,6 @@ lambda (widget)    :run-first
   The @fun{gtk:font-name-button-font-name} function retrieves the name of the
   currently selected font. The @setf{gtk:font-button-font-name} function sets
   or updates the currently displayed font in the font picker dialog.
-
 
   This name includes style and size information as well. If you want to render
   something with the font, use this string with the
@@ -215,7 +215,7 @@ lambda (widget)    :run-first
  "The @code{show-size} property of type @code{:boolean} (Read / Write) @br{}
   If this property is set to @em{true}, the selected font size will be shown in
   the label. For a more WYSIWYG way to show the selected size, see the
-  @code{use-size} property. @br{}
+  @slot[gtk:font-button]{use-size} property. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
@@ -242,7 +242,7 @@ lambda (widget)    :run-first
  "The @code{show-style} property of type @code{:boolean} (Read / Write) @br{}
   If this property is set to @em{true}, the name of the selected font style will
   be shown in the label. For a more WYSIWYG way to show the selected style, see
-  the @code{use-font} property. @br{}
+  the @slot[gtk:font-button]{use-font} property. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
@@ -343,15 +343,15 @@ lambda (widget)    :run-first
   @see-class{gtk:font-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_font_button_new ()
+;;; gtk_font_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline font-button-new))
 
 (defun font-button-new ()
  #+liber-documentation
- "@version{2023-6-16}
-  @return{A new @class{gtk:font-button} widget.}
+ "@version{2025-07-04}
+  @return{The new @class{gtk:font-button} widget.}
   @short{Creates a new font picker widget.}
   @see-class{gtk:font-button}"
   (make-instance 'font-button))
@@ -359,17 +359,17 @@ lambda (widget)    :run-first
 (export 'font-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_font_button_new_with_font ()
+;;; gtk_font_button_new_with_font
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline font-button-new-with-font))
 
 (defun font-button-new-with-font (fontname)
  #+liber-documentation
- "@version{2023-6-16}
-  @argument[fontname]{a string with the name of the font to display in the font
+ "@version{2025-07-04}
+  @argument[fontname]{a string for the name of the font to display in the font
     chooser dialog}
-  @return{A new @class{gtk:font-button} widget.}
+  @return{The new @class{gtk:font-button} widget.}
   @short{Creates a new font picker widget.}
   @see-class{gtk:font-button}"
   (make-instance 'font-button

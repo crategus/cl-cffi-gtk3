@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.misc.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -46,7 +46,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkMisc
+;;; GtkMisc
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkMisc" misc
@@ -69,9 +69,9 @@
 
 #+liber-documentation
 (setf (documentation 'misc 'type)
- "@version{2023-2-27}
+ "@version{2025-07-17}
   @short{Base class for widgets with alignments and padding.}
-  The @class{gtk:misc} widget is an abstract widget which is not useful itself,
+  The @class{gtk:misc} widget is an abstract widget that is not useful itself,
   but is used to derive subclasses which have alignment and padding attributes.
 
   The horizontal and vertical padding attributes allows extra space to be
@@ -112,11 +112,12 @@
 (setf (liber:alias-for-function 'misc-xalign)
       "Accessor"
       (documentation 'misc-xalign 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:misc-xalign object) => xalign}
   @syntax{(setf (gtk:misc-xalign object) xalign)}
   @argument[object]{a @class{gtk:misc} widget}
-  @argument[xalign]{a float with the horizontal alignment}
+  @argument[xalign]{a number coerced to single float for the horizontal
+    alignment}
   @begin{short}
     Accessor of the @slot[gtk:misc]{xalign} slot of the @class{gtk:misc} class.
   @end{short}
@@ -140,11 +141,11 @@
 (setf (liber:alias-for-function 'misc-xpad)
       "Accessor"
       (documentation 'misc-xpad 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:misc-xpad object) => xpad}
   @syntax{(setf (gtk:misc-xpad object) xpad)}
   @argument[object]{a @class{gtk:misc} widget}
-  @argument[xpad]{an integer with the amount of space to add}
+  @argument[xpad]{an integer for the amount of space to add}
   @begin{short}
     Accessor of the @slot[gtk:misc]{xpad} slot of the @class{gtk:misc} class.
   @end{short}
@@ -167,11 +168,12 @@
 (setf (liber:alias-for-function 'misc-yalign)
       "Accessor"
       (documentation 'misc-yalign 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:misc-yalign object) => yalign}
   @syntax{(setf (gtk:misc-yalign object) yalign)}
   @argument[object]{a @class{gtk:misc} widget}
-  @argument[yalign]{a float with the vertical alignment}
+  @argument[yalign]{a number coerced to a single float for the vertical
+    alignment}
   @begin{short}
     Accessor of the @slot[gtk:misc]{yalign} slot of the @class{gtk:misc} class.
   @end{short}
@@ -194,11 +196,11 @@
 (setf (liber:alias-for-function 'misc-ypad)
       "Accessor"
       (documentation 'misc-ypad 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:misc-ypad object) => ypad}
   @syntax{(setf (gtk:misc-ypad object) ypad)}
   @argument[object]{a @class{gtk:misc} widget}
-  @argument[ypad]{an integer with the amount of space to add}
+  @argument[ypad]{an integer for the amount of space to add}
   @begin{short}
     Accessor of the @slot[gtk:misc]{ypad} slot of the @class{gtk:misc} class.
   @end{short}
@@ -207,19 +209,19 @@
   @see-class{gtk:misc}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_misc_set_alignment ()
+;;; gtk_misc_set_alignment
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline misc-set-alignment))
 
 (defun misc-set-alignment (misc xalign yalign)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2025-07-06}
   @argument[misc]{a @class{gtk:misc} widget}
-  @argument[xalign]{a float with the horizontal alignment, from 0.0 (left)
-    to 1.0 (right)}
-  @argument[yalign]{a float with the vertical alignment, from 0.0 (top)
-    to 1.0 (bottom)}
+  @argument[xalign]{a number coerced to a single float for the horizontal
+    alignment, from 0.0 (left) to 1.0 (right)}
+  @argument[yalign]{a number coerced to a single float for the vertical
+    alignment, from 0.0 (top) to 1.0 (bottom)}
   @short{Sets the alignment of the widget.}
   @begin[Warning]{dictionary}
     The @fun{gtk:misc-set-alignment} function has been deprecated since version
@@ -234,19 +236,19 @@
 (export 'misc-set-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_misc_set_padding ()
+;;; gtk_misc_set_padding
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline misc-set-padding))
 
 (defun misc-set-padding (misc xpad ypad)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2025-07-06}
   @argument[misc]{a @class{gtk:misc} widget}
-  @argument[xpad]{an integer with the amount of space to add on the left
-    and right of the widget, in pixels}
-  @argument[ypad]{an integer with the amount of space to add on the top
-    and bottom of the widget, in pixels}
+  @argument[xpad]{an integer for the amount of space to add on the left and
+    right of the widget, in pixels}
+  @argument[ypad]{an integer for the amount of space to add on the top and
+    bottom of the widget, in pixels}
   @short{Sets the amount of space to add around the widget.}
   @begin[Warning]{dictionary}
     The @fun{gtk:misc-set-padding} function has been deprecated since version
@@ -261,7 +263,7 @@
 (export 'misc-set-padding)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_misc_get_alignment ()
+;;; gtk_misc_get_alignment
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline misc-get-alignment))
@@ -288,7 +290,7 @@
 (export 'misc-get-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_misc_get_padding ()
+;;; gtk_misc_get_padding
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline misc-get-padding))

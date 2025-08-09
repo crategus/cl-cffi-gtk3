@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.shortcuts-group.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkShortcutsGroup
+;;; GtkShortcutsGroup
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkShortcutsGroup" shortcuts-group
@@ -146,12 +146,11 @@
 (setf (liber:alias-for-function 'shortcuts-group-height)
       "Accessor"
       (documentation 'shortcuts-group-height 'function)
- "@version{#2023-2-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-group-height object) => height}
   @syntax{(setf (gtk:shortcuts-group-height object) height)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
-  @argument[height]{an unsigned integer with the measure for the number of
-    lines}
+  @argument[height]{an unsigned integer for the measure for the number of lines}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-group]{height} slot of the
     @class{gtk:shortcuts-group} class.
@@ -172,11 +171,11 @@
 (setf (liber:alias-for-function 'shortcuts-group-title)
       "Accessor"
       (documentation 'shortcuts-group-title 'function)
- "@version{#2023-2-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-group-title object) => title}
   @syntax{(setf (gtk:shortcuts-group-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
-  @argument[title]{a string with the title for this group of shortcuts}
+  @argument[title]{a string for the title for this group of shortcuts}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-group]{title} slot of the
     @class{gtk:shortcuts-group} class.
@@ -227,11 +226,11 @@
 (setf (liber:alias-for-function 'shortcuts-group-view)
       "Accessor"
       (documentation 'shortcuts-group-view 'function)
- "@version{#2023-2-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-group-view object) => view}
   @syntax{(setf (gtk:shortcuts-group-view object) view)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
-  @argument[view]{a string with an optional view}
+  @argument[view]{a string for an optional view}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-group]{view} slot of the
     @class{gtk:shortcuts-group} class.

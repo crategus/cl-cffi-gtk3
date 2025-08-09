@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.recent-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRecentChooserDialog
+;;; GtkRecentChooserDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkRecentChooserDialog" recent-chooser-dialog
@@ -119,18 +119,18 @@ gtk_widget_destroy (dialog);
   @see-class{gtk:dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_dialog_new ()
+;;; gtk_recent_chooser_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (defun recent-chooser-dialog-new (title parent &rest buttons)
  #+liber-documentation
- "@version{#2023-3-1}
-  @argument[title]{a string with the title of the dialog, or @code{nil}}
-  @argument[parent]{transient @class{gtk:window} parent of the dialog, or
+ "@version{#2025-07-07}
+  @argument[title]{a string for the title of the dialog, or @code{nil}}
+  @argument[parent]{transient @class{gtk:window} parent for the dialog, or
     @code{nil}}
   @argument[buttons]{pairs with a button text or stock ID and the response ID
-    for the button of type @symbol{gtk:response-type}}
-  @return{A new @class{gtk:recent-chooser-dialog} object.}
+    for the button of type @sym{gtk:response-type}}
+  @return{The new @class{gtk:recent-chooser-dialog} object.}
   @begin{short}
     Creates a new @class{gtk:recent-chooser-dialog} widget.
   @end{short}
@@ -150,20 +150,20 @@ gtk_widget_destroy (dialog);
 (export 'recent-chooser-dialog-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_dialog_new_for_manager ()
+;;; gtk_recent_chooser_dialog_new_for_manager
 ;;; ----------------------------------------------------------------------------
 
 (defun recent-chooser-dialog-new-for-manager (title parent manager
                                               &rest buttons)
  #+liber-documentation
- "@version{#2023-3-1}
-  @argument[title]{a string with the title of the dialog, or @code{nil}}
-  @argument[parent]{a transient @class{gtk:window} parent of the dialog, or
+ "@version{#2025-07-07}
+  @argument[title]{a string for the title of the dialog, or @code{nil}}
+  @argument[parent]{a transient @class{gtk:window} parent for the dialog, or
     @code{nil}}
   @argument[manager]{a @class{gtk:recent-manager} object}
   @argument[buttons]{pairs with a button text or stock ID and the response ID
-    for the button of type @symbol{gtk:response-type}}
-  @return{A new @class{gtk:recent-chooser-dialog} widget.}
+    for the button of type @sym{gtk:response-type}}
+  @return{The new @class{gtk:recent-chooser-dialog} widget.}
   @begin{short}
     Creates a new @class{gtk:recent-chooser-dialog} widget with a specified
     recent manager.

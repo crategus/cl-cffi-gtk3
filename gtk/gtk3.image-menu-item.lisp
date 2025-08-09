@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.image-menu-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -359,8 +359,8 @@
   (group (g:object accel-group)))
 
 (defun image-menu-item-new-from-stock (stock-id &optional group)
- "@version{2024-6-27}
-  @argument[stock-id]{a string with the name of the stock item}
+ "@version{2025-07-07}
+  @argument[stock-id]{a string for the name of the stock item}
   @argument[group]{a @class{gtk:accel-group} object to add the menu items
     accelerator to, or @code{nil}}
   @return{The new @class{gtk:image-menu-item} widget.}
@@ -392,8 +392,8 @@
 
 (cffi:defcfun ("gtk_image_menu_item_new_with_label"
                image-menu-item-new-with-label) (g:object image-menu-item)
- "@version{2024-6-27}
-  @argument[label]{a string with the text of the menu item}
+ "@version{2025-07-07}
+  @argument[label]{a string for the text of the menu item}
   @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item containing a label.
@@ -415,8 +415,8 @@
 
 (cffi:defcfun ("gtk_image_menu_item_new_with_mnemonic"
                image-menu-item-new-with-mnemonic) (g:object image-menu-item)
- "@version{2024-6-27}
-  @argument[label]{a string with the text of the menu item, with an underscore
+ "@version{2025-07-07}
+  @argument[label]{a string for the text of the menu item, with an underscore
     in front of the mnemonic character}
   @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}

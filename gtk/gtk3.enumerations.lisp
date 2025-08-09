@@ -75,7 +75,7 @@
 (setf (liber:alias-for-symbol 'baseline-position)
       "GEnum"
       (liber:symbol-documentation 'baseline-position)
- "@version{2024-03-21}
+ "@version{2025-07-11}
   @begin{declaration}
 (gobject:define-genum \"GtkBaselinePosition\" baseline-position
   (:export t
@@ -85,11 +85,11 @@
   (:bottom 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:top]{Align the baseline at the top.}
       @entry[:center]{Center the baseline.}
       @entry[:bottom]{Align the baseline at the bottom.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Whenever a container has some form of natural row it may align children in
@@ -97,7 +97,7 @@
   @end{short}
   If the amount of vertical space in the row is taller than the total requested
   height of the baseline-aligned children then it can use a
-  @symbol{gtk:baseline-position} value to select where to put the baseline
+  @sym{gtk:baseline-position} value to select where to put the baseline
   inside the extra available space.
   @see-class{gtk:box}")
 
@@ -121,7 +121,7 @@
 (setf (liber:alias-for-symbol 'delete-type)
       "GEnum"
       (liber:symbol-documentation 'delete-type)
- "@version{2023-02-15}
+ "@version{2025-07-16}
   @begin{declaration}
 (gobject:define-genum \"GtkDeleteType\" delete-type
   (:export t
@@ -136,7 +136,7 @@
   (:whitespace 7))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:chars]{Delete characters.}
       @entry[:word-ends]{Delete only the portion of the word to the left/right
         of cursor if we are in the middle of a word.}
@@ -150,12 +150,12 @@
         in Emacs (or its reverse).}
       @entry[:paragraphs]{Delete entire line. Like @kbd{C-k} in pico.}
       @entry[:whitespace]{Delete only whitespace. Like @kbd{M-} in Emacs.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The values of this enumeration are passed as an argument to the
-    @code{\"delete-from-cursor\"} signal handler of the @class{gtk:entry} and
-    @class{gtk:text-view} widgets.
+    @code{\"delete-from-cursor\"} signal handler of the @class{gtk:entry}
+    or @class{gtk:text-view} widgets.
   @end{short}
   @see-class{gtk:entry}
   @see-class{gtk:text-view}")
@@ -178,7 +178,7 @@
 (setf (liber:alias-for-symbol 'direction-type)
       "GEnum"
       (liber:symbol-documentation 'direction-type)
- "@version{2023-02-15}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkDirectionType\" direction-type
   (:export t
@@ -191,14 +191,14 @@
   (:right 5))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:tab-forward]{Move forward.}
       @entry[:tab-backward]{Move backward.}
       @entry[:up]{Move up.}
       @entry[:down]{Move down.}
       @entry[:left]{Move left.}
       @entry[:right]{Move right.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Focus movement types.}")
 
@@ -218,7 +218,7 @@
 (setf (liber:alias-for-symbol 'justification)
       "GEnum"
       (liber:symbol-documentation 'justification)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkJustification\" justification
   (:export t
@@ -229,12 +229,12 @@
   (:fill 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:left]{The text is placed at the left edge of the label.}
       @entry[:right]{The text is placed at the right edge of the label.}
       @entry[:center]{The text is placed in the center of the label.}
       @entry[:fill]{The text is placed is distributed across the label.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used for justifying the text inside a @class{gtk:label} widget.
@@ -263,7 +263,7 @@
 (setf (liber:alias-for-symbol 'movement-step)
       "GEnum"
       (liber:symbol-documentation 'movement-step)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkMovementStep\" movement-step
   (:export t
@@ -280,7 +280,7 @@
   (:horizontal-pages 9))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:logical-positions]{Move forward or back by graphemes.}
       @entry[:visual-positions]{Move left or right by graphemes.}
       @entry[:words]{Move forward or back by words.}
@@ -291,7 +291,7 @@
       @entry[:pages]{Move by pages.}
       @entry[:buffer-ends]{Move to ends of the buffer.}
       @entry[:horizontal-pages]{Move horizontally by pages.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The values of this enumeration are passed as an argument to the
@@ -316,7 +316,7 @@
 (setf (liber:alias-for-symbol 'orientation)
       "GEnum"
       (liber:symbol-documentation 'orientation)
- "@version{2024-03-14}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkOrientation\" orientation
   (:export t
@@ -325,10 +325,10 @@
   (:vertical 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:horizontal]{The widget is in horizontal orientation.}
       @entry[:vertical]{The widget is in vertical orientation.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Represents the orientation of widgets which implements the
@@ -351,7 +351,7 @@
 (setf (liber:alias-for-symbol 'pack-type)
       "GEnum"
       (liber:symbol-documentation 'pack-type)
- "@version{2023-03-06}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkPackType\" pack-type
   (:export t
@@ -360,10 +360,10 @@
   (:end 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:start]{The child is packed into the start of the box.}
       @entry[:end]{The child is packed into the end of the box.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Represents the packing location of a @class{gtk:box} child widget.
@@ -388,7 +388,7 @@
 (setf (liber:alias-for-symbol 'position-type)
       "GEnum"
       (liber:symbol-documentation 'position-type)
- "@version{2024-03-21}
+ "@version{2025-07-11}
   @begin{declaration}
 (gobject:define-genum \"GtkPositionType\" position-type
   (:export t
@@ -399,16 +399,16 @@
   (:bottom 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:left]{The feature is at the left edge.}
       @entry[:right]{The feature is at the right edge.}
       @entry[:top]{The feature is at the top edge.}
       @entry[:bottom]{The feature is at the bottom edge.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
-    Describes which edge of a widget a certain feature is positioned at, e.g.
-    the tabs of a @class{gtk:notebook} widget or the label of a
+    Describes which edge of a widget a certain feature is positioned at, for
+    example, the tabs of a @class{gtk:notebook} widget or the label of a
     @class{gtk:scale} widget.
   @end{short}
   @see-class{gtk:notebook}
@@ -429,7 +429,7 @@
 (setf (liber:alias-for-symbol 'relief-style)
       "GEnum"
       (liber:symbol-documentation 'relief-style)
- "@version{2024-03-21}
+ "@version{2025-07-16}
   @begin{declaration}
 (gobject:define-genum \"GtkReliefStyle\" relief-style
   (:export t
@@ -439,12 +439,12 @@
   (:none 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{Draw a normal relief.}
       @entry[:half]{Draw a half relief. Deprecated in 3.14, does the same as
-        @code{:normal}.}
+        @val[gtk:relief-style]{:normal}.}
       @entry[:none]{Draw no relief.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Indicated the relief to be drawn around a @class{gtk:button} widget.}
   @see-class{gtk:button}")
@@ -512,7 +512,7 @@
 (setf (liber:alias-for-symbol 'scroll-type)
       "GEnum"
       (liber:symbol-documentation 'scroll-type)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkScrollType\" scroll-type
   (:export t
@@ -535,7 +535,7 @@
   (:end 15))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No scrolling.}
       @entry[:jump]{Jump to new location.}
       @entry[:step-backward}{Step backward.}
@@ -552,7 +552,7 @@
       @entry[:page-right]{Page to the right.}
       @entry[:start]{Scroll to start.}
       @entry[:end]{Scroll to end.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The scrolling types of this enumeration are a parameter for signal
@@ -579,7 +579,7 @@
 (setf (liber:alias-for-symbol 'selection-mode)
       "GEnum"
       (liber:symbol-documentation 'selection-mode)
- "@version{2024-03-14}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkSelectionMode\" selection-mode
   (:export t
@@ -590,7 +590,7 @@
   (:multiple 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No selection is possible.}
       @entry[:single]{Zero or one element may be selected.}
       @entry[:browse]{Exactly one element is selected. In some circumstances,
@@ -602,7 +602,7 @@
         key may be used to enlarge the selection, and the @kbd{Shift} key to
         select between the focus and the child pointed to. Some widgets may
         also allow click-drag to select a range of elements.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Used to control what selections users are allowed to make.}
   @see-class{gtk:flow-box}
@@ -627,7 +627,7 @@
 (setf (liber:alias-for-symbol 'shadow-type)
       "GEnum"
       (liber:symbol-documentation 'shadow-type)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkShadowType\" shadow-type
   (:export t
@@ -639,13 +639,13 @@
   (:etched-out 4))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No outline.}
       @entry[:in]{The outline is bevelled inwards.}
       @entry[:out]{The outline is bevelled outwards like a button.}
       @entry[:etched-in]{The outline has a sunken 3d appearance.}
       @entry[:etched-out]{The outline has a raised 3d appearance.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to change the appearance of an outline typically provided by a
@@ -682,7 +682,7 @@
 (setf (liber:alias-for-symbol 'state-flags)
       "GFlags"
       (liber:symbol-documentation 'state-flags)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-gflags \"GtkStateFlags\" state-flags
   (:export t
@@ -703,7 +703,7 @@
   (:drop-active  #.(ash 1 12)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{State during normal operation.}
       @entry[:active]{Widget is active.}
       @entry[:prelight]{Widget has a mouse pointer over it.}
@@ -719,7 +719,7 @@
         visited.}
       @entry[:checked]{Widget is checked.}
       @entry[:drop-active]{Widget is highlighted as a drop target for DND.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Describes a widget state.}
   Widget states are used to match the widget against CSS pseudo-classes. Note
@@ -743,7 +743,7 @@
 (setf (liber:alias-for-symbol 'toolbar-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-style)
- "@version{2024-03-21}
+ "@version{2025-06-25}
   @begin{declaration}
 (gobject:define-genum \"GtkToolbarStyle\" toolbar-style
   (:export t
@@ -754,13 +754,13 @@
   (:both-horiz 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:icons]{Buttons display only icons in the toolbar.}
       @entry[:text]{Buttons display only text labels in the toolbar.}
       @entry[:both]{Buttons display text and icons in the toolbar.}
       @entry[:both-horiz]{Buttons display icons and text alongside each other,
         rather than vertically stacked}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to customize the appearance of a @class{gtk:toolbar} widget.
@@ -784,7 +784,7 @@
 (setf (liber:alias-for-symbol 'sort-type)
       "GEnum"
       (liber:symbol-documentation 'sort-type)
- "@version{2024-03-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkSortType\" sort-type
   (:export t
@@ -793,10 +793,10 @@
   (:descending 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:ascending]{Sorting is in ascending order.}
       @entry[:descending]{Sorting is in descending order.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Determines the direction of a sort.}
   @see-class{gtk:tree-sortable}
@@ -817,7 +817,7 @@
 (setf (liber:alias-for-symbol 'text-direction)
       "GEnum"
       (liber:symbol-documentation 'text-direction)
- "@version{2024-03-22}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkTextDirection\" text-direction
   (:export t
@@ -827,11 +827,11 @@
   (:rtl 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No direction.}
       @entry[:ltr]{Left to right text direction.}
       @entry[:rtl]{Right to left text direction.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The text direction controls the primary direction for widgets containing
@@ -863,7 +863,7 @@
 (setf (liber:alias-for-symbol 'expander-style)
       "GEnum"
       (liber:symbol-documentation 'expander-style)
- "@version{2024-03-22}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkExpanderStyle\" expander-style
   (:export t
@@ -874,12 +874,12 @@
   (:expanded 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:collapsed]{The style used for a collapsed subtree.}
       @entry[:semi-collapsed]{Intermediate style used during animation.}
       @entry[:semi-expanded]{Intermediate style used during animation.}
       @entry[:expanded]{The style used for an expanded subtree.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to specify the style of the expanders drawn by a @class{gtk:tree-view}
@@ -906,7 +906,7 @@
 (setf (liber:alias-for-symbol 'state-type)
       "GEnum"
       (liber:symbol-documentation 'state-type)
- "@version{2024-03-21}
+ "@version{2025-07-11}
   @begin{declaration}
 (gobject:define-genum \"GtkStateType\" state-type
   (:export t
@@ -920,7 +920,7 @@
   (:focused 6))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{State during normal operation.}
       @entry[:active]{State of a currently active widget, such as a depressed
         button.}
@@ -934,20 +934,20 @@
         radiobuttons that aren't either set to @em{true} nor @code{nil}, or
         buttons requiring the user attention.}
       @entry[:focused]{The widget has the keyboard focus.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     This type indicates the current state of a widget.
   @end{short}
-  The state determines how the widget is drawn. The @symbol{gtk:state-type}
+  The state determines how the widget is drawn. The @sym{gtk:state-type}
   enumeration is also used to identify different colors in a deprecated
   @code{GtkStyle} object for drawing, so states can be used for subparts of a
   widget as well as entire widgets.
   @begin[Warning]{dictionary}
-    The @symbol{gtk:state-type} enumeration has been deprecated since version
-    3.14 and should not be used in newly written code. All APIs that are using
-    this enumeration have been deprecated in favor of alternatives using the
-    @symbol{gtk:state-flags} flags.
+    The @sym{gtk:state-type} enumeration has been deprecated since version 3.14
+    and should not be used in newly written code. All APIs that are using this
+    enumeration have been deprecated in favor of alternatives using the
+    @sym{gtk:state-flags} flags.
   @end{dictionary}
   @see-symbol{gtk:state-flags}")
 

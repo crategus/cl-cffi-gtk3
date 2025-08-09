@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.event-controller-key.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -58,7 +58,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEventControllerKey
+;;; GtkEventControllerKey
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEventControllerKey" event-controller-key
@@ -76,77 +76,83 @@
     situations where you need access to key events.
   @end{short}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"focus-in\" signal}
+    @begin[event-controller-key::focus-in]{signal}
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on which
           the signal is emitted.}
-      @end{table}
-    @subheading{The \"focus-out\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[event-controller-key::focus-out]{signal}
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which the signal is emitted.}
-      @end{table}
-    @subheading{The \"im-update\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[event-controller-key::im-update]{signal}
       @begin{pre}
 lambda (controller)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which the signal is emitted.}
-      @end{table}
-    @subheading{The \"key-pressed\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[event-controller-key::key-pressed]{signal}
       @begin{pre}
 lambda (controller keyval keycode state)    :run-last
       @end{pre}
-      The signal is emitted whenever a key is pressed.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the pressed key.}
         @entry[keycode]{An unsigned integer with the raw code of the pressed
           key.}
-        @entry[state]{The @symbol{gdk:modifier-type} bitmask representing the
+        @entry[state]{The @sym{gdk:modifier-type} bitmask representing the
           state of modifier keys and pointer buttons.}
         @entry[Returns]{@em{True} if the key press was handled, @em{false}
           otherwise.}
-      @end{table}
-    @subheading{The \"key-released\" signal}
+      @end{simple-table}
+      The signal is emitted whenever a key is pressed.
+    @end{signal}
+    @begin[event-controller-key::key-released]{signal}
       @begin{pre}
 lambda (controller keyval keycode state)    :run-last
       @end{pre}
-      The signal is emitted whenever a key is released.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
         @entry[keyval]{An unsigned integer with the released key.}
         @entry[keycode]{An unsigned integer with the raw code of the released
           key.}
-        @entry[state]{The @symbol{gdk:modifier-type} bitmask representing the
+        @entry[state]{The @sym{gdk:modifier-type} bitmask representing the
           state of modifier keys and pointer buttons.}
-      @end{table}
-    @subheading{The \"modifiers\" signal}
+      @end{simple-table}
+      The signal is emitted whenever a key is released.
+    @end{signal}
+    @begin[event-controller-key::modifiers]{signal}
       @begin{pre}
 lambda (controller state)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
-        @entry[state]{The @symbol{gdk:modifier-type} bitmask, representing the
+        @entry[state]{The @sym{gdk:modifier-type} bitmask, representing the
           state of modifier keys and pointer buttons.}
         @entry[Returns]{a not documented boolean}
-      @end{table}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:event-controller-key-new}
   @see-class{gtk:event-controller}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_event_controller_key_new ()
+;;; gtk_event_controller_key_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline event-controller-key-new))

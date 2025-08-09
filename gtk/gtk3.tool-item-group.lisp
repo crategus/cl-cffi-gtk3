@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tool-item-group.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,7 +93,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToolItemGroup
+;;; GtkToolItemGroup
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToolItemGroup" tool-item-group
@@ -132,57 +132,52 @@
     @code{toolitemgroup}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[expand]{entry}
-        The @code{expand} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Whether the item should receive extra space when the group grows. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[fill]{entry}
-        The @code{fill} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Whether the item should fill the available space. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[homogenous]{entry}
-        The @code{homogeneous} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the item should be the same size as other homogeneous items.
-        @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[new-row]{entry}
-        The @code{new-row} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Whether the item should start a new row. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[position]{entry}
-        The @code{position} child property of type @code{:int} (Read / Write)
-        @br{}
-        Position of the item within this group. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[scrolled-window:expand]{property}
+      The @code{expand} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Whether the item should receive extra space when the group grows. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[scrolled-window:fill]{property}
+      The @code{fill} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Whether the item should fill the available space. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[scrolled-window:homogenous]{property}
+      The @code{homogeneous} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the item should be the same size as other homogeneous items.
+      @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[scrolled-window:new-row]{property}
+      The @code{new-row} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Whether the item should start a new row. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[scrolled-window:position]{property}
+      The @code{position} child property of type @code{:int} (Read / Write)
+      @br{}
+      Position of the item within this group. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[expander-size]{entry}
-        The @code{expander-size} style property of type @code{:int} (Read) @br{}
-        Size of the expander arrow. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 16
-      @end{entry}
-      @begin[header-spacing]{entry}
-        The @code{header-spacing} style property of type @code{:int} (Read)
-        @br{}
-        Spacing between expander arrow and caption. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 2
-      @end{entry}
-    @end{table}
+    @begin[tool-item-group:expander-size]{property}
+      The @code{expander-size} style property of type @code{:int} (Read) @br{}
+      Size of the expander arrow. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 16
+    @end{property}
+    @begin[tool-item-group:header-spacing]{property}
+      The @code{header-spacing} style property of type @code{:int} (Read) @br{}
+      Spacing between expander arrow and caption. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 2
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:tool-item-group-new}
   @see-slot{gtk:tool-item-group-collapsed}
@@ -228,20 +223,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "ellipsize" 'tool-item-group) t)
- "The @code{ellipsize} property of type @symbol{pango:ellipsize-mode}
+ "The @code{ellipsize} property of type @sym{pango:ellipsize-mode}
   (Read / Write) @br{}
   Ellipsize for item group headers. @br{}
-  Default value: @code{:none}")
+  Default value: @val[pango:ellipsize-mode]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tool-item-group-ellipsize)
       "Accessor"
       (documentation 'tool-item-group-ellipsize 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @syntax{(gtk:tool-item-group-ellipsize object) => ellipsize}
   @syntax{(setf (gtk:tool-item-group-ellipsize object) ellipsize)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
-  @argument[ellipsize]{a @symbol{pango:ellipsize-mode} value for labels in
+  @argument[ellipsize]{a @sym{pango:ellipsize-mode} value for labels in
     @arg{group}}
   @begin{short}
     Accessor of the @slot[gtk:tool-item-group]{ellipsize} slot of the
@@ -258,20 +253,20 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "header-relief"
                                                'tool-item-group) t)
- "The @code{header-relief} property of type @symbol{gtk:relief-style}
+ "The @code{header-relief} property of type @sym{gtk:relief-style}
   (Read / Write) @br{}
   Relief of the group header button. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[gtk:relief-style]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tool-item-group-header-relief)
       "Accessor"
       (documentation 'tool-item-group-header-relief 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-11}
   @syntax{(gtk:tool-item-group-header-relief object) => style}
   @syntax{(setf (gtk:tool-item-group-header-relief object) style)}
   @argument[group]{a @class{gtk:tool-item-group} widget}
-  @argument[object]{a value of the @symbol{gtk:relief-style} enumeration}
+  @argument[object]{a value of the @sym{gtk:relief-style} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:tool-item-group]{header-relief} slot of the
     @class{gtk:tool-item-group} class.
@@ -295,11 +290,11 @@
 (setf (liber:alias-for-function 'tool-item-group-label)
       "Accessor"
       (documentation 'tool-item-group-label 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-06}
   @syntax{(gtk:tool-item-group-label object) => label}
   @syntax{(setf (gtk:tool-item-group-label object) label)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
-  @argument[label]{a string with the new human readable label of of the group}
+  @argument[label]{a string for the new human readable label of of the group}
   @begin{short}
     Accessor of the @slot[gtk:tool-item-group]{label} slot of the
     @class{gtk:tool-item-group} class.
@@ -451,12 +446,12 @@
 (setf (liber:alias-for-function 'tool-item-group-child-position)
       "Accessor"
       (documentation 'tool-item-group-child-position 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-06}
   @syntax{(gtk:tool-item-group-child-position container child) => position}
   @syntax{(setf (gtk:tool-item-group-child-position container child) position)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
   @argument[child]{a @class{gtk:widget} child object}
-  @argument[position]{an integer with the position of the item within the group}
+  @argument[position]{an integer for the position of the item within the group}
   @begin{short}
     Accessor of the @code{position} child property of the
     @class{gtk:tool-item-group} class.
@@ -492,20 +487,20 @@
 (export 'tool-item-group-drop-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_item_position ()
+;;; gtk_tool_item_group_get_item_position
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as tool-item-group-child-position
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_n_items ()
+;;; gtk_tool_item_group_get_n_items
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_n_items" tool-item-group-n-items) :uint
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-17}
   @argument[group]{a @class{gtk:tool-item-group} widget}
-  @return{A unsigned integer with the number of tool items in @arg{group}.}
+  @return{The unsigned integer for the number of tool items in @arg{group}.}
   @begin{short}
     Gets the number of tool items in the tool item group.
   @end{short}
@@ -516,15 +511,15 @@
 (export 'tool-item-group-n-items)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_get_nth_item ()
+;;; gtk_tool_item_group_get_nth_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_get_nth_item" tool-item-group-nth-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-06}
   @argument[group]{a @class{gtk:tool-item-group} widget}
-  @argument[index]{an unsigned integer with the index}
+  @argument[index]{an unsigned integer for the index}
   @return{The @class{gtk:tool-item} widget at @arg{index}.}
   @begin{short}
     Gets the tool item at @arg{index} in the tool item group.
@@ -537,15 +532,15 @@
 (export 'tool-item-group-nth-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_insert ()
+;;; gtk_tool_item_group_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_group_insert" tool-item-group-insert) :void
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-06}
   @argument[group]{a @class{gtk:tool-item-group} widget}
   @argument[item]{a @class{gtk:tool-item} widget to insert into group}
-  @argument[position]{an integer with the position of @arg{item} in @arg{group},
+  @argument[position]{an integer for the position of @arg{item} in @arg{group},
     starting with 0, the position -1 means end of list}
   @begin{short}
     Inserts @arg{item} at @arg{position} in the list of children of the
@@ -560,16 +555,16 @@
 (export 'tool-item-group-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_new ()
+;;; gtk_tool_item_group_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline tool-item-group-new))
 
 (defun tool-item-group-new (label)
  #+liber-documentation
- "@version{#2023-2-27}
-  @argument[label]{a string with the label of the new group}
-  @return{A new @class{gtk:tool-item-group} widget.}
+ "@version{#2025-07-06}
+  @argument[label]{a string for the label of the new group}
+  @return{The new @class{gtk:tool-item-group} widget.}
   @begin{short}
     Creates a new tool item group with label @arg{label}.
   @end{short}
@@ -580,7 +575,7 @@
 (export 'tool-item-group-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_group_set_item_position ()
+;;; gtk_tool_item_group_set_item_position
 ;;; ----------------------------------------------------------------------------
 
 ;; Implemented as (setf tool-item-group-child-position

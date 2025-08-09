@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.file-chooser-native.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -265,11 +265,11 @@ g_object_unref (native);
 (setf (liber:alias-for-function 'file-chooser-native-accept-label)
       "Accessor"
       (documentation 'file-chooser-native-accept-label 'function)
- "@version{#2023-6-12}
+ "@version{#2025-07-06}
   @syntax{(gtk:file-chooser-native-accept-label object) => label}
   @syntax{(setf (gtk:file-chooser-native-accept-label object) label)}
   @argument[object]{a @class{gtk:file-chooser-native} widget}
-  @argument[label]{a string with the custom label or @code{nil} for the default}
+  @argument[label]{a string for the custom label or @code{nil} for the default}
   @begin{short}
     Accessor of the @slot[gtk:file-chooser-native]{accept-label} slot of the
     @class{gtk:file-chooser-native} class.
@@ -298,11 +298,11 @@ g_object_unref (native);
 (setf (liber:alias-for-function 'file-chooser-native-cancel-label)
       "Accessor"
       (documentation 'file-chooser-native-cancel-label 'function)
- "@version{#2023-6-12}
+ "@version{#2025-07-06}
   @syntax{(gtk:file-chooser-native-cancel-label object) => label}
   @syntax{(setf (gtk:file-chooser-native-cancel-label object) label)}
   @argument[object]{a @class{gtk:file-chooser-native} widget}
-  @argument[label]{a string with the custom label or @code{nil} for the default}
+  @argument[label]{a string for the custom label or @code{nil} for the default}
   @begin{short}
     Accessor of the @slot[gtk:file-chooser-native]{cancel-label} slot of the
     @class{gtk:file-chooser-native} class.
@@ -319,22 +319,22 @@ g_object_unref (native);
   @see-class{gtk:file-chooser-native}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_native_new ()
+;;; gtk_file_chooser_native_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_file_chooser_native_new" file-chooser-native-new)
     (g:object file-chooser-native)
- "@version{#2023-6-12}
-  @argument[title]{a string with the title of the native, or @code{nil}}
-  @argument[parent]{a @class{gtk:window} transient parent of the native, or
+ "@version{#2025-07-06}
+  @argument[title]{a string for the title of the native, or @code{nil}}
+  @argument[parent]{a @class{gtk:window} transient parent for the native, or
     @code{nil}}
-  @argument[action]{a @symbol{gtk:file-chooser-action} value with the open or
+  @argument[action]{a @sym{gtk:file-chooser-action} value for the open or
     save mode for the dialog}
-  @argument[accept-label]{a string with the text to go in the accept button, or
+  @argument[accept-label]{a string for the text to go in the accept button, or
     @code{nil} for the default}
-  @argument[cancel-label]{a string with the text to go in the cancel button, or
+  @argument[cancel-label]{a string for the text to go in the cancel button, or
     @code{nil} for the default}
-  @return{A new @class{gtk:file-chooser-native} widget.}
+  @return{The new @class{gtk:file-chooser-native} widget.}
   @begin{short}
     Creates a new @class{gtk:file-chooser-native} widget.
   @end{short}

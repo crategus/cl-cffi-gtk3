@@ -2,8 +2,8 @@
 ;;; gtk3.file-chooser.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -147,7 +147,7 @@
 (setf (liber:alias-for-symbol 'file-chooser-action)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-action)
- "@version{2024-3-21}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkFileChooserAction\" file-chooser-action
   (:export t
@@ -158,7 +158,7 @@
   (:create-folder 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:open]{Indicates Open mode. The file chooser will only let the
         user pick an existing file.}
       @entry[:save]{Indicates Save mode. The file chooser will let the user
@@ -167,7 +167,7 @@
         file chooser will let the user pick an existing folder.}
       @entry[:create-folder]{Indicates a mode for creating a new folder. The
         file chooser will let the user name an existing or new folder.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes whether a @class{gtk:file-chooser} widget is being used to
@@ -190,7 +190,7 @@
 (setf (liber:alias-for-symbol 'file-chooser-confirmation)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-confirmation)
- "@version{2024-3-22}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkFileChooserConfirmation\" gtk:file-chooser-confirmation
   (:export t
@@ -200,14 +200,14 @@
   (:select-again 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:confirm]{The file chooser will present its stock dialog to confirm
         about overwriting an existing file.}
       @entry[:accept-filename]{The file chooser will terminate and accept the
         user's choice of a file name.}
       @entry[:select-again]{The file chooser will continue running, so as to let
         the user select another file name.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used as a return value of handlers for the @code{\"confirm-overwrite\"}
@@ -219,10 +219,8 @@
   @class{gtk:file-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkFileChooserError
+;;; GtkFileChooserError                                     not exported
 ;;; ----------------------------------------------------------------------------
-
-;; GtkFileChooserError is not exported
 
 (gobject:define-genum "GtkFileChooserError" file-chooser-error
   (:export nil
@@ -236,7 +234,7 @@
 (setf (liber:alias-for-symbol 'file-chooser-error)
       "GEnum"
       (liber:symbol-documentation 'file-chooser-error)
- "@version{#2024-3-21}
+ "@version{#2025-07-11}
   @begin{declaration}
 (gobject:define-genum \"GtkFileChooserError\" file-chooser-error
   (:export t
@@ -247,14 +245,14 @@
   (:incomplete-hostname 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:nonexistent]{Indicates that a file does not exist.}
       @entry[:bad-filename]{Indicates a malformed filename.}
-      @entry[:already-exists]{Indicates a duplicate path, e.g. when adding a
-        bookmark.}
-      @entry[:incomplete-hostname]{Indicates an incomplete hostname, e.g.
-        \"http://foo\" without a slash after that.}
-    @end{table}
+      @entry[:already-exists]{Indicates a duplicate path, for example, when
+        adding a bookmark.}
+      @entry[:incomplete-hostname]{Indicates an incomplete hostname, for
+        example, @file{\"http://foo\"} without a slash after that.}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These identify the various errors that can occur while calling
@@ -307,7 +305,7 @@
 (setf (liber:alias-for-class 'file-chooser)
       "Interface"
       (documentation 'file-chooser 'type)
- "@version{2023-5-16}
+ "@version{2025-07-16}
   @begin{short}
     The @class{gtk:file-chooser} interface is an interface that can be
     implemented by file selection widgets.
@@ -330,8 +328,8 @@
     @end{entry}
     @begin[Shortcuts]{entry}
       can be provided by the application or by the underlying filesystem
-      abstraction, e.g. both the gnome-vfs and the Windows filesystems provide
-      \"Desktop\" shortcuts. Shortcuts cannot be modified by the user.
+      abstraction, for example, both the gnome-vfs and the Windows filesystems
+      provide \"Desktop\" shortcuts. Shortcuts cannot be modified by the user.
     @end{entry}
     @begin[Volumes]{entry}
       are provided by the underlying filesystem abstraction. Volumes are the
@@ -359,8 +357,8 @@
     You can add a custom preview widget to a file chooser and then get
     notification about when the preview needs to be updated. To install a
     preview widget, use the @fun{gtk:file-chooser-preview-widget} function.
-    Then, connect to the @code{\"update-preview\"} signal to get notified
-    when you need to update the contents of the preview.
+    Then, connect to the @sig[gtk:file-chooser]{update-preview} signal to get
+    notified when you need to update the contents of the preview.
 
     Your callback should use the @fun{gtk:file-chooser-preview-filename}
     function to see what needs previewing. Once you have generated the preview
@@ -463,29 +461,37 @@
     include your widgets in it. Then, set the container as the whole extra
     widget.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"confirm-overwrite\" signal}
+    @begin[file-chooser::confirm-overwrite]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:file-chooser} widget that received the
+          signal.}
+        @entry[Returns]{The @sym{gtk:file-chooser-confirmation} value that
+          indicates which action to take after emitting the signal.}
+      @end{simple-table}
       The signal gets emitted whenever it is appropriate to present a
       confirmation dialog when the user has selected a file name that already
       exists. The signal only gets emitted when the file chooser is in
-      @code{:save} mode.
+      @val[gtk:file-chooser-action]{:save} mode.
 
       Most applications just need to turn on the
-      @code{do-overwrite-confirmation} property, and they will automatically
-      get a stock confirmation dialog. Applications which need to customize
-      this behavior should do that, and also connect to the
-      @code{\"confirm-overwrite\"} signal.
+      @slot[gtk:file-chooser]{do-overwrite-confirmation} property, and they will
+      automatically get a stock confirmation dialog. Applications which need to
+      customize this behavior should do that, and also connect to the
+      @sig[gtk:file-chooser]{confirm-overwrite} signal.
 
       A signal handler for this signal must return a value of the
-      @symbol{gtk:file-chooser-confirmation} enumeration, which indicates the
+      @sym{gtk:file-chooser-confirmation} enumeration, which indicates the
       action to take. If the handler determines that the user wants to select
-      a different filename, it should return the @code{:select-again} value. If
-      it determines that the user is satisfied with his choice of file name, it
-      should return the @code{:accept-filename} value. On the other hand, if it
-      determines that the stock confirmation dialog should be used, it should
-      return the @code{:confirm} value. The following example illustrates this.
+      a different filename, it should return the
+      @val[gtk:file-chooser-confirmation]{:select-again} value. If it determines
+      that the user is satisfied with his choice of file name, it should return
+      the @val[gtk:file-chooser-confirmation]{:accept-filename} value. On the
+      other hand, if it determines that the stock confirmation dialog should be
+      used, it should return the @val[gtk:file-chooser-confirmation]{:confirm}
+      value. The following example illustrates this.
 
       @b{Example:} Custom confirmation
       @begin{pre}
@@ -507,16 +513,15 @@ lambda (chooser)    :run-last
     (g:signal-connect chooser \"confirm-overwrite\" #'confirm-overwrite)
     ... )
       @end{pre}
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
-          signal.}
-        @entry[Returns]{A @symbol{gtk:file-chooser-confirmation} value that
-          indicates which action to take after emitting the signal.}
-      @end{table}
-    @subheading{The \"current-folder-changed\" signal}
+    @end{signal}
+    @begin[file-chooser::current-folder-changed]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:file-chooser} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the current folder in a file chooser changes.
       This can happen due to the user performing some action that changes
       folders, such as selecting a bookmark or visiting a folder on the file
@@ -524,40 +529,43 @@ lambda (chooser)    :run-last
       change the current folder in a file chooser. Normally you do not need to
       connect to this signal, unless you need to keep track of which folder a
       file chooser is showing.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"file-activated\" signal}
+    @end{signal}
+    @begin[file-chooser::file-activated]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:file-chooser} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the user \"activates\" a file in the file
       chooser. This can happen by double-clicking on a file in the file list,
       or by pressing the @kbd{Enter} key. Normally you do not need to connect to
       the signal. It is used internally by the @class{gtk:file-chooser-dialog}
       class to know when to activate the default button in the dialog.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"selection-changed\" signal}
+    @end{signal}
+    @begin[file-chooser::selection-changed]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:file-chooser} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when there is a change in the set of selected files
       in a file chooser. This can happen when the user modifies the selection
       with the mouse or the keyboard, or when explicitly calling functions to
       change the selection. Normally you do not need to connect to the signal,
       as it is easier to wait for the file chooser to finish running.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"update-preview\" signal}
+    @end{signal}
+    @begin[file-chooser::update-preview]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:file-chooser} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the preview in a file chooser should be
       regenerated. For example, this can happen when the currently selected
       file changes. You should use this signal if you want your file chooser
@@ -570,10 +578,7 @@ lambda (chooser)    :run-last
       Your callback function must call the
       @fun{gtk:file-chooser-preview-widget-active} function to inform the file
       chooser about whether the preview was generated successfully or not.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:file-chooser} widget which received the
-          signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:file-chooser-action}
   @see-slot{gtk:file-chooser-create-folders}
@@ -598,20 +603,20 @@ lambda (chooser)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action" 'file-chooser) t)
- "The @code{action} property of type @symbol{gtk:file-chooser-action}
+ "The @code{action} property of type @sym{gtk:file-chooser-action}
   (Read / Write) @br{}
   The type of operation that the file selector is performing. @br{}
-  Default value: @code{:action-open}")
+  Default value: @val[gtk:file-chooser-action]{:action-open}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'file-chooser-action)
       "Accessor"
       (documentation 'file-chooser-action 'function)
- "@version{2023-6-11}
+ "@version{2025-07-11}
   @syntax{(gtk:file-chooser-action object) => action}
   @syntax{(setf (gtk:file-chooser-action object) action)}
   @argument[object]{a @class{gtk:file-chooser} widget}
-  @argument[action]{a value of the @symbol{gtk:file-chooser-action} enumeration}
+  @argument[action]{a value of the @sym{gtk:file-chooser-action} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:file-chooser]{action} slot of the
     @class{gtk:file-chooser} interface.
@@ -673,7 +678,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'file-chooser-do-overwrite-confirmation)
       "Accessor"
       (documentation 'file-chooser-do-overwrite-confirmation 'function)
- "@version{2023-6-11}
+ "@version{2025-07-16}
   @syntax{(gtk:file-chooser-do-overwrite-confirmation object) => confirm}
   @syntax{(setf (gtk:file-chooser-do-overwrite-confirmation object) confirm)}
   @argument[object]{a @class{gtk:file-chooser} widget}
@@ -691,12 +696,12 @@ lambda (chooser)    :run-last
   default.
 
   Regardless of this setting, the chooser will emit the
-  @code{\"confirm-overwrite\"} signal when appropriate.
+  @sig[gtk:file-chooser]{confirm-overwrite} signal when appropriate.
 
   If all you need is the stock confirmation dialog, set this property to
   @em{true}. You can override the way confirmation is done by actually handling
-  the @code{\"confirm-overwrite\"} signal. Please refer to its documentation for
-  the details.
+  the @sig[gtk:file-chooser]{confirm-overwrite} signal. Please refer to its
+  documentation for the details.
   @see-class{gtk:file-chooser}
   @see-symbol{gtk:file-chooser-action}")
 
@@ -822,7 +827,7 @@ lambda (chooser)    :run-last
   currently selected file.
 
   To implement a preview, after setting the preview widget, you connect to the
-  @code{\"update-preview\"} signal, and call the
+  @sig[gtk:file-chooser]{update-preview} signal, and call the
   @fun{gtk:file-chooser-preview-filename} or @fun{gtk:file-chooser-preview-uri}
   functions on each change. If you can display a preview of the new file, update
   your widget and set the preview active using the
@@ -985,11 +990,11 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_current_name" file-chooser-current-name)
     (:string :free-from-foreign t :encoding :utf-8)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2025-07-07}
   @syntax{(gtk:file-chooser-current-name chooser) => name}
   @syntax{(setf (gtk:file-chooser-current-name chooser) name)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[name]{a string with the filename to use, as a UTF-8 string}
+  @argument[name]{a string for the filename to use, as a UTF-8 string}
   @begin{short}
     Accessor of the current name of a file chooser widget.
   @end{short}
@@ -1034,11 +1039,11 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_filename" file-chooser-filename)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2025-07-07}
   @syntax{(gtk:file-chooser-filename chooser) => filename}
   @syntax{(setf (gtk:file-chooser-filename chooser) filename)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[filename]{a string with the filename to set as current}
+  @argument[filename]{a string for the filename to set as current}
   @begin{short}
     Accessor of the filename of a file chooser widget.
   @end{short}
@@ -1084,9 +1089,9 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_select_filename" file-chooser-select-filename)
     :boolean
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[filename]{a string with the filename to select}
+  @argument[filename]{a string for the filename to select}
   @begin{short}
     Selects a filename in the file chooser.
   @end{short}
@@ -1107,9 +1112,9 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_unselect_filename"
                 file-chooser-unselect-filename) :void
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[filename]{a string with the filename to unselect}
+  @argument[filename]{a string for the filename to unselect}
   @begin{short}
     Unselects a currently selected filename.
   @end{short}
@@ -1198,11 +1203,11 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_current_folder"
                 file-chooser-current-folder) :string
  #+liber-documentation
- "@version{2024-12-29}
+ "@version{2025-07-07}
   @syntax{(gtk:file-chooser-current-folder chooser) => filename}
   @syntax{(setf (gtk:file-chooser-current-folder chooser) filename)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[filename]{a string with the full path of the new current folder}
+  @argument[filename]{a string for the full path of the new current folder}
   @begin{short}
     The @fun{gtk:file-chooser-current-folder} function gets the current folder
     of the file chooser as a local filename.
@@ -1240,11 +1245,11 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_file_chooser_get_uri" file-chooser-uri) :string
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:file-chooser-uri chooser) => uri}
   @syntax{(setf (gtk:file-chooser-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI to set as current}
+  @argument[uri]{a string for the URI to set as current}
   @begin{short}
     Accessor of the currently selected URI.
   @end{short}
@@ -1291,9 +1296,9 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_file_chooser_select_uri" file-chooser-select-uri) :boolean
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI to select}
+  @argument[uri]{a string for the URI to select}
   @begin{short}
     Selects the file by @arg{uri}.
   @end{short}
@@ -1313,9 +1318,9 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_file_chooser_unselect_uri" file-chooser-unselect-uri) :void
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI to unselect}
+  @argument[uri]{a string for the URI to unselect}
   @begin{short}
     Unselects the file referred to by @arg{uri}.
   @end{short}
@@ -1367,11 +1372,11 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_current_folder_uri"
                 file-chooser-current-folder-uri) :string
  #+liber-documentation
- "@version{#2023-3-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:file-chooser-current-folder-uri chooser) => uri}
   @syntax{(setf (gtk:file-chooser-current-folder-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI for the current folder}
+  @argument[uri]{a string for the URI for the current folder}
   @begin{short}
     Accessor of the URI for the current folder of the file chooser.
   @end{short}
@@ -1382,9 +1387,9 @@ lambda (chooser)    :run-last
   nonexistent folder.
 
   Note that this is the folder that the file chooser is currently displaying,
-  e.g. @file{file:///home/username/Documents}, which is not the same as the
-  currently selected folder if the chooser is in @code{:select-folder}, e.g.
-  @file{file:///home/username/Documents/selected-folder/}. To get the
+  for example, @file{file:///home/username/Documents}, which is not the same as
+  the currently selected folder if the chooser is in @code{:select-folder}, for
+  example, @file{file:///home/username/Documents/selected-folder/}. To get the
   currently selected folder in that mode, use the @fun{gtk:file-chooser-uri}
   function as the usual way to get the selection.
 
@@ -1528,9 +1533,9 @@ lambda (chooser)    :run-last
 
 (defun file-chooser-add-shortcut-folder (chooser folder)
  #+liber-documentation
- "@version{2024-11-20}
+ "@version{2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[folder]{a string with a filename of the folder to add}
+  @argument[folder]{a string for a filename of the folder to add}
   @begin{return}
     @em{True} if the folder could be added successfully, @em{false} otherwise.
   @end{return}
@@ -1559,9 +1564,9 @@ lambda (chooser)    :run-last
 
 (defun file-chooser-remove-shortcut-folder (chooser folder)
  #+liber-documentation
- "@version{2024-11-20}
+ "@version{2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[folder]{a string with the filename of the folder to remove}
+  @argument[folder]{a string for the filename of the folder to remove}
   @begin{return}
     @em{True} if the operation succeeds, @em{false} otherwise.
   @end{return}
@@ -1611,9 +1616,9 @@ lambda (chooser)    :run-last
 
 (defun file-chooser-add-shortcut-folder-uri (chooser uri)
  #+liber-documentation
- "@version{2024-11-20}
+ "@version{2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI of the folder to add}
+  @argument[uri]{a string for the URI of the folder to add}
   @begin{return}
     @em{True} if the folder could be added successfully, @em{false} otherwise.
   @end{return}
@@ -1644,9 +1649,9 @@ lambda (chooser)    :run-last
 
 (defun file-chooser-remove-shortcut-folder-uri (chooser uri)
  #+liber-documentation
- "@version{2024-11-20}
+ "@version{2025-07-07}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
-  @argument[uri]{a string with the URI of the folder to remove}
+  @argument[uri]{a string for the URI of the folder to remove}
   @begin{return}
     @em{True} if the operation succeeds, @em{false} otherwise.
   @end{return}

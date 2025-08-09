@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.shortcuts-window.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -63,7 +63,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkShortcutsWindow
+;;; GtkShortcutsWindow
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkShortcutsWindow" shortcuts-window
@@ -81,7 +81,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-window 'type)
- "@version{#2023-2-28}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:shortcuts-window} widget shows brief information about the
     keyboard shortcuts and gestures of an application.
@@ -123,26 +123,28 @@
     @image[builder-shortcuts]{}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"close\" signal}
+    @begin[shortcuts-window::close]{signal}
       @begin{pre}
 lambda (shortcutswindow)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user uses a
       keybinding to close the window. The default binding for this signal is the
       @kbd{Escape} key.
-      @begin[code]{table}
-        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
-      @end{table}
-    @subheading{The \"search\" signal}
+    @end{signal}
+    @begin[shortcuts-window::search]{signal}
       @begin{pre}
 lambda (shortcutswindow)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
+      @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user uses a
       keybinding to start a search. The default binding for this signal is
       @kbd{Control-F}.
-      @begin[code]{table}
-        @entry[shortcutswindow]{The @class{gtk:shortcuts-window} widget.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:shortcuts-window-section-name}
   @see-slot{gtk:shortcuts-window-view-name}")
@@ -165,11 +167,11 @@ lambda (shortcutswindow)    :action
 (setf (liber:alias-for-function 'shortcuts-window-section-name)
       "Accessor"
       (documentation 'shortcuts-window-section-name 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-window-section-name object) => section-name}
   @syntax{(setf (gtk:shortcuts-window-section-name object) section-name)}
   @argument[object]{a @class{gtk:shortcuts-window} widget}
-  @argument[section-name]{a string with a name of the section to show}
+  @argument[section-name]{a string for a name of the section to show}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-window]{section-name} slot of the
     @class{gtk:shortcuts-window} class.
@@ -195,11 +197,11 @@ lambda (shortcutswindow)    :action
 (setf (liber:alias-for-function 'shortcuts-window-view-name)
       "Accessor"
       (documentation 'shortcuts-window-view-name 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-window-view-name object) => view-name}
   @syntax{(setf (gtk:shortcuts-window-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-window} widget}
-  @argument[view-name]{a string with the view name by which to filter the
+  @argument[view-name]{a string for the view name by which to filter the
     contents}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-window]{view-name} slot of the

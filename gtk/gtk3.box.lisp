@@ -124,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'box 'type)
- "@version{2025-06-24}
+ "@version{2025-07-16}
   @begin{short}
     The @class{gtk:box} widget arranges child widgets into a single row or
     column, depending upon the @val[gtk:orientation]{:horizontal} or
@@ -149,9 +149,9 @@
 
   Because the @class{gtk:box} widget is a @class{gtk:container} widget, you may
   also use the @fun{gtk:container-add} function to insert widgets into the box,
-  and they will be packed with the default values for the @code{expand} and
-  @code{fill} child properties. Use the @fun{gtk:container-remove} function to
-  remove widgets from the box.
+  and they will be packed with the default values for the @prop[gtk:box]{expand}
+  and @prop[gtk:box]{fill} child properties. Use the @fun{gtk:container-remove}
+  function to remove widgets from the box.
 
   Use the @fun{gtk:box-homogeneous} function to specify whether or not all
   children of the box are forced to get the same amount of space.
@@ -183,10 +183,9 @@
       widget grows. The @slot[gtk:widget]{hexpand} or
       @slot[gtk:widget]{vexpand} properties are the preferred way to influence
       whether the child widget receives extra space, by setting the expand
-      property of the child widget corresponding to the orientation of the
-      box. In contrast to the @slot[gtk:widget]{hexpand} property, the
-      @prop[gtk:box]{expand} child property does not cause the box to expand
-      itself. @br{}
+      property of the child widget corresponding to the orientation of the box.
+      In contrast to the expand property, the @prop[gtk:box]{expand} child
+      property does not cause the box to expand itself. @br{}
       Default value: @em{false}
     @end{property}
     @begin[box:fill]{property}
@@ -253,7 +252,7 @@
 (setf (liber:alias-for-function 'box-baseline-position)
       "Accessor"
       (documentation 'box-baseline-position 'function)
- "@version{2025-06-27}
+ "@version{2025-07-16}
   @syntax{(gtk:box-baseline-position object) => position}
   @syntax{(setf (gtk:box-baseline-position object) position)}
   @argument[object]{a @class{gtk:box} container widget}
@@ -270,7 +269,7 @@
   This affects only horizontal boxes with at least one baseline aligned child
   widget. If there is more vertical space available than requested, and the
   baseline is not allocated by the parent widget then @arg{position} is used
-  to allocate the baseline wrt the extra space available.
+  to allocate the baseline with respect to the extra space available.
   @see-class{gtk:box}
   @see-symbol{gtk:baseline-position}")
 
@@ -432,7 +431,7 @@
   @argument[container]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[padding]{an unsigned integer for extra space in pixels to put
-    between childs}
+    between children}
   @begin{short}
     Accessor of the @prop[gtk:box]{padding} child property of the
     @class{gtk:box} class.
@@ -604,7 +603,7 @@
  "@version{2025-06-24}
   @argument[box]{a @class{gtk:box} container widget}
   @argument[child]{a @class{gtk:widget} child widget to move}
-  @argument[position]{an integer for the position for @arg{child} in the
+  @argument[position]{an integer for the position of @arg{child} in the
     list of children of @arg{box}, starting from 0, if negative, indicates the
     end of the list}
   @begin{short}

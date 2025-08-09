@@ -1143,10 +1143,10 @@ lambda (theme)    :run-last
 
 (cffi:defcfun ("gtk_icon_info_get_base_size" icon-info-base-size) :int
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-07-15}
   @argument[info]{a @class{gtk:icon-info} instance}
   @begin{return}
-    The integer with the base size, or 0, if no base size is known for the icon.
+    The integer for the base size, or 0, if no base size is known for the icon.
   @end{return}
   @begin{short}
     Gets the base size for the icon.
@@ -1176,9 +1176,9 @@ lambda (theme)    :run-last
 
 (cffi:defcfun ("gtk_icon_info_get_base_scale" icon-info-base-scale) :int
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-07-15}
   @argument[info]{a @sym{gtk:icon-info} instance}
-  @return{The integer with the base scale.}
+  @return{The integer for the base scale.}
   @begin{short}
     Gets the base scale for the icon.
   @end{short}

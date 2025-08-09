@@ -135,10 +135,10 @@
 (cffi:defcfun ("gtk_check_version" check-version)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2023-07-07}
-  @argument[major]{an unsigned integer with the required major version}
-  @argument[minor]{an unsigned integer with required minor version}
-  @argument[micro]{an unsigned integer with required micro version}
+ "@version{2025-07-07}
+  @argument[major]{an unsigned integer for the required major version}
+  @argument[minor]{an unsigned integer for required minor version}
+  @argument[micro]{an unsigned integer for required micro version}
   @begin{return}
     @code{Nil} if the GTK library is compatible with the given version,
     or a string describing the version mismatch.

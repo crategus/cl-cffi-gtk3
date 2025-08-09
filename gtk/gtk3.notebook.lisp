@@ -212,7 +212,7 @@
 
 #+liber-documentation
 (setf (documentation 'notebook 'type)
- "@version{#2025-07-15}
+ "@version{#2025-07-17}
   @begin{short}
     The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
@@ -475,7 +475,7 @@ lambda (notebook child num)    :run-last
       @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
-        @entry[num]{The unsigned integer with the child page number.}
+        @entry[num]{The unsigned integer for the child page number.}
       @end{simple-table}
       The signal is emitted in the notebook right after a page is added to the
       notebook.
@@ -487,7 +487,7 @@ lambda (notebook child num)   :run-last
       @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
-        @entry[num]{The unsigned integer with the child page number.}
+        @entry[num]{The unsigned integer for the child page number.}
       @end{simple-table}
       The signal is emitted in the notebook right after a page is removed from
       the notebook.
@@ -499,7 +499,7 @@ lambda (notebook child num)    :run-last
       @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[child]{The @class{gtk:widget} child page affected.}
-        @entry[num]{The unsigned integer with the child page number.}
+        @entry[num]{The unsigned integer for the child page number.}
       @end{simple-table}
       The signal is emitted in the notebook right after a page has been
       reordered.
@@ -531,7 +531,7 @@ lambda (notebook page num)    :run-last
       @begin[code]{simple-table}
         @entry[notebook]{The @class{gtk:notebook} widget emitting the signal.}
         @entry[page]{The @class{gtk:widget} current page.}
-        @entry[num]{The unsigned integer with the index of the page.}
+        @entry[num]{The unsigned integer for the index of the page.}
       @end{simple-table}
       Emitted when the user or a function changes the current page.
     @end{signal}
@@ -1309,8 +1309,8 @@ lambda (notebook page num)    :run-last
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child}
   @begin{return}
-    The index of the page containing child, or -1 if child is not in the
-    notebook.
+    The integer for the index of the page containing @arg{child}, or -1 if
+    @arg{child} is not in the notebook.
   @end{return}
   @begin{short}
     Finds the index of the page which contains the given child widget.

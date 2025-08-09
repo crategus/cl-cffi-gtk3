@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.places-sidebar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -111,7 +111,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPlacesOpenFlags
+;;; GtkPlacesOpenFlags
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkPlacesOpenFlags" places-open-flags
@@ -125,7 +125,7 @@
 (setf (liber:alias-for-symbol 'places-open-flags)
       "GFlags"
       (liber:symbol-documentation 'places-open-flags)
- "@version{#2024-3-21}
+ "@version{#2025-07-16}
   @begin{declaration}
 (gobject:define-gflags \"GtkPlacesOpenFlags\" gtk:places-open-flags
   (:export t
@@ -135,7 +135,7 @@
   (:new-window #.(ash 1 2)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:normal]{This is the default mode that the
         @class{gtk:places-sidebar} widget uses if no other flags are specified.
         It indicates that the calling application should open the selected
@@ -144,11 +144,12 @@
       @entry[:new-tab]{When passed to the @fun{gtk:places-sidebar-open-flags}
         function, this indicates that the application can open folders selected
         from the sidebar in new tabs. This value will be passed to the
-        @code{\"open-location\"} signal when the user selects that a location
-        be opened in a new tab instead of in the standard fashion.}
+        @sig[gtk:places-sidebar]{open-location} signal when the user selects
+        that a location be opened in a new tab instead of in the standard
+        fashion.}
       @entry[:new-window]{Similar to @code{:new-tab}, but indicates that the
         application can open folders in new windows.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These flags serve two purposes.
@@ -159,20 +160,21 @@
   for example, in new tabs or in new windows in addition to the normal mode.
 
   Second, when one of these values gets passed back to the application in the
-  @code{\"open-location\"} signal, it means that the application should open the
-  selected location in the normal way, in a new tab, or in a new window. The
-  sidebar takes care of determining the desired way to open the location, based
-  on the modifier keys that the user is pressing at the time the selection is
-  made.
+  @sig[gtk:places-sidebar]{open-location} signal, it means that the application
+  should open the selected location in the normal way, in a new tab, or in a new
+  window. The sidebar takes care of determining the desired way to open the
+  location, based on the modifier keys that the user is pressing at the time the
+  selection is made.
 
   If the application never calls the @fun{gtk:places-sidebar-open-flags}
   function, then the sidebar will only use @code{:normal} in the
-  @code{\"open-location\"} signal. This is the default mode of operation.
+  @sig[gtk:places-sidebar]{open-location} signal. This is the default mode of
+  operation.
   @see-class{gtk:places-sidebar}
   @see-function{gtk:places-sidebar-open-flags}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPlacesSidebar
+;;; GtkPlacesSidebar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPlacesSidebar" places-sidebar
@@ -217,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'places-sidebar 'type)
- "@version{#2023-3-6}
+ "@version{#2025-07-16}
   @begin{short}
     The @class{gtk:places-sidebar} widget is a widget that displays a list of
     frequently-used places in the file system: the user’s home directory, the
@@ -240,10 +242,10 @@
   @fun{gtk:places-sidebar-add-shortcut} function.
 
   To make use of the places sidebar, an application at least needs to connect
-  to the @code{\"open-location\"} signal. This is emitted when the user selects
-  in the sidebar a location to open. The application should also call the
-  @fun{gtk:places-sidebar-location} function when it changes the currently
-  viewed location.
+  to the @sig[gtk:places-sidebar]{open-location} signal. This is emitted when
+  the user selects in the sidebar a location to open. The application should
+  also call the @fun{gtk:places-sidebar-location} function when it changes the
+  currently viewed location.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:places-sidebar} implementation uses a single CSS node with
     name @code{placessidebar} and @code{.sidebar} style class.
@@ -257,32 +259,27 @@
     @end{itemize}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"drag-action-ask\" signal}
+    @begin[places-sidebar::drag-action-ask]{signal}
       @begin{pre}
 lambda (sidebar actions)    :run-last
       @end{pre}
-      The places sidebar emits this signal when it needs to ask the application
-      to pop up a menu to ask the user for which drag action to perform.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
         @entry[actions]{An integer with the possible drag actions that need to
           be asked for.}
         @entry[Returns]{An integer with the final drag action that the sidebar
           should pass to the drag side of the drag and drop operation.}
-      @end{table}
-    @subheading{The \"drag-action-requested\" signal}
+      @end{simple-table}
+      The places sidebar emits this signal when it needs to ask the application
+      to pop up a menu to ask the user for which drag action to perform.
+    @end{signal}
+    @begin[places-sidebar::drag-action-requested]{signal}
       @begin{pre}
 lambda (sidebar context dest source)    :run-last
       @end{pre}
-      When the user starts a drag and drop operation and the sidebar needs to
-      ask the application for which drag action to perform, then the sidebar
-      will emit this signal. The application can evaluate the context for
-      customary actions, or it can check the type of the files indicated by
-      @arg{source} against the possible actions for the destination @arg{dest}.
-      The drag action to use must be the return value of the signal handler.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
         @entry[context]{The @class{gdk:drag-context} object with information
           about the drag operation.}
@@ -291,58 +288,79 @@ lambda (sidebar context dest source)    :run-last
         @entry[source]{List of @class{g:file} objects that are being dragged.}
         @entry[Returns]{An integer with the drag action to use, for example,
         @code{GDK_ACTION_COPY} or @code{GDK_ACTION_MOVE}, or 0 if no action is
-        allowed here, i.e. drops are not allowed in the specified @arg{dest}.}
-      @end{table}
-    @subheading{The \"drag-perform-drop\" signal}
+        allowed here, that is, drops are not allowed in the specified
+        @arg{dest}.}
+      @end{simple-table}
+      When the user starts a drag and drop operation and the sidebar needs to
+      ask the application for which drag action to perform, then the sidebar
+      will emit this signal. The application can evaluate the context for
+      customary actions, or it can check the type of the files indicated by
+      @arg{source} against the possible actions for the destination @arg{dest}.
+      The drag action to use must be the return value of the signal handler.
+    @end{signal}
+    @begin[places-sidebar::drag-perform-drop]{signal}
       @begin{pre}
 lambda (sidebar dest source action)    :run-first
       @end{pre}
-      The places sidebar emits this signal when the user completes a drag and
-      drop operation and one of the sidebar's items is the destination. This
-      item is in the @arg{dest}, and the @arg{source} has the list of files
-      that are dropped into it and which should be copied/moved/ etc. based on
-      the specified action.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
         @entry[dest]{Destination @class{g:file} object.}
         @entry[source]{List of @class{g:file} objects that got dropped.}
         @entry[action]{An integer with the drop action to perform.}
-      @end{table}
-    @subheading{The \"mount\" signal}
+      @end{simple-table}
+      The places sidebar emits this signal when the user completes a drag and
+      drop operation and one of the sidebar's items is the destination. This
+      item is in the @arg{dest}, and the @arg{source} has the list of files
+      that are dropped into it and which should be copied/moved/, and so on,
+      based onc the specified action.
+    @end{signal}
+    @begin[places-sidebar::mount]{signal}
       @begin{pre}
 lambda (sidebar mount)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+        @entry[mount]{The @class{g:mount-operation} object that is going to
+          start.}
+      @end{simple-table}
       The places sidebar emits this signal when it starts a new operation
       because the user clicked on some location that needs mounting. In this way
       the application using the @class{gtk:places-sidebar} widget can track the
       progress of the operation and, for example, show a notification.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-        @entry[mount]{The @class{g:mount-operation} object that is going to
-          start.}
-      @end{table}
-    @subheading{The \"open-location\" signal}
+    @end{signal}
+    @begin[places-sidebar::open-location]{signal}
       @begin{pre}
 lambda (sidebar location flags)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+        @entry[location]{The @class{g:file} object to which the caller should
+          switch.}
+        @entry[flags]{The single value from the @sym{gtk:places-open-flags}
+          flags specifying how the location should be opened.}
+      @end{simple-table}
       The places sidebar emits this signal when the user selects a location in
       it. The calling application should display the contents of that location;
       for example, a file manager should show a list of files in the specified
       location.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-        @entry[location]{The @class{g:file} object to which the caller should
-          switch.}
-        @entry[flags]{A single value from the @symbol{gtk:places-open-flags}
-          flags specifying how the location should be opened.}
-      @end{table}
-    @subheading{The \"populate-popup\" signal}
+    @end{signal}
+    @begin[places-sidebar::populate-popup]{signal}
       @begin{pre}
 lambda (sidebar container item volume)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+        @entry[container]{A @class{gtk:menu} widget or another
+          @class{gtk:container} widget.}
+        @entry[item]{A @class{g:file} object with the item to which the popup
+          should refer, or @code{nil} in the case of a @arg{volume}.}
+        @entry[volume]{A @class{g:volume} object if the selected item is a
+          volume, or @code{nil} if it is a file.}
+      @end{simple-table}
       The places sidebar emits this signal when the user invokes a contextual
       popup on one of its items. In the signal handler, the application may add
       extra items to the menu as appropriate. For example, a file manager may
@@ -365,26 +383,21 @@ lambda (sidebar container item volume)    :run-first
       Before 3.18, the container always was a @class{gtk:menu} widget, and you
       were expected to add your items as @class{gtk:menu-item} objects. Since
       3.18, the popup may be implemented as a @class{gtk:popover} widget, in
-      which case container will be something else, e.g. a @class{gtk:box}
-      widget, to which you may add @class{gtk:model-button} widgets or other
-      widgets, such as @class{gtk:entry}, @class{gtk:spin-button} widgets, etc.
-      If your application can deal with this situation, you can set
-      @code{populate-all} to @em{true} to request that this signal is emitted
-      for populating popovers as well.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-        @entry[container]{A @class{gtk:menu} widget or another
-          @class{gtk:container} widget.}
-        @entry[item]{A @class{g:file} object with the item to which the popup
-          should refer, or @code{nil} in the case of a @arg{volume}.}
-        @entry[volume]{A @class{g:volume} object if the selected item is a
-          volume, or @code{nil} if it is a file.}
-      @end{table}
-    @subheading{The \"show-connect-to-server\" signal}
+      which case container will be something else, for example, a
+      @class{gtk:box} widget, to which you may add @class{gtk:model-button}
+      widgets or other widgets, such as @class{gtk:entry},
+      @class{gtk:spin-button} widgets, and so on. If your application can deal
+      with this situation, you can set @code{populate-all} to @em{true} to
+      request that this signal is emitted for populating popovers as well.
+    @end{signal}
+    @begin[places-sidebar::show-connect-to-server]{signal}
       @begin{pre}
 lambda (sidebar)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+      @end{simple-table}
       The places sidebar emits this signal when it needs the calling application
       to present an way to connect directly to a network server. For example,
       the application may bring up a dialog box asking for a URL like
@@ -394,101 +407,104 @@ lambda (sidebar)    :run-first
 
       @em{Warning:} The @code{\"show-connect-to-server\"} signal has been
       deprecated since version 3.18 and should not be used in newly written
-      code. Use the @code{\"show-other-locations\"} signal to connect to
-      network servers.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-      @end{table}
-    @subheading{The \"show-enter-location\" signal}
+      code. Use the @sig[gtk:places-sidebar]{show-other-locations} signal to
+      connect to network servers.
+    @end{signal}
+    @begin[places-sidebar::show-enter-location]{signal}
       @begin{pre}
 lambda (sidebar)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+      @end{simple-table}
       The places sidebar emits this signal when it needs the calling application
       to present an way to directly enter a location. For example, the
       application may bring up a dialog box asking for a URL like
       @file{http://http.example.com}.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-      @end{table}
-    @subheading{The \"show-error-message\" signal}
+    @end{signal}
+    @begin[places-sidebar::show-error-message]{signal}
       @begin{pre}
 lambda (sidebar primary secondary)    :run-first
       @end{pre}
-      The places sidebar emits this signal when it needs the calling application
-      to present an error message. Most of these messages refer to mounting or
-      unmounting media, for example, when a drive cannot be started for some
-      reason.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
         @entry[primary]{A string with the primary message with a summary of the
           error to show.}
         @entry[secondary]{A string with the secondary message with details of
           the error to show.}
-      @end{table}
-    @subheading{The \"show-other-locations\" signal}
+      @end{simple-table}
+      The places sidebar emits this signal when it needs the calling application
+      to present an error message. Most of these messages refer to mounting or
+      unmounting media, for example, when a drive cannot be started for some
+      reason.
+    @end{signal}
+    @begin[places-sidebar::show-other-locations]{signal}
       @begin{pre}
 lambda (sidebar)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+      @end{simple-table}
       The places sidebar emits this signal when it needs the calling application
-      to present a way to show other locations e.g. drives and network access
-      points. For example, the application may bring up a page showing
+      to present a way to show other locations, for example, drives and network
+      access points. For example, the application may bring up a page showing
       persistent volumes and discovered network addresses.
 
       @em{Warning:} The @code{\"show-other-locations\"} signal has been
       deprecated since version 3.20 and should not be used in newly written
-      code. Use the @code{\"show-other-locations-with-flags\"} signal which
-      includes the open flags in order to allow the user to specify to open in
-      a new tab or window, in a similar way than the @code{\"open-location\"}
-      signal.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-      @end{table}
-    @subheading{The \"show-other-locations-with-flags\" signal}
+      code. Use the @sig[gtk:places-sidebar]{show-other-locations-with-flags}
+      signal which includes the open flags in order to allow the user to specify
+      to open in a new tab or window, in a similar way than the
+      @sig[gtk:places-sidebar]{open-location} signal.
+    @end{signal}
+    @begin[places-sidebar::show-other-locations-with-flags]{signal}
       @begin{pre}
 lambda (sidebar flags)    :run-first
       @end{pre}
-      The places sidebar emits this signal when it needs the calling application
-      to present a way to show other locations e.g. drives and network access
-      points. For example, the application may bring up a page showing
-      persistent volumes and discovered network addresses.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
-        @entry[flags]{A single @symbol{gtk:places-open-flags} value specifying
+        @entry[flags]{The single @sym{gtk:places-open-flags} value specifying
           how it should be opened.}
-      @end{table}
-    @subheading{The \"show-starred-location\" signal}
+      @end{simple-table}
+      The places sidebar emits this signal when it needs the calling application
+      to present a way to show other locations, for example, drives and network
+      access points. For example, the application may bring up a page showing
+      persistent volumes and discovered network addresses.
+    @end{signal}
+    @begin[places-sidebar::show-starred-location]{signal}
       @begin{pre}
 lambda (sidebar flags)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+        @entry[flags]{The single @sym{gtk:places-open-flags} value specifying
+          how the starred file should be opened.}
+      @end{simple-table}
       The places sidebar emits this signal when it needs the calling application
       to present a way to show the starred files. In GNOME, starred files are
       implemented by setting the @code{nao:predefined-tag-favorite} tag in the
       tracker database.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-        @entry[flags]{A single @symbol{gtk:places-open-flags} value specifying
-          how the starred file should be opened.}
-      @end{table}
-    @subheading{The \"unmount\" signal}
+    @end{signal}
+    @begin[places-sidebar::unmount]{signal}
       @begin{pre}
 lambda (sidebar mount)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
+          the signal.}
+        @entry[mount]{The @code{GMountOperation} that is going to
+          start.}
+      @end{simple-table}
       The places sidebar emits this signal when it starts a new operation
       because the user for example ejected some drive or unmounted a mount. In
       this way the application using the @class{gtk:places-sidebar} widget can
       track the progress of the operation and, for example, show a notification.
-      @begin[code]{table}
-        @entry[sidebar]{The @class{gtk:places-sidebar} widget which received
-          the signal.}
-        @entry[mount]{The @code{GMountOperation} that is going to
-          start.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:places-sidebar-new}
   @see-slot{gtk:places-sidebar-local-only}
@@ -543,11 +559,11 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-location)
       "Accessor"
       (documentation 'places-sidebar-location 'function)
- "@version{#2023-3-6}
+ "@version{#2025-07-07}
   @syntax{(gtk:places-sidebar-location object) => location}
   @syntax{(setf (gtk:places-sidebar-location object) location)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
-  @argument[location]{a @class{g:file} object with a location to select, or
+  @argument[location]{a @class{g:file} object for a location to select, or
     @code{nil} for no current path}
   @begin{short}
     Accessor of the @slot[gtk:places-sidebar]{location} slot of the
@@ -559,9 +575,9 @@ lambda (sidebar mount)    :run-first
   with a location that is not among the sidebar’s list of places to show.
 
   You can use this function to get the selection in the sidebar. Also, if you
-  connect to the @code{\"populate-popup\"} signal, you can use this function to
-  get the location that is being referred to during the callbacks for your menu
-  items.
+  connect to the @sig[gtk:places-sidebar]{populate-popup} signal, you can use
+  this function to get the location that is being referred to during the
+  callbacks for your menu items.
 
   The @setf{gtk:places-sidebar-location} function sets the location that is
   being shown in the widgets surrounding the sidebar, for example, in a folder
@@ -574,21 +590,21 @@ lambda (sidebar mount)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "open-flags" 'places-sidebar) t)
- "The @code{open-flags} property of type @symbol{gtk:places-open-flags}
+ "The @code{open-flags} property of type @sym{gtk:places-open-flags}
   (Read / Write) @br{}
   Modes in which the calling application can open locations selected in the
   sidebar. @br{}
-  Default value: @code{:normal}")
+  Default value: @val[gtk:places-open-flags]{:normal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'places-sidebar-open-flags)
       "Accessor"
       (documentation 'places-sidebar-open-flags 'function)
- "@version{#2023-3-6}
+ "@version{#2025-07-16}
   @syntax{(gtk:places-sidebar-open-flags object) => flags}
   @syntax{(setf (gtk:places-sidebar-open-flags object) flags)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
-  @argument[flags]{a @symbol{gtk:places-open-flags} bitmask of modes in which
+  @argument[flags]{a @sym{gtk:places-open-flags} bitmask of modes in which
     the calling application can open locations}
   @begin{short}
     Accessor of the @slot[gtk:places-sidebar]{open-flags} slot of the
@@ -605,12 +621,12 @@ lambda (sidebar mount)    :run-first
   application can open new locations, so that the sidebar can display (or not)
   the \"Open in new tab\" and \"Open in new window\" menu items as appropriate.
 
-  When the @code{\"open-location\"} signal is emitted, its flags argument will
-  be set to one of the flags that was passed in the
+  When the @sig[gtk:places-sidebar]{open-location} signal is emitted, its flags
+  argument will be set to one of the flags that was passed in the
   @fun{gtk:places-sidebar-open-flags} function.
 
-  Passing 0 for flags will cause @code{:normal} to always be sent to callbacks
-  for the @code{\"open-location\"} signal.
+  Passing 0 for flags will cause @val[gtk:places-open-flags]{:normal} to always
+  be sent to callbacks for the @sig[gtk:places-sidebar]{open-location} signal.
   @see-class{gtk:places-sidebar}")
 
 ;;; --- gtk:places-sidebar-populate-all ----------------------------------------
@@ -854,15 +870,15 @@ lambda (sidebar mount)    :run-first
   @see-class{gtk:places-sidebar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_places_sidebar_new ()
+;;; gtk_places_sidebar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline places-sidebar-new))
 
 (defun places-sidebar-new ()
  #+liber-documentation
- "@version{2023-3-6}
-  @return{A newly created @class{gtk:places-sidebar} widget.}
+ "@version{2025-07-07}
+  @return{The newly created @class{gtk:places-sidebar} widget.}
   @begin{short}
     Creates a new @class{gtk:places-sidebar} widget.
   @end{short}
@@ -874,15 +890,15 @@ lambda (sidebar mount)    :run-first
 (export 'places-sidebar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_places_sidebar_add_shortcut ()
+;;; gtk_places_sidebar_add_shortcut
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_places_sidebar_add_shortcut" places-sidebar-add-shortcut)
     :void
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2025-07-07}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
-  @argument[location]{a pathname or namestring with the location to add as an
+  @argument[location]{a pathname or namestring for the location to add as an
     application specific shortcut}
   @begin{short}
     Applications may want to present some folders in the places sidebar if they
@@ -903,15 +919,15 @@ lambda (sidebar mount)    :run-first
 (export 'places-sidebar-add-shortcut)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_places_sidebar_remove_shortcut ()
+;;; gtk_places_sidebar_remove_shortcut
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_places_sidebar_remove_shortcut"
                places-sidebar-remove-shortcut) :void
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2025-07-07}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
-  @argument[location]{a pathname or namestring with the location to remove}
+  @argument[location]{a pathname or namestring for the location to remove}
   @begin{short}
     Removes an application specific shortcut that has been previously been
     inserted with the @fun{gtk:places-sidebar-add-shortcut} function.
@@ -925,15 +941,15 @@ lambda (sidebar mount)    :run-first
 (export 'places-sidebar-remove-shortcut)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_places_sidebar_list_shortcuts ()
+;;; gtk_places_sidebar_list_shortcuts
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_places_sidebar_list_shortcuts"
                places-sidebar-list-shortcuts) (g:slist-t g:file-as-namestring)
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2025-07-07}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
-  @return{A list of namestrings with the locations that have been added as
+  @return{The list of namestrings for the locations that have been added as
     application specific shortcuts.}
   @begin{short}
     Gets the list of shortcuts that have been added as application specific
@@ -946,16 +962,16 @@ lambda (sidebar mount)    :run-first
 (export 'places-sidebar-list-shortcuts)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_places_sidebar_get_nth_bookmark ()
+;;; gtk_places_sidebar_get_nth_bookmark
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_places_sidebar_get_nth_bookmark"
                places-sidebar-nth-bookmark) g:file-as-namestring
  #+liber-documentation
- "@version{#2023-7-13}
+ "@version{#2025-07-11}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
-  @argument[n]{an integer with the index of bookmark to query}
-  @return{An namestring with the bookmark specified by the index @arg{n}, or
+  @argument[n]{an integer for the index of bookmark to query}
+  @return{The namestring with the bookmark specified by the index @arg{n}, or
     @code{nil} if no such index exist. Note that the indices start at 0, even
     though the file chooser starts them with the keyboard shortcut @kbd{Alt-1}.}
   @begin{short}
@@ -963,8 +979,8 @@ lambda (sidebar mount)    :run-first
     and returns one of them.
   @end{short}
   This function is used by the @class{gtk:file-chooser} widget to implement the
-  @kbd{Alt-1}, @kbd{Alt-2}, etc. shortcuts, which activate the cooresponding
-  bookmark.
+  @kbd{Alt-1}, @kbd{Alt-2}, and so on, shortcuts, which activate the
+  cooresponding bookmark.
   @see-class{gtk:places-sidebar}
   @see-class{gtk:file-chooser}"
   (sidebar (g:object places-sidebar))

@@ -105,9 +105,9 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-button 'type)
- "@version{2025-07-14}
+ "@version{2025-07-17}
   @begin{short}
-    The @class{gtk:toggle-button} widget is a @class{gtk:button} widget which
+    The @class{gtk:toggle-button} widget is a @class{gtk:button} widget that
     will remain \"pressed-in\" when clicked.
   @end{short}
   Clicking again will cause the toggle button to return to its normal state.

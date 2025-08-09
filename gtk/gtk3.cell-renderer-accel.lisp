@@ -123,7 +123,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer-accel 'type)
- "@version{2025-07-07}
+ "@version{2025-07-17}
   @begin{short}
     The @class{gtk:cell-renderer-accel} object displays a keyboard accelerator,
     that is, a key combination like the @code{Control+a} key.
@@ -138,7 +138,7 @@ lambda (accel path)    :run-last
       @begin[code]{simple-table}
         @entry[accel]{The @class{gtk:cell-renderer-accel} object reveiving the
           signal.}
-        @entry[path]{The string with the path identifying the row of the edited
+        @entry[path]{The string for the path identifying the row of the edited
           cell.}
       @end{simple-table}
       Gets emitted when the user has removed the accelerator.
@@ -150,12 +150,12 @@ lambda (accel path keyval mods keycode)    :run-last
       @begin[code]{simple-table}
         @entry[accel]{The @class{gtk:cell-renderer-accel} object reveiving the
           signal.}
-        @entry[path]{The string with the path identifying the row of the edited
+        @entry[path]{The string for the path identifying the row of the edited
           cell.}
-        @entry[keyval]{The unsigned integer with the new accelerator keyval.}
-        @entry[mods]{The @class{gdk:modifier-type} value with the new acclerator
+        @entry[keyval]{The unsigned integer for for new accelerator keyval.}
+        @entry[mods]{The @sym{gdk:modifier-type} value for the new acclerator
           modifier mask.}
-        @entry[keycode]{The unsigned integer with the keycode of the new
+        @entry[keycode]{The unsigned integer for the keycode of the new
           accelerator.}
       @end{simple-table}
       Gets emitted when the user has selected a new accelerator.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.table.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -106,7 +106,7 @@
 (setf (liber:alias-for-symbol 'attach-options)
       "GFlags"
       (liber:symbol-documentation 'attach-options)
- "@version{2024-6-27}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-gflags \"GtkAttachOptions\" attach-options
   (:export t
@@ -116,12 +116,12 @@
   (:fill #.(ash 1 2)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:expand]{The widget should expand to take up any extra space in
         its container that has been allocated.}
       @entry[:shrink]{The widget should shrink as and when possible.}
       @entry[:fill]{The widget should fill the space allocated to it.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Denotes the expansion properties that a widget will have in a
@@ -157,7 +157,7 @@
 
 #+liber-documentation
 (setf (documentation 'table 'type)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @begin{short}
     The @class{gtk:table} widget allows the programmer to arrange widgets in
     rows and columns, making it easy to align many widgets next to each other,
@@ -186,64 +186,62 @@
     does support height-for-width geometry management.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[bottom-attach]{entry}
-        The @code{bottom-attach} child property of type @code{:uint}
-        (Read / Write) @br{}
-        The row number to attach the bottom of the child widget to. @br{}
-        Allowed values: [1,65535] @br{}
-        Default value: 1
-      @end{entry}
-      @begin[left-attach]{entry}
-        The @code{left-attach} child property of type @code{:uint}
-        (Read / Write) @br{}
-        The column number to attach the left side of the child widget to. @br{}
-        Allowed values: <= 65535 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[right-attach]{entry}
-        The @code{right-attach} child property of type @code{:uint}
-        (Read / Write) @br{}
-        The column number to attach the right side of a child widget to. @br{}
-        Allowed values: [1,65535] @br{}
-        Default value: 1
-      @end{entry}
-      @begin[top-attach]{entry}
-        The @code{top-attach} child property of type @code{:uint}
-        (Read / Write) @br{}
-        The row number to attach the top of a child widget to. @br{}
-        Allowed values: <= 65535 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[x-options]{entry}
-        The @code{x-options} child property of type @symbol{gtk:attach-options}
-        (Read / Write) @br{}
-        Options specifying the horizontal behaviour of the child widget. @br{}
-        Default value: @code{'(:expand :fill)}
-      @end{entry}
-      @begin[x-padding]{entry}
-        The @code{x-padding} child property of type @code{:uint}
-        (Read / Write) @br{}
-        Extra space to put between the child widget and its left and right
-        neighbors, in pixels. @br{}
-        Allowed values: <= 65535 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[y-options]{entry}
-        The @code{y-options} child property of type @symbol{gtk:attach-options}
-        (Read / Write) @br{}
-        Options specifying the vertical behaviour of the child widget. @br{}
-        Default value: @code{'(:expand :fill)}
-      @end{entry}
-      @begin[y-padding]{entry}
-        The @code{y-padding} child property of type @code{:uint}
-        (Read / Write) @br{}
-        Extra space to put between the child widget and its upper and lower
-        neighbors, in pixels. @br{}
-        Allowed values: <= 65535 @br{}
-        Default value: 0
-      @end{entry}
-    @end{table}
+    @begin[table:bottom-attach]{property}
+      The @code{bottom-attach} child property of type @code{:uint}
+      (Read / Write) @br{}
+      The row number to attach the bottom of the child widget to. @br{}
+      Allowed values: [1,65535] @br{}
+      Default value: 1
+    @end{property}
+    @begin[table:left-attach]{property}
+      The @code{left-attach} child property of type @code{:uint}
+      (Read / Write) @br{}
+      The column number to attach the left side of the child widget to. @br{}
+      Allowed values: <= 65535 @br{}
+      Default value: 0
+    @end{property}
+    @begin[table:right-attach]{property}
+      The @code{right-attach} child property of type @code{:uint}
+      (Read / Write) @br{}
+      The column number to attach the right side of a child widget to. @br{}
+      Allowed values: [1,65535] @br{}
+      Default value: 1
+    @end{property}
+    @begin[table:top-attach]{property}
+      The @code{top-attach} child property of type @code{:uint}
+      (Read / Write) @br{}
+      The row number to attach the top of a child widget to. @br{}
+      Allowed values: <= 65535 @br{}
+      Default value: 0
+    @end{property}
+    @begin[table:x-options]{property}
+      The @code{x-options} child property of type @sym{gtk:attach-options}
+      (Read / Write) @br{}
+      The options specifying the horizontal behaviour of the child widget. @br{}
+      Default value: @val[gtk:attach-options]{'(:expand :fill)}
+    @end{property}
+    @begin[table:x-padding]{property}
+      The @code{x-padding} child property of type @code{:uint}
+      (Read / Write) @br{}
+      Extra space to put between the child widget and its left and right
+      neighbors, in pixels. @br{}
+      Allowed values: <= 65535 @br{}
+      Default value: 0
+    @end{property}
+    @begin[table:y-options]{property}
+      The @code{y-options} child property of type @sym{gtk:attach-options}
+      (Read / Write) @br{}
+      The options specifying the vertical behaviour of the child widget. @br{}
+      Default value: @val[gtk:attach-options]{'(:expand :fill)}
+    @end{property}
+    @begin[table:y-padding]{property}
+      The @code{y-padding} child property of type @code{:uint}
+      (Read / Write) @br{}
+      The extra space to put between the child widget and its upper and lower
+      neighbors, in pixels. @br{}
+      Allowed values: <= 65535 @br{}
+      Default value: 0
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:table-new}
   @see-slot{gtk:table-column-spacing}
@@ -271,11 +269,11 @@
 (setf (liber:alias-for-function 'table-column-spacing)
       "Accessor"
       (documentation 'table-column-spacing 'function)
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @syntax{(gtk:table-column-spacing object) => spacing}
   @syntax{(setf (gtk:table-column-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
-  @argument[spacing]{an unsigned integer with the number of pixels of space to
+  @argument[spacing]{an unsigned integer for the number of pixels of space to
     place between every column in the table}
   @begin{short}
     Accessor of the @slot[gtk:table]{column-spacing} property of the
@@ -349,11 +347,11 @@
 (setf (liber:alias-for-function 'table-n-columns)
       "Accessor"
       (documentation 'table-n-columns 'function)
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @syntax{(gtk:table-n-columns object) => n-columns}
   @syntax{(setf (gtk:table-n-columns object) n-columns)}
   @argument[object]{a @class{gtk:table} widget}
-  @argument[n-columns]{an unsigned integer with the number of columns}
+  @argument[n-columns]{an unsigned integer for the number of columns}
   @begin{short}
     Accessor of the @slot[gtk:table]{n-columns} slot of the @class{gtk:table}
     class.
@@ -380,11 +378,11 @@
 (setf (liber:alias-for-function 'table-n-rows)
       "Accessor"
       (documentation 'table-n-rows 'function)
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @syntax{(gtk:table-n-rows object) => n-rows}
   @syntax{(setf (gtk:table-n-rows object) n-rows)}
   @argument[object]{a @class{gtk:table} widget}
-  @argument[n-rows]{an unsigned integer with the number of rows}
+  @argument[n-rows]{an unsigned integer for the number of rows}
   @begin{short}
     Accessor of the @slot[gtk:table]{n-rows} slot of the @class{gtk:table}
     class.
@@ -411,11 +409,11 @@
 (setf (liber:alias-for-function 'table-row-spacing)
       "Accessor"
       (documentation 'table-row-spacing 'function)
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @syntax{(gtk:table-row-spacing object) => spacing}
   @syntax{(setf (gtk:table-row-spacing object) spacing)}
   @argument[table]{a @class{gtk:table} widget}
-  @argument[spacing]{an unsigned integer with the number of pixels of space to
+  @argument[spacing]{an unsigned integer for the number of pixels of space to
     place between every row in the table}
   @begin{short}
     Accessor of the @slot[gtk:table]{row-spacing} slot of the
@@ -451,15 +449,15 @@
 (setf (liber:alias-for-function 'table-child-bottom-attach)
       "Accessor"
       (documentation 'table-child-bottom-attach 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-bottom-attach container child) => attach}
   @syntax{(setf (gtk:table-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an unsigned integer with the row number to attach the
+  @argument[attach]{an unsigned integer for the row number to attach the
     bottom of the child widget to}
   @begin{short}
-    Accessor of the @code{bottom-attach} child property of the
+    Accessor of the @prop[gtk:table]{bottom-attach} child property of the
     @class{gtk:table} class.
   @end{short}
   The row number to attach the bottom of the child widget to.
@@ -480,16 +478,16 @@
 (setf (liber:alias-for-function 'table-child-left-attach)
       "Accessor"
       (documentation 'table-child-left-attach 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-left-attach container child) => attach}
   @syntax{(setf (gtk:table-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an unsigned integer with the column number to attach the
+  @argument[attach]{an unsigned integer for the column number to attach the
     left side of the child widget to}
   @begin{short}
-    Accessor of the @code{left-attach} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{left-attach} child property of the
+    @class{gtk:table} class.
   @end{short}
   The column number to attach the left side of the child widget to.
   @begin[Warning]{dictionary}
@@ -509,16 +507,16 @@
 (setf (liber:alias-for-function 'table-child-right-attach)
       "Accessor"
       (documentation 'table-child-right-attach 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-right-attach container child) => attach}
   @syntax{(setf (gtk:table-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an unsigned integer with the column number to attach the
+  @argument[attach]{an unsigned integer for the column number to attach the
     right side of the child widget to}
   @begin{short}
-    Accessor of the @code{right-attach} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{right-attach} child property of the
+    @class{gtk:table} class.
   @end{short}
   The column number to attach the right side of the child widget to.
   @begin[Warning]{dictionary}
@@ -538,16 +536,16 @@
 (setf (liber:alias-for-function 'table-child-top-attach)
       "Accessor"
       (documentation 'table-child-top-attach 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-top-attach container child) => attach}
   @syntax{(setf (gtk:table-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an unsigned integer with the row number to attach the top
+  @argument[attach]{an unsigned integer for the row number to attach the top
     of the child widget to}
   @begin{short}
-    Accessor of the @code{top-attach} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{top-attach} child property of the
+    @class{gtk:table} class.
   @end{short}
   The row number to attach the top of the child widget to.
   @begin[Warning]{dictionary}
@@ -568,15 +566,15 @@
 (setf (liber:alias-for-function 'table-child-x-options)
       "Accessor"
       (documentation 'table-child-x-options 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-x-options container child) => options}
   @syntax{(setf (gtk:table-child-x-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[options]{a @symbol{gtk:attach-options} value}
+  @argument[options]{a @sym{gtk:attach-options} value}
   @begin{short}
-    Accessor of the @code{x-options} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{x-options} child property of the
+    @class{gtk:table} class.
   @end{short}
   Options specifying the horizontal behaviour of the child widget.
   @begin[Warning]{dictionary}
@@ -598,15 +596,15 @@
 (setf (liber:alias-for-function 'table-child-y-options)
       "Accessor"
       (documentation 'table-child-y-options 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-y-options container child) => options}
   @syntax{(setf (gtk:table-child-y-options container child) options)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[options]{a @symbol{gtk:attach-options} value}
+  @argument[options]{a @sym{gtk:attach-options} value}
   @begin{short}
-    Accessor of the @code{y-options} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{y-options} child property of the
+    @class{gtk:table} class.
   @end{short}
   Options specifying the vertical behaviour of the child widget.
   @begin[Warning]{dictionary}
@@ -627,16 +625,16 @@
 (setf (liber:alias-for-function 'table-child-x-padding)
       "Accessor"
       (documentation 'table-child-x-padding 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-x-padding container child) => padding}
   @syntax{(setf (gtk:table-child-x-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[padding]{an unsigned integer with the space to put between the
+  @argument[padding]{an unsigned integer for the space to put between the
     child widget and its neighbors}
   @begin{short}
-    Accessor of the @code{x-padding} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{x-padding} child property of the
+    @class{gtk:table} class.
   @end{short}
   Extra space to put between the child widget and its left and right neighbors,
   in pixels.
@@ -657,16 +655,16 @@
 (setf (liber:alias-for-function 'table-child-y-padding)
       "Accessor"
       (documentation 'table-child-y-padding 'function)
- "@version{2024-6-27}
+ "@version{2025-07-11}
   @syntax{(gtk:table-child-y-padding container child) => padding}
   @syntax{(setf (gtk:table-child-y-padding container child) padding)}
   @argument[container]{a @class{gtk:table} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[padding]{an unsigned integer with the space to put between the
+  @argument[padding]{an unsigned integer for the space to put between the
     child widget and its neighbors}
   @begin{short}
-    Accessor of the @code{y-padding} child property of the @class{gtk:table}
-    class.
+    Accessor of the @prop[gtk:table]{y-padding} child property of the
+    @class{gtk:table} class.
   @end{short}
   Extra space to put between the child widget and its upper and lower
   neighbors, in pixels.
@@ -687,10 +685,10 @@
 
 (defun table-new (rows columns &optional homogeneous)
  #+liber-documentation
- "@version{2024-6-27}
-  @argument[rows]{an unsigned integer with the number of rows the new table
+ "@version{2025-07-06}
+  @argument[rows]{an unsigned integer for the number of rows the new table
     should have}
-  @argument[columns]{an unsigned integer with the number of columns the new
+  @argument[columns]{an unsigned integer for the number of columns the new
     table should have}
   @argument[homogeneous]{if set to @em{true}, all table cells are resized to
     the size of the cell containing the largest widget, the default is
@@ -728,10 +726,10 @@
 
 (defun table-resize (table rows columns)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @argument[table]{a @class{gtk:table} widget you wish to change the size of}
-  @argument[rows]{an unsigned integer with the new number of rows}
-  @argument[columns]{an unsigned integer with the new number of columns}
+  @argument[rows]{an unsigned integer for the new number of rows}
+  @argument[columns]{an unsigned integer for the new number of columns}
   @begin{short}
     If you need to change the size of the table after it has been created, this
     function allows you to do so.
@@ -796,24 +794,24 @@
                                       (xpadding 0)
                                       (ypadding 0))
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @argument[table]{a @class{gtk:table} widget to add a new widget to}
   @argument[child]{a @class{gtk:widget} child widget to add}
-  @argument[left]{an unsigned integer with the column number to attach the left
+  @argument[left]{an unsigned integer for the column number to attach the left
     side of a child widget to}
-  @argument[right]{an unsigned integer with the column number to attach the
+  @argument[right]{an unsigned integer for the column number to attach the
     right side of a child widget to}
-  @argument[top]{an unsigned ineger with the row number to attach the top of a
+  @argument[top]{an unsigned ineger for the row number to attach the top of a
     child widget to}
-  @argument[bottom]{an unsigned integer with the row number to attach the bottom
+  @argument[bottom]{an unsigned integer for the row number to attach the bottom
     of a child widget to}
-  @argument[xoptions]{a @symbol{gtk:attach-options} value used to specify the
+  @argument[xoptions]{a @sym{gtk:attach-options} value used to specify the
     properties of the child widget when the table is resized}
   @argument[yoptions]{same as @arg{xoptions}, except this field determines
     behaviour of vertical resizing}
   @argument[xpadding]{an unsigned integer specifying the padding on the left
     and right of the child widget being added to the table}
-  @argument[ypadding]{an unsigned integer with the amount of padding above and
+  @argument[ypadding]{an unsigned integer for the amount of padding above and
     below the child widget}
   @begin{short}
     Adds a child widget to a table.
@@ -868,12 +866,12 @@
 
 (cffi:defcfun ("gtk_table_set_row_spacing" table-set-row-spacing) :void
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @argument[table]{a @class{gtk:table} widget containing the row whose
     properties you wish to change}
-  @argument[row]{an unsigned integer with the row number whose spacing will be
+  @argument[row]{an unsigned integer for the row number whose spacing will be
     changed}
-  @argument[spacing]{an unsigned integer with the number of pixels that the
+  @argument[spacing]{an unsigned integer for the number of pixels that the
     spacing should take up}
   @begin{short}
     Changes the space between a given table row and the subsequent row.
@@ -901,11 +899,11 @@
 
 (cffi:defcfun ("gtk_table_set_col_spacing" table-set-col-spacing) :void
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-06}
   @argument[table]{a @class{gtk:table} widget}
-  @argument[column]{an unsigned integer with the column whose spacing should be
+  @argument[column]{an unsigned integer for the column whose spacing should be
     changed}
-  @argument[spacing]{an unsigned integer with the number of pixels that the
+  @argument[spacing]{an unsigned integer for the number of pixels that the
     spacing should take up}
   @begin{short}
     Alters the amount of space between a given table column and the following
@@ -934,11 +932,11 @@
 
 (cffi:defcfun ("gtk_table_get_row_spacing" table-get-row-spacing) :uint
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-17}
   @argument[table]{a @class{gtk:table} widget}
-  @argument[row]{an unsigned integer with a row in the table, 0 indicates the
+  @argument[row]{an unsigned integer for a row in the table, 0 indicates the
     first row}
-  @return{The unsigned integer with the row spacing.}
+  @return{The unsigned integer for the row spacing.}
   @begin{short}
     Gets the amount of space between @arg{row}, and @arg{row + 1}.
   @end{short}
@@ -960,11 +958,11 @@
 
 (cffi:defcfun ("gtk_table_get_col_spacing" table-get-col-spacing) :uint
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-17}
   @argument[table]{a @class{gtk:table} widget}
-  @argument[column]{an unsigned integer with a column in the table, 0 indicates
+  @argument[column]{an unsigned integer for a column in the table, 0 indicates
     the first column}
-  @return{The unsigned integer with the column spacing.}
+  @return{The unsigned integer for the column spacing.}
   @begin{short}
     Gets the amount of space between @arg{column}, and @arg{column + 1}.
   @end{short}

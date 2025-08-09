@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.file-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -59,7 +59,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFileChooserDialog
+;;; GtkFileChooserDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkFileChooserDialog" file-chooser-dialog
@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-dialog 'type)
- "@version{2023-6-11}
+ "@version{2025-07-11}
   @begin{short}
     The @class{gtk:file-chooser-dialog} widget is a dialog box suitable for use
     with \"File/Open\" or \"File/Save as\" commands.
@@ -151,14 +151,15 @@
     folder. This is no longer considered to be a good policy, as now the file
     chooser is able to make good suggestions on its own. In general, you should
     only cause the file chooser to show a specific folder when it is appropriate
-    to use the @fun{gtk:file-chooser-filename} function, i.e. when you are
+    to use the @fun{gtk:file-chooser-filename} function, that is, when you are
     doing a File/Save As command and you already have a file saved somewhere.
 
   @subheading{Response Codes}
     The @class{gtk:file-chooser-dialog} widget inherits from the
     @class{gtk:dialog} widget, so buttons that go in its action area have
-    response codes such as @code{:accept} and @code{:cancel}. For example, you
-    could call the @fun{gtk:file-chooser-dialog-new} function as follows:
+    response codes such as @val[gtk:response-type]{:accept} and
+    @val[gtk:response-type]{:cancel}. For example, you could call the
+    @fun{gtk:file-chooser-dialog-new} function as follows:
     @begin{pre}
 (let ((dialog (gtk:file-chooser-dialog-new \"Open File\"
                                            parent-window
@@ -168,12 +169,12 @@
   ... )
     @end{pre}
     This will create buttons for \"Cancel\" and \"Open\" that use stock
-    response identifiers from the @symbol{gtk:response-type} enumeration. For
-    most dialog boxes you can use your own custom response codes rather than
-    the ones in the @symbol{gtk:response-type} enumeration, but the
+    response identifiers from the @sym{gtk:response-type} enumeration. For most
+    dialog boxes you can use your own custom response codes rather than the
+    ones in the @sym{gtk:response-type} enumeration, but the
     @class{gtk:file-chooser-dialog} widget assumes that its \"accept\"-type
-    action, e.g. an \"Open\" or \"Save\" button, will have one of the following
-    response codes:
+    action, for example, an \"Open\" or \"Save\" button, will have one of the
+    following response codes:
     @begin{pre}
      @code{:accept}
      @code{:ok}
@@ -197,19 +198,19 @@
   @see-function{gtk:file-chooser-dialog-new}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_dialog_new ()
+;;; gtk_file_chooser_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (defun file-chooser-dialog-new (title parent action &rest buttons)
  #+liber-documentation
- "@version{2023-6-11}
-  @argument[title]{a string with title of the dialog, or @code{nil}}
+ "@version{2025-07-07}
+  @argument[title]{a string for title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
-  @argument[action]{a value of the @symbol{gtk:file-chooser-action} enumeration}
+  @argument[action]{a value of the @sym{gtk:file-chooser-action} enumeration}
   @argument[buttons]{pairs with a button text or stock ID and the response ID
-    of type @symbol{gtk:response-type} for the button}
-  @return{A new @class{gtk:file-chooser-dialog} widget.}
+    of type @sym{gtk:response-type} for the button}
+  @return{The new @class{gtk:file-chooser-dialog} widget.}
   @begin{short}
     Creates a new file chooser dialog.
   @end{short}

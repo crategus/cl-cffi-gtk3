@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-map 'type)
- "@version{2025-06-19}
+ "@version{2025-07-14}
   @begin{short}
     Accelerator maps are used to define runtime configurable accelerators.
   @end{short}
@@ -95,11 +95,11 @@
   The accelerator path must consist of
   @code{\"<WINDOWTYPE>/Category1/Category2/.../Action\"}, where
   @code{WINDOWTYPE} should be a unique application specific identifier that
-  corresponds to the kind of window the accelerator is being used in, e.g.
-  @code{\"Gimp-Image\"}, @code{\"Abiword-Document\"} or
+  corresponds to the kind of window the accelerator is being used in, for
+  example @code{\"Gimp-Image\"}, @code{\"Abiword-Document\"} or
   @code{\"Gnumeric-Settings\"}. The @code{\"Category1/.../Action\"} portion is
-  most appropriately chosen by the action the accelerator triggers, i.e. for
-  accelerators on menu items, choose the item's menu path, e.g.
+  most appropriately chosen by the action the accelerator triggers, that is for
+  accelerators on menu items, choose the item's menu path, for example
   @code{\"File/Save As\"}, @code{\"Image/View/Zoom\"} or
   @code{\"Edit/Select All\"}. So a full valid accelerator path may look like:
   @code{\"<Gimp-Toolbox>/File/Dialogs/Tool Options...\"}.
@@ -126,26 +126,27 @@
 
   @subheading{Monitoring changes}
     A @class{gtk:accel-map} object is only useful for monitoring changes of
-    accelerators. By connecting to the @code{\"changed\"} signal, one can
-    monitor changes of all accelerators. It is also possible to monitor only a
-    single accelerator path by using it as a detail of the @code{\"changed\"}
-    signal.
+    accelerators. By connecting to the @sig[gtk:accel-map]{changed} signal,
+    one can monitor changes of all accelerators. It is also possible to monitor
+    only a single accelerator path by using it as a detail of the
+    @sig[gtk:accel-map]{changed} signal.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[accel-map::changed]{signal}
       @begin{pre}
 lambda (object path key mods)    :has-details
       @end{pre}
-    @begin[arg]{table}
-      @entry[object]{The global @class{gtk:accel-map} object.}
-      @entry[path]{The string with the path of the accelerator that changed.}
-      @entry[key]{The unsigned integer with the key value for the new
-        accelerator.}
-      @entry[mods]{The @symbol{gdk:modifier-type} value with the modifier mask
-        for the new accelerator.}
-    @end{table}
-    Notifies of a change in the global accelerator map. The path is also used
-    as the detail for the signal, so it is possible to connect to
-    \"changed::accel-path\".
+      @begin[arg]{simple-table}
+        @entry[object]{The global @class{gtk:accel-map} object.}
+        @entry[path]{The string for the path of the accelerator that changed.}
+        @entry[key]{The unsigned integer for the key value for the new
+          accelerator.}
+        @entry[mods]{The @sym{gdk:modifier-type} value with the modifier mask
+          for the new accelerator.}
+      @end{simple-table}
+      Notifies of a change in the global accelerator map. The path is also used
+      as the detail for the signal, so it is possible to connect to
+      @sig[gtk:accel-map]{changed::accel-path}.
+    @end{signal}
   @end{dictionary}
   @see-class{gtk:ui-manager}")
 
@@ -155,11 +156,10 @@ lambda (object path key mods)    :has-details
 
 (cffi:defcfun ("gtk_accel_map_add_entry" accel-map-add-entry) :void
  #+liber-documentation
- "@version{2025-06-19}
+ "@version{2025-07-07}
   @argument[path]{a string for the valid accelerator path}
   @argument[key]{an unsigned integer for the accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value for the accelerator
-    modifiers}
+  @argument[mods]{a @sym{gdk:modifier-type} value for the accelerator modifiers}
   @begin{short}
     Registers a new accelerator with the global accelerator map.
   @end{short}
@@ -185,12 +185,11 @@ lambda (object path key mods)    :has-details
 
 (defun accel-map-lookup-entry (path)
  #+liber-documentation
- "@version{2025-06-19}
+ "@version{2025-07-07}
   @syntax{(gtk:accel-map-lookup-entry path) => key, mods, flags}
   @argument[path]{a string for the valid accelerator path}
   @argument[key]{an unsigned integer for the accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value for the accelerator
-    modifiers}
+  @argument[mods]{a @sym{gdk:modifier-type} value for the accelerator modifiers}
   @argument[flags]{an unsigned integer for the accelerator flags if @arg{path}
     is known, @code{nil} otherwise}
   @begin{short}
@@ -213,10 +212,10 @@ lambda (object path key mods)    :has-details
 
 (cffi:defcfun ("gtk_accel_map_change_entry" accel-map-change-entry) :boolean
  #+liber-documentation
- "@version{2025-06-19}
+ "@version{2025-07-07}
   @argument[path]{a string for the valid accelerator path}
   @argument[key]{an unsigned integer for the new accelerator key}
-  @argument[mods]{a @symbol{gdk:modifier-type} value for the new accelerator
+  @argument[mods]{a @sym{gdk:modifier-type} value for the new accelerator
     modifiers}
   @argument[replace]{@em{true} if other accelerators may be deleted upon
     conflicts}
@@ -315,14 +314,14 @@ lambda (object path key mods)    :has-details
 
 (cffi:defcfun ("gtk_accel_map_get" accel-map-get) (g:object accel-map)
  #+liber-documentation
- "@version{2023-03-06}
+ "@version{2025-07-14}
   @return{The global @class{gtk:accel-map} object.}
   @begin{short}
     Gets the singleton global @class{gtk:accel-map} object.
   @end{short}
   This object is useful only for notification of changes to the accelerator map
-  via the @code{\"changed\"} signal. It is not a parameter to the other
-  accelerator map functions.
+  via the @sig[gtk:accel-map]{changed} signal. It is not a parameter to the
+  other accelerator map functions.
   @see-class{gtk:accel-map}")
 
 (export 'accel-map-get)

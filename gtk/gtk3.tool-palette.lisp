@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tool-palette.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -91,7 +91,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkToolPaletteDragTargets
+;;; GtkToolPaletteDragTargets
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkToolPaletteDragTargets" tool-palette-drag-targets
@@ -104,7 +104,7 @@
 (setf (liber:alias-for-symbol 'tool-palette-drag-targets)
       "GFlags"
       (liber:symbol-documentation 'tool-palette-drag-targets)
- "@version{#2024-3-21}
+ "@version{#2025-06-27}
   @begin{declaration}
 (gobject:define-gflags \"GtkToolPaletteDragTargets\" tool-palette-drag-targets
   (:export t
@@ -113,10 +113,10 @@
   (:groups 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:items]{Support drag of items.}
       @entry[:groups]{Support drag of groups.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Flags used to specify the supported drag targets.
@@ -124,7 +124,7 @@
   @see-class{gtk:tool-palette}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToolPalette
+;;; GtkToolPalette
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToolPalette" tool-palette
@@ -178,7 +178,7 @@
   is to call the @fun{gtk:tool-palette-add-drag-dest} function with the desired
   drag source palette and the desired drag target widget. Then the
   @fun{gtk:tool-palette-drag-item} function can be used to get the dragged item
-  in the @code{\"drag-data-received\"} signal handler of the drag target.
+  in the @sig[gtk:widget]{drag-data-received} signal handler of the drag target.
   @begin{pre}
 static void
 passive_canvas_drag_data_received (GtkWidget        *widget,
@@ -220,22 +220,20 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
     @code{toolpalette}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[exclusive]{entry}
-        The @code{exclusive} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the item group should be the only one that is expanded at a
-        given time. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[expand]{entry}
-        The @code{expand} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the item group should receive extra space when the palette
-        grows at a given time. @br{}
-        Default value: @em{false}
-      @end{entry}
-    @end{table}
+    @begin[tool-palette:exclusive]{property}
+      The @code{exclusive} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the item group should be the only one that is expanded at a
+      given time. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[tool-palette:expand]{property}
+      The @code{expand} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the item group should receive extra space when the palette
+      grows at a given time. @br{}
+      Default value: @em{false}
+    @end{property}
   @end{dictionary}
   @see-constructor{gtk:tool-palette-new}
   @see-slot{gtk:tool-palette-icon-size}
@@ -256,24 +254,23 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "icon-size" 'tool-palette) t)
- "The @code{icon-size} property of type @symbol{gtk:icon-size} (Read / Write)
-  @br{}
+ "The @code{icon-size} property of type @sym{gtk:icon-size} (Read / Write) @br{}
   The size of the icons in a tool palette is normally determined by the
   @slot[gtk:settings]{gtk:toolbar-icon-size} setting. When this property is set,
   it overrides the setting. This should only be used for special purpose tool
   palettes, normal application tool palettes should respect the user preferences
   for the size of icons. @br{}
-  Default value: @code{:small-toolbar}")
+  Default value: @val[gtk:icon-size]{:small-toolbar}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tool-palette-icon-size)
       "Accessor"
       (documentation 'tool-palette-icon-size 'function)
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:tool-palette-icon-size object) => icon-size}
   @syntax{(setf (gtk:tool-palette-icon-size object) icon-size)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[icon-size]{a value of the @symbol{gtk:icon-size} enumeration that
+  @argument[icon-size]{a value of the @sym{gtk:icon-size} enumeration that
     icons in the tool palette shall have}
   @begin{short}
     Accessor of the @slot[gtk:tool-palette]{icon-size} slot of the
@@ -316,20 +313,20 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "toolbar-style" 'tool-palette) t)
- "The @code{toolbar-style} property of type @symbol{gtk:toolbar-style}
+ "The @code{toolbar-style} property of type @sym{gtk:toolbar-style}
   (Read / Write) @br{}
   The style of items in the tool palette. @br{}
-  Default value: @code{:icons}")
+  Default value: @val[gtk:toolbar-style]{:icons}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tool-palette-toolbar-style)
       "Accessor"
       (documentation 'tool-palette-toolbar-style 'function)
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:tool-palette-toolbar-style object) => style}
   @syntax{(setf (gtk:tool-palette-toolbar-style object) style)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[style]{a value of the @symbol{gtk:toolbar-style} enumeration that
+  @argument[style]{a value of the @sym{gtk:toolbar-style} enumeration that
     items in the tool palette shall have}
   @begin{short}
     Accessor of the @slot[gtk:tool-palette]{toolbar-style} slot of the
@@ -410,8 +407,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-new ()
  #+liber-documentation
- "@version{#2023-3-28}
-  @return{A new @class{gtk:tool-palette} widget.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:tool-palette} widget.}
   @short{Creates a new tool palette.}
   @see-class{gtk:tool-palette}"
   (make-instance 'tool-palette))
@@ -458,13 +455,13 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_get_group_position"
                tool-palette-group-position) :int
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:tool-palette-group-position palette group) => position}
   @syntax{(setf (gtk:tool-palette-group-position palette group) position)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[group]{a @class{gtk:tool-item-group} widget which is a child of
     @arg{palette}}
-  @argument[position]{an integer with an index for @arg{group}}
+  @argument[position]{an integer for an index for @arg{group}}
   @begin{short}
     Accessor of the index of the tool item group in the tool palette.
   @end{short}
@@ -539,15 +536,15 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_add_drag_dest" tool-palette-add-drag-dest)
     :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[widget]{a @class{gtk:widget} object which should be a drag
+  @argument[widget]{a @class{gtk:widget} object that should be a drag
     destination for @arg{palette}}
-  @argument[flags]{the @symbol{gtk:dest-defaults} flags that specify what
-    actions GTK+ should take for drops on that @arg{widget}}
-  @argument[targets]{the @symbol{gtk:tool-palette-drag-targets} flags which the
+  @argument[flags]{a @sym{gtk:dest-defaults} flags that specify what actions
+    GTK should take for drops on that @arg{widget}}
+  @argument[targets]{a @sym{gtk:tool-palette-drag-targets} flags which the
     @arg{widget} should support}
-  @argument[actions]{the @symbol{gdk:drag-action} flags which the @arg{widget}
+  @argument[actions]{a @sym{gdk:drag-action} flags which the @arg{widget}
     should suppport}
   @begin{short}
     Sets the tool palette as drag source and sets a widget as a drag
@@ -602,8 +599,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-drag-target-group ()
  #+liber-documentation
- "@version{#2023-3-28}
-  @return{A list with the target entry for a dragged group.}
+ "@version{#2025-07-07}
+  @return{The list with the target entry for a dragged group.}
   @begin{short}
     Gets the target entry for a dragged @class{gtk:tool-item-group} widget.
   @end{short}
@@ -626,8 +623,8 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (defun tool-palette-drag-target-item ()
  #+liber-documentation
- "@version{#2023-3-28}
-  @return{A list with the target entry for a dragged item.}
+ "@version{#2025-07-07}
+  @return{The list with the target entry for a dragged item.}
   @begin{short}
     Gets the target entry for a dragged @class{gtk:tool-item} widget.
   @end{short}
@@ -700,9 +697,9 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_set_drag_source" tool-palette-set-drag-source)
     :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[palette]{a @class{gtk:tool-palette} widget}
-  @argument[targets]{the @symbol{gtk:tool-palette-drag-targets} flags which the
+  @argument[targets]{a @sym{gtk:tool-palette-drag-targets} flags which the
     widget should support}
   @begin{short}
     Sets the tool palette as a drag source.

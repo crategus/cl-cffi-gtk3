@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-button 'type)
- "@version{#2025-07-14}
+ "@version{#2025-07-17}
   @begin{short}
     A single radio button performs the same basic function as a
     @class{gtk:check-button} widget, as its position in the object hierarchy
@@ -133,7 +133,7 @@ radiobutton
 ├── radio
 ╰── <child>
     @end{pre}
-    A @class{gtk:radio-button} widget with indicator, see the
+    The @class{gtk:radio-button} widget with indicator, see the
     @fun{gtk:toggle-button-mode} function, has a main CSS node with name
     @code{radiobutton} and a subnode with name @code{radio}.
     @begin{pre}
@@ -141,9 +141,9 @@ button.radio
 ├── radio
 ╰── <child>
     @end{pre}
-    A @class{gtk:radio-button} implementation without indicator changes the name
-    of its main node to @code{button} and adds a @code{.radio} style class to
-    it. The subnode is invisible in this case.
+    The @class{gtk:radio-button} implementation without indicator changes the
+    name of its main node to @code{button} and adds a @code{.radio} style class
+    to it. The subnode is invisible in this case.
   @end{dictionary}
   @begin[Examples]{dictionary}
     How to create a group of two radio buttons.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.menu.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -51,26 +51,26 @@
 ;;;     gtk_menu_popup_at_pointer
 ;;;     gtk_menu_popup_for_device
 ;;;     gtk_menu_popup
-;;;     gtk_menu_set_accel_group                           Accessor
-;;;     gtk_menu_get_accel_group                           Accessor
-;;;     gtk_menu_set_accel_path                            Accessor
-;;;     gtk_menu_get_accel_path                            Accessor
-;;;     gtk_menu_set_title                                 Accessor
-;;;     gtk_menu_get_title                                 Accessor
-;;;     gtk_menu_set_monitor                               Accessor
-;;;     gtk_menu_get_monitor                               Accessor
+;;;     gtk_menu_set_accel_group                            Accessor
+;;;     gtk_menu_get_accel_group                            Accessor
+;;;     gtk_menu_set_accel_path                             Accessor
+;;;     gtk_menu_get_accel_path                             Accessor
+;;;     gtk_menu_set_title                                  Accessor
+;;;     gtk_menu_get_title                                  Accessor
+;;;     gtk_menu_set_monitor                                Accessor
+;;;     gtk_menu_get_monitor                                Accessor
 ;;;     gtk_menu_place_on_monitor
-;;;     gtk_menu_get_tearoff_state                         Accessor
-;;;     gtk_menu_set_reserve_toggle_size                   Accessor
-;;;     gtk_menu_get_reserve_toggle_size                   Accessor
+;;;     gtk_menu_get_tearoff_state                          Accessor
+;;;     gtk_menu_set_reserve_toggle_size                    Accessor
+;;;     gtk_menu_get_reserve_toggle_size                    Accessor
 ;;;     gtk_menu_popdown
 ;;;     gtk_menu_reposition
-;;;     gtk_menu_get_active                                Accessor
-;;;     gtk_menu_set_active                                Accessor
-;;;     gtk_menu_set_tearoff_state                         Accessor
+;;;     gtk_menu_get_active                                 Accessor
+;;;     gtk_menu_set_active                                 Accessor
+;;;     gtk_menu_set_tearoff_state                          Accessor
 ;;;     gtk_menu_attach_to_widget
 ;;;     gtk_menu_detach
-;;;     gtk_menu_get_attach_widget                         Accessor
+;;;     gtk_menu_get_attach_widget                          Accessor
 ;;;     gtk_menu_get_for_attach_widget
 ;;;
 ;;; Properties
@@ -142,7 +142,7 @@
 (setf (liber:alias-for-symbol 'arrow-placement)
       "GEnum"
       (liber:symbol-documentation 'arrow-placement)
- "@version{#2024-3-22}
+ "@version{#2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkArrowPlacement\" arrow-placement
   (:export t
@@ -152,11 +152,11 @@
   (:end 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:both]{Place one arrow on each end of the menu.}
       @entry[:start]{Place both arrows at the top of the menu.}
       @entry[:end]{Place both arrows at the bottom of the menu.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to specify the placement of scroll arrows in scrolling menus.
@@ -164,7 +164,7 @@
   @see-class{gtk:menu}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkMenu
+;;; GtkMenu
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkMenu" menu
@@ -212,19 +212,19 @@
 
 #+liber-documentation
 (setf (documentation 'menu 'type)
- "@version{#2023-3-21}
+ "@version{#2025-06-27}
   @begin{short}
-    A @class{gtk:menu} widget is a @class{gtk:menu-shell} widget that implements
-    a drop down menu consisting of a list of @class{gtk:menu-item} widgets
-    which can be navigated and activated by the user to perform application
-    functions.
+    The @class{gtk:menu} widget is a @class{gtk:menu-shell} widget that
+    implements a drop down menu consisting of a list of @class{gtk:menu-item}
+    widgets which can be navigated and activated by the user to perform
+    application functions.
   @end{short}
 
-  A @class{gtk:menu} widget is most commonly dropped down by activating a
+  The @class{gtk:menu} widget is most commonly dropped down by activating a
   @class{gtk:menu-item} widget in a @class{gtk:menu-bar} widget or popped up by
   activating a @class{gtk:menu-item} widget in another @class{gtk:menu} widget.
 
-  A @class{gtk:menu} widget can also be popped up by activating a
+  The @class{gtk:menu} widget can also be popped up by activating a
   @class{gtk:combo-box} widget. Other composite widgets such as the
   @class{gtk:notebook} widget can pop up a @class{gtk:menu} widget as well.
 
@@ -279,121 +279,127 @@ menu
     style classes.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[bottom-attach]{entry}
-        The @code{bottom-attach} child property of type @code{:int}
-        (Read / Write) @br{}
-        The row number to attach the bottom of the child to. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: -1
-      @end{entry}
-      @begin[left-attach]{entry}
-        The @code{left-attach} child property of type @code{:int}
-        (Read / Write) @br{}
-        The column number to attach the left side of the child to. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: -1
-      @end{entry}
-      @begin[right-attach]{entry}
-        The @code{right-attach} child property of type @code{:int}
-        (Read / Write) @br{}
-        The column number to attach the right side of the child to. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: -1
-      @end{entry}
-      @begin[top-attach]{entry}
-        The @code{top-attach} child property of type @code{:int}
-        (Read / Write) @br{}
-        The row number to attach the top of the child to. @br{}
-        Allowed values: >= -1 @br{}
-        Default value: -1
-      @end{entry}
-    @end{table}
+    @begin[table:bottom-attach]{property}
+      The @code{bottom-attach} child property of type @code{:int}
+      (Read / Write) @br{}
+      The row number to attach the bottom of the child to. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: -1
+    @end{property}
+    @begin[table:left-attach]{property}
+      The @code{left-attach} child property of type @code{:int}
+      (Read / Write) @br{}
+      The column number to attach the left side of the child to. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: -1
+    @end{property}
+    @begin[table:right-attach]{property}
+      The @code{right-attach} child property of type @code{:int}
+      (Read / Write) @br{}
+      The column number to attach the right side of the child to. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: -1
+    @end{property}
+    @begin[table:top-attach]{property}
+      The @code{top-attach} child property of type @code{:int}
+      (Read / Write) @br{}
+      The row number to attach the top of the child to. @br{}
+      Allowed values: >= -1 @br{}
+      Default value: -1
+    @end{property}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[arrow-placement]{entry}
-        The @code{arrow-placement} style property of type
-        @symbol{gtk:arrow-placement} (Read) @br{}
-        Indicates where scroll arrows should be placed. @br{}
-        @em{Warning:} The @code{arrow-placement} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Default value: @code{:boths}
-      @end{entry}
-      @begin[arrow-scaling]{entry}
-        The @code{arrow-scaling} style property of type @code{:float}
-        (Read) @br{}
-        Arbitrary constant to scale down the size of the scroll arrow. @br{}
-        @em{Warning:} The @code{arrow-scaling} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-width/min-height CSS properties on the arrow
-        node. The value of this style property is ignored. @br{}
-        Allowed values: [0,1] @br{}
-        Default value: 0.7
-      @end{entry}
-      @begin[double-arrows]{entry}
-        The @code{double-arrows} style property of type @code{:boolean}
-        (Read) @br{}
-        When scrolling, always show both arrows. @br{}
-        @em{Warning:} The @code{double-arrows} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[horizontal-offset]{entry}
-        The @code{horizontal-offset} style property of type @code{:int}
-        (Read) @br{}
-        When the menu is a submenu, position it this number of pixels offset
-        horizontally. @br{}
-        Default value: -2
-      @end{entry}
-      @begin[horizontal-padding]{entry}
-        The @code{horizontal-padding} style property of type @code{:int}
-        (Read) @br{}
-        Extra space at the left and right edges of the menu. @br{}
-        @em{Warning:} The @code{horizontal-padding} style property has been
-        deprecated since version 3.8 and should not be used in newly written
-        code. Use the standard padding CSS property, through objects like
-        @class{gtk:style-context} and @class{gtk:css-provider}. The value of
-        this style property is ignored. @br{}
+    @begin[menu:arrow-placement]{property}
+      The @code{arrow-placement} style property of type
+      @sym{gtk:arrow-placement} (Read) @br{}
+      Indicates where scroll arrows should be placed. @br{}
+      @em{Warning:} The @code{arrow-placement} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Default value: @val[gtk:arrow-placement]{:boths}
+    @end{property}
+    @begin[menu:arrow-scaling]{property}
+      The @code{arrow-scaling} style property of type @code{:float}
+      (Read) @br{}
+      Arbitrary constant to scale down the size of the scroll arrow. @br{}
+      @em{Warning:} The @code{arrow-scaling} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-width/min-height CSS properties on the arrow
+      node. The value of this style property is ignored. @br{}
+      Allowed values: [0,1] @br{}
+      Default value: 0.7
+    @end{property}
+    @begin[menu:double-arrows]{property}
+      The @code{double-arrows} style property of type @code{:boolean}
+      (Read) @br{}
+      When scrolling, always show both arrows. @br{}
+      @em{Warning:} The @code{double-arrows} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[menu:horizontal-offset]{property}
+      The @code{horizontal-offset} style property of type @code{:int}
+      (Read) @br{}
+      When the menu is a submenu, position it this number of pixels offset
+      horizontally. @br{}
+      Default value: -2
+    @end{property}
+    @begin[menu:horizontal-padding]{property}
+      The @code{horizontal-padding} style property of type @code{:int}
+      (Read) @br{}
+      Extra space at the left and right edges of the menu. @br{}
+      @em{Warning:} The @code{horizontal-padding} style property has been
+      deprecated since version 3.8 and should not be used in newly written
+      code. Use the standard padding CSS property, through objects like
+      @class{gtk:style-context} and @class{gtk:css-provider}. The value of
+      this style property is ignored. @br{}
       Allowed values: >= 0 @br{}
       Default value: 0
-      @end{entry}
-      @begin[vertical-offset]{entry}
-        The @code{vertical-offset} style property of type @code{:int}
-        (Read) @br{}
-        When the menu is a submenu, position it this number of pixels offset
-        vertically. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[vertical-padding]{entry}
-        The @code{vertical-padding} style property of type @code{:int}
-        (Read) @br{}
-        Extra space at the top and bottom of the menu. @br{}
-        @em{Warning:} The @code{vertical-padding} style property has been
-        deprecated since version 3.8 and should not be used in newly written
-        code. Use the standard padding CSS property, through objects like
-        @class{gtk:style-context} and @class{gtk:css-provider}. The value of
-        this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 1
-      @end{entry}
-    @end{table}
+    @end{property}
+    @begin[menu:vertical-offset]{property}
+      The @code{vertical-offset} style property of type @code{:int}
+      (Read) @br{}
+      When the menu is a submenu, position it this number of pixels offset
+      vertically. @br{}
+      Default value: 0
+    @end{property}
+    @begin[menu:vertical-padding]{property}
+      The @code{vertical-padding} style property of type @code{:int}
+      (Read) @br{}
+      Extra space at the top and bottom of the menu. @br{}
+      @em{Warning:} The @code{vertical-padding} style property has been
+      deprecated since version 3.8 and should not be used in newly written
+      code. Use the standard padding CSS property, through objects like
+      @class{gtk:style-context} and @class{gtk:css-provider}. The value of
+      this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 1
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"move-scroll\" signal}
+    @begin[menu::move-scroll]{signal}
       @begin{pre}
 lambda (menu scrolltype)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[menu]{A @class{gtk:menu} widget.}
-        @entry[scrolltype]{A value of the @symbol{gtk:scroll-type} enumeration.}
-      @end{table}
-    @subheading{The \"popped-up\" signal}
+      @begin[code]{simple-table}
+        @entry[menu]{The @class{gtk:menu} widget.}
+        @entry[scrolltype]{The value of the @sym{gtk:scroll-type} enumeration.}
+      @end{simple-table}
+    @end{signal}
+    @begin[menu::popped-up]{signal}
       @begin{pre}
 lambda (menu flipped final xflipped yflipped)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[menu]{The @class{gtk:menu} widget that popped up.}
+        @entry[flipped]{The position of @arg{menu} after any possible flipping
+          or @code{nil} if the backend can not obtain it.}
+        @entry[final]{The final position of @arg{menu} or @code{nil} if the
+          backend can not obtain it.}
+        @entry[xflipped]{@em{True} if the anchors were flipped horizontally.}
+        @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
+      @end{simple-table}
       Emitted when the position of the menu is finalized after being popped up
       using the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
       or @fun{gtk:menu-popup-at-pointer} functions. The menu might be flipped
@@ -415,15 +421,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
       @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
       @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
       properties.
-      @begin[code]{table}
-        @entry[menu]{A @class{gtk:menu} widget that popped up.}
-        @entry[flipped]{The position of @arg{menu} after any possible flipping
-          or @code{nil} if the backend can not obtain it.}
-        @entry[final]{The final position of @arg{menu} or @code{nil} if the
-          backend can not obtain it.}
-        @entry[xflipped]{@em{True} if the anchors were flipped horizontally.}
-        @entry[yflipped]{@em{True} if the anchors were flipped vertically.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:menu-new}
   @see-constructor{gtk:menu-new-from-model}
@@ -490,11 +488,11 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-accel-path)
       "Accessor"
       (documentation 'menu-accel-path 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-05}
   @syntax{(gtk:menu-accel-path object) => path}
   @syntax{(setf (gtk:menu-accel-path object) path)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[path]{a string with a valid accelerator path}
+  @argument[path]{a string for a valid accelerator path}
   @begin{short}
     Accessor of the @slot[gtk:menu]{accel-path} slot of the @class{gtk:menu}
     class.
@@ -540,11 +538,11 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-active)
       "Accessor"
       (documentation 'menu-active 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-05}
   @syntax{(gtk:menu-active object) => active}
   @syntax{(setf (gtk:menu-active object) active)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[active]{an integer with the index of the currently selected menu
+  @argument[active]{an integer for the index of the currently selected menu
     item}
   @begin{short}
     Accessor of the @slot[gtk:menu]{active} slot of the @class{gtk:menu} class.
@@ -560,7 +558,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "anchor-hints" 'menu) t)
- "The @code{anchor-hints} property of type @symbol{gdk:anchor-hints}
+ "The @code{anchor-hints} property of type @sym{gdk:anchor-hints}
   (Read / Write / Construct) @br{}
   Positioning hints for aligning the menu relative to a rectangle. These hints
   determine how the menu should be positioned in the case that the menu would
@@ -572,11 +570,11 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-anchor-hints)
       "Accessor"
       (documentation 'menu-anchor-hints 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @syntax{(gtk:menu-anchor-hints object) => hints}
   @syntax{(setf (gtk:menu-anchor-hints object) hints)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[hints]{a value of the @symbol{gdk:anchor-hints} flags}
+  @argument[hints]{a value of the @sym{gdk:anchor-hints} flags}
   @begin{short}
     Accessor of the @slot[gtk:menu]{anchor-hints} slot of the @class{gtk:menu}
     class.
@@ -587,12 +585,13 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
   @image[popup-flip]{Figure: Popup flip}
 
-  For example, @code{:flip-y} will replace @code{:north-west} with
-  @code{:south-west} and vice versa if the menu extends beyond the bottom edge
-  of the monitor. See the @fun{gtk:menu-popup-at-rect},
-  @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
-  the @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy},
-  @slot[gtk:menu]{menu-type-hint} properties, and the @code{\"popped-up\"}
+  For example, @val[gdk:anchor-hints]{:flip-y} will replace
+  @val[gdk:gravity]{:north-west} with @val[gdk:gravity]{:south-west} and vice
+  versa if the menu extends beyond the bottom edge of the monitor. See the
+  @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
+  @fun{gtk:menu-popup-at-pointer} functions, the
+  @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy},
+  @slot[gtk:menu]{menu-type-hint} properties, and the @sig[gtk:menu]{popped-up}
   signal.
   @see-class{gtk:menu}
   @see-symbol{gdk:anchor-hints}
@@ -640,30 +639,30 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "menu-type-hint" 'menu) t)
- "The @code{menu-type-hint} property of type @symbol{gdk:window-type-hint}
+ "The @code{menu-type-hint} property of type @sym{gdk:window-type-hint}
   (Read / Write / Construct) @br{}
-  The @symbol{gdk:window-type-hint} value to use for the @class{gdk:window}
-  object of the menu. @br{}
-  Default value: @code{:popup-menu}")
+  The @sym{gdk:window-type-hint} value to use for the @class{gdk:window} object
+  of the menu. @br{}
+  Default value: @val[gdk:window-type-hint]{:popup-menu}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-menu-type-hint)
       "Accessor"
       (documentation 'menu-menu-type-hint 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @syntax{(gtk:menu-menu-type-hint object) => hint}
   @syntax{(setf (gtk:menu-menu-type-hint object) hint)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[hint]{a value of the @symbol{gdk:window-type-hint} enumeration}
+  @argument[hint]{a value of the @sym{gdk:window-type-hint} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:menu]{menu-type-hint} slot of the @class{gtk:menu}
     class.
   @end{short}
-  The @symbol{gdk:window-type-hint} value to use for the @class{gdk:window}
-  object of the menu. See the @fun{gtk:menu-popup-at-rect},
+  The @sym{gdk:window-type-hint} value to use for the @class{gdk:window} object
+  of the menu. See the @fun{gtk:menu-popup-at-rect},
   @fun{gtk:menu-popup-at-widget}, @fun{gtk:menu-popup-at-pointer} functions,
   the @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
-  @slot[gtk:menu]{rect-anchor-dy} properties, and the @code{\"popped-up\"}
+  @slot[gtk:menu]{rect-anchor-dy} properties, and the @sig[gtk:menu]{popped-up}
   signal.
   @see-class{gtk:menu}
   @see-class{gdk:window}
@@ -688,11 +687,11 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-monitor)
       "Accessor"
       (documentation 'menu-monitor 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @syntax{(gtk:menu-monitor object) => num}
   @syntax{(setf (gtk:menu-monitor object) num)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[num]{an integer with the number of the monitor on which the menu
+  @argument[num]{an integer for the number of the monitor on which the menu
     should be popped up}
   @begin{short}
     Accessor of the @slot[gtk:menu]{monitor} slot of the @class{gtk:menu} class.
@@ -700,12 +699,12 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   The @fun{gtk:menu-monitor} function retrieves the number of the monitor on
   which to show the menu. The @setf{gtk:menu-monitor} function sets the monitor.
 
-  This function should be called from a @symbol{gtk:menu-position-func} callback
+  This function should be called from a @sym{gtk:menu-position-func} callback
   function if the menu should not appear on the same monitor as the pointer.
   This information cannot be reliably inferred from the coordinates returned by
-  a @symbol{gtk:menu-position-func} callback function, since, for very long
-  menus, these coordinates may extend beyond the monitor boundaries or even the
-  screen boundaries.
+  a @sym{gtk:menu-position-func} callback function, since, for very long menus,
+  these coordinates may extend beyond the monitor boundaries or even the screen
+  boundaries.
   @see-class{gtk:menu}")
 
 ;;; --- gtk:menu-rect-anchor-dx ------------------------------------------------
@@ -714,28 +713,28 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (documentation (liber:slot-documentation "rect-anchor-dx" 'menu) t)
  "The @code{rect-anchor-dx} property of type @code{:int}
   (Read / Write / Construct) @br{}
-  Horizontal offset to apply to the menu, i.e. the rectangle or widget anchor.
-  @br{}
+  Horizontal offset to apply to the menu, that is, the rectangle or widget
+  anchor. @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-rect-anchor-dx)
       "Accessor"
       (documentation 'menu-rect-anchor-dx 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-05}
   @syntax{(gtk:menu-rect-anchor-dx object) => anchor}
   @syntax{(setf (gtk:menu-rect-anchor-dx object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[anchor]{an integer with the horizontal offset to apply to the menu}
+  @argument[anchor]{an integer for the horizontal offset to apply to the menu}
   @begin{short}
     Accessor of the @slot[gtk:menu]{rect-anchor-dx} slot of the
     @class{gtk:menu} class.
   @end{short}
-  Horizontal offset to apply to the menu, i.e. the rectangle or widget anchor.
-  See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
+  Horizontal offset to apply to the menu, that is, the rectangle or widget
+  anchor. See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
-  and the @code{\"popped-up\"} signal.
+  and the @sig[gtk:menu]{popped-up} signal.
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -750,7 +749,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (documentation (liber:slot-documentation "rect-anchor-dy" 'menu) t)
  "The @code{rect-anchor-dy} property of type @code{:int}
   (Read / Write / Construct) @br{}
-  Vertical offset to apply to the menu, i.e. the rectangle or widget anchor.
+  Vertical offset to apply to the menu, that is, the rectangle or widget anchor.
   @br{}
   Default value: 0")
 
@@ -758,21 +757,21 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-rect-anchor-dy)
       "Accessor"
       (documentation 'menu-rect-anchor-dy 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @syntax{(gtk:menu-rect-anchor-dy object) => anchor}
   @syntax{(setf (gtk:menu-rect-anchor-dy object) anchor)}
   @argument[object]{a @class{gtk:menu} widget}
-  @argument[anchor]{an integer with the vertical offset to apply to the menu}
+  @argument[anchor]{an integer for the vertical offset to apply to the menu}
   @begin{short}
     Accessor of the @slot[gtk:menu]{rect-anchor-dy} slot of the
     @class{gtk:menu} class.
   @end{short}
-  Vertical offset to apply to the menu, i.e. the rectangle or widget anchor.
+  Vertical offset to apply to the menu, that is, the rectangle or widget anchor.
 
   See the @fun{gtk:menu-popup-at-rect}, @fun{gtk:menu-popup-at-widget},
   @fun{gtk:menu-popup-at-pointer} functions, the @slot[gtk:menu]{anchor-hints},
   @slot[gtk:menu]{rect-anchor-dx}, @slot[gtk:menu]{rect-anchor-dy} properties,
-  and the @code{\"popped-up\"} signal.
+  and the @sig[gtk:menu]{popped-up} signal.
   @see-class{gtk:menu}
   @see-function{gtk:menu-popup-at-rect}
   @see-function{gtk:menu-popup-at-widget}
@@ -904,12 +903,12 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-child-bottom-attach)
       "Accessor"
       (documentation 'menu-child-bottom-attach 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-child-bottom-attach container child) => attach}
   @syntax{(setf (gtk:menu-child-bottom-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an integer with the row number}
+  @argument[attach]{an integer for the row number}
   @begin{short}
     Accessor of the @code{bottom-attach} child property of the
     @class{gtk:menu} class.
@@ -927,12 +926,12 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-child-left-attach)
       "Accessor"
       (documentation 'menu-child-left-attach 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-child-left-attach container child) => attach}
   @syntax{(setf (gtk:menu-child-left-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an integer with the column number}
+  @argument[attach]{an integer for the column number}
   @begin{short}
     Accessor of the @code{left-attach} child property of the @class{gtk:menu}
     class.
@@ -950,12 +949,12 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-child-right-attach)
       "Accessor"
       (documentation 'menu-child-right-attach 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-child-right-attach container child) => attach}
   @syntax{(setf (gtk:menu-child-right-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an integer with the column number}
+  @argument[attach]{an integer for the column number}
   @begin{short}
     Accessor of the @code{right-attach} child property of the @class{gtk:menu}
     class.
@@ -973,12 +972,12 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-child-top-attach)
       "Accessor"
       (documentation 'menu-child-top-attach 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-child-top-attach container child) => attach}
   @syntax{(setf (gtk:menu-child-top-attach container child) attach)}
   @argument[container]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:widget} child widget}
-  @argument[attach]{an integer with the row number}
+  @argument[attach]{an integer for the row number}
   @begin{short}
     Accessor of the @code{top-attach} child property of the @class{gtk:menu}
     class.
@@ -988,7 +987,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_new ()
+;;; gtk_menu_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline menu-new))
@@ -1004,7 +1003,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_new_from_model ()
+;;; gtk_menu_new_from_model
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_new_from_model" menu-new-from-model) (g:object widget)
@@ -1030,7 +1029,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-new-from-model)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_set_screen ()
+;;; gtk_menu_set_screen
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_set_screen" menu-set-screen) :void
@@ -1048,7 +1047,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-set-screen)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_reorder_child ()
+;;; gtk_menu_reorder_child
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_reorder_child" menu-reorder-child) :void
@@ -1070,21 +1069,21 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-reorder-child)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_attach ()
+;;; gtk_menu_attach
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_attach" menu-attach) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:menu-item} widget}
-  @argument[left]{an unsigned integer with the column number to attach the left
+  @argument[left]{an unsigned integer for the column number to attach the left
     side of the item to}
-  @argument[right]{an unsigned integer with the column number to attach the
+  @argument[right]{an unsigned integer for the column number to attach the
     right side of the item to}
-  @argument[top]{an unsigned integer with the row number to attach the top of
+  @argument[top]{an unsigned integer for the row number to attach the top of
     the item to}
-  @argument[bottom]{an unsigned integer with the row number to attach the
+  @argument[bottom]{an unsigned integer for the row number to attach the
     bottom of the item to}
   @begin{short}
     Adds a menu item to a (table) menu.
@@ -1108,19 +1107,19 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-attach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popup_at_rect ()
+;;; gtk_menu_popup_at_rect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popup_at_rect" menu-popup-at-rect) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @argument[menu]{a @class{gtk:menu} widget to pop up}
   @argument[window]{a @class{gdk:window} object @arg{rect} is relative to}
   @argument[rect]{a @class{gdk:rectangle} instance to align @arg{menu} with}
-  @argument[rect-anchor]{a @symbol{gdk:gravity} value with the point on
-    @arg{rect} to align with the @arg{menu}'s anchor point}
-  @argument[menu-anchor]{a @symbol{gdk:gravity} value with the point on
-    @arg{menu} to align with @arg{rect}'s anchor point}
+  @argument[rect-anchor]{a @sym{gdk:gravity} value for the point on @arg{rect}
+    to align with the @arg{menu}'s anchor point}
+  @argument[menu-anchor]{a @sym{gdk:gravity} value for the point on @arg{menu}
+    to align with @arg{rect}'s anchor point}
   @argument[event]{a @class{gdk:event} instance that initiated this request
     or @code{nil} if it is the current event}
   @begin{short}
@@ -1142,8 +1141,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
   Other properties that influence the behaviour of this function are
   the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
-  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
-  actually positioned.
+  properties. Connect to the @sig[gtk:menu]{popped-up} signal to find out how
+  it was actually positioned.
   @see-class{gtk:menu}
   @see-class{gdk:window}
   @see-class{gdk:rectangle}
@@ -1165,18 +1164,18 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popup-at-rect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popup_at_widget ()
+;;; gtk_menu_popup_at_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popup_at_widget" menu-popup-at-widget) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @argument[menu]{a @class{gtk:menu} widget to pop up}
   @argument[widget]{a @class{gtk:widget} widget to align @arg{menu} with}
-  @argument[widget-anchor]{a @symbol{gdk:gravity} value with the point on
+  @argument[widget-anchor]{a @sym{gdk:gravity} value for the point on
     @arg{widget} to align with the @arg{menu}'s anchor point}
-  @argument[menu-anchor]{a @symbol{gdk:gravity} value with the point on
-    @arg{menu} to align with @arg{widget}'s anchor point}
+  @argument[menu-anchor]{a @sym{gdk:gravity} value for the point on @arg{menu}
+    to align with @arg{widget}'s anchor point}
   @argument[event]{a @class{gdk:event} instance that initiated this request
     or @code{nil} if it is the current event}
   @begin{short}
@@ -1198,8 +1197,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
   Other properties that influence the behaviour of this function are
   the @slot[gtk:menu]{anchor-hints} and @slot[gtk:menu]{menu-type-hint}
-  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
-  actually positioned.
+  properties. Connect to the @sig[gtk:menu]{popped-up} signal to find out how
+  it was actually positioned.
   @see-class{gtk:menu}
   @see-class{gtk:widget}
   @see-class{gdk:event}
@@ -1219,7 +1218,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popup-at-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popup_at_pointer ()
+;;; gtk_menu_popup_at_pointer
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
@@ -1239,8 +1238,8 @@ lambda (menu flipped final xflipped yflipped)    :run-first
   Properties that influence the behaviour of this function are the
   @slot[gtk:menu]{anchor-hints}, @slot[gtk:menu]{rect-anchor-dx},
   @slot[gtk:menu]{rect-anchor-dy}, and @slot[gtk:menu]{menu-type-hint}
-  properties. Connect to the @code{\"popped-up\"} signal to find out how it was
-  actually positioned.
+  properties. Connect to the @sig[gtk:menu]{popped-up} signal to find out how
+  it was actually positioned.
   @see-class{gtk:menu}
   @see-class{gdk:event}
   @see-function{gtk:menu-popup-at-widget}
@@ -1255,7 +1254,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popup-at-pointer)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkMenuPositionFunc ()
+;;; GtkMenuPositionFunc
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcallback menu-position-func :void
@@ -1281,7 +1280,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-symbol 'menu-position-func)
       "Callback"
       (liber:symbol-documentation 'menu-position-func)
- "@version{#2024-3-23}
+ "@version{#2025-07-11}
   @syntax{lambda (menu) => x, y, push}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[x]{an integer representing the horizontal position where the menu
@@ -1293,10 +1292,10 @@ lambda (menu flipped final xflipped yflipped)    :run-first
     is outside the monitor then GTK pushes the window into the visible area,
     effectively modifying the popup position. Note that moving and possibly
     resizing the menu around will alter the scroll position to keep the menu
-    items \"in place\", i.e. at the same monitor position they would have been
-    without resizing. In practice, this behavior is only useful for combobox
-    popups or option menus and cannot be used to simply confine a menu to
-    monitor boundaries. In that case, changing the scroll offset is not
+    items \"in place\", that is, at the same monitor position they would have
+    been without resizing. In practice, this behavior is only useful for
+    combobox popups or option menus and cannot be used to simply confine a menu
+    to monitor boundaries. In that case, changing the scroll offset is not
     desirable}
   @begin{short}
     A user function supplied when calling the @fun{gtk:menu-popup} function
@@ -1312,7 +1311,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-position-func)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popup_for_device ()
+;;; gtk_menu_popup_for_device
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popup_for_device" %menu-popup-for-device) :void
@@ -1328,18 +1327,18 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (defun menu-popup-for-device (menu device shell item func button time)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[device]{a @class{gdk:device} object}
   @argument[shell]{a @class{gtk:menu-shell} widget containing the triggering
     menu item, or @code{nil}}
   @argument[item]{a @class{gtk:menu-item} widget whose activation triggered the
     popup, or @code{nil}}
-  @argument[func]{a user supplied @symbol{gtk:menu-position-func} callback
-    function used to position the menu, or @code{nil}}
-  @argument[button]{an unsigned integer with the mouse button which was pressed
+  @argument[func]{a user supplied @sym{gtk:menu-position-func} callback function
+    used to position the menu, or @code{nil}}
+  @argument[button]{an unsigned integer for the mouse button which was pressed
     to initiate the event}
-  @argument[time]{an unsigned integer with the time at which the activation
+  @argument[time]{an unsigned integer for the time at which the activation
     event occurred}
   @begin{short}
     Displays a menu and makes it available for selection.
@@ -1385,7 +1384,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popup-for-device)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popup ()
+;;; gtk_menu_popup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popup" %menu-popup) :void
@@ -1403,17 +1402,17 @@ lambda (menu flipped final xflipped yflipped)    :run-first
                              (button 0)
                              (time (current-event-time)))
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-11}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[shell]{a @class{gtk:menu-shell} widget containing the triggering
     menu item, or @code{nil}}
   @argument[item]{a @class{gtk:menu-item} widget whose activation triggered the
     popup, or @code{nil}}
-  @argument[func]{a user supplied @symbol{gtk:menu-position-func} callback
-    function used to position the menu, or @code{nil}}
-  @argument[button]{an unsigned integer with the mouse button which was pressed
+  @argument[func]{a user supplied @sym{gtk:menu-position-func} callback function
+    used to position the menu, or @code{nil}}
+  @argument[button]{an unsigned integer for the mouse button which was pressed
     to initiate the event}
-  @argument[time]{an unsigned integer with the time at which the activation
+  @argument[time]{an unsigned integer for the time at which the activation
     event occurred}
   @begin{short}
     Displays a menu and makes it available for selection.
@@ -1466,7 +1465,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_place_on_monitor ()
+;;; gtk_menu_place_on_monitor
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_place_on_monitor" menu-place-on-monitor) :void
@@ -1483,7 +1482,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-place-on-monitor)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_popdown ()
+;;; gtk_menu_popdown
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_popdown" menu-popdown) :void
@@ -1497,7 +1496,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-popdown)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_reposition ()
+;;; gtk_menu_reposition
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_reposition" menu-reposition) :void
@@ -1529,7 +1528,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 ;; callback function?
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_attach_to_widget ()
+;;; gtk_menu_attach_to_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_attach_to_widget" menu-attach-to-widget) :void
@@ -1555,7 +1554,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-attach-to-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_detach ()
+;;; gtk_menu_detach
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_detach" menu-detach) :void
@@ -1574,7 +1573,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (export 'menu-detach)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_get_for_attach_widget () -> menu-for-attach-widget
+;;; gtk_menu_get_for_attach_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_get_for_attach_widget" menu-for-attach-widget)

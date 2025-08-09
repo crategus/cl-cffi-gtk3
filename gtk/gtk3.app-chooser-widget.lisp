@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.app-chooser-widget.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -84,7 +84,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAppChooserWidget
+;;; GtkAppChooserWidget
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAppChooserWidget" app-chooser-widget
@@ -116,7 +116,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-widget 'type)
- "@version{#2023-2-15}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:app-chooser-widget} widget is a widget for selecting
     applications.
@@ -138,43 +138,46 @@
     name @code{appchooser}.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"application-activated\" signal}
+    @begin[app-chooser-widget::application-activated]{signal}
       @begin{pre}
 lambda (widget application)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:app-chooser-widget} widget that received
+          the signal.}
+        @entry[application]{The activated @class{g:app-info} object.}
+      @end{simple-table}
       Emitted when an application item is activated from the list of the widget.
       This usually happens when the user double clicks an item, or an item is
       selected and the user presses one of the @kbd{Space}, @kbd{Shift+Space},
       @kbd{Return} or @kbd{Enter} keys.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:app-chooser-widget} widget which received
-          the signal.}
-        @entry[application]{The activated @class{g:app-info} object.}
-      @end{table}
-    @subheading{The \"application-selected\" signal}
+    @end{signal}
+    @begin[app-chooser-widget::application-selected]{signal}
       @begin{pre}
 lambda (widget application)    :run-first
       @end{pre}
-      Emitted when an application item is selected from the widget's list.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:app-chooser-widget} widget which received
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:app-chooser-widget} widget that received
           the signal.}
         @entry[application]{The selected @class{g:app-info} object.}
-      @end{table}
-    @subheading{The \"populate-popup\" signal}
+      @end{simple-table}
+      Emitted when an application item is selected from the widget's list.
+    @end{signal}
+    @begin[app-chooser-widget::populate-popup]{signal}
       @begin{pre}
 lambda (widget menu application)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:app-chooser-widget} widget that received
+          the signal.}
+        @entry[menu]{The @class{gtk:menu} object to populate.}
+        @entry[application]{The current @class{g:app-info} object.}
+      @end{simple-table}
       Emitted when a context menu is about to popup over an application item.
       Clients can insert menu items into the provided @class{gtk:menu} object
       in the callback of this signal. The context menu will be shown over the
       item if at least one item has been added to the menu.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:app-chooser-widget} widget which received
-          the signal.}
-        @entry[menu]{The @class{gtk:menu} object to populate.}
-        @entry[application]{The current @class{g:app-info} object.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:app-chooser-widget-new}
   @see-slot{gtk:app-chooser-widget-default-text}
@@ -203,11 +206,11 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-default-text)
       "Accessor"
       (documentation 'app-chooser-widget-default-text 'function)
- "@version{#2023-2-15}
+ "@version{#2025-07-07}
   @syntax{(gtk:app-chooser-widget-default-text object) => text}
   @syntax{(setf (gtk:app-chooser-widget-default-text object) text)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
-  @argument[text]{a string with the text that appears in the widget}
+  @argument[text]{a string for the text that appears in the widget}
   @begin{short}
     Accessor of the @slot[gtk:app-chooser-widget]{default-text} slot of the
     @class{gtk:app-chooser-widget} class.
@@ -381,17 +384,17 @@ lambda (widget menu application)    :run-first
   @see-class{gtk:app-chooser-widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_widget_new ()
+;;; gtk_app_chooser_widget_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline app-chooser-widget-new))
 
 (defun app-chooser-widget-new (content-type)
  #+liber-documentation
- "@version{#2023-2-15}
-  @argument[content-type]{a string with the content type to show applications
+ "@version{#2025-07-07}
+  @argument[content-type]{a string for the content type to show applications
     for}
-  @return{A newly created @class{gtk:app-chooser-widget} widget.}
+  @return{The newly created @class{gtk:app-chooser-widget} widget.}
   @begin{short}
     Creates a new application chooser widget for applications that can
     handle content of the given type.

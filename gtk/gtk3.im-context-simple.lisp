@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.im-context-simple.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkIMContextSimple
+;;; GtkIMContextSimple
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkIMContextSimple" im-context-simple
@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'im-context-simple 'type)
- "@version{#2023-2-28}
+ "@version{#2025-07-11}
   @begin{short}
     The @class{gtk:im-context-simple} object is a simple input method context
     supporting table-based input methods.
@@ -92,7 +92,7 @@
   The @class{gtk:im-context-simple} class also supports numeric entry of Unicode
   characters by typing the @kbd{Ctrl-Shift-u} key, followed by a hexadecimal
   Unicode codepoint. For example, @kbd{Ctrl-Shift-u 1 2 3 Enter} yields U+0123
-  LATIN SMALL LETTER G WITH CEDILLA, i.e. ģ.
+  LATIN SMALL LETTER G WITH CEDILLA, that is ģ.
   @see-class{gtk:im-context}")
 
 ;;; ----------------------------------------------------------------------------

@@ -489,9 +489,9 @@ lambda (provider section error)    :run-last
 
 (cffi:defcfun ("gtk_css_section_get_end_line" css-section-end-line) :uint
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-07-17}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{The unsigned integer with the line number.}
+  @return{The unsigned integer for the line number.}
   @begin{short}
     Returns the line in the CSS document where this section end.
   @end{short}
@@ -514,10 +514,10 @@ lambda (provider section error)    :run-last
 (cffi:defcfun ("gtk_css_section_get_end_position" css-section-end-position)
     :uint
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-07-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @begin{return}
-    The unsigned integer with the offset in bytes from the start of the line.
+    The unsigned integer for the offset in bytes from the start of the line.
   @end{return}
   @begin{short}
     Returns the offset in bytes from the start of the current line returned via
@@ -611,9 +611,9 @@ lambda (provider section error)    :run-last
 
 (cffi:defcfun ("gtk_css_section_get_start_line" css-section-start-line) :uint
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2025-07-17}
   @argument[section]{a @class{gtk:css-section} instance}
-  @return{The unsigned integer with the line number.}
+  @return{The unsigned integer for the line number.}
   @begin{short}
     Returns the line in the CSS document where this section starts.
   @end{short}
@@ -631,10 +631,10 @@ lambda (provider section error)    :run-last
 (cffi:defcfun ("gtk_css_section_get_start_position" css-section-start-position)
     :uint
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-07-17}
   @argument[section]{a @class{gtk:css-section} instance}
   @begin{return}
-    The unsigned integer with the offset in bytes from the start of the line.
+    The unsigned integer for the offset in bytes from the start of the line.
   @end{return}
   @begin{short}
     Returns the offset in bytes from the start of the current line returned

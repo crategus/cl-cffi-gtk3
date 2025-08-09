@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.shortcuts-shortcut.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -102,7 +102,7 @@
   :gesture)
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:accelerator]{The shortcut is a keyboard accelerator. The
         @code{accelerator} property will be used.}
       @entry[:gesture-pinch]{The shortcut is a pinch gesture. GTK provides an
@@ -119,17 +119,17 @@
         gesture. GTK provides an icon and subtitle.}
       @entry[:gesture]{The shortcut is a gesture. The @code{icon} property will
         be used.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
-    The @symbol{gtk:shortcut-type} enumeration specifies the kind of shortcut
-    that is being described.
+    The @sym{gtk:shortcut-type} enumeration specifies the kind of shortcut that
+    is being described.
   @end{short}
   More values may be added to this enumeration over time.
   @see-class{gtk:shortcuts-shortcut}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkShortcutsShortcut
+;;; GtkShortcutsShortcut
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkShortcutsShortcut" shortcuts-shortcut
@@ -257,11 +257,11 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-accelerator)
       "Accessor"
       (documentation 'shortcuts-shortcut-accelerator 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-shortcut-accelerator object) => accelerator}
   @syntax{(setf (gtk:shortcuts-shortcut-accelerator object) accelerator)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[accelerator]{a string with the accelerator}
+  @argument[accelerator]{a string for the accelerator}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{accelerator} of the
     @class{gtk:shortcuts-shortcut} class.
@@ -304,11 +304,11 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-action-name)
       "Accessor"
       (documentation 'shortcuts-shortcut-action-name 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-shortcut-action-name object) => action-name}
   @syntax{(setf (gtk:shortcuts-shortcut-action-name object) action-name)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[action-name]{a string with the detailed action name}
+  @argument[action-name]{a string for the detailed action name}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{action-name} slot of the
     @class{gtk:shortcuts-shortcut} class.
@@ -325,21 +325,22 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "direction"
                       'shortcuts-shortcut) t)
- "The @code{direction} property of type @symbol{gtk:text-direction}
-  (Read / Write) @br{}
+ "The @code{direction} property of type @sym{gtk:text-direction} (Read / Write)
+  @br{}
   The text direction for which this shortcut is active. If the shortcut is used
-  regardless of the text direction, set this property to @code{:none}. @br{}
-  Default value: @code{:dir-none}")
+  regardless of the text direction, set this property to
+  @val[gtk:text-direction]{:none}. @br{}
+  Default value: @val[gtk:text-direction]{:dir-none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-direction)
       "Accessor"
       (documentation 'shortcuts-shortcut-direction 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:shortcuts-shortcut-direction object) => direction}
   @syntax{(setf (gtk:shortcuts-shortcut-direction object) direction)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration}
+  @argument[direction]{a value of the @sym{gtk:text-direction} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{direction} slot of the
     @class{gtk:shortcuts-shortcut} class.
@@ -408,21 +409,20 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shortcut-type"
                       'shortcuts-shortcut) t)
- "The @code{shortcut-type} property of type @symbol{gtk:shortcut-type}
+ "The @code{shortcut-type} property of type @sym{gtk:shortcut-type}
   (Read / Write) @br{}
   The type of shortcut that is represented. @br{}
-  Default value: @code{:accelerator}")
+  Default value: @val[gtk:shortcut-type]{:accelerator}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-shortcut-type)
       "Accessor"
       (documentation 'shortcuts-shortcut-shortcut-type 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:shortcuts-shortcut-shortcut-type object) => shortcut-type}
   @syntax{(setf (gtk:shortcuts-shortcut-shortcut-type object) shortcut-type)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[shortcut-type]{a value of the @symbol{gtk:shortcut-type}
-    enumeration}
+  @argument[shortcut-type]{a value of the @sym{gtk:shortcut-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{shortcut-type} slot of the
     @class{gtk:shortcuts-shortcut} class.
@@ -446,11 +446,11 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-subtitle)
       "Accessor"
       (documentation 'shortcuts-shortcut-subtitle 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-shortcut-subtitle object) => subtitle}
   @syntax{(setf (gtk:shortcuts-shortcut-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[subtitle]{a string with the subtitle for the shortcut}
+  @argument[subtitle]{a string for the subtitle for the shortcut}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{subtitle} slot of the
     @class{gtk:shortcuts-shortcut} class.
@@ -499,11 +499,11 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-title)
       "Accessor"
       (documentation 'shortcuts-shortcut-title 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @syntax{(gtk:shortcuts-shortcut-title object) => title}
   @syntax{(setf (gtk:shortcuts-shortcut-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[title]{a string with the textual description for the shortcut}
+  @argument[title]{a string for the textual description for the shortcut}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-shortcut]{title} slot of the
     @class{gtk:shortcuts-shortcut} class.

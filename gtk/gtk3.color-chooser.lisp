@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.color-chooser.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,7 +81,7 @@
 (setf (liber:alias-for-class 'color-chooser)
       "Interface"
       (documentation 'color-chooser 'type)
- "@version{2023-6-12}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:color-chooser} interface is an interface that is implemented
     by widgets for choosing colors.
@@ -91,19 +91,20 @@
   @class{gtk:color-button}, @class{gtk:color-chooser-widget}, and
   @class{gtk:color-chooser-dialog} widgets.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"color-activated\" signal}
+    @begin[color-chooser::color-activated]{signal}
       @begin{pre}
 lambda (chooser color)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:color-chooser} widget that received
+          the signal.}
+        @entry[color]{The @struct{gdk:rgba} color.}
+      @end{simple-table}
       Emitted when a color is activated from the color chooser. This usually
       happens when the user clicks a color swatch, or a color is selected and
       the user presses one of the @kbd{Space}, @kbd{Shift+Space}, @kbd{Return}
       or @kbd{Enter} keys.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:color-chooser} widget which received
-          the signal.}
-        @entry[color]{The @struct{gdk:rgba} color.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:color-chooser-rgba}
   @see-slot{gtk:color-chooser-use-alpha}
@@ -179,7 +180,7 @@ lambda (chooser color)    :run-first
   @see-class{gtk:color-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_color_chooser_add_palette ()
+;;; gtk_color_chooser_add_palette
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_color_chooser_add_palette" %color-chooser-add-palette) :void
@@ -191,19 +192,20 @@ lambda (chooser color)    :run-first
 
 (defun color-chooser-add-palette (chooser orientation colors-per-line colors)
  #+liber-documentation
- "@version{2023-6-12}
+ "@version{2025-07-11}
   @argument[chooser]{a @class{gtk:color-chooser} widget}
-  @argument[orientation]{a value of the @symbol{gtk:orientation} enumeration}
-  @argument[colors-per-line]{an integer with the number of colors to show in
+  @argument[orientation]{a value of the @sym{gtk:orientation} enumeration}
+  @argument[colors-per-line]{an integer for the number of colors to show in
     each row/column}
-  @argument[colors]{a list with the @struct{gdk:rgba} colors of the palette,
+  @argument[colors]{a list for the @struct{gdk:rgba} colors of the palette,
     or @code{nil}}
   @begin{short}
     Adds a palette to the color chooser.
   @end{short}
-  If the orientation is @code{:horizontal}, the colors are grouped in rows,
-  with @arg{colors-per-line} colors in each row. If the orientation is
-  @code{:vertical}, the colors are grouped in columns instead.
+  If the orientation is @val[gtk:orientation]{:horizontal}, the colors are
+  grouped in rows, with @arg{colors-per-line} colors in each row. If the
+  orientation is @val[gtk:orientation]{:vertical}, the colors are grouped in
+  columns instead.
 
   The default color palette of the color chooser widget has 27 colors,
   organized in columns of 3 colors. The default gray palette has 9 grays in a

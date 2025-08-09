@@ -2,8 +2,8 @@
 ;;; gtk3.hsv.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2011 - 2025 Dieter Kaiser
@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'hsv 'type)
- "@version{2025-3-9}
+ "@version{2025-07-14}
   @begin{short}
     The @class{gtk:hsv} widget is the \"color wheel\" part of a complete color
     selector widget.
@@ -92,22 +92,24 @@
     the @class{gtk:color-selection} widget, where it was used.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[hsv::changed]{signal}
       @begin{pre}
 lambda (hsv)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[hsv]{The @class{gtk:hsv} widget which received the signal.}
-      @end{table}
-    @subheading{The \"move\" signal}
+      @begin[code]{simple-table}
+        @entry[hsv]{The @class{gtk:hsv} widget that received the signal.}
+      @end{simple-table}
+    @end{signal}
+    @begin[hsv::move]{signal}
       @begin{pre}
 lambda (hsv direction)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[hsv]{The @class{gtk:hsv} widget which received the signal.}
-        @entry[direction]{The value of the @symbol{gtk:direction-type}
+      @begin[code]{simple-table}
+        @entry[hsv]{The @class{gtk:hsv} widget that received the signal.}
+        @entry[direction]{The value of the @sym{gtk:direction-type}
           enumeration.}
-      @end{table}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:hsv-new}
   @see-class{gtk:color-selection}

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.radio-tool-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,7 +69,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRadioToolButton
+;;; GtkRadioToolButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkRadioToolButton" radio-tool-button
@@ -132,7 +132,7 @@
   @see-class{gtk:radio-tool-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_new ()
+;;; gtk_radio_tool_button_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_new" radio-tool-button-new)
@@ -151,16 +151,16 @@
 (export 'radio-tool-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_new_from_stock ()
+;;; gtk_radio_tool_button_new_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_new_from_stock"
            radio-tool-button-new-from-stock) (g:object tool-item)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-04}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil} if you are creating a new group}
-  @argument[stock]{a string with the name of a stock item}
+  @argument[stock]{a string for the name of a stock item}
   @return{The new @class{gtk:radio-tool-button} widget.}
   @begin{short}
     Creates a new radio tool button, adding it to @arg{group}.
@@ -180,7 +180,7 @@
 (export 'radio-tool-button-new-from-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_new_from_widget ()
+;;; gtk_radio_tool_button_new_from_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_new_from_widget"
@@ -199,16 +199,16 @@
 (export 'radio-tool-button-new-from-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_new_with_stock_from_widget ()
+;;; gtk_radio_tool_button_new_with_stock_from_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_new_with_stock_from_widget"
                radio-tool-button-new-with-stock-from-widget)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-03}
   @argument[group]{an existing @class{gtk:radio-tool-button} widget}
-  @argument[stock]{a string with the name of a stock item}
+  @argument[stock]{a string for the name of a stock item}
   @return{The new @class{gtk:radio-tool-button} widget.}
   @begin{short}
     Creates a new radio tool button adding it to the same group as @arg{group}.
@@ -228,7 +228,7 @@
 (export 'radio-tool-button-new-with-stock-from-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_get_group ()
+;;; gtk_radio_tool_button_get_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_get_group" radio-tool-button-get-group)
@@ -244,7 +244,7 @@
 (export 'radio-tool-button-get-group)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_radio_tool_button_set_group ()
+;;; gtk_radio_tool_button_set_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group)

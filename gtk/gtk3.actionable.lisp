@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.actionable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -78,7 +78,7 @@
 (setf (liber:alias-for-class 'actionable)
       "Interface"
       (documentation 'actionable 'type)
- "@version{2023-6-17}
+ "@version{2025-07-07}
   @begin{short}
     This interface provides a convenient way of associating widgets with
     actions on a @class{gtk:application-window} widget or
@@ -114,11 +114,11 @@
 (setf (liber:alias-for-function 'actionable-action-name)
       "Accessor"
       (documentation 'actionable-action-name 'function)
- "@version{2023-6-17}
+ "@version{2025-07-02}
   @syntax{(gtk:actionable-action-name object) => name}
   @syntax{(setf (gtk:actionable-action-name object) name)}
   @argument[object]{a @class{gtk:actionable} widget}
-  @argument[name]{a string with the action name, or @code{nil}}
+  @argument[name]{a string for the action name, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:actionable]{action-name} slot of the
     @class{gtk:actionable} inferface.
@@ -152,21 +152,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "action-target" 'actionable) t)
- "The @code{action-target} property of type @symbol{g:variant} (Read / Write)
-  @br{}
+ "The @code{action-target} property of type @sym{g:variant} (Read / Write) @br{}
   The parameter for action invocations. @br{}
-  Allowed values: a @symbol{g:variant} parameter @br{}
+  Allowed values: a @sym{g:variant} parameter @br{}
   Default value: @code{cffi:null-pointer}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'actionable-action-target)
       "Accessor"
       (documentation 'actionable-action-target 'function)
- "@version{2024-12-29}
+ "@version{2025-07-07}
   @syntax{(gtk:actionable-action-target object) => value}
   @syntax{(setf (gtk:actionable-action-target object) value)}
   @argument[object]{a @class{gtk:actionable} widget}
-  @argument[value]{a @symbol{g:variant} parameter as the target value, or
+  @argument[value]{a @sym{g:variant} parameter as the target value, or
     @code{cffi:null-pointer}}
   @begin{short}
     Accessor of the @slot[gtk:actionable]{action-target} slot of the
@@ -185,7 +184,7 @@
   \"active\". The widget is active if the state is equal to the given target.
 
   Consider the example of associating a set of buttons with a @class{g:action}
-  object with string state in a typical radio button situation. Each button
+  instance with string state in a typical radio button situation. Each button
   will be associated with the same action, but with a different target value for
   that action. Clicking on a particular button will activate the action with
   the target of that button, which will typically cause the state of the action
@@ -241,15 +240,15 @@
 ;; TODO: Consider to implement g:variant-new to allow this implementation.
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_actionable_set_detailed_action_name ()
+;;; gtk_actionable_set_detailed_action_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_actionable_set_detailed_action_name"
                 actionable-set-detailed-action-name) :void
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2025-07-02}
   @argument[actionable]{a @class{gtk:actionable} widget}
-  @argument[name]{a string with the detailed action name}
+  @argument[name]{a string for the detailed action name}
   @begin{short}
     Sets the action name and associated string target value of an actionable
     widget.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.separator.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -57,7 +57,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSeparator
+;;; GtkSeparator
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkSeparator" separator
@@ -89,16 +89,16 @@
   @see-class{gtk:orientable}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_separator_new ()
+;;; gtk_separator_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline separator-new))
 
 (defun separator-new (orientation)
  #+liber-documentation
- "@version{2023-12-30}
-  @argument[orientation]{a @symbol{gtk:orientation} value with orientation of
-    of the separator}
+ "@version{2025-07-06}
+  @argument[orientation]{a @sym{gtk:orientation} value for the orientation of
+    the separator}
   @return{The new @class{gtk:separator} widget.}
   @begin{short}
     Creates a new separator widget with the given @arg{orientation}.

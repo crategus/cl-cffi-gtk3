@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.print-unix-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; enum GtkPrintCapabilities
+;;; GtkPrintCapabilities
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gflags "GtkPrintCapabilities" print-capabilities
@@ -108,7 +108,7 @@
 (setf (liber:alias-for-symbol 'print-capabilities)
       "GFlags"
       (liber:symbol-documentation 'print-capabilities)
- "@version{#2024-3-21}
+ "@version{#2025-07-01}
   @begin{declaration}
 (gobject:define-gflags \"GtkPrintCapabilities\" print-capabilities
   (:export t
@@ -125,7 +125,7 @@
   (:number-up-layout #.(ash 1 9)))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:page-set]{Print dialog will offer printing even/odd pages.}
       @entry[:copies]{Print dialog will allow to print multiple copies.}
       @entry[:collate]{Print dialog will allow to collate multiple copies.}
@@ -140,7 +140,7 @@
         sheet.}
       @entry[:up-layout]{Print dialog will allow to rearrange pages when
         printing multiple pages per sheet.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     An enumeration for specifying which features the print dialog should offer.
@@ -150,7 +150,7 @@
   @see-class{gtk:print-unix-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPrintUnixDialog
+;;; GtkPrintUnixDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPrintUnixDialog" print-unix-dialog
@@ -186,7 +186,7 @@
 
 #+liber-documentation
 (setf (documentation 'print-unix-dialog 'type)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @begin{short}
     The @class{gtk:print-unix-dialog} widget implements a print dialog for
     platforms which do not provide a native print dialog, like Unix.
@@ -265,11 +265,11 @@
 (setf (liber:alias-for-function 'print-unix-dialog-current-page)
       "Accessor"
       (documentation 'print-unix-dialog-current-page 'function)
- "@version{#2023-2-8}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-unix-dialog-current-page object) => page}
   @syntax{(setf (gtk:print-unix-dialog-current-page object) page)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
-  @argument[page]{an integer with the current page number}
+  @argument[page]{an integer for the current page number}
   @begin{short}
     Accessor of the @slot[gtk:print-unix-dialog]{current-page} slot of the
     @class{gtk:print-unix-dialog} class.
@@ -294,7 +294,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-embed-page-setup)
       "Accessor"
       (documentation 'print-unix-dialog-embed-page-setup 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-embed-page-setup object) => embed}
   @syntax{(setf (gtk:print-unix-dialog-embed-page-setup object) embed)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
@@ -320,7 +320,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-has-selection)
       "Accessor"
       (documentation 'print-unix-dialog-has-selection 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-has-selection object) => setting}
   @syntax{(setf (gtk:print-unix-dialog-has-selection object) setting)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
@@ -337,19 +337,19 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "manual-capabilities"
                                                'print-unix-dialog) t)
- "The @code{manual-capabilities} property of type
-  @symbol{gtk:print-capabilities} (Read / Write) @br{}
+ "The @code{manual-capabilities} property of type @sym{gtk:print-capabilities}
+  (Read / Write) @br{}
   Capabilities the application can handle.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'print-unix-dialog-manual-capabilities)
       "Accessor"
       (documentation 'print-unix-dialog-manual-capabilities 'function)
- "@version{#2023-2-8}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-unix-dialog-manual-capabilities) => capabilities}
   @syntax{(setf (gtk:print-unix-dialog-manual-capabilities object) capabilities)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
-  @argument[capabilities]{a @symbol{gtk:print-capabilities} value with the
+  @argument[capabilities]{a @sym{gtk:print-capabilities} value for the
     printing capabilities of the application}
   @begin{short}
     Accessor of the @slot[gtk:print-unix-dialog]{manual-capabilities} slot of
@@ -375,7 +375,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-page-setup)
       "Accessor"
       (documentation 'print-unix-dialog-page-setup 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-page-setup) => setup}
   @syntax{(setf (gtk:print-unix-dialog-page-setup object) setup)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
@@ -403,7 +403,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-print-settings)
       "Accessor"
       (documentation 'print-unix-dialog-print-settings 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-print-settings object) => settings}
   @syntax{(setf (gtk:print-unix-dialog-print-settings object) settings)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
@@ -433,7 +433,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-selected-printer)
       "Accessor"
       (documentation 'print-unix-dialog-selected-printer 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-selected-printer object) => printer}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
   @argument[printer]{a @class{gtk:printer} object}
@@ -459,7 +459,7 @@
 (setf (liber:alias-for-function 'print-unix-dialog-support-selection)
       "Accessor"
       (documentation 'print-unix-dialog-support-selection 'function)
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-support-selection) => selection}
   @syntax{(setf (gtk:print-unix-dialog-support-selection object) selection)}
   @argument[object]{a @class{gtk:print-unix-dialog} widget}
@@ -472,16 +472,16 @@
   @see-class{gtk:print-unix-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_unix_dialog_new ()
+;;; gtk_print_unix_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (defun print-unix-dialog-new (title parent)
  #+liber-documentation
- "@version{#2023-2-8}
-  @argument[title]{a string with the title of the dialog, or @code{nil}}
+ "@version{#2025-07-05}
+  @argument[title]{a string for the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog, or
     @code{nil}}
-  @return{A new @class{gtk:print-unix-dialog} widget.}
+  @return{The new @class{gtk:print-unix-dialog} widget.}
   @short{Creates a new print dialog.}
   @see-class{gtk:print-unix-dialog}
   @see-class{gtk:window}"
@@ -495,8 +495,8 @@
 (export 'print-unix-dialog-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_unix_dialog_get_settings ()
-;;; gtk_print_unix_dialog_set_settings ()
+;;; gtk_print_unix_dialog_get_settings
+;;; gtk_print_unix_dialog_set_settings
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-unix-dialog-settings) (settings dialog)
@@ -504,7 +504,7 @@
 
 (defun print-unix-dialog-settings (dialog)
  #+liber-documentation
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @syntax{(gtk:print-unix-dialog-settings object) => settings}
   @syntax{(setf (gtk:print-unix-dialog-settings object) settings)}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}
@@ -525,13 +525,13 @@
 (export 'print-unix-dialog-settings)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_unix_dialog_add_custom_tab ()
+;;; gtk_print_unix_dialog_add_custom_tab
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_unix_dialog_add_custom_tab"
                print-unix-dialog-add-custom-tab) :void
  #+liber-documentation
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}
   @argument[child]{a @class{gtk:widget} child widget to put in the custom tab}
   @argument[label]{a @class{gtk:widget} widget to use as tab label}
@@ -547,15 +547,15 @@
 (export 'print-unix-dialog-add-custom-tab)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_unix_dialog_get_page_setup_set ()
+;;; gtk_print_unix_dialog_get_page_setup_set
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_unix_dialog_get_page_setup_set"
                print-unix-dialog-page-setup-set) :boolean
  #+liber-documentation
- "@version{#2023-2-8}
+ "@version{#2023-02-08}
   @argument[dialog]{a @class{gtk:print-unix-dialog} widget}
-  @return{A boolean whether a page setup was set by the user.}
+  @return{The boolean whether a page setup was set by the user.}
   @begin{short}
     Gets the page setup that is used by the print dialog.
   @end{short}

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tooltip.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -68,7 +68,7 @@
 
 #+liber-documentation
 (setf (documentation 'tooltip 'type)
- "@version{#2023-2-23}
+ "@version{#2025-07-02}
   @short{Add tips to your widgets.}
   Basic tooltips can be realized simply by using the
   @fun{gtk:widget-tooltip-text} or @fun{gtk:widget-tooltip-markup} functions
@@ -84,17 +84,19 @@
       needed to determine when and where to show a tooltip.
     @end{item}
     @begin{item}
-      Connect to the @code{\"query-tooltip\"} signal. The signal will be emitted
-      when a tooltip is supposed to be shown. One of the arguments passed to the
-      signal handler is a @class{gtk:tooltip} object. This is the object that we
-      are about to display as a tooltip, and can be manipulated in your callback
-      function using functions like the @fun{gtk:tooltip-set-icon} function.
-      There are functions for setting the markup of the tooltip, setting an
-      image from a stock icon, or even putting in a custom widget.
+      Connect to the @sig[gtk:widget]{query-tooltip} signal. The signal will be
+      emitted when a tooltip is supposed to be shown. One of the arguments
+      passed to the signal handler is a @class{gtk:tooltip} object. This is the
+      object that we are about to display as a tooltip, and can be manipulated
+      in your callback function using functions like the
+      @fun{gtk:tooltip-set-icon} function. There are functions for setting the
+      markup of the tooltip, setting an image from a stock icon, or even putting
+      in a custom widget.
     @end{item}
     @begin{item}
-      Return @em{true} from your query-tooltip handler. This causes the tooltip
-      to be show. If you return @em{false}, it will not be shown.
+      Return @em{true} from your @sig[gtk:widget]{query-tooltip} handler. This
+      causes the tooltip to be show. If you return @em{false}, it will not be
+      shown.
     @end{item}
   @end{itemize}
   In the probably rare case where you want to have even more control over the
@@ -103,17 +105,17 @@
   @begin{itemize}
     @begin{item}
       Set the @slot[gtk:widget]{has-tooltip} property and connect to the
-      @code{\"query-tooltip\"} signal as before.
+      @sig[gtk:widget]{query-tooltip} signal as before.
     @end{item}
     @begin{item}
       Use the @fun{gtk:widget-tooltip-window} function to set a
       @class{gtk:window} widget created by you as tooltip window.
     @end{item}
     @begin{item}
-      In the \"query-tooltip\" callback you can access your window using the
-       @fun{gtk:widget-tooltip-window} function and manipulate as you wish.
-      The semantics of the return value are exactly as before, return @em{true}
-      to show the window, @em{false} to not show it.
+      In the @sig[gtk:widget]{query-tooltip} callback you can access your window
+      using the @fun{gtk:widget-tooltip-window} function and manipulate as you
+      wish. The semantics of the return value are exactly as before, return
+      @em{true} to show the window, @em{false} to not show it.
     @end{item}
   @end{itemize}
   @see-class{gtk:tree-view}
@@ -124,7 +126,7 @@
   @see-function{gtk:tooltip-set-icon}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_markup ()
+;;; gtk_tooltip_set_markup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_markup" tooltip-set-markup) :void
@@ -145,7 +147,7 @@
 (export 'tooltip-set-markup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_text ()
+;;; gtk_tooltip_set_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_text" tooltip-set-text) :void
@@ -166,7 +168,7 @@
 (export 'tooltip-set-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_icon ()
+;;; gtk_tooltip_set_icon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_icon" tooltip-set-icon) :void
@@ -187,16 +189,16 @@
 (export 'tooltip-set-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_icon_from_stock ()
+;;; gtk_tooltip_set_icon_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_icon_from_stock" tooltip-set-icon-from-stock)
     :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2025-07-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
-  @argument[stockid]{a string with the stock ID, or @code{nil}}
-  @argument[size]{a @symbol{gtk:icon-size} value for the icon size}
+  @argument[stockid]{a string for the stock ID, or @code{nil}}
+  @argument[size]{a @sym{gtk:icon-size} value for the icon size}
   @begin{short}
     Sets the icon of the tooltip, which is in front of the text, to be the
     stock item indicated by @arg{stockid} with the size indicated by
@@ -218,16 +220,16 @@
 (export 'tooltip-set-icon-from-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_icon_from_icon_name ()
+;;; gtk_tooltip_set_icon_from_icon_name
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_icon_from_icon_name"
                tooltip-set-icon-from-icon-name) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2025-07-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
-  @argument[name]{a string with the icon name, or @code{nil}}
-  @argument[size]{a @symbol{gtk:icon-size} value for the icon size}
+  @argument[name]{a string for the icon name, or @code{nil}}
+  @argument[size]{a @sym{gtk:icon-size} value for the icon size}
   @begin{short}
     Sets the icon of the tooltip, which is in front of the text, to be the icon
     indicated by @arg{name} with the size indicated by @arg{size}.
@@ -242,16 +244,16 @@
 (export 'tooltip-set-icon-from-icon-name)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_icon_from_gicon ()
+;;; gtk_tooltip_set_icon_from_gicon
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_icon_from_gicon" tooltip-set-icon-from-gicon)
     :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2025-07-04}
   @argument[tooltip]{a @class{gtk:tooltip} widget}
   @argument[gicon]{a @class{g:icon} object representing the icon, or @code{nil}}
-  @argument[size]{a @symbol{gtk:icon-size} value with the icon size}
+  @argument[size]{a @sym{gtk:icon-size} value for the icon size}
   @begin{short}
     Sets the icon of the tooltip, which is in front of the text, to be the
     icon indicated by @arg{gicon} with the size indicated by @arg{size}.
@@ -267,7 +269,7 @@
 (export 'tooltip-set-icon-from-gicon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_custom ()
+;;; gtk_tooltip_set_custom
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_custom" tooltip-set-custom) :void
@@ -295,7 +297,7 @@
 (export 'tooltip-set-custom)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_trigger_tooltip_query ()
+;;; gtk_tooltip_trigger_tooltip_query
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_trigger_tooltip_query"
@@ -317,12 +319,12 @@
 (export 'tooltip-trigger-tooltip-query)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_tip_area ()
+;;; gtk_tooltip_set_tip_area
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_tip_area" tooltip-set-tip-area) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2025-07-11}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[rectangle]{a @class{gdk:rectangle} instance}
   @begin{short}
@@ -330,7 +332,8 @@
     @arg{rectangle} in widget coordinates.
   @end{short}
   This is especially useful for properly setting tooltips on
-  @class{gtk:tree-view} rows and cells, @class{gtk:icon-view} widgets, etc.
+  @class{gtk:tree-view} rows and cells, @class{gtk:icon-view} widgets, and so
+  on.
 
   For setting tooltips on the @class{gtk:tree-view} widget, please refer to the
   convenience @fun{gtk:tree-view-set-tooltip-row} and

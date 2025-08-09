@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.toggle-tool-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,7 +71,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToggleToolButton
+;;; GtkToggleToolButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToggleToolButton" toggle-tool-button
@@ -88,9 +88,9 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-tool-button 'type)
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @begin{short}
-    A @class{gtk:toggle-tool-button} widget is a @class{gtk:tool-item} widget
+    The @class{gtk:toggle-tool-button} widget is a @class{gtk:tool-item} widget
     that contains a toggle button.
   @end{short}
   Use the @fun{gtk:toggle-tool-button-new} function to create a new toggle tool
@@ -100,15 +100,16 @@
     name @code{togglebutton}.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"toggled\" signal}
+    @begin[toggle-tool-button::toggled]{signal}
       @begin{pre}
 lambda (button)    :run-first
       @end{pre}
-      Emitted whenever the toggle tool button changes state.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:toggle-tool-button} widget that emitted
           the signal.}
-      @end{table}
+      @end{simple-table}
+      Emitted whenever the toggle tool button changes state.
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:toggle-tool-button-active}
   @see-class{gtk:tool-item}
@@ -128,7 +129,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'toggle-tool-button-active)
       "Accessor"
       (documentation 'toggle-tool-button-active 'function)
- "@version{2024-1-2}
+ "@version{2025-07-16}
   @syntax{(gtk:toggle-tool-button-active object) => setting}
   @syntax{(setf (gtk:toggle-tool-button-active object) setting)}
   @argument[object]{a @class{gtk:toggle-tool-button} widget}
@@ -143,8 +144,8 @@ lambda (button)    :run-first
   function sets the status.
 
   Set to @em{true} if you want the toggle tool button to be 'pressed in',
-  and @em{false} to raise it. This action causes the @code{\"toggled\"} signal
-  to be emitted.
+  and @em{false} to raise it. This action causes the
+  @sig[gtk:toggle-tool-button]{toggled} signal to be emitted.
   @see-class{gtk:toggle-tool-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -173,8 +174,8 @@ lambda (button)    :run-first
 
 (defun toggle-tool-button-new-from-stock (stock)
  #+liber-documentation
- "@version{#2023-3-28}
-  @argument[stock]{a string with the name of the stock item}
+ "@version{#2025-07-07}
+  @argument[stock]{a string for the name of the stock item}
   @return{The new @class{gtk:toggle-tool-button} widget.}
   @begin{short}
     Creates a new toggle tool button containing the image and text from a stock

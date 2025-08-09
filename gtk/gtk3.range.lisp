@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.range.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -137,11 +137,11 @@
   (:off 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:auto]{The arrow is made insensitive if the thumb is at the end.}
       @entry[:on]{The arrow is always sensitive.}
       @entry[:off]{The arrow is always insensitive.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Determines how GTK handles the sensitivity of stepper arrows at the end of
@@ -150,7 +150,7 @@
   @see-class{gtk:range}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRange
+;;; GtkRange
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkRange" range
@@ -187,7 +187,7 @@
 
 #+liber-documentation
 (setf (documentation 'range 'type)
- "@version{#2025-1-25}
+ "@version{#2025-07-15}
   @begin{short}
     The @class{gtk:range} class is the common base class for widgets which
     visualize an adjustment, for example the @class{gtk:scale} or
@@ -200,111 +200,110 @@
   setting a \"fill level\" on range widgets. See the @fun{gtk:range-fill-level}
   function.
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[arrow-displacement-x]{entry}
-        The @code{arrow-displacement-x} style property of type @code{:int}
-        (Read) @br{}
-        How far in the x direction to move the arrow when the button is
-        depressed. @br{}
-        @em{Warning:} The @code{arrow-displacement-x} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[arrow-displacement-y]{entry}
-        The @code{arrow-displacement-y} style property of type @code{:int}
-        (Read) @br{}
-        How far in the y direction to move the arrow when the button is
-        depressed. @br{}
-        @em{Warning:} The @code{arrow-displacement-y} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Default value: 0
-      @end{entry}
-      @begin[arrow-scaling]{entry}
-        The @code{arrow-scaling} style property of type @code{:float} (Read)
-        @br{}
-        The arrow size proportion relative to the scroll button size. @br{}
-        @em{Warning:} The @code{arrow-scaling} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Allowed values: [0.0,1.0] @br{}
-        Default value: 0.5
-      @end{entry}
-      @begin[slider-width]{entry}
-        The @code{slider-width} style property of type @code{:int} (Read) @br{}
-        Width of scrollbar or scale thumb. @br{}
-        @em{Warning:} The @code{slider-width} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. The
-        value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 14
-      @end{entry}
-      @begin[stepper-size]{entry}
-        The @code{stepper-size} style property of type @code{:int} (Read) @br{}
-        Length of step buttons at ends. @br{}
-        @em{Warning:} The @code{stepper-size} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. The
-        value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 14
-      @end{entry}
-      @begin[stepper-spacing]{entry}
-        The @code{stepper-spacing} style property of type @code{:int} (Read)
-        @br{}
-        The spacing between the stepper buttons and thumb. Note that
-        stepper-spacing will not have any effect if there are no steppers. @br{}
-        @em{Warming:} The @code{stepper-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[trough-border]{entry}
-        The @code{trough-border} style property of type @code{:int} (Read) @br{}
-        Spacing between thumb/steppers and outer trough bevel. @br{}
-        @em{Warning:} The @code{trough-border} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 1
-      @end{entry}
-      @begin[trough-under-steppers]{entry}
-        The @code{trough-under-steppers} style property of type @code{:boolean}
-        (Read) @br{}
-        Whether to draw the trough across the full length of the range or to
-        exclude the steppers and their spacing. @br{}
-        @em{Warning:} The @code{trough-under-steppers} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. The value of this style property is ignored, and the widget will
-        behave as if it was set to @em{true}. @br{}
-        Default value: @em{true}
-      @end{entry}
-    @end{table}
+    @begin[range:arrow-displacement-x]{property}
+      The @code{arrow-displacement-x} style property of type @code{:int}
+      (Read) @br{}
+      How far in the x direction to move the arrow when the button is
+      depressed. @br{}
+      @em{Warning:} The @code{arrow-displacement-x} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Default value: 0
+    @end{property}
+    @begin[range:arrow-displacement-y]{property}
+      The @code{arrow-displacement-y} style property of type @code{:int}
+      (Read) @br{}
+      How far in the y direction to move the arrow when the button is
+      depressed. @br{}
+      @em{Warning:} The @code{arrow-displacement-y} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Default value: 0
+    @end{property}
+    @begin[range:arrow-scaling]{property}
+      The @code{arrow-scaling} style property of type @code{:float} (Read)
+      @br{}
+      The arrow size proportion relative to the scroll button size. @br{}
+      @em{Warning:} The @code{arrow-scaling} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Allowed values: [0.0,1.0] @br{}
+      Default value: 0.5
+    @end{property}
+    @begin[range:slider-width]{property}
+      The @code{slider-width} style property of type @code{:int} (Read) @br{}
+      Width of scrollbar or scale thumb. @br{}
+      @em{Warning:} The @code{slider-width} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. The
+      value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 14
+    @end{property}
+    @begin[range:stepper-size]{property}
+      The @code{stepper-size} style property of type @code{:int} (Read) @br{}
+      Length of step buttons at ends. @br{}
+      @em{Warning:} The @code{stepper-size} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. The
+      value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 14
+    @end{property}
+    @begin[range:stepper-spacing]{property}
+      The @code{stepper-spacing} style property of type @code{:int} (Read)
+      @br{}
+      The spacing between the stepper buttons and thumb. Note that
+      stepper-spacing will not have any effect if there are no steppers. @br{}
+      @em{Warming:} The @code{stepper-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[range:trough-border]{property}
+      The @code{trough-border} style property of type @code{:int} (Read) @br{}
+      Spacing between thumb/steppers and outer trough bevel. @br{}
+      @em{Warning:} The @code{trough-border} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 1
+    @end{property}
+    @begin[range:trough-under-steppers]{property}
+      The @code{trough-under-steppers} style property of type @code{:boolean}
+      (Read) @br{}
+      Whether to draw the trough across the full length of the range or to
+      exclude the steppers and their spacing. @br{}
+      @em{Warning:} The @code{trough-under-steppers} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. The value of this style property is ignored, and the widget will
+      behave as if it was set to @em{true}. @br{}
+      Default value: @em{true}
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"adjust-bounds\" signal}
+    @begin[range::adjust-bounds]{signal}
       @begin{pre}
 lambda (range value)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
-        @entry[value]{The double float with the value before we clamp.}
-      @end{table}
+        @entry[value]{The double float for the value before we clamp.}
+      @end{simple-table}
       Emitted before clamping a value, to give the application a chance to
       adjust the bounds.
-    @subheading{The \"change-value\" signal}
+    @end{signal}
+    @begin[range::change-value]{signal}
       @begin{pre}
 lambda (range scroll value)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
-        @entry[scroll]{The @symbol{gtk:scroll-type} value of scroll action that
+        @entry[scroll]{The @sym{gtk:scroll-type} value of scroll action that
           was performed.}
         @entry[value]{The double float resulting from the scroll action.}
         @entry[Returns]{@em{True} to prevent other handlers from being invoked
           for the signal, @em{false} to propagate the signal further.}
-      @end{table}
+      @end{simple-table}
       The signal is emitted when a scroll action is performed on a range. It
       allows an application to determine the type of scroll event that occurred
       and the resultant new value. The application can handle the event itself
@@ -315,23 +314,26 @@ lambda (range scroll value)    :run-last
       the value to the desired number of decimal digits. The default GTK handler
       clamps the value based on \"round-digits\". It is not possible to use
       delayed update policies in an overridden @code{\"change-value\"} handler.
-    @subheading{The \"move-slider\" signal}
+    @end{signal}
+    @begin[range::move-slider]{signal}
       @begin{pre}
 lambda (range step)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
-        @entry[step]{The @symbol{gtk:scroll-type} value how to move the slider.}
-      @end{table}
+        @entry[step]{The @sym{gtk:scroll-type} value how to move the slider.}
+      @end{simple-table}
       Virtual function that moves the slider. Used for keybindings.
-    @subheading{The \"value-changed\" signal}
+    @end{signal}
+    @begin[range::value-changed]{signal}
       @begin{pre}
 lambda (range)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[range]{The @class{gtk:range} widget that received the signal.}
-      @end{table}
+      @end{simple-table}
       Emitted when the range value changes.
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:range-adjustment}
   @see-slot{gtk:range-fill-level}
@@ -386,7 +388,7 @@ lambda (range)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "fill-level" 'range) t)
  "The @code{fill-level} property of type @code{:double} (Read / Write) @br{}
-  The fill level, e.g. prebuffering of a network stream. See the
+  The fill level, for example, prebuffering of a network stream. See the
   @fun{gtk:range-fill-level} function. @br{}
   Default value: 1.79769e+308")
 
@@ -394,12 +396,12 @@ lambda (range)    :run-last
 (setf (liber:alias-for-function 'range-fill-level)
       "Accessor"
       (documentation 'range-fill-level 'function)
- "@version{#2023-3-22}
+ "@version{#2025-07-06}
   @syntax{(gtk:range-fill-level object) => fill-level}
   @syntax{(setf (gtk:range-fill-level object) fill-level)}
   @argument[object]{a @class{gtk:range} widget}
-  @argument[fill-level]{a double float with the new position of the fill level
-    indicator}
+  @argument[fill-level]{a number coerced to double float for the new position
+    of the fill level indicator}
   @begin{short}
     Accessor of the @slot[gtk:range]{fill-level} slot of the @class{gtk:range}
     class.
@@ -460,21 +462,20 @@ lambda (range)    :run-last
 (setf (documentation (liber:slot-documentation "lower-stepper-sensitivity"
                                                'range) t)
  "The @code{lower-stepper-sensitivity} property of type
-  @symbol{gtk:sensitivity-type} (Read / Write) @br{}
+  @sym{gtk:sensitivity-type} (Read / Write) @br{}
   The sensitivity policy for the stepper that points to the lower side of the
   adjustment. @br{}
-  Default value: @code{:auto}")
+  Default value: @val[gtk:sensitity-type]{:auto}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'range-lower-stepper-sensitivity)
       "Accessor"
       (documentation 'range-lower-stepper-sensitivity 'function)
- "@version{#2023-3-22}
+ "@version{#2025-07-11}
   @syntax{(gtk:range-lower-stepper-sensitivity object) => sensitivity}
   @syntax{(setf (gtk:range-lower-stepper-sensitivity object) sensitivity)}
   @argument[object]{a @class{gtk:range} widget}
-  @argument[sensitivity]{a value of the @symbol{gtk:sensitivity-type}
-    enumeration}
+  @argument[sensitivity]{a value of the @sym{gtk:sensitivity-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:range]{lower-stepper-sensitivity} slot of the
     @class{gtk:range} class.
@@ -532,11 +533,11 @@ lambda (range)    :run-last
 (setf (liber:alias-for-function 'range-round-digits)
       "Accessor"
       (documentation 'range-round-digits 'function)
- "@version{#2023-3-22}
+ "@version{#2025-07-06}
   @syntax{(gtk:range-round-digits object) => round-digits}
   @syntax{(setf (gtk:range-round-digits object) round-digits)}
   @argument[object]{a @class{gtk:range} widget}
-  @argument[round-digits]{an integer with the precision in digits, or -1}
+  @argument[round-digits]{an integer for the precision in digits, or -1}
   @begin{short}
     Accessor of the @slot[gtk:range]{round-digits} slot of the @class{gtk:range}
     class.
@@ -585,10 +586,10 @@ lambda (range)    :run-last
 (setf (documentation (liber:slot-documentation "upper-stepper-sensitivity"
                                                'range) t)
  "The @code{upper-stepper-sensitivity} property of type
-  @symbol{gtk:sensitivity-type} (Read / Write) @br{}
+  @sym{gtk:sensitivity-type} (Read / Write) @br{}
   The sensitivity policy for the stepper that points to the upper side of the
   adjustment. @br{}
-  Default value: @code{:auto}")
+  Default value: @val[gtk:sensitivity-type]{:auto}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'range-upper-stepper-sensitivity)
@@ -598,8 +599,7 @@ lambda (range)    :run-last
   @syntax{(gtk:range-upper-stepper-sensitivity object) => sensitivity}
   @syntax{(setf (gtk:range-upper-stepper-sensitivity object) sensitivity)}
   @argument[object]{a @class{gtk:range} widget}
-  @argument[sensitivity]{a value of the @symbol{gtk:sensitivity-type}
-    enumeration}
+  @argument[sensitivity]{a value of the @sym{gtk:sensitivity-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:range]{upper-stepper-sensitivity} slot of the
     @class{gtk:range} class.
@@ -612,8 +612,8 @@ lambda (range)    :run-last
   @see-class{gtk:range}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_get_value ()
-;;; gtk_range_set_value ()
+;;; gtk_range_get_value
+;;; gtk_range_set_value
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf range-value) (value range)
@@ -621,11 +621,12 @@ lambda (range)    :run-last
 
 (defun range-value (range)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-06}
   @syntax{(gtk:range-value range) => value}
   @syntax{(setf (gtk:range-value range) value)}
   @argument[range]{a @class{gtk:range} widget}
-  @argument[value]{a double float with the value of the range}
+  @argument[value]{a number coerced to a double float for the value of the
+    range}
   @begin{short}
     Accessor of the value of the range.
   @end{short}
@@ -641,17 +642,17 @@ lambda (range)    :run-last
 (export 'range-value)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_set_increments ()
+;;; gtk_range_set_increments
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline range-set-increments))
 
 (defun range-set-increments (range step page)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-06}
   @argument[range]{a @class{gtk:range} widget}
-  @argument[step]{a double float with the step size}
-  @argument[page]{a double float with the page size}
+  @argument[step]{a number coerced to a double float for the step size}
+  @argument[page]{a number coerced to a double float for the page size}
   @begin{short}
     Sets the step and page sizes for the range.
   @end{short}
@@ -689,8 +690,8 @@ lambda (range)    :run-last
 (export 'range-set-range)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_get_flippable ()
-;;; gtk_range_set_flippable ()
+;;; gtk_range_get_flippable
+;;; gtk_range_set_flippable
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf range-flippable) (flippable range)
@@ -702,7 +703,7 @@ lambda (range)    :run-last
 
 (cffi:defcfun ("gtk_range_get_flippable" range-flippable) :boolean
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-11}
   @syntax{gtk:range-flippable range) => flippable}
   @syntax{(setf (gtk:range-flippable range) flippable)}
   @argument[range]{a @class{gtk:range} widget}
@@ -711,7 +712,8 @@ lambda (range)    :run-last
     Accessor of the flippable property of the range.
   @end{short}
   If a range is flippable, it will switch its direction if it is horizontal and
-  its direction is @code{:rtl}. See the @fun{gtk:widget-direction} function.
+  its direction is @val[gtk:text-direction]{:rtl}. See the
+  @fun{gtk:widget-direction} function.
   @see-class{gtk:range}
   @see-function{gtk:widget-direction}"
   (range (g:object range)))
@@ -719,8 +721,8 @@ lambda (range)    :run-last
 (export 'range-flippable)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_set_min_slider_size ()
-;;; gtk_range_get_min_slider_size ()
+;;; gtk_range_set_min_slider_size
+;;; gtk_range_get_min_slider_size
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf range-min-slider-size) (min-size range)
@@ -732,11 +734,11 @@ lambda (range)    :run-last
 
 (cffi:defcfun ("gtk_range_get_min_slider_size" range-min-slider-size) :int
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2025-07-06}
   @syntax{(gtk:range-min-slider-size range) => min-size}
   @syntax{(setf (gtk:range-min-slider-size range) min-size)}
   @argument[range]{a @class{gtk:range} widget}
-  @argument[min-size]{an integer with the minimum size of the slider}
+  @argument[min-size]{an integer for the minimum size of the slider}
   @begin{short}
     Accessor of the minimum size of the slider of the range.
   @end{short}
@@ -756,7 +758,7 @@ lambda (range)    :run-last
 (export 'range-min-slider-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_get_range_rect ()
+;;; gtk_range_get_range_rect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_range_get_range_rect" %range-get-range-rect) :void
@@ -781,7 +783,7 @@ lambda (range)    :run-last
 (export 'range-range-rect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_get_slider_range ()
+;;; gtk_range_get_slider_range
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_range_get_slider_range" %range-get-slider-range) :void
@@ -816,8 +818,8 @@ lambda (range)    :run-last
 (export 'range-slider-range)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_range_set_slider_size_fixed ()
-;;; gtk_range_get_slider_size_fixed ()
+;;; gtk_range_set_slider_size_fixed
+;;; gtk_range_get_slider_size_fixed
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf range-slider-size-fixed) (size-fixed range)

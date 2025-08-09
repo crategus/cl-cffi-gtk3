@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.size-group.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -80,7 +80,7 @@
 (setf (liber:alias-for-symbol 'size-group-mode)
       "GEnum"
       (liber:symbol-documentation 'size-group-mode)
- "@version{#2024-3-22}
+ "@version{#2025-07-06}
   @begin{declaration}
 (gobject:define-genum \"GtkSizeGroupMode\" size-group-mode
   (:export t
@@ -91,12 +91,12 @@
   (:both 3))
  @end{declaration}
  @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{Group has no effect.}
       @entry[:horizontal]{Group affects horizontal requisition.}
       @entry[:vertical]{Group affects vertical requisition.}
       @entry[:both]{Group affects both horizontal and vertical requisition.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The mode of the size group determines the directions in which the size
@@ -105,7 +105,7 @@
   @see-class{gtk:size-group}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSizeGroup
+;;; GtkSizeGroup
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkSizeGroup" size-group
@@ -122,7 +122,7 @@
 
 #+liber-documentation
 (setf (documentation 'size-group 'type)
- "@version{#2023-2-23}
+ "@version{#2025-07-06}
   @begin{short}
     The @class{gtk:size-group} object provides a mechanism for grouping a number
     of widgets together so they all request the same amount of space. This is
@@ -141,7 +141,7 @@
   @class{gtk:size-group} object to actually be the same size, you need to pack
   them in such a way that they get the size they request and not more. For
   example, if you are packing your widgets into a table, you would not include
-  the @code{:fill} flag.
+  the @val[gtk:align]{:fill} flag.
 
   The @class{gtk:size-group} objects are referenced by each widget in the size
   group, so once you have added all widgets to a @class{gtk:size-group} object,
@@ -153,18 +153,20 @@
 
   Widgets can be part of multiple size groups. GTK will compute the horizontal
   size of a widget from the horizontal requisition of all widgets that can be
-  reached from the widget by a chain of size groups of type @code{:horizontal}
-  or @code{:both}, and the vertical size from the vertical requisition of all
-  widgets that can be reached from the widget by a chain of size groups of type
-  @code{:vertical} or @code{:both}.
+  reached from the widget by a chain of size groups of type
+  @val[gtk:size-group-mode]{:horizontal} or @val[gtk:size-group-mode]{:both},
+  and the vertical size from the vertical requisition of all widgets that can
+  be reached from the widget by a chain of size groups of type
+  @val[gtk:size-group-mode]{:vertical} or @val[gtk:size-group-mode]{:both}.
 
   Note that only non-contextual sizes of every widget are ever consulted by
   size groups, since size groups have no knowledge of what size a widget will
   be allocated in one dimension, it cannot derive how much height a widget
   will receive for a given width. When grouping widgets that trade height for
-  width in mode @code{:vertical} or @code{:both}: the height for the minimum
-  width will be the requested height for all widgets in the group. The same is
-  of course true when horizontally grouping width for height widgets.
+  width in mode @val[gtk:size-group-mode]{:vertical} or
+  @val[gtk:size-group-mode]{:both}, the height for the minimum width will be the
+  requested height for all widgets in the group. The same is of course true when
+  horizontally grouping width for height widgets.
 
   Widgets that trade height-for-width should set a reasonably large minimum
   width by way of \"width-chars\" for instance. Widgets with static sizes as
@@ -247,22 +249,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "mode" 'size-group) t)
- "The @code{mode} property of type @symbol{gtk:size-group-mode} (Read / Write)
-  @br{}
+ "The @code{mode} property of type @sym{gtk:size-group-mode} (Read / Write)@br{}
   The directions in which the size group affects the requested sizes of its
   component widgets. @br{}
-  Default value: @code{:horizontal}")
+  Default value: @val[gtk:size-group-mode]{:horizontal}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'size-group-mode)
       "Accessor"
       (documentation 'size-group-mode 'function)
- "@version{#2023-2-23}
+ "@version{#2025-07-06}
   @syntax{(gtk:size-group-mode object) => mode}
   @syntax{(setf (gtk:size-group-mode object) mode)}
   @argument[size-group]{a @class{gtk:size-group} object}
-  @argument[mode]{a @symbol{gtk:size-group-mode} value to set for the size
-    group}
+  @argument[mode]{a @sym{gtk:size-group-mode} value to set for the size group}
   @begin{short}
     Accessor of the @slot[gtk:size-group]{mode} slot of the
     @class{gtk:size-group} class.
@@ -272,25 +272,24 @@
   group.
 
   The mode of the size group determines whether the widgets in the size group
-  should all have the same horizontal requisition, @code{:horizontal}, all have
-  the same vertical requisition, @code{:vertical}, or should all have the same
-  requisition in both directions, @code{:both}.
+  should all have the same horizontal requisition,
+  @val[gtk:size-group-mode]{:horizontal}, all have the same vertical
+  requisition, @val[gtk:size-group-mode]{:vertical}, or should all have the
+  same requisition in both directions, @val[gtk:size-groupmode]{:both}.
   @see-class{gtk:size-group}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_size_group_new ()
+;;; gtk_size_group_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline size-group-new))
 
 (defun size-group-new (mode)
  #+liber-documentation
- "@version{#2023-2-23}
-  @argument[mode]{a @symbol{gtk:size-group-mode} value for the new size group}
-  @return{A newly created @class{gtk:size-group} object.}
-  @begin{short}
-    Create a new size group.
-  @end{short}
+ "@version{#2025-07-06}
+  @argument[mode]{a @sym{gtk:size-group-mode} value for the new size group}
+  @return{The newly created @class{gtk:size-group} object.}
+  @short{Create a new size group.}
   @see-class{gtk:size-group}
   @see-symbol{gtk:size-group-mode}"
   (make-instance 'size-group
@@ -299,7 +298,7 @@
 (export 'size-group-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_size_group_add_widget ()
+;;; gtk_size_group_add_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_size_group_add_widget" size-group-add-widget) :void
@@ -326,7 +325,7 @@
 (export 'size-group-add-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_size_group_remove_widget ()
+;;; gtk_size_group_remove_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_size_group_remove_widget" size-group-remove-widget) :void
@@ -345,17 +344,15 @@
 (export 'size-group-remove-widget)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_size_group_get_widgets () -> size-group-widgets
+;;; gtk_size_group_get_widgets
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_size_group_get_widgets" size-group-widgets)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2025-07-06}
   @argument[group]{a @class{gtk:size-group} object}
-  @begin{return}
-    A list of widgets.
-  @end{return}
+  @return{The list of widgets.}
   @begin{short}
     Returns the list of widgets associated with the size group.
   @end{short}

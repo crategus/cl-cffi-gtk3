@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.event-box.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -66,7 +66,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEventBox
+;;; GtkEventBox
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEventBox" event-box
@@ -140,7 +140,7 @@
 ;;; Property and Accessor Details
 ;;; ----------------------------------------------------------------------------
 
-;;; --- event-box-above-child --------------------------------------------------
+;;; --- gtk:event-box-above-child ----------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "above-child" 'event-box) t)
@@ -174,7 +174,7 @@
   The default is to keep the window below the child.
   @see-class{gtk:event-box}")
 
-;;; --- event-box-visible-window -----------------------------------------------
+;;; --- gtk:event-box-visible-window -------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "visible-window" 'event-box) t)
@@ -235,7 +235,7 @@
   @see-function{gtk:widget-add-events}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_event_box_new ()
+;;; gtk_event_box_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline event-box-new))

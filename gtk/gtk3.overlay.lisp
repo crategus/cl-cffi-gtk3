@@ -131,7 +131,7 @@
 lambda (overlay widget allocation)    :run-last
       @end{pre}
       @begin[code]{simple-table}
-        @entry[overlay]{The @class{gtk:overlay} widget which emitted the
+        @entry[overlay]{The @class{gtk:overlay} widget that emitted the
           signal.}
         @entry[widget]{The @class{gtk:widget} child widget to position.}
         @entry[allocation]{The return location of type @class{gdk:rectangle}
@@ -144,9 +144,10 @@ lambda (overlay widget allocation)    :run-last
       of the overlay. The default handler for this signal uses the
       @slot[gtk:widget]{halign} and @slot[gtk:widget]{valign} properties of the
       widget to determine the position and gives the widget its natural size,
-      except that an alignment of @code{:fill} will cause the overlay to be
-      full-width/height. If the main child is a @class{gtk:scrolled-window}
-      widget, the overlays are placed relative to its contents.
+      except that an alignment of @val[gtk:align]{:fill} will cause the overlay
+      to be full-width/height. If the main child is a
+      @class{gtk:scrolled-window} widget, the overlays are placed relative to
+      its contents.
     @end{signal}
   @end{dictionary}
   @see-class{gtk:buildable}

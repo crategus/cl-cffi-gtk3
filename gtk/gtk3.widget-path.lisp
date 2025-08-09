@@ -192,10 +192,10 @@
 
 (cffi:defcfun ("gtk_widget_path_append_type" widget-path-append-type) :int
  #+liber-documentation
- "@version{2025-03-08}
+ "@version{2025-07-15}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[gtype]{a @class{g:type-t} type ID for the widget to append}
-  @return{The integer with the position where the element was inserted.}
+  @return{The integer for the position where the element was inserted.}
   @begin{short}
     Appends a widget type to the widget hierarchy represented by @arg{path}.
   @end{short}
@@ -213,14 +213,14 @@
 (cffi:defcfun ("gtk_widget_path_append_with_siblings"
                widget-path-append-with-siblings) :int
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-07-15}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[siblings]{a @class{gtk:widget-path} instance describing a list of
     siblings, this path may not contain any siblings itself and it must not be
     modified afterwards}
   @argument[index]{an unsigned integer for the index into @arg{siblings} for
     where the added element is positioned}
-  @return{The integer with the position where the element was inserted.}
+  @return{The integer for the position where the element was inserted.}
   @begin{short}
     Appends a widget type with all its siblings to the widget hierarchy
     represented by @arg{path}.
@@ -247,10 +247,10 @@
 (cffi:defcfun ("gtk_widget_path_append_for_widget"
                widget-path-append-for-widget) :int
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-07-15}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[widget]{a @class{gtk:widget} object to append to the widget path}
-  @return{The integer with the position where the data was inserted.}
+  @return{The integer for the position where the data was inserted.}
   @begin{short}
     Appends the data from @arg{widget} to the widget hierarchy represented by
     @arg{path}.
@@ -635,12 +635,12 @@
 (cffi:defcfun ("gtk_widget_path_iter_get_sibling_index"
                widget-path-iter-sibling-index) :uint
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-07-17}
   @argument[path]{a @class{gtk:widget-path} instance}
   @argument[pos]{an integer for the position to get the sibling index for,
     -1 for the path head}
   @begin{return}
-    The unsigned integer with the index into the list of siblings for the
+    The unsigned integer for the index into the list of siblings for the
     element at @arg{pos}.
   @end{return}
   @begin{short}

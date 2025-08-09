@@ -2,8 +2,8 @@
 ;;; gtk3.native-dialog.lisp
 ;;;
 ;;; The documentation in this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2020 - 2025 Dieter Kaiser
@@ -92,7 +92,7 @@
 
 #+liber-documentation
 (setf (documentation 'native-dialog 'type)
- "@version{#2023-6-10}
+ "@version{#2025-07-15}
   @begin{short}
     Native dialogs are platform dialogs that do not use @class{gtk:dialog} or
     @class{gtk:window} widgets.
@@ -104,25 +104,27 @@
   a similar API in order to drive them. The @class{gtk:native-dialog} object is
   an API that allows you to do this. It allows you to set various common
   properties on the dialog, as well as show and hide it and get a
-  @code{\"response\"} signal when the user finished with the dialog.
+  @sig[gtk:native-dialog]{response} signal when the user finished with the
+  dialog.
 
   There is also a @fun{gtk:native-dialog-run} helper function that makes it
   easy to run any native dialog in a modal way with a recursive main loop,
   similar to the @fun{gtk:dialog-run} function.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"response\" signal}
+    @begin[native-dialog::response]{signal}
       @begin{pre}
 lambda (dialog id)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[dialog]{The @class{gtk:native-dialog} widget that received the
+          signal.}
+        @entry[id]{The integer for the response ID.}
+      @end{simple-table}
       Emitted when the user responds to the dialog window. When this is called
       the dialog window has been hidden. If you call the
       @fun{gtk:native-dialog-hide} function before the user responds to the
       dialog window this signal will not be emitted.
-      @begin[code]{table}
-        @entry[dialog]{The @class{gtk:native-dialog} widget which received the
-          signal.}
-        @entry[id]{An integer with the response ID.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:native-dialog-modal}
   @see-slot{gtk:native-dialog-title}
@@ -178,11 +180,11 @@ lambda (dialog id)    :run-last
 (setf (liber:alias-for-function 'native-dialog-title)
       "Accessor"
       (documentation 'native-dialog-title 'function)
- "@version{#2023-6-10}
+ "@version{#2025-07-04}
   @syntax{(gtk:native-dialog-title object) => title}
   @syntax{(setf (gtk:native-dialog-title object) title)}
   @argument[object]{a @class{gtk:native-dialog} widget}
-  @argument[title]{a string with the title of the dialog window, or @code{nil}
+  @argument[title]{a string for the title of the dialog window, or @code{nil}
     if none has been set}
   @begin{short}
     Accessor of the @slot[gtk:native-dialog]{title} slot of the
@@ -205,7 +207,7 @@ lambda (dialog id)    :run-last
 (setf (liber:alias-for-function 'native-dialog-transient-for)
       "Accessor"
       (documentation 'native-dialog-transient-for 'function)
- "@version{#2023-6-10}
+ "@version{#2025-07-05}
   @syntax{(gtk:native-dialog-transient-for object) => parent}
   @syntax{(setf (gtk:native-dialog-transient-for object) parent)}
   @argument[object]{a @class{gtk:native-dialog} widget}
@@ -219,8 +221,9 @@ lambda (dialog id)    :run-last
   function sets the transient parent.
 
   Dialogs should be set transient for the main application window they were
-  spawned from. This allows window managers to e.g. keep the dialog window on
-  top of the main window, or center the dialog window over the main window.
+  spawned from. This allows window managers to, for example, keep the dialog
+  window on top of the main window, or center the dialog window over the main
+  window.
 
   Passing @code{nil} for parent unsets the current transient window.
   @see-class{gtk:native-dialog}
@@ -255,14 +258,15 @@ lambda (dialog id)    :run-last
 
 (cffi:defcfun ("gtk_native_dialog_show" native-dialog-show) :void
  #+liber-documentation
- "@version{#2023-6-10}
+ "@version{#2025-07-16}
   @argument[dialog]{a @class{gtk:native-dialog} widget}
   @begin{short}
     Shows the dialog window on the display, allowing the user to interact with
     it.
   @end{short}
   When the user accepts the state of the dialog window the dialog window will
-  be automatically hidden and the @code{\"response\"} signal will be emitted.
+  be automatically hidden and the @sig[gtk:native-dialog]{response} signal will
+  be emitted.
 
   Multiple calls while the dialog window is visible will be ignored.
   @see-class{gtk:native-dialog}"
@@ -276,13 +280,14 @@ lambda (dialog id)    :run-last
 
 (cffi:defcfun ("gtk_native_dialog_hide" native-dialog-hide) :void
  #+liber-documentation
- "@version{#2023-6-10}
+ "@version{#2025-07-16}
   @argument[dialog]{a @class{gtk:native-dialog} widget}
   @begin{short}
     Hides the dialog window if it is visible, aborting any interaction.
   @end{short}
-  Once this is called the @code{\"response\"} signal will not be emitted until
-  after the next call to the @fun{gtk:native-dialog-show} function.
+  Once this is called the @sig[gtk:native-dialog]{response} signal will not be
+  emitted until after the next call to the @fun{gtk:native-dialog-show}
+  function.
 
   If the dialog window is not visible this does nothing.
   @see-class{gtk:native-dialog}
@@ -321,20 +326,21 @@ lambda (dialog id)    :run-last
 
 (cffi:defcfun ("gtk_native_dialog_run" native-dialog-run) :int
  #+liber-documentation
- "@version{#2023-6-10}
+ "@version{#2025-07-15}
   @argument[dialog]{a @class{gtk:native-dialog} widget}
-  @return{The integer with the response ID.}
+  @return{The integer for the response ID.}
   @begin{short}
-    Blocks in a recursive main loop until self emits the @code{\"response\"}
-    signal.
+    Blocks in a recursive main loop until the dialog window emits the
+    @sig[gtk:native-dialog]{response} signal.
   @end{short}
-  It then returns the response ID from the @code{\"response\"} signal emission.
+  It then returns the response ID from the @sig[gtk:native-dialog]{response}
+  signal emission.
 
   Before entering the recursive main loop, the @fun{gtk:native-dialog-run}
   function calls the @fun{gtk:native-dialog-show} function on the dialog for
   you.
 
-  After the @fun{gtk:native-dialog-run} function returns, then dialog window
+  After the @fun{gtk:native-dialog-run} function returns, then the dialog window
   will be hidden.
   @begin[Examples]{dictionary}
     Typical usage of this function might be:
@@ -352,11 +358,10 @@ switch (result)
 g_object_unref (dialog);
     @end{pre}
   @end{dictionary}
-
   Note that even though the recursive main loop gives the effect of a modal
   dialog window, it prevents the user from interacting with other windows in
   the same window group while the dialog is run, callbacks such as timeouts, IO
-  channel watches, DND drops, etc, will be triggered during a
+  channel watches, DND drops, and so on, will be triggered during a
   @fun{gtk:native-dialog-run} function call.
   @see-class{gtk:native-dialog}
   @see-function{gtk:native-dialog-run}

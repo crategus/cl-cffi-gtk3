@@ -85,7 +85,7 @@
  nil)
 
 (setf (documentation 'statusbar 'type)
- "@version{2025-07-14}
+ "@version{2025-07-17}
   @begin{short}
     The @class{gtk:statusbar} widget is usually placed along the bottom of the
     main @class{gtk:window} widget of the application.
@@ -144,9 +144,9 @@ lambda (statusbar context text)    :run-last
       @begin[code]{simple-table}
         @entry[statusbar]{The @class{gtk:statusbar} widget that received the
           signal.}
-        @entry[context]{The unsigned integer with the context ID of the
+        @entry[context]{The unsigned integer for the context ID of the
           relevant message/statusbar.}
-        @entry[text]{The string with the message that was just popped.}
+        @entry[text]{The string for the message that was just popped.}
       @end{simple-table}
       Is emitted whenever a new message is popped off the stack of the status
       bar.
@@ -158,9 +158,9 @@ lambda (statusbar context text)    :run-last
       @begin[code]{simple-table}
         @entry[statusbar]{The @class{gtk:statusbar} widget that received the
           signal.}
-        @entry[context]{The unsigned integer with the context ID of the
+        @entry[context]{The unsigned integer for the context ID of the
           relevant message/statusbar.}
-        @entry[text]{The string with the message that was pushed.}
+        @entry[text]{The string for the message that was pushed.}
       @end{simple-table}
       Is emitted whenever a new message gets pushed onto the stack of the status
       bar.
@@ -194,11 +194,11 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-context-id (statusbar context)
  #+liber-documentation
- "@version{2025-06-17}
+ "@version{2025-07-17}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{a string for the textual description of what context the
     new message is being used in}
-  @return{The unsigned integer with the context ID.}
+  @return{The unsigned integer for the context ID.}
   @begin{short}
     Returns a new context identifier, given a description of the actual context.
   @end{short}
@@ -221,13 +221,13 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-push (statusbar context text)
  #+liber-documentation
- "@version{2025-06-17}
+ "@version{2025-07-17}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer for the context ID of the message, as
     returned by the @fun{gtk:statusbar-context-id} function}
   @argument[text]{a string for the message to add to @arg{statusbar}}
   @begin{return}
-    The unsigned integer with a message ID that can be used with the
+    The unsigned integer for a message ID that can be used with the
     @fun{gtk:statusbar-remove} function.
   @end{return}
   @begin{short}

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.app-chooser.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -116,10 +116,10 @@
 (setf (liber:alias-for-function 'app-chooser-content-type)
       "Accessor"
       (documentation 'app-chooser-content-type 'function)
- "@version{#2023-2-14}
+ "@version{#2025-07-07}
   @syntax{(gtk:app-chooser-content-type object) => content-type}
   @argument[object]{a @class{gtk:app-chooser} object}
-  @argument[content-type]{a string with the content type}
+  @argument[content-type]{a string for the content type}
   @begin{short}
     Accessor of the @slot[gtk:app-chooser]{content-type} slot of the
     @class{gtk:app-chooser} interface.

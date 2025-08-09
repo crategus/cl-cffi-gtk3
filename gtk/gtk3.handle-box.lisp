@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.handle-box.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -38,13 +38,13 @@
 ;;; Functions
 ;;;
 ;;;     gtk_handle_box_new
-;;;     gtk_handle_box_set_shadow_type                     Accessor
-;;;     gtk_handle_box_set_handle_position                 Accessor
-;;;     gtk_handle_box_set_snap_edge                       Accessor
-;;;     gtk_handle_box_get_handle_position                 Accessor
-;;;     gtk_handle_box_get_shadow_type                     Accessor
-;;;     gtk_handle_box_get_snap_edge                       Accessor
-;;;     gtk_handle_box_get_child_detached                  Accessor
+;;;     gtk_handle_box_set_shadow_type                      Accessor
+;;;     gtk_handle_box_set_handle_position                  Accessor
+;;;     gtk_handle_box_set_snap_edge                        Accessor
+;;;     gtk_handle_box_get_handle_position                  Accessor
+;;;     gtk_handle_box_get_shadow_type                      Accessor
+;;;     gtk_handle_box_get_snap_edge                        Accessor
+;;;     gtk_handle_box_get_child_detached                   Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -77,7 +77,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkHandleBox
+;;; GtkHandleBox
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkHandleBox" handle-box
@@ -104,7 +104,7 @@
 
 #+liber-documentation
 (setf (documentation 'handle-box 'type)
- "@version{#2023-3-20}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:handle-box} widget allows a portion of a window to be
     \"torn off\".
@@ -134,32 +134,34 @@
     no replacement.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"child-attached\" signal}
+    @begin[handle-box::child-attached]{signal}
       @begin{pre}
 lambda (handlebox widget)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[handlebox]{The @class{gtk:handle-box} widget that received the
+          signal.}
+        @entry[widget]{The @class{gtk:widget} child widget of the handle box.
+          This argument provides no extra information and is here only for
+          backwards compatibility.}
+      @end{simple-table}
       The signal is emitted when the contents of the handle box are reattached
       to the main window.
-      @begin[code]{table}
-        @entry[handlebox]{The @class{gtk:handle-box} widget which received the
-          signal.}
-        @entry[widget]{The @class{gtk:widget} child widget of the handle box.
-          This argument provides no extra information and is here only for
-          backwards compatibility.}
-      @end{table}
-    @subheading{The \"child-detached\" signal}
+    @end{signal}
+    @begin[handle-box::child-detached]{signal}
       @begin{pre}
 lambda (handlebox widget)    :run-first
       @end{pre}
-      The signal is emitted when the contents of the handle box are detached
-      from the main window.
-      @begin[code]{table}
-        @entry[handlebox]{The @class{gtk:handle-box} widget which received the
+      @begin[code]{simple-table}
+        @entry[handlebox]{The @class{gtk:handle-box} widget that received the
           signal.}
         @entry[widget]{The @class{gtk:widget} child widget of the handle box.
           This argument provides no extra information and is here only for
           backwards compatibility.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted when the contents of the handle box are detached
+      from the main window.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:handle-box-new}
   @see-slot{gtk:handle-box-child-detached}
@@ -205,20 +207,20 @@ lambda (handlebox widget)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "handle-position" 'handle-box) t)
- "The @code{handle-position} property of type @symbol{gtk:position-type}
+ "The @code{handle-position} property of type @sym{gtk:position-type}
   (Read / Write) @br{}
   Position of the handle relative to the child widget. @br{}
-  Default value: @code{:left}")
+  Default value: @val[gtk:position-type]{:left}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'handle-box-handle-position)
       "Accessor"
       (documentation 'handle-box-handle-position 'function)
- "@version{#2023-3-20}
+ "@version{#2025-07-11}
   @syntax{(gtk:handle-box-handle-position object) => position}
   @syntax{(setf (gtk:handle-box-handle-position object) position)}
   @argument[object]{a @class{gtk:handle-box} widget}
-  @argument[position]{a value of the @symbol{gtk:position-type} enumeration}
+  @argument[position]{a value of the @sym{gtk:position-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:handle-box]{handle-position} slot of the
     @class{gtk:handle-box} class.
@@ -238,20 +240,20 @@ lambda (handlebox widget)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'handle-box) t)
- "The @code{shadow-type} property of type @symbol{gtk:shadow-type}
-  (Read / Write) @br{}
+ "The @code{shadow-type} property of type @sym{gtk:shadow-type} (Read / Write)
+  @br{}
   Appearance of the shadow that surrounds the handle box. @br{}
-  Default value: @code{:out}")
+  Default value: @val[gtk:shadow-type]{:out}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'handle-box-shadow-type)
       "Accessor"
       (documentation 'handle-box-shadow-type 'function)
- "@version{#2023-3-20}
+ "@version{#2025-07-11}
   @syntax{(gtk:handle-box-shadow-type object) => shadow-type}
   @syntax{(setf (gtk:handle-box-shadow-type object) shadow-type)}
   @argument[object]{a @class{gtk:handle-box} widget}
-  @argument[shadow-type]{a value of the @symbol{gtk:shadow-type} enumeration}
+  @argument[shadow-type]{a value of the @sym{gtk:shadow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:handle-box]{shadow-type} slot of the
     @class{gtk:handle-box} class.
@@ -271,21 +273,21 @@ lambda (handlebox widget)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "snap-edge" 'handle-box) t)
- "The @code{snap-edge} property of type @symbol{gtk:position-type}
-  (Read / Write) @br{}
+ "The @code{snap-edge} property of type @sym{gtk:position-type} (Read / Write)
+  @br{}
   Side of the handle box that is lined up with the docking point to dock the
   handle box. @br{}
-  Default value: @code{:top}")
+  Default value: @val[gtk:position-type]{:top}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'handle-box-snap-edge)
       "Accessor"
       (documentation 'handle-box-snap-edge 'function)
- "@version{#2023-3-20}
+ "@version{#2025-07-11}
   @syntax{(gtk:handle-box-snap-edge object) => edge}
   @syntax{(setf (gtk:handle-box-snap-edge object) edge)}
   @argument[object]{a @class{gtk:handle-box} widget}
-  @argument[edge]{a value of the @symbol{gtk:position-type} enumeration}
+  @argument[edge]{a value of the @sym{gtk:position-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:handle-box]{snap-edge} slot of the
     @class{gtk:handle-box} class.
@@ -345,15 +347,15 @@ lambda (handlebox widget)    :run-first
   @see-function{gtk:handle-box-handle-position}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_handle_box_new ()
+;;; gtk_handle_box_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline handle-box-new))
 
 (defun handle-box-new ()
  #+liber-documentation
- "@version{#2023-3-20}
-  @return{A new @class{gtk:handle-box} widget.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:handle-box} widget.}
   @begin{short}
     Create a new handle box.
   @end{short}

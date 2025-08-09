@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.alignment.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -70,7 +70,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAlignment
+;;; GtkAlignment
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAlignment" alignment
@@ -357,26 +357,26 @@
   @see-function{gtk:widget-vexpand}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_alignment_new ()
+;;; gtk_alignment_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline alignment-new))
 
 (defun alignment-new (xalign yalign xscale yscale)
  #+liber-documentation
- "@version{2023-12-28}
-  @argument[xalign]{a float with the horizontal alignment of the child widget,
-    from 0.0 (left) to 1.0 (right)}
-  @argument[yalign]{a float with the vertical alignment of the child widget,
-    from 0.0 (top) to 1.0 (bottom)}
-  @argument[xscale]{a float with the amount that the child widget expands
-    horizontally to fill up unused space, from 0.0 to 1.0, a value of 0.0
-    indicates that the child widget should never expand, a value of 1.0
-    indicates that the child widget will expand to fill all of the space
+ "@version{2025-07-06}
+  @argument[xalign]{a number coerced to a single float for the horizontal
+    alignment of the child widget, from 0.0 (left) to 1.0 (right)}
+  @argument[yalign]{a number coerced to a single float for the vertical
+    alignment of the child widget, from 0.0 (top) to 1.0 (bottom)}
+  @argument[xscale]{a number coerced to a single float for the amount that the
+    child widget expands horizontally to fill up unused space, from 0.0 to 1.0,
+    a value of 0.0 indicates that the child widget should never expand, a value
+    of 1.0 indicates that the child widget will expand to fill all of the space
     allocated for the alignment}
-  @argument[yscale]{a float with the amount that the child widget expands
-    vertically to fill up unused space, from 0.0 to 1.0, he values are similar
-    to @arg{xscale}}
+  @argument[yscale]{a number coerced to a single float for the amount that the
+    child widget expands vertically to fill up unused space, from 0.0 to 1.0,
+    the values are similar to @arg{xscale}}
   @return{The new @class{gtk:alignment} widget.}
   @short{Creates a new alignment.}
   @begin[Warning]{dictionary}
@@ -395,27 +395,27 @@
 (export 'alignment-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_alignment_set ()
+;;; gtk_alignment_set
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline alignment-set))
 
 (defun alignment-set (alignment xalign yalign xscale yscale)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2025-07-06}
   @argument[alignment]{a @class{gtk:alignment} widget}
-  @argument[xalign]{a float with the horizontal alignment of the child widget,
-    from 0.0 (left) to 1.0 (right)}
-  @argument[yalign]{a float with the vertical alignment of the child widget,
-    from 0.0 (top) to 1.0 (bottom)}
-  @argument[xscale]{a float with the amount that the child widget expands
-    horizontally to fill up unused space, from 0.0 to 1.0, a value of 0.0
-    indicates that the child widget should never expand, a value of 1.0
-    indicates that the child widget will expand to fill all of the space
+  @argument[xalign]{a number coerced to single float for the horizontal
+    alignment of the child widget, from 0.0 (left) to 1.0 (right)}
+  @argument[yalign]{a number coerced to a single float for the vertical
+    alignment of the child widget, from 0.0 (top) to 1.0 (bottom)}
+  @argument[xscale]{a number coerced to a single float for the amount that the
+    child widget expands horizontally to fill up unused space, from 0.0 to 1.0,
+    a value of 0.0 indicates that the child widget should never expand, a value
+    of 1.0 indicates that the child widget will expand to fill all of the space
     allocated for the alignment}
-  @argument[yscale]{a float with the amount that the child widget expands
-    vertically to fill up unused space, from 0.0 to 1.0, the values are similar
-    to @arg{xscale}}
+  @argument[yscale]{a number coerced to single float for the amount that the
+    child widget expands vertically to fill up unused space, from 0.0 to 1.0,
+    the values are similar to @arg{xscale}}
   @short{Sets the alignment values.}
   @begin[Warning]{dictionary}
     The @fun{gtk:alignment-set} function has been deprecated since version 3.14
@@ -433,7 +433,7 @@
 (export 'alignment-set)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_alignment_get_padding ()
+;;; gtk_alignment_get_padding
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline alignment-get-padding))
@@ -471,22 +471,22 @@
 (export 'alignment-get-padding)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_alignment_set_padding ()
+;;; gtk_alignment_set_padding
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline alignment-set-padding))
 
 (defun alignment-set-padding (alignment top bottom left right)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2025-07-06}
   @argument[alignment]{a @class{gtk:alignment} widget}
-  @argument[top]{an unsigned integer with the padding at the top of the child
+  @argument[top]{an unsigned integer for the padding at the top of the child
     widget}
-  @argument[bottom]{an unsigned integer with the padding at the bottom of the
+  @argument[bottom]{an unsigned integer for the padding at the bottom of the
     child widget}
-  @argument[left]{an unsigned integer with the padding at the left of the
+  @argument[left]{an unsigned integer for the padding at the left of the
     child widget}
-  @argument[right]{an unsigned integer with the padding at the right of the
+  @argument[right]{an unsigned integer for the padding at the right of the
     child widget}
   @begin{short}
     Sets the padding on the different sides of the widget.

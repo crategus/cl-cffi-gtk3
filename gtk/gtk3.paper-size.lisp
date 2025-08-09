@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.paper-size.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -105,12 +105,12 @@
   (:mm 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{No units.}
       @entry[:points]{Dimensions in points.}
       @entry[:inch]{Dimensions in inches.}
       @entry[:mm]{Dimensions in millimeters.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @short{Enumeration for dimensions of paper sizes.}
   @see-class{gtk:paper-size}")
@@ -267,15 +267,15 @@
 
 (defun paper-size-new-custom (name displayname width height unit)
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[name]{a string for the paper name}
   @argument[displayname]{a string for the human readable name}
   @argument[width]{a number coerced to a double float for the paper width,
     in units of @arg{unit}}
   @argument[height]{a number coerced to a double float for the paper
     height, in units of @arg{unit}}
-  @argument[unit]{a @symbol{gtk:unit} value for @arg{width} and @arg{height},
-    not @code{:none}}
+  @argument[unit]{a @sym{gtk:unit} value for @arg{width} and @arg{height},
+    not @val[gtk:unit]{:none}}
   @return{The new @class{gtk:paper-size} instance.}
   @begin{short}
     Creates a new @class{gtk:paper-size} instance with the given parameters.
@@ -423,11 +423,11 @@
 
 (cffi:defcfun ("gtk_paper_size_get_width" paper-size-width) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-15}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value,
-    not @code{:none}}
-  @return{The double float with the paper width.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+    @val[gtk:unit]{:none}}
+  @return{The double float for the paper width.}
   @begin{short}
     Gets the paper width of the paper size, in units of @arg{unit}.
   @end{short}
@@ -445,11 +445,11 @@
 
 (cffi:defcfun ("gtk_paper_size_get_height" paper-size-height) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value,
-    not @code{:none}}
-  @return{The double float with the paper height.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+   @val[gtk:unit]{:none}}
+  @return{The double float for the paper height.}
   @begin{short}
     Gets the paper height of the paper size, in units of @arg{unit}.
   @end{short}
@@ -505,13 +505,13 @@
 
 (defun paper-size-set-size (size width height unit)
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[size]{a custom @class{gtk:paper-size} instance}
   @argument[width]{a number coerced to a double float for the new width
     in units of @arg{unit}}
   @argument[height]{a number coerced to a double float for the new height
     in units of @arg{unit}}
-  @argument[unit]{a @symbol{gtk:unit} value for @arg{width} and @arg{height}}
+  @argument[unit]{a @sym{gtk:unit} value for @arg{width} and @arg{height}}
   @begin{short}
     Changes the dimensions of a paper size to @code{width x height}.
   @end{short}
@@ -531,11 +531,11 @@
 (cffi:defcfun ("gtk_paper_size_get_default_top_margin"
                paper-size-default-top-margin) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value, not
-    @code{:none}}
-  @return{The double float with the default top margin.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+    @val[gtk:unit]{:none}}
+  @return{The double float for the default top margin.}
   @begin{short}
     Gets the default top margin for the paper size.
   @end{short}
@@ -554,11 +554,11 @@
 (cffi:defcfun ("gtk_paper_size_get_default_bottom_margin"
                paper-size-default-bottom-margin) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value, not
-    @code{:none}}
-  @return{The double float with the default bottom margin.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+    @val[gtk:unit]{:none}}
+  @return{The double float for the default bottom margin.}
   @begin{short}
     Gets the default bottom margin for the paper size.
   @end{short}
@@ -577,11 +577,11 @@
 (cffi:defcfun ("gtk_paper_size_get_default_left_margin"
                paper-size-default-left-margin) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-15}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value, not
-    @code{:none}}
-  @return{The double float with the default left margin.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+    @val[gtk:unit]{:none}}
+  @return{The double float for the default left margin.}
   @begin{short}
     Gets the default left margin for the paper size.
   @end{short}
@@ -600,11 +600,11 @@
 (cffi:defcfun ("gtk_paper_size_get_default_right_margin"
                paper-size-default-right-margin) :double
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-07-11}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @argument[unit]{a @symbol{gtk:unit} value for the return value, not
-    @code{:none}}
-  @return{The double float with the default right margin.}
+  @argument[unit]{a @sym{gtk:unit} value for the return value, not
+    @val[gtk:unit]{:none}}
+  @return{The double float for the default right margin.}
   @begin{short}
     Gets the default right margin for the paper size.
   @end{short}
@@ -680,11 +680,11 @@
 (cffi:defcfun ("gtk_paper_size_new_from_gvariant" paper-size-new-from-gvariant)
     (g:boxed paper-size :return)
  #+liber-documentation
- "@version{2025-1-6}
-  @argument[value]{a @symbol{g:variant} parameter of @code{\"a{sv@}\"} type}
+ "@version{2025-07-11}
+  @argument[value]{a @sym{g:variant} parameter of @code{\"a{sv@}\"} type}
   @return{The @class{gtk:paper-size} instance.}
   @begin{short}
-    Deserialize a paper size from a @symbol{g:variant} parameter of
+    Deserialize a paper size from a @sym{g:variant} parameter of
     @code{\"a{sv@}\"} type in the format produced by the
     @fun{gtk:paper-size-to-gvariant} function.
   @end{short}
@@ -724,12 +724,12 @@
 (cffi:defcfun ("gtk_paper_size_to_gvariant" paper-size-to-gvariant)
     (:pointer (:struct g:variant))
  #+liber-documentation
- "@version{2025-1-6}
+ "@version{2025-07-11}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @return{The new @symbol{g:variant} parameter.}
+  @return{The new @sym{g:variant} parameter.}
   @begin{short}
-    Serialize a paper size to a @symbol{g:variant} parameter of
-    @code{\"a{sv@}\"} type.
+    Serialize a paper size to a @sym{g:variant} parameter of @code{\"a{sv@}\"}
+    type.
   @end{short}
   @begin[Examples]{dictionary}
     @begin{pre}

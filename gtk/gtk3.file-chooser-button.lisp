@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.file-chooser-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,7 +75,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFileChooserButton
+;;; GtkFileChooserButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkFileChooserButton" file-chooser-button
@@ -101,7 +101,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-button 'type)
- "@version{#2023-3-17}
+ "@version{#2025-07-14}
   @begin{short}
     The @class{gtk:file-chooser-button} widget is a widget that lets the user
     select a file.
@@ -115,9 +115,10 @@
   This widget does not support setting the
   @slot[gtk:file-chooser]{select-multiple} property to @em{true}.
 
-  The @class{gtk:file-chooser-button} widget supports the @code{:open} and
-  @code{:select-folder} values of the @symbol{gtk:file-chooser-action}
-  enumeration.
+  The @class{gtk:file-chooser-button} widget supports the
+  @val[gtk:file-chooser-action]{:open} and
+  @val[gtk:file-chooser-action]{:select-folder} values of the
+  @sym{gtk:file-chooser-action} enumeration.
   @begin[Examples]{dictionary}
     Create a button to let the user select a file.
     @begin{pre}
@@ -139,16 +140,17 @@
     name @code{button} and @code{.file} style class.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"file-set\" signal}
+    @begin[file-chooser-button::file-set]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:file-chooser-button} widget that received
+          the signal.}
+      @end{simple-table}
       The signal is emitted when the user selects a file. Note that this signal
       is only emitted when the user changes the file.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:file-chooser-button} widget which received
-          the signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:file-chooser-button-new}
   @see-constructor{gtk:file-chooser-button-new-with-dialog}
@@ -246,11 +248,11 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-title)
       "Accessor"
       (documentation 'file-chooser-button-title 'function)
- "@version{2023-6-11}
+ "@version{2025-07-06}
   @syntax{(gtk:file-chooser-button-title object) => title}
   @syntax{(setf (gtk:file-chooser-button-title object) title)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
-  @argument[title]{a string with the browse dialog title}
+  @argument[title]{a string for the browse dialog title}
   @begin{short}
     Accessor of the @slot[gtk:file-chooser-button]{title} slot of the
     @class{gtk:file-chooser-button} class.
@@ -274,11 +276,11 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-width-chars)
       "Accessor"
       (documentation 'file-chooser-button-width-chars 'function)
- "@version{2023-6-11}
+ "@version{2025-07-06}
   @syntax{(gtk:file-chooser-button-width-chars object) => n-chars}
   @syntax{(setf (gtk:file-chooser-button-width-chars object) n-chars)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}
-  @argument[n-chars]{an integer with the width, in characters}
+  @argument[n-chars]{an integer for the width, in characters}
   @begin{short}
     Accessor of the @slot[gtk:file-chooser-button]{width-chars} slot of the
     @class{gtk:file-chooser-button} class.
@@ -290,18 +292,18 @@ lambda (widget)    :run-first
   @see-class{gtk:file-chooser-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_button_new ()
+;;; gtk_file_chooser_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline file-chooser-button-new))
 
 (defun file-chooser-button-new (title action)
  #+liber-documentation
- "@version{2023-6-11}
-  @argument[title]{a string with the title of the browse dialog}
-  @argument[action]{a @symbol{gtk:file-chooser-action} value with the open mode
-    for the widget}
-  @return{A new @class{gtk:file-chooser-button} widget.}
+ "@version{2025-07-06}
+  @argument[title]{a string for the title of the browse dialog}
+  @argument[action]{a @sym{gtk:file-chooser-action} value for the open mode
+    of the widget}
+  @return{The new @class{gtk:file-chooser-button} widget.}
   @begin{short}
     Creates a new file selecting file chooser button widget.
   @end{short}
@@ -314,16 +316,16 @@ lambda (widget)    :run-first
 (export 'file-chooser-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_file_chooser_button_new_with_dialog ()
+;;; gtk_file_chooser_button_new_with_dialog
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline file-chooser-button-new-with-dialog))
 
 (defun file-chooser-button-new-with-dialog (dialog)
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2025-07-06}
   @argument[dialog]{a @class{gtk:dialog} widget to use as dialog}
-  @return{A new @class{gtk:file-chooser} widget.}
+  @return{The new @class{gtk:file-chooser} widget.}
   @begin{short}
     Creates a file chooser button which uses @arg{dialog} as its file picking
     window.

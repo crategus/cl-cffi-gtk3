@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tool-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,7 +93,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToolButton
+;;; GtkToolButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToolButton" tool-button
@@ -124,7 +124,7 @@
 
 #+liber-documentation
 (setf (documentation 'tool-button 'type)
- "@version{2024-3-15}
+ "@version{2025-06-22}
   @begin{short}
     The @class{gtk:tool-button} widgets are @class{gtk:tool-item} widgets
     containing buttons.
@@ -155,27 +155,26 @@
     @code{toolbutton}.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[icon-spacing]{entry}
-        The @code{icon-spacing} style property of type @code{:int}
-        (Read / Write) @br{}
-        Spacing in pixels between the icon and label. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 3
-      @end{entry}
-    @end{table}
+    @begin[tool-button:icon-spacing]{property}
+      The @code{icon-spacing} style property of type @code{:int} (Read / Write)
+      @br{}
+      Spacing in pixels between the icon and label. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 3
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"clicked\" signal}
+    @begin[tool-button::clicked]{signal}
       @begin{pre}
 lambda (button)    :action
       @end{pre}
-      The signal is emitted when the tool button is clicked with the mouse or
-      activated with the keyboard.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[button]{The @class{gtk:tool-button} widget that emitted the
           signal.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted when the tool button is clicked with the mouse or
+      activated with the keyboard.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:menu-tool-button-new}
   @see-constructor{gtk:menu-tool-button-new-from-stock}
@@ -210,11 +209,11 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-icon-name)
       "Accessor"
       (documentation 'tool-button-icon-name 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-04}
   @syntax{(gtk:tool-button-icon-name object) => icon-name}
   @syntax{(setf (gtk:tool-button-icon-name object) icon-name)}
   @argument[object]{a @class{gtk:tool-button} widget}
-  @argument[icon-name]{a string with the name of the themed icon}
+  @argument[icon-name]{a string for the name of the themed icon}
   @begin{short}
     Accessor of the @slot[gtk:tool-button]{icon-name} slot of the
     @class{gtk:tool-button} class.
@@ -357,11 +356,11 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-stock-id)
       "Accessor"
       (documentation 'tool-button-stock-id 'function)
- "@version{#2023-2-27}
+ "@version{#2025-07-04}
   @syntax{(gtk:tool-button-stock-id object) => stock-id}
   @syntax{(setf (gtk:tool-button-stock-id object) stock-id)}
   @argument[object]{a @class{gtk:tool-button} widget}
-  @argument[stock-id]{a string with the name of a stock item, or @code{nil}}
+  @argument[stock-id]{a string for the name of a stock item, or @code{nil}}
   @begin{short}
     Accessor of the @slot[gtk:tool-button]{stock-id} slot of the
     @class{gtk:tool-button} class.
@@ -424,7 +423,7 @@ lambda (button)    :action
   @see-function{gtk:tool-button-label}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_button_new ()
+;;; gtk_tool_button_new
 ;;; ----------------------------------------------------------------------------
 
 (defun tool-button-new (icon label)
@@ -449,13 +448,13 @@ lambda (button)    :action
 (export 'tool-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_button_new_from_stock ()
+;;; gtk_tool_button_new_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (defun tool-button-new-from-stock (stock)
  #+liber-documentation
- "@version{#2023-2-27}
-  @argument[stock]{a string with the name of the stock item}
+ "@version{#2025-07-04}
+  @argument[stock]{a string for the name of the stock item}
   @return{The new @class{gtk:tool-button} widget.}
   @begin{short}
     Creates a new tool button containing the image and text from a stock item.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.print-context.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -129,15 +129,15 @@
   @see-class{gtk:print-operation}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_cairo_context ()
+;;; gtk_print_context_get_cairo_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_cairo_context"
                print-context-cairo-context) (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-11}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{The @symbol{cairo:context-t} Cairo context of @arg{context}.}
+  @return{The @sym{cairo:context-t} Cairo context for @arg{context}.}
   @begin{short}
     Obtains the Cairo context that is associated with the print text.
   @end{short}
@@ -149,7 +149,7 @@
 (export 'print-context-cairo-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_set_cairo_context ()
+;;; gtk_print_context_set_cairo_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_set_cairo_context"
@@ -161,12 +161,12 @@
 
 (defun print-context-set-cairo-context (context cr xdpi ydpi)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-05}
   @argument[context]{a @class{gtk:print-context} object}
-  @argument[cr]{a @symbol{cairo:contex-t} Cairo context}
-  @argument[xdpi]{a number coerced to a double float with the horizontal
+  @argument[cr]{a @sym{cairo:contex-t} Cairo context}
+  @argument[xdpi]{a number coerced to a double float for the horizontal
     resolution to use with @arg{cr}}
-  @argument[ydpi]{a number coerced to a double float with the vertical
+  @argument[ydpi]{a number coerced to a double float for the vertical
     resolution to use with @arg{cr}}
   @begin{short}
     Sets a new Cairo context on a print context.
@@ -185,7 +185,7 @@
 (export 'print-context-set-cairo-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_page_setup ()
+;;; gtk_print_context_get_page_setup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_page_setup" print-context-page-setup)
@@ -205,14 +205,14 @@
 (export 'print-context-page-setup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_width ()
+;;; gtk_print_context_get_width
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_width" print-context-width) :double
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-15}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A double float with the width of @arg{context}.}
+  @return{The double float for the width of @arg{context}.}
   @begin{short}
     Obtains the width of the print context, in pixels.
   @end{short}
@@ -223,14 +223,14 @@
 (export 'print-context-width)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_height ()
+;;; gtk_print_context_get_height
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_height" print-context-height) :double
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-15}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A double float with the height of @arg{context}.}
+  @return{The double float for the height of @arg{context}.}
   @begin{short}
     Obtains the height of the print context, in pixels.
   @end{short}
@@ -241,14 +241,14 @@
 (export 'print-context-height)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_dpi_x ()
+;;; gtk_print_context_get_dpi_x
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_dpi_x" print-context-dpi-x) :double
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-15}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A double float with the horizontal resolution of @arg{context}.}
+  @return{The double float for the horizontal resolution of @arg{context}.}
   @begin{short}
     Obtains the horizontal resolution of the print context, in dots per inch.
   @end{short}
@@ -259,14 +259,14 @@
 (export 'print-context-dpi-x)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_dpi_y ()
+;;; gtk_print_context_get_dpi_y
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_dpi_y" print-context-dpi-y) :double
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-15}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A double float with the vertical resolution of @arg{context}.}
+  @return{The double float for the vertical resolution of @arg{context}.}
   @begin{short}
     Obtains the vertical resolution of the print context, in dots per inch.
   @end{short}
@@ -277,7 +277,7 @@
 (export 'print-context-dpi-y)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_pango_fontmap ()
+;;; gtk_print_context_get_pango_fontmap
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_pango_fontmap" print-context-pango-fontmap)
@@ -297,15 +297,15 @@
 (export 'print-context-pango-fontmap)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_create_pango_context ()
+;;; gtk_print_context_create_pango_context
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_create_pango_context"
                print-context-create-pango-context) (g:object pango:context)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-05}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A new @class{pango:context} object for @arg{context}.}
+  @return{The new @class{pango:context} object for @arg{context}.}
   @begin{short}
     Creates a new Pango context that can be used with the print context.
   @end{short}
@@ -316,15 +316,15 @@
 (export 'print-context-create-pango-context)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_create_pango_layout ()
+;;; gtk_print_context_create_pango_layout
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_create_pango_layout"
                print-context-create-pango-layout) (g:object pango:layout)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-07-05}
   @argument[context]{a @class{gtk:print-context} object}
-  @return{A new @class{pango:layout} object for @arg{context}.}
+  @return{The new @class{pango:layout} object for @arg{context}.}
   @begin{short}
     Creates a new Pango layout that is suitable for use with the print context.
   @end{short}
@@ -335,7 +335,7 @@
 (export 'print-context-create-pango-layout)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_print_context_get_hard_margins ()
+;;; gtk_print_context_get_hard_margins
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_print_context_get_hard_margins" %print-context-hard-margins)

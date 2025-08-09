@@ -1097,18 +1097,18 @@
   the fallback application menu). For example,
   @code{\"menu:minimize,maximize,close\"} specifies a Menu button on the left,
   and Minimize, Maximize and Close buttons on the right. Note that buttons will
-  only be shown when they are meaningful. E.g. a Menu button only appears when
-  the desktop shell does not show the application menu, and a Close button only
-  appears on a window that can be closed. Also note that the setting can be
-  overridden with the @slot[gtk:header-bar]{decoration-layout} property of the
-  header bar. @br{}
+  only be shown when they are meaningful. For example, a Menu button only
+  appears when the desktop shell does not show the application menu, and a Close
+  button only appears on a window that can be closed. Also note that the setting
+  can be overridden with the @slot[gtk:header-bar]{decoration-layout} property
+  of the header bar. @br{}
   Default value: @code{\"menu:minimize,maximize,close\"}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-decoration-layout)
       "Accessor"
       (documentation 'settings-gtk-decoration-layout 'function)
- "@version{2025-07-03}
+ "@version{2025-07-11}
   @syntax{(gtk:settings-gtk-decoration-layout object) => setting}
   @syntax{(setf gtk:settings-gtk-decoration-layout object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1130,9 +1130,9 @@
   For example, @code{\"menu:minimize,maximize,close\"} specifies a Menu button
   on the left, and Minimize, Maximize and Close buttons on the right.
 
-  Note that buttons will only be shown when they are meaningful. E.g. a Menu
-  button only appears when the desktop shell does not show the application menu,
-  and a Close button only appears on a window that can be closed.
+  Note that buttons will only be shown when they are meaningful. For example, a
+  Menu button only appears when the desktop shell does not show the application
+  menu, and a Close button only appears on a window that can be closed.
 
   Also note that the setting can be overridden with the
   @slot[gtk:header-bar]{decoration-layout} property of the header bar. See also
@@ -1705,7 +1705,7 @@
 (setf (liber:alias-for-function 'settings-gtk-icon-sizes)
       "Accessor"
       (documentation 'settings-gtk-icon-sizes 'function)
- "@version{2025-07-03}
+ "@version{2025-07-05}
   @syntax{(gtk:settings-gtk-icon-sizes object) => setting}
   @syntax{(setf (gtk:settings-gtk-icon-sizes object) setting)}
   @argument[object]{a @class{gtk:settings} object}
@@ -1714,7 +1714,7 @@
     Accessor of the @slot[gtk:settings]{gtk-icon-sizes} slot of the
     @class{gtk:settings} class.
   @end{short}
-  A list of icon sizes, e.g.
+  A list of icon sizes, for example,
   @code{\"gtk-menu=16,16:gtk-button=20,20:gtk-dialog=48,48\"}.
   @begin[Warning]{dictionary}
     The @code{gtk-icon-sizes} property has been deprecated since version 3.10
@@ -1794,7 +1794,7 @@
   @em{Warning:} The @code{gtk-im-preedit-style} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
-  Default value: @code{:callback}")
+  Default value: @val[gtk:im-preedit-style]{:callback}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-im-preedit-style)
@@ -1823,13 +1823,13 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "gtk-im-status-style"
                                                'settings) t)
- "The @code{gtk-im-status-style} property of type @sym{gtk-im-status-style}
+ "The @code{gtk-im-status-style} property of type @sym{gtk:im-status-style}
   (Read / Write) @br{}
   How to draw the input method statusbar. @br{}
   @em{Warning:} The @code{gtk-im-status-style} property has been deprecated
   since version 3.10 and should not be used in newly written code. This setting
   is ignored. @br{}
-  Default value: @code{:callback}")
+  Default value: @val[gtk:im-status-style]{:callback}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'settings-gtk-im-status-style)
@@ -1886,8 +1886,8 @@
  "The @code{gtk-keynav-cursor-only} property of type @code{:boolean}
   (Read / Write) @br{}
   If @em{true}, keyboard navigation should be able to reach all widgets by
-  using the cursor keys only. the @kbd{Tab}, @kbd{Shift} etc. keys cannot be
-  expected to be present on the used input device. @br{}
+  using the cursor keys only. The @kbd{Tab}, @kbd{Shift}, and so on, keys
+  cannot be expected to be present on the used input device. @br{}
   @em{Warning:} The @code{gtk-keynav-cursor-only} property has been deprecated
   since version 3.10 and should not be used in newly written code. Generally,
   the behavior for touchscreen input should be performed dynamically based on
@@ -1908,8 +1908,8 @@
     @class{gtk:settings} class.
   @end{short}
   When @em{true}, keyboard navigation should be able to reach all widgets by
-  using the cursor keys only. The @kbd{Tab}, @kbd{Shift} etc. keys cannot be
-  expected to be present on the used input device.
+  using the cursor keys only. The @kbd{Tab}, @kbd{Shift}, and so on, keys
+  cannot be expected to be present on the used input device.
   @begin[Warning]{dictionary}
     The @fun{gtk:settings-gtk-keynav-cursor-only} function has been deprecated
     since version 3.10 and should not be used in newly written code. Generally,

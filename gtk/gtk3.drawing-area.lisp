@@ -54,7 +54,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkDrawingArea
+;;; GtkDrawingArea
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkDrawingArea" drawing-area
@@ -67,7 +67,7 @@
 
 #+liber-documentation
 (setf (documentation 'drawing-area 'type)
- "@version{2025-06-01}
+ "@version{2025-07-16}
   @begin{short}
     The @class{gtk:drawing-area} widget is used for creating custom user
     interface elements.
@@ -80,16 +80,17 @@
       @fun{gtk:widget-add-events} function to enable events you wish to receive.
     @end{item}
     @begin{item}
-      The @code{\"realize\"} signal to take any necessary actions when the
-      widget is instantiated on a particular display. Create GDK resources in
-      response to this signal.
+      The @sig[gtk:widget]{realize} signal to take any necessary actions when
+      the widget is instantiated on a particular display. Create GDK resources
+      in response to this signal.
     @end{item}
     @begin{item}
-      The @code{\"configure-event\"} signal to take any necessary actions when
-      the widget changes size.
+      The @sig[gtk:widget]{configure-event} signal to take any necessary actions
+      when the widget changes size.
     @end{item}
     @begin{item}
-      The @code{\"draw\"} signal to handle redrawing the contents of the widget.
+      The @sig[gtk:widget]{draw} signal to handle redrawing the contents of the
+      widget.
     @end{item}
   @end{itemize}
   Draw signals are normally delivered when a drawing area first comes onscreen,
@@ -113,7 +114,8 @@
     Note that GDK automatically clears the exposed area before sending the
     expose event, and that drawing is implicitly clipped to the exposed area.
     If you want to have a theme-provided background, you need to call the
-    @fun{gtk:render-background} function in your @code{\"draw\"} signal handler.
+    @fun{gtk:render-background} function in your @sig[gtk:widget]{draw} signal
+    handler.
     @begin{pre}
 (defun example-drawing-area (&optional application)
   (gtk:within-main-loop

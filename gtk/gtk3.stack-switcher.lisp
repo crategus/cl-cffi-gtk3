@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'stack-switcher 'type)
- "@version{2024-04-09}
+ "@version{2024-07-17}
   @begin{short}
     The @class{gtk:stack-switcher} widget acts as a controller for a
     @class{gtk:stack} widget.
@@ -137,7 +137,7 @@
   @syntax{(gtk:stack-switcher-icon-size object) => size}
   @syntax{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
-  @argument[size]{an integer for size of the image}
+  @argument[size]{an integer for the size of the image}
   @begin{short}
     Accessor of the @slot[gtk:stack-switcher]{icon-size} slot of the
     @class{gtk:stack-switcher} class.
@@ -150,8 +150,8 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "stack" 'stack-switcher) t)
- "The @code{stack} property of type @class{stack} (Read / Write) @br{}
-  The stack to control. @br{}")
+ "The @code{stack} property of type @class{gtk:stack} (Read / Write) @br{}
+  The stack to control.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'stack-switcher-stack)

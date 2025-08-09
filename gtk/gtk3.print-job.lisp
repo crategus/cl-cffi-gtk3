@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.print-job.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -119,7 +119,7 @@
 
 #+liber-documentation
 (setf (documentation 'print-job 'type)
- "@version{#2023-3-21}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:print-job} object represents a job that is sent to a printer.
   @end{short}
@@ -132,16 +132,17 @@
   @class{gtk:print-job} object also supports printing of manually generated
   PostScript, via the @fun{gtk:print-job-set-source-file} function.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"status-changed\" signal}
+    @begin[print-job::status-changed]{signal}
       @begin{pre}
 lambda (job)    :run-last
       @end{pre}
-      Gets emitted when the status of a job changes. The signal handler can use
-      the @fun{gtk:print-job-status} function to obtain the new status.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[job]{The @class{gtk:print-job} object on which the signal was
         emitted.}
-      @end{table}
+      @end{simple-table}
+      Gets emitted when the status of a job changes. The signal handler can use
+      the @fun{gtk:print-job-status} function to obtain the new status.
+  @end{signal}
   @end{dictionary}
   @see-constructor{gtk:print-job-new}
   @see-slot{gtk:print-job-page-setup}
@@ -243,10 +244,10 @@ lambda (job)    :run-last
 (setf (liber:alias-for-function 'print-job-title)
       "Accessor"
       (documentation 'print-job-title 'function)
- "@version{#2024-6-28}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-title object) => title}
   @argument[object]{a @class{gtk:print-job} object}
-  @argument[title]{a string with the job title.}
+  @argument[title]{a string for the job title.}
   @begin{short}
     Accessor of the @slot[gtk:print-job]{title} slot of the
     @class{gtk:print-job} class.
@@ -303,8 +304,8 @@ lambda (job)    :run-last
 
 (defun print-job-new (title printer settings setup)
  #+liber-documentation
- "@version{#2024-6-28}
-  @argument[title]{a string with the job title}
+ "@version{#2025-07-05}
+  @argument[title]{a string for the job title}
   @argument[printer]{a @class{gtk:printer} object}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[page-setup]{a @class{gtk:page-setup} object}
@@ -324,9 +325,9 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_status" print-job-status) print-status
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-11}
   @argument[job]{a @class{gtk:print-job} object}
-  @return{The status of type @symbol{gtk:print-status} of @arg{job}.}
+  @return{The status of type @sym{gtk:print-status} of @arg{job}.}
   @short{Gets the status of the print job.}
   @see-class{gtk:print-job}
   @see-symbol{gtk:print-status}"
@@ -377,9 +378,9 @@ lambda (job)    :run-last
 
 (defun print-job-set-source-file (job filename)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-05}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[filename]{a string with the file name to be printed}
+  @argument[filename]{a string for the file name to be printed}
   @return{@em{False} if an error occurred.}
   @begin{short}
     Make the print job send an existing document to the printing system.
@@ -406,9 +407,9 @@ lambda (job)    :run-last
 
 (defun print-job-surface (job)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-11}
   @argument[job]{a @class{gtk:print-job} object}
-  @return{The @symbol{cairo:surface-t} Cairo surface of @arg{job}.}
+  @return{The @sym{cairo:surface-t} Cairo surface of @arg{job}.}
   @begin{short}
     Gets a Cairo surface onto which the pages of the print job should be
     rendered.
@@ -465,10 +466,10 @@ lambda (job)    :run-last
 
 (defun print-job-send (job func)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-11}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[func]{a @symbol{gtk:print-job-complete-func} function to call when
-  the job completes or an error occurs}
+  @argument[func]{a @sym{gtk:print-job-complete-func} function to call when the
+    job completes or an error occurs}
   @short{Sends the print job off to the printer.}
   @see-class{gtk:print-job}"
   (%print-job-send job
@@ -492,11 +493,11 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_pages" print-job-pages) print-pages
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:print-job-pages job) => pages}
   @syntax{(setf (gtk:print-job-pages job) pages)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[pages]{a @symbol{gtk:print-pages} setting}
+  @argument[pages]{a @sym{gtk:print-pages} setting}
   @begin{short}
     The @fun{gtk:print-job-pages} function gets the pages setting for the print
     job.
@@ -519,11 +520,11 @@ lambda (job)    :run-last
 
 (defun print-job-page-ranges (job)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-page-ranges job) => ranges}
   @syntax{(setf (gtk:print-job-page-ranges job) ranges)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[ranges]{a list of integers with the page ranges}
+  @argument[ranges]{a list of integers for the page ranges}
   @begin{short}
     The @fun{gtk:print-job-page-ranges} function gets the page ranges for the
     print job.
@@ -549,11 +550,11 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_page_set" print-job-page-set) page-set
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:print-job-page-set job) => setting}
   @syntax{(setf (gtk:print-job-page-set job) setting)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[setting]{a @symbol{gtk:page-set} value for the setting}
+  @argument[setting]{a @sym{gtk:page-set} value for the setting}
   @begin{short}
     The @fun{gtk:print-job-page-set} function gets the setting for the print
     job.
@@ -578,11 +579,11 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_num_copies" print-job-num-copies) :int
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-num-copies job) => num-copies}
   @syntax{(setf (gtk:print-job-num-copies job) num-copies)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[num-copies]{an integer with the number of copies}
+  @argument[num-copies]{an integer for the number of copies}
   @begin{short}
     The @fun{gtk:print-job-num-copies} function gets the number of copies of
     the print job.
@@ -600,19 +601,20 @@ lambda (job)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf print-job-scale) (scale job)
-  (cffi:foreign-funcall "gtk_print_job_set_scale"
-                        (g:object print-job) job
-                        :double scale
-                        :void)
-  scale)
+  (let ((scale (coerce scale 'double-float)))
+    (cffi:foreign-funcall "gtk_print_job_set_scale"
+                          (g:object print-job) job
+                          :double scale
+                          :void)
+    scale))
 
 (cffi:defcfun ("gtk_print_job_get_scale" print-job-scale) :double
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-scale job) => scale}
   @syntax{(setf (gtk:print-job-scale job) scale)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[scale]{a double float with the scale}
+  @argument[scale]{a number coerced to a double float for the scale}
   @begin{short}
     The @fun{gtk:print-job-scale} function gets the scale for the print job,
     where 1.0 means unscaled.
@@ -637,11 +639,11 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_n_up" print-job-n-up) :uint
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-n-up job) => n-up}
   @syntax{(setf (gtk:print-job-n-up job) n-up)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[n-up]{an unsigned integer with the n-up value}
+  @argument[n-up]{an unsigned integer for the n-up value}
   @begin{short}
     The @fun{gtk:print-job-n-up} function gets the n-up setting for the print
     job.
@@ -668,13 +670,12 @@ lambda (job)    :run-last
 (cffi:defcfun ("gtk_print_job_get_n_up_layout" print-job-n-up-layout)
     number-up-layout
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-05}
   @syntax{(gtk:print-job-n-up-layout job) => layout}
   @syntax{(setf (gtk:print-job-n-up-layout job) layout)}
   @argument[job]{a @class{gtk:print-job} object}
-  @argument[layout]{a @symbol{gtk:number-up-layout} value with the layout
-    setting}
-  @return{The @symbol{gtk:number-up-layout} value with the n-up layout.}
+  @argument[layout]{a @sym{gtk:number-up-layout} value for the layout setting}
+  @return{The @sym{gtk:number-up-layout} value with the n-up layout.}
   @begin{short}
     The @fun{gtk:print-job-n-up-layout} function gets the layout setting for
     the print job.

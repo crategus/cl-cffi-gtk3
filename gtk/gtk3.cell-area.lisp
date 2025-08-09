@@ -1545,9 +1545,9 @@ lambda (area renderer editable)    :run-first
 
 (defun cell-area-cell-set (area renderer &rest args)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2025-07-17}
   @argument[area]{a @class{gtk:cell-area} object}
-  @argument[renderer]{a @class{gtk:cell-renderer} object which is cell inside
+  @argument[renderer]{a @class{gtk:cell-renderer} object that is inside
     @arg{area}}
   @argument[args]{a list of cell property names and values}
   @begin{short}
@@ -1671,11 +1671,11 @@ lambda (area renderer editable)    :run-first
 
 (defun cell-area-cell-property (area renderer property)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2025-07-17}
   @syntax{(gtk:cell-area-property area renderer property) => value}
   @syntax{(setf (gtk:cell-area-property area renderer property) value)}
   @argument[area]{a @class{gtk:cell-area} object}
-  @argument[renderer]{a @class{gtk:cell-renderer} object which is inside
+  @argument[renderer]{a @class{gtk:cell-renderer} object that is inside
     @arg{area}}
   @argument[property]{a string for the name of the cell property}
   @argument[value]{a value for the property}

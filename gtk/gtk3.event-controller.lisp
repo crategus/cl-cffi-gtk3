@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.event-controller.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -78,7 +78,7 @@
 (setf (liber:alias-for-symbol 'propagation-phase)
       "GEnum"
       (liber:symbol-documentation 'propagation-phase)
- "@version{#2024-3-21}
+ "@version{#2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkPropagationPhase\" propagation-phase
   (:export t
@@ -89,7 +89,7 @@
   (:phase-target 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:phase-none]{Events are not delivered automatically. Those can be
         manually fed through the @fun{gtk:event-controller-handle-event}
         function. This should only be used when full control about when, or
@@ -105,7 +105,7 @@
         handlers, note that widget implementations must chain up on button,
         motion, touch and grab broken handlers for controllers in this phase to
         be run.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Describes the stage at which events are fed into a
@@ -115,7 +115,7 @@
   @see-function{gtk:event-controller-handle-event}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEventController
+;;; GtkEventController
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEventController" event-controller
@@ -154,20 +154,20 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "propagation-phase"
                                                'event-controller) t)
- "The @code{propagation-phase} property of type
-  @symbol{gtk:propagation-phase} (Read / Write) @br{}
+ "The @code{propagation-phase} property of type @sym{gtk:propagation-phase}
+  (Read / Write) @br{}
   The propagation phase at which this controller will handle events. @br{}
-  Default value: @code{:phase-bubble}")
+  Default value: @val[gtk:propagation-phase]{:phase-bubble}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'event-controller-propagation-phase)
       "Accessor"
       (documentation 'event-controller-propagation-phase 'function)
- "@version{#2023-1-21}
+ "@version{#2025-07-11}
   @syntax{(gtk:event-controller-propagation-phase object) => phase)}
   @syntax{(setf (gtk:event-controller-propagation-phase object) phase)}
   @argument[object]{a @class{gtk:event-controller} object}
-  @argument[phase]{a propagation phase of @symbol{gtk:propagation-phase} type}
+  @argument[phase]{a propagation phase of @sym{gtk:propagation-phase} type}
   @begin{short}
     Accessor of the @slot[gtk:event-controller]{propagation-phase} slot of the
     @class{gtk:event-controller} class.
@@ -211,7 +211,7 @@
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_event_controller_handle_event ()
+;;; gtk_event_controller_handle_event
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_event_controller_handle_event"
@@ -234,7 +234,7 @@
 (export 'event-controller-handle-event)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_event_controller_reset ()
+;;; gtk_event_controller_reset
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_event_controller_reset" event-controller-reset) :void

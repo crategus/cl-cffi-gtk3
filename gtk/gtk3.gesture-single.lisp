@@ -1,10 +1,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.gesture-single.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
@@ -196,8 +196,9 @@
   gesture is only triggered by touch events. The
   @setf{gtk:gesture-single-touch-only} function sets whether the gesture is
   only triggered by touch events. If @arg{touch-only} is @em{true}, gesture
-  will only handle events of type @code{:touch-begin}, @code{:touch-update} or
-  @code{:touch-end}. If @em{false}, mouse events will be handled too.
+  will only handle events of type @val[gdk:event-type]{:touch-begin},
+  @val[gtk:event-type]{:touch-update} or @val[gdk:event-type]{:touch-end}.
+  If @em{false}, mouse events will be handled too.
   @see-class{gtk:gesture-single}")
 
 ;;; ----------------------------------------------------------------------------
@@ -207,9 +208,9 @@
 (cffi:defcfun ("gtk_gesture_single_get_current_button"
                gesture-single-current-button) :uint
  #+liber-documentation
- "@version{#2025-1-16}
+ "@version{#2025-07-17}
   @argument[gesture]{a @class{gtk:gesture-single} object}
-  @return{The unsigned integer with current button number.}
+  @return{The unsigned integer for current button number.}
   @begin{short}
     Returns the button number currently interacting with @arg{gesture}, or 0 if
     there is none.

@@ -115,16 +115,17 @@
 
 (cffi:defcfun ("gtk_get_locale_direction" locale-direction) text-direction
  #+liber-documentation
- "@version{2023-03-05}
-  @return{The @symbol{gtk:text-direction} value with the current locale.}
+ "@version{2025-07-11}
+  @return{The @sym{gtk:text-direction} value for the current locale.}
   @begin{short}
     Gets the direction of the current locale.
   @end{short}
   This is the expected reading direction for text and UI.
 
   This function depends on the current locale and will default to setting the
-  @code{:ltr} direction of the @symbol{gtk:text-direction} enumeration
-  otherwise. The value @code{:none} will never be returned.
+  @val[gtk:direction]{:ltr} direction of the @sym{gtk:text-direction}
+  enumeration otherwise. The @val[gtk:direction]{:none} value will never be
+  returned.
 
   GTK sets the default text direction according to the locale during the
   execution of the @code{gtk_init()} function, and you should normally use the
@@ -227,13 +228,13 @@
 
 (cffi:defcfun ("gtk_events_pending" events-pending) :boolean
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-07-11}
   @return{@em{True} if any events are pending, @em{false} otherwise.}
   @begin{short}
     Checks if any events are pending.
   @end{short}
-  This can be used to update the UI and invoke timeouts etc. while doing some
-  time intensive computation.
+  This can be used to update the UI and invoke timeouts, and so on. while doing
+  some time intensive computation.
   @begin[Examples]{dictionary}
     Updating the UI during a long computation.
     @begin{pre}
@@ -302,9 +303,9 @@
 
 (cffi:defcfun ("gtk_main_level" main-level) :uint
  #+liber-documentation
- "@version{2025-06-19}
+ "@version{2025-07-17}
   @begin{return}
-    The unsigned integer with the nesting level of the current invocation of
+    The unsigned integer for the nesting level of the current invocation of
     the main loop.
   @end{return}
   @begin{short}
@@ -497,9 +498,9 @@
 
 (cffi:defcfun ("gtk_grab_get_current" grab-current) (g:object widget)
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-17}
   @begin{return}
-    The @class{gtk:widget} widget which currently has the grab or @code{nil}
+    The @class{gtk:widget} widget that currently has the grab or @code{nil}
     if no grab is active.
   @end{return}
   @begin{short}
@@ -651,9 +652,9 @@
 
 (cffi:defcfun ("gtk_get_current_event_time" current-event-time) :uint32
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-07-17}
   @begin{return}
-    The unsigned integer with the timestamp from the current event, or the
+    The unsigned integer for the timestamp from the current event, or the
     @var{gdk:+current-time+} value.
   @end{return}
   @begin{short}
@@ -674,9 +675,9 @@
 
 (defun current-event-state ()
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-07-11}
   @begin{return}
-    The state as a value of the @symbol{gdk:modifier-type} flags of the current
+    The state as a value of the @sym{gdk:modifier-type} flags of the current
     event or @code{nil} if there is no current event.
   @end{return}
   @begin{short}
@@ -748,7 +749,7 @@
   @end{short}
   Events received by GTK from GDK normally begin in the @fun{gtk:main-do-event}
   function. Depending on the type of event, existence of modal dialogs, grabs,
-  etc., the event may be propagated, if so, this function is used.
+  and so on, the event may be propagated, if so, this function is used.
 
   The @fun{gtk:propagate-event} function calls the @fun{gtk:widget-event}
   function on each widget it decides to send the event to. So the

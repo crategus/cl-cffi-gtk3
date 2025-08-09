@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.toggle-action.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-action 'type)
- "@version{2024-9-26}
+ "@version{2025-06-27}
   @begin{short}
     The @class{gtk:toggle-action} object corresponds roughly to a
     @class{gtk:check-menu-item} widget.
@@ -100,16 +100,17 @@
     and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"toggled\" signal}
+    @begin[toggle-action::toggled]{signal}
       @begin{pre}
 lambda (action)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[action]{The @class{gtk:toggle-action} object that received the
+          signal.}
+      @end{simple-table}
       Should be connected if you wish to perform an action whenever the toggle
       action state is changed.
-      @begin[code]{table}
-        @entry[action]{The @class{gtk:toggle-action} object which received the
-          signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:toggle-action-new}
   @see-slot{gtk:toggle-action-active}
@@ -189,13 +190,13 @@ lambda (action)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (defun toggle-action-new (name &optional label tooltip stock-id)
- "@version{2024-9-26}
-  @argument[name]{a string with a unique name for the action}
-  @argument[label]{an optional string with the label displayed in menu items
+ "@version{2025-07-07}
+  @argument[name]{a string for a unique name for the action}
+  @argument[label]{an optional string for the label displayed in menu items
     and on buttons, or @code{nil}}
-  @argument[tooltip]{an optional string with a tooltip for the action, or
+  @argument[tooltip]{an optional string for a tooltip for the action, or
     @code{nil}}
-  @argument[stock-id]{an optional string with the stock icon to display in
+  @argument[stock-id]{an optional string for the stock icon to display in
     widgets representing the action, or @code{nil}}
   @return{The new @class{gtk:toggle-action} object.}
   @begin{short}

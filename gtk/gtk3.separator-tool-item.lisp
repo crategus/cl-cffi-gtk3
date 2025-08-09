@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.separator-tool-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -64,7 +64,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSeparatorToolItem
+;;; GtkSeparatorToolItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkSeparatorToolItem" separator-tool-item
@@ -133,7 +133,7 @@
   @see-function{gtk:tool-item-expand}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_separator_tool_item_new ()
+;;; gtk_separator_tool_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline separator-tool-item-new))

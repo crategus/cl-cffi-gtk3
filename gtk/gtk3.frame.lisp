@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.frame.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkFrame
+;;; GtkFrame
 ;;; ----------------------------------------------------------------------------
 
 ;; TODO: This is a workaround to initialize the symbol for GtkFrame. This is
@@ -107,7 +107,7 @@
 
 #+liber-documentation
 (setf (documentation 'frame 'type)
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @begin{short}
     The frame widget is a @class{gtk:bin} widget that surrounds its child with
     a decorative frame and an optional label.
@@ -175,18 +175,18 @@ frame
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "label" 'frame) t)
  "The @code{label} property of type  @code{:string} (Read / Write) @br{}
-  Text of the frame's label. @br{}
+  The text for the label of the frame. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'frame-label)
       "Accessor"
       (documentation 'frame-label 'function)
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @syntax{(gtk:frame-label object) => label}
   @syntax{(setf (gtk:frame-label object) label)}
   @argument[object]{a @class{gtk:frame} widget}
-  @argument[label]{a string with the text to use as the label of the frame}
+  @argument[label]{a string for the text to use as the label of the frame}
   @begin{short}
     Accessor of the @slot[gtk:frame]{label} slot of the @class{gtk:frame} class.
   @end{short}
@@ -209,7 +209,7 @@ frame
 (setf (documentation (liber:slot-documentation "label-widget" 'frame) t)
  "The @code{label-widget} property of type @class{gtk:widget} (Read / Write)
   @br{}
-  A widget to display in place of the usual frame label.")
+  The widget to display in place of the usual frame label.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'frame-label-widget)
@@ -245,11 +245,12 @@ frame
 (setf (liber:alias-for-function 'frame-label-xalign)
       "Accessor"
       (documentation 'frame-label-xalign 'function)
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @syntax{(gtk:frame-label-xalign object) => xalign}
   @syntax{(setf (gtk:frame-label-xalign object) xalign)}
   @argument[object]{a @class{gtk:frame} widget}
-  @argument[xalign]{a float with the horizontal alignment of the label}
+  @argument[xalign]{a number coerced to a single float for the horizontal
+    alignment of the label}
   @begin{short}
     Accessor of the @slot[gtk:frame]{label-xalign} slot of the @class{gtk:frame}
     class.
@@ -270,11 +271,12 @@ frame
 (setf (liber:alias-for-function 'frame-label-yalign)
       "Accessor"
       (documentation 'frame-label-yalign 'function)
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @syntax{(gtk:frame-label-yalign object) => yalign}
   @syntax{(setf (gtk:frame-label-yalign object) yalign)}
   @argument[object]{a @class{gtk:frame} widget}
-  @argument[yalign]{a float with the vertical alignment of the label}
+  @argument[yalign]{a number coerced to a single float for the vertical
+    alignment of the label}
   @begin{short}
     Accessor of the @slot[gtk:frame]{label-yalign} slot of the @class{gtk:frame}
     class.
@@ -286,20 +288,20 @@ frame
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'frame) t)
- "The @code{shadow-type} property of type @symbol{gtk:shadow-type}
-  (Read / Write) @br{}
-  Appearance of the frame border. @br{}
-  Default value: @code{:etched-in}")
+ "The @code{shadow-type} property of type @sym{gtk:shadow-type} (Read / Write)
+  @br{}
+  The appearance of the frame border. @br{}
+  Default value: @val[gtk:shadow-type]{:etched-in}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'frame-shadow-type)
       "Accessor"
       (documentation 'frame-shadow-type 'function)
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @syntax{(gtk:frame-shadow-type object) => type}
   @syntax{(setf (gtk:frame-shadow-type object) type)}
   @argument[object]{a @class{gtk:frame} widget}
-  @argument[type]{a value of the @symbol{gtk:shadow-type} enumeration}
+  @argument[type]{a value of the @sym{gtk:shadow-type} enumeration}
   @begin{short}
     Accessor of the @slot[gtk:frame]{shadow-type} slot of the @class{gtk:frame}
     class.
@@ -315,8 +317,8 @@ frame
 
 (defun frame-new (&optional label)
  #+liber-documentation
- "@version{2024-12-29}
-  @argument[label]{an optional string with the text to use as the label of the
+ "@version{2025-07-05}
+  @argument[label]{an optional string for the text to use as the label of the
     frame}
   @return{The new @class{gtk:frame} widget.}
   @begin{short}
@@ -330,8 +332,8 @@ frame
 (export 'frame-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_frame_get_label_align ()
-;;; gtk_frame_set_label_align () -> frame-label-align
+;;; gtk_frame_get_label_align
+;;; gtk_frame_set_label_align
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf frame-label-align) (align frame)
@@ -341,17 +343,17 @@ frame
 
 (defun frame-label-align (frame)
  #+liber-documentation
- "@version{2023-2-18}
+ "@version{2025-07-05}
   @syntax{(gtk:frame-label-align frame) => xalign, yalign}
   @syntax{(setf (gtk:frame-label-align frame) (list xalign yalign))}
   @argument[frame]{a @class{gtk:frame} widget}
-  @argument[xalign]{a float with the position of the label along the top edge
-    of the widget, a value of 0.0 represents left alignment, 1.0 represents
-    right alignment}
-  @argument[yalign]{a float with the y alignment of the label, a value of 0.0
-    aligns under the frame, 1.0 aligns above the frame, if the values are
-    exactly 0.0 or 1.0 the gap in the frame will not be painted because the
-    label will be completely above or below the frame}
+  @argument[xalign]{a number coerced to a single float for the position of
+    the label along the top edge of the widget, a value of 0.0 represents left
+    alignment, 1.0 represents right alignment}
+  @argument[yalign]{a number coerced to a single float for the y alignment of
+    the label, a value of 0.0 aligns under the frame, 1.0 aligns above the
+    frame, if the values are exactly 0.0 or 1.0 the gap in the frame will not
+    be painted because the label will be completely above or below the frame}
   @begin{short}
     Accessor of the @slot[gtk:frame]{label-xalign} and
     @slot[gtk:frame]{label-yalign} properties of a frame widget.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.app-chooser-button.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -77,7 +77,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAppChooserButton
+;;; GtkAppChooserButton
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAppChooserButton" app-chooser-button
@@ -101,7 +101,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-button 'type)
- "@version{#2023-2-14}
+ "@version{#2025-07-16}
   @begin{short}
     The @class{gtk:app-chooser-button} widget is a widget that lets the user
     select an application.
@@ -121,24 +121,25 @@
 
   It is possible to add custom items to the list, using the
   @fun{gtk:app-chooser-button-append-custom-item} function. These items cause
-  the @code{\"custom-item-activated\"} signal to be emitted when they are
-  selected.
+  the @sig[gtk:app-chooser-button]{custom-item-activated} signal to be emitted
+  when they are selected.
 
-  To track changes in the selected application, use the @code{\"changed\"}
-  signal.
+  To track changes in the selected application, use the
+  @sig[gtk:combo-box]{changed} signal.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"custom-item-activated\" signal}
+    @begin[app-chooser-button::custom-item-activated]{signal}
       @begin{pre}
 lambda (widget name)    :has-details
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:app-chooser-button} widget that received
+          the signal.}
+        @entry[name]{The string for the name of the activated item.}
+      @end{simple-table}
       Emitted when a custom item, previously added with the
       @fun{gtk:app-chooser-button-append-custom-item} function, is activated
       from the dropdown menu.
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:app-chooser-button} widget which received
-          the signal.}
-        @entry[name]{A string with the name of the activated item.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:app-chooser-button-new}
   @see-slot{gtk:app-chooser-button-heading}
@@ -250,8 +251,8 @@ lambda (widget name)    :has-details
 
 (defun app-chooser-button-new (content-type)
  #+liber-documentation
- "@version{#2024-12-29}
-  @argument[content-type]{a string with the content type to show applications
+ "@version{#2025-07-07}
+  @argument[content-type]{a string for the content type to show applications
     for}
   @return{The newly created @class{gtk:app-chooser-button} widget.}
   @begin{short}
@@ -265,25 +266,25 @@ lambda (widget name)    :has-details
 (export 'app-chooser-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_button_append_custom_item ()
+;;; gtk_app_chooser_button_append_custom_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_button_append_custom_item"
                app-chooser-button-append-custom-item) :void
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2025-07-16}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
-  @argument[name]{a string with the name of the custom item}
-  @argument[label]{a string with the label for the custom item}
-  @argument[icon]{a @class{g:icon} object  for the custom item}
+  @argument[name]{a string for the name of the custom item}
+  @argument[label]{a string for the label for the custom item}
+  @argument[icon]{a @class{g:icon} object for the custom item}
   @begin{short}
     Appends a custom item to the list of applications that is shown in the
     popup.
   @end{short}
   The item name must be unique per-widget. Clients can use the provided name as
-  a detail for the @code{\"custom-item-activated\"} signal, to add a callback
-  for the activation of a particular custom item in the list. See also the
-  @fun{gtk:app-chooser-button-append-separator} function.
+  a detail for the @sig[gtk:app-chooser-button]{custom-item-activated} signal,
+  to add a callback for the activation of a particular custom item in the list.
+  See also the @fun{gtk:app-chooser-button-append-separator} function.
   @see-class{gtk:app-chooser-button}
   @see-function{gtk:app-chooser-button-append-separator}"
   (widget (g:object app-chooser-button))
@@ -294,7 +295,7 @@ lambda (widget name)    :has-details
 (export 'app-chooser-button-append-custom-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_button_append_separator ()
+;;; gtk_app_chooser_button_append_separator
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_button_append_separator"
@@ -311,15 +312,15 @@ lambda (widget name)    :has-details
 (export 'app-chooser-button-append-separator)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_button_set_active_custom_item ()
+;;; gtk_app_chooser_button_set_active_custom_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_button_set_active_custom_item"
                app-chooser-button-set-active-custom-item) :void
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
-  @argument[name]{a string with the name of the custom item}
+  @argument[name]{a string for the name of the custom item}
   @begin{short}
     Selects a custom item previously added with the
     @fun{gtk:app-chooser-button-append-custom-item} function.

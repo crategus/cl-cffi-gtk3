@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.toolbar.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -113,7 +113,7 @@
 (setf (liber:alias-for-symbol 'toolbar-space-style)
       "GEnum"
       (liber:symbol-documentation 'toolbar-space-style)
- "@version{#2024-3-22}
+ "@version{#2025-07-11}
   @begin{declaration}
 (gobject:define-genum \"GtkToolbarSpaceStyle\" toolbar-space-style
   (:export t
@@ -123,13 +123,13 @@
   @end{declaration}
   @short{Whether spacers are vertical lines or just blank.}
   @begin[Warning]{dictionary}
-    The @symbol{gtk:toolbar-space-style} enumeration has been deprecated since
+    The @sym{gtk:toolbar-space-style} enumeration has been deprecated since
     version 3.20 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:toolbar}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToolbar
+;; GtkToolbar
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToolbar" toolbar
@@ -155,7 +155,7 @@
 
 #+liber-documentation
 (setf (documentation 'toolbar 'type)
- "@version{2024-1-2}
+ "@version{2025-07-17}
   @begin{short}
     A toolbar can contain instances of a subclass of @class{gtk:tool-item}
     widgets.
@@ -175,37 +175,34 @@
   the end of the toolbar.
 
   Creating a context menu for the toolbar can be done by connecting to the
-  @code{\"popup-context-menu\"} signal.
+  @sig[gtk:toolbar]{popup-context-menu} signal.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:toolbar} implementation has a single CSS node with name
     @code{toolbar}.
   @end{dictionary}
   @begin[Child Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[expand]{entry}
-        The @code{expand} child property of type @code{:boolean} (Read / Write)
-        @br{}
-        Whether the item should receive extra space when the toolbar grows.@br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[homogeneous]{entry}
-        The @code{homogeneous} child property of type @code{:boolean}
-        (Read / Write) @br{}
-        Whether the item should be the same size as other homogeneous items.
-        @br{}
-        Default value: @em{false}
-      @end{entry}
-    @end{table}
+    @begin[toolbar:expand]{property}
+      The @code{expand} child property of type @code{:boolean} (Read / Write)
+      @br{}
+      Whether the item should receive extra space when the toolbar grows.@br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[toolbar:homogeneous]{property}
+      The @code{homogeneous} child property of type @code{:boolean}
+      (Read / Write) @br{}
+      Whether the item should be the same size as other homogeneous items.
+      @br{}
+      Default value: @em{false}
+    @end{property}
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[button-relief]{entry}
-        The @code{button-relief} style property of type
-        @symbol{gtk:relief-style} (Read) @br{}
-        Type of bevel around toolbar buttons. @br{}
-        Default value: @code{:none}
-      @end{entry}
-      @begin[internal-padding]{entry}
+      @begin[toolbar:button-relief]{property}
+        The @code{button-relief} style property of type @sym{gtk:relief-style}
+        (Read) @br{}
+        The type of bevel around toolbar buttons. @br{}
+        Default value: @val[gtk:relief-style]{:none}
+      @end{property}
+      @begin[toolbar:internal-padding]{property}
         The @code{internal-padding} style property of type @code{:int} (Read)
         @br{}
         Amount of border space between the toolbar shadow and the buttons. @br{}
@@ -216,26 +213,26 @@
         this style property is ignored. @br{}
         Allowed values: >= 0 @br{}
         Default value: 0
-      @end{entry}
-      @begin[max-child-expand]{entry}
+      @end{property}
+      @begin[toolbar:max-child-expand]{property}
         The @code{max-child-expand} style property of type @code{:int} (Read)
         @br{}
         Maximum amount of space an expandable item will be given. @br{}
         Allowed values: >= 0 @br{}
         Default value: 2147483647
-      @end{entry}
-      @begin[shadow-type]{entry}
-        The @code{shadow-type} style property of type @symbol{gtk:shadow-type}
+      @end{property}
+      @begin[toolbar:shadow-type]{property}
+        The @code{shadow-type} style property of type @sym{gtk:shadow-type}
         (Read) @br{}
-        Style of bevel around the toolbar. @br{}
+        The style of bevel around the toolbar. @br{}
         @em{Warning:} The @code{shadow-type} style property has been deprecated
         since version 3.6 and should not be used in newly written code. Use the
         standard border CSS property, through objects like
         @class{gtk:style-context} and @class{gtk:css-provider}. The value of
         this style property is ignored. @br{}
-        Default value: @code{:out}
-      @end{entry}
-      @begin[space-size]{entry}
+        Default value: @val[gtk:shadow-type]{:out}
+      @end{property}
+      @begin[toolbar:space-size]{property}
         The @code{space-size} style property of type @code{:int} (Read) @br{}
         Size of spacers. @br{}
         @em{Warning:} The @code{space-size} style property has been deprecated
@@ -244,76 +241,73 @@
         value of this style property is ignored. @br{}
         Allowed values: >= 0 @br{}
         Default value: 12
-      @end{entry}
-      @begin[space-style]{entry}
+      @end{property}
+      @begin[toolbar:space-style]{property}
         The @code{space-style} style property of type
-        @symbol{gtk:toolbar-space-style} (Read) @br{}
+        @sym{gtk:toolbar-space-style} (Read) @br{}
         Whether spacers are vertical lines or just blank. @br{}
         @em{Warning:} The @code{space-style} style property has been deprecated
         since version 3.20 and should not be used in newly written code. Use CSS
         properties on the separator elements to style toolbar spacers. The value
         of this style property is ignored. @br{}
-        Default value: @code{:line}
-      @end{entry}
-    @end{table}
+        Default value: @val[gtk:toolbar-space-style]{:line}
+      @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"focus-home-or-end\" signal}
+    @begin[toolbar::focus-home-or-end]{signal}
       @begin{pre}
 lambda (toolbar focus-home)    :action
       @end{pre}
-      A keybinding signal used internally by GTK. The signal cannot be used in
-      application code.
-      @begin[code]{table}
-        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
-          signal.}
+      @begin[code]{simple-table}
+        @entry[toolbar]{The @class{gtk:toolbar} widget that emitted the signal.}
         @entry[focus-home]{@em{True} if the first item should be focused.}
         @entry[Returns]{@em{True} if the signal was handled, @em{false} if not.}
-      @end{table}
-    @subheading{The \"orientation-changed\" signal}
+      @end{simple-table}
+      A keybinding signal used internally by GTK. The signal cannot be used in
+      application code.
+    @end{signal}
+    @begin[toolbar::orientation-changed]{signal}
       @begin{pre}
 lambda (toolbar orientation)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[toolbar]{The @class{gtk:toolbar} widget that emitted the signal.}
+        @entry[orientation]{The new @sym{gtk:orientation} value.}
+      @end{simple-table}
       Emitted when the orientation of the toolbar changes.
-      @begin[code]{table}
-        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
-          signal.}
-        @entry[orientation]{The new value of the @symbol{gtk:orientation}
-          enumeration of the toolbar.}
-      @end{table}
-    @subheading{The \"popup-context-menu\" signal}
+    @end{signal}
+    @begin[toolbar::popup-context-menu]{signal}
       @begin{pre}
 lambda (toolbar x y button)    :run-last
       @end{pre}
-       Emitted when the user right-clicks the toolbar or uses the keybinding to
-       display a popup menu. Application developers should handle this signal
-       if they want to display a context menu on the toolbar. The context menu
-       should appear at the coordinates given by @arg{x} and @arg{y}. The mouse
-       button number is given by the @arg{button} parameter. If the menu was
-       popped up using the keyboard, @arg{button} is -1.
-       @begin[code]{table}
-         @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
-           signal.}
-         @entry[x]{An integer with the x coordinate of the point where the
-           menu should appear.}
-         @entry[y]{An integer with the y coordinate of the point where the
-           menu should appear.}
-         @entry[button]{An integer with the mouse button the user pressed,
-           or -1.}
-         @entry[Returns]{Return @em{true} if the signal was handled,
-           @em{false} if not.}
-      @end{table}
-    @subheading{The \"style-changed\" signal}
+      @begin[code]{simple-table}
+        @entry[toolbar]{The @class{gtk:toolbar} widget that emitted the signal.}
+        @entry[x]{The integer for the x coordinate of the point where the menu
+          should appear.}
+        @entry[y]{The integer for the y coordinate of the point where the menu
+          should appear.}
+        @entry[button]{The integer for the mouse button the user pressed,
+          or -1.}
+        @entry[Returns]{Return @em{true} if the signal was handled,
+          @em{false} if not.}
+      @end{simple-table}
+      Emitted when the user right-clicks the toolbar or uses the keybinding to
+      display a popup menu. Application developers should handle this signal
+      if they want to display a context menu on the toolbar. The context menu
+      should appear at the coordinates given by @arg{x} and @arg{y}. The mouse
+      button number is given by the @arg{button} parameter. If the menu was
+      popped up using the keyboard, @arg{button} is -1.
+    @end{signal}
+    @begin[toolbar::style-changed]{signal}
       @begin{pre}
 lambda (toolbar style)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[toolbar]{The @class{gtk:toolbar} widget that emitted the signal.}
+        @entry[style]{The new @sym{gtk:toolbar-style} value.}
+      @end{simple-table}
       Emitted when the style of the toolbar changes.
-      @begin[code]{table}
-        @entry[toolbar]{The @class{gtk:toolbar} widget which emitted the
-          signal.}
-        @entry[style]{The new value of the @symbol{gtk:toolbar-style}
-          enumeration of the toolbar.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:toolbar-new}
   @see-slot{gtk:toolbar-icon-size}
@@ -345,11 +339,11 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-icon-size)
       "Accessor"
       (documentation 'toolbar-icon-size 'function)
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:toolbar-icon-size object) => size}
   @syntax{(setf (gtk:toolbar-icon-size object) size)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @argument[size]{a value of the @symbol{gtk:icon-size} enumeration that stock
+  @argument[size]{a value of the @sym{gtk:icon-size} enumeration that stock
     icons in the toolbar shall have}
   @begin{short}
     Accessor of the @slot[gtk:toolbar]{icon-size} slot of the
@@ -418,9 +412,10 @@ lambda (toolbar style)    :run-first
   an overflow menu when the toolbar is not allocated enough size to show all of
   its items. If @em{true}, items which cannot fit in the toolbar, and which have
   a proxy menu item set by the @fun{gtk:tool-item-proxy-menu-item} function or a
-  @code{\"create-menu-proxy\"} signal handler, will be available in an overflow
-  menu, which can be opened by an added arrow button. If @em{false}, the toolbar
-  will request enough size to fit all of its child items without any overflow.
+  @sig[gtk:tool-item]{create-menu-proxy} signal handler, will be available in an
+  overflow menu, which can be opened by an added arrow button. If @em{false},
+  the toolbar will request enough size to fit all of its child items without any
+  overflow.
   @see-class{gtk:toolbar}
   @see-function{gtk:tool-item-proxy-menu-item}")
 
@@ -428,21 +423,21 @@ lambda (toolbar style)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "toolbar-style" 'toolbar) t)
- "The @code{toolbar-style} property of type @symbol{gtk:toolbar-style}
- (Read / Write) @br{}
+ "The @code{toolbar-style} property of type @sym{gtk:toolbar-style}
+  (Read / Write) @br{}
   How to draw the toolbar. @br{}
-  Default value: @code{:both}")
+  Default value: @val[gtk:toolbar-style]{:both}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'toolbar-toolbar-style)
       "Accessor"
       (documentation 'toolbar-toolbar-style 'function)
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @syntax{(gtk:toolbar-toolbar-style object) => style}
   @syntax{(setf (gtk:toolbar-toolbar-style object) style)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @argument[style]{the style as a value of the @symbol{gtk:toolbar-style}
-    enumeration for @arg{toolbar}}
+  @argument[style]{a style as a value of the @sym{gtk:toolbar-style} enumeration
+    for @arg{toolbar}}
   @begin{short}
     Accessor of the @slot[gtk:toolbar]{toolbar-style} slot of the
     @class{gtk:toolbar} class.
@@ -503,7 +498,7 @@ lambda (toolbar style)    :run-first
   @see-class{gtk:widget}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_new ()
+;;; gtk_toolbar_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline toolbar-new))
@@ -521,7 +516,7 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_insert ()
+;;; gtk_toolbar_insert
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_insert" %toolbar-insert) :void
@@ -531,10 +526,10 @@ lambda (toolbar style)    :run-first
 
 (defun toolbar-insert (toolbar item &optional (pos -1))
  #+liber-documentation
- "@version{2024-3-15}
+ "@version{2025-07-07}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget}
-  @argument[pos]{an optional integer with the position of the new item,
+  @argument[pos]{an optional integer for the position of the new item,
     the default value is -1}
   @begin{short}
     Insert a @class{gtk:tool-item} widget into the toolbar at position
@@ -550,7 +545,7 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-insert)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_item_index ()
+;;; gtk_toolbar_get_item_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int
@@ -572,14 +567,14 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-item-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_n_items () -> toolbar-n-items
+;;; gtk_toolbar_get_n_items
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_n_items" toolbar-n-items) :int
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-15}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @return{The integer with the number of @class{gtk:tool-item} widgets on the
+  @return{The integer for the number of @class{gtk:tool-item} widgets on the
     toolbar.}
   @short{Returns the number of tool items on the toolbar.}
   @see-class{gtk:toolbar}
@@ -589,14 +584,14 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-n-items)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_nth_item () -> toolbar-nth-item
+;;; gtk_toolbar_get_nth_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_nth_item" toolbar-nth-item) g:object
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @argument[n]{an integer with a position on the toolbar}
+  @argument[n]{an integer for a position on the toolbar}
   @return{The nth @class{gtk:tool-item} widget on @arg{toolbar}, or
     @code{nil} if there is not an nth tool item.}
   @begin{short}
@@ -611,15 +606,15 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-nth-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_drop_index () -> toolbar-drop-index
+;;; gtk_toolbar_get_drop_index
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_drop_index" toolbar-drop-index) :int
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @argument[x]{an integer with the x coordinate of a point on the toolbar}
-  @argument[y]{an integer with the y coordinate of a point on the toolbar}
+  @argument[x]{an integer for the x coordinate of a point on the toolbar}
+  @argument[y]{an integer for the y coordinate of a point on the toolbar}
   @return{The position corresponding to the point @code{(x,y)} on the toolbar.}
   @begin{short}
     Returns the position corresponding to the indicated point on the toolbar.
@@ -635,17 +630,17 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-drop-index)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_set_drop_highlight_item ()
+;;; gtk_toolbar_set_drop_highlight_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_set_drop_highlight_item"
                toolbar-set-drop-highlight-item) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget, or @code{nil} to turn of
     highlighting}
-  @argument[index]{an integer with a position on @arg{toolbar}}
+  @argument[index]{an integer for a position on @arg{toolbar}}
   @begin{short}
     Highlights the toolbar to give an idea of what it would look like if item
     was added to the toolbar at the position indicated by @arg{index}.
@@ -665,7 +660,7 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-set-drop-highlight-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_unset_icon_size ()
+;;; gtk_toolbar_unset_icon_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_unset_icon_size" toolbar-unset-icon-size) :void
@@ -683,14 +678,14 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-unset-icon-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_get_relief_style () -> toolbar-relief-style
+;;; gtk_toolbar_get_relief_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_get_relief_style" toolbar-relief-style) relief-style
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
-  @return{The relief style of type @symbol{gtk:relief-style} of buttons on
+  @return{The relief style of type @sym{gtk:relief-style} for the buttons on
     @arg{toolbar}.}
   @begin{short}
     Returns the relief style of buttons on the toolbar.
@@ -704,7 +699,7 @@ lambda (toolbar style)    :run-first
 (export 'toolbar-relief-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toolbar_unset_style ()
+;;; gtk_toolbar_unset_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toolbar_unset_style" toolbar-unset-style) :void

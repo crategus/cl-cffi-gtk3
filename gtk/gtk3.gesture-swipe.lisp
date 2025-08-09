@@ -1,10 +1,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.gesture-swipe.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
@@ -68,34 +68,36 @@
 
 #+liber-documentation
 (setf (documentation 'gesture-swipe 'type)
- "@version{#2025-1-25}
+ "@version{#2025-07-16}
   @begin{short}
     The @class{gtk:gesture-swipe} object is a @class{gtk:gesture} implementation
     able to recognize swipes, after a press/move/.../move/release sequence
-    happens, the @code{\"swipe\"} signal will be emitted, providing the velocity
-    and directionality of the sequence at the time it was lifted.
+    happens, the @sig[gtk:gesture-swipe]{swipe} signal will be emitted,
+    providing the velocity and directionality of the sequence at the time it was
+    lifted.
   @end{short}
 
   If the velocity is desired in intermediate points, the
   @fun{gtk:gesture-swipe-velocity} function can be called on, for example, a
-  @code{\"update\"} handler.
+  @sig[gtk:gesture]{update} handler.
 
   All velocities are reported in pixels/sec units.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"swipe\" signal}
-    @begin{pre}
+    @begin[gesture-swipe::swipe]{signal}
+      @begin{pre}
 lambda (gesture xvelocity yvelocity)    :run-last
-    @end{pre}
-    @begin[code]{table}
-      @entry[gesture]{The @class{gtk:gesture-multi-press} object which
-        received the signal.}
-      @entry[xvelocity]{The double float with the velocity in the x axis,
-        in pixels/sec.}
-      @entry[yvelocity]{The double float with the velocity in the y axis,
-        in pixels/sec.}
-    @end{table}
-    The signal is emitted when the recognized gesture is finished, velocity
-    and direction are a product of previously recorded events.
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[gesture]{The @class{gtk:gesture-multi-press} object which
+          received the signal.}
+        @entry[xvelocity]{The double float for the velocity in the x axis,
+          in pixels/sec.}
+        @entry[yvelocity]{The double float for the velocity in the y axis,
+          in pixels/sec.}
+      @end{simple-table}
+      The signal is emitted when the recognized gesture is finished, velocity
+      and direction are a product of previously recorded events.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:gesture-swipe-new}
   @see-class{gtk:gesture}")

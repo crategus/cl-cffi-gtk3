@@ -82,7 +82,7 @@
 
 #+liber-documentation
 (setf (documentation 'check-button 'type)
- "@version{2025-06-18}
+ "@version{2025-07-17}
   @begin{short}
     The @class{gtk:check-button} widget places a discrete
     @class{gtk:toggle-button} widget next to a widget, usually a
@@ -99,7 +99,7 @@ checkbutton
 ├── check
 ╰── <child>
     @end{pre}
-    A @class{gtk:check-button} widget with indicator, see the
+    The @class{gtk:check-button} widget with indicator, see the
     @fun{gtk:toggle-button-mode} function, has a main CSS node with name
     @code{checkbutton} and a subnode with name @code{check}.
     @begin{pre}

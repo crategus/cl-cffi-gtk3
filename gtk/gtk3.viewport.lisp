@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.viewport.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -70,7 +70,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkViewport
+;;; GtkViewport
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkViewport" viewport
@@ -123,20 +123,20 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "shadow-type" 'viewport) t)
- "The @code{shadow-type} property of type @symbol{gtk:shadow-type}
-  (Read / Write) @br{}
+ "The @code{shadow-type} property of type @sym{gtk:shadow-type} (Read / Write)
+  @br{}
   Determines how the shadowed box around the viewport is drawn. @br{}
-  Default value: @code{:in}")
+  Default value: @val[gtk:shadow-type]{:in}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'viewport-shadow-type)
       "Accessor"
       (documentation 'viewport-shadow-type 'function)
- "@version{#2023-3-29}
+ "@version{#2025-07-11}
   @syntax{(gtk:viewport-shadow-type object) => type}
   @syntax{(setf (gtk:viewport-shadow-type object) type)}
   @argument[viewport]{a @class{gtk:viewport} widget}
-  @argument[type]{a @symbol{gtk:shadow-type} value for the shadow type}
+  @argument[type]{a @sym{gtk:shadow-type} value for the shadow type}
   @begin{short}
     Accessor of the @slot[gtk:viewport]{shadow-type} slot of the
     @class{gtk:viewport} class.
@@ -147,17 +147,17 @@
   @see-symbol{gtk:shadow-type}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_viewport_new ()
+;;; gtk_viewport_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline viewport-new))
 
 (defun viewport-new (&optional (hadjustment nil) (vadjustment nil))
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-07}
   @argument[hadjustment]{horizontal @class{gtk:adjustment} object}
   @argument[vadjustment]{vertical @class{gtk:adjustment} object}
-  @return{A new @class{gtk:viewport} widget.}
+  @return{The new @class{gtk:viewport} widget.}
   @begin{short}
     Creates a new viewport with the given adjustments.
   @end{short}
@@ -252,15 +252,15 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_viewport_get_bin_window () -> viewport-bin-window
+;;; gtk_viewport_get_bin_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_viewport_get_bin_window" viewport-bin-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-07}
   @argument[viewport]{a @class{gtk:viewport} widget}
-  @return{A @class{gdk:window} object.}
+  @return{The @class{gdk:window} object.}
   @short{Gets the bin window of the viewport.}
   @see-class{gtk:viewport}
   @see-class{gdk:window}"
@@ -269,15 +269,15 @@
 (export 'viewport-bin-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_viewport_get_view_window () -> viewport-view-window
+;;; gtk_viewport_get_view_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_viewport_get_view_window" viewport-view-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-07}
   @argument[viewport]{a @class{gtk:viewport} widget}
-  @return{A @class{gdk:window} object.}
+  @return{The @class{gdk:window} object.}
   @short{Gets the view window of the viewport.}
   @see-class{gtk:viewport}
   @see-class{gdk:window}"

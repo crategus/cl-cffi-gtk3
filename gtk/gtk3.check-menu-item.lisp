@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.check-menu-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -82,7 +82,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkCheckMenuItem
+;;; GtkCheckMenuItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkCheckMenuItem" check-menu-item
@@ -104,7 +104,7 @@
 
 #+liber-documentation
 (setf (documentation 'check-menu-item 'type)
- "@version{2023-2-27}
+ "@version{2025-07-14}
   @begin{short}
     A @class{gtk:check-menu-item} widget is a menu item that maintains the state
     of a boolean value in addition to a @class{gtk:menu-item} usual role in
@@ -125,32 +125,30 @@ menuitem
     @code{.left} or @code{.right} style class.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[indicator-size]{entry}
-        The @code{indicator-size} style property of type @code{:int} (Read)
-        @br{}
-        Size of check or radio indicator. @br{}
-        @em{Warning:} The @code{indicator-size} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard @code{min-width} CSS property on the check or
-        radio nodes. The value of this style property is ignored. @br{}
-       Allowed values: >= 0 @br{}
-       Default value: 16
-      @end{entry}
-    @end{table}
+    @begin[check-menu-item:indicator-size]{property}
+      The @code{indicator-size} style property of type @code{:int} (Read) @br{}
+      Size of check or radio indicator. @br{}
+      @em{Warning:} The @code{indicator-size} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard @code{min-width} CSS property on the check or
+      radio nodes. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 16
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"toggled\" signal}
+    @begin[check-menu-item::toggled]{signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:check-menu-item} widget that received the
+          signal.}
+      @end{simple-table}
       The signal is emitted when the state of the check box is changed. A signal
       handler can use the @fun{gtk:check-menu-item-active} function to discover
       the new state.
-      @begin[code]{table}
-        @entry[item]{The @class{sym:check-menu-item} widget which received the
-          signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:check-menu-item-new}
   @see-constructor{gtk:check-menu-item-new-with-label}
@@ -255,37 +253,33 @@ lambda (item)    :run-first
   @see-class{gtk:check-menu-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_menu_item_new ()
+;;; gtk_check_menu_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline check-menu-item-new))
 
 (defun check-menu-item-new ()
  #+liber-documentation
- "@version{#2023-2-27}
-  @return{A new @class{gtk:check-menu-item} widget.}
-  @begin{short}
-    Creates a new check menu item.
-  @end{short}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:check-menu-item} widget.}
+  @short{Creates a new check menu item.}
   @see-class{gtk:check-menu-item}"
   (make-instance 'check-menu-item))
 
 (export 'check-menu-item-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_menu_item_new_with_label ()
+;;; gtk_check_menu_item_new_with_label
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline check-menu-item-new-with-label))
 
 (defun check-menu-item-new-with-label (label)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-07}
   @argument[label]{a string to use for the label}
-  @return{A new @class{gtk:check-menu-item} widget.}
-  @begin{short}
-    Creates a new check menu item with a label.
-  @end{short}
+  @return{The new @class{gtk:check-menu-item} widget.}
+  @short{Creates a new check menu item with a label.}
   @see-class{gtk:check-menu-item}"
   (make-instance 'check-menu-item
                  :label label))
@@ -293,17 +287,17 @@ lambda (item)    :run-first
 (export 'check-menu-item-new-with-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_menu_item_new_with_mnemonic ()
+;;; gtk_check_menu_item_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline check-menu-item-new-with-mnemonic))
 
 (defun check-menu-item-new-with-mnemonic (label)
  #+liber-documentation
- "@version{#2023-2-27}
-  @argument[label]{a string with the text of the button, with an underscore in
+ "@version{#2025-07-07}
+  @argument[label]{a string for the text of the button, with an underscore in
     front of the character}
-  @return{A new @class{gtk:check-menu-item} widget.}
+  @return{The new @class{gtk:check-menu-item} widget.}
   @begin{short}
     Creates a new check menu item containing a label.
   @end{short}
@@ -317,15 +311,15 @@ lambda (item)    :run-first
 (export 'check-menu-item-new-with-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_check_menu_item_toggled ()
+;;; gtk_check_menu_item_toggled
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_check_menu_item_toggled" check-menu-item-toggled) :void
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:check-menu-item} widget}
   @begin{short}
-    Emits the @code{\"toggled\"} signal.
+    Emits the @sig[gtk:check-menu-item-toggled]{toggled} signal.
   @end{short}
   @see-class{gtk:check-menu-item}"
   (item (g:object check-menu-item)))

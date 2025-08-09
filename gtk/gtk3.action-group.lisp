@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.action-group.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -121,7 +121,7 @@
 
 #+liber-documentation
 (setf (documentation 'action-group 'type)
- "@version{2024-9-24}
+ "@version{2025-06-27}
   @begin{short}
     Actions are organised into groups. An action group is essentially a map
     from names to @class{gtk:action} objects.
@@ -177,51 +177,55 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"connect-proxy\" signal}
+    @begin[action-group::connect-proxy]{signal}
       @begin{pre}
 lambda (group action proxy)
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[group]{The @class{gtk:action-group} object.}
+        @entry[action]{The @class{gtk:action} object.}
+        @entry[proxy]{The @class{gtk:widget} proxy.}
+      @end{simple-table}
       The signal is emitted after connecting a proxy to an action in the group.
       Note that the proxy may have been connected to a different action before.
       This is intended for simple customizations for which a custom action class
       would be too clumsy, for example, showing tooltips for menu items in the
       statusbar.
-      @begin[code]{table}
+    @end{signal}
+    @begin[action-group::disconnect-proxy]{signal}
+      @begin{pre}
+lambda (group action proxy)
+      @end{pre}
+      @begin[code]{simple-table}
         @entry[group]{The @class{gtk:action-group} object.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
-      @end{table}
-      @subheading{The \"disconnect-proxy\" signal}
-        @begin{pre}
-lambda (group action proxy)
-        @end{pre}
-        The signal is emitted after disconnecting a proxy from an action in the
-        group.
-        @begin[code]{table}
-          @entry[group]{The @class{gtk:action-group} object.}
-          @entry[action]{The @class{gtk:action} object.}
-          @entry[proxy]{The @class{gtk:widget} proxy.}
-        @end{table}
-      @subheading{The \"post-activate\" signal}
-        @begin{pre}
+      @end{simple-table}
+      The signal is emitted after disconnecting a proxy from an action in the
+      group.
+    @end{signal}
+    @begin[action-group::post-activate]{signal}
+      @begin{pre}
 lambda (group action)
-        @end{pre}
-        The signal is emitted just after the action in the action group is
-        activated.
-        @begin[code]{table}
-          @entry[group]{The @class{gtk:action-group} object.}
-          @entry[action]{The @class{gtk:action} object.}
-        @end{table}
-      @subheading{The \"pre-activate\" signal}
-        @begin{pre}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[group]{The @class{gtk:action-group} object.}
+        @entry[action]{The @class{gtk:action} object.}
+      @end{simple-table}
+      The signal is emitted just after the action in the action group is
+      activated.
+    @end{signal}
+    @begin[action-group::pre-activate]{signal}
+      @begin{pre}
 lambda (group action)
-        @end{pre}
-        The signal is emitted just before the action in the action group is
-        activated.
-        @begin[code]{table}
-          @entry[group]{The @class{gtk:action-group} object.}
-          @entry[action]{The @class{gtk:action} object.}
-        @end{table}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[group]{The @class{gtk:action-group} object.}
+        @entry[action]{The @class{gtk:action} object.}
+      @end{simple-table}
+      The signal is emitted just before the action in the action group is
+      activated.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:action-group-new}
   @see-slot{gtk:action-group-accel-group}
@@ -276,10 +280,10 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-name)
       "Accessor"
       (documentation 'action-group-name 'function)
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @syntax{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
-  @argument[name]{a string with the name of the action group}
+  @argument[name]{a string for the name of the action group}
   @begin{short}
     Accessor of the @slot[gtk:action-group]{name} slot of the
     @class{gtk:action-group} class.
@@ -302,11 +306,11 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-sensitive)
       "Accessor"
       (documentation 'action-group-sensitive 'function)
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @syntax{(gtk:action-group-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-group-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action-group} object}
-  @argument[sensitive]{a boolean with the sensitivity}
+  @argument[sensitive]{a boolean for the sensitivity}
   @begin{short}
     Accessor of the @slot[gtk:action-group]{sensitive} slot of the
     @class{gtk:action-group} class.
@@ -329,11 +333,11 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-visible)
       "Accessor"
       (documentation 'action-group-visible 'function)
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @syntax{(gtk:action-group-visible object) => visible}
   @syntax{(setf (gtk:action-group-visible object) visible)}
   @argument[object]{a @class{gtk:action-group} object}
-  @argument[visible]{a boolean with the visibility}
+  @argument[visible]{a boolean for the visibility}
   @begin{short}
     Accessor of the @slot[gtk:action-group]{visible} slot of the
     @class{gtk:action-group} class.
@@ -352,8 +356,8 @@ lambda (group action)
 
 (defun action-group-new (name)
  #+liber-documentation
- "@version{2024-9-24}
-  @argument[name]{a string with the name of the action group}
+ "@version{2025-07-02}
+  @argument[name]{a string for the name of the action group}
   @return{The new @class{gtk:action-group} object.}
   @begin{short}
     Creates a new action group.
@@ -376,9 +380,9 @@ lambda (group action)
 
 (cffi:defcfun ("gtk_action_group_get_action" action-group-action) g:object
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @argument[group]{a @class{gtk:action-group} object}
-  @argument[name]{a string with the name of the action}
+  @argument[name]{a string for the name of the action}
   @return{The @class{gtk:action} object, or @code{nil} if no action by that
     name exists.}
   @short{Looks up an action in the action group by name.}
@@ -428,10 +432,10 @@ lambda (group action)
 
 (defun action-group-add-action (group action &optional accelerator)
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{a @class{gtk:action} object to add}
-  @argument[accelerator]{a string with the optional accelerator for the action,
+  @argument[accelerator]{a string for the optional accelerator for the action,
     in the format understood by the @fun{gtk:accelerator-parse} function, or
     \"\" for no accelerator, or @code{nil} to use the stock accelerator}
   @begin{short}
@@ -482,15 +486,15 @@ lambda (group action)
 
 (defun action-group-add-actions (group entries)
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2025-07-16}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of action descriptions}
   @begin{short}
     This is a convenience function to create a number of actions and add them
     to the action group.
   @end{short}
-  The @code{\"activate\"} signals of the actions are connected to the callback
-  functions and their accel paths are set to
+  The @sig[gtk:action]{activate} signals of the actions are connected to the
+  callback functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
   @begin[Examples]{dictionary}
     @begin{pre}
@@ -536,15 +540,15 @@ lambda (group action)
 
 (defun action-group-add-toggle-actions (group entries)
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2025-0716}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of toggle action descriptions}
   @begin{short}
     This is a convenience function to create a number of toggle actions and add
     them to the action group.
   @end{short}
-  The @code{\"activate\"} signals of the actions are connected to the callback
-  functions and their accel paths are set to
+  The @sig[gtk:action]{activate} signals of the actions are connected to the
+  callback functions and their accel paths are set to
   @code{<Actions>/group-name/action-name}.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-add-toggle-actions} function has been deprecated
@@ -580,19 +584,19 @@ lambda (group action)
 
 (defun action-group-add-radio-actions (group entries value on-change)
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2025-07-02}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of radio action descriptions}
-  @argument[value]{an integer with the value of the action to activate
+  @argument[value]{an integer for the value of the action to activate
     initially, or -1 if no action should be activated}
   @argument[on-change]{a callback function to connect to the changed signal}
   @begin{short}
     This is a convenience function to create a group of radio actions and add
     them to the action group.
   @end{short}
-  The @code{\"changed\"} signal of the first radio action is connected to the
-  @arg{on-change} callback function and the accel paths of the actions are set
-  to @code{<Actions>/group-name/action-name}.
+  The @sig[gtk:action]{changed} signal of the first radio action is connected to
+  the @arg{on-change} callback function and the accel paths of the actions are
+  set to @code{<Actions>/group-name/action-name}.
   @begin[Examples]{dictionary}
     @begin{pre}
 (let ((group (gtk:action-group-new \"AppWindowActions\"))
@@ -659,10 +663,10 @@ lambda (group action)
 (setf (liber:alias-for-symbol 'translate-func)
       "Callback"
       (liber:symbol-documentation 'translate-func)
- "@version{#2024-3-20}
+ "@version{#2025-07-02}
   @syntax{lambda (path) => result}
-  @argument[path]{a string with the ID of the message}
-  @argument[result]{a string with the translated message}
+  @argument[path]{a string for the ID of the message}
+  @argument[result]{a string for the translated message}
   @begin{short}
     A callback function used to translate messages.
   @end{short}
@@ -681,9 +685,9 @@ lambda (group action)
 
 (defun action-group-set-translate-func (group func)
  #+liber-documentation
- "@version{#2024-3-20}
+ "@version{#2025-07-03}
   @argument[group]{a @class{gtk:action-group} object}
-  @argument[func]{a @symbol{gtk:translate-func} callback function}
+  @argument[func]{a @sym{gtk:translate-func} callback function}
   @begin{short}
     Sets a function to be used for translating the label and tooltip of
     action entires added by the @fun{gtk:action-group-add-actions} function.
@@ -711,9 +715,9 @@ lambda (group action)
 (cffi:defcfun ("gtk_action_group_set_translation_domain"
                action-group-set-translation-domain) :void
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-07-02}
   @argument[group]{a @class{gtk:action-group} object}
-  @argument[domain]{a string with the translation domain to use for
+  @argument[domain]{a string for the translation domain to use for
     GLIB gettext calls}
   @begin{short}
     Sets the translation domain and uses GLIB gettext for translating the label
@@ -739,12 +743,12 @@ lambda (group action)
 (cffi:defcfun ("gtk_action_group_translate_string"
                action-group-translate-string) (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-15}
+ "@version{#2025-07-02}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[string]{a string}
   @return{The string with the translation.}
   @begin{short}
-    Translates a string using the specified @symbol{gtk:translate-func} callback
+    Translates a string using the specified @sym{gtk:translate-func} callback
     function.
   @end{short}
   This is mainly intended for language bindings.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.app-chooser-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2024 Dieter Kaiser
+;;; Copyright (C) 2013 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -68,7 +68,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkAppChooserDialog
+;;; GtkAppChooserDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkAppChooserDialog" app-chooser-dialog
@@ -162,17 +162,17 @@
   @see-class{gtk:app-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_dialog_new ()
+;;; gtk_app_chooser_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_dialog_new" app-chooser-dialog-new)
     (g:object widget)
  #+liber-documentation
- "@version{2023-2-18}
+ "@version{2025-07-07}
   @argument[parent]{a @class{gtk:window} widget, or @code{nil}}
-  @argument[flags]{a @symbol{gtk:dialog-flags} value for this dialog}
+  @argument[flags]{a @sym{gtk:dialog-flags} value for this dialog}
   @argument[file]{a @class{g:file} object}
-  @return{A newly created @class{gtk:app-chooser-dialog} widget.}
+  @return{The newly created @class{gtk:app-chooser-dialog} widget.}
   @begin{short}
     Creates a new application chooser dialog for the provided @class{g:file}
     object, to allow the user to select an application for it.
@@ -188,17 +188,17 @@
 (export 'app-chooser-dialog-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_dialog_new_for_content_type ()
+;;; gtk_app_chooser_dialog_new_for_content_type
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_dialog_new_for_content_type"
                app-chooser-dialog-new-for-content-type) (g:object widget)
  #+liber-documentation
- "@version{2023-2-18}
+ "@version{2025-07-07}
   @argument[parent]{a @class{gtk:window} widget, or @code{nil}}
-  @argument[flags]{a @symbol{gtk:dialog-flags} value for this dialog}
+  @argument[flags]{a @sym{gtk:dialog-flags} value for this dialog}
   @argument[content-type]{a content type string}
-  @return{A newly created @class{gtk:app-chooser-dialog} widget.}
+  @return{The newly created @class{gtk:app-chooser-dialog} widget.}
   @begin{short}
     Creates a new application chooser dialog for the provided content type, to
     allow the user to select an application for it.
@@ -213,7 +213,7 @@
 (export 'app-chooser-dialog-new-for-content-type)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_dialog_get_widget ()
+;;; gtk_app_chooser_dialog_get_widget
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)

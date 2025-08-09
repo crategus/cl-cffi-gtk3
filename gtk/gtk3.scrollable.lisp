@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.scrollable.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -79,7 +79,7 @@
 (setf (liber:alias-for-symbol 'scrollable-policy)
       "GEnum"
       (liber:symbol-documentation 'scrollable-policy)
- "@version{#2023-3-24}
+ "@version{#2025-07-03}
   @begin{declaration}
 (gobject:define-genum \"GtkScrollablePolicy\" scrollable-policy
   (:export t
@@ -88,10 +88,10 @@
   (:natural 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:minimum]{Scrollable adjustments are based on the minimum size.}
       @entry[:natural]{Scrollable adjustments are based on the natural size.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Defines the policy to be used in a scrollable widget when updating the
@@ -201,22 +201,22 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "hscroll-policy" 'scrollable) t)
- "The @code{hscroll-policy} property of type @symbol{gtk:scrollable-policy}
+ "The @code{hscroll-policy} property of type @sym{gtk:scrollable-policy}
   (Read / Write) @br{}
   Determines whether horizontal scrolling should start once the scrollable
   widget is allocated less than its minimum width or less than its natural
   width. @br{}
-  Default value: @code{:minimum}")
+  Default value: @val[gtk:scrollable-policy]{:minimum}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'scrollable-hscroll-policy)
       "Accessor"
       (documentation 'scrollable-hscroll-policy 'function)
- "@version{#2023-3-24}
+ "@version{#2025-07-11}
   @syntax{(gtk:scrollable-hscroll-policy object) => policy}
   @syntax{(setf (gtk:scrollable-hscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
-  @argument[policy]{a @symbol{gtk:scrollable-policy} value for the horizontal
+  @argument[policy]{a @sym{gtk:scrollable-policy} value for the horizontal
     scrolling policy}
   @begin{short}
     Accessor of the @slot[gtk:scrollable]{hscroll-policy} slot of the
@@ -264,22 +264,22 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "vscroll-policy" 'scrollable) t)
- "The @code{vscroll-policy} property of type @symbol{gtk:scrollable-policy}
+ "The @code{vscroll-policy} property of type @sym{gtk:scrollable-policy}
   (Read / Write) @br{}
   Determines whether vertical scrolling should start once the scrollable
   widget is allocated less than its minimum height or less than its natural
   height. @br{}
-  Default value: @code{:minimum}")
+  Default value: @val[gtk:scrollable-policy]{:minimum}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'scrollable-vscroll-policy)
       "Accessor"
       (documentation 'scrollable-vscroll-policy 'function)
- "@version{#2023-3-24}
+ "@version{#2025-07-11}
   @syntax{(gtk:scrollable-vscroll-policy object) => policy}
   @syntax{(setf (gtk:scrollable-vscroll-policy object) policy)}
   @argument[object]{a @class{gtk:scrollable} widget}
-  @argument[policy]{a @symbol{gtk:scrollable-policy} value for the vertical
+  @argument[policy]{a @sym{gtk:scrollable-policy} value for the vertical
     scrolling policy}
   @begin{short}
     Accessor of the @slot[gtk:scrollable]{vscroll-policy} slot of the
@@ -295,7 +295,7 @@
   @see-function{gtk:scrollable-hscroll-policy}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_scrollable_get_border ()
+;;; gtk_scrollable_get_border
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_scrollable_get_border" %scrollable-border) :boolean
@@ -303,9 +303,9 @@
   (border (g:boxed border)))
 
 (defun scrollable-border (scrollable)
- "@version{#2023-3-24}
+ "@version{#2025-07-07}
   @argument[scrollable]{a @class{gtk:scrollable} widget}
-  @return{A @class{gtk:border} instance.}
+  @return{The @class{gtk:border} instance.}
   @begin{short}
     Returns the size of a non-scrolling border around the outside of the
     scrollable.

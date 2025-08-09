@@ -664,7 +664,7 @@ lambda (flowbox)    :action
  #+liber-documentation
  "@version{#2024-4-9}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[adjustment]{a @class{gtk:adjustment} object which should be adjusted
+  @argument[adjustment]{a @class{gtk:adjustment} object that should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}
   @begin{short}
     Hooks up an adjustment to focus handling in the flow box.
@@ -691,9 +691,9 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_set_vadjustment" flow-box-set-vadjustment) :void
  #+liber-documentation
- "@version{#2024-04-09}
+ "@version{#2025-07-17}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
-  @argument[adjustment]{a @class{gtk:adjustment} object which should be adjusted
+  @argument[adjustment]{a @class{gtk:adjustment} object that should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}
   @begin{short}
     Hooks up an adjustment to focus handling in the flow box.
@@ -1145,10 +1145,10 @@ lambda (flowbox)    :action
 
 (defun flow-box-child-new ()
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-07-17}
   @return{The new @class{gtk:flow-box-child} widget.}
   @begin{short}
-    Creates a new @class{gtk:flow-box-child} widget, to be used as a child
+    Creates a new @class{gtk:flow-box-child} widget to be used as a child
     widget of a @class{gtk:flow-box} widget.
   @end{short}
   @see-class{gtk:flow-box-child}

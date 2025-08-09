@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.socket.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,7 +61,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkSocket
+;;; GtkSocket
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkSocket" socket
@@ -74,7 +74,7 @@
 
 #+liber-documentation
 (setf (documentation 'socket 'type)
- "@version{#2023-2-28}
+ "@version{#2025-07-14}
   @begin{short}
     Together with the @class{gtk:plug} widget, the @class{gtk:socket} widget
     provides the ability to embed widgets from one process into another process
@@ -120,37 +120,39 @@ g_print (\"The ID of the sockets window is
 
   The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in other
-  toolkits, e.g. Qt, allowing the same level of integration when embedding a
-  Qt widget in GTK or vice versa.
+  toolkits, for example Qt, allowing the same level of integration when
+  embedding a Qt widget in GTK or vice versa.
 
   The @class{gtk:plug} and @class{gtk:socket} widgets are only available when
   GTK is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined.
   They can only be used on a @code{GdkX11Display} object.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"plug-added\" signal}
+    @begin[socket::plug-added]{signal}
       @begin{pre}
 lambda (socket)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[socket]{The @class{gtk:socket} widget that received the signal.}
+      @end{simple-table}
       The signal is emitted when a client is successfully added to the socket.
-      @begin[code]{table}
-        @entry[socket]{The @class{gtk:socket} widget which received the signal.}
-      @end{table}
-    @subheading{The \"plug-removed\" signal}
+    @end{signal}
+    @begin[socket::plug-removed]{signal}
       @begin{pre}
 lambda (socket)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[socket]{The @class{gtk:socket} widget that received the signal.}
+        @entry[Returns]{@em{True} to stop other handlers from being invoked.}
+      @end{simple-table}
       The signal is emitted when a client is removed from the socket. The
       default action is to destroy the @class{gtk:socket} widget, so if you want
       to reuse it you must add a signal handler that returns @em{true}.
-      @begin[code]{table}
-        @entry[socket]{The @class{gtk:socket} widget which received the signal.}
-        @entry[Returns]{@em{True} to stop other handlers from being invoked.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-class{gtk:plug}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_socket_new ()
+;;; gtk_socket_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline socket-new))
@@ -166,14 +168,14 @@ lambda (socket)    :run-last
 (export 'socket-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_socket_add_id ()
+;;; gtk_socket_add_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_socket_add_id" socket-add-id) :void
  #+liber-documentation
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @argument[socket]{a @class{gtk:socket} widget}
-  @argument[window]{a pointer with the window of a client participating in the
+  @argument[window]{a pointer for the window of a client participating in the
     XEMBED protocol}
   @begin{short}
     Adds an XEMBED client, such as a @class{gtk:plug} widget, to the
@@ -200,14 +202,14 @@ lambda (socket)    :run-last
 (export 'socket-add-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_socket_get_id () -> socket-id
+;;; gtk_socket_get_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_socket_get_id" socket-id) :pointer
  #+liber-documentation
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @argument[socket]{a @class{gtk:socket} widget}
-  @return{A pointer with the window ID for the socket.}
+  @return{The pointer for the window ID for the socket.}
   @begin{short}
     Gets the window ID of a @class{gtk:socket} widget, which can then be used
     to create a client embedded inside the socket, for instance with the
@@ -223,15 +225,17 @@ lambda (socket)    :run-last
 (export 'socket-id)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_socket_get_plug_window () -> socket-plug-window
+;;; gtk_socket_get_plug_window
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_socket_get_plug_window" socket-plug-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @argument[socket]{a @class{gtk:socket} widget}
-  @return{A @class{gdk:window} object of the plug if available, or @code{nil}.}
+  @begin{return}
+    The @class{gdk:window} object for the plug if available, or @code{nil}.
+  @end{return}
   @begin{short}
     Retrieves the window of the plug.
   @end{short}

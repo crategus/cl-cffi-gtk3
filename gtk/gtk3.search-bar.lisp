@@ -90,7 +90,7 @@
 
 #+liber-documentation
 (setf (documentation 'search-bar 'type)
- "@version{2025-07-10}
+ "@version{2025-07-21}
   @begin{short}
     The @class{gtk:search-bar} widget is a container made to have a search entry
     built-in, possibly with additional connex widgets, such as drop-down menus,
@@ -117,64 +117,35 @@
   @begin[Examples]{dictionary}
     Creating a search bar.
     @begin{pre}
-#include <gtk/gtk.h>
-
-static gboolean
-window_key_press_event_cb (GtkWidget *window,
-    GdkEvent *event,
-    GtkSearchBar *search_bar)
-{
-  return gtk_search_bar_handle_event (search_bar, event);
-@}
-
-static void
-activate_cb (GtkApplication *app,
-    gpointer user_data)
-{
-  GtkWidget *window;
-  GtkWidget *search_bar;
-  GtkWidget *box;
-  GtkWidget *entry;
-  GtkWidget *menu_button;
-
-  window = gtk_application_window_new (app);
-  gtk_widget_show (window);
-
-  search_bar = gtk_search_bar_new ();
-  gtk_container_add (GTK_CONTAINER (window), search_bar);
-  gtk_widget_show (search_bar);
-
-  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  gtk_container_add (GTK_CONTAINER (search_bar), box);
-  gtk_widget_show (box);
-
-  entry = gtk_search_entry_new ();
-  gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
-  gtk_widget_show (entry);
-
-  menu_button = gtk_menu_button_new ();
-  gtk_box_pack_start (GTK_BOX (box), menu_button, FALSE, FALSE, 0);
-  gtk_widget_show (menu_button);
-
-  gtk_search_bar_connect_entry (GTK_SEARCH_BAR (search_bar), GTK_ENTRY (entry));
-
-  g_signal_connect (window, \"key-press-event\",
-      G_CALLBACK (window_key_press_event_cb), search_bar);
-@}
-
-gint
-main (gint argc,
-    gchar *argv[@])
-{
-  GtkApplication *app;
-
-  app = gtk_application_new (\"org.gtk.Example.GtkSearchBar\",
-      G_APPLICATION_FLAGS_NONE);
-  g_signal_connect (app, \"activate\",
-      G_CALLBACK (activate_cb), NULL);
-
-  return g_application_run (G_APPLICATION (app), argc, argv);
-@}
+(defun example-search-bar (&optional application)
+  (gtk:within-main-loop
+    (let* ((window (make-instance 'gtk:application-window
+                                  :type :toplevel
+                                  :title \"Search Bar\"
+                                  :application application
+                                  :default-width 250
+                                  :default-height 120))
+           (box (make-instance 'gtk:box
+                               :orientation :horizontal
+                               :spacing 6))
+           (entry (make-instance 'gtk:search-entry
+                                 :text \"Search Entry\"))
+           (button (make-instance 'gtk:menu-button))
+           (searchbar (gtk:search-bar-new)))
+      (gtk:search-bar-connect-entry searchbar entry)
+      (g:signal-connect window \"destroy\"
+                        (lambda (widget)
+                          (gtk:widget-destroy widget)
+                          (gtk:leave-gtk-main)))
+      (g:signal-connect window \"key-press-event\"
+              (lambda (window event)
+                (declare (ignore window))
+                (gtk:search-bar-handle-event searchbar event)))
+      (gtk:container-add window searchbar)
+      (gtk:container-add searchbar box)
+      (gtk:box-pack-start box entry)
+      (gtk:box-pack-start box button)
+      (gtk:widget-show-all window))))
     @end{pre}
   @end{dictionary}
   @see-constructor{gtk:search-bar-new}
@@ -297,11 +268,9 @@ main (gint argc,
 ;;; gtk_search_bar_handle_event
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Replace the example with Lisp code
-
 (cffi:defcfun ("gtk_search_bar_handle_event" search-bar-handle-event) :boolean
  #+liber-documentation
- "@version{#2025-07-10}
+ "@version{#2025-07-21}
   @argument[searchbar]{a @class{gtk:search-bar} widget}
   @argument[event]{a @class{gdk:event} instance containing key press events}
   @begin{return}
@@ -321,33 +290,6 @@ main (gint argc,
   If no entry has been connected to the search bar, using the
   @fun{gtk:search-bar-connect-entry} function, this function will return
   immediately with a warning.
-  @begin[Examples]{dictionary}
-    Showing the search bar on key presses
-    @begin{pre}
-static gboolean
-on_key_press_event (GtkWidget *widget,
-                    GdkEvent  *event,
-                    gpointer   user_data)
-{
-  GtkSearchBar *bar = GTK_SEARCH_BAR (user_data);
-  return gtk_search_bar_handle_event (bar, event);
-@}
-
-static void
-create_toplevel (void)
-{
-  GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  GtkWindow *search_bar = gtk_search_bar_new ();
-
- // Add more widgets to the window...
-
-  g_signal_connect (window,
-                   \"key-press-event\",
-                    G_CALLBACK (on_key_press_event),
-                    search_bar);
-@}
-    @end{pre}
-  @end{dictionary}
   @see-class{gtk:search-bar}
   @see-function{gtk:search-bar-connect-entry}"
   (searchbar (g:object search-bar))

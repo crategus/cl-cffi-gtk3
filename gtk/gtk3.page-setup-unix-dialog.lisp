@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.page-setup-unix-dialog.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -62,7 +62,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPageSetupUnixDialog
+;;; GtkPageSetupUnixDialog
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPageSetupUnixDialog" page-setup-unix-dialog
@@ -110,13 +110,13 @@
   @see-class{gtk:page-setup}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_unix_dialog_new ()
+;;; gtk_page_setup_unix_dialog_new
 ;;; ----------------------------------------------------------------------------
 
 (defun page-setup-unix-dialog-new (title parent)
  #+liber-documentation
- "@version{#2023-3-21}
-  @argument[title]{a string with the title of the dialog, or @code{nil}}
+ "@version{#2025-07-05}
+  @argument[title]{a string for the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
   @return{The new @class{gtk:page-setup-unix-dialog} widget.}
@@ -134,8 +134,8 @@
 (export 'page-setup-unix-dialog-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_unix_dialog_set_page_setup ()
-;;; gtk_page_setup_unix_dialog_get_page_setup ()
+;;; gtk_page_setup_unix_dialog_set_page_setup
+;;; gtk_page_setup_unix_dialog_get_page_setup
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-unix-dialog-page-setup) (page-setup dialog)
@@ -166,8 +166,8 @@
 (export 'page-setup-unix-dialog-page-setup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_page_setup_unix_dialog_set_print_settings ()
-;;; gtk_page_setup_unix_dialog_get_print_settings ()
+;;; gtk_page_setup_unix_dialog_set_print_settings
+;;; gtk_page_setup_unix_dialog_get_print_settings
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf page-setup-unix-dialog-print-settings) (settings dialog)

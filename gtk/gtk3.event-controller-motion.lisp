@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.event-controller-motion.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -55,7 +55,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkEventControllerMotion
+;;; GtkEventControllerMotion
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkEventControllerMotion" event-controller-motion
@@ -67,49 +67,52 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller-motion 'type)
- "@version{#2023-3-1}
+ "@version{#2025-07-15}
   @begin{short}
     The @class{gtk:event-controller-motion} object is an event controller meant
     for situations where you need to track the position of the pointer.
   @end{short}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"enter\" signal}
+    @begin[event-controller-motion::enter]{signal}
       @begin{pre}
 lambda (controller x y)    :run-first
       @end{pre}
-      Signals that the pointer has entered the widget.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
-        @entry[x]{a double float with the x coordinate}
-        @entry[y]{a double float with the y coordinate}
-      @end{table}
-    @subheading{The \"leave\" signal}
+        @entry[x]{The double float for the x coordinate}
+        @entry[y]{The double float for the y coordinate}
+      @end{simple-table}
+      Signals that the pointer has entered the widget.
+    @end{signal}
+    @begin[event-controller-motion::leave]{signal}
       @begin{pre}
 lambda (controller)    :run-first
       @end{pre}
-      Signals that pointer has left the widget.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
-      @end{table}
-    @subheading{The \"motion\" signal}
+      @end{simple-table}
+      Signals that pointer has left the widget.
+    @end{signal}
+    @begin[event-controller-motion::motion]{signal}
       @begin{pre}
 lambda (controller x y)    :run-first
       @end{pre}
-      Emitted when the pointer moves inside the widget.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-motion} object that
           received the signal.}
-        @entry[x]{a double float with the x coordinate}
-        @entry[y]{a double float with the y coordinate}
-      @end{table}
+        @entry[x]{The double float for the x coordinate}
+        @entry[y]{The double float for the y coordinate}
+      @end{simple-table}
+      Emitted when the pointer moves inside the widget.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:event-controller-motion-new}
   @see-class{gtk:event-controller}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_event_controller_motion_new ()
+;;; gtk_event_controller_motion_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline event-controller-motion-new))

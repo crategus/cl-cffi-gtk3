@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.recent-chooser.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -112,7 +112,7 @@
 (setf (liber:alias-for-symbol 'recent-chooser-error)
       "GEnum"
       (liber:symbol-documentation 'recent-chooser-error)
- "@version{#2024-3-22}
+ "@version{#2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkRecentChooserError\" recent-chooser-error
   (:export t
@@ -121,10 +121,10 @@
   (:invalid-uri 1))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:not-found]{Indicates that a file does not exist.}
       @entry[:invalid-uri]{Indicates a malformed URI.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These identify the various errors that can occur while calling
@@ -148,7 +148,7 @@
 (setf (liber:alias-for-symbol 'recent-sort-type)
       "GEnum"
       (liber:symbol-documentation 'recent-sort-type)
- "@version{#2024-3-22}
+ "@version{#2024-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkRecentSortType\" recent-sort-type
   (:export t
@@ -159,7 +159,7 @@
   (:custom 3))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:none]{Do not sort the returned list of recently used resources.}
       @entry[:mru]{Sort the returned list with the most recently used items
         first.}
@@ -167,7 +167,7 @@
         first.}
       @entry[:custom]{Sort the returned list using a custom sorting function
         passed using the @fun{gtk:recent-chooser-set-sort-func} function.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Used to specify the sorting method to be applyed to the recently used
@@ -216,7 +216,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser 'type)
- "@version{#2023-3-24}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:recent-chooser} interface is an interface that can be
     implemented by widgets displaying the list of recently used files.
@@ -225,29 +225,31 @@
   @class{gtk:recent-chooser-widget}, @class{gtk:recent-chooser-dialog} and
   @class{gtk:recent-chooser-menu} widgets.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"item-activated\" signal}
+    @begin[recent-chooser::item-activated]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:recent-chooser} object which received
+          the signal.}
+      @end{simple-table}
       The signal is emitted when the user \"activates\" a recent item in the
       recent chooser. This can happen by double-clicking on an item in the
       recently used resources list, or by pressing the @kbd{Enter} key.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:recent-chooser} object which received
-          the signal.}
-      @end{table}
-    @subheading{The \"selection-changed\" signal}
+    @end{signal}
+    @begin[recent-chooser::selection-changed]{signal}
       @begin{pre}
 lambda (chooser)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[chooser]{The @class{gtk:recent-chooser} object which received
+          the signal.}
+      @end{simple-table}
       The signal is emitted when there is a change in the set of selected
       recently used resources. This can happen when a user modifies the
       selection with the mouse or the keyboard, or when explicitely calling
       functions to change the selection.
-      @begin[code]{table}
-        @entry[chooser]{The @class{gtk:recent-chooser} object which received
-          the signal.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:recent-chooser-filter}
   @see-slot{gtk:recent-chooser-limit}
@@ -301,7 +303,7 @@ lambda (chooser)    :run-last
 (setf (documentation (liber:slot-documentation "limit" 'recent-chooser) t)
  "The @code{limit} property of type @code{:int} (Read / Write) @br{}
   The maximum number of recently used resources to be displayed, or -1 to
-  display all items. By default, the @symbol{gtk:recent-files-limit} setting
+  display all items. By default, the @sym{gtk:recent-files-limit} setting
   is respected. You can override that limit on a particular instance of the
   @class{gtk:recent-chooser} widget by setting this property. @br{}
   Allowed values: >= -1 @br{}
@@ -541,10 +543,10 @@ lambda (chooser)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "sort-type" 'recent-chooser) t)
- "The @code{sort-type} property of type @symbol{gtk:recent-sort-type}
+ "The @code{sort-type} property of type @sym{gtk:recent-sort-type}
   (Read / Write) @br{}
   Sorting order to be used when displaying the recently used resources. @br{}
-  Default value: @code{:none}")
+  Default value: @val[gtk:recent-sort-type]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'recent-chooser-sort-type)
@@ -614,9 +616,9 @@ lambda (chooser)    :run-last
 
 (defun recent-chooser-set-sort-func (chooser func)
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2025-07-11}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @argument[func]{a @symbol{gtk:recent-sort-func} comparison function}
+  @argument[func]{a @sym{gtk:recent-sort-func} comparison function}
   @begin{short}
     Sets the comparison function used when sorting to be @arg{func}.
   @end{short}
@@ -656,11 +658,11 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_get_current_uri" recent-chooser-current-uri)
     :string
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-07}
   @syntax{(gtk:recent-chooser-current-uri chooser) => uri}
   @syntax{(setf (gtk:recent-chooser-current-uri chooser) uri)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @argument[uri]{a string with the URI}
+  @argument[uri]{a string for the URI}
   @begin{short}
     The @fun{gtk:recent-chooser-current-uri} function gets the URI currently
     selected by @arg{chooser}.
@@ -706,9 +708,9 @@ lambda (chooser)    :run-last
 
 (defun recent-chooser-select-uri (chooser uri)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @argument[uri]{a string with the URI}
+  @argument[uri]{a string for the URI}
   @return{@em{True} if @arg{uri} was found.}
   @short{Selects @arg{uri} inside @arg{chooser}.}
   @see-class{gtk:recent-chooser}
@@ -725,9 +727,9 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_unselect_uri" recent-chooser-unselect-uri)
     :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @argument[uri]{a string with the URI}
+  @argument[uri]{a string for the URI}
   @short{Unselects @arg{uri} inside @arg{chooser}.}
   @see-class{gtk:recent-chooser}
   @see-function{gtk:recent-chooser-select-uri}"
@@ -806,9 +808,9 @@ lambda (chooser)    :run-last
 
 (defun recent-chooser-uris (chooser)
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @return{A list of strings.}
+  @return{The list of strings.}
   @begin{short}
     Gets the URIs of the recently used resources.
   @end{short}
@@ -875,9 +877,9 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_list_filters" recent-chooser-list-filters)
     (g:slist-t (g:object recent-filter))
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2025-07-07}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
-  @return{A list of @class{gtk:recent-filter} objects.}
+  @return{The list of @class{gtk:recent-filter} objects.}
   @begin{short}
     Gets the @class{gtk:recent-filter} objects held by chooser.
   @end{short}

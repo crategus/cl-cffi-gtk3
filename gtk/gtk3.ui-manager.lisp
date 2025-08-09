@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.ui-manager.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -275,7 +275,7 @@
 (setf (liber:alias-for-symbol 'ui-manager-item-type)
       "GFlags"
       (liber:symbol-documentation 'ui-manager-item-type)
- "@version{#2024-3-21}
+ "@version{#2025-07-06}
   @begin{declaration}
 (gobject:define-gflags \"GtkUIManagerItemType\" ui-manager-item-type
   (:export t
@@ -293,7 +293,7 @@
   (:popup-with-accels 512))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:auto]{Pick the type of the UI element according to context.}
       @entry[:menubar]{Create a menubar.}
       @entry[:menu]{Create a menu.}
@@ -306,15 +306,15 @@
       @entry[:accelerator]{Install an accelerator.}
       @entry[:popup-with-accels]{Same as @code{:popup}, but the accelerators of
         the actions are shown.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     These values are used by the @fun{gtk:ui-manager-add-ui} function to
     determine what UI element to create.
   @end{short}
   @begin[Warning]{dictionary}
-    The @symbol{gtk:ui-manager-item-type} flags has been deprecated since
-    version 3.10 and should not be used in newly written code.
+    The @sym{gtk:ui-manager-item-type} flags has been deprecated since version
+    3.10 and should not be used in newly written code.
   @end{dictionary}
   @see-class{gtk:ui-manager}
   @see-function{gtk:ui-manager-add-ui}")
@@ -336,9 +336,9 @@
 
 #+liber-documentation
 (setf (documentation 'ui-manager 'type)
- "@version{#2023-3-29}
+ "@version{#2025-06-27}
   @begin{short}
-    A @class{gtk:ui-manager} object constructs a user interface, menus and
+    The @class{gtk:ui-manager} object constructs a user interface, menus and
     toolbars, from one or more UI definitions, which reference actions from one
     or more action groups.
   @end{short}
@@ -392,74 +392,81 @@
     @end{pre}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"actions-changed\" signal}
+    @begin[ui-manager::actions-changed]{signal}
       @begin{pre}
 lambda (manager)    :no-recurse
       @end{pre}
-      The signal is emitted whenever the set of actions changes.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
-      @end{table}
-    @subheading{The \"add-widget\" signal}
+      @end{simple-table}
+      The signal is emitted whenever the set of actions changes.
+    @end{signal}
+    @begin[ui-manager::add-widget]{signal}
       @begin{pre}
 lambda (manager widget)    :no-recurse
       @end{pre}
-      The signal is emitted for each generated menubar and toolbar. It is not
-      emitted for generated popup menus, which can be obtained by the
-      @fun{gtk:ui-manager-widget} function.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[widget]{The added @class{gtk:widget} object.}
-      @end{table}
-    @subheading{The \"connect-proxy\" signal}
+      @end{simple-table}
+      The signal is emitted for each generated menubar and toolbar. It is not
+      emitted for generated popup menus, which can be obtained by the
+      @fun{gtk:ui-manager-widget} function.
+    @end{signal}
+    @begin[ui-manager::connect-proxy]{signal}
       @begin{pre}
 lambda (manager action proxy)    :no-recurse
       @end{pre}
-      The signal is emitted after connecting a proxy to an action. This is
-      intended for simple customizations for which a custom action class would
-      be too clumsy, e.g. showing tooltips for menuitems in the statusbar.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gtk:ui-manager} object which receibed the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
-      @end{table}
-    @subheading{The \"disconnect-proxy\" signal}
+      @end{simple-table}
+      The signal is emitted after connecting a proxy to an action. This is
+      intended for simple customizations for which a custom action class would
+      be too clumsy, for example, showing tooltips for menuitems in the
+      statusbar.
+    @end{signal}
+    @begin[ui-manager::disconnect-proxy]{signal}
       @begin{pre}
 lambda (manager action proxy)    :no-recurse
       @end{pre}
-      The signal is emitted after disconnecting a proxy from an action.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
         @entry[proxy]{The @class{gtk:widget} proxy.}
-      @end{table}
-    @subheading{The \"post-activate\" signal}
+      @end{simple-table}
+      The signal is emitted after disconnecting a proxy from an action.
+    @end{signal}
+    @begin[ui-manager::post-activate]{signal}
       @begin{pre}
 lambda (manager action)    :no-recurse
       @end{pre}
-      The signal is emitted just after the action is activated. This is intended
-      for applications to get notification just after any action is activated.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[manager]{The @class{gtk:ui-manager} object which received the
           signal.}
         @entry[action]{The @class{gtk:action} object.}
-      @end{table}
-    @subheading{The \"pre-activate\" signal}
+      @end{simple-table}
+      The signal is emitted just after the action is activated. This is intended
+      for applications to get notification just after any action is activated.
+    @end{signal}
+    @begin[ui-manager::pre-activate]{signal}
       @begin{pre}
 lambda (manager action)    :no-recurse
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[manager]{The @class{gtk:ui-manager} object which received the
+          signal.}
+        @entry[action]{The @class{gtk:action} object.}
+      @end{simple-table}
       The signal is emitted just before the action is activated. This is
       intended for applications to get notification just before any action is
       activated.
-      @begin[code]{table}
-        @entry[manager]{The @class{gtk:ui-manager} object which received the
-          signal.}
-        @entry[action]{The @class{gtk:action} object.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:ui-manager-add-tearoffs}
   @see-slot{gtk:ui-manager-ui}
@@ -542,8 +549,8 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-new ()
  #+liber-documentation
- "@version{#2023-3-29}
-  @return{A new @class{gtk:ui-manager} object.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:ui-manager} object.}
   @short{Creates a new UI manager object.}
   @begin[Warning]{dictionary}
     The @fun{gtk:ui-manager-new} function has been deprecated since version
@@ -561,10 +568,10 @@ lambda (manager action)    :no-recurse
 (cffi:defcfun ("gtk_ui_manager_insert_action_group"
                ui-manager-insert-action-group) :void
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-05}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[group]{a @class{gtk:action-group} object to be inserted}
-  @argument[pos]{an integer with the position at which the group will be
+  @argument[pos]{an integer for the position at which the group will be
     inserted}
   @begin{short}
     Inserts an action group into the list of action groups associated with the
@@ -618,9 +625,9 @@ lambda (manager action)    :no-recurse
 (cffi:defcfun ("gtk_ui_manager_get_action_groups" ui-manager-action-groups)
     (g:list-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-07}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @return{A list of @class{gtk:action-group} objects.}
+  @return{The list of @class{gtk:action-group} objects.}
   @short{Returns the list of action groups associated with the UI manager.}
   @begin[Warning]{dictionary}
     The @fun{gtk:ui-manager-action-groups} function has been deprecated since
@@ -661,9 +668,9 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_get_widget" ui-manager-widget) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-05}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[path]{a string with a path}
+  @argument[path]{a string for a path}
   @begin{return}
     The @class{gtk:widget} object found by following the path, or @code{nil} if
     no widget was found.
@@ -673,9 +680,9 @@ lambda (manager action)    :no-recurse
   @end{short}
   The path consists of the names specified in the XML description of the UI
   separated by @code{'/'}. Elements which do not have a name or action attribute
-  in the XML, e.g. @code{<popup>}, can be addressed by their XML element name,
-  e.g. @code{\"popup\"}. The root element @code{(\"/ui\")} can be omitted in
-  the path.
+  in the XML, for example @code{<popup>}, can be addressed by their XML element
+  name, for example @code{\"popup\"}. The root element @code{(\"/ui\")} can be
+  omitted in the path.
 
   Note that the widget found by following a path that ends in a @code{<menu>}
   element is the menuitem to which the menu is attached, not the menu itself.
@@ -702,9 +709,9 @@ lambda (manager action)    :no-recurse
 (cffi:defcfun ("gtk_ui_manager_get_toplevels" ui-manager-toplevels)
     (g:slist-t g:object)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-06}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[types]{the @symbol{gtk:ui-manager-item-type} flags which specifies
+  @argument[types]{a @sym{gtk:ui-manager-item-type} flags which specifies
     the types of toplevel widgets to include, allowed types are @code{:menubar},
     @code{:toolbar} and @code{:popup}}
   @begin{return}
@@ -730,9 +737,9 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_get_action" ui-manager-action) g:object
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-05}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[path]{a string with a path}
+  @argument[path]{a string for a path}
   @begin{return}
     The @class{gtk:action} object whose proxy widget is found by following the
     path, or @code{nil} if no widget was found.
@@ -766,11 +773,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-resource (manager path)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-17}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[path]{a string with the resource path of the file to parse}
+  @argument[path]{a string for the resource path of the file to parse}
   @begin{return}
-    The unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer for the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -804,11 +811,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-string (manager buffer)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-17}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[buffer]{the string to parse}
+  @argument[buffer]{a string to parse}
   @begin{return}
-    The unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer for the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -840,11 +847,11 @@ lambda (manager action)    :no-recurse
 
 (defun ui-manager-add-ui-from-file (manager filename)
  #+liber-documentation
- "@version{#2024-11-20}
+ "@version{#2025-07-16}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[filename]{a string with the name of the file to parse}
+  @argument[filename]{a string for the name of the file to parse}
   @begin{return}
-    The unsigned integer with the merge ID for the merged UI. The merge ID can
+    The unsigned integer for the merge ID for the merged UI. The merge ID can
     be used to unmerge the UI with the @fun{gtk:ui-manager-remove-ui} function.
     If an error occurred, the return value is 0.
   @end{return}
@@ -869,9 +876,9 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_new_merge_id" ui-manager-new-merge-id) :uint
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-07}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @return{An unsigned integer with an unused merge ID.}
+  @return{The unsigned integer for an unused merge ID.}
   @begin{short}
     Returns an unused merge ID, suitable for use with the
     @fun{gtk:ui-manager-add-ui} function.
@@ -892,15 +899,15 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_add_ui" ui-manager-add-ui) :void
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-05}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[id]{an unsigned integer with the merge ID for the merged UI, see
+  @argument[id]{an unsigned integer for the merge ID for the merged UI, see
     the @fun{gtk:ui-manager-new-merge-id} function}
-  @argument[path]{a string with a path}
-  @argument[name]{a string with the name for the added UI element}
-  @argument[action]{a string with the name of the action to be proxied, or
+  @argument[path]{a string for a path}
+  @argument[name]{a string for the name for the added UI element}
+  @argument[action]{a string for the name of the action to be proxied, or
     @code{nil} to add a separator}
-  @argument[type]{a value of the @symbol{gtk:ui-manager-item-type} flags with
+  @argument[type]{a value of the @sym{gtk:ui-manager-item-type} flags for
     the type of UI element to add}
   @argument[top]{if @em{true}, the UI element is added before its siblings,
     otherwise it is added after its siblings}
@@ -937,9 +944,9 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_remove_ui" ui-manager-remove-ui) :void
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2025-07-05}
   @argument[manager]{a @class{gtk:ui-manager} object}
-  @argument[id]{an unsigned integer with a merge ID as returned by the
+  @argument[id]{an unsigned integer for a merge ID as returned by the
     @fun{gtk:ui-manager-add-ui-from-string} function}
   @begin{short}
     Unmerges the part of managers content identified by @arg{id}.

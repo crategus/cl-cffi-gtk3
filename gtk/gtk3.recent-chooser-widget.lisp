@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.recent-chooser-widget.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -58,7 +58,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkRecentChooserWidget
+;;; GtkRecentChooserWidget
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkRecentChooserWidget" recent-chooser-widget
@@ -91,15 +91,15 @@
   @see-class{gtk:recent-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_widget_new ()
+;;; gtk_recent_chooser_widget_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline recent-chooser-widget-new))
 
 (defun recent-chooser-widget-new ()
  #+liber-documentation
- "@version{#2023-3-24}
-  @return{A new @class{gtk:recent-chooser-widget} widget.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:recent-chooser-widget} widget.}
   @begin{short}
     Creates a new @class{gtk:recent-chooser-widget} widget.
   @end{short}
@@ -111,16 +111,16 @@
 (export 'recent-chooser-widget-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_recent_chooser_widget_new_for_manager ()
+;;; gtk_recent_chooser_widget_new_for_manager
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline recent-chooser-widget-new-for-manager))
 
 (defun recent-chooser-widget-new-for-manager (manager)
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2025-07-07}
   @argument[manager]{a @class{gtk:recent-manager} object}
-  @return{A new @class{gtk:recent-chooser-widget} widget.}
+  @return{The new @class{gtk:recent-chooser-widget} widget.}
   @begin{short}
     Creates a new @class{gtk:recent-chooser-widget} widget with a specified
     recent manager.

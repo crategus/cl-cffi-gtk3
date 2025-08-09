@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tearoff-menu-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -58,7 +58,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkTearoffMenuItem
+;;; GtkTearoffMenuItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkTearoffMenuItem" tearoff-menu-item
@@ -94,15 +94,15 @@
   @see-class{gtk:menu-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tearoff_menu_item_new ()
+;;; gtk_tearoff_menu_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline tearoff-menu-item-new))
 
 (defun tearoff-menu-item-new ()
  #+liber-documentation
- "@version{#2023-3-28}
-  @return{A new @class{gtk:tearoff-menu-item} widget.}
+ "@version{#2025-07-07}
+  @return{The new @class{gtk:tearoff-menu-item} widget.}
   @short{Creates a new tearoff menu.}
   @begin[Warning]{dictionary}
     The @fun{gtk:tearoff-menu-item-new} function has been deprecated since

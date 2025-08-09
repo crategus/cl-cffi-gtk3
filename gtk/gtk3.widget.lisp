@@ -443,7 +443,7 @@
 (setf (liber:alias-for-symbol 'widget-help-type)
       "GEnum"
       (liber:symbol-documentation 'widget-help-type)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @begin{declaration}
 (gobject:define-genum \"GtkWidgetHelpType\" widget-help-type
   (:export t
@@ -452,8 +452,8 @@
   (:whats-this 1))
   @end{declaration}
   @begin{short}
-    Kinds of widget-specific help used in the @code{\"show-help\"} signal
-    handler.
+    Kinds of widget-specific help used in the @sig[gtk:widget]{show-help}
+    signal handler.
   @end{short}
   @see-class{gtk:widget}")
 
@@ -472,7 +472,7 @@
 (setf (liber:alias-for-symbol 'size-request-mode)
       "GEnum"
       (liber:symbol-documentation 'size-request-mode)
- "@version{2025-1-25}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkSizeRequestMode\" size-request-mode
   (:export t
@@ -482,12 +482,12 @@
   (:constant-size 2))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:height-for-width]{Prefer height-for-width geometry management.}
       @entry[:width-for-height]{Prefer width-for-height geometry management.}
       @entry[:constant-size]{Do not trade height-for-width or width-for-height
         geometry management.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Specifies a preference for height-for-width or width-for-height geometry
@@ -520,7 +520,7 @@
 (setf (liber:alias-for-symbol 'align)
       "GEnum"
       (liber:symbol-documentation 'align)
- "@version{2025-1-25}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-genum \"GtkAlign\" align
   (:export t
@@ -532,7 +532,7 @@
   (:baseline 4))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:fill]{Stretch to fill all space if possible, center if no
         meaningful way to stretch.}
       @entry[:start]{Snap to left or top side, leaving space on right or
@@ -540,7 +540,7 @@
       @entry[:end]{Snap to right or bottom side, leaving space on left or top.}
       @entry[:center]{Center natural width of widget inside the allocation.}
       @entry[:baseline]{Align the widget according to the baseline.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     Controls how a widget deals with extra space in a single x or y dimension.
@@ -552,12 +552,13 @@
   scaled and stretched, it could be centered, or it could be positioned to one
   side of the space.
 
-  Note that in horizontal context the @code{:start} and @code{:end} values are
-  interpreted relative to text direction.
+  Note that in horizontal context the @val[gtk:align]{:start} and
+  @val[gtk:align]{:end} values are interpreted relative to text direction.
 
-  The @code{:baseline} support is optional for containers and widgets, and it
-  is only supported for vertical alignment. When it is not supported by a child
-  widget or a container it is treated as the @code{:fill} value.
+  The @val[gtk:align]{:baseline} support is optional for containers and widgets,
+  and it is only supported for vertical alignment. When it is not supported by
+  a child widget or a container it is treated as the @val[gtk:align]{:fill}
+  value.
   @see-class{gtk:widget}
   @see-function{gtk:widget-halign}
   @see-function{gtk:widget-valign}")
@@ -576,7 +577,7 @@
 (setf (liber:alias-for-class 'requisition)
       "GBoxed"
       (documentation 'requisition 'type)
- "@version{2025-1-25}
+ "@version{2025-07-15}
   @begin{declaration}
 (glib:define-gboxed-cstruct requisition \"GtkRequisition\"
   (:export t
@@ -585,10 +586,10 @@
   (height :int :initform 0))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
-      @entry[width]{The integer with the desired width of the widget.}
-      @entry[height]{The integer with the desired height of the widget.}
-    @end{table}
+    @begin[code]{simple-table}
+      @entry[width]{The integer for the desired width of the widget.}
+      @entry[height]{The integer for the desired height of the widget.}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The @class{gtk:requisition} structure represents the desired size of a
@@ -613,11 +614,11 @@
 (setf (liber:alias-for-function 'requisition-height)
       "Accessor"
       (documentation 'requisition-height 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:requisition-height instance) => height}
   @syntax{(setf (gtk:requisition-height instance) height)}
   @argument[instance]{a @class{gtk:requisition} instance}
-  @argument[height]{an integer with the height}
+  @argument[height]{an integer for the height}
   @begin{short}
     Accessor of the @arg{height} slot of the @class{gtk:requisition} structure.
   @end{short}
@@ -637,11 +638,11 @@
 (setf (liber:alias-for-function 'requisition-width)
       "Accessor"
       (documentation 'requisition-width 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:requisition-width instance) => width}
   @syntax{(setf (gtk:requisition-width instance) width)}
   @argument[instance]{a @class{gtk:requisition} instance}
-  @argument[width]{an integer with the width}
+  @argument[width]{an integer for the width}
   @begin{short}
     Accessor of the @arg{width} slot of the @class{gtk:requisition} structure.
   @end{short}
@@ -663,7 +664,7 @@
 
 (defun requisition-new (&key (width 0) (height 0))
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @argument[width]{an integer for the width, default 0}
   @argument[height]{an integer for the height, default 0}
   @begin{return}
@@ -685,10 +686,12 @@
 
 (defun requisition-copy (requisition)
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @argument[requisition]{a @class{gtk:requisition} instance}
-  @return{The newly allocated @class{gtk:requisition} instance with the copy
-    of @arg{requisition}.}
+  @begin{return}
+    The newly allocated @class{gtk:requisition} instance with the copy of
+    @arg{requisition}.
+  @end{return}
   @begin{short}
     Copies a @class{gtk:requisition} instance.
   @end{short}
@@ -827,7 +830,7 @@
 
 #+liber-documentation
 (setf (documentation 'widget 'type)
- "@version{2025-1-25}
+ "@version{2025-07-17}
   @begin{short}
     The @class{gtk:widget} class is the base class all widgets in GTK derive
     from. It manages the widget life cycle, states and style.
@@ -849,10 +852,10 @@
   or a baseline assigned to it by the grandparent.
 
   If a widget ends up baseline aligned it will be allocated all the space in
-  the parent as if it was @code{:fill}, but the selected baseline can be found
-  via the @fun{gtk:widget-allocated-baseline} function. If this has a value
-  other than -1 you need to align the widget such that the baseline appears at
-  the position.
+  the parent as if it was @val[gtk:align]{:fill}, but the selected baseline can
+  be found via the @fun{gtk:widget-allocated-baseline} function. If this has a
+  value other than -1 you need to align the widget such that the baseline
+  appears at the position.
 
   @subheading{Style Properties}
   The @class{gtk:widget} class introduces style properties - these are basically
@@ -969,382 +972,396 @@
 </interface>
     @end{pre}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[cursor-aspect-ratio]{entry}
-        The @code{cursor-aspect-ratio} style property of type @code{:float}
-        (Read) @br{}
-        Aspect ratio with which to draw insertion cursor. @br{}
-        Allowed values: [0.0,1.0] @br{}
-        Default value: 0.04
-      @end{entry}
-      @begin[cursor-color]{entry}
-        The @code{cursor-color} style property of type @class{gdk:color}
-        (Read ) @br{}
-        Color with which to draw insertion cursor.
-      @end{entry}
-      @begin[focus-line-pattern]{entry}
-        The @code{focus-line-pattern} style property of type @code{:string}
-        (Read) @br{}
-        Dash pattern used to draw the focus indicator. @br{}
-        @em{Warning:} The @code{focus-line-pattern} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use the outline-style CSS property instead. @br{}
-        Default value: \"\001\001\"
-      @end{entry}
-      @begin[focus-line-width]{entry}
-        The @code{focus-line-width} style property of type @code{:int}
-        (Read) @br{}
-        Width, in pixels, of the focus indicator line. @br{}
-        @em{Warning:} The @code{focus-line-width} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use the outline-width CSS property instead. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 1
-      @end{entry}
-      @begin[focus-padding]{entry}
-        The @code{focus-padding} style property of type @code{:int}
-        (Read) @br{}
-        Width, in pixels, between focus indicator and the widget 'box'. @br{}
-        @em{Warning:} The @code{focus-padding} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use the padding CSS property instead. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 1
-      @end{entry}
-      @begin[interior-focus]{entry}
-        The @code{interior-focus} style property of type @code{:boolean}
-        (Read) @br{}
-        Whether to draw the focus indicator inside widgets. @br{}
-        @em{Warning:} The @code{interior-focus} style property has been
-        deprecated since version 3.14 and should not be used in newly written
-        code. Use the outline CSS property instead. @br{}
-        Default value: @em{true}
-      @end{entry}
-      @begin[link-color]{entry}
-        The @code{link-color} style property of type @class{gdk:color}
-        (Read) @br{}
-        Defines the color of unvisited links. @br{}
-        @em{Warning:} The @code{link-color} style property has been
-        deprecated since version 3.12 and should not be used in newly written
-        code. Links now use a separate state flags for selecting different
-        theming. This style property is ignored.
-      @end{entry}
-      @begin[scroll-arrow-hlength]{entry}
-        The @code{scroll-arrow-hlength} style property of type @code{:int}
-        (Read) @br{}
-        Defines the length of horizontal scroll arrows. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 16
-      @end{entry}
-      @begin[scroll-arrow-vlength]{entry}
-        The @code{scroll-arrow-vlength} style property of type @code{:int}
-        (Read) @br{}
-        Defines the length of vertical scroll arrows. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 16
-      @end{entry}
-      @begin[secondary-cursor-color]{entry}
-        The @code{secondary-cursor-color} style property of type
-        @class{gdk:color} (Read) @br{}
-        Color with which to draw the secondary insertion cursor when editing
-        mixed right-to-left and left-to-right text.
-      @end{entry}
-      @begin[separator-height]{entry}
-        The @code{separator-height} style property of type @code{:int}
-        (Read) @br{}
-        Defines the height of separators. This property only takes effect if
-        the @code{wide-separators} style property is @em{true}. @br{}
-        @em{Warning:} The @code{separator-height} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-height CSS property on the separator elements
-        to size separators. The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[separator-width]{entry}
-        The @code{separator-width} style property of type @code{:int}
-        (Read) @br{}
-        Defines the width of separators. This property only takes effect if the
-        @code{wide-separators} style property is @em{true}. @br{}
-        @em{Warning:} The @code{separator-width} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-height CSS property on the separator elements
-        to size separators. The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 0
-      @end{entry}
-      @begin[text-handle-height]{entry}
-        The @code{text-handle-height} style property of type @code{:int}
-        (Read) @br{}
-        Height of text selection handles. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 24
-      @end{entry}
-      @begin[text-handle-width]{entry}
-        The @code{text-handle-width} style property of type @code{:int}
-        (Read) @br{}
-        Width of text selection handles. @br{}
-        Allowed values: >= 1 @br{}
-        Default value: 20
-      @end{entry}
-      @begin[visited-link-color]{entry}
-        The @code{visited-link-color} style property of type @class{gdk:color}
-        (Read) @br{}
-        Defines the color of visited links. @br{}
-        @em{Warning:} The @code{visited-link-color} style property has been
-        deprecated since version 3.12 and should not be used in newly written
-        code. Links now use a separate state flags for selecting different
-        theming. This style property is ignored.
-      @end{entry}
-      @begin[wide-separators]{entry}
-        The @code{wide-separators} style property of type @code{:boolean}
-        (Read) @br{}
-        Defines whether separators have configurable width and should be drawn
-        using a box instead of a line. @br{}
-        Default value: @em{false}
-      @end{entry}
-      @begin[window-dragging]{entry}
-        The @code{window-dragging} style property of type @code{:boolean}
-        (Read) @br{}
-        Whether windows can be dragged by clicking on empty areas. @br{}
-        Default value: @em{false}
-      @end{entry}
-    @end{table}
+    @begin[widget:cursor-aspect-ratio]{property}
+      The @code{cursor-aspect-ratio} style property of type @code{:float}
+      (Read) @br{}
+      Aspect ratio with which to draw insertion cursor. @br{}
+      Allowed values: [0.0,1.0] @br{}
+      Default value: 0.04
+    @end{property}
+    @begin[widget:cursor-color]{property}
+      The @code{cursor-color} style property of type @class{gdk:color}
+      (Read ) @br{}
+      Color with which to draw insertion cursor.
+    @end{property}
+    @begin[widget:focus-line-pattern]{property}
+      The @code{focus-line-pattern} style property of type @code{:string}
+      (Read) @br{}
+      Dash pattern used to draw the focus indicator. @br{}
+      @em{Warning:} The @code{focus-line-pattern} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use the outline-style CSS property instead. @br{}
+      Default value: \"\001\001\"
+    @end{property}
+    @begin[widget:focus-line-width]{property}
+      The @code{focus-line-width} style property of type @code{:int}
+      (Read) @br{}
+      Width, in pixels, of the focus indicator line. @br{}
+      @em{Warning:} The @code{focus-line-width} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use the outline-width CSS property instead. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 1
+    @end{property}
+    @begin[widget:focus-padding]{property}
+      The @code{focus-padding} style property of type @code{:int}
+      (Read) @br{}
+      Width, in pixels, between focus indicator and the widget 'box'. @br{}
+      @em{Warning:} The @code{focus-padding} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use the padding CSS property instead. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 1
+    @end{property}
+    @begin[widget:interior-focus]{property}
+      The @code{interior-focus} style property of type @code{:boolean}
+      (Read) @br{}
+      Whether to draw the focus indicator inside widgets. @br{}
+      @em{Warning:} The @code{interior-focus} style property has been
+      deprecated since version 3.14 and should not be used in newly written
+      code. Use the outline CSS property instead. @br{}
+      Default value: @em{true}
+    @end{property}
+    @begin[widget:link-color]{property}
+      The @code{link-color} style property of type @class{gdk:color}
+      (Read) @br{}
+      Defines the color of unvisited links. @br{}
+      @em{Warning:} The @code{link-color} style property has been
+      deprecated since version 3.12 and should not be used in newly written
+      code. Links now use a separate state flags for selecting different
+      theming. This style property is ignored.
+    @end{property}
+    @begin[widget:scroll-arrow-hlength]{property}
+      The @code{scroll-arrow-hlength} style property of type @code{:int}
+      (Read) @br{}
+      Defines the length of horizontal scroll arrows. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 16
+    @end{property}
+    @begin[widget:scroll-arrow-vlength]{property}
+      The @code{scroll-arrow-vlength} style property of type @code{:int}
+      (Read) @br{}
+      Defines the length of vertical scroll arrows. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 16
+    @end{property}
+    @begin[widget:secondary-cursor-color]{property}
+      The @code{secondary-cursor-color} style property of type
+      @class{gdk:color} (Read) @br{}
+      Color with which to draw the secondary insertion cursor when editing
+      mixed right-to-left and left-to-right text.
+    @end{property}
+    @begin[widget:separator-height]{property}
+      The @code{separator-height} style property of type @code{:int}
+      (Read) @br{}
+      Defines the height of separators. This property only takes effect if
+      the @code{wide-separators} style property is @em{true}. @br{}
+      @em{Warning:} The @code{separator-height} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-height CSS property on the separator elements
+      to size separators. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[widget:separator-width]{property}
+      The @code{separator-width} style property of type @code{:int}
+      (Read) @br{}
+      Defines the width of separators. This property only takes effect if the
+      @code{wide-separators} style property is @em{true}. @br{}
+      @em{Warning:} The @code{separator-width} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-height CSS property on the separator elements
+      to size separators. The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 0
+    @end{property}
+    @begin[widget:text-handle-height]{property}
+      The @code{text-handle-height} style property of type @code{:int}
+      (Read) @br{}
+      Height of text selection handles. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 24
+    @end{property}
+    @begin[widget:text-handle-width]{property}
+      The @code{text-handle-width} style property of type @code{:int}
+      (Read) @br{}
+      Width of text selection handles. @br{}
+      Allowed values: >= 1 @br{}
+      Default value: 20
+    @end{property}
+    @begin[widget:visited-link-color]{property}
+      The @code{visited-link-color} style property of type @class{gdk:color}
+      (Read) @br{}
+      Defines the color of visited links. @br{}
+      @em{Warning:} The @code{visited-link-color} style property has been
+      deprecated since version 3.12 and should not be used in newly written
+      code. Links now use a separate state flags for selecting different
+      theming. This style property is ignored.
+    @end{property}
+    @begin[widget:wide-separators]{property}
+      The @code{wide-separators} style property of type @code{:boolean}
+      (Read) @br{}
+      Defines whether separators have configurable width and should be drawn
+      using a box instead of a line. @br{}
+      Default value: @em{false}
+    @end{property}
+    @begin[widget:window-dragging]{property}
+      The @code{window-dragging} style property of type @code{:boolean}
+      (Read) @br{}
+      Whether windows can be dragged by clicking on empty areas. @br{}
+      Default value: @em{false}
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"accel-closures-changed\" signal}
+    @begin[widget::accel-closures-changed]{signal}
       @begin{pre}
 lambda (widget)
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
-    @subheading{The \"button-press-event\" signal}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::button-press-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[event]{The @class{gdk:event-button} event which triggered this
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[event]{The @class{gdk:event-button} event that triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a button typically from a mouse is pressed. To receive this
       signal, the @class{gdk:window} object associated to the widget needs to
-      enable the @code{:button-press-mask} mask of the @symbol{gdk:event-mask}
-      flags. The signal will be sent to the grab widget if there is one.
-    @subheading{The \"button-release-event\" signal}
+      enable the @val[gdk:event-mask]{:button-press-mask} mask of the
+      @sym{gdk:event-mask} flags. The signal will be sent to the grab widget if
+      there is one.
+    @end{signal}
+    @begin[widget::button-release-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-button} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a button typically from a mouse is released. To receive this
       signal, the @class{gdk:window} object associated to the widget needs to
-      enable the @code{:button-realease-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
-      if there is one.
-    @subheading{The \"can-activate-accel\" signal}
+      enable the @code{:button-realease-mask} mask of the @sym{gdk:event-mask}
+      flags. The signal will be sent to the grab widget if there is one.
+    @end{signal}
+    @begin[widget::can-activate-accel]{signal}
       @begin{pre}
 lambda (widget signal)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[signal]{The unsigned integer with the ID of a signal installed
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[signal]{The unsigned integer for the ID of a signal installed
           on the widget.}
         @entry[Returns]{@em{True} if the signal can be activated.}
-      @end{table}
+      @end{simple-table}
       Determines whether an accelerator that activates the signal identified by
       @arg{signal} can currently be activated. The signal is present to allow
       applications and derived widgets to override the default handling for
       determining whether an accelerator can be activated.
-    @subheading{The \"child-notify\" signal}
+    @end{signal}
+    @begin[widget::child-notify]{signal}
       @begin{pre}
 lambda (widget pspec)    :no-hooks
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[pspec]{The @symbol{g:param-spec} instance of the changed child
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[pspec]{The @sym{g:param-spec} instance for the changed child
           property.}
-      @end{table}
-      Emitted for each child property that has changed on an object. The
-      detail of the signal holds the property name.
-    @subheading{The \"composited-changed\" signal}
+      @end{simple-table}
+      Emitted for each child property that has changed on an object. The detail
+      of the signal holds the property name.
+    @end{signal}
+    @begin[widget::composited-changed]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       Emitted when the composited status of widgets screen changes.@br{}
-      @em{Warning:} The @code{\"composited-changed\"} signal has been deprecated
-      since version 3.22 and should not be used in newly written code. Use the
-      @code{\"composited-changed\"} signal of the @class{gdk:screen} class
-      instead.
-    @subheading{The \"configure-event\" signal}
+      @em{Warning:} The @sig[gtk:widget]{composited-changed} signal has been
+      deprecated since version 3.22 and should not be used in newly written
+      code. Use the @sig[gdk:screen]{composited-changed} signal of the
+      @class{gdk:screen} class instead.
+    @end{signal}
+    @begin[widget::configure-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-configure} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the size, position or stacking of the GDK window of the
       widget has changed. To receive this signal, the @class{gdk:window} object
       associated to the widget needs to enable the @code{:structure-mask} mask
-      of the @symbol{gdk:event-mask} flags. GDK will enable this mask
-      automatically for all new windows.
-    @subheading{The \"damage-event\" signal}
+      of the @sym{gdk:event-mask} flags. GDK will enable this mask automatically
+      for all new windows.
+    @end{signal}
+    @begin[widget::damage-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-expose} event.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a redirected window belonging to the widget gets drawn into.
       The region/area members of the event shows what area of the redirected
       drawable was drawn into.
-    @subheading{The \"delete-event\" signal}
+    @end{signal}
+    @begin[widget::delete-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-    @begin[code]{table}
-      @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @entry[event]{The @class{gdk:event} event which triggered this signal.}
-      @entry[Returns]{@em{True} to stop other handlers from being invoked for
-        the event, @em{false} to propagate the event further.}
-    @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[event]{The @class{gdk:event} event which triggered this signal.}
+        @entry[Returns]{@em{True} to stop other handlers from being invoked for
+          the event, @em{false} to propagate the event further.}
+      @end{simple-table}
       Emitted if a user requests that a toplevel window is closed. The default
       handler for this signal destroys the window. Connecting the
       @fun{gtk:widget-hide-on-delete} function to this signal will cause the
       window to be hidden instead, so that it can later be shown again without
       reconstructing it.
-    @subheading{The \"destroy\" signal}
+    @end{signal}
+    @begin[widget::destroy]{signal}
       @begin{pre}
 lambda (widget)    :no-hooks
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Signals that all holders of a reference to the widget should release the
       reference that they hold. May result in finalization of the widget if all
       references are released.
-    @subheading{The \"destroy-event\" signal}
+    @end{signal}
+    @begin[widget::destroy-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event} event which triggered this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a @class{gdk:window} object is destroyed. You rarely get this
       signal, because most widgets disconnect themselves from their GDK window
       before they destroy it, so no widget owns the GDK window at destroy time.
       To receive this signal, the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:structure-mask} mask of the
-      @symbol{gdk:event-mask} flags. GDK will enable this mask automatically
+      widget needs to enable the @val[gdk:event-mask]{:structure-mask} mask of
+      the @sym{gdk:event-mask} flags. GDK will enable this mask automatically
       for all new windows.
-    @subheading{The \"direction-changed\" signal}
+    @end{signal}
+    @begin[widget::direction-changed]{signal}
       @begin{pre}
 lambda (widget direction)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
-        @entry[direction]{The previous @symbol{gtk:text-direction} text
-          direction of the widget.}
-      @end{table}
+        @entry[direction]{The previous @sym{gtk:text-direction} text direction
+          of the widget.}
+      @end{simple-table}
       Emitted when the text direction of a widget changes.
-    @subheading{The \"drag-begin\" signal}
+    @end{signal}
+    @begin[widget::drag-begin]{signal}
       @begin{pre}
 lambda (widget context)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} object.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drag source when a drag is started. A typical reason to
       connect to this signal is to set up a custom drag icon with, for example,
       the @fun{gtk:drag-source-set-icon-pixbuf} function. Note that some widgets
       set up a drag icon in the default handler of this signal, so you may have
       to use the @fun{g:signal-connect} function to override what the default
       handler did.
-    @subheading{The \"drag-data-delete\" signal}
+    @end{signal}
+    @begin[widget::drag-data-delete]{signal}
       @begin{pre}
 lambda (widget context)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} object.}
-      @end{table}
-      Emitted on the drag source when a drag with the @code{:move} action of
-      the @symbol{gdk:drag-action} flags is successfully completed. The signal
-      handler is responsible for deleting the data that has been dropped. What
-      \"delete\" means depends on the context of the drag operation.
-    @subheading{The \"drag-data-get\" signal}
+      @end{simple-table}
+      Emitted on the drag source when a drag with the
+      @val[gdk:drag-action]{:move} action of the @sym{gdk:drag-action} flags is
+      successfully completed. The signal handler is responsible for deleting the
+      data that has been dropped. What \"delete\" means depends on the context
+      of the drag operation.
+    @end{signal}
+    @begin[widget::drag-data-get]{signal}
       @begin{pre}
 lambda (widget context selection info time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} object.}
         @entry[selection]{The @class{gtk:selection-data} instance to be filled
           with the dragged data.}
-        @entry[info]{The unsigned integer with the info that has been registered
+        @entry[info]{The unsigned integer for the info that has been registered
           with the target in the @class{gtk:target-list} instance.}
-        @entry[time]{The unsigned integer with the timestamp at which the data
+        @entry[time]{The unsigned integer for the timestamp at which the data
           was requested.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drag source when the drop site requests the data which
       is dragged. It is the responsibility of the signal handler to fill the
       @arg{selection} argument with the data in the format which is indicated
       by the @arg{info} argument. See the @fun{gtk:selection-data-set} and
       @fun{gtk:selection-data-text} functions.
-    @subheading{The \"drag-data-received\" signal}
+    @end{signal}
+    @begin[widget::drag-data-received]{signal}
       @begin{pre}
 lambda (widget context x y selection info time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
         @entry[x]{The integer where the drop happened.}
         @entry[y]{The integer where the drop happened.}
         @entry[selection]{The received @class{gtk:selection-data} data.}
-        @entry[info]{The unsigned integer with the info that has been registered
+        @entry[info]{The unsigned integer for the info that has been registered
           with the target in the @class{gtk:target-list} instance.}
-        @entry[time]{The unsigned integer with the timestamp at which the data
+        @entry[time]{The unsigned integer for the timestamp at which the data
           was received.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drop site when the dragged data has been received. If the
       data was received in order to determine whether the drop will be accepted,
       the handler is expected to call the @fun{gdk:drag-status} function and not
       finish the drag. If the data was received in response to a
-      @code{\"drag-drop\"} signal and this is the last target to be received,
-      the handler for this signal is expected to process the received data and
-      then call the @fun{gtk:drag-finish} function, setting the success
+      @sig[gtk:widget]{drag-drop} signal and this is the last target to be
+      received, the handler for this signal is expected to process the received
+      data and then call the @fun{gtk:drag-finish} function, setting the success
       parameter depending on whether the data was processed successfully.
       Applications must create some means to determine why the signal was
       emitted and therefore whether to call the @fun{gdk:drag-status} or
       @fun{gtk:drag-finish} functions. The handler may inspect the selected
       action with the @fun{gdk:drag-context-selected-action} function before
       calling the @fun{gtk:drag-finish} function, for example, to implement the
-      @code{:ask} value of the @symbol{gdk:drag-action} flags as shown in the
-      following example:
+      @val[gdk:drag-action]{:ask} value of the @sym{gdk:drag-action} flags as
+      shown in the following example:
       @begin{pre}
 void
 drag_data_received (GtkWidget          *widget,
@@ -1388,22 +1405,23 @@ drag_data_received (GtkWidget          *widget,
     gtk_drag_finish (context, FALSE, FALSE, time);
 @}
       @end{pre}
-    @subheading{The \"drag-drop\" signal}
+    @end{signal}
+    @begin[widget::drag-drop]{signal}
       @begin{pre}
 lambda (widget context x y time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
-        @entry[x]{The integer with the x coordinate of the current cursor
+        @entry[x]{The integer for the x coordinate of the current cursor
           position.}
-        @entry[y]{The integer with the y coordinate of the current cursor
+        @entry[y]{The integer for the y coordinate of the current cursor
           position.}
-        @entry[time]{The unsigned integer with the timestamp of the motion
+        @entry[time]{The unsigned integer for the timestamp of the motion
           event.}
         @entry[Returns]{The boolean whether the cursor position is in a drop
           zone.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drop site when the user drops the data onto the widget.
       The signal handler must determine whether the cursor position is in a
       drop zone or not. If it is not in a drop zone, it returns @em{false} and
@@ -1411,70 +1429,74 @@ lambda (widget context x y time)    :run-last
       @em{true}. In this case, the handler must ensure that the
       @fun{gtk:drag-finish} function is called to let the source know that the
       drop is done. The call to the @fun{gtk:drag-finish} function can be done
-      either directly or in a @code{\"drag-data-received\"} signal handler which
-      gets triggered by calling the @fun{gtk:drag-data} function to receive the
-      data for one or more of the supported targets.
-    @subheading{The \"drag-end\" signal}
+      either directly or in a @sig[gtk:widget]{drag-data-received} signal
+      handler which gets triggered by calling the @fun{gtk:drag-data} function
+      to receive the data for one or more of the supported targets.
+    @end{signal}
+    @begin[widget::drag-end]{signal}
       @begin{pre}
 lambda (widget context)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drag source when a drag is finished. A typical reason to
-      connect to this signal is to undo things done in the @code{\"drag-begin\"}
-      signal handler.
-    @subheading{The \"drag-failed\" signal}
+      connect to this signal is to undo things done in the
+      @sig[gtk:widget]{drag-begin} signal handler.
+    @end{signal}
+    @begin[widget::drag-failed]{signal}
       @begin{pre}
 lambda (widget context result)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
-        @entry[result]{The @symbol{gtk:drag-result} result of the drag
-          operation.}
+        @entry[result]{The @sym{gtk:drag-result} result of the drag operation.}
         @entry[Returns]{@em{True} if the failed drag operation has been already
           handled.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drag source when a drag has failed. The signal handler may
       hook custom code to handle a failed DND operation based on the type of
       error, it returns @em{true} if the failure has been already handled, not
       showing the default \"drag operation failed\" animation, otherwise it
       returns @em{false}.
-    @subheading{The \"drag-leave\" signal}
+    @end{signal}
+    @begin[widget::drag-leave]{signal}
       @begin{pre}
 lambda (widget context time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
-        @entry[time]{The unsigned integer with the timestamp of the motion
+        @entry[time]{The unsigned integer for the timestamp of the motion
           event.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drop site when the cursor leaves the widget. A typical
       reason to connect to this signal is to undo things done in a
-      @code{\"drag-motion\"} signal handler, for example, undo highlighting
-      with the @fun{gtk:drag-unhighlight} function. Likewise, the
-      @code{\"drag-leave\"} signal is also emitted before the
-      @code{\"drag-drop\"} signal, for instance to allow cleaning up of a
-      preview item created in the @code{\"drag-motion\"} signal handler.
-    @subheading{The \"drag-motion\" signal}
+      @sig[gtk:widget]{drag-motion} signal handler, for example, undo
+      highlighting with the @fun{gtk:drag-unhighlight} function. Likewise, the
+      @sig[gtk:widget]{drag-leave} signal is also emitted before the
+      @sig[gtk:widget]{drag-drop} signal, for instance to allow cleaning up of
+      a preview item created in the @sig[gtk:widget]{drag-motion} signal
+      handler.
+    @end{signal}
+    @begin[widget::drag-motion]{signal}
       @begin{pre}
 lambda (widget context x y time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[context]{The @class{gdk:drag-context} drag context.}
-        @entry[x]{The integer with the x coordinate of the current cursor
+        @entry[x]{The integer for the x coordinate of the current cursor
           position.}
-        @entry[y]{The integer with the y coordinate of the current cursor
+        @entry[y]{The integer for the y coordinate of the current cursor
           position.}
-        @entry[time]{The unsigned integer with the timestamp of the motion
+        @entry[time]{The unsigned integer for the timestamp of the motion
           event.}
         @entry[Returns]{The boolean whether the cursor position is in a drop
           zone.}
-      @end{table}
+      @end{simple-table}
       Emitted on the drop site when the user moves the cursor over the widget
       during a drag. The signal handler must determine whether the cursor
       position is in a drop zone or not. If it is not in a drop zone, it returns
@@ -1487,17 +1509,18 @@ lambda (widget context x y time)    :run-last
       made based solely on the cursor position and the type of the data, the
       handler may inspect the dragged data by calling the @fun{gtk:drag-data}
       function and defer the @fun{gdk:drag-status} function call to the
-      @code{\"drag-data-received\"} signal handler. Note that you cannot pass
-      the @code{:drop}, @code{:motion} or @code{:all} values of the
-      @symbol{gtk:dest-defaults} flags to the @fun{gtk:drag-dest-set} function
-      when using the @code{\"drag-motion\"} signal that way.
+      @sig[gtk:widget]{drag-data-received} signal handler. Note that you cannot
+      pass the @code{:drop}, @code{:motion} or @val[gtk:dest-defaults]{:all}
+      values of the @sym{gtk:dest-defaults} flags to the @fun{gtk:drag-dest-set}
+      function when using the @sig[gtk:widget]{drag-motion} signal that way.
 
       Also note that there is no @code{\"drag-enter\"} signal. The drag receiver
-      has to keep track of whether he has received any @code{\"drag-motion\"}
-      signals since the last @code{\"drag-leave\"} signal and if not, treat the
-      @code{\"drag-motion\"} signal as an @code{\"enter\"} signal. Upon an
-      @code{\"enter\"}, the handler will typically highlight the drop site with
-      the @fun{gtk:drag-highlight} function.
+      has to keep track of whether he has received any
+      @sig[gtk:widget]{drag-motion} signals since the last
+      @sig[gtk:widget]{drag-leave} signal and if not, treat the
+      @sig[gtk:widget]{drag-motion} signal as an @code{\"enter\"} signal. Upon
+      an @code{\"enter\"}, the handler will typically highlight the drop site
+      with the @fun{gtk:drag-highlight} function.
       @begin{pre}
 static void
 drag_motion (GtkWidget *widget,
@@ -1560,14 +1583,15 @@ drag_data_received (GtkWidget        *widget,
    @}
 @}
       @end{pre}
-    @subheading{The \"draw\" signal}
+    @end{signal}
+    @begin[widget::draw]{signal}
       @begin{pre}
 lambda (widget cr)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[cr]{The @symbol{cairo:contex-t} instance to draw to.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[cr]{The @sym{cairo:context-t} instance to draw to.}
+      @end{simple-table}
       Emitted when a widget is supposed to render itself. The top left corner
       of the widget must be painted at the origin of the passed in Cairo context
       and be sized to the values returned by the
@@ -1576,620 +1600,671 @@ lambda (widget cr)    :run-last
       context in any way they like and do not need to restore it. The signal
       emission takes care of calling the @fun{cairo:save} function before and
       the @fun{cairo:restore} function after invoking the handler.
-    @subheading{The \"enter-notify-event\" signal}
+    @end{signal}
+    @begin[widget::enter-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-crossing} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the pointer enters the GDK window of the widget. To receive
       this signal, the @class{gdk:window} object associated to the widget needs
-      to enable the @code{:enter-notify-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
-      if there is one.
-    @subheading{The \"event\" signal}
+      to enable the @val[gdk:event-mask]{:enter-notify-mask} mask of the
+      @sym{gdk:event-mask} flags. The signal will be sent to the grab widget if
+      there is one.
+    @end{signal}
+    @begin[widget::event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event} event which triggered this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event and to cancel the emission of the second specific
-          @code{\"event\"} signal. @em{False} to propagate the event further and
-          to allow the emission of the second signal. The @code{\"event-after\"}
-          signal is emitted regardless of the return value.}
-      @end{table}
+          @sig[gtk:widget]{event} signal. @em{False} to propagate the event
+          further and to allow the emission of the second signal. The
+          @sig[gtk:widget]{event-after} signal is emitted regardless of the
+          return value.}
+      @end{simple-table}
       The GTK main loop will emit three signals for each GDK event delivered
-      to a widget: one generic @code{\"event\"} signal, another, more specific,
-      signal that matches the type of event delivered, for example, the
-      @code{\"key-press-event\"} signal, and finally a generic
-      @code{\"event-after\"} signal.
-    @subheading{The \"event-after\" signal}
+      to a widget: one generic @sig[gtk:widget]{event} signal, another, more
+      specific, signal that matches the type of event delivered, for example,
+      the @sig[gtk:widget]{key-press-event} signal, and finally a generic
+      @sig[gtk:widget]{event-after} signal.
+    @end{signal}
+    @begin[widget::event-after]{signal}
       @begin{pre}
 lambda (widget event)
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event} event which triggered this signal.}
-      @end{table}
-      After the emission of the @code{\"event\"} signal and optionally the
-      second more specific signal, the @code{\"event-after\"} signal will be
-      emitted regardless of the previous two signals handlers return values.
-    @subheading{The \"focus\" signal}
+      @end{simple-table}
+      After the emission of the @sig[gtk:widget]{event} signal and optionally
+      the second more specific signal, the @sig[gtk:widget]{event-after} signal
+      will be emitted regardless of the previous two signals handlers return
+      values.
+    @end{signal}
+    @begin[widget::focus]{signal}
       @begin{pre}
 lambda (widget direction)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[direction]{The @symbol{gtk:direction-type} direction.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[direction]{The @sym{gtk:direction-type} direction.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked
           for the event, @em{false} to propagate the event further.}
-      @end{table}
-    @subheading{The \"focus-in-event\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::focus-in-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-focus} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
         the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the keyboard focus enters the GDK window of the widget. To
       receive this signal, the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:focus-change-mask} mask of the
-      @symbol{gdk:event-mask} flags.
-    @subheading{The \"focus-out-event\" signal}
+      widget needs to enable the @val[gdk:event-mask]{:focus-change-mask} mask
+      of the @sym{gdk:event-mask} flags.
+    @end{signal}
+    @begin[widget::focus-out-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-focus} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
         the event, @em{false} topropagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the keyboard focus leaves the GDK window of the widget. To
       receive this signal, the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:focus-change-mask} mask of the
-      @symbol{gdk:event-mask} flags.
-    @subheading{The \"grab-broken-event\" signal}
+      widget needs to enable the @val[gdk:event-mask]{:focus-change-mask} mask
+      of the @sym{gdk:event-mask} flags.
+    @end{signal}
+    @begin[widget::grab-broken-event]{signal}
       @begin{pre}
 lambda (widget event)    : run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-grab-broken} event.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a pointer or keyboard grab on a GDK window belonging to
       the widget gets broken. On X11, this happens when the grab window becomes
       unviewable, that is, it or one of its ancestors is unmapped, or if the
       same application grabs the pointer or keyboard again.
-    @subheading{The \"grab-focus\" signal}
+    @end{signal}
+    @begin[widget::grab-focus]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
-    @subheading{The \"grab-notify\" signal}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::grab-notify]{signal}
       @begin{pre}
 lambda (widget grabbed)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[grabbed]{@em{False} if the widget becomes shadowed, @em{true}
         if it becomes unshadowed.}
-      @end{table}
+      @end{simple-table}
       Emitted when a widget becomes shadowed by a GTK grab, not a pointer or
       keyboard grab, on another widget, or when it becomes unshadowed due to a
       grab being removed. A widget is shadowed by a the @fun{gtk:grab-add}
       function when the topmost grab widget in the grab stack of its window
       group is not its ancestor.
-    @subheading{The \"hide\" signal}
+    @end{signal}
+    @begin[widget::hide]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the widget is hidden, for example with the
       @fun{gtk:widget-hide} function.
-    @subheading{The \"hierarchy-changed\" signal}
+    @end{signal}
+    @begin[widget::hierachy-changed]{signal}
       @begin{pre}
 lambda (widget toplevel)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
         @entry[toplevel]{The previous @class{gtk:widget} toplevel ancestor, or
           @code{nil} if the widget was previously unanchored.}
-      @end{table}
+      @end{simple-table}
       Emitted when the anchored state of a widget changes. A widget is anchored
       when its toplevel ancestor is a @class{gtk:window} widget. The signal is
       emitted when a widget changes from un-anchored to anchored or vice-versa.
-    @subheading{The \"key-press-event\" signal}
+    @end{signal}
+    @begin[widget::key-press-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-key} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a key is pressed. The signal emission will reoccur at the
       key-repeat rate when the key is kept pressed. To receive this signal, the
       @class{gdk:window} object associated to the widget needs to enable the
-      @code{:key-press-mask} mask of the @symbol{gdk:event-mask} flags. This
-      signal will be sent to the grab widget if there is one.
-    @subheading{The \"key-release-event\" signal}
+      @val[gdk:event-mask]{:key-press-mask} mask of the @sym{gdk:event-mask}
+      flags. This signal will be sent to the grab widget if there is one.
+    @end{signal}
+    @begin[widget::key-release-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-key} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a key is released. To receive this signal, the
       @class{gdk:window} object associated to the widget needs to enable the
-      @code{:key-release-mask} mask of the @symbol{gdk:event-mask} flags. This
-      signal will be sent to the grab widget if there is one.
-    @subheading{The \"keynav-failed\" signal}
+      @val[gdk:event-mask]{:key-release-mask} mask of the @sym{gdk:event-mask}
+      flags. This signal will be sent to the grab widget if there is one.
+    @end{signal}
+    @begin[widget::keynav-failed]{signal}
       @begin{pre}
 lambda (widget direction)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[direction]{The @symbol{gtk:direction-type} direction of
-          movement.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[direction]{The @sym{gtk:direction-type} direction of movement.}
         @entry[Returns]{@em{True} if stopping keyboard navigation is fine,
           @em{false} if the emitting widget should try to handle the keyboard
           navigation attempt in its parent container(s).}
-      @end{table}
+      @end{simple-table}
       Gets emitted if keyboard navigation fails.
-    @subheading{The \"leave-notify-event\" signal}
+    @end{signal}
+    @begin[widget::leave-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-crossing} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the pointer leaves the GDK window of the widget. To receive
       this signal, the @class{gdk:window} object associated to the widget needs
-      to enable the @code{:leave-notify-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
+      to enable the @val[gdk:event-mask]{:leave-notify-mask} mask of the
+      @sym{gdk:event-mask} flags. The signal will be sent to the grab widget
       if there is one.
-    @subheading{The \"map\" signal}
+    @end{signal}
+    @begin[widget::map]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the widget is going to be mapped, that is when the widget
       is visible, which is controlled with the @fun{gtk:widget-visible}
       function, and all its parents up to the toplevel widget are also visible.
-      Once the map has occurred, the @code{\"map-event\"} signal will be
-      emitted. The @code{\"map\"} signal can be used to determine whether a
-      widget will be drawn, for instance it can resume an animation that was
-      stopped during the emission of the @code{\"unmap\"} signal.
-    @subheading{The \"map-event\" signal}
+      Once the map has occurred, the @sig[gtk:widget]{map-event} signal will be
+      emitted. The @sig[gtk:widget]{map} signal can be used to determine whether
+      a widget will be drawn, for instance it can resume an animation that was
+      stopped during the emission of the @sig[gtk:widget]{unmap} signal.
+    @end{signal}
+    @begin[widget::map-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event} event which triggered this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the GDK window of the widget is mapped. A window is mapped
       when it becomes visible on the screen. To receive this signal, the
       @class{gdk:window} object associated to the widget needs to enable the
-      @code{:structure-mask} mask of the @symbol{gdk:event-mask} flags. GDK will
-      enable this mask automatically for all new windows.
-    @subheading{The \"mnemonic-activate\" signal}
+      @val[gdk:event-mask]{:structure-mask} mask of the @sym{gdk:event-mask}
+      flags. GDK will enable this mask automatically for all new windows.
+    @end{signal}
+    @begin[widget::mnemonic-activate]{signal}
       @begin{pre}
 lambda (widget cycling)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[cycling]{@em{True} if there are other widgets with the same
           mnemonic.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked
           for the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       The default handler for this signal activates the widget if the
       @arg{cycling} argument is @em{false}, or just makes the widget grab focus
       if the @arg{cycling} argument is @em{true}.
-    @subheading{The \"motion-notify-event\" signal}
+    @end{signal}
+    @begin[widget::motion-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-motion} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the pointer moves over the GDK window of the widget. To
       receive this signal, the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:pointer-motion-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
-      if there is one.
-    @subheading{The \"move-focus\" signal}
+      widget needs to enable the @val[gdk:event-mask]{:pointer-motion-mask} mask
+      of the @sym{gdk:event-mask} flags. The signal will be sent to the grab
+      widget if there is one.
+    @end{signal}
+    @begin[widget::move-focus]{signal}
       @begin{pre}
 lambda (widget direction)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[direction]{The @symbol{gtk:direction-type} direction.}
-      @end{table}
-    @subheading{The \"parent-set\" signal}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[direction]{The @sym{gtk:direction-type} direction.}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::parent-set]{signal}
       @begin{pre}
 lambda (widget parent)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
         @entry[parent]{The previous @class{gtk:widget} parent, or @code{nil} if
           the widget just got its initial parent.}
-      @end{table}
+      @end{simple-table}
       Emitted when a new parent has been set on a widget.
-    @subheading{The \"popup-menu\" signal}
+    @end{signal}
+    @begin[widget::popup-menu]{signal}
       @begin{pre}
 lambda (widget)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[Returns]{@em{True} if a menu was activated.}
-      @end{table}
+      @end{simple-table}
       Gets emitted whenever a widget should pop up a context menu. This usually
       happens through the standard key binding mechanism. By pressing a certain
       key while a widget is focused, the user can cause the widget to pop up a
       menu.
-    @subheading{The \"property-notify-event\" signal}
+    @end{signal}
+    @begin[widget::property-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-property} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a property on the GDK window of the widget has been changed
       or deleted. To receive this signal, the @class{gdk:window} object
-      associated to the widget needs to enable the @code{:property-change-mask}
-      mask of the @symbol{gdk:event-mask} flags.
-    @subheading{The \"proximity-in-event\" signal}
+      associated to the widget needs to enable the
+      @val[gdk:event-mask]{:property-change-mask} mask of the
+      @sym{gdk:event-mask} flags.
+    @end{signal}
+    @begin[widget::proximity-in-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-proximity} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event. @em{False} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       To receive this signal the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:proximity-in-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
-      if there is one.
-    @subheading{The \"proximity-out-event\" signal}
+      widget needs to enable the @val[gdk:event-mask]{:proximity-in-mask} mask
+      of the @sym{gdk:event-mask} flags. The signal will be sent to the grab
+      widget if there is one.
+    @end{signal}
+    @begin[widget::proximity-out-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-proximity} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       To receive this signal the @class{gdk:window} object associated to the
-      widget needs to enable the @code{:proximity-out-mask} mask of the
-      @symbol{gdk:event-mask} flags. The signal will be sent to the grab widget
-      if there is one.
-   @subheading{The \"query-tooltip\" signal}
-     @begin{pre}
+      widget needs to enable the @val[gdk:event-mask]{:proximity-out-mask} mask
+      of the @sym{gdk:event-mask} flags. The signal will be sent to the grab
+      widget if there is one.
+    @end{signal}
+    @begin[widget::query-tooltip]{signal}
+      @begin{pre}
 lambda (widget x y mode tooltip)    :run-last
-     @end{pre}
-     @begin[code]{table}
-       @entry[widget]{The @class{gtk:widget} object which received the signal.}
-       @entry[x]{The integer with the x coordinate of the cursor position where
-         the request has been emitted, relative to the left side of the widget.}
-       @entry[y]{The integer with the y coordinate of the cursor position where
-         the request has been emitted, relative to the top of the widget.}
-       @entry[mode]{@em{True} if the tooltip was trigged using the keyboard.}
-       @entry[tooltip]{The @class{gtk:tooltip} object.}
-       @entry[Returns]{@em{True} if tooltip should be shown right now,
-         @em{false} otherwise.}
-     @end{table}
-     Emitted when the @code{has-tooltip} property is @em{true} and the
-     @slot[gtk:settings]{gtk-tooltip-timeout} setting has expired with the
-     cursor hovering \"above\" widget, or emitted when the widget got focus in
-     keyboard mode. Using the given coordinates, the signal handler should
-     determine whether a tooltip should be shown for the widget. If this is the
-     case @em{true} should be returned, @em{false} otherwise. Note that if the
-     @arg{mode} argument is @em{true}, the @arg{x} and @arg{y} values are
-     undefined and should not be used. The signal handler is free to manipulate
-     the @arg{tooltip} argument with the therefore destined function calls.
-    @subheading{The \"realize\" signal}
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[x]{The integer for the x coordinate of the cursor position where
+          the request has been emitted, relative to the left side of the
+          widget.}
+        @entry[y]{The integer for the y coordinate of the cursor position where
+          the request has been emitted, relative to the top of the widget.}
+        @entry[mode]{@em{True} if the tooltip was trigged using the keyboard.}
+        @entry[tooltip]{The @class{gtk:tooltip} object.}
+        @entry[Returns]{@em{True} if tooltip should be shown right now,
+          @em{false} otherwise.}
+      @end{simple-table}
+      Emitted when the @slot[gtk:widget]{has-tooltip} property is @em{true} and
+      the @slot[gtk:settings]{gtk-tooltip-timeout} setting has expired with the
+      cursor hovering \"above\" widget, or emitted when the widget got focus in
+      keyboard mode. Using the given coordinates, the signal handler should
+      determine whether a tooltip should be shown for the widget. If this is the
+      case @em{true} should be returned, @em{false} otherwise. Note that if the
+      @arg{mode} argument is @em{true}, the @arg{x} and @arg{y} values are
+      undefined and should not be used. The signal handler is free to manipulate
+      the @arg{tooltip} argument with the therefore destined function calls.
+    @end{signal}
+    @begin[widget::realize]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the widget is associated with a @class{gdk:window} object,
       which means that the @fun{gtk:widget-realize} function has been called or
       the widget has been mapped, that is, it is going to be drawn.
-    @subheading{The \"screen-changed\" signal}
+    @end{signal}
+    @begin[widget::screen-changed]{signal}
       @begin{pre}
 lambda (widget screen)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
         @entry[screen]{The previous @class{gdk:screen} object, or @code{nil} if
           the widget was not associated with a screen before.}
-      @end{table}
+      @end{simple-table}
       Gets emitted when the screen of a widget has changed.
-    @subheading{The \"scroll-event\" signal}
+    @end{signal}
+    @begin[widget::scroll-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-scroll} event which triggered this
           signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when a button in the 4 to 7 range is pressed. Wheel mice are
       usually configured to generate button press events for buttons 4 and 5
       when the wheel is turned. To receive this signal, the @class{gdk:window}
       object associated to the widget needs to enable the
-      @code{:button-press-mask} mask of the @symbol{gdk:event-mask} flags. This
-      signal will be sent to the grab widget if there is one.
-    @subheading{The \"selection-clear-event\" signal}
+      @val[gdk:event-mask]{:button-press-mask} mask of the @sym{gdk:event-mask}
+      flags. This signal will be sent to the grab widget if there is one.
+    @end{signal}
+    @begin[widget::selection-clear-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-selection} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the the GDK window of the widget has lost ownership of a
       selection.
-    @subheading{The \"selection-get\" signal}
+    @end{signal}
+    @begin[widget::selection-get]{signal}
       @begin{pre}
 lambda (widget data info time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[data]{The @class{gtk:selection-data} instance.}
-        @entry[info]{The unsigned integer with the info that has been registered
+        @entry[info]{The unsigned integer for the info that has been registered
           with the target.}
-        @entry[time]{The unsigned integer with the timestamp at which the data
+        @entry[time]{The unsigned integer for the timestamp at which the data
           was requested.}
-      @end{table}
-    @subheading{The \"selection-notify-event\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::selection-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-selection} event.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
-    @subheading{The \"selection-received\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::selection-received]{signal}
       @begin{pre}
 lambda (widget data time)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[data]{The @class{gtk:selection-data} instance.}
-        @entry[time]{The unsigned integer with the timestamp.}
-      @end{table}
-    @subheading{The \"selection-request-event\" signal}
+        @entry[time]{The unsigned integer for the timestamp.}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::selection-request-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-selection} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when another client requests ownership of the selection owned by
       the GDK window of the widget.
-    @subheading{The \"show\" signal}
+    @end{signal}
+    @begin[widget::show]{signal}
       @begin{pre}
 lambda (widget)
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the widget is shown, for example with the
       @fun{gtk:widget-show} function.
-    @subheading{The \"show-help\" signal}
+    @end{signal}
+    @begin[widget::show-help]{signal}
       @begin{pre}
 lambda (widget help)    :action
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[help]{The @symbol{gtk:widget-help-type} value.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[help]{The @sym{gtk:widget-help-type} value.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked
           for the event, @em{false} to propagate the event further.}
-      @end{table}
-    @subheading{The \"size-allocate\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::size-allocate]{signal}
       @begin{pre}
 lambda (widget allocation)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[allocation]{The @class{gdk:rectangle} instance with the region
           which has been allocated to the widget.}
-      @end{table}
-    @subheading{The \"state-changed\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::state-changed]{signal}
       @begin{pre}
 lambda (widget state)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[state]{The previous @symbol{gtk:state-type} state.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[state]{The previous @sym{gtk:state-type} state.}
+      @end{simple-table}
       Emitted when the widget state changes. @br{}
-      @em{Warning:} The @code{\"state-changed\"} signal is deprecated since
-      version 3.0 and should not be used in newly written code. Use the
-      @code{\"state-flags-changed\"} signal instead.
-    @subheading{The \"state-flags-changed\" signal}
+      @em{Warning:} The @sig[gtk:widget]{state-changed} signal is deprecated
+      since version 3.0 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{state-flags-changed} signal instead.
+    @end{signal}
+    @begin[widget::state-flags-changed]{signal}
       @begin{pre}
 lambda (widget flags)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-        @entry[flags]{The previous @symbol{gtk:state-flags} state flags.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+        @entry[flags]{The previous @sym{gtk:state-flags} state flags.}
+      @end{simple-table}
       Emitted when the widget state changes.
-    @subheading{The \"style-set\" signal}
+    @end{signal}
+    @begin[widget::style-set]{signal}
       @begin{pre}
 lambda (widget style)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
         @entry[style]{The previous @code{GtkStyle} style, or @code{nil} if the
           widget just got its initial style.}
-      @end{table}
+      @end{simple-table}
       Emitted when a new style has been set on a widget. @br{}
-      @em{Warning:} The @code{\"style-set\"} signal has been deprecated since
-      version 3.0 and should not be used in newly written code. Use the
-      @code{\"style-updated\"} signal.
-    @subheading{The \"style-updated\" signal}
+      @em{Warning:} The @sig[gtk:widget]{style-set} signal has been deprecated
+      since version 3.0 and should not be used in newly written code. Use the
+      @sig[gtk:widget]{style-updated} signal.
+    @end{signal}
+    @begin[widget::style-updated]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
-      @end{table}
+      @end{simple-table}
       Emitted when the @class{gtk:style-context} object of a widget is changed.
       Note that style-modifying functions like the
       @fun{gtk:widget-override-color} function also cause this signal to be
       emitted.
-    @subheading{The \"touch-event\" signal}
+    @end{signal}
+    @begin[widget::touch-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[widget]{The @class{gtk:widget} object on which the signal is
           emitted.}
         @entry[event]{The @class{gdk:event} event.}
-      @end{table}
-    @subheading{The \"unmap\" signal}
+      @end{simple-table}
+    @end{signal}
+    @begin[widget::unmap]{signal}
       @begin{pre}
 lambda (widget)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the widget is going to be unmapped, which means that either
       it or any of its parents up to the toplevel widget have been set as
-      hidden. As the  @code{\"unmap\"} signal indicates that a widget will not
-      be shown any longer, it can be used to, for example, stop an animation on
-      the widget.
-    @subheading{The \"unmap-event\" signal}
+      hidden. As the  @sig[gtk:widget]{unmap} signal indicates that a widget
+      will not be shown any longer, it can be used to, for example, stop an
+      animation on the widget.
+    @end{signal}
+    @begin[widget::unmap-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event} event which triggered this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the GDK window of the widget is unmapped. A window is
       unmapped when it becomes invisible on the screen. To receive this signal,
       the @class{gdk:window} object associated to the widget needs to enable
-      the @code{:structure-mask} mask of the @symbol{gdk:event-mask} flags. GDK
-      will enable this mask automatically for all new windows.
-    @subheading{The \"unrealize\" signal}
+      the @val[gdk:event-mask]{:structure-mask} mask of the @sym{gdk:event-mask}
+      flags. GDK will enable this mask automatically for all new windows.
+    @end{signal}
+    @begin[widget::unrealize]{signal}
       @begin{pre}
 lambda (widget)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
+      @end{simple-table}
       Emitted when the @class{gdk:window} object associated with the widget
       is destroyed, which means that the @fun{gtk:widget-unrealize} function
       has been called or the widget has been unmapped, that is, it is going to
       be hidden.
-    @subheading{The \"visibility-notify-event\" signal}
+    @end{signal}
+    @begin[widget::visibility-notify-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-visibility} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the GDK window of the widget is obscured or unobscured. To
       receive this signal the @class{gdk:window} object associated to the
       widget needs to enable the @code{:visibility-notify-mask} mask of the
-      @symbol{gdk:event-mask} flags. @br{}
-      @em{Warning:} The @code{\"visibility-notify-event\"} signal has been
-      deprecated since version 3.12 and should not be used in newly written
+      @sym{gdk:event-mask} flags. @br{}
+      @em{Warning:} The @sig[gtk:widget]{visibility-notify-event} signal has
+      been deprecated since version 3.12 and should not be used in newly written
       code. Modern composited windowing systems with pervasive transparency
       make it impossible to track the visibility of a window reliably, so this
       signal can not be guaranteed to provide useful information.
-    @subheading{The \"window-state-event\" signal}
+    @end{signal}
+    @begin[widget::window-state-event]{signal}
       @begin{pre}
 lambda (widget event)    :run-last
       @end{pre}
-      @begin[code]{table}
-        @entry[widget]{The @class{gtk:widget} object which received the signal.}
+      @begin[code]{simple-table}
+        @entry[widget]{The @class{gtk:widget} object that received the signal.}
         @entry[event]{The @class{gdk:event-window-state} event which triggered
           this signal.}
         @entry[Returns]{@em{True} to stop other handlers from being invoked for
           the event, @em{false} to propagate the event further.}
-      @end{table}
+      @end{simple-table}
       Emitted when the state of the toplevel window associated to the widget
       changes. To receive this signal the @class{gdk:window} object associated
       to the widget needs to enable the @code{:structure-mask} mask of the
-      @symbol{gdk:event-mask} flags. GDK will enable this mask automatically
+      @sym{gdk:event-mask} flags. GDK will enable this mask automatically
       for all new windows.
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:widget-app-paintable}
   @see-slot{gtk:widget-can-default}
@@ -2250,7 +2325,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-app-paintable)
       "Accessor"
       (documentation 'widget-app-paintable 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-app-paintable object) => paintable}
   @syntax{(setf (gtk:widget-app-paintable object) paintable)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2261,7 +2336,7 @@ lambda (widget event)    :run-last
     @class{gtk:widget} class.
   @end{short}
   The @fun{gtk:widget-app-paintable} function returns @em{true} if the widget
-  will paint on the widget in a @code{\"draw\"} handler. The
+  will paint on the widget in a @sig[gtk:widget]{draw} handler. The
   @setf{gtk:widget-app-paintable} function sets whether the application intends
   to draw on the widget.
 
@@ -2289,7 +2364,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-can-default)
       "Accessor"
       (documentation 'widget-can-default 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-can-default object) => setting}
   @syntax{(setf (gtk:widget-can-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2320,7 +2395,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-can-focus)
       "Accessor"
       (documentation 'widget-can-focus 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-can-focus object) => setting}
   @syntax{(setf (gtk:widget-can-focus object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2351,7 +2426,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-composite-child)
       "Accessor"
       (documentation 'widget-composite-child 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-composite-child object) => setting}
   @syntax{(setf (gtk:widget-composite-child object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2380,7 +2455,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-double-buffered)
       "Accessor"
       (documentation 'widget-double-buffered 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-double-buffered object) => setting}
   @syntax{(setf (gtk:widget-double-buffered object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2404,28 +2479,28 @@ lambda (widget event)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "events" 'widget) t)
- "The @code{events} property of type @symbol{gdk:event-mask} (Read / Write)@br{}
+ "The @code{events} property of type @sym{gdk:event-mask} (Read / Write) @br{}
   The event mask that decides what kind of @class{gdk:event} events this widget
   gets. @br{}
-  Default value: @code{:structure-mask}")
+  Default value: @val[gdk:event-mask]{:structure-mask}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-events)
       "Accessor"
       (documentation 'widget-events 'function)
- "@version{2025-1-25}
+ "@version{2025-07-07}
   @syntax{(gtk:widget-events object) => events}
   @syntax{(setf (gtk:widget-events object) events)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[events]{a @symbol{gdk:event-mask} event mask}
+  @argument[events]{a @sym{gdk:event-mask} event mask}
   @begin{short}
     Accessor of the @slot[gtk:widget]{events} slot of the @class{gtk:widget}
     class.
   @end{short}
   The @fun{gtk:widget-events} function gets the event mask for the widget. The
   @setf{gtk:widget-events} function sets the event mask. The event mask is a
-  bitfield containing flags from the @symbol{gdk:event-mask} flags. These are
-  the events that the widget will receive.
+  bitfield containing flags from the @sym{gdk:event-mask} flags. These are the
+  events that the widget will receive.
 
   Keep in mind that different widgets have different default event masks, and
   by changing the event mask you may disrupt the functionality of a widget, so
@@ -2460,7 +2535,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-expand)
       "Accessor"
       (documentation 'widget-expand 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-expand object) => setting}
   @syntax{(setf (gtk:widget-expand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2489,7 +2564,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-focus-on-click)
       "Accessor"
       (documentation 'widget-focus-on-click 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-focus-on-click object) => setting}
   @syntax{(setf (gtk:widget-focus-on-click object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2511,19 +2586,19 @@ lambda (widget event)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "halign" 'widget) t)
- "The @code{halign} property of type @symbol{gtk:align} (Read / Write) @br{}
+ "The @code{halign} property of type @sym{gtk:align} (Read / Write) @br{}
   How to distribute horizontal space if the widget gets extra space. @br{}
-  Default value: @code{:fill}")
+  Default value: @val[gtk:align]{:fill}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-halign)
       "Accessor"
       (documentation 'widget-halign 'function)
- "@version{2025-1-25}
+ "@version{2025-07-07}
   @syntax{(gtk:widget-halign object) => align}
   @syntax{(setf (gtk:widget-halign object) align)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[align]{a @symbol{gtk:align} value}
+  @argument[align]{a @sym{gtk:align} value}
   @begin{short}
     Accessor of the @slot[gtk:widget]{halign} slot of the @class{gtk:widget}
     class.
@@ -2546,7 +2621,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-has-default)
       "Accessor"
       (documentation 'widget-has-default 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-has-default object) => setting}
   @syntax{(setf (gtk:widget-has-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2576,7 +2651,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-has-focus)
       "Accessor"
       (documentation 'widget-has-focus 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-has-focus object) => setting}
   @syntax{(setf (gtk:widget-has-focus object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2599,38 +2674,40 @@ lambda (widget event)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "has-tooltip" 'widget) t)
  "The @code{has-tooltip} property of type @code{:boolean} (Read / Write) @br{}
-  Enables or disables the emission of the @code{\"query-tooltip\"} signal on the
-  widget. A @em{true} value indicates that the widget can have a tooltip, in
-  this case the widget will be queried using the @code{\"query-tooltip\"} signal
-  to determine whether it will provide a tooltip or not. Note that setting this
-  property to @em{true} for the first time will change the event masks of the
-  @class{gdk:window} objects of this widget to include \"leave-notify\" and
-  \"motion-notify\" events. This cannot and will not be undone when the property
-  is set to @em{false} again. @br{}
+  Enables or disables the emission of the @sig[gtk:widget]{query-tooltip} signal
+  on the widget. A @em{true} value indicates that the widget can have a tooltip,
+  in this case the widget will be queried using the
+  @sig[gtk:widget]{query-tooltip} signal to determine whether it will provide a
+  tooltip or not. Note that setting this property to @em{true} for the first
+  time will change the event masks of the @class{gdk:window} objects of this
+  widget to include @val[gdk:event-type]{leave-notify} and
+  @val[gdk:event-type]{motion-notify} events. This cannot and will not be undone
+  when the property is set to @em{false} again. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-has-tooltip)
       "Accessor"
       (documentation 'widget-has-tooltip 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-has-tooltip object) => setting}
   @syntax{(setf (gtk:widget-has-tooltip object) setting)}
   @argument[object]{a @class{gtk:widget} object}
   @argument[setting]{a boolean whether the emission of the
-    @code{\"query-toolip\"} signal is enabled or disabled}
+    @sig[gtk:widget]{query-toolip} signal is enabled or disabled}
   @begin{short}
     Accessor of the @slot[gtk:widget]{has-tooltip} slot of the
     @class{gtk:widget} class.
   @end{short}
-  Enables or disables the emission of the @code{\"query-tooltip\"} signal on the
-  widget. A @em{true} value indicates that the widget can have a tooltip, in
-  this case the widget will be queried using the @code{\"query-tooltip\"} signal
-  to determine whether it will provide a tooltip or not. Note that setting this
-  property to @em{true} for the first time will change the event masks of the
-  @class{gdk:window} objects of this widget to include \"leave-notify\" and
-  \"motion-notify\" events. This cannot and will not be undone when the property
-  is set to @em{false} again.
+  Enables or disables the emission of the @sig[gtk:widget]{query-tooltip} signal
+  on the widget. A @em{true} value indicates that the widget can have a tooltip,
+  in this case the widget will be queried using the
+  @sig[gtk:widget]{query-tooltip} signal to determine whether it will provide a
+  tooltip or not. Note that setting this property to @em{true} for the first
+  time will change the event masks of the @class{gdk:window} objects of this
+  widget to include @code{\"leave-notify\"} and @code{\"motion-notify\"} events.
+  This cannot and will not be undone when the property is set to @em{false}
+  again.
   @see-class{gtk:widget}
   @see-class{gdk:window}")
 
@@ -2648,11 +2725,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-height-request)
       "Accessor"
       (documentation 'widget-height-request 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-height-request object) => height}
   @syntax{(setf (gtk:widget-height-request object) height)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[height]{an integer with the height request}
+  @argument[height]{an integer for the height request}
   @begin{short}
     Accessor of the @slot[gtk:widget]{height-request} slot of the
     @class{gtk:widget} class.
@@ -2674,7 +2751,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-hexpand)
       "Accessor"
       (documentation 'widget-hexpand 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-hexpand object) => setting}
   @syntax{(setf (gtk:widget-hexpand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2725,7 +2802,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-hexpand-set)
       "Accessor"
       (documentation 'widget-hexpand-set 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-hexpand-set object) => setting}
   @syntax{(setf (gtk:widget-hexpand-set object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -2764,7 +2841,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-is-focus)
       "Accessor"
       (documentation 'widget-is-focus 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-is-focus object) => setting}
   @syntax{(setf (gtk:widget-is-focus object) setting)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -2797,11 +2874,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin)
       "Accessor"
       (documentation 'widget-margin 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin object) => margin}
   @syntax{(setf (gtk:widget-margin object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin}
+  @argument[margin]{an integer for the margin}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin} slot of the @class{gtk:widget}
     class.
@@ -2828,11 +2905,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-bottom)
       "Accessor"
       (documentation 'widget-margin-bottom 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-bottom object) => margin}
   @syntax{(setf (gtk:widget-margin-bottom object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on bottom side of the widget}
+  @argument[margin]{an integer for the margin on bottom side of the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-bottom} slot of the
     @class{gtk:widget} class.
@@ -2862,11 +2939,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-end)
       "Accessor"
       (documentation 'widget-margin-end 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-end object) => margin}
   @syntax{(setf (gtk:widget-margin-end object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on end of the widget,
+  @argument[margin]{an integer for the margin on end of the widget,
     horizontally}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-end} slot of the
@@ -2899,11 +2976,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-left)
       "Accessor"
       (documentation 'widget-margin-left 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-left object) => margin}
   @syntax{(setf (gtk:widget-margin-left object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on left side of the widget}
+  @argument[margin]{an integer for the margin on left side of the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-left} slot of the
     @class{gtk:widget} class.
@@ -2934,11 +3011,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-right)
       "Accessor"
       (documentation 'widget-margin-right 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-right object) => margin}
   @syntax{(setf (gtk:widget-margin-right object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on right side of the widget}
+  @argument[margin]{an integer for the margin on right side of the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-right} slot of the
     @class{gtk:widget} class.
@@ -2968,11 +3045,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-start)
       "Accessor"
       (documentation 'widget-margin-start 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-start object) => margin}
   @syntax{(setf (gtk:widget-margin-start object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on start of the widget,
+  @argument[margin]{an integer for the margin on start of the widget,
     horizontally}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-start} slot of the
@@ -3003,11 +3080,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-margin-top)
       "Accessor"
       (documentation 'widget-margin-top 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-margin-top object) => margin}
   @syntax{(setf (gtk:widget-margin-top object) margin)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[margin]{an integer with the margin on top side of the widget}
+  @argument[margin]{an integer for the margin on top side of the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{margin-top} slot of the
     @class{gtk:widget} class.
@@ -3034,11 +3111,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-name)
       "Accessor"
       (documentation 'widget-name 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-name object) => name}
   @syntax{(setf (gtk:widget-name object) name)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[name]{a string with the name of the widget}
+  @argument[name]{a string for the name of the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{name} slot of the @class{gtk:widget}
     class.
@@ -3068,7 +3145,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-no-show-all)
       "Accessor"
       (documentation 'widget-no-show-all 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-no-show-all object) => setting}
   @syntax{(setf (gtk:widget-no-show-all object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3099,11 +3176,12 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-opacity)
       "Accessor"
       (documentation 'widget-opacity 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-opacity object) => opacity}
   @syntax{(setf (gtk:widget-opacity object) opacity)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[opacity]{a double float with the opacity of the widget}
+  @argument[opacity]{a number coerced to a double float for the opacity of
+    the widget}
   @begin{short}
     Accessor of the @slot[gtk:widget]{opacity} slot of the @class{gtk:widget}
     class.
@@ -3142,7 +3220,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-parent)
       "Accessor"
       (documentation 'widget-parent 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-parent object) => parent}
   @syntax{(setf (gtk:widget-parent object) parent)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3177,7 +3255,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-receives-default)
       "Accessor"
       (documentation 'widget-receives-default 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-receives-default object) => setting}
   @syntax{(setf (gtk:widget-receives-default object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3211,10 +3289,10 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-scale-factor)
       "Accessor"
       (documentation 'widget-scale-factor 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-scale-factor object) => scale}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[scale]{an integer with the scale factor}
+  @argument[scale]{an integer for the scale factor}
   @begin{short}
     The @fun{gtk:widget-scale-factor} function retrieves the internal scale
     factor that maps from window coordinates to the actual device pixels.
@@ -3236,7 +3314,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-sensitive)
       "Accessor"
       (documentation 'widget-sensitive 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-sensitive object) => setting}
   @syntax{(setf (gtk:widget-sensitive object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3274,7 +3352,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-style)
       "Accessor"
       (documentation 'widget-style 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-style object) => style}
   @syntax{(setf (gtk:widget-style object) style)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3300,21 +3378,21 @@ lambda (widget event)    :run-last
   the Pango text markup language. This is a convenience property which will take
   care of getting the tooltip shown if the given string is not @code{nil}. The
   @slot[gtk:widget]{has-tooltip} property will automatically be set to @em{true}
-  and there will be taken care of the @code{\"query-tooltip\"} signal in the
-  default signal handler. Note that if both the @slot[gtk:widget]{tooltip-text}
-  and @slot[gtk:widget]{tooltip-markup} properties are set, the last one wins.
-  @br{}
+  and there will be taken care of the @sig[gtk:widget]{query-tooltip} signal in
+  the default signal handler. Note that if both the
+  @slot[gtk:widget]{tooltip-text} and @slot[gtk:widget]{tooltip-markup}
+  properties are set, the last one wins. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-tooltip-markup)
       "Accessor"
       (documentation 'widget-tooltip-markup 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-tooltip-markup object) => markup}
   @syntax{(setf (gtk:widget-tooltip-markup object) markup)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[markup]{a string with the text of the tooltip}
+  @argument[markup]{a string for the text of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:widget]{tooltip-markup} slot of the
     @class{gtk:widget} class.
@@ -3326,7 +3404,7 @@ lambda (widget event)    :run-last
 
   This function will take care of setting the @slot[gtk:widget]{has-tooltip}
   property to @em{true} and of the default handler for the
-  @code{\"query-tooltip\"} signal.
+  @sig[gtk:widget]{query-tooltip} signal.
 
   See also the @slot[gtk:widget]{tooltip-markup} property and the
   @fun{gtk:tooltip-set-markup} function.
@@ -3342,21 +3420,21 @@ lambda (widget event)    :run-last
   Sets the text of the tooltip to be the given string. This is a convenience
   property which will take care of getting the tooltip shown if the given string
   is not @code{nil}. The @code{has-tooltip} property will automatically be set
-  to @em{true} and there will be taken care of the @code{\"query-tooltip\"}
-  signal in the default signal handler. Note that if both the
-  @slot[gtk:widget]{tooltip-text} and @slot[gtk:widget]{tooltip-markup}
-  properties are set, the last one wins. @br{}
+  to @em{true} and there will be taken care of the
+  @sig[gtk:widget]{query-tooltip} signal in the default signal handler. Note
+  that if both the @slot[gtk:widget]{tooltip-text} and
+  @slot[gtk:widget]{tooltip-markup} properties are set, the last one wins. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-tooltip-text)
       "Accessor"
       (documentation 'widget-tooltip-text 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-tooltip-text object) => text}
   @syntax{(setf (gtk:widget-tooltip-text object) text)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[text]{a string with the text of the tooltip}
+  @argument[text]{a string for the text of the tooltip}
   @begin{short}
     Accessor of the @slot[gtk:widget]{tooltip-text} slot of the
     @class{gtk:widget} class.
@@ -3367,7 +3445,7 @@ lambda (widget event)    :run-last
 
   This function will take care of setting the @slot[gtk:widget]{has-tooltip}
   property to @em{true} and of the default handler for the
-  @code{\"query-tooltip\"} signal.
+  @sig[gtk:widget]{query-tooltip} signal.
 
   See also the @slot[gtk:widget]{tooltip-text} property and the
   @fun{gtk:tooltip-set-text} function.
@@ -3379,19 +3457,19 @@ lambda (widget event)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "valign" 'widget) t)
- "The @code{valign} property of type @symbol{gtk:align} (Read / Write) @br{}
+ "The @code{valign} property of type @sym{gtk:align} (Read / Write) @br{}
   How to distribute vertical space if the widget gets extra space. @br{}
-  Default value: @code{:fill}")
+  Default value: @val[gtk:align]{:fill}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'widget-valign)
       "Accessor"
       (documentation 'widget-valign 'function)
- "@version{2025-1-25}
+ "@version{2025-07-07}
   @syntax{(gtk:widget-valign object) => align}
   @syntax{(setf (gtk:widget-valign object) align)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[align]{a @symbol{gtk:align} value}
+  @argument[align]{a @sym{gtk:align} value}
   @begin{short}
     Accessor of the @slot[gtk:widget]{valign} slot of the @class{gtk:widget}
     class.
@@ -3414,7 +3492,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-vexpand)
       "Accessor"
       (documentation 'widget-vexpand 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-vexpand object) => setting}
   @syntax{(setf (gtk:widget-vexpand object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3445,7 +3523,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-vexpand-set)
       "Accessor"
       (documentation 'widget-vexpand-set 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-vexpand-set object) => setting}
   @syntax{(setf (gtk:widget-vexpand-set object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3477,7 +3555,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-visible)
       "Accessor"
       (documentation 'widget-visible 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-visible object) => setting}
   @syntax{(setf (gtk:widget-visible object) setting)}
   @argument[object]{a @class{gtk:widget} object}
@@ -3512,11 +3590,11 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-width-request)
       "Accessor"
       (documentation 'widget-width-request 'function)
- "@version{2025-1-25}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-width-request object) => width}
   @syntax{(setf (gtk:widget-width-request object) width)}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[width]{an integer with the width request}
+  @argument[width]{an integer for the width request}
   @begin{short}
     Accessor of the @slot[gtk:widget]{width-request} slot of the
     @class{gtk:widget} class.
@@ -3537,7 +3615,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-function 'widget-window)
       "Accessor"
       (documentation 'widget-window 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gtk:widget-window object) => window}
   @argument[object]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
@@ -3562,8 +3640,8 @@ lambda (widget event)    :run-last
 
 (defun widget-new (gtype &rest args)
  #+liber-documentation
- "@version{#2023-3-8}
-  @argument[gtype]{a @class{g:type-t} type ID of the widget to create}
+ "@version{#2025-06-23}
+  @argument[gtype]{a @class{g:type-t} type ID for the widget to create}
   @argument[args]{pairs of the property keyword and value}
   @return{The new @class{gtk:widget} object of @arg{gtype} type.}
   @begin{short}
@@ -3618,7 +3696,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_in_destruction" widget-in-destruction) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is being destroyed.}
   @begin{short}
@@ -3656,7 +3734,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_unparent" widget-unparent) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Should be called by implementations of the @code{remove} method on
@@ -3704,7 +3782,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_show_now" widget-show-now) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Shows a widget.
@@ -3725,7 +3803,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_hide" widget-hide) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Reverses the effects of the @fun{gtk:widget-show} function, causing the
@@ -3744,7 +3822,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_show_all" widget-show-all) :void
  #+liber-documentation
- "@version{2023-7-7}
+ "@version{2023-07-07}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Recursively shows a widget, and any child widgets if the widget is a
@@ -3765,7 +3843,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_map" widget-map) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be mapped if it is not already.
@@ -3783,7 +3861,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_unmap" widget-unmap ) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be unmapped if it is currently mapped.
@@ -3801,7 +3879,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_realize" widget-realize) :void
  #+liber-documentation
- "@version{2023-3-8}
+ "@version{2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Creates the GDK resources associated with a widget.
@@ -3818,8 +3896,9 @@ lambda (widget event)    :run-last
   This function is primarily used in widget implementations, and is not very
   useful otherwise. Many times when you think you might need it, a better
   approach is to connect to a signal that will be called after the widget is
-  realized automatically, such as the @code{\"draw\"} signal. Or simply use the
-  @fun{g:signal-connect} function with the @code{\"realize\"} signal.
+  realized automatically, such as the @sig[gtk:widget]{draw} signal. Or simply
+  use the @fun{g:signal-connect} function with the @sig[gtk:widget]{realize}
+  signal.
   @see-class{gtk:widget}
   @see-function{gtk:widget-unrealize}
   @see-function{g:signal-connect}"
@@ -3833,7 +3912,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_unrealize" widget-unrealize) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes a widget to be unrealized.
@@ -3852,9 +3931,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_draw" widget-draw) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object to draw}
-  @argument[cr]{a @symbol{cairo:context-t} Cairo context to draw to}
+  @argument[cr]{a @sym{cairo:context-t} Cairo context to draw to}
   @begin{short}
     Draws the widget to a Cairo Context.
   @end{short}
@@ -3898,7 +3977,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_queue_draw" widget-queue-draw) :void
 #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Equivalent to calling the @fun{gtk:widget-queue-draw-area} function for the
@@ -3916,7 +3995,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_queue_resize" widget-queue-resize) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags a widget to have its size renegotiated.
@@ -3944,7 +4023,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_queue_resize_no_redraw"
                 widget-queue-resize-no-redraw) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     This function works like the @fun{gtk:widget-queue-resize} function, except
@@ -3962,7 +4041,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_queue_allocate" widget-queue-allocate) :void
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Flags the widget for a rerun of the @code{size_allocate} function.
@@ -3987,10 +4066,12 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_frame_clock" widget-frame-clock)
     (g:object gdk:frame-clock)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The @class{gdk:frame-clock} object, or @code{nil} if @arg{widget} is
-    unrealized.}
+  @begin{return}
+    The @class{gdk:frame-clock} object, or @code{nil} if @arg{widget} is
+    unrealized.
+  @end{return}
   @begin{short}
     Obtains the frame clock for a widget.
   @end{short}
@@ -4041,7 +4122,7 @@ lambda (widget event)    :run-last
 (setf (liber:alias-for-symbol 'tick-callback)
       "Callback"
       (liber:symbol-documentation 'tick-callback)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (widget clock) => result}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[clock]{a @class{gdk:frame-clock} object for the widget, same as
@@ -4071,13 +4152,15 @@ lambda (widget event)    :run-last
 
 (defun widget-add-tick-callback (widget func)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[func]{a @symbol{gtk:tick-callback} callback function to call for
+  @argument[func]{a @sym{gtk:tick-callback} callback function to call for
     updating animations}
-  @return{The unsigned integer ID for the connection of this callback function,
+  @begin{return}
+    The unsigned integer ID for the connection of this callback function,
     remove the callback function by passing it to the
-    @fun{gtk:widget-remove-tick-callback} function.}
+    @fun{gtk:widget-remove-tick-callback} function.
+  @end{return}
   @begin{short}
     Queues an animation frame update and adds a callback function to be called
     before each frame.
@@ -4098,9 +4181,9 @@ lambda (widget event)    :run-last
   trying to display isolated frames at particular times.
 
   This is a more convenient alternative to connecting directly to the
-  @code{\"update\"} signal of the @class{gdk:frame-clock} object, since you do
-  not have to worry about when the @class{gdk:frame-clock} object is assigned
-  to a widget.
+  @sig[gdk:frame-clock]{update} signal of the @class{gdk:frame-clock} object,
+  since you do not have to worry about when the @class{gdk:frame-clock} object
+  is assigned to a widget.
   @see-class{gtk:widget}
   @see-class{gdk:frame-clock}
   @see-function{gtk:widget-remove-tick-callback}
@@ -4122,9 +4205,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_remove_tick_callback" widget-remove-tick-callback)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[id]{an unsigned integer with the ID returned by the
+  @argument[id]{an unsigned integer for the ID returned by the
     @fun{gtk:widget-add-tick-callback} function}
   @begin{short}
     Removes a tick callback function previously registered with the
@@ -4151,9 +4234,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_size_allocate" widget-size-allocate) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[allocation]{a @class{gdk:rectangle} instance with the position and
+  @argument[allocation]{a @class{gdk:rectangle} instance for the position and
     size to be allocated to the widget}
   @begin{short}
     This function is only used by @class{gtk:container} subclasses, to assign a
@@ -4181,11 +4264,11 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_size_allocate_with_baseline"
                 widget-size-allocate-with-baseline) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[allocation]{a @class{gdk:rectangle} instance with the position and
+  @argument[allocation]{a @class{gdk:rectangle} instance for the position and
     size to be allocated to @arg{widget}}
-  @argument[baseline]{an integer with the baseline of the child, or -1}
+  @argument[baseline]{an integer for the baseline of the child, or -1}
   @begin{short}
     This function is only used by @class{gtk:container} subclasses, to assign a
     size, position and (optionally) baseline to their child widgets.
@@ -4218,16 +4301,16 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_add_accelerator" widget-add-accelerator) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object to install an accelerator on}
-  @argument[signal]{a string with the widget signal to emit on accelerator
+  @argument[signal]{a string for the widget signal to emit on accelerator
     activation}
   @argument[group]{a @class{gtk:accel-group} object for @arg{widget}, added to
     its toplevel}
-  @argument[key]{an unsigned integer with the GDK keyval of the accelerator}
-  @argument[mods]{a @symbol{gdk:modifier-type} modifier key combination of the
+  @argument[key]{an unsigned integer for the GDK keyval of the accelerator}
+  @argument[mods]{a @sym{gdk:modifier-type} modifier key combination for the
     accelerator}
-  @argument[flags]{a @symbol{gtk:accel-flags} value with the accelerators}
+  @argument[flags]{a @sym{gtk:accel-flags} value for the accelerators}
   @begin{short}
     Installs an accelerator for this widget in the accelerator group that
     causes the signal to be emitted if the accelerator is activated.
@@ -4264,14 +4347,15 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_remove_accelerator" widget-remove-accelerator)
     :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object to remove an accelerator from}
   @argument[group]{a @class{gtk:accel-group} object for @arg{widget}}
-  @argument[key]{an unsigned integer with the GDK keyval of the accelerator}
-  @argument[mods]{a @symbol{gdk:modifier-type} value with the modifier key
+  @argument[key]{an unsigned integer for the GDK keyval of the accelerator}
+  @argument[mods]{a @sym{gdk:modifier-type} value for the modifier key
     combination of the accelerator}
-  @return{The boolean whether an accelerator was installed and could be
-    removed.}
+  @begin{return}
+    The boolean whether an accelerator was installed and could be removed.
+  @end{return}
   @begin{short}
     Removes an accelerator from the widget, previously installed with the
     @fun{gtk:widget-add-accelerator} function.
@@ -4293,9 +4377,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_set_accel_path" widget-set-accel-path) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[path]{a string with the path used to look up the accelerator}
+  @argument[path]{a string for the path used to look up the accelerator}
   @argument[group]{a @class{gtk:accel-group} object}
   @begin{short}
     Given an accelerator group and an accelerator path sets up an accelerator
@@ -4356,19 +4440,19 @@ lambda (widget event)    :run-last
 
 (defun widget-can-activate-accel (widget signal)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[signal]{an unsigned integer with the ID or a string with the
-    name of a signal installed on @arg{widget}}
+  @argument[signal]{an unsigned integer for the ID or a string for the name of
+    a signal installed on @arg{widget}}
   @return{@em{True} if the accelerator can be activated.}
   @begin{short}
     Determines whether an accelerator that activates the signal identified by
     @arg{signal} can currently be activated.
   @end{short}
-  This is done by emitting the @code{\"can-activate-accel\"} signal on the
-  widget. If the signal is not overridden by a handler or in a derived widget,
-  then the default check is that the widget must be sensitive, and the widget
-  and all its ancestors mapped.
+  This is done by emitting the @sig[gtk:widget]{can-activate-accel} signal on
+  the widget. If the signal is not overridden by a handler or in a derived
+  widget, then the default check is that the widget must be sensitive, and the
+  widget and all its ancestors mapped.
   @see-class{gtk:widget}"
   (when (stringp signal)
     (setf signal (g:signal-lookup signal (g:type-from-instance widget))))
@@ -4382,7 +4466,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_event" widget-event) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[event]{a @class{gdk:event} event}
   @begin{return}
@@ -4413,11 +4497,11 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_activate" widget-activate) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-11}
   @argument[widget]{a @class{gtk:widget} object that is activatable}
   @return{@em{True} if the widget was activatable.}
   @begin{short}
-    For widgets that can be \"activated\", buttons, menu items, etc., this
+    For widgets that can be \"activated\", buttons, menu items, and so on, this
     function activates them.
   @end{short}
   Activation is what happens when you press the @kbd{Enter} key on a widget
@@ -4434,7 +4518,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_reparent" widget-reparent) :void
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2021-09-16}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[parent]{a @class{gtk:container} widget to move the widget into}
   @begin{short}
@@ -4463,11 +4547,13 @@ lambda (widget event)    :run-last
 
 (defun widget-intersect (widget area)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[area]{a @class{gdk:rectangle} instance}
-  @return{Returns the intersection as a @class{gdk:rectangle} instance,
-    if there was an intersection or @code{nil}.}
+  @begin{return}
+    Returns the intersection as a @class{gdk:rectangle} instance,
+    if there was an intersection or @code{nil}.
+  @end{return}
   @begin{short}
     Computes the intersection of a widgets area and @arg{area}, and
     returns the intersection as a rectangle if there was an intersection.
@@ -4486,7 +4572,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_grab_focus" widget-grab-focus) :void
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes the widget to have the keyboard focus for the @class{gtk:window}
@@ -4514,7 +4600,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_grab_default" widget-grab-default) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Causes the widget to become the default widget.
@@ -4551,18 +4637,18 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_state" widget-state) state-type
  #+liber-documentation
- "@version{#2021-9-16}
+ "@version{#2025-07-11}
   @syntax{(gtk:widget-state widget) => state}
   @syntax{(setf (gtk:widget-state widget) state)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-type} state for @arg{widget}}
+  @argument[state]{a @sym{gtk:state-type} state for @arg{widget}}
   @begin{short}
     Accessor of the state of the widget.
   @end{short}
 
   The @fun{gtk:widget-state} function returns the state of the widget. The
   @setf{gtk:widget-state} function sets the state of a widget, insensitive,
-  prelighted, etc. This function is for use in widget implementations.
+  prelighted, and so on. This function is for use in widget implementations.
 
   Usually you should set the state using wrapper functions such as the
   @fun{gtk:widget-sensitive} function.
@@ -4592,7 +4678,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_parent_window" widget-parent-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-parent-window widget) => window}
   @syntax{(setf (gtk:widget-parent-window widget) window)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4622,9 +4708,9 @@ lambda (widget event)    :run-last
 
 (defun widget-add-events (widget events)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[events]{a @symbol{gdk:event-mask} event mask}
+  @argument[events]{a @sym{gdk:event-mask} event mask}
   @begin{short}
     Adds the events in the @arg{events} bitfield to the event mask for the
     widget.
@@ -4654,12 +4740,12 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_device_events" widget-device-events)
     gdk:event-mask
 #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @syntax{(gtk:widget-device-events widget device) => events}
   @syntax{(setf (gtk:widget-device-events widget device) events)}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[device]{a @class{gdk:device} object}
-  @argument[events]{a @symbol{gdk:event-mask} event mask}
+  @argument[events]{a @sym{gdk:event-mask} event mask}
   @begin{short}
     Accessor of the events mask for the widget corresponding to a specific
     device.
@@ -4695,10 +4781,10 @@ lambda (widget event)    :run-last
 
 (defun widget-add-device-events (widget device events)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[device]{a @class{gdk:device} object}
-  @argument[events]{a @symbol{gdk:event-mask} event mask}
+  @argument[events]{a @sym{gdk:event-mask} event mask}
   @begin{short}
     Adds the device events in the @arg{events} bitfield to the event mask for
     the widget.
@@ -4726,7 +4812,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_device_enabled" widget-device-enabled) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-device-enabled widget devive) => enabled}
   @syntax{(setf (gtk:widget-device-enabled widget devide) enabled)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -4757,10 +4843,12 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_toplevel" widget-toplevel) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The topmost ancestor of @arg{widget}, or @arg{widget} itself if
-    there is no ancestor.}
+  @begin{return}
+    The topmost ancestor of @arg{widget}, or @arg{widget} itself if there is
+    no ancestor.
+  @end{return}
   @begin{short}
     This function returns the topmost widget in the container hierarchy
     the widget is a part of.
@@ -4799,7 +4887,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_ancestor" widget-ancestor) (g:object widget)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[gtype]{an ancestor @class{g:type-t} type ID}
   @return{The @class{gtk:widget} ancestor widget, or @arg{nil} if not found.}
@@ -4836,23 +4924,22 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_visual" widget-visual) (g:object gdk:visual)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @syntax{(gtk:widget-visual object) => visual}
   @syntax{(setf (gtk:widget-visual object) visual)}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[visual]{a @class{gdk:visual} object to be used or @code{nil} to
     unset a previous one}
   @begin{short}
-    Accessor of the visual be used to render the widget.
+    The @fun{gtk:widget-visual} function gets the visual that will be used to
+    render the widget.
   @end{short}
-  The @fun{gtk:widget-visual} function gets the visual that will be used to
-  render the widget. The @setf{gtk:widget-visual} function sets the visual that
-  should be used for by the widget and its children for creating
-  @class{gdk:window} objects.
+  The @setf{gtk:widget-visual} function sets the visual that should be used for
+  by the widget and its children for creating @class{gdk:window} objects.
 
   The visual must be on the same @class{gdk:screen} object as returned by the
-  @fun{gtk:widget-screen} function, so handling the @code{\"screen-changed\"}
-  signal is necessary.
+  @fun{gtk:widget-screen} function, so handling the
+  @sig[gtk:widget]{screen-changed} signal is necessary.
 
   Setting a new visual will not cause the widget to recreate its windows, so
   you should call this function before the widget is realized.
@@ -4876,7 +4963,7 @@ lambda (widget event)    :run-last
 
 (defun widget-pointer (widget)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2021-09-19}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @code{x} -- an integer with the x coordinate @br{}
@@ -4909,11 +4996,13 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_ancestor" widget-is-ancestor) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[ancestor]{another @class{gtk:widget} object}
-  @return{@em{True} if @arg{ancestor} contains the widget as a child,
-    grandchild, great grandchild, etc.}
+  @begin{return}
+    @em{True} if @arg{ancestor} contains the widget as a child, grandchild,
+    great grandchild, and so on.
+  @end{return}
   @begin{short}
     Determines whether the widget is somewhere inside @arg{ancestor}, possibly
     with intermediate containers.
@@ -4940,14 +5029,16 @@ lambda (widget event)    :run-last
 
 (defun widget-translate-coordinates (src dst xsrc ysrc)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[src]{a @class{gtk:widget} object}
   @argument[dest]{a @class{gtk:widget} object}
-  @argument[xsrc]{an integer with the x position relative to @arg{src}}
-  @argument[ysrc]{an integer with the y position relative to @arg{src}}
-  @return{@em{False} if either the widget was not realized, or there was no
-    common ancestor. Otherwise the x position and the y position relative to
-    @arg{dest}.}
+  @argument[xsrc]{an integer for the x position relative to @arg{src}}
+  @argument[ysrc]{an integer for the y position relative to @arg{src}}
+  @begin{return}
+    @em{False} if either the widget was not realized, or there was no common
+    ancestor. Otherwise the x position and the y position relative to
+    @arg{dest}.
+  @end{return}
   @begin{short}
     Translate coordinates relative to the allocation of @arg{src} to
     coordinates relative to the allocations of  @arg{dest}.
@@ -4968,18 +5059,18 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_hide_on_delete" widget-hide-on-delete) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True}.}
   @begin{short}
-    Intended to be connected to the @code{\"delete-event\"} signal on a
+    Intended to be connected to the @sig[gtk:widget]{delete-event} signal on a
     @class{gtk:window} widget.
   @end{short}
   The function calls the @fun{gtk:widget-hide} function on its argument, then
-  returns @em{true}. If connected to the @code{\"delete-event\"} signal, the
-  result is that clicking the Close button for a window will hide but not
+  returns @em{true}. If connected to the @sig[gtk:widget]{delete-event} signal,
+  the result is that clicking the Close button for a window will hide but not
   destroy the window. By default, GTK destroys windows when the
-  @code{\"delete-event\"} signal is received.
+  @sig[gtk:widget]{delete-event} signal is received.
   @see-class{gtk:widget}
   @see-class{gtk:window}
   @see-function{gtk:widget-hide}"
@@ -4993,7 +5084,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_ensure_style" widget-ensure-style) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2021-09-19}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Ensures that the widget has a style.
@@ -5016,7 +5107,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_reset_rc_styles" widget-reset-rc-styles) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2021-09-19}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Reset the styles of the widget and all descendents, so when they are
@@ -5042,7 +5133,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_default_style" widget-default-style)
     (g:object style)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2021-09-19}
   @return{The deprecated default @code{GtkStyle} object.}
   @begin{short}
     Returns the default style used by all widgets initially.
@@ -5073,11 +5164,11 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_direction" widget-direction) text-direction
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @syntax{(gtk:widget-direction widget) => direction}
   @syntax{(setf (gtk:widget-direction widget) direction)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration}
+  @argument[direction]{a value of the @sym{gtk:text-direction} enumeration}
   @begin{short}
     Accessor of the text direction of the widget.
   @end{short}
@@ -5115,18 +5206,18 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_default_direction" widget-default-direction)
     text-direction
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @syntax{(gtk:widget-default-direction) => direction}
   @syntax{(setf (gtk:widget-default-direction) direction)}
-  @argument[direction]{a value of the @symbol{gtk:text-direction} enumeration
-    for the default direction, this cannot be @code{:none}.}
+  @argument[direction]{a value of the @sym{gtk:text-direction} enumeration for
+    the default direction, this cannot be @val[gtk:text-direction]{:none}}
   @begin{short}
-    Accessor of the default reading direction.
+    The @fun{gtk:widget-default-direction} function obtains the current default
+    reading direction.
   @end{short}
-  The @fun{gtk:widget-default-direction} function obtains the current default
-  reading direction. The @setf{gtk:widget-default-direction} function sets the
-  default reading direction for widgets where the direction has not been
-  explicitly set by the @fun{gtk:widget-direction} function.
+  The @setf{gtk:widget-default-direction} function sets the default reading
+  direction for widgets where the direction has not been explicitly set by the
+  @fun{gtk:widget-direction} function.
   @see-class{gtk:widget}
   @see-symbol{gtk:text-direction}
   @see-function{gtk:widget-direction}")
@@ -5140,14 +5231,14 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_shape_combine_region" widget-shape-combine-region)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-11}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[region]{a @symbol{cairo:region-t} shape to be added, or @code{nil}
-    to remove an existing shape}
+  @argument[region]{a @sym{cairo:region-t} shape to be added, or @code{nil} to
+    remove an existing shape}
   @begin{short}
     Sets a shape for the GDK window of this widget.
   @end{short}
-  This allows for transparent windows etc., see the
+  This allows for transparent windows, and so on, see the
   @fun{gdk:window-shape-combine-region} function for more information.
   @see-class{gtk:widget}
   @see-symbol{cairo:region-t}
@@ -5164,10 +5255,10 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_input_shape_combine_region"
                 widget-input-shape-combine-region) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[region]{a @symbol{cairo:region-t} shape to be added, or @code{nil}
-    to remove an existing shape}
+  @argument[region]{a @sym{cairo:region-t} shape to be added, or @code{nil} to
+    remove an existing shape}
   @begin{short}
     Sets an input shape for the GDK window of the widget.
   @end{short}
@@ -5242,11 +5333,11 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_composite_name" widget-composite-name) :string
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @syntax{(gtk:widget-composite-name widget) => name}
   @syntax{(setf gtk:widget-composite-name widget) name)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[name]{a string with the name to set}
+  @argument[name]{a string for the name to set}
   @begin{short}
     Accessor of the composite name of the widget.
   @end{short}
@@ -5271,10 +5362,10 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_override_background_color"
                 widget-override-background-color) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-flags} value for which to set the
-    background color}
+  @argument[state]{a @sym{gtk:state-flags} value for which to set the background
+    color}
   @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
     the effect of previous calls}
   @begin{short}
@@ -5289,8 +5380,8 @@ lambda (widget event)    :run-last
     to change the way a widget renders its background you should use a custom
     CSS style, through an application specific @class{gtk:style-provider} object
     and a CSS style class. You can also override the default drawing of a widget
-    through the @code{\"draw\"} signal, and use Cairo to draw a specific color,
-    regardless of the CSS style.
+    through the @sig[gtk:widget]{draw} signal, and use Cairo to draw a specific
+    color, regardless of the CSS style.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-struct{gdk:rgba}
@@ -5309,10 +5400,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_override_color" widget-override-color) :void
  #+liber-documentation
- "@version{#2023-3-26}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-flags} value for which to set the
-    color}
+  @argument[state]{a @sym{gtk:state-flags} value for which to set the color}
   @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
     the effect of previous calls}
   @begin{short}
@@ -5364,7 +5454,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_override_font" widget-override-font) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[desc]{a @class{pango:font-description} instance to use,
     or @code{nil} to undo the effect of previous calls}
@@ -5395,9 +5485,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_override_symbolic_color"
                 widget-override-symbolic-color) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[name]{a string with the name of the symbolic color to modify}
+  @argument[name]{a string for the name of the symbolic color to modify}
   @argument[color]{a @class{gdk:rgba} color to assign, or @code{nil} to undo
     the effect of previous calls}
   @begin{short}
@@ -5430,7 +5520,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_override_cursor" widget-override-cursor) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[primary]{a @class{gdk:rgba} color to use for the primary cursor, or
     @code{nil} to undo the effect of previous calls to the
@@ -5538,10 +5628,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_fg" widget-modify-fg) :void
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-type} value for which to set the
-    foreground color}
+  @argument[state]{a @sym{gtk:state-type} value for which to set the foreground
+    color}
   @argument[color]{the @class{gdk:color} color to assign, does not need to be
     allocated, or @code{nil} to undo the effect of previous calls to the
     function}
@@ -5567,10 +5657,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_bg" widget-modify-bg) :void
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-type} value for which to set the
-    background color}
+  @argument[state]{a @sym{gtk:state-type} value for which to set the background
+    color}
   @argument[color]{the @class{gdk:color} color to assign, does not need to be
     allocated), or @code{nil} to undo the effect of previous calls of the
     function}
@@ -5592,8 +5682,8 @@ lambda (widget event)    :run-last
     a widget renders its background you should use a custom CSS style, through
     an application specific @class{gtk:style-provider} object and a CSS style
     class. You can also override the default drawing of a widget through the
-    @code{\"draw\"} signal, and use Cairo to draw a specific color, regardless
-    of the CSS style.
+    @sig[gtk:widget]{draw} signal, and use Cairo to draw a specific color,
+    regardless of the CSS style.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-class{gdk:color}
@@ -5609,11 +5699,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_text" widget-modify-text) :void
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{the @symbol{gtk:state-type} value for which to set the text
-    color}
-  @argument[color]{the @class{gdk:color} color to assign, does not need to be
+  @argument[state]{a @sym{gtk:state-type} value for which to set the text color}
+  @argument[color]{a @class{gdk:color} color to assign, does not need to be
     allocated, or @code{nil} to undo the effect of previous calls of the
     function}
   @short{Sets the text color for a widget in a particular state.}
@@ -5641,11 +5730,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_base" widget-modify-base) :void
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[state]{a @symbol{gtk:state-type} value for which to set the base
-    color}
-  @argument[color]{the @class{gdk:color} color to assign, does not need to be
+  @argument[state]{a @sym{gtk:state-type} value for which to set the base color}
+  @argument[color]{a @class{gdk:color} color to assign, does not need to be
     allocated, or @code{nil} to undo the effect of previous calls to the
     function}
   @begin{short}
@@ -5671,8 +5759,8 @@ lambda (widget event)    :run-last
     a widget renders its background you should use a custom CSS style, through
     an application specific @class{gtk:style-provider} object and a CSS style
     class. You can also override the default drawing of a widget through the
-    @code{\"draw\"} signal, and use Cairo to draw a specific color, regardless
-    of the CSS style.
+    @sig[gtk:widget]{draw} signal, and use Cairo to draw a specific color,
+    regardless of the CSS style.
   @end{dictionary}
   @see-class{gtk:widget}
   @see-class{gdk:color}
@@ -5689,7 +5777,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_font" widget-modify-font) :void
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2021-03-20}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[desc]{a @class{pango:font-description} instance to use,
     or @code{nil} to undo the effect of previous calls}
@@ -5713,7 +5801,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_modify_cursor" widget-modify-cursor) :void
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2021-03-20}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[primary]{the @class{gdk:color} color to use for primary cursor,
     does not need to be allocated, or @code{nil} to undo the effect of previous
@@ -5748,7 +5836,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_create_pango_context" widget-create-pango-context)
     (g:object pango:context :return)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The new @class{pango:context} object.}
   @begin{short}
@@ -5770,7 +5858,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_pango_context" widget-pango-context)
     (g:object pango:context)
  #+liber-documentation
- "@version{2023-12-26}
+ "@version{2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{pango:context} object for the widget.}
   @begin{short}
@@ -5785,8 +5873,8 @@ lambda (widget event)    :run-last
   If you create and keep a @class{pango:layout} object using this context, you
   must deal with changes to the context by calling the
   @fun{pango:layout-context-changed} function on the layout in response to the
-  @code{\"style-updated\"} and @code{\"direction-changed\"} signals for the
-  widget.
+  @sig[gtk:widget]{style-updated} and @sig[gtk:widget]{direction-changed}
+  signals for the widget.
   @see-class{gtk:widget}
   @see-class{pango:layout}
   @see-function{gtk:widget-create-pango-context}
@@ -5813,12 +5901,12 @@ lambda (widget event)    :run-last
 
 (defun widget-font-options (widget)
  #+liber-documentation
- "@version{#2024-12-29}
+ "@version{#2025-07-07}
   @syntax{(gtk:widget-font-options widget) => options}
   @syntax{(setf (gtk:widget-font-options widget) options)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[options]{a @symbol{cairo:font-options-t} instance, or
-    @code{nil} to unset any previously set default font options}
+  @argument[options]{a @sym{cairo:font-options-t} instance, or @code{nil} to
+    unset any previously set default font options}
   @begin{short}
     The @fun{gtk:widget-font-options} function returns the font options used
     for Pango rendering.
@@ -5849,7 +5937,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_font_map" widget-font-map)
     (g:object pango:font-map)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-font-map widget) => fontmap}
   @syntax{(setf (gtk:widget-font-map widget) fontmap)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -5877,9 +5965,9 @@ lambda (widget event)    :run-last
 
 (defun widget-create-pango-layout (widget text)
  #+liber-documentation
- "@version{#2024-12-29}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[text]{a string with the text to set on the layout, can be
+  @argument[text]{a string for the text to set on the layout, can be
     @code{nil}}
   @return{The new @class{pango:layout} object.}
   @begin{short}
@@ -5890,8 +5978,8 @@ lambda (widget event)    :run-last
   If you keep a @class{pango:layout} object created in this way around, in order
   to notify the layout of changes to the base direction or font of this widget,
   you must call the @fun{pango:layout-context-changed} function in response to
-  the @code{\"style-updated\"} and @code{\"direction-changed\"} signals for the
-  widget.
+  the @sig[gtk:widget]{style-updated} and @sig[gtk:widget]{direction-changed}
+  signals for the widget.
   @see-class{gtk:widget}
   @see-class{pango:layout}
   @see-function{pango:layout-context-changed}"
@@ -5907,14 +5995,16 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_render_icon" widget-render-icon)
     (g:object gdk:pixbuf)
  #+liber-documentation
- "@version{#2021-3-20}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[id]{a string with a stock ID}
-  @argument[size]{a @symbol{gtk:icon-size} stock size, if there are multiple
+  @argument[id]{a string for a stock ID}
+  @argument[size]{a @sym{gtk:icon-size} stock size, if there are multiple
     source sizes, GTK picks one of the available sizes}
-  @argument[detail]{a string with render detail to pass to theme engine}
-  @return{The new @see-class{gdk:pixbuf} object, or @code{nil} if the stock ID
-    was not known.}
+  @argument[detail]{a string for render detail to pass to theme engine}
+  @begin{return}
+    The new @class{gdk-pixbuf:pixbuf} object, or @code{nil} if the stock ID
+    was not known.
+  @end{return}
   @begin{short}
     A convenience function that uses the theme settings for @arg{widget} to
     look up @arg{id} and render it to a pixbuf.
@@ -5948,13 +6038,15 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_render_icon_pixbuf" widget-render-icon-pixbuf)
     (g:object gdk:pixbuf)
  #+liber-documentation
- "@version{#2021-9-19}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[id]{a string with a stock ID}
-  @argument[size]{a @symbol{gtk:icon-size} stock size, if there are multiple
+  @argument[id]{a string for a stock ID}
+  @argument[size]{a @sym{gtk:icon-size} stock size, if there are multiple
     source sizes, GTK picks one of the available sizes}
-  @return{The new @class{gdk:pixbuf} object, or @code{nil} if the stock ID was
-    not known.}
+  @begin{return}
+    The new @class{gdk-pixbuf:pixbuf} object, or @code{nil} if the stock ID was
+    not known.
+  @end{return}
   @begin{short}
     A convenience function that uses the theme engine and style settings for
     @arg{widget} to look up @arg{id} and render it to a pixbuf.
@@ -5985,7 +6077,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_pop_composite_child" widget-pop-composite-child)
     :void
  #+liber-documentation
- "@version{#2021-4-17}
+ "@version{#2021-04-17}
   @begin{short}
     Cancels the effect of a previous call to the function
     @fun{gtk:widget-push-composite-child}.
@@ -6006,7 +6098,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_push_composite_child" widget-push-composite-child)
     :void
  #+liber-documentation
- "@version{#2021-4-17}
+ "@version{#2021-04-17}
   @begin{short}
     Makes all newly created widgets as composite children until the
     corresponding @fun{gtk:widget-pop-composite-child} function call.
@@ -6033,14 +6125,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_queue_draw_area" widget-queue-draw-area) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[x]{an integer with the x coordinate of upper-left corner of
+  @argument[x]{an integer for the x coordinate of upper-left corner of
     rectangle to redraw}
-  @argument[y]{an integer with the y coordinate of upper-left corner of
+  @argument[y]{an integer for the y coordinate of upper-left corner of
     rectangle to redraw}
-  @argument[width]{an integer with the width of region to draw}
-  @argument[height]{an integer with the height of region to draw}
+  @argument[width]{an integer for the width of region to draw}
+  @argument[height]{an integer for the height of region to draw}
   @begin{short}
     Convenience function that calls the @fun{gtk:widget-queue-draw-region}
     functionon the region created from the given coordinates.
@@ -6072,9 +6164,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_queue_draw_region" widget-queue-draw-region) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[region]{a @symbol{cairo:region-t} region to draw}
+  @argument[region]{a @sym{cairo:region-t} region to draw}
   @begin{short}
     Invalidates the rectangular area of @arg{widget} defined by @arg{region} by
     calling the @fun{gdk:window-invalidate-region} function on the window of the
@@ -6103,7 +6195,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_set_redraw_on_allocate"
                 widget-set-redraw-on-allocate) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[redraw]{if @em{true}, the entire widget will be redrawn when it is
     allocated to a new size, otherwise, only the new portion of the widget will
@@ -6137,13 +6229,13 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_mnemonic_activate" widget-mnemonic-activate) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[cycling]{@em{true} if there are other widgets with the same
     mnemonic}
   @return{@em{True} if the signal has been handled.}
   @begin{short}
-    Emits the @code{\"mnemonic-activate\"} signal.
+    Emits the @sig[gtk:widget]{mnemonic-activate} signal.
   @end{short}
   The default handler for this signal activates the widget if @arg{cycling} is
   @em{false}, and just grabs the focus if @arg{cycling} is @em{true}.
@@ -6160,9 +6252,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_class_install_style_property"
                 widget-class-install-style-property) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[class]{a pointer to a widget class structure}
-  @argument[pspec]{a @symbol{g:param-spec} instance for the property}
+  @argument[pspec]{a @sym{g:param-spec} instance for the property}
   @begin{short}
     Installs a style property on a widget class.
   @end{short}
@@ -6207,12 +6299,14 @@ lambda (widget event)    :run-last
 
 (defun widget-class-find-style-property (gtype name)
  #+liber-documentation
- "@version{#2024-12-29}
+ "@version{#2025-07-07}
   @argument[class]{a @class{g:type-t} type ID for a @class{gtk:widget} class}
-  @argument[name]{a string with the name of the style property to find}
-  @return{The @symbol{g:param-spec} instance of the style property or a
+  @argument[name]{a string for the name of the style property to find}
+  @begin{return}
+    The @sym{g:param-spec} instance of the style property or a
     @code{cffi:null-pointer} if @arg{class} has no style property with that
-    property name.}
+    property name.
+  @end{return}
   @short{Finds a style property of a widget class by property name.}
   @begin[Examples]{dictionary}
     @begin{pre}
@@ -6250,9 +6344,9 @@ lambda (widget event)    :run-last
 
 (defun widget-class-list-style-properties (gtype)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[gtype]{a @class{g:type-t} widget class type ID}
-  @return{The list of @symbol{g:param-spec} instances.}
+  @return{The list of @sym{g:param-spec} instances.}
   @begin{short}
     Returns all style properties of a widget class.
   @end{short}
@@ -6286,14 +6380,16 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_region_intersect" widget-region-intersect)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[region]{a @symbol{cairo:region-t} region, in the same coordinate
-    system as the widget allocation, that is, relative to the GDK window
-    for windowless widgets, relative to the parent window of the GDK window for
-    widgets with their own window}
-  @return{The newly allocated region holding the intersection of @arg{widget}
-    and @arg{region}.}
+  @argument[region]{a @sym{cairo:region-t} region, in the same coordinate system
+    as the widget allocation, that is, relative to the GDK window for windowless
+    widgets, relative to the parent window of the GDK window for widgets with
+    their own window}
+  @begin{return}
+    The newly allocated region holding the intersection of @arg{widget} and
+    @arg{region}.
+  @end{return}
   @begin{short}
     Computes the intersection of the area of the widget and @arg{region},
     returning the intersection.
@@ -6412,9 +6508,9 @@ lambda (widget event)    :run-last
 
 (defun widget-style-property (widget property)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[property]{a string with the name of a style property}
+  @argument[property]{a string for the name of a style property}
   @return{The style property value.}
   @begin{short}
     Gets the value of a style property of the widget.
@@ -6553,7 +6649,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_accessible" widget-accessible) g:object
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @code{AtkObject} associated with @arg{widget}.}
   @begin{short}
@@ -6579,10 +6675,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_child_focus" widget-child-focus) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[direction]{a @symbol{gtk:direction-type} value with the direction
-    of focus movement}
+  @argument[direction]{a @sym{gtk:direction-type} value for the direction of
+    focus movement}
   @return{@em{True} if focus ended up inside widget.}
   @begin{short}
     This function is used by custom widget implementations.
@@ -6596,15 +6692,15 @@ lambda (widget event)    :run-last
   moves around the window using keyboard shortcuts. The @arg{direction} argument
   indicates what kind of motion is taking place (up, down, left, right, tab
   forward, tab backward). The @fun{gtk:widget-child-focus} function emits the
-  @code{\"focus\"} signal. Widgets override the default handler for this signal
-  in order to implement appropriate focus behavior.
+  @sig[gtk:widget]{focus} signal. Widgets override the default handler for this
+  signal in order to implement appropriate focus behavior.
 
-  The default @code{\"focus\"} handler for a widget should return @em{true} if
-  moving in direction left the focus on a focusable location inside that widget,
-  and @em{false} if moving in direction moved the focus outside the widget. If
-  returning @em{true}, widgets normally call the @fun{gtk:widget-grab-focus}
-  function to place the focus accordingly. If returning @em{false}, they do not
-  modify the current focus location.
+  The default @sig[gtk:widget]{focus} handler for a widget should return
+  @em{true} if moving in direction left the focus on a focusable location inside
+  that widget, and @em{false} if moving in direction moved the focus outside the
+  widget. If returning @em{true}, widgets normally call the
+  @fun{gtk:widget-grab-focus} function to place the focus accordingly. If
+  returning @em{false}, they do not modify the current focus location.
   @see-class{gtk:widget}
   @see-symbol{gtk:direction-type}
   @see-function{gtk:widget-grab-focus}
@@ -6620,13 +6716,13 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_child_notify" widget-child-notify) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[property]{a string with the name of a child property installed
+  @argument[property]{a string for the name of a child property installed
     on the class of the parent of @arg{widget}}
   @begin{short}
-    Emits a @code{\"child-notify\"} signal for the child property @arg{property}
-    on @arg{widget}.
+    Emits a @sig[gtk:widget]{child-notify} signal for the child property
+    @arg{property} on @arg{widget}.
   @end{short}
   This is the analogue of the @fun{g:object-notify} function for child
   properties. Also see the @fun{gtk:container-child-notify} function.
@@ -6645,10 +6741,10 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_freeze_child_notify" widget-freeze-child-notify)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
-    Stops emission of @code{\"child-notify\"} signals on the widget.
+    Stops emission of @sig[gtk:widget]{child-notify} signals on the widget.
   @end{short}
   The signals are queued until the @fun{gtk:widget-thaw-child-notify} function
   is called on the widget.
@@ -6676,7 +6772,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_child_visible" widget-child-visible) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-child-visible widget) => visible}
   @syntax{(setf (gtk:widget-child-visible widget) visible)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -6715,7 +6811,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_settings" widget-settings) (g:object settings)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The relevant @class{gtk:settings} object.}
   @begin{short}
@@ -6737,14 +6833,16 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_clipboard" widget-clipboard) (g:object clipboard)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-03}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[selection]{an atom as a string which identifies the clipboard to
-    use, @code{\"CLIPBOARD\"} gives the default clipboard, another common value
-    is @code{\"PRIMARY\"}, which gives the primary X selection}
-  @return{The appropriate @class{gtk:clipboard} object. If no clipboard already
+  @argument[selection]{a string which identifies the clipboard to use,
+    @code{\"CLIPBOARD\"} gives the default clipboard, another common value is
+    @code{\"PRIMARY\"}, which gives the primary X selection}
+  @begin{return}
+    The appropriate @class{gtk:clipboard} object. If no clipboard already
     exists, a new one will be created. Once a clipboard object has been created,
-    it is persistent for all time.}
+    it is persistent for all time.
+  @end{return}
   @begin{short}
     Returns the clipboard object for the given selection to be used with the
     widget.
@@ -6765,7 +6863,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_display" widget-display) (g:object gdk:display)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:display} object for the toplevel for this widget.}
   @begin{short}
@@ -6791,7 +6889,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_root_window" widget-root-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:window} root window for the toplevel for this widget.}
   @begin{short}
@@ -6822,7 +6920,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_screen" widget-screen) (g:object gdk:screen)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gdk:screen} object for the toplevel for the widget.}
   @begin{short}
@@ -6848,7 +6946,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_has_screen" widget-has-screen) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @em{True} if there is a @class{gdk:screen} object associcated with the
@@ -6886,12 +6984,12 @@ lambda (widget event)    :run-last
 
 (defun widget-size-request (widget)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @syntax{(gtk:widget-size-request object) => width, height}
   @syntax{(setf (gtk:widget-size-request object) (list width height))}
   @argument[object]{a @class{gtk:widget} object}
-  @argument[width]{an integer with the width}
-  @argument[height]{an integer with the height}
+  @argument[width]{an integer for the width}
+  @argument[height]{an integer for the height}
   @begin{short}
     Accessor of the size request of the widget.
   @end{short}
@@ -6954,14 +7052,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_thaw_child_notify" widget-thaw-child-notify) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Reverts the effect of a previous call to the
     @fun{gtk:widget-freeze-child-notify} function.
   @end{short}
-  This causes all queued @code{\"child-notify\"} signals on the widget to be
-  emitted.
+  This causes all queued @sig[gtk:widget]{child-notify} signals on the widget
+  to be emitted.
   @see-class{gtk:widget}
   @see-function{gtk:widget-freeze-child-notify}"
   (widget (g:object widget)))
@@ -6975,7 +7073,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_list_mnemonic_labels" widget-list-mnemonic-labels)
     (g:list-t (g:object widget))
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The list of @class{gtk:widget} mnemonic labels.}
   @begin{short}
@@ -7005,7 +7103,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_add_mnemonic_label" widget-add-mnemonic-label) :void
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[label]{a @class{gtk:widget} object that acts as a mnemonic label
     for @arg{widget}}
@@ -7017,8 +7115,8 @@ lambda (widget event)    :run-last
 
   Note the list of mnemonic labels for the widget is cleared when the widget is
   destroyed, so the caller must make sure to update its internal state at this
-  point as well, by using a connection to the @code{\"destroy\"} signal or a
-  weak notifier.
+  point as well, by using a connection to the @sig[gtk:widget]{destroy} signal
+  or a weak notifier.
   @see-class{gtk:widget}
   @see-function{gtk:widget-list-mnemonic-labels}
   @see-function{gtk:widget-remove-mnemonic-label}"
@@ -7034,7 +7132,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_remove_mnemonic_label"
                 widget-remove-mnemonic-label) :void
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[label]{a @class{gtk:widget} object that was previously set as a
     mnemonic label for @arg{widget}}
@@ -7058,10 +7156,12 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_composited" widget-is-composited) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{@em{True} if @arg{widget} can rely on its alpha channel being drawn
-    correctly.}
+  @begin{return}
+    @em{True} if @arg{widget} can rely on its alpha channel being drawn
+    correctly.
+  @end{return}
   @begin{short}
     Whether the widget can rely on having its alpha channel drawn correctly.
   @end{short}
@@ -7083,7 +7183,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_error_bell" widget-error-bell) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Notifies the user about an input-related error on this widget.
@@ -7107,20 +7207,22 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_keynav_failed" widget-keynav-failed) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[direction]{a @symbol{gtk:direction-type} value for the direction
-    of focus movement}
-  @return{@em{True} if stopping keyboard navigation is fine, @em{false} if the
+  @argument[direction]{a @sym{gtk:direction-type} value for the direction of
+    focus movement}
+  @begin{return}
+    @em{True} if stopping keyboard navigation is fine, @em{false} if the
     emitting widget should try to handle the keyboard navigation attempt in its
-    parent container(s).}
+    parent container(s).
+  @end{return}
   @begin{short}
     This function should be called whenever keyboard navigation within a single
     widget hits a boundary.
   @end{short}
-  The function emits the @code{\"keynav-failed\"} signal on the widget and its
-  return value should be interpreted in a way similar to the return value of the
-  @fun{gtk:widget-child-focus} function:
+  The function emits the @sig[gtk:widget]{keynav-failed} signal on the widget
+  and its return value should be interpreted in a way similar to the return
+  value of the @fun{gtk:widget-child-focus} function:
   @begin{itemize}
     @item{When @em{true} is returned, stay in the widget, the failed keyboard
       navigation is Ok and/or there is nowhere we can/should move the focus
@@ -7129,9 +7231,9 @@ lambda (widget event)    :run-last
       navigation outside the widget, for example by calling the
       @fun{gtk:widget-child-focus} function on the toplevel of the widget.}
   @end{itemize}
-  The default @code{\"keynav-failed\"} handler returns @em{true} for
+  The default @sig[gtk:widget]{keynav-failed} handler returns @em{true} for
   @code{:tab-forward} and @code{:tab-backward}. For the other
-  @symbol{gtk:direction-type} values, it looks at the
+  @sym{gtk:direction-type} values, it looks at the
   @slot[gtk:settings]{gtk-keynav-cursor-only} setting and returns @em{false}
   if the setting is @em{true}. This way the entire user interface becomes
   cursor-navigatable on input devices such as mobile phones which only have
@@ -7169,7 +7271,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_tooltip_window" widget-tooltip-window)
     (g:object window)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-tooltip-window widget) => window}
   @syntax{(setf (gtk:widget-tooltip-window widget) window)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7202,7 +7304,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_tooltip_trigger_tooltip_query" widget-trigger-tooltip-query)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Triggers a tooltip query on the display where the toplevel of @arg{widget}
@@ -7221,7 +7323,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_register_window" widget-register-window) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -7250,7 +7352,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_unregister_window" widget-unregister-window) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
@@ -7273,10 +7375,10 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_cairo_should_draw_window" cairo-should-draw-window) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
-  @argument[cr]{a @symbol{cairo:context-t} context}
-  @argument[window]{a @class{gdk:window} object to check, @arg{window} may
-    not be an input-only window}
+ "@version{#2025-07-07}
+  @argument[cr]{a @sym{cairo:context-t} context}
+  @argument[window]{a @class{gdk:window} object to check, @arg{window} may not
+    be an input-only window}
   @return{@em{True} if @arg{window} should be drawn.}
   @begin{short}
     This function is supposed to be called in \"draw\" implementations for
@@ -7302,7 +7404,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_cairo_transform_to_window" cairo-transform-to-window) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[cr]{a @class{cairo:context-t} context to transform}
   @argument[widget]{the @class{gtk:widget} object the context is currently
     centered for}
@@ -7315,9 +7417,9 @@ lambda (widget event)    :run-last
   modification will be applied.
 
   This is the inverse to the transformation GTK applies when preparing an
-  expose event to be emitted with the @code{\"draw\"} signal. It is intended to
-  help porting multiwindow widgets from GTK 2 to the rendering architecture of
-  GTK 3.
+  expose event to be emitted with the @sig[gtk:widget]{draw} signal. It is
+  intended to help porting multiwindow widgets from GTK 2 to the rendering
+  architecture of GTK 3.
   @see-class{gtk:widget}
   @see-class{gdk:window}
   @see-symbol{cairo:context-t}"
@@ -7333,14 +7435,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_allocated_width" widget-allocated-width) :int
  #+liber-documentation
- "@version{2025-06-02}
+ "@version{2025-07-15}
   @argument[widget]{a @class{gtk:widget} object to query}
-  @return{The integer with the width of the widget.}
+  @return{The integer for the width of the widget.}
   @begin{short}
     Returns the width that has currently been allocated to @arg{widget}.
   @end{short}
   This function is intended to be used when implementing handlers for the
-  @code{\"draw\"} signal.
+  @sig[gtk:widget]{draw} signal.
   @begin[Notes]{dictionary}
     The @fun{gtk:widget-allocated-width} function is equivalent to the call
     @begin{pre}
@@ -7360,14 +7462,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_allocated_height" widget-allocated-height) :int
  #+liber-documentation
- "@version{2025-06-02}
+ "@version{2025-07-15}
   @argument[widget]{a @class{gtk:widget} object to query}
-  @return{The integer with the height of the widget.}
+  @return{The integer for the height of the widget.}
   @begin{short}
     Returns the height that has currently been allocated to @arg{widget}.
   @end{short}
   This function is intended to be used when implementing handlers for the
-  @code{\"draw\"} signal.
+  @sig[gtk:widget]{draw} signal.
   @begin[Notes]{dictionary}
     The @fun{gtk:widget-allocated-height} function is equivalent to the call
     @begin{pre}
@@ -7467,9 +7569,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_allocated_baseline" widget-allocated-baseline)
     :int
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-15}
   @argument[widget]{a @class{gtk:widget} object to query}
-  @return{The integer with the baseline of the widget, or -1 if none.}
+  @return{The integer for the baseline of the widget, or -1 if none.}
   @begin{short}
     Returns the baseline that has currently been allocated to the widget.
   @end{short}
@@ -7498,7 +7600,7 @@ lambda (widget event)    :run-last
 
 (defun widget-clip (widget)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-clip widget) => clip}
   @syntax{(setf (gtk:widget-clip widget) clip)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7546,7 +7648,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_has_window" widget-has-window) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-has-window widget) => has-window}
   @syntax{(setf (gtk:widget-has-window widget) has-window)}
   @argument[widget]{a @class{gtk:widget} instance}
@@ -7580,7 +7682,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_sensitive" widget-is-sensitive) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is effectively sensitive.}
   @begin{short}
@@ -7599,7 +7701,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_visible" widget-is-visible) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget and all its parents are visible.}
   @begin{short}
@@ -7628,11 +7730,11 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_state_flags" widget-state-flags) state-flags
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-11}
   @syntax{(gtk:widget-state-flags widget) => flags}
   @syntax{(setf (gtk:widget-state-flags widget clear) flags)}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[flags]{a @symbol{gtk:state-flags} value with the state flags}
+  @argument[flags]{a @sym{gtk:state-flags} value for the state flags}
   @argument[clear]{an optional boolean whether to clear state before turning on
     flags}
   @begin{short}
@@ -7641,7 +7743,7 @@ lambda (widget event)    :run-last
   The @fun{gtk:widget-state-flags} function returns the widget state as a flag
   set. The @setf{gtk:widget-state-flags} function sets the widget state flags.
   This function is for use in widget implementations. Turns on flag values in
-  the current widget state, insensitive, prelighted, etc.
+  the current widget state, insensitive, prelighted, and so on.
 
   It is worth mentioning that any other state than @code{:insensitive}, will be
   propagated down to all non-internal children if the widget is a
@@ -7664,15 +7766,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_unset_state_flags" widget-unset-state-flags) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-11}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[flags]{a @symbol{gtk:state-flags} value with state flags to turn
-    off}
+  @argument[flags]{a @sym{gtk:state-flags} value for state flags to turn off}
   @begin{short}
     This function is for use in widget implementations.
   @end{short}
   Turns off flag values for the current widget state, insensitive, prelighted,
-  etc. See the @fun{gtk:widget-state-flags} function.
+  and so on. See the @fun{gtk:widget-state-flags} function.
   @see-class{gtk:widget}
   @see-symbol{gtk:state-flags}
   @see-function{gtk:widget-state-flags}"
@@ -7687,15 +7788,15 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_has_visible_focus" widget-has-visible-focus) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget should display a focus rectangle.}
   @begin{short}
     Determines if the widget should show a visible indication that it has the
     global input focus.
   @end{short}
-  This is a convenience function for use in @code{\"draw\"} handlers that takes
-  into account whether focus indication should currently be shown in the
+  This is a convenience function for use in @sig[gtk:widget]{draw} handlers that
+  takes into account whether focus indication should currently be shown in the
   toplevel window of the widget. See the @fun{gtk:window-focus-visible} function
   for more information about focus indication.
 
@@ -7714,7 +7815,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_has_grab" widget-has-grab) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if the widget is the grab widgets stack.}
   @begin{short}
@@ -7756,7 +7857,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_drawable" widget-is-drawable) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is drawable, @em{false} otherwise.}
   @begin{short}
@@ -7774,7 +7875,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_is_toplevel" widget-is-toplevel) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{@em{True} if @arg{widget} is a toplevel, @em{false} otherwise.}
   @begin{short}
@@ -7806,7 +7907,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_support_multidevice" widget-support-multidevice)
     :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-support-multidecice widget) => support-multidevice}
   @syntax{(setf (gtk:widget-support-multidevice widget) support-multidevice)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7843,7 +7944,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_realized" widget-realized) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-realized widget) => realized}
   @syntax{(setf (gtk:widget-realized widget) realized)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7875,7 +7976,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_mapped" widget-mapped) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @syntax{(gtk:widget-mapped widget) => mapped}
   @syntax{(setf (gtk:widget-mapped widget) mapped)}
   @argument[widget]{a @class{gtk:widget} object}
@@ -7931,17 +8032,19 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_device_is_shadowed" widget-device-is-shadowed)
     :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[device]{a @class{gdk:device} object}
-  @return{@em{True} if there is an ongoing grab on @arg{device} by another
-    widget than @arg{widget}.}
+  @begin{return}
+    @em{True} if there is an ongoing grab on @arg{device} by another widget
+    than @arg{widget}.
+  @end{return}
   @begin{short}
     Returns @em{true} if the device has been shadowed by a GTK device grab on
     another widget, so it would stop sending events to widget.
   @end{short}
-  This may be used in the @code{\"grab-notify\"} signal to check for specific
-  devices.
+  This may be used in the @sig[gtk:widget]{grab-notify} signal to check for
+  specific devices.
   See the @fun{gtk:device-grab-add} function.
   @see-class{gtk:widget}
   @see-class{gdk:device}
@@ -7958,9 +8061,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_modifier_mask" widget-modifier-mask)
     gdk:modifier-type
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[intent]{a value of the @symbol{gdk:modifier-intent} enumeration}
+  @argument[intent]{a value of the @sym{gdk:modifier-intent} enumeration}
   @begin{short}
     Returns the modifier mask the windowing system backend of the widget uses
     for a particular purpose.
@@ -7981,9 +8084,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_insert_action_group" widget-insert-action-group)
     :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[name]{a string with the prefix for actions in @arg{group}}
+  @argument[name]{a string for the prefix of actions in @arg{group}}
   @argument[group]{a @class{g:action-group} instance}
   @begin{short}
     Inserts @arg{group} into @arg{widget}.
@@ -8006,7 +8109,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_list_action_prefixes" widget-list-action-prefixes)
     g:strv-t
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The list of strings.}
   @begin{short}
@@ -8026,9 +8129,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_action_group" widget-action-group)
     (g:object g:action-group)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[prefix]{a string with the \"prefix\" of the action group}
+  @argument[prefix]{a string for the \"prefix\" of the action group}
   @return{The @class{g:action-group} instance or @code{nil}.}
   @begin{short}
     Retrieves the action group that was registered using @arg{prefix}.
@@ -8051,7 +8154,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_path" widget-path) (g:boxed widget-path)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The @class{gtk:widget-path} instance representing the widget.}
   @begin{short}
@@ -8088,7 +8191,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_reset_style" widget-reset-style) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Updates the style context of the widget and all descendents by updating its
@@ -8124,12 +8227,12 @@ lambda (widget event)    :run-last
 
 (defun widget-class-css-name (gtype)
   #+liber-documentation
- "@version{2023-12-2}
+ "@version{2025-06-23}
   @syntax{(gtk:widget-class-css-name gtype) => name}
   @syntax{(setf (gtk:widget-class-css-name gtype) name)}
-  @argument[gtype]{a @class{g:type-t} type ID with the widget class to set the
+  @argument[gtype]{a @class{g:type-t} type ID for the widget class to set the
     CSS name on}
-  @argument[name]{a string with the CSS name}
+  @argument[name]{a string for the CSS name}
   @begin{short}
     Accessor of the CSS name of the widget class.
   @end{short}
@@ -8157,7 +8260,7 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-height (widget)
  #+liber-documentation
- "@version{2023-6-18}
+ "@version{2023-06-18}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @arg{minimum-height} -- an integer with the minimum height, or @code{nil}
@@ -8196,7 +8299,7 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-width (widget)
  #+liber-documentation
- "@version{2023-6-18}
+ "@version{2023-06-18}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
@@ -8251,13 +8354,13 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-height-for-width (widget width)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[width]{an integer with the width which is available for allocation}
+  @argument[width]{an integer for the width which is available for allocation}
   @begin{return}
-    @arg{minimum-height} -- an integer with the minimum height, or @code{nil}
+    @arg{minimum-height} -- an integer for the minimum height, or @code{nil}
       @br{}
-    @arg{natural-height} -- an integer with the natural height, or @code{nil}
+    @arg{natural-height} -- an integer for the natural height, or @code{nil}
   @end{return}
   @begin{short}
     Retrieves a minimum and natural height of the widget if it would be given
@@ -8295,14 +8398,14 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-width-for-height (widget height)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[height]{an integer with the height which is available for
+  @argument[height]{an integer for the height which is available for
     allocation}
   @begin{return}
-    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
+    @arg{minimum-width} -- an integer for the minimum width, or @code{nil}
       @br{}
-    @arg{natural-width} -- an integer with the natural width, or @code{nil}
+    @arg{natural-width} -- an integer for the natural width, or @code{nil}
   @end{return}
   @begin{short}
     Retrieves a minimum and natural width of the widget if it would be given
@@ -8342,16 +8445,16 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-height-and-baseline-for-width (widget width)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[width]{an integer with the width which is available for allocation,
+  @argument[width]{an integer for the width which is available for allocation,
     or -1 if none}
   @begin{return}
-    @arg{min-height} -- an integer with the minimum height, or @code{nil} @br{}
-    @arg{nat-height} -- an integer with the natural height, or @code{nil} @br{}
-    @arg{min-baseline} -- an integer with the baseline for the minimum height,
+    @arg{min-height} -- an integer for the minimum height, or @code{nil} @br{}
+    @arg{nat-height} -- an integer for the natural height, or @code{nil} @br{}
+    @arg{min-baseline} -- an integer for the baseline for the minimum height,
       or @code{nil} @br{}
-    @arg{nat-baseline} -- an integer with the baseline for the natural height,
+    @arg{nat-baseline} -- an integer for the baseline for the natural height,
       or @code{nil}
   @end{return}
   @begin{short}
@@ -8393,9 +8496,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_request_mode" widget-request-mode)
     size-request-mode
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The @symbol{gtk:size-request-mode} value preferred by @arg{widget}.}
+  @return{The @sym{gtk:size-request-mode} value preferred by @arg{widget}.}
   @begin{short}
     Gets whether the widget prefers a height-for-width layout or a
     width-for-height layout.
@@ -8423,7 +8526,7 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-size (widget)
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
     @arg{minimum-size} -- a @class{gtk:requisition} instance with the minimum
@@ -8492,9 +8595,9 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_get_valign_with_baseline"
                 widget-valign-with-baseline) align
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @return{The vertical @symbol{gtk:align} alignment of the widget.}
+  @return{The vertical @sym{gtk:align} alignment for the widget.}
   @begin{short}
     Gets the value of the @slot[gtk:widget]{valign} property, including the
     @code{:baseline} value.
@@ -8513,7 +8616,7 @@ lambda (widget event)    :run-last
 (cffi:defcfun ("gtk_widget_queue_compute_expand"
                 widget-queue-compute-expand) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Mark the widget as needing to recompute its expand flags.
@@ -8532,10 +8635,9 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_compute_expand" widget-compute-expand) :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-07-07}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[orientation]{a @symbol{gtk:orientation} value for the expand
-    direction}
+  @argument[orientation]{a @sym{gtk:orientation} value for the expand direction}
   @return{The boolean whether @arg{widget} tree rooted here should be expanded.}
   @begin{short}
     Computes whether a container should give this widget extra space when
@@ -8566,7 +8668,7 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_init_template" widget-init-template) :void
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Creates and initializes child widgets defined in templates.
@@ -8604,8 +8706,8 @@ lambda (widget event)    :run-last
 
 (defun widget-class-set-template (gtype template)
  #+liber-documentation
- "@version{#2023-3-8}
-  @argument[gtype]{the @class{g:type-t} type ID of the widget class}
+ "@version{#2025-06-23}
+  @argument[gtype]{a @class{g:type-t} type ID for the widget class}
   @argument[template]{a string holding the @class{gtk:builder} XML}
   @begin{short}
     This should be called at class initialization time to specify the
@@ -8642,9 +8744,9 @@ lambda (widget event)    :run-last
 
 (defun widget-class-set-template-from-resource (gtype name)
  #+liber-documentation
- "@version{#2023-3-8}
-  @argument[gtype]{the @class{g:type-t} type ID of the widget class}
-  @argument[name]{a string with the name of the resource to load the template
+ "@version{#2025-06-23}
+  @argument[gtype]{a @class{g:type-t} type ID for the widget class}
+  @argument[name]{a string for the name of the resource to load the template
     from}
   @begin{short}
     A convenience function to call the @fun{gtk:widget-class-set-template}
@@ -8671,13 +8773,14 @@ lambda (widget event)    :run-last
 
 (cffi:defcfun ("gtk_widget_get_template_child" widget-template-child) g:object
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2025-06-23}
   @argument[widget]{a @class{gtk:widget} object}
-  @argument[gtype]{the @class{g:type-t} type ID to get a template child for}
-  @argument[name]{a string with the \"ID\" of the child defined in the template
+  @argument[gtype]{a @class{g:type-t} type ID to get a template child for}
+  @argument[name]{a string for the \"ID\" of the child defined in the template
     XML}
-  @return{The @class{g:object} instance built in the template XML with the ID
-    name.}
+  @begin{return}
+    The @class{g:object} instance built in the template XML with the ID name.
+  @end{return}
   @begin{short}
     Fetch an object build from the template XML for @arg{gtype} in this widget
     instance.

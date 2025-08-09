@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.menu-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -106,7 +106,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkMenuItem
+;;; GtkMenuItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkMenuItem" menu-item
@@ -133,7 +133,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-item 'type)
- "@version{#2023-3-21}
+ "@version{#2025-07-16}
   @begin{short}
     The @class{gtk:menu-item} widget and the derived widgets are the only valid
     childs for menus. Their function is to correctly handle highlighting,
@@ -168,128 +168,126 @@ menuitem
     class.
   @end{dictionary}
   @begin[Style Property Details]{dictionary}
-    @begin[code]{table}
-      @begin[arrow-scaling]{entry}
-        The @code{arrow-scaling} style property of type @code{:float} (Read)
-        @br{}
-        Amount of space used up by arrow, relative to the font size of the menu
-        item. @br{}
-        @em{Warning:} The @code{arrow-scaling} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard min-width/min-height CSS properties on the arrow
-        node. The value of this style property is ignored. @br{}
-        Allowed values: [0,2] @br{}
-        Default value: 0.8
-      @end{entry}
-      @begin[arrow-spacing]{entry}
-        The @code{arrow-spacing} style property of type @code{:int} (Read) @br{}
-        Space between label and arrow. @br{}
-        @em{Warning:} The @code{arrow-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard margin CSS property on the arrow node. The value
-        of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 10
-      @end{entry}
-      @begin[horizontal-padding]{entry}
-        The @code{horizontal-padding} style property of type @code{:int} (Read)
-        @br{}
-        Padding to left and right of the menu item. @br{}
-        @em{Warning:} The @code{horizontal-padding} style property has been
-        deprecated since version 3.8 and should not be used in newly written
-        code. Use the standard padding CSS property, through objects like
-        @class{gtk:style-context} and @class{gtk:css-provider}. The value of
-        this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 3
-      @end{entry}
-      @begin[selected-shadow-type]{entry}
-        The @code{selected-shadow-type} style property of type
-        @symbol{gtk:shadow-type} (Read) @br{}
-        Shadow type when the menu item is selected. @br{}
-        @em{Warning:} The @code{selected-shadow-type} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use CSS to determine the shadow. The value of this style property
-        is ignored. @br{}
-        Default value: @code{:none}
-      @end{entry}
-      @begin[toggle-spacing]{entry}
-        The @code{toggle-spacing} style property of type @code{:int} (Read)@br{}
-        Space between icon and label. @br{}
-        @em{Warning:} The @code{toggle-spacing} style property has been
-        deprecated since version 3.20 and should not be used in newly written
-        code. Use the standard margin CSS property on the check or radio nodes.
-        The value of this style property is ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 5
-      @end{entry}
-      @begin[width-chars]{entry}
-        The @code{width-chars} style property of type @code{:int} (Read) @br{}
-        The minimum desired width of the menu item in characters. @br{}
-        @em{Warning:} The @code{width-chars} style property has been deprecated
-        since version 3.20 and should not be used in newly written code. Use the
-        standard CSS property min-width. The value of this style property is
-        ignored. @br{}
-        Allowed values: >= 0 @br{}
-        Default value: 12
-      @end{entry}
-    @end{table}
+    @begin[menu-item:arrow-scaling]{property}
+      The @code{arrow-scaling} style property of type @code{:float} (Read)
+      @br{}
+      Amount of space used up by arrow, relative to the font size of the menu
+      item. @br{}
+      @em{Warning:} The @code{arrow-scaling} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard min-width/min-height CSS properties on the arrow
+      node. The value of this style property is ignored. @br{}
+      Allowed values: [0,2] @br{}
+      Default value: 0.8
+    @end{property}
+    @begin[menu-item:arrow-spacing]{property}
+      The @code{arrow-spacing} style property of type @code{:int} (Read) @br{}
+      Space between label and arrow. @br{}
+      @em{Warning:} The @code{arrow-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard margin CSS property on the arrow node. The value
+      of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 10
+    @end{property}
+    @begin[menu-item:horizontal-padding]{property}
+      The @code{horizontal-padding} style property of type @code{:int} (Read)
+      @br{}
+      Padding to left and right of the menu item. @br{}
+      @em{Warning:} The @code{horizontal-padding} style property has been
+      deprecated since version 3.8 and should not be used in newly written
+      code. Use the standard padding CSS property, through objects like
+      @class{gtk:style-context} and @class{gtk:css-provider}. The value of
+      this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 3
+    @end{property}
+    @begin[menu-item:selected-shadow-type]{property}
+      The @code{selected-shadow-type} style property of type
+      @sym{gtk:shadow-type} (Read) @br{}
+      Shadow type when the menu item is selected. @br{}
+      @em{Warning:} The @code{selected-shadow-type} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use CSS to determine the shadow. The value of this style property
+      is ignored. @br{}
+      Default value: @val[gtk:shadow-type]{:none}
+    @end{property}
+    @begin[menu-item:toggle-spacing]{property}
+      The @code{toggle-spacing} style property of type @code{:int} (Read)@br{}
+      Space between icon and label. @br{}
+      @em{Warning:} The @code{toggle-spacing} style property has been
+      deprecated since version 3.20 and should not be used in newly written
+      code. Use the standard margin CSS property on the check or radio nodes.
+      The value of this style property is ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 5
+    @end{property}
+    @begin[menu-item:width-chars]{property}
+      The @code{width-chars} style property of type @code{:int} (Read) @br{}
+      The minimum desired width of the menu item in characters. @br{}
+      @em{Warning:} The @code{width-chars} style property has been deprecated
+      since version 3.20 and should not be used in newly written code. Use the
+      standard CSS property min-width. The value of this style property is
+      ignored. @br{}
+      Allowed values: >= 0 @br{}
+      Default value: 12
+    @end{property}
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"activate\" signal}
+    @begin[menu-item::activate]{signal}
       @begin{pre}
 lambda (item)    :action
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+      @end{simple-table}
       Emitted when the menu item is activated.
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"activate-item\" signal}
+    @end{signal}
+    @begin[menu-item::activate-item]{signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+      @end{simple-table}
       Emitted when the menu item is activated, but also if the menu item has a
       submenu. For normal applications, the relevant signal is the
-      @code{\"activate\"} signal.
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"deselect\" signal}
+      @sig[gtk:menu-item]{activate} signal.
+    @end{signal}
+    @begin[menu-item::deselect]{signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"select\" signal}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+      @end{simple-table}
+    @end{signal}
+    @begin[menu-item::select]{signal}
       @begin{pre}
 lambda (item)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-      @end{table}
-    @subheading{The \"toggle-size-allocate\" signal}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+      @end{simple-table}
+    @end{signal}
+    @begin[menu-item::toggle-size-allocate]{signal}
       @begin{pre}
 lambda (item arg)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-        @entry[arg]{An integer which is not documented.}
-      @end{table}
-    @subheading{The \"toggle-size-request\" signal}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+        @entry[arg]{The integer which is not documented.}
+      @end{simple-table}
+    @end{signal}
+    @begin[menu-item::toggle-size-request]{signal}
       @begin{pre}
 lambda (item arg)    :run-first
       @end{pre}
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:menu-item} widget which received the
-          signal.}
-        @entry[arg]{A pointer which is not documented.}
-      @end{table}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:menu-item} widget that received the signal.}
+        @entry[arg]{The pointer which is not documented.}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:menu-item-new}
   @see-constructor{gtk:menu-item-new-with-label}
@@ -320,13 +318,12 @@ lambda (item arg)    :run-first
 (setf (liber:alias-for-function 'menu-item-accel-path)
       "Accessor"
       (documentation 'menu-item-accel-path 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-item-accel-path object) => path}
   @syntax{(setf (gtk:menu-item-accel-path object) path)}
   @argument[item]{a valid @class{gtk:menu-item} widget}
-  @argument[path]{a string with the accelerator path, corresponding to
-    this functionality of the menu item, or @code{nil} to unset the current
-    path}
+  @argument[path]{a string for the accelerator path, corresponding to this
+    functionality of the menu item, or @code{nil} to unset the current path}
   @begin{short}
     Accessor of the @slot[gtk:menu-item]{accel-path} slot of the
     @class{gtk:menu-item} class.
@@ -369,11 +366,11 @@ lambda (item arg)    :run-first
 (setf (liber:alias-for-function 'menu-item-label)
       "Accessor"
       (documentation 'menu-item-label 'function)
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @syntax{(gtk:menu-item-label object) => label}
   @syntax{(setf (gtk:menu-item-label object) label)}
   @argument[object]{a @class{gtk:menu-item} widget}
-  @argument[label]{a string with the text you want to set}
+  @argument[label]{a string for the text you want to set}
   @begin{short}
     Accessor of the @slot[gtk:menu-item]{label} slot of the
     @class{gtk:menu-item} class.
@@ -479,7 +476,7 @@ lambda (item arg)    :run-first
   @see-class{gtk:menu-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_new ()
+;;; gtk_menu_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline menu-item-new))
@@ -495,15 +492,15 @@ lambda (item arg)    :run-first
 (export 'menu-item-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_new_with_label ()
+;;; gtk_menu_item_new_with_label
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline menu-item-new-with-label))
 
 (defun menu-item-new-with-label (label)
  #+liber-documentation
- "@version{2024-3-14}
-  @argument[label]{a string with the text for the label}
+ "@version{2025-07-06}
+  @argument[label]{a string for the text for the label}
   @return{The newly created @class{gtk:menu-item} widget.}
   @short{Creates a new menu item whose child is a @class{gtk:label} widget.}
   @see-class{gtk:menu-item}
@@ -515,16 +512,16 @@ lambda (item arg)    :run-first
 (export 'menu-item-new-with-label)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_new_with_mnemonic ()
+;;; gtk_menu_item_new_with_mnemonic
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_new_with_mnemonic" menu-item-new-with-mnemonic)
    (g:object menu-item)
  #+liber-documentation
- "@version{#2023-3-21}
-  @argument[label]{a string with the text of the button, with an underscore in
+ "@version{#2025-07-07}
+  @argument[label]{a string for the text of the button, with an underscore in
     front of the mnemonic character}
-  @return{A new @class{gtk:menu-item} widget.}
+  @return{The new @class{gtk:menu-item} widget.}
   @begin{short}
     Creates a new menu item containing a label.
   @end{short}
@@ -538,14 +535,14 @@ lambda (item arg)    :run-first
 (export 'menu-item-new-with-mnemonic)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_select ()
+;;; gtk_menu_item_select
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_select" menu-item-select) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:menu-item} widget}
-  @short{Emits the @code{\"select\"} signal on the given menu item.}
+  @short{Emits the @sig[gtk:menu-item]{select} signal on the given menu item.}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-deselect}"
   (item (g:object menu-item)))
@@ -553,15 +550,15 @@ lambda (item arg)    :run-first
 (export 'menu-item-select)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_deselect ()
+;;; gtk_menu_item_deselect
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_deselect" menu-item-deselect) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:menu-item} widget}
   @begin{short}
-    Emits the @code{\"deselect\"} signal on the given menu item.
+    Emits the @sig[gtk:menu-item]{deselect} signal on the given menu item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-select}"
@@ -570,15 +567,15 @@ lambda (item arg)    :run-first
 (export 'menu-item-deselect)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_activate ()
+;;; gtk_menu_item_activate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_activate" menu-item-activate) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:menu-item} widget}
   @begin{short}
-    Emits the @code{\"activate\"} signal on the given menu item.
+    Emits the @sig[gtk:menu-item]{activate} signal on the given menu item.
   @end{short}
   @see-class{gtk:menu-item}"
   (item (g:object menu-item)))
@@ -586,17 +583,18 @@ lambda (item arg)    :run-first
 (export 'menu-item-activate)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_toggle_size_request ()
+;;; gtk_menu_item_toggle_size_request
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_toggle_size_request"
                menu-item-toggle-size-request) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @argument[item]{a @class{gtk:menu-item} widget}
-  @argument[requisition]{an integer with the requisition to use as signal data}
+  @argument[requisition]{an integer for the requisition to use as signal data}
   @begin{short}
-    Emits the @code{\"toggle-size-request\"} signal on the given menu item.
+    Emits the @sig[gtk:menu-item]{toggle-size-request} signal on the given menu
+    item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-toggle-size-allocate}"
@@ -606,17 +604,18 @@ lambda (item arg)    :run-first
 (export 'menu-item-toggle-size-request)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_item_toggle_size_allocate ()
+;;; gtk_menu_item_toggle_size_allocate
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_item_toggle_size_allocate"
                menu-item-toggle-size-allocate) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2025-07-06}
   @argument[item]{a @class{gtk:menu-item} widget}
-  @argument[allocation]{an integer with the allocation to use as signal data}
+  @argument[allocation]{an integer for the allocation to use as signal data}
   @begin{short}
-    Emits the @code{\"toggle-size-allocate\"} signal on the given item.
+    Emits the @sig[gtk:menu-item]{toggle-size-allocate} signal on the given
+    item.
   @end{short}
   @see-class{gtk:menu-item}
   @see-function{gtk:menu-item-toggle-size-request}"

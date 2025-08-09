@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.tool-item.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -97,7 +97,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkToolItem
+;;; GtkToolItem
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkToolItem" tool-item
@@ -119,7 +119,7 @@
 
 #+liber-documentation
 (setf (documentation 'tool-item 'type)
- "@version{#2023-3-28}
+ "@version{#2025-06-27}
   @begin{short}
     The @class{gtk:tool-item} widget is a widget that can appear on a toolbar.
   @end{short}
@@ -133,10 +133,15 @@
   widget, and the @class{gtk:tool-shell} documentation for a description of the
   tool shell interface.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"create-menu-proxy\" signal}
+    @begin[tool-item::create-menu-proxy]{signal}
       @begin{pre}
 lambda (item)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
+          on.}
+        @entry[Returns]{@em{True} if the signal was handled, @em{false} if not.}
+      @end{simple-table}
       The signal is emitted when the toolbar needs information from @arg{item}
       about whether the item should appear in the toolbar overflow menu. In
       response the tool item should either.
@@ -160,15 +165,15 @@ lambda (item)    :run-last
       changes how it will respond to this signal it must call the
       @fun{gtk:tool-item-rebuild-menu} function to invalidate the cache and
       ensure that the toolbar rebuilds its overflow menu.
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
-          on.}
-        @entry[Returns]{@em{True} if the signal was handled, @em{false} if not.}
-      @end{table}
-    @subheading{The \"toolbar-reconfigured\" signal}
+    @end{signal}
+    @begin[tool-item::toolbar-reconfigured]{signal}
       @begin{pre}
 lambda (item)    :run-last
       @end{pre}
+      @begin[code]{simple-table}
+        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
+          on.}
+      @end{simple-table}
       The signal is emitted when some property of the toolbar that the item is
       a child of changes. For custom subclasses of the @class{gtk:tool-item}
       class, the default handler of this signal use the
@@ -176,10 +181,7 @@ lambda (item)    :run-last
       @fun{gtk:tool-shell-icon-size}, or @fun{gtk:tool-shell-relief-style}
       functions to find out what the toolbar should look like and change
       themselves accordingly.
-      @begin[code]{table}
-        @entry[item]{The @class{gtk:tool-item} widget the signal was emitted
-          on.}
-      @end{table}
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:tool-item-new}
   @see-slot{gtk:tool-item-is-important}
@@ -196,14 +198,14 @@ lambda (item)    :run-last
 (setf (documentation (liber:slot-documentation "is-important" 'tool-item) t)
  "The @code{is-important} property of type @code{:boolean} (Read / Write) @br{}
   Whether the toolbar item is considered important. When @em{true}, toolbar
-  buttons show text in @code{:both-horiz} mode. @br{}
+  buttons show text in @val[gtk:toolbar-style]{:both-horiz} mode. @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'tool-item-is-important)
       "Accessor"
       (documentation 'tool-item-is-important 'function)
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @syntax{gtk:tool-item-is-important object) => setting}
   @syntax{(setf (gtk:tool-item-is-important object) setting)}
   @argument[object]{a @class{gtk:tool-item} widget}
@@ -218,9 +220,10 @@ lambda (item)    :run-last
   whether the tool item should be considered important.
 
   The @class{gtk:tool-button} class uses this property to determine whether to
-  show or hide its label when the toolbar style is @code{:both-horiz}. The
-  result is that only tool buttons with the @code{is-important} property set
-  have labels, an effect known as \"priority text\".
+  show or hide its label when the toolbar style is
+  @val[gtk:toolbar-style]{:both-horiz}. The result is that only tool buttons
+  with the @slot[gtk:tool-item]{is-important} property set have labels, an
+  effect known as \"priority text\".
   @see-class{gtk:tool-item}
   @see-class{gtk:tool-button}
   @see-symbol{gtk:toolbar-style}")
@@ -292,7 +295,7 @@ lambda (item)    :run-last
   @see-class{gtk:tool-item}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_new ()
+;;; gtk_tool_item_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline tool-item-new))
@@ -308,8 +311,8 @@ lambda (item)    :run-last
 (export 'tool-item-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_homogeneous ()
-;;; gtk_tool_item_set_homogeneous ()
+;;; gtk_tool_item_get_homogeneous
+;;; gtk_tool_item_set_homogeneous
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-homogeneous) (homogeneous item)
@@ -343,8 +346,8 @@ lambda (item)    :run-last
 (export 'tool-item-homogeneous)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_expand ()
-;;; gtk_tool_item_set_expand ()
+;;; gtk_tool_item_get_expand
+;;; gtk_tool_item_set_expand
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-expand) (expand item)
@@ -375,15 +378,15 @@ lambda (item)    :run-last
 (export 'tool-item-expand)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_set_tooltip_text ()
+;;; gtk_tool_item_set_tooltip_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_set_tooltip_text" tool-item-set-tooltip-text)
     :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[item]{a @class{gtk:tool-item} widget}
-  @argument[text]{a string with the text to be used as tooltip for @arg{item}}
+  @argument[text]{a string for the text to be used as tooltip for @arg{item}}
   @begin{short}
     Sets the text to be displayed as tooltip on the tool item.
   @end{short}
@@ -397,15 +400,15 @@ lambda (item)    :run-last
 (export 'tool-item-set-tooltip-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_set_tooltip_markup ()
+;;; gtk_tool_item_set_tooltip_markup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_set_tooltip_markup" tool-item-set-tooltip-markup)
     :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[item]{a @class{gtk:tool-item} widget}
-  @argument[markup]{a string with the markup text to be used as tooltip for
+  @argument[markup]{a string for the markup text to be used as tooltip for
     @arg{item}}
   @begin{short}
     Sets the markup text to be displayed as tooltip on the tool item.
@@ -420,8 +423,8 @@ lambda (item)    :run-last
 (export 'tool-item-set-tooltip-markup)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_use_drag_window ()
-;;; gtk_tool_item_set_use_drag_window ()
+;;; gtk_tool_item_get_use_drag_window
+;;; gtk_tool_item_set_use_drag_window
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-use-drag-window) (setting item)
@@ -457,16 +460,16 @@ lambda (item)    :run-last
 (export 'tool-item-use-drag-window)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_ellipsize_mode ()
+;;; gtk_tool_item_get_ellipsize_mode
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_ellipsize_mode" tool-item-ellipsize-mode)
     pango:ellipsize-mode
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A @symbol{pango:ellipsize-mode} value indicating how text in @arg{item}
+    The @sym{pango:ellipsize-mode} value indicating how text in @arg{item}
     should be ellipsized.
   @end{return}
   @begin{short}
@@ -481,15 +484,15 @@ lambda (item)    :run-last
 (export 'tool-item-ellipsize-mode)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_icon_size ()
+;;; gtk_tool_item_get_icon_size
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_icon_size" tool-item-icon-size) icon-size
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A @symbol{gtk:icon-size} value indicating the icon size used for @arg{item}.
+    The @sym{gtk:icon-size} value indicating the icon size used for @arg{item}.
   @end{return}
   @begin{short}
     Returns the icon size used for the tool item.
@@ -503,16 +506,16 @@ lambda (item)    :run-last
 (export 'tool-item-icon-size)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_orientation ()
+;;; gtk_tool_item_get_orientation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_orientation" tool-item-orientation)
     orientation
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A @symbol{gtk:orientation} value indicating the orientation used for
+    The @sym{gtk:orientation} value indicating the orientation used for
     @arg{item}.
   @end{return}
   @begin{short}
@@ -527,24 +530,25 @@ lambda (item)    :run-last
 (export 'tool-item-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_toolbar_style ()
+;;; gtk_tool_item_get_toolbar_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_toolbar_style" tool-item-toolbar-style)
     toolbar-style
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A @symbol{gtk:toolbar-style} value indicating the toolbar style used for
+    The @sym{gtk:toolbar-style} value indicating the toolbar style used for
     @arg{item}.
   @end{return}
   @begin{short}
     Returns the toolbar style used for the tool item.
   @end{short}
   Custom subclasses of the @class{gtk:tool-item} class should call this
-  function in the handler of the @code{\"toolbar-reconfigured\"} signal to find
-  out in what style the toolbar is displayed and change themselves accordingly.
+  function in the handler of the @sig[gtk:tool-item]{toolbar-reconfigured}
+  signal to find out in what style the toolbar is displayed and change
+  themselves accordingly.
 
   Possibilities are:
   @begin{itemize}
@@ -553,9 +557,7 @@ lambda (item)    :run-last
     @entry[:icons]{Meaning the toolbar shows only icons.}
     @entry[:text]{Meaning the tool item should only show text.}
     @entry[:both-horiz]{Meaning the tool item should show both an icon and a
-      label, arranged horizontally. However, note the \"has-text-horizontally\"
-      property that makes tool buttons not show labels when the toolbar style
-      is @code{:both-horiz}.}
+      label, arranged horizontally.}
   @end{itemize}
   @see-class{gtk:tool-item}
   @see-symbol{gtk:toolbar-style}"
@@ -564,25 +566,25 @@ lambda (item)    :run-last
 (export 'tool-item-toolbar-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_relief_style ()
+;;; gtk_tool_item_get_relief_style
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_relief_style" tool-item-relief-style)
     relief-style
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A value of the @symbol{gtk:relief-style} enumeration indicating the relief
+    The value of the @sym{gtk:relief-style} enumeration indicating the relief
     style used for @arg{item}.
   @end{return}
   @begin{short}
     Returns the relief style of the tool item.
   @end{short}
   Custom subclasses of the @class{gtk:tool-item} class should call this
-  function in the handler of the @code{\"toolbar-reconfigured\"} signal to find
-  out the relief style of buttons. See the @fun{gtk:button-relief-style}
-  function.
+  function in the handler of the @sig[gtk:tool-item]{toolbar-reconfigured}
+  signal to find out the relief style of buttons. See the
+  @fun{gtk:button-relief-style} function.
   @see-class{gtk:tool-item}
   @see-function{gtk:button-relief-style}"
   (item (g:object tool-item)))
@@ -590,7 +592,7 @@ lambda (item)    :run-last
 (export 'tool-item-relief-style)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_alignment ()
+;;; gtk_tool_item_get_text_alignment
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_alignment" tool-item-text-alignment)
@@ -612,16 +614,16 @@ lambda (item)    :run-last
 (export 'tool-item-text-alignment)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_orientation ()
+;;; gtk_tool_item_get_text_orientation
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_orientation" tool-item-text-orientation)
     orientation
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
-    A value of the @symbol{gtk:orientation} enumeration indicating the text
+    The value of the @sym{gtk:orientation} enumeration indicating the text
     orientation used for @arg{item}.
   @end{return}
   @begin{short}
@@ -636,13 +638,13 @@ lambda (item)    :run-last
 (export 'tool-item-text-orientation)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_retrieve_proxy_menu_item ()
+;;; gtk_tool_item_retrieve_proxy_menu_item
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_retrieve_proxy_menu_item"
                tool-item-retrieve-proxy-menu-item) g:object
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-11}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
     The @class{gtk:menu-item} widget that is going to appear in the overflow
@@ -650,8 +652,8 @@ lambda (item)    :run-last
   @end{return}
   @begin{short}
     Returns the @class{gtk:menu-item} widget that was last set by the
-    @fun{gtk:tool-item-proxy-menu-item} function, i.e. the @class{gtk:menu-item}
-    widget that is going to appear in the overflow menu.
+    @fun{gtk:tool-item-proxy-menu-item} function, that is, the
+    @class{gtk:menu-item} widget that is going to appear in the overflow menu.
   @end{short}
   @see-class{gtk:tool-item}
   @see-class{gtk:menu-item}
@@ -661,8 +663,8 @@ lambda (item)    :run-last
 (export 'tool-item-retrieve-proxy-menu-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_proxy_menu_item ()
-;;; gtk_tool_item_set_proxy_menu_item ()
+;;; gtk_tool_item_get_proxy_menu_item
+;;; gtk_tool_item_set_proxy_menu_item
 ;;; ----------------------------------------------------------------------------
 
 (defun (setf tool-item-proxy-menu-item) (menuitem item id)
@@ -701,12 +703,12 @@ lambda (item)    :run-last
 (export 'tool-item-proxy-menu-item)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_rebuild_menu ()
+;;; gtk_tool_item_rebuild_menu
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_rebuild_menu" tool-item-rebuild-menu) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{short}
     Calling this function signals to the toolbar that the overflow menu item
@@ -716,23 +718,23 @@ lambda (item)    :run-last
   be rebuilt.
 
   The function must be called when the tool item changes what it will do in
-  response to the @code{\"create-menu-proxy\"} signal.
+  response to the @sig[gtk:tool-item]{create-menu-proxy} signal.
   @see-class{gtk:tool-item}"
   (item (g:object tool-item)))
 
 (export 'tool-item-rebuild-menu)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_toolbar_reconfigured ()
+;;; gtk_tool_item_toolbar_reconfigured
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_toolbar_reconfigured"
                tool-item-toolbar-reconfigured) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-16}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{short}
-    Emits the signal \"toolbar-reconfigured\" on the tool item.
+    Emits the @sig[gtk:tool-item]{toolbar-reconfigured} signal on the tool item.
   @end{short}
   The @class{gtk:toolbar} widget and other @class{gtk:tool-shell}
   implementations use this function to notify children, when some aspect of
@@ -745,15 +747,15 @@ lambda (item)    :run-last
 (export 'tool-item-toolbar-reconfigured)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tool_item_get_text_size_group ()
+;;; gtk_tool_item_get_text_size_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tool_item_get_text_size_group" tool-item-text-size-group)
     (g:object size-group)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2025-07-07}
   @argument[item]{a @class{gtk:tool-item} widget}
-  @return{A @class{gtk:size-group} widget.}
+  @return{The @class{gtk:size-group} widget.}
   @begin{short}
     Returns the size group used for labels in the tool item.
   @end{short}

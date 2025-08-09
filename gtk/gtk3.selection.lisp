@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'target-flags)
       "GFlags"
       (liber:symbol-documentation 'target-flags)
- "@version{2024-03-24}
+ "@version{2025-06-27}
   @begin{declaration}
 (gobject:define-gflags \"GtkTargetFlags\" target-flags
   (:export t
@@ -134,7 +134,7 @@
   (:other-widget 8))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[:same-app]{If this is set, the target will only be selected for
         drags within a single application.}
       @entry[:same-widget]{If this is set, the target will only be selected for
@@ -143,11 +143,11 @@
         drags within a single application.}
       @entry[:other-widget]{If this is set, the target will not be selected for
         drags within a single widget.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
-    The @symbol{gtk:target-flags} flags is used to specify constraints on
-    a target entry.
+    The @sym{gtk:target-flags} flags is used to specify constraints on a
+    target entry.
   @end{short}
   @see-class{gtk:target-list}")
 
@@ -168,7 +168,7 @@
 (setf (liber:alias-for-class 'target-list)
       "GBoxed"
       (documentation 'target-list 'type)
- "@version{2025-06-19}
+ "@version{2025-07-11}
   @begin{declaration}
 (glib:define-gboxed-opaque target-list \"GtkTargetList\"
   :export t
@@ -176,14 +176,14 @@
   :alloc (%target-list-new (cffi:null-pointer) 0))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
+    @begin[code]{simple-table}
       @entry[target]{The string representation of the target type.}
-      @entry[flags]{The @symbol{gtk:target-flags} flags for DND.}
+      @entry[flags]{The @sym{gtk:target-flags} flags for DND.}
       @entry[info]{The application assigned integer ID which will get passed
-        as a parameter to, for example, the @code{\"selection-get\"} signal. It
-        allows the application to identify the target type without extensive
-        string compares.}
-    @end{table}
+        as a parameter to, for example, the @sig[gtk:widget]{selection-get}
+        signal. It allows the application to identify the target type without
+        extensive string compares.}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The @class{gtk:target-list} structure is used to represent a list of target
@@ -210,7 +210,7 @@
 (setf (liber:alias-for-class 'selection-data)
       "GBoxed"
       (documentation 'selection-data 'type)
- "@version{2025-06-19}
+ "@version{2025-07-15}
   @begin{declaration}
 (glib:define-gboxed-opaque selection-data \"GtkSelectionData\"
   :export t
@@ -218,16 +218,16 @@
   :alloc (error \"GtkSelectionData cannot be created from the Lisp side.\"))
   @end{declaration}
   @begin{values}
-    @begin[code]{table}
-      @entry[selection]{The string with the selection.}
-      @entry[target]{The string with the target of the selection.}
-      @entry[type]{The string with the data type of the selection.}
-      @entry[format]{The integer with the format of the selection.}
+    @begin[code]{simple-table}
+      @entry[selection]{The string for the selection.}
+      @entry[target]{The string for the target of the selection.}
+      @entry[type]{The string for the data type of the selection.}
+      @entry[format]{The integer for the format of the selection.}
       @entry[data]{The foreign pointer to the raw data of the selection.}
-      @entry[length]{The integer with the length of the data.}
-      @entry[display]{The @class{gdk:display} object with the display of the
+      @entry[length]{The integer for the length of the data.}
+      @entry[display]{The @class{gdk:display} object for the display of the
         selection.}
-    @end{table}
+    @end{simple-table}
   @end{values}
   @begin{short}
     The @class{gtk:selection-data} structure is used to store a chunk of data
@@ -318,10 +318,10 @@
 
 (cffi:defcfun ("gtk_target_list_add" target-list-add) :void
  #+liber-documentation
- "@version{2025-06-19}
+ "@version{2025-07-11}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @argument[target]{a string for the interned atom representing the target}
-  @argument[flags]{a @symbol{gtk:target-flags} value for this target}
+  @argument[flags]{a @sym{gtk:target-flags} value for this target}
   @argument[info]{an unsigned integer ID that will be passed back to the
     application}
   @begin{short}
@@ -675,8 +675,8 @@
 
 (cffi:defcfun ("gtk_selection_convert" selection-convert) :boolean
  #+liber-documentation
- "@version{#2025-06-19}
-  @argument[widget]{a @class{gtk:widget} object which acts as requestor}
+ "@version{#2025-07-17}
+  @argument[widget]{a @class{gtk:widget} object that acts as requestor}
   @argument[selection]{a string representing the selection to get}
   @argument[target]{a string representing the form of information desired}
   @argument[time]{an unsigned integer for the time of request, usually of
@@ -991,9 +991,9 @@
 
 (cffi:defcfun ("gtk_selection_data_get_length" selection-data-length) :int
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{#2025-07-15}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{The integer with the length of the data.}
+  @return{The integer for the length of the data.}
   @begin{short}
     The length of the data of the selection.
   @end{short}
@@ -1076,9 +1076,9 @@
 
 (cffi:defcfun ("gtk_selection_data_get_format" selection-data-format) :int
  #+liber-documentation
- "@version{#2023-03-24}
+ "@version{#2025-07-15}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{The integer with the format.}
+  @return{The integer for the format.}
   @begin{short}
     Retrieves the format of the selection.
   @end{short}

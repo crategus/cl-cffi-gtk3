@@ -1,10 +1,10 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.gesture-rotate.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
@@ -67,26 +67,27 @@
 
 #+liber-documentation
 (setf (documentation 'gesture-rotate 'type)
- "@version{#2025-1-25}
+ "@version{#2025-07-16}
   @begin{short}
     The @class{gtk:gesture-rotate} object is a @class{gtk:gesture}
     implementation able to recognize 2-finger rotations, whenever the angle
-    between both handled sequences changes, the @code{\"angle-changed\"} signal
-    is emitted.
+    between both handled sequences changes, the
+    @sig[gtk:gesture-rotate]{angle-changed} signal is emitted.
   @end{short}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"angle-changed\" signal}
-    @begin{pre}
+    @begin[gesture-rotate::angle-changed]{signal}
+      @begin{pre}
 lambda (gesture angle delta)    :run-first
-    @end{pre}
-    @begin[code]{table}
-      @entry[gesture]{The @class{gtk:gesture-rotate} object which received the
-        signal.}
-      @entry[angle]{The double float with the current angle in radians.}
-      @entry[delta]{The double float with the difference with the starting
-        angle, in radians.}
-    @end{table}
-    The signal is emitted when the angle between both tracked points changes.
+      @end{pre}
+      @begin[code]{simple-table}
+        @entry[gesture]{The @class{gtk:gesture-rotate} object that received the
+          signal.}
+        @entry[angle]{The double float for the current angle in radians.}
+        @entry[delta]{The double float for the difference with the starting
+          angle, in radians.}
+      @end{simple-table}
+      The signal is emitted when the angle between both tracked points changes.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:gesture-rotate-new}
   @see-class{gtk:gesture-zoom}")
@@ -119,9 +120,9 @@ lambda (gesture angle delta)    :run-first
 (cffi:defcfun ("gtk_gesture_rotate_get_angle_delta" gesture-rotate-angle-delta)
     :double
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-07-15}
   @argument[gesture]{a @class{gtk:gesture-rotate} object}
-  @return{The double float with the angle delta in radians.}
+  @return{The double float for the angle delta in radians.}
   @begin{short}
     If the gesture is active, this function returns the angle difference in
     radians since the gesture was first recognized.

@@ -217,17 +217,7 @@ lambda (scale value)    :run-last
       @arg{value}. That string will then be used to display the scale's value.
       If no user provided handlers are installed, the value will be displayed
       on its own, rounded according to the value of the @slot[gtk:scale]{digits}
-      property. Here is an example signal handler which displays a value 1.0 as
-      with \"-->1.0<--\".
-      @begin{pre}
-static gchar*
-format_value_callback (GtkScale *scale,
-                       gdouble   value)
-{
-  return g_strdup_printf (\"-->%0.*g<--\",
-                          gtk_scale_get_digits (scale), value);
-@}
-      @end{pre}
+      property.
     @end{signal}
   @end{dictionary}
   @see-constructor{gtk:scale-new}

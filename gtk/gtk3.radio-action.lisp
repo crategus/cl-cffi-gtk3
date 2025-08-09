@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.radio-action.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -104,19 +104,20 @@
     and should not be used in newly written code.
   @end{dictionary}
   @begin[Signal Details]{dictionary}
-    @subheading{The \"changed\" signal}
+    @begin[radio-action::changed]{signal}
       @begin{pre}
 lambda (action current)    :no-recurse
       @end{pre}
-      The signal is emitted on every member of a radio group when the active
-      member is changed. The signal gets emitted after the @code{\"activate\"}
-      signals for the previous and current active members.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[action]{The @class{gtk:radio-action} object on which the signal
           is emitted.}
         @entry[current]{The @class{gtk:radio-action} member of the action group
           which has just been activated.}
-      @end{table}
+      @end{simple-table}
+      The signal is emitted on every member of a radio group when the active
+      member is changed. The signal gets emitted after the @code{\"activate\"}
+      signals for the previous and current active members.
+    @end{signal}
   @end{dictionary}
   @see-constructor{gtk:radio-action-new}
   @see-slot{gtk:radio-action-current-value}
@@ -142,11 +143,11 @@ lambda (action current)    :no-recurse
 (setf (liber:alias-for-function 'radio-action-current-value)
       "Accessor"
       (documentation 'radio-action-current-value 'function)
- "@version{2024-9-26}
+ "@version{2025-07-06}
   @syntax{(gtk:radio-action-current-value object) => current-value}
   @syntax{(setf (gtk:radio-action-current-value object) current-value)}
   @argument[object]{a @class{gtk:radio-action} object}
-  @argument[current-value]{an integer with the value}
+  @argument[current-value]{an integer for the value}
   @begin{short}
     Accessor of the @slot[gtk:radio-action]{current-value} slot of the
     @class{gtk:radio-action} class.
@@ -204,11 +205,11 @@ lambda (action current)    :no-recurse
 (setf (liber:alias-for-function 'radio-action-value)
       "Accessor"
       (documentation 'radio-action-value 'function)
- "@version{2024-9-26}
+ "@version{2025-07-06}
   @syntax{(gtk:radio-action-value object) => value}
   @syntax{(setf (gtk:radio-action-value object) value)}
   @argument[object]{a @class{gtk:radio-action} object}
-  @argument[value]{an integer with the value which can be used to determine
+  @argument[value]{an integer for the value which can be used to determine
     which action is active}
   @begin{short}
     Accessor of the @slot[gtk:radio-action]{value} slot of the
@@ -229,14 +230,14 @@ lambda (action current)    :no-recurse
 
 (defun radio-action-new (name &optional label tooltip stock-id value)
  #+liber-documentation
- "@version{2024-9-26}
-  @argument[name]{a string with the unique name for the action}
-  @argument[label]{a string with the label displayed in menu items and on
+ "@version{2025-07-06}
+  @argument[name]{a string for the unique name for the action}
+  @argument[label]{a string for the label displayed in menu items and on
     buttons, or @code{nil}}
-  @argument[tooltip]{a string with the tooltip for this action, or @code{nil}}
-  @argument[stock-id]{a string with the stock icon to display in widgets
+  @argument[tooltip]{a string for the tooltip for this action, or @code{nil}}
+  @argument[stock-id]{a string for the stock icon to display in widgets
     representing this action, or @code{nil}}
-  @argument[value]{an integer with the value which the
+  @argument[value]{an integer for the value which the
     @fun{gtk:radio-action-current-value} function should return if this action
     is selected}
   @return{The new @class{gtk:radio-action} object.}

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.shortcuts-section.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2024 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -64,7 +64,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkShortcutsSection
+;;; GtkShortcutsSection
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkShortcutsSection" shortcuts-section
@@ -104,14 +104,15 @@
   This widget is only meant to be used with @class{gtk:shortcuts-window}
   widgets.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"change-current-page\" signal}
+    @begin[shortcuts-section::change-current-page]{signal}
       @begin{pre}
 lambda (section arg)    :action
       @end{pre}
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[section]{The @class{gtk:shortcuts-section} widget.}
         @entry[arg]{An integer.}
-      @end{table}
+      @end{simple-table}
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:shortcuts-section-max-height}
   @see-slot{gtk:shortcuts-section-section-name}
@@ -138,11 +139,11 @@ lambda (section arg)    :action
 (setf (liber:alias-for-function 'shortcuts-section-max-height)
       "Accessor"
       (documentation 'shortcuts-section-max-height 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-06}
   @syntax{(gtk:shortcuts-section-max-height object) => max-height}
   @syntax{(setf (gtk:shortcuts-section-max-height object) max-height)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[max-height]{a unsigned integer with the maximum number of lines to
+  @argument[max-height]{a unsigned integer for the maximum number of lines to
     allow per column}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-section]{max-height} slot of the
@@ -169,11 +170,11 @@ lambda (section arg)    :action
 (setf (liber:alias-for-function 'shortcuts-section-section-name)
       "Accessor"
       (documentation 'shortcuts-section-section-name 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-06}
   @syntax{(gtk:shortcuts-section-section-name object) => section-name}
   @syntax{(setf (gtk:shortcuts-section-section-name object) section-name)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[section-name]{a string with a unique name to identify this section}
+  @argument[section-name]{a string for a unique name to identify this section}
   @begin{short}
     Accessor of the @slot[gtk:shortcuts-section]{section-name} slot of the
     @class{gtk:shortcuts-section} class.
@@ -227,11 +228,11 @@ lambda (section arg)    :action
 (setf (liber:alias-for-function 'shortcuts-section-view-name)
       "Accessor"
       (documentation 'shortcuts-section-view-name 'function)
- "@version{#2023-2-28}
+ "@version{#2025-07-06}
   @syntax{(gtk:shortcuts-section-view-name object) => view-name}
   @syntax{(setf (gtk:shortcuts-section-view-name object) view-name)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}
-  @argument[view-name]{a string with a view name to filter the groups in this
+  @argument[view-name]{a string for a view name to filter the groups in this
     section by}
   @begin{short}
     Accessor of the slot @slot[gtk:shortcuts-section]{view-name} of the

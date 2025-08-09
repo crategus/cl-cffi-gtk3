@@ -219,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'label 'type)
- "@version{2025-07-15}
+ "@version{2025-07-21}
   @begin{short}
     The @class{gtk:label} widget displays a small amount of text.
   @end{short}
@@ -388,8 +388,8 @@ lambda (label)    :action
         @entry[label]{The @class{gtk:label} widget on which the signal was
           emitted.}
       @end{simple-table}
-      A keybinding signal which gets emitted when the user activates a link in
-      the label. Applications may also emit the signal with the
+      The keybinding signal which gets emitted when the user activates a link
+      in the label. Applications may also emit the signal with the
       @fun{g:signal-emit} function if they need to control activation of URIs
       programmatically. The default bindings for this signal are all forms of
       the @kbd{Enter} key.
@@ -401,7 +401,7 @@ lambda (label uri)    :run-last
       @begin[code]{simple-table}
         @entry[label]{The @class{gtk:label} widget on which the signal was
           emitted.}
-        @entry[uri]{The string with the URI that is activated.}
+        @entry[uri]{The string for the URI that is activated.}
         @entry[Returns]{@em{True} if the link has been activated.}
       @end{simple-table}
       The signal which gets emitted to activate a URI. Applications may connect
@@ -1559,10 +1559,10 @@ lambda (label menu)    :run-last
 
 (cffi:defcfun ("gtk_label_get_current_uri" label-current-uri) :string
  #+liber-documentation
- "@version{2025-07-02}
+ "@version{2025-07-21}
   @argument[label]{a @class{gtk:label} widget}
   @begin{return}
-    The string with the currently active URI.
+    The string for the currently active URI.
   @end{return}
   @begin{short}
     Returns the URI for the currently active link in the label.

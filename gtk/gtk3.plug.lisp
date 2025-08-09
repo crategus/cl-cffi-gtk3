@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gtk3.plug.lisp
 ;;;
-;;; The documentation of this file is taken from the GTK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GTK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GTK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GTK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,7 +72,7 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GtkPlug
+;;; GtkPlug
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-gobject "GtkPlug" plug
@@ -90,7 +90,7 @@
 
 #+liber-documentation
 (setf (documentation 'plug 'type)
- "@version{#2023-2-28}
+ "@version{#2025-07-11}
   @begin{short}
     Together with the @class{gtk:socket} widget, the @class{gtk:plug} widget
     provides the ability to embed widgets from one process into another process
@@ -103,22 +103,23 @@
 
   The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in
-  other toolkits, e.g. Qt, allowing the same level of integration when embedding
-  a Qt widget in GTK or vice versa.
+  other toolkits, for example Qt, allowing the same level of integration when
+  embedding a Qt widget in GTK or vice versa.
 
   The @class{gtk:plug} and @class{gtk:socket} widgets are only available when
   GTK is compiled for the X11 platform and @code{GDK_WINDOWING_X11} is defined.
   They can only be used on a @code{GdkX11Display} object.
   @begin[Signal Details]{dictionary}
-    @subheading{The \"embedded\" signal}
+    @begin[plug::embedded]{signal}
       @begin{pre}
 lambda (plug)    :run-last
       @end{pre}
-      Gets emitted when the plug becomes embedded in a socket.
-      @begin[code]{table}
+      @begin[code]{simple-table}
         @entry[plug]{The @class{gtk:plug} widget on which the signal was
           emitted.}
-      @end{table}
+      @end{simple-table}
+      Gets emitted when the plug becomes embedded in a socket.
+    @end{signal}
   @end{dictionary}
   @see-slot{gtk:plug-embedded}
   @see-slot{gtk:plug-socket-window}
@@ -214,13 +215,13 @@ lambda (plug)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_plug_new ()
+;;; gtk_plug_new
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_plug_new" plug-new) (g:object plug)
  #+liber-documentation
- "@version{#2023-2-28}
-  @argument[socket-id]{a pointer with the window ID of the socket, or 0}
+ "@version{#2025-07-07}
+  @argument[socket-id]{a pointer for the window ID of the socket, or 0}
   @return{The new @class{gtk:plug} widget.}
   @begin{short}
     Creates a new plug widget inside the @class{gtk:socket} widget identified
@@ -256,14 +257,14 @@ lambda (plug)    :run-last
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_plug_get_id () -> plug-id
+;;; gtk_plug_get_id
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_plug_get_id" plug-id) :pointer
  #+liber-documentation
- "@version{#2023-2-28}
+ "@version{#2025-07-07}
   @argument[plug]{a @class{gtk:plug} widget}
-  @return{A pointer with the window ID for the plug.}
+  @return{The pointer for the window ID for the plug.}
   @begin{short}
     Gets the window ID of a @class{gtk:plug} widget, which can then be used to
     embed this window inside another window, for instance with the
