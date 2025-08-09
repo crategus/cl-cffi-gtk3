@@ -217,10 +217,10 @@
      (:file "gtk3.entry")
      (:file "gtk3.entry-buffer")
      (:file "gtk3.entry-completion")
-     (:file "gtk3.scale")
-     (:file "gtk3.spin-button")
      (:file "gtk3.search-entry")
      (:file "gtk3.search-bar")
+     (:file "gtk3.scale")
+     (:file "gtk3.spin-button")
 
      ;; Menus, Combo Box, Toolbar
      (:file "gtk3.menu-item")
@@ -532,10 +532,10 @@
      (:file "rtest-gtk3-entry")
      (:file "rtest-gtk3-entry-buffer")
      (:file "rtest-gtk3-entry-completion")
+     (:file "rtest-gtk3-search-entry")
+     (:file "rtest-gtk3-search-bar")
 ;    (:file "gtk.scale")
 ;    (:file "gtk.spin-button")
-;    (:file "gtk.search-entry")
-;    (:file "gtk.search-bar")
 
      ;; Menus, Combo Box, Toolbar
 ;    (:file "gtk.menu-item")

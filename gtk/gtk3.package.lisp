@@ -395,6 +395,16 @@
       @about-generic{revealer-transition-type}
       @about-function{revealer-new}
     @end{subsection}
+    @begin[GtkListBoxRow]{subsection}
+      @about-class{list-box-row}
+      @about-generic{list-box-row-activatable}
+      @about-generic{list-box-row-selectable}
+      @about-function{list-box-row-new}
+      @about-function{list-box-row-changed}
+      @about-function{list-box-row-is-selected}
+      @about-function{list-box-row-header}
+      @about-function{list-box-row-index}
+    @end{subsection}
     @begin[GtkListBox]{subsection}
       @about-class{list-box}
       @about-generic{list-box-activate-on-single-click}
@@ -428,15 +438,12 @@
       @about-symbol{list-box-create-widget-func}
       @about-function{list-box-bind-model}
     @end{subsection}
-    @begin[GtkListBoxRow]{subsection}
-      @about-class{list-box-row}
-      @about-generic{list-box-row-activatable}
-      @about-generic{list-box-row-selectable}
-      @about-function{list-box-row-new}
-      @about-function{list-box-row-changed}
-      @about-function{list-box-row-is-selected}
-      @about-function{list-box-row-header}
-      @about-function{list-box-row-index}
+    @begin[GtkFlowBoxChild]{subsection}
+      @about-class{flow-box-child}
+      @about-function{flow-box-child-new}
+      @about-function{flow-box-child-index}
+      @about-function{flow-box-child-is-selected}
+      @about-function{flow-box-child-changed}
     @end{subsection}
     @begin[GtkFlowBox]{subsection}
       @about-class{flow-box}
@@ -468,13 +475,6 @@
       @about-function{flow-box-invalidate-sort}
       @about-symbol{flow-box-create-widget-func}
       @about-function{flow-box-bind-model}
-    @end{subsection}
-    @begin[GtkFlowBoxChild]{subsection}
-      @about-class{flow-box-child}
-      @about-function{flow-box-child-new}
-      @about-function{flow-box-child-index}
-      @about-function{flow-box-child-is-selected}
-      @about-function{flow-box-child-changed}
     @end{subsection}
     @begin[GtkStack]{subsection}
       @about-symbol{stack-transition-type}
@@ -1055,6 +1055,19 @@
       @about-function{entry-completion-insert-action-markup}
       @about-function{entry-completion-delete-action}
     @end{subsection}
+    @begin[GtkSearchEntry]{subsection}
+      @about-class{search-entry}
+      @about-function{search-entry-new}
+      @about-function{search-entry-handle-event}
+    @end{subsection}
+    @begin[GtkSearchBar]{subsection}
+      @about-class{search-bar}
+      @about-generic{search-bar-search-mode-enabled}
+      @about-generic{search-bar-show-close-button}
+      @about-function{search-bar-new}
+      @about-function{search-bar-connect-entry}
+      @about-function{search-bar-handle-event}
+    @end{subsection}
     @begin[GtkScale]{subsection}
       @about-class{scale}
       @about-generic{scale-digits}
@@ -1088,19 +1101,6 @@
       @about-function{spin-button-value-as-int}
       @about-function{spin-button-spin}
       @about-function{spin-button-update}
-    @end{subsection}
-    @begin[GtkSearchEntry]{subsection}
-      @about-class{search-entry}
-      @about-function{search-entry-new}
-      @about-function{search-entry-handle-event}
-    @end{subsection}
-    @begin[GtkSearchBar]{subsection}
-      @about-class{search-bar}
-      @about-generic{search-bar-search-mode-enabled}
-      @about-generic{search-bar-show-close-button}
-      @about-function{search-bar-new}
-      @about-function{search-bar-connect-entry}
-      @about-function{search-bar-handle-event}
     @end{subsection}
   @end{section}
   @begin[Multiline Text Editor]{section}
@@ -1576,7 +1576,7 @@
         @item{The view column represented by the @class{gtk:tree-view-column}
           object.}
         @item{The cell renderers represented by the @class{gtk:cell-renderer}
-          object etc.}
+          object, and so on.}
         @item{The model interface represented by the @class{gtk:tree-model}
           interface.}
       @end{itemize}
@@ -1726,7 +1726,8 @@ gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
     @subheading{Selection handling}
       Most applications will need to not only deal with displaying data, but
       also receiving input events from users. To do this, simply get a reference
-      to a selection object and connect to the @code{\"changed\"} signal.
+      to a selection object and connect to the @sig[gtk:tree-selection]{changed}
+      signal.
       @begin{pre}
 /* Prototype for selection handler callback */
 static void tree_selection_changed_cb (GtkTreeSelection *selection, gpointer data);
@@ -4606,9 +4607,9 @@ setup_tree (void)
       @about-function{icon-theme-example-icon-name}
       @about-function{icon-theme-rescan-if-needed}
       @about-function{icon-theme-add-builtin-icon}
-      @about-symbol{icon-info}
-      @about-function{icon-info-copy}
-      @about-function{icon-info-free}
+    @end{subsection}
+    @begin[GtkIconInfo]{subsection}
+      @about-class{icon-info}
       @about-function{icon-info-new-for-pixbuf}
       @about-function{icon-info-base-size}
       @about-function{icon-info-base-scale}
