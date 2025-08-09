@@ -113,7 +113,10 @@
                (:file "scale-button")
                (:file "scale-widget")
                (:file "scrolled-window")
+
+               (:file "search-bar")
                (:file "search-entry")
+
                (:file "show-about-dialog")
                (:file "spin-button")
                (:file "spinner")                       ; Display Widgets

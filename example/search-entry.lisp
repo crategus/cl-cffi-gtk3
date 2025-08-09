@@ -1,4 +1,4 @@
-;;;; Example Search Entry - 2022-12-22
+ ;;;; Example Search Entry - 2022-12-22
 ;;;;
 ;;;; GtkEntry allows to display icons and progress information. This demo shows
 ;;;; how to use these features in a search entry.

@@ -115,7 +115,10 @@
            #:example-scale-button
            #:example-scale-widget
            #:example-scrolled-window
+
+           #:example-search-bar
            #:example-search-entry
+
            #:example-show-about-dialog
            #:example-simple-list-store
            #:example-spin-button

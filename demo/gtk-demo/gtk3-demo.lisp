@@ -394,6 +394,13 @@
        "example-text-entry-completion"
        "gtk3-example"
        "text-entry-completion.lisp")
+
+      ("Search Bar"
+       ":window"
+       "example-search-bar"
+       "gtk3-example"
+       "search-bar.lisp")
+
       ("Scale Widget"
        ":window"
        "example-scale-widget"
