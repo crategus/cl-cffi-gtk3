@@ -234,7 +234,7 @@
 
 #+liber-documentation
 (setf (documentation 'drag-context 'type)
- "@version{2025-06-29}
+ "@version{2025-07-17}
   @begin{short}
     The @class{gdk:drag-context} class and the correspondig functions provide a
     low level interface for drag and drop.
@@ -297,7 +297,7 @@
       @begin[code]{simple-table}
         @entry[context]{The @class{gdk:drag-context} object on which the signal
           is emitted.}
-        @entry[time]{The integer with the time at which the drop happened.}
+        @entry[time]{The integer for the time at which the drop happened.}
       @end{simple-table}
       The drag and drop operation was performed on an accepting client. This
       signal will only be emitted if the @class{gdk:drag-context} object manages
@@ -427,9 +427,9 @@
 
 (defun drag-find-window-for-screen (context window screen x y)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-07-17}
   @argument[context]{a @class{gdk:drag-context} object}
-  @argument[window]{a @class{gdk:window} object which may be at the pointer
+  @argument[window]{a @class{gdk:window} object that may be at the pointer
     position, but should be ignored, since it is put up by the drag source as
     an icon}
   @argument[screen]{a @class{gdk:screen} object where the destination window

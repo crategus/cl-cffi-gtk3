@@ -275,9 +275,9 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_get_n_screens" display-n-screens) :int
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-07-17}
   @argument[display]{a @class{gdk:display} object}
-  @return{The integer with the number of screens.}
+  @return{The integer for the number of screens.}
   @short{Gets the number of screens managed by the display.}
   @begin[Warning]{dictionary}
     The @fun{gdk:display-n-screens} function has been deprecated since
@@ -853,9 +853,9 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_get_default_cursor_size"
                display-default-cursor-size) :uint
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-07-17}
   @argument[display]{a @class{gdk:display} object}
-  @return{The unsigned integer with the default cursor size.}
+  @return{The unsigned integer for the default cursor size.}
   @short{Returns the default size to use for cursors on the display.}
   @begin[Example]{dictionary}
     @begin{pre}
@@ -1193,14 +1193,14 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_get_n_monitors" display-n-monitors) :int
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2025-07-17}
   @argument[display]{a @class{gdk:display} object}
-  @return{The integer with the number of monitors.}
+  @return{The integer for the number of monitors.}
   @begin{short}
     Gets the number of monitors that belong to display .
   @end{short}
   The returned number is valid until the next emission of the
-  @code{\"monitor-added\"} or @code{\"monitor-removed\"} signal.
+  @sig[gdk:display]{monitor-added} or @sig[gdk:display]{monitor-removed} signal.
   @see-class{gdk:display}"
   (display (g:object display)))
 

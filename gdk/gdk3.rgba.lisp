@@ -303,9 +303,9 @@
 
 (cffi:defcfun ("gdk_rgba_hash" rgba-hash) :uint
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-07-17}
   @argument[color]{a @struct{gdk:rgba} instance}
-  @return{The unsigned integer with the hash value for @arg{color}.}
+  @return{The unsigned integer for the hash value for @arg{color}.}
   @begin{short}
     A hash function suitable for using for a hash table that stores
     RGBA colors.

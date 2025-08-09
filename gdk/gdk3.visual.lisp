@@ -326,10 +326,11 @@
 
 (cffi:defcfun ("gdk_visual_get_bits_per_rgb" visual-bits-per-rgb) :int
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-07-17}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{The integer with the number of significant bits per color value for
-    visual.}
+  @begin{return}
+    The integer for the number of significant bits per color value for visual.
+  @end{return}
   @begin{short}
     Returns the number of significant bits per red, green and blue value.
   @end{short}
@@ -416,10 +417,11 @@
 
 (cffi:defcfun ("gdk_visual_get_colormap_size" visual-colormap-size) :int
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-07-17}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{The integer with the size of a colormap that is suitable for
-    @arg{visual}.}
+  @begin{return}
+    The integer with the size of a colormap that is suitable for @arg{visual}.
+  @end{return}
   @begin{short}
     Returns the size of a colormap for the visual.
   @end{short}
@@ -439,9 +441,9 @@
 
 (cffi:defcfun ("gdk_visual_get_depth" visual-depth) :int
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-07-17}
   @argument[visual]{a @class{gdk:visual} object}
-  @return{The integer with the bit depth of @arg{visual}.}
+  @return{The integer for the bit depth of @arg{visual}.}
   @short{Returns the bit depth of the visual.}
   @see-class{gdk:visual}"
   (visual (g:object visual)))
@@ -548,8 +550,8 @@
 
 (cffi:defcfun ("gdk_visual_get_best_depth" visual-best-depth) :int
  #+liber-documentation
- "@version{2024-6-28}
-  @return{The integer with the best available depth.}
+ "@version{2025-07-17}
+  @return{The integer for the best available depth.}
   @begin{short}
     Get the best available depth for the default GDK screen.
   @end{short}

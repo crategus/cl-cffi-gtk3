@@ -463,10 +463,12 @@
 
 (defun event-button (event)
  #+liber-documentation
- "@version{2024-3-14}
+ "@version{2025-07-17}
   @argument[event]{a @class{gdk:event} instance}
-  @return{The unsigned integer with the mouse button number, or @code{nil}
-    if the event does not deliver a button number.}
+  @begin{return}
+    The unsigned integer for the mouse button number, or @code{nil} if the
+    event does not deliver a button number.
+  @end{return}
   @short{Extract the button number from an event.}
   @see-class{gdk:event}
   @see-class{gdk:event-button}

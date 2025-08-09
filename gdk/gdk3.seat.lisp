@@ -263,9 +263,9 @@ lambda (seat tool)    :run-last
 
 (defun seat-grab (seat window capabilities owner-events cursor event func)
  #+liber-documentation
- "@version{#2025-07-01}
+ "@version{#2025-07-17}
   @argument[seat]{a @class{gdk:seat} object}
-  @argument[window]{a @class{gdk:window} object which will own the grab}
+  @argument[window]{a @class{gdk:window} object that will own the grab}
   @argument[capabilities]{a @sym{gdk:seat-capabilities} value with the
     capabilities that will be grabbed}
   @argument[owner-events]{if @em{false} then all device events are reported

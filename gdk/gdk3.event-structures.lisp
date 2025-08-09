@@ -1503,11 +1503,11 @@
 (setf (liber:alias-for-function 'event-window)
       "Accessor"
       (documentation 'event-window 'function)
- "@version{2024-06-28}
+ "@version{2025-07-17}
   @syntax{(gdk:event-window instance) => window}
   @syntax{(setf (gdk:event-window instance) window)}
   @argument[instance]{a @class{gdk:event} instance}
-  @argument[window]{a @class{gdk:window} object which received the event}
+  @argument[window]{a @class{gdk:window} object that received the event}
   @begin{short}
     Accessor of the @code{window} slot of the @class{gdk:event} structure.
   @end{short}
@@ -1542,7 +1542,7 @@
 (setf (liber:alias-for-class 'event-key)
       "GBoxed"
       (documentation 'event-key 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -1568,7 +1568,7 @@
         @code{:key-press}, @code{:key-release} values.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[state]{The @sym{gdk:modifier-type} bit-mask representing the state
         of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
@@ -1576,7 +1576,7 @@
       @entry[keyval]{The key that was pressed or released. See the
         @file{gdk/gdkkeysyms.h} header file for a complete list of GDK key
         codes.}
-      @entry[length]{The integer with the length of the @code{string} field.}
+      @entry[length]{The integer for the length of the @code{string} field.}
       @entry[string]{The string containing an approximation of the text that
         would result from this keypress. The only correct way to handle text
         input is using input methods, see the @class{gtk:im-context} API, so
@@ -1588,9 +1588,9 @@
         @code{NUL}-terminated. In some cases, the translation of the key code
         will be a single @code{NUL} byte, in which case looking at length is
         necessary to distinguish it from an empty translation.}
-      @entry[hardware-keycode]{The unsigned integer with the raw code of the key
+      @entry[hardware-keycode]{The unsigned integer for the raw code of the key
         that was pressed or released.}
-      @entry[group]{The unsigned integer with the keyboard group.}
+      @entry[group]{The unsigned integer for the keyboard group.}
       @entry[is-modifier]{The flag that indicates if the @code{hardware-keycode}
         field is mapped to a modifier.}
     @end{simple-table}
@@ -1779,7 +1779,7 @@
 (setf (liber:alias-for-class 'event-button)
       "GBoxed"
       (documentation 'event-button 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -1822,7 +1822,7 @@
       @entry[state]{The @sym{gdk:modifier-type} bit-mask representing the state
         of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
         @kbd{Alt} keys, and the pointer buttons.}
-      @entry[button]{The unsigned integer with the button which was pressed or
+      @entry[button]{The unsigned integer for the button which was pressed or
         released, numbered from 1 to 5. Normally button 1 is the left mouse
         button, 2 is the middle button, and 3 is the right button. On 2-button
         mice, the middle button can often be simulated by pressing both mouse
@@ -2078,7 +2078,7 @@
 (setf (liber:alias-for-class 'event-touch)
       "GBoxed"
       (documentation 'event-touch 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -2109,7 +2109,7 @@
         @code{:touch-cancel} values.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer relative to the
         window.}
@@ -2370,7 +2370,7 @@
 (setf (liber:alias-for-class 'event-scroll)
       "GBoxed"
       (documentation 'event-scroll 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -2396,7 +2396,7 @@
       @entry[type]{The @sym{gdk:event-type} type of the scroll event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer relative to the
         window.}
@@ -2685,7 +2685,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-motion)
       "GBoxed"
       (documentation 'event-motion 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -2710,7 +2710,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[type]{The @sym{gdk:event-type} type of the event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer relative to the
         window.}
@@ -3124,7 +3124,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-crossing)
       "GBoxed"
       (documentation 'event-crossing 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -3151,7 +3151,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
       @entry[subwindow]{The @class{gdk:window} object that was entered or left.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer relative to the
         window.}
@@ -3579,7 +3579,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-property)
       "GBoxed"
       (documentation 'event-property 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -3600,7 +3600,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[send-event]{@em{True} if the event was sent explicitly.}
       @entry[atom]{The @sym{gdk:atom} string with the property that was
         changed.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[state]{The value of the @sym{gdk:property-state} enumeration.}
     @end{simple-table}
@@ -3688,7 +3688,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-selection)
       "GBoxed"
       (documentation 'event-selection 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -3715,7 +3715,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
         selection should be converted.}
       @entry[property]{The @sym{gdk:atom} property in which to place the
         result of the conversion.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[requestor]{The @class{gdk:window} object on which to place
         @arg{property} or @code{nil} if none.}
@@ -4258,7 +4258,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-owner-change)
       "GBoxed"
       (documentation 'event-owner-change 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -4283,8 +4283,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[reason]{The reason for the ownership change as a
         @sym{gdk:owner-change} value.}
       @entry[selection]{The @sym{gdk:atom} identifying the selection.}
-      @entry[time]{The unsigned integer with the timestamp of the event.}
-      @entry[selection-time]{The unsigned integer with the time at which the
+      @entry[time]{The unsigned integer for the timestamp of the event.}
+      @entry[selection-time]{The unsigned integer for the time at which the
         selection ownership was taken over.}
     @end{simple-table}
   @end{values}
@@ -4532,7 +4532,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-touchpad-swipe)
       "GBoxed"
       (documentation 'event-touchpad-swipe 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -4559,10 +4559,10 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
         @code{:touchpad-swipe} value.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[phase]{The integer with the current phase of the gesture.}
-      @entry[n-fingers]{The integer with the number of fingers triggering the
+      @entry[phase]{The integer for the current phase of the gesture.}
+      @entry[n-fingers]{The integer for the number of fingers triggering the
         swipe.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer.}
       @entry[y]{The double float y coordinate of the pointer.}
@@ -4807,7 +4807,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-touchpad-pinch)
       "GBoxed"
       (documentation 'event-touchpad-pinch 'type)
- "@version{2025-07-03}
+ "@version{2025-07-17}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -4839,14 +4839,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[send-event]{@em{True} if the event was sent explicitly.}
       @entry[phase]{The current phase of the gesture.}
       @entry[n-fingers]{The number of fingers triggering the swipe.}
-      @entry[time]{The unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[x]{The double float x coordinate of the pointer.}
       @entry[y]{The double float y coordinate of the pointer.}
-      @entry[dx]{The double float movement delta in the x axis of the swipe focal
-        point.}
-      @entry[dy]{The double float movement delta in the y axis of the swipe focal
-        point.}
+      @entry[dx]{The double float movement delta in the x axis of the swipe
+        focal point.}
+      @entry[dy]{The double float movement delta in the y axis of the swipe
+        focal point.}
       @entry[angle-delta]{The double float with the angle change in radians,
         negative angles denote counter-clockwise movements.}
       @entry[scale]{The double float with the current scale, relative to that at

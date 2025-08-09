@@ -331,9 +331,9 @@
 
 (cffi:defcfun ("gdk_color_hash" color-hash) :uint
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-07-17}
   @argument[color]{a @class{gdk:color} instance}
-  @return{The unsigned integer with the hash value applied to @arg{color}.}
+  @return{The unsigned integer for the hash value applied to @arg{color}.}
   @begin{short}
     A hash function suitable for using for a hash table that stores
     @class{gdk:color} colors.

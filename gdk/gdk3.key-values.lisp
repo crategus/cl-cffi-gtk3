@@ -256,15 +256,17 @@ lambda (keymap)    :run-last
   (key (:pointer (:struct %keymap-key))))
 
 (defun keymap-lookup-key (keymap keycode group level)
- "@version{2023-3-4}
+ "@version{2025-07-17}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an unsigned integer for the hardware keycode}
   @argument[group]{an integer which indicates movement in a horizontal
     direction}
   @argument[level]{an integer which indicates which symbol on the key will be
     used}
-  @return{The unsigned integer with the keyval, or 0 if none was mapped to the
-    given key.}
+  @begin{return}
+    The unsigned integer for the keyval, or 0 if none was mapped to the given
+    key.
+  @end{return}
   @begin{short}
     Looks up the keyval mapped to a keycode/group/level triplet.
   @end{short}
@@ -727,11 +729,11 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_from_name" keyval-from-name) :uint
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-07-17}
   @argument[name]{a string for the key name}
   @begin{return}
-    The unsigned integer with the corresponding key value, or the
-    @code{#xffffff} value if the key name is not a valid key.
+    The unsigned integer for the corresponding key value, or the @code{#xffffff}
+    value if the key name is not a valid key.
   @end{return}
   @begin{short}
     Converts a key name to a key value.
@@ -887,11 +889,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_unicode_to_keyval" unicode-to-keyval) :uint
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-07-17}
   @argument[unichar]{a ISO10646 encoded character}
-  @return{The unsigned integer with the corresponding GDK key symbol, if one
-    exists, or, if there is no corresponding symbol, @code{@arg{unichar} |
-    0x01000000}.}
+  @begin{return}
+    The unsigned integer for the corresponding GDK key symbol, if one exists,
+    or, if there is no corresponding symbol, @code{@arg{unichar} | 0x01000000}.
+  @end{return}
   @short{Convert from a ISO10646 character to a key symbol.}
   @begin[Examples]{dictionary}
     @begin{pre}

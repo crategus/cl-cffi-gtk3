@@ -1179,11 +1179,11 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     "cursor" "GdkCursor" t t)))
 
 (setf (documentation 'window 'type)
- "@version{2025-06-29}
+ "@version{2025-07-17}
   @begin{short}
     Onscreen display areas in the target window system.
   @end{short}
-  A @class{gdk:window} object is a usually rectangular region on the screen.
+  The @class{gdk:window} object is a usually rectangular region on the screen.
   It is a low-level object, used to implement high-level objects such as
   @class{gtk:widget} and @class{gtk:window} widgets on the GTK level. A
   @class{gtk:window} widget is a toplevel window, the thing a user might think
@@ -1222,9 +1222,9 @@ lambda (window width height)    :run-last
       @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} offscreen window on which the
           signal is emitted.}
-        @entry[width]{The integer with the width of the offscreen surface to
+        @entry[width]{The integer for the width of the offscreen surface to
           create.}
-        @entry[height]{The integer with the height of the offscreen surface
+        @entry[height]{The integer for the height of the offscreen surface
           to create.}
         @entry[Returns]{The newly created @symbol{cairo:surface-t} instance
           for the offscreen window.}

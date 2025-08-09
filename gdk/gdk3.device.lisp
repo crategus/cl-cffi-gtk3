@@ -1361,9 +1361,9 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_get_n_keys" device-n-keys) :int
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-07-17}
   @argument[device]{a @class{gdk:device} object}
-  @return{The integer with the number of keys.}
+  @return{The integer for the number of keys.}
   @short{Returns the number of keys the device currently has.}
   @see-class{gdk:device}"
   (device (g:object device)))
@@ -1405,14 +1405,14 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_grab" device-grab) grab-status
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-07-17}
   @argument[device]{a @class{gdk:device} object, to get the device you can use
     the @fun{gtk:current-event-device} or @fun{gdk:event-device} functions
     if the grab is in reaction to an event, also, you can use the
     @fun{gdk:device-manager-client-pointer} function but only in code that is
     not triggered by a @class{gdk:event} event and there are not other means to
     get a meaningful @class{gdk:device} object to operate on}
-  @argument[window]{a @class{gdk:window} object which will own the grab}
+  @argument[window]{a @class{gdk:window} object that will own the grab}
   @argument[grab-ownership]{a @symbol{gdk:grab-ownership} value which specifies
     the grab ownership}
   @argument[owner-events]{if @em{false} then all device events are reported
