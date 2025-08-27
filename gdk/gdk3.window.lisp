@@ -355,7 +355,7 @@
 (setf (liber:alias-for-symbol 'window-hints)
       "GFlags"
       (liber:symbol-documentation 'window-hints)
- "@version{2025-06-29}
+ "@version{2025-08-23}
   @begin{declaration}
 (gobject:define-gflags \"GdkWindowHints\" window-hints
   (:export t
@@ -386,12 +386,12 @@
     @end{simple-table}
   @end{values}
   @begin{short}
-    Used to indicate which fields of a @symbol{gdk:geometry} instance should
-    be paid attention to.
+    Used to indicate which fields of a @sym{gdk:geometry} instance should be
+    paid attention to.
   @end{short}
   Also, the presence/absence of the @code{:pos}, @code{:user-pos}, and
   @code{:user-size} values is significant, though they do not directly refer to
-  @symbol{gdk:geometry} fields. The @code{:user-pos} value will be set
+  @sym{gdk:geometry} fields. The @code{:user-pos} value will be set
   automatically by the @class{gtk:window} widget if you call the
   @fun{gtk:window-move} function. The @code{:user-pos} and @code{:user-size}
   values should be set if the user specified a size/position using a - geometry
@@ -484,7 +484,7 @@
 (setf (liber:alias-for-symbol 'geometry)
       "CStruct"
       (liber:symbol-documentation 'geometry)
- "@version{2025-06-29}
+ "@version{2025-08-23}
   @begin{declaration}
 (cffi:defcstruct geometry
   (min-width :int)
@@ -519,13 +519,13 @@
       @entry[height-increment]{An integer with the height resize increment.}
       @entry[min-aspect]{A double float with the minimum width/height ratio.}
       @entry[max-aspect]{A double float with the maximum width/height ratio.}
-      @entry[win-gravity]{A @symbol{gdk:gravity} value for the window gravity,
-        see the @fun{gtk:window-gravity} function.}
+      @entry[win-gravity]{A @sym{gdk:gravity} value for the window gravity, see
+        the @fun{gtk:window-gravity} function.}
     @end{simple-table}
   @end{values}
   @begin{short}
-    The @symbol{gdk:geometry} structure gives the window manager information
-    about a window's geometry constraints.
+    The @sym{gdk:geometry} structure gives the window manager information about
+    a window's geometry constraints.
   @end{short}
   Normally you would set these on the GTK level using the
   @fun{gtk:window-set-geometry-hints} function. The @class{gtk:window} widget
@@ -810,7 +810,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attr)
       "CStruct"
       (liber:symbol-documentation 'window-attr)
- "@version{2025-06-29}
+ "@version{2025-08-23}
   @begin{declaration}
 (cffi:defcstruct window-attr
   (title :string)
@@ -831,7 +831,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @begin{values}
     @begin[code]{simple-table}
       @entry[title]{A string with the title of the window for toplevel windows.}
-      @entry[event-mask]{a @symbol{gdk:event-mask} value, see the
+      @entry[event-mask]{a @sym{gdk:event-mask} value, see the
         @fun{gdk:window-events} function.}
       @entry[x]{An integer with the x coordinate relative to parent window,
         see the @fun{gdk:window-move} function.}
@@ -839,18 +839,19 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
         see the @fun{gdk:window-move} function.}
       @entry[width]{An integer with the width of the window.}
       @entry[height]{An integer with the height of window.}
-      @entry[wclass]{A @symbol{gdk:window-window-class} value,
-        @code{:input-output} for a normal window or @code{:input-only} for an
-        invisible window that receives events.}
+      @entry[wclass]{A @sym{gdk:window-window-class} value,
+        @val[gdk:window-window-class]{:input-output} for a normal window or
+        @val[gdk:window-window-class]{:input-only} for an invisible window that
+        receives events.}
       @entry[visual]{A @class{gdk:visual} object for the window.}
-      @entry[window-type]{A @symbol{gdk:window-type} value.}
+      @entry[window-type]{A @sym{gdk:window-type} value.}
       @entry[cursor]{A @class{gdk:cursor} object for the window, see the
         @fun{gdk:window-cursor} function.}
       @entry[wmclass-name]{A string, do not use.}
       @entry[wmclass-class]{A string, do not use.}
       @entry[override-redirect]{@em{True} to bypass the window manager.}
-      @entry[type-hint]{A @symbol{gdk:window-type-hint} value of the function
-        of the window.}
+      @entry[type-hint]{A @sym{gdk:window-type-hint} value of the function of
+        the window.}
     @end{simple-table}
   @end{values}
   @begin{short}
@@ -883,7 +884,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attributes-type)
       "GFlags"
       (liber:symbol-documentation 'window-attributes-type)
- "@version{2025-06-29}
+ "@version{2025-08-23}
   @begin{declaration}
 (gobject:define-gflags \"GdkWindowAttributesType\" window-attributes-type
   (:export t
@@ -911,16 +912,16 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     @end{simple-table}
   @end{values}
   @begin{short}
-    Used to indicate which fields in the @symbol{gdk:window-attr} structure
-    should be honored.
+    Used to indicate which fields in the @sym{gdk:window-attr} structure should
+    be honored.
   @end{short}
   For example, if you filled in the @code{cursor} and @code{x} fields of the
-  @symbol{gdk:window-attr} structure, pass @code{'(:x :cursor)} to the
-  @fun{gdk:window-new} function. Fields in the @symbol{gdk:window-attr}
-  structure not covered by a bit in this enumeration are required. For example,
-  the @code{width}/@code{height}, @code{wclass}, and @code{window-type} fields
-  are required, they have no corresponding flag in the
-  @symbol{gdk:window-attributes-type} flags.
+  @sym{gdk:window-attr} structure, pass @code{'(:x :cursor)} to the
+  @fun{gdk:window-new} function. Fields in the @sym{gdk:window-attr} structure
+  not covered by a bit in this enumeration are required. For example, the
+  @code{width}/@code{height}, @code{wclass}, and @code{window-type} fields are
+  required, they have no corresponding flag in the
+  @sym{gdk:window-attributes-type} flags.
   @see-symbol{gdk:window-attr}
   @see-function{gdk:window-new}")
 
@@ -1017,7 +1018,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'modifier-intent)
       "GEnum"
       (liber:symbol-documentation 'modifier-intent)
- "@version{2025-06-29}
+ "@version{2025-08-23}
   @begin{declaration}
 (gobject:define-genum \"GdkModifierIntent\" modifier-intent
   (:export t
@@ -1063,7 +1064,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   For example, on X11/Windows, the Control key is used for invoking menu
   shortcuts (accelerators), whereas on Apple computers it is the Command key,
   which correspond to the @code{:control-mask} and @code{:mod2-mask} values of
-  the @symbol{gdk:modifier-type} flags, respectively.
+  the @sym{gdk:modifier-type} flags, respectively.
   @see-symbol{gdk:modifier-type}
   @see-function{gdk:keymap-modifier-mask}")
 
@@ -1179,7 +1180,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
     "cursor" "GdkCursor" t t)))
 
 (setf (documentation 'window 'type)
- "@version{2025-07-17}
+ "@version{2025-08-23}
   @begin{short}
     Onscreen display areas in the target window system.
   @end{short}
@@ -1226,8 +1227,8 @@ lambda (window width height)    :run-last
           create.}
         @entry[height]{The integer for the height of the offscreen surface
           to create.}
-        @entry[Returns]{The newly created @symbol{cairo:surface-t} instance
-          for the offscreen window.}
+        @entry[Returns]{The newly created @sym{cairo:surface-t} instance for
+          the offscreen window.}
       @end{simple-table}
       The signal is emitted when an offscreen window needs its surface
       (re)created, which happens either when the the window is first drawn to,
@@ -1332,7 +1333,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (setf (liber:alias-for-function 'window-cursor)
       "Accessor"
       (documentation 'window-cursor 'function)
- "@version{2023-2-26}
+ "@version{2025-08-23}
   @syntax{(gdk:window-cursor object) => cursor}
   @syntax{(setf (gdk:window-cursor object) cursor)}
   @argument[object]{a @class{gdk:window} object}
@@ -1349,8 +1350,8 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
   Use the @fun{gdk:cursor-new-for-display}, @fun{gdk:cursor-new-from-name}, or
   @fun{gdk:cursor-new-from-pixbuf} functions to create the cursor. To make the
-  cursor invisible, use the @code{:blank-cursor} value of the
-  @symbol{gdk:cursor-type} enumeration. Passing @code{nil} for the @arg{cursor}
+  cursor invisible, use the @val[gdk:cursor-type]{:blank-cursor} value of the
+  @sym{gdk:cursor-type} enumeration. Passing @code{nil} for the @arg{cursor}
   argument means that the GDK window will use the cursor of its parent window.
   Most windows should use this default.
   @see-class{gdk:window}
@@ -1367,18 +1368,18 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_new" window-new) (g:object window :return)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-23}
   @argument[parent]{a @class{gdk:window} object, or @code{nil} to create the
     window as a child of the default root window for the default display}
-  @argument[attributes]{a @symbol{gdk:window-attr} instance with the attributes
-    of type  of the new window}
-  @argument[mask]{a @symbol{gdk:window-attributes-type} mask indicating which
+  @argument[attributes]{a @sym{gdk:window-attr} instance with the attributes of
+    type  of the new window}
+  @argument[mask]{a @sym{gdk:window-attributes-type} mask indicating which
     fields in @arg{attributes} are valid}
   @return{The new @class{gdk:window} object.}
   @begin{short}
     Creates a new window using the attributes from @arg{attributes}.
   @end{short}
-  See the @symbol{gdk:window-attr} and @symbol{gdk:window-attributes-type}
+  See the @sym{gdk:window-attr} and @sym{gdk:window-attributes-type}
   documentation for more details.
 
   Note: To use this on displays other than the default display, @arg{parent}
@@ -1421,13 +1422,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_window_type" window-window-type) window-type
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @return{The @symbol{gdk:window-type} value of @arg{window}.}
+  @return{The @sym{gdk:window-type} value of @arg{window}.}
   @begin{short}
     Gets the type of the window.
   @end{short}
-  See the @symbol{gdk:window-type} enumeration.
+  See the @sym{gdk:window-type} enumeration.
   @see-class{gdk:window}
   @see-symbol{gdk:window-type}"
   (window (g:object window)))
@@ -1693,12 +1694,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_state" window-state) window-state
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @return{The @symbol{gdk:window-state} value of the window state.}
+  @return{The @sym{gdk:window-state} value of the window state.}
   @begin{short}
     Gets the bitwise OR of the currently active window state flags, from the
-    @symbol{gdk:window-state} enumeration.
+    @sym{gdk:window-state} enumeration.
   @end{short}
   @see-class{gdk:window}
   @see-symbol{gdk:window-state}"
@@ -1968,22 +1969,20 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_fullscreen_mode" window-fullscreen-mode)
     fullscreen-mode
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @syntax{(gdk:window-fullscreen-mode window) => mode}
   @syntax{(setf (gdk:window-fullscreen-mode window) mode)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[mode]{a value of the @symbol{gdk:fullscreen-mode} enumeration}
+  @argument[mode]{a value of the @sym{gdk:fullscreen-mode} enumeration}
   @begin{short}
-    Accessor of the fullscreen mode applied to the window when fullscreen.
+    Gets or sets the fullscreen mode applied to the window when fullscreen.
   @end{short}
-  The @fun{gdk:window-fullscreen-mode} function obtains the fullscreen mode of
-  the window. The @setf{gdk:window-fullscreen-mode} function specifies whether
-  the window should span over all monitors (in a multi-head setup) or only the
-  current monitor when in fullscreen mode.
+  Specifies whether the window should span over all monitors (in a multi-head
+  setup) or only the current monitor when in fullscreen mode.
 
-  The mode argument is from the @symbol{gdk:fullscreen-mode} enumeration. If
-  @code{:on-all-monitors} is specified, the fullscreen window will span over
-  all monitors from the @class{gdk:screen} object.
+  The mode argument is from the @sym{gdk:fullscreen-mode} enumeration. If
+  @val[gdk:fullscreen-mode]{:on-all-monitors} is specified, the fullscreen
+  window will span over all monitors from the @class{gdk:screen} object.
 
   On X11, searches through the list of monitors from the @class{gdk:screen}
   object the ones which delimit the 4 edges of the entire @class{gdk:screen}
@@ -2311,20 +2310,20 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_move_to_rect" window-move-to-rect) :void
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object to move}
-  @argument[rect]{a @class{gdk:rectangle} instance with the destination to
+  @argument[rect]{a @class{gdk:rectangle} instance for the destination to
     align @arg{window} with}
-  @argument[ranchor]{a @symbol{gdk:gravity} value with the point on @arg{rect}
-    to align with @arg{window}'s anchor point}
-  @argument[wanchor]{a @symbol{gdk:gravity} value with the point on @arg{window}
+  @argument[ranchor]{a @sym{gdk:gravity} value for the point on @arg{rect} to
+    align with @arg{window}'s anchor point}
+  @argument[wanchor]{a @sym{gdk:gravity} value for the point on @arg{window}
     to align with @arg{rect}'s anchor point}
-  @argument[hints]{a @symbol{gdk:anchor-hints} value with the positioning hints
-    to use when limited on space}
-  @argument[dx]{an integer with the horizontal offset to shift @arg{window},
-    i.e. @arg{rect}'s anchor point}
-  @argument[dy]{an integer with the vertical offset to shift @arg{window},
-    i.e. @arg{rect}'s anchor point}
+  @argument[hints]{a @sym{gdk:anchor-hints} value for the positioning hints to
+    use when limited on space}
+  @argument[dx]{an integer for the horizontal offset to shift @arg{window},
+    that is @arg{rect}'s anchor point}
+  @argument[dy]{an integer for the vertical offset to shift @arg{window},
+    that is @arg{rect}'s anchor point}
   @begin{short}
     Moves the window to @arg{rect}, aligning their anchor points.
   @end{short}
@@ -2361,11 +2360,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_move_region" window-move-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} to move}
-  @argument[dx]{an integer with the amount to move in the x direction}
-  @argument[dy]{an integer with the amount to move in the y direction}
+  @argument[region]{a @sym{cairo:region-t} to move}
+  @argument[dx]{an integer for the amount to move in the x direction}
+  @argument[dy]{an integer for the amount to move in the y direction}
   @begin{short}
     Move the part of window indicated by region by dy pixels in the y direction
     and dx pixels in the x direction.
@@ -2597,16 +2596,16 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_begin_resize_drag" window-begin-resize-drag) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[edge]{a @symbol{gdk:window-edge} value with the edge or corner from
+  @argument[edge]{a @sym{gdk:window-edge} for with the edge or corner from
     which the drag is started}
-  @argument[button]{an integer with the button being used to drag}
-  @argument[xroot]{an integer with the root window x coordinate of mouse click
+  @argument[button]{an integer for the button being used to drag}
+  @argument[xroot]{an integer for the root window x coordinate of mouse click
     that began the drag}
-  @argument[yroot]{an integer with the root window y coordinate of mouse click
+  @argument[yroot]{an integer for the root window y coordinate of mouse click
     that began the drag}
-  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+  @argument[timestamp]{an unsigned integer for the timestamp of mouse click
     that began the drag, use the @fun{gdk:event-time} function}
   @begin{short}
     Begins a window resize operation for a toplevel window.
@@ -2634,17 +2633,17 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_begin_resize_drag_for_device"
            window-begin-resize-drag-for-device) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[edge]{a @symbol{gdk:window-edge} value with the edge or corner from
+  @argument[edge]{a @sym{gdk:window-edge} value for the edge or corner from
     which the drag is started}
   @argument[device]{a @class{gdk:device} object used for the operation}
-  @argument[button]{an integer with the button being used to drag}
-  @argument[xroot]{an integer with the root window x coordinate of mouse click
+  @argument[button]{an integer for the button being used to drag}
+  @argument[xroot]{an integer for the root window x coordinate of mouse click
     that began the drag}
-  @argument[yroot]{an integer with the root window y coordinate of mouse click
+  @argument[yroot]{an integer for the root window y coordinate of mouse click
     that began the drag}
-  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+  @argument[timestamp]{an unsigned integer for the timestamp of mouse click
     that began the drag, use the @fun{gdk:event-time} function}
   @begin{short}
     Begins a window resize operation for a toplevel window.
@@ -2771,15 +2770,15 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-constrain-size (geometry flags width height)
  #+liber-documentation
- "@version{#2023-2-26}
-  @argument[geometry]{a @symbol{gdk:geometry} instance}
-  @argument[flags]{a @symbol{gdk:window-hints} mask indicating what portions of
+ "@version{#2025-08-23}
+  @argument[geometry]{a @sym{gdk:geometry} instance}
+  @argument[flags]{a @sym{gdk:window-hints} mask indicating what portions of
     geometry are set}
-  @argument[width]{an integer with the desired width of the window}
-  @argument[height]{an integer with the desired height of the window}
+  @argument[width]{an integer for the desired width of the window}
+  @argument[height]{an integer for the desired height of the window}
   @begin{return}
-    @code{new-width}  -- an integer with the resulting width @br{}
-    @code{new-height} -- an integer with the resulting height
+    @code{new-width}  -- an integer for the resulting width @br{}
+    @code{new-height} -- an integer for the resulting height
   @end{return}
   @begin{short}
     Constrains a desired @arg{width} and @arg{height} according to a set of
@@ -2854,9 +2853,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_opaque_region" window-set-opaque-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a toplevel or non-native @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} instance, or @code{nil}}
+  @argument[region]{a @sym{cairo:region-t} instance, or @code{nil}}
   @begin{short}
     For optimisation purposes, compositing window managers may like to not draw
     obscured regions of windows, or turn off blending during for these regions.
@@ -3043,10 +3042,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_clip_region" window-clip-region)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    A @symbol{cairo:region-t} instance. This must be freed with the
+    The @sym{cairo:region-t} instance. This must be freed with the
     @fun{cairo:region-destroy} function when you are done.
   @end{return}
   @begin{short}
@@ -3097,9 +3096,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_begin_paint_region" window-begin-paint-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} instance you intend to draw to}
+  @argument[region]{a @sym{cairo:region-t} instance you intend to draw to}
   @begin{short}
     Indicates that you are beginning the process of redrawing region.
   @end{short}
@@ -3190,11 +3189,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_begin_draw_frame" window-begin-draw-frame)
     (g:object drawing-context)
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} instance}
-  @return{A @class{gdk:drawing-context} object that should be used to draw the
-    contents of the window, the returned context is owned by GDK.}
+  @argument[region]{a @sym{cairo:region-t} instance}
+  @begin{return}
+    The @class{gdk:drawing-context} object that should be used to draw the
+    contents of the window, the returned context is owned by GDK.
+  @end{return}
   @begin{short}
     Indicates that you are beginning the process of redrawing @arg{region} on
     @arg{window}, and provides you with a @class{gdk:drawing-context} object.
@@ -3264,10 +3265,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_visible_region" window-visible-region)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    A @symbol{cairo:region-t} instance. This must be freed with the
+    The @sym{cairo:region-t} instance. This must be freed with the
     @fun{cairo:region-destroy} function when you are done.
   @end{return}
   Computes the region of the window that is potentially visible. This does not
@@ -3361,9 +3362,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_invalidate_region" window-invalidate-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} instance}
+  @argument[region]{a @sym{cairo:region-t} instance}
   @argument[invalidate]{@em{true} to also invalidate child windows}
   @begin{short}
     Adds @arg{region} to the update area for @arg{window}.
@@ -3437,10 +3438,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-invalidate-maybe-recurse (window region func)
  #+liber-documentation
- "@version{#2023-5-14}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} instance}
-  @argument[func]{a @symbol{gdk:window-child-func} callback function to use to
+  @argument[region]{a @sym{cairo:region-t} instance}
+  @argument[func]{a @sym{gdk:window-child-func} callback function to use to
     decide if to recurse to a child, @code{nil} means never recurse}
   @begin{short}
     Adds region to the update area for window.
@@ -3483,9 +3484,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_update_area" window-update-area)
     (:pointer (:struct cairo:region-t))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @return{The @symbol{cairo:region-t} update area for window.}
+  @return{The @sym{cairo:region-t} update area for window.}
   @begin{short}
     Transfers ownership of the update area from @arg{window} to the caller of
     the function.
@@ -3933,13 +3934,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_shape_combine_region" window-shape-combine-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} region of @arg{window} to be
+  @argument[region]{a @sym{cairo:region-t} region of @arg{window} to be
     non-transparent}
-  @argument[xoffset]{an integer with the x position of @arg{region} in window
+  @argument[xoffset]{an integer for the x position of @arg{region} in window
     coordinates}
-  @argument[yoffset]{an integer with the y position of @arg{region} in window
+  @argument[yoffset]{an integer for the y position of @arg{region} in window
     coordinates}
   @begin{short}
     Makes pixels in the window outside @arg{region} be transparent, so that the
@@ -4016,9 +4017,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_input_shape_combine_region"
            window-input-shape-combine-region) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[region]{a @symbol{cairo:region-t} region of @arg{window} to be
+  @argument[region]{a @sym{cairo:region-t} region of @arg{window} to be
     non-transparent}
   @argument[xoffset]{an integer with the x position of @arg{region} in window
     coordinates}
@@ -4221,11 +4222,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_background_pattern" window-background-pattern)
     (:pointer (:struct cairo:pattern-t))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @syntax{(gdk:window-background-pattern window) => pattern}
   @syntax{(setf (gdk:window-background-pattern window) pattern)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[pattern]{a @symbol{cairo:pattern-t} pattern to use, or @code{nil}}
+  @argument[pattern]{a @sym{cairo:pattern-t} pattern to use, or @code{nil}}
   @begin{short}
     The pattern to use for the background or @code{nil} to use the parent's
     background.
@@ -4331,11 +4332,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_geometry_hints" window-set-geometry-hints) :void
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-23}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[geometry]{a @symbol{gdk:geometry} instance with the geometry hints}
-  @argument[mask]{a @symbol{gdk:window-hints} bitmask indicating fields
-    of @arg{geometry} to pay attention to}
+  @argument[geometry]{a @sym{gdk:geometry} instance with the geometry hints}
+  @argument[mask]{a @sym{gdk:window-hints} bitmask indicating fields of
+    @arg{geometry} to pay attention to}
   @begin{short}
     Sets the geometry hints for the window.
   @end{short}
@@ -4491,11 +4492,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_type_hint" window-type-hint) window-type-hint
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @syntax{(gdk:window-type-hint window) => hint}
   @syntax{(setf (gdk:window-type-hint window) hint)}
   @argument[window]{a @class{gdk:window} toplevel object}
-  @argument[hint]{a @symbol{gdk:window-type-hint} value with the type hint this
+  @argument[hint]{a @sym{gdk:window-type-hint} value for the type hint this
     window will have}
   @begin{short}
     The type hint set for the window.
@@ -4789,15 +4790,15 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-pointer (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{win} -- a @class{gdk:window} object containing the pointer as with
-    the @fun{gdk:window-at-pointer} function, or @code{nil} if the window
-    containing the pointer is not known to GDK @br{}
-    @code{x} -- an integer with the x coordinate of pointer @br{}
-    @code{y} -- an integer with the y coordinate of pointer @br{}
-    @code{mask} -- a @symbol{gdk:modifier-type} value with the modifier mask
+    @arg{win} -- a @class{gdk:window} object containing the pointer as with
+      the @fun{gdk:window-at-pointer} function, or @code{nil} if the window
+      containing the pointer is not known to GDK @br{}
+    @arg{x} -- an integer for the x coordinate of pointer @br{}
+    @arg{y} -- an integer for the y coordinate of pointer @br{}
+    @arg{mask} -- a @sym{gdk:modifier-type} value for the modifier mask
   @end{return}
   @begin{short}
     Obtains the current pointer position and modifier state. The position is
@@ -4835,16 +4836,16 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-device-position (window device)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object to query}
   @begin{return}
-    @code{win}  -- a @class{gdk:window} object underneath @arg{device}, as
-    with the @fun{gdk:device-window-at-position} function, or @code{nil} if the
-    window is not known to GDK @br{}
-    @code{x} -- an integer with the x coordinate of the device @br{}
-    @code{y} -- an integer with the y coordinate of the device @br{}
-    @code{mask} -- a @symbol{gdk:modifier-type} value
+    @arg{win}  -- a @class{gdk:window} object underneath @arg{device}, as with
+      the @fun{gdk:device-window-at-position} function, or @code{nil} if the
+      window is not known to GDK @br{}
+    @arg{x} -- an integer for the x coordinate of the device @br{}
+    @arg{y} -- an integer for the y coordinate of the device @br{}
+    @arg{mask} -- a @sym{gdk:modifier-type} value
   @end{return}
   @begin{short}
     Obtains the current device position and modifier state.
@@ -4880,16 +4881,16 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-device-position-double (window device)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object to query to}
   @begin{return}
-    @code{win} -- a @class{gdk:window} object underneath device, as with the
-    @fun{gdk:device-window-at-position} function, or @code{nil} if the window
-    is not known to GDK @br{}
-    @code{x} -- a double float with the x coordinate of the device @br{}
-    @code{y} -- a double float with the y coordinate of the device  @br{}
-    @code{mask} -- a @symbol{gdk:modifier-type} value
+    @arg{win} -- a @class{gdk:window} object underneath device, as with the
+      @fun{gdk:device-window-at-position} function, or @code{nil} if the window
+      is not known to GDK @br{}
+    @arg{x} -- a double float for the x coordinate of the device @br{}
+    @arg{y} -- a double float for the y coordinate of the device  @br{}
+    @arg{mask} -- a @sym{gdk:modifier-type} value
   @end{return}
   @begin{short}
     Obtains the current device position in doubles and the modifier state.
@@ -5045,9 +5046,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_events" window-events) event-mask
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
+  @argument[event-mask]{a @sym{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
     Accessor of the event mask for the window.
   @end{short}
@@ -5058,7 +5059,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   The event mask for a window determines which events will be reported for that
   window from all master input devices. For example, an event mask including
   @code{:button-press-mask} means the window should report button press events.
-  The event mask is the bitwise OR of values from the @symbol{gdk:event-mask}
+  The event mask is the bitwise OR of values from the @sym{gdk:event-mask}
   flags.
   @see-class{gdk:window}
   @see-symbol{gdk:event-mask}"
@@ -5230,11 +5231,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-decorations (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @syntax{(gdk:window-decorations window) => decorations}
   @syntax{(setf (gdk:window-decorations window) decorations)}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[decorations]{a @symbol{gdk:wm-decoration} value with the decoration
+  @argument[decorations]{a @sym{gdk:wm-decoration} value for the decoration
     hint mask}
   @begin{short}
     \"Decorations\" are the features the window manager adds to a toplevel
@@ -5246,7 +5247,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   widget instead of using the GDK function directly.
 
   The decorations argument is the logical OR of the values of the
-  @symbol{gdk:wm-decoration} flags. If @code{:all} is included in the mask, the
+  @sym{gdk:wm-decoration} flags. If @code{:all} is included in the mask, the
   other bits indicate which decorations should be turned off. If @code{:all}
   is not included, then the other bits indicate which decorations should be
   turned on.
@@ -5269,10 +5270,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_functions" window-set-functions) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[functions]{a @symbol{gdk:wm-function} bitmask of operations to
-    allow on @arg{window}}
+  @argument[functions]{a @sym{gdk:wm-function} bitmask of operations to allow
+    on @arg{window}}
   @begin{short}
     Sets hints about the window management functions to make available via
     buttons on the window frame.
@@ -5282,7 +5283,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   interesting with this hint. Many ignore it entirely.
 
   The functions argument is the logical OR of values from the
-  @symbol{gdk:wm-function} flags. If the bitmask includes @code{:all}, then the
+  @sym{gdk:wm-function} flags. If the bitmask includes @code{:all}, then the
   other bits indicate which functions to disable; if it does not include
   @code{:all}, it indicates which functions to enable.
   @see-class{gdk:window}
@@ -5405,10 +5406,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_device_events" window-device-events) event-mask
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object}
-  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
+  @argument[event-mask]{a @sym{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
     The @fun{gdk:window-device-events} function returns the event mask for
     the window corresponding to an specific device.
@@ -5419,7 +5420,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
   Normally a floating device, not attached to any visible pointer to the window.
   For example, an event mask including @code{:button-press-mask} means the
   window should report button press events. The event mask is the bitwise OR of
-  values from the @symbol{gdk:event-mask} flags.
+  values from the @sym{gdk:event-mask} flags.
   @see-class{gdk:window}
   @see-class{gdk:device}
   @see-symbol{gdk:event-mask}"
@@ -5443,13 +5444,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_source_events" window-source-events) event-mask
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @syntax{(gdk:window-source-events window source) => event-mask}
   @syntax{(setf (gdk:window-source-events window source) event-mask)}
   @argument[window]{a @class{gdk:window} object}
-  @argument[source]{a @symbol{gdk:input-source} value to define the source
-    class}
-  @argument[event-mask]{a @symbol{gdk:event-mask} event mask for @arg{window}}
+  @argument[source]{a @sym{gdk:input-source} value to define the source class}
+  @argument[event-mask]{a @sym{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
     The @fun{gdk:window-source-events} function returns the event mask for
     the window corresponding to the device class specified by @arg{source}.
@@ -5509,10 +5509,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_offscreen_window_get_surface" offscreen-window-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-23}
   @argument[window]{a @class{gdk:window} object}
-  @return{The offscreen @symbol{cairo:surface-t} instance, or @code{nil} if
-    not offscreen.}
+  @begin{return}
+    The offscreen @sym{cairo:surface-t} instance, or @code{nil} if not
+    offscreen.
+  @end{return}
   @begin{short}
     Gets the offscreen surface that an offscreen window renders into.
   @end{short}

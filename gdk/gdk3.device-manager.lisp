@@ -208,8 +208,9 @@
       either slave devices being disconnected from their master device or
       connected to another one, or master devices being added or removed a
       slave device. If a slave device is detached from all master devices its
-      @symbol{gdk:device-type} value will change to the @code{:floating} value,
-      if it is attached, it will change to the @code{:slave} value.
+      @sym{gdk:device-type} value will change to the
+      @val[gdk:device-type]{:floating} value, if it is attached, it will change
+      to the @val[gdk:device-type]{:slave} value.
     @end{signal}
     @begin[device-manager::device-removed]{signal}
       @begin{pre}
@@ -303,9 +304,9 @@
 (cffi:defcfun ("gdk_device_manager_list_devices" device-manager-list-devices)
     (g:list-t (g:object device) :free-from-foreign t)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2025-08-23}
   @argument[manager]{a @class{gdk:device-manager} object}
-  @argument[type]{a @symbol{gdk:device-type} device type to get}
+  @argument[type]{a @sym{gdk:device-type} device type to get}
   @return{The list of @class{gdk:device} objects.}
   @begin{short}
     Returns the list of devices currently attached to the device manager.

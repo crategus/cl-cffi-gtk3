@@ -312,17 +312,17 @@ lambda (keymap)    :run-last
 
 (defun keymap-translate-keyboard-state (keymap keycode state group)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-08-23}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an unsigned integer for the keycode}
-  @argument[state]{a @symbol{gdk:modifier-type} modifier state}
+  @argument[state]{a @sym{gdk:modifier-type} modifier state}
   @argument[group]{an integer for the active keyboard group}
   @begin{return}
     @arg{keyval} -- an unsigned integer with the keyval @br{}
     @arg{effective} -- an integer with the effective group @br{}
     @arg{level} -- an integer with the level @br{}
-    @arg{consumed} -- a @symbol{gdk:modifier-type} value with the flags that
-    were used to determine the group or level
+    @arg{consumed} -- a @sym{gdk:modifier-type} value with the flags that were
+      used to determine the group or level
   @end{return}
   @begin{short}
     Translates the contents of the @arg{keycode}, @arg{state}, and @arg{group}
@@ -574,9 +574,9 @@ if (keyval == GDK_PLUS &&
 (cffi:defcfun ("gdk_keymap_get_modifier_state" keymap-modifier-state)
     modifier-type
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-08-23}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @return{The current @symbol{gdk:modifier-type} modifier state.}
+  @return{The current @sym{gdk:modifier-type} modifier state.}
   @short{Returns the current modifier state.}
   @see-class{gdk:keymap}
   @see-symbol{gdk:modifier-type}"
@@ -595,14 +595,14 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-add-virtual-modifiers (keymap state)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-08-23}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[state]{a value of the @symbol{gdk:modifier-type} flags}
-  @return{The @symbol{gdk:modfier-type} flags.}
+  @argument[state]{a value of the @sym{gdk:modifier-type} flags}
+  @return{The @sym{gdk:modfier-type} flags.}
   @begin{short}
-    Adds virtual modifiers (i.e. Super, Hyper and Meta) which correspond to the
-    real modifiers (i.e. Mod2, Mod3, ...) in modifiers and set the corresponding
-    bits in state.
+    Adds virtual modifiers, that is Super, Hyper and Meta, which correspond to
+    the real modifiers, that is Mod2, Mod3, ... in modifiers and set the
+    corresponding bits in state.
   @end{short}
 
   GDK already does this before delivering key events, but for compatibility
@@ -637,10 +637,10 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-map-virtual-modifiers (keymap state)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-08-23}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @argument[state]{a @symbol{gdk:modifier-type} value}
-  @return{The @symbol{gdk:modifier-type} value.}
+  @argument[state]{a @sym{gdk:modifier-type} value}
+  @return{The @sym{gdk:modifier-type} value.}
   @begin{short}
     Maps the virtual modifiers, that is Super, Hyper and Meta, which are set in
     @arg{state} to their non-virtual counterparts, that is Mod2, Mod3, ..., and
