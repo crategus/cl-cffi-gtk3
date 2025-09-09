@@ -164,6 +164,9 @@
       (g:signal-connect reset-treestore "clicked"
           (lambda (widget)
             (declare (ignore widget))
+            ;; Before clearing threescore, set the model referenced by treeview to nil, 
+            ;; and then restore it after the data is filled. This will not cause additional memory usage.
+            (setf (gtk::tree-view-model view) nil)
             (gtk:tree-store-clear model)
             (loop for i from 10000 upto 16000 do
                   (let* ((iter (gtk:tree-store-append model nil)))
@@ -185,5 +188,6 @@
                                         (princ-to-string (+ i 15))
                                         (princ-to-string (+ i 16))
                                         (princ-to-string (+ i 17))
-                                        (princ-to-string (+ i 18)))))))
+                                        (princ-to-string (+ i 18)))))
+            (setf (gtk::tree-view-model view) model))) ;; restore
       (gtk:widget-show-all window))))
