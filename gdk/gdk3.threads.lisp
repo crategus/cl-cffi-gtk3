@@ -185,12 +185,12 @@
 
 (defun threads-add-idle (func &key (priority glib:+priority-default-idle+))
  #+liber-documentation
- "@version{#2024-6-29}
-  @argument[func]{a @symbol{g:source-func} callback function to call}
-  @argument[priority]{an integer with the priority of the idle source,
+ "@version{#2025-08-31}
+  @argument[func]{a @sym{g:source-func} callback function to call}
+  @argument[priority]{an integer for the priority of the idle source,
     typically this will be in the range between
     @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
-  @return{The unsigned integer ID, greater than 0, of the event source.}
+  @return{The unsigned integer ID, greater than 0, for the event source.}
   @begin{short}
     Adds a function to be called whenever there are no higher priority events
     pending.
@@ -225,14 +225,14 @@
 (defun threads-add-timeout (interval func
                             &key (priority glib:+priority-default+))
  #+liber-documentation
- "@version{#2024-6-29}
-  @argument[interval]{an unsigned integer with the time between calls to the
+ "@version{#2025-08-31}
+  @argument[interval]{an unsigned integer for the time between calls to the
     function, in milliseconds}
-  @argument[func]{a @symbol{g:source-func} callback function to call}
-  @argument[priority]{an integer with the priority of the timeout source,
+  @argument[func]{a @sym{g:source-func} callback function to call}
+  @argument[priority]{an integer for the priority of the timeout source,
     typically this will be in the range between
     @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
-  @return{The unsigned integer ID, greater than 0, of the event source.}
+  @return{The unsigned integer ID, greater than 0, for the event source.}
   @begin{short}
     Sets a function to be called at regular intervals holding the GDK lock,
     with the given priority.
@@ -276,14 +276,14 @@
 (defun threads-add-timeout-seconds (interval func
                                     &key (priority glib:+priority-default+))
  #+liber-documentation
- "@version{#2024-6-29}
-  @argument[interval]{an unsigned integer with the time between calls to the
+ "@version{#2025-08-31}
+  @argument[interval]{an unsigned integer for the time between calls to the
     function, in seconds}
-  @argument[func]{a @symbol{g:source-func} callback function to call}
-  @argument[priority]{an integer with the priority of the timeout source,
+  @argument[func]{a @sym{g:source-func} callback function to call}
+  @argument[priority]{an integer for the priority of the timeout source,
     typically this will be in the range between
     @var{glib:+priority-default-idle+} and @var{glib:+priority-high-idle+}}
-  @return{The unsigned integer ID, greater than 0, of the event source.}
+  @return{The unsigned integer ID, greater than 0, for the event source.}
   @begin{short}
     A variant of the @fun{gdk:threads-add-timeout} function with second
     granularity.

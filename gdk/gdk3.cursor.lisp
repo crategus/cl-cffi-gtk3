@@ -480,14 +480,14 @@
 (cffi:defcfun ("gdk_cursor_new_from_pixbuf" cursor-new-from-pixbuf)
     (g:object cursor)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2025-08-31}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object containing the cursor
     image}
-  @argument[x]{an integer with the horizontal offset of the 'hotspot' of the
+  @argument[x]{an integer for the horizontal offset of the 'hotspot' of the
     cursor}
-  @argument[y]{an integer with the vertical offset of the 'hotspot' of the
+  @argument[y]{an integer for the vertical offset of the 'hotspot' of the
     cursor}
   @return{The new @class{gdk:cursor} object.}
   @begin{short}

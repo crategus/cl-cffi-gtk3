@@ -438,13 +438,11 @@
 
 (defun event-axis (event axis)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @argument[axis]{a @symbol{gdk:axis-use} value with the axis use to look for}
-  @return{@code{value} -- a double float with the value found}
-  @begin{short}
-    Extract the axis value for a particular axis use from an event.
-  @end{short}
+  @argument[axis]{a @sym{gdk:axis-use} value for the axis use to look for}
+  @return{The double float for the value found.}
+  @short{Extract the axis value for a particular axis use from an event.}
   @see-class{gdk:event}
   @see-symbol{gdk:axis-use}"
   (cffi:with-foreign-object (value :double)
@@ -545,12 +543,10 @@
   (keycode (:pointer :uint16)))
 
 (defun event-keycode (event)
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @return{An unsigned integer with the keycode.}
-  @begin{short}
-    Extracts the hardware keycode from an event.
-  @end{short}
+  @return{The unsigned integer for the keycode.}
+  @short{Extracts the hardware keycode from an event.}
   @see-class{gdk:event}
   @see-class{gdk:event-key}
   @see-function{gdk:event-keyval}"
@@ -569,9 +565,9 @@
   (keyval (:pointer :uint)))
 
 (defun event-keyval (event)
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @return{An unsigned integer with the keyval.}
+  @return{The unsigned integer for the keyval.}
   @begin{short}
     Extracts the keyval from an event.
   @end{short}
@@ -622,12 +618,10 @@
   (direction (:pointer scroll-direction)))
 
 (defun event-get-scroll-direction (event)
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @return{The @symbol{gdk:scroll-direction} value with the scroll direction.}
-  @begin{short}
-    Extracts the scroll direction from an event.
-  @end{short}
+  @return{The @sym{gdk:scroll-direction} value for the scroll direction.}
+  @short{Extracts the scroll direction from an event.}
   @see-class{gdk:event}
   @see-class{gdk:event-scroll}"
   (cffi:with-foreign-object (direction 'scroll-direction)
@@ -700,11 +694,9 @@
 
 (defun event-state (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance or @code{nil}}
-  @begin{return}
-    @code{state} -- a @symbol{gdk:modifier-type} value with the state
-  @end{return}
+  @return{The @sym{gdk:modifier-type} value for the state.}
   @begin{short}
     If the event contains a \"state\" field, returns the value.
   @end{short}
@@ -724,9 +716,9 @@
 
 (cffi:defcfun ("gdk_event_get_time" event-time) :uint32
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @return{An unsigned integer with the time stamp field from the event.}
+  @return{The unsigned integer for the time stamp field from the event.}
   @begin{short}
     Returns the current time of the event.
   @end{short}
@@ -971,9 +963,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_scancode" event-scancode) :int
- "@version{#2023-3-13}
+ "@version{#2025-08-31}
   @argument[event]{a @class{gdk:event} instance}
-  @return{An integer with the associated keyboard scancode or 0.}
+  @return{The integer for the associated keyboard scancode or 0.}
   @begin{short}
     Gets the keyboard low-level scancode of a key event.
   @end{short}

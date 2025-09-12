@@ -571,10 +571,10 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_primary_monitor" screen-primary-monitor) :int
  #+liber-documentation
- "@version{#2025-07-17}
+ "@version{#2025-08-31}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
-    The integer with the index for the primary monitor, or 0 if none is
+    The integer for the index for the primary monitor, or 0 if none is
     configured.
   @end{return}
   @begin{short}
@@ -607,9 +607,9 @@ lambda (screen)    :run-last
 
 (defun screen-monitor-geometry (screen num)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-08-31}
   @argument[screen]{a @class{gdk:screen} object}
-  @argument[num]{an integer with the monitor number}
+  @argument[num]{an integer for the monitor number}
   @return{The @class{gdk:rectangle} instance filled with the monitor geometry.}
   @begin{short}
     Retrieves the rectangle representing the size and position of the
@@ -646,9 +646,9 @@ lambda (screen)    :run-last
 
 (defun screen-monitor-workarea (screen num)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-08-31}
   @argument[screen]{a @class{gdk:screen} object}
-  @argument[num]{an integer with the monitor number}
+  @argument[num]{an integer for the monitor number}
   @return{The @class{gdk:rectangle} instance filled with the monitor workarea.}
   @begin{short}
     Retrieves the rectangle representing the size and position of the
@@ -708,11 +708,11 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_monitor_at_window" screen-monitor-at-window) :int
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-08-31}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    An integer with the monitor number in which most of @arg{window} is
+    The integer for the monitor number in which most of @arg{window} is
     located, or if @arg{window} does not intersect any monitors, a monitor,
     close to @arg{window}.
   @end{return}
@@ -786,12 +786,12 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_monitor_plug_name" screen-monitor-plug-name)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-08-31}
   @argument[screen]{a @class{gdk:screen} object}
-  @argument[monitor-num]{an integer with the number of the monitor, between
+  @argument[monitor-num]{an integer for the number of the monitor, between
     0 and the result of @code{(gdk:screen-n-monitors @arg{screen})}}
   @begin{return}
-    A string containing the name of the monitor, or @code{nil} if the name
+    The string containing the name of the monitor, or @code{nil} if the name
     cannot be determined.
   @end{return}
   @begin{short}

@@ -572,21 +572,17 @@
 
 (cffi:defcfun ("gdk_drag_motion" drag-motion) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-08-31}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[window]{a new @class{gdk:window} destination window, obtained by
     the @fun{gdk:drag-find-window-for-screen} function}
-  @argument[protocol]{a @symbol{gdk:drag-protocol} DND protocol in use,
-    obtained by the @fun{gdk:drag-find-window-for-screen} function}
-  @argument[x]{an integer with the x position of the pointer in root
-    coordinates}
-  @argument[y]{an integer with the the y position of the pointer in root
-    coordinates}
-  @argument[suggested]{a @symbol{gdk:drag-action} value with the suggested
-    action}
-  @argument[possible]{a @symbol{gdk:drag-action} value with the possible
-    actions}
-  @argument[time]{an unsigned integer with the timestamp for this operation}
+  @argument[protocol]{a @sym{gdk:drag-protocol} DND protocol in use, obtained
+    by the @fun{gdk:drag-find-window-for-screen} function}
+  @argument[x]{an integer for the x position of the pointer in root coordinates}
+  @argument[y]{an integer for the y position of the pointer in root coordinates}
+  @argument[suggested]{a @sym{gdk:drag-action} value for the suggested action}
+  @argument[possible]{a @sym{gdk:drag-action} value for the possible actions}
+  @argument[time]{an unsigned integer for the timestamp for this operation}
   @begin{short}
     Updates the drag context when the pointer moves or the set of actions
     changes.

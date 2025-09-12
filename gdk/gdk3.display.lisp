@@ -880,11 +880,11 @@ lambda (display seat)    :run-last
 
 (defun display-maximal-cursor-size (display)
  #+liber-documentation
- "@version{#2023-3-4}
+ "@version{#2025-08-31}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
-    @arg{width} -- an unsigned integer with the maximal cursor width @br{}
-    @arg{height} -- an unsigned integer with the maximal cursor height
+    @arg{width} -- an unsigned integer for the maximal cursor width @br{}
+    @arg{height} -- an unsigned integer for the maximal cursor height
   @end{return}
   @short{Gets the maximal size to use for cursors on the display.}
   @begin[Example]{dictionary}

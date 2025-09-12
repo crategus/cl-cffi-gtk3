@@ -553,7 +553,7 @@
 (setf (liber:alias-for-symbol 'event-type)
       "GEnum"
       (liber:symbol-documentation 'event-type)
- "@version{2025-07-03}
+ "@version{2025-08-31}
   @begin{declaration}
 (gobject:define-genum \"GdkEventType\" event-type
   (:export t
@@ -637,7 +637,7 @@
       @entry[:focus-change]{The keyboard focus has entered or left the window.}
       @entry[:configure]{The size, position or stacking order of the window has
         changed. Note that GTK discards these events for windows with the
-        @code{:child} value of the @symbol{gdk:window-type} enumeration.}
+        @code{:child} value of the @sym{gdk:window-type} enumeration.}
       @entry[:map]{The window has been mapped.}
       @entry[:unmap]{The window has been unmapped.}
       @entry[:property-notify]{A property on the window has been changed or
@@ -2939,7 +2939,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-class 'event-expose)
       "GBoxed"
       (documentation 'event-expose 'type)
- "@version{2025-07-03}
+ "@version{2025-08-31}
   @begin{declaration}
 (define-gboxed-variant-cstruct event \"GdkEvent\"
   (type event-type)
@@ -2958,7 +2958,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[type]{The @sym{gdk:event-type} type of the event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[area]{Bounding @sym{gdk:rectangle} box of the region.}
+      @entry[area]{Bounding @class{gdk:rectangle} box of the region.}
       @entry[region]{The region of @sym{cairo:region-t} type that needs to be
         redrawn.}
       @entry[count]{The number of contiguous expose events following this one.

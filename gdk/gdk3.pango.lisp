@@ -56,16 +56,18 @@
 
 (defun pango-layout-clip-region (layout xorigin yorigin ranges)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-08-31}
   @argument[layout]{a @class{pango:layout} object}
-  @argument[xorigin]{an integer with the x pixel where you intend to draw the
+  @argument[xorigin]{an integer for the x pixel where you intend to draw the
     Pango layout with this clip}
-  @argument[yorigin]{an integer with the y pixel where you intend to draw the
+  @argument[yorigin]{an integer for the y pixel where you intend to draw the
     Pango layout with this clip}
   @argument[ranges]{a list of byte indexes into the Pango layout, where even
     members of the list are start indexes and odd elements are end indexes}
-  @return{The @symbol{cairo:region-t} instance with the clip region containing
-    the given ranges.}
+  @begin{return}
+    The @sym{cairo:region-t} instance for the clip region containing the given
+    ranges.
+  @end{return}
   @begin{short}
     Obtains a clip region which contains the areas where the given ranges of
     text would be drawn.
@@ -113,16 +115,18 @@
 
 (defun pango-layout-line-clip-region (line xorigin yorigin ranges)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2025-08-31}
   @argument[line]{a @class{pango:layout-line} instance}
-  @argument[xorigin]{an integer with the x pixel where you intend to draw the
+  @argument[xorigin]{an integer for the x pixel where you intend to draw the
     Pango layout line with this clip}
-  @argument[yorigin]{an integer with the baseline pixel where you intend to
+  @argument[yorigin]{an integer for the baseline pixel where you intend to
     draw the Pango layout line with this clip}
   @argument[ranges]{list of byte indexes into the Pango layout, where even
     members of list are start indexes and odd elements are end indexes}
-  @return{The @symbol{cairo:region-t} instance with the clip region containing
-    the given ranges.}
+  @begin{return}
+    The @sym{cairo:region-t} instance with the clip region containing the given
+    ranges.
+  @end{return}
   @begin{short}
     Obtains a clip region which contains the areas where the given ranges of
     text would be drawn.
@@ -166,7 +170,7 @@
 (cffi:defcfun ("gdk_pango_context_get" pango-context-get)
     (g:object pango:context :return)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-08-31}
   @return{The new @class{pango-context} instance for the default GDK screen.}
   @begin{short}
     Creates a @class{pango-context} instance for the default GDK screen.
@@ -176,7 +180,7 @@
   the widget you intend to render text onto.
 
   The newly created Pango context will have the default font options, see the
-  @symbol{cairo:font-options-t} API, for the default screen. If these options
+  @sym{cairo:font-options-t} API, for the default screen. If these options
   change it will not be updated. Using the @fun{gtk:widget-pango-context}
   function is more convenient if you want to keep a Pango context around and
   track changes to the font rendering settings of the screen.
@@ -193,7 +197,7 @@
 (cffi:defcfun ("gdk_pango_context_get_for_screen" pango-context-for-screen)
     (g:object pango-context :return)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-08-31}
   @argument[screen]{a @class{gdk:screen} object for which the Pango context
     is to be created}
   @return{The new @class{pango-context} instance for @arg{screen}.}
@@ -205,8 +209,8 @@
   the widget you intend to render text onto.
 
   The newly created Pango context will have the default font options for the
-  screen. See the @symbol{cairo:font-options-t} API. If these options change
-  it will not be updated. Using the @fun{gtk:widget-pango-context} function is
+  screen. See the @sym{cairo:font-options-t} API. If these options change it
+  will not be updated. Using the @fun{gtk:widget-pango-context} function is
   more convenient if you want to keep a Pango context around and track changes
   to the screens font rendering settings.
   @see-class{pango:context}
@@ -224,7 +228,7 @@
 (cffi:defcfun ("gdk_pango_context_get_for_display" pango-context-for-display)
     (g:object pango-context :return)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2025-08-31}
   @argument[display]{a @class{gdk:display} object for which the Pango context
     is to be created}
   @return{The new @class{pango:context} instance for @arg{display}.}
@@ -236,8 +240,8 @@
   the widget you intend to render text onto.
 
   The newly created Pango context will have the default font options for the
-  display. See the @symbol{cairo:font-options-t} API. If these options change
-  it will not be updated. Using the @fun{gtk:widget-pango-context} function is
+  display. See the @sym{cairo:font-options-t} API. If these options change it
+  will not be updated. Using the @fun{gtk:widget-pango-context} function is
   more convenient if you want to keep a Pango context around and track changes
   to the font rendering settings.
   @see-class{gdk:display}

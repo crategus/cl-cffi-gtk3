@@ -263,10 +263,10 @@ lambda (seat tool)    :run-last
 
 (defun seat-grab (seat window capabilities owner-events cursor event func)
  #+liber-documentation
- "@version{#2025-07-17}
+ "@version{#2025-08-31}
   @argument[seat]{a @class{gdk:seat} object}
   @argument[window]{a @class{gdk:window} object that will own the grab}
-  @argument[capabilities]{a @sym{gdk:seat-capabilities} value with the
+  @argument[capabilities]{a @sym{gdk:seat-capabilities} value for the
     capabilities that will be grabbed}
   @argument[owner-events]{if @em{false} then all device events are reported
     with respect to @arg{window} and are only reported if selected by the event
@@ -284,7 +284,7 @@ lambda (seat tool)    :run-last
     prepare the window to be grabbed, it can be @code{nil} if @arg{window} is
     visible before this call}
   @begin{return}
-    The @val[gdk:grap-status]{:success} value of the @symbol{gdk:grab-status}
+    The @val[gdk:grap-status]{:success} value of the @sym{gdk:grab-status}
     enumeration if the grab was successful.
   @end{return}
   @begin{short}
@@ -364,9 +364,9 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_capabilities" seat-capabilities) seat-capabilities
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2025-08-31}
   @argument[seat]{a @class{gdk:seat} object}
-  @return{The @symbol{gdk:seat-capabilities} value with the seat capabilities.}
+  @return{The @sym{gdk:seat-capabilities} value for the seat capabilities.}
   @begin{short}
     Returns the capabilities this @class{gdk:seat} object currently has.
   @end{short}
@@ -418,11 +418,11 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_slaves" seat-slaves) (g:list-t (g:object device))
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2025-08-31}
   @argument[seat]{a @class{gdk:seat} object}
-  @argument[capabilities]{a @symbol{gdk:seat-capabilities} value with the
+  @argument[capabilities]{a @sym{gdk:seat-capabilities} value for the
     capabilities to get devices for}
-  @return{A list of @class{gdk:device} objects.}
+  @return{The list of @class{gdk:device} objects.}
   @begin{short}
     Returns the slave devices that match the given capabilities.
   @end{short}

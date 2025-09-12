@@ -2971,14 +2971,14 @@ lambda (view)    :action
 
 (defun tree-view-get-dest-row-at-pos (view x y)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2025-08-31}
   @argument[view]{a @class{gtk:tree-view} widget}
   @argument[x]{an integer for the position to determine the destination row for}
   @argument[y]{an integer for the position to determine the destination row for}
   @begin{return}
-    @arg{path} -- a @class{gtk:tree-path} instance of the highlighted row,
+    @arg{path} -- a @class{gtk:tree-path} instance for the highlighted row,
       or @code{nil} @br{}
-    @arg{pos} -- a @sym{gtk:tree-view-drop-position} value with the position,
+    @arg{pos} -- a @sym{gtk:tree-view-drop-position} value for the position,
       or @code{nil}
   @end{return}
   @begin{short}

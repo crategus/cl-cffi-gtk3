@@ -510,10 +510,10 @@
 (cffi:defcfun ("gtk_file_filter_get_needed" file-filter-needed)
     file-filter-flags
  #+liber-documentation
- "@version{2025-07-06}
+ "@version{2025-08-31}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{return}
-    The @sym{gtk:file-filter-flags} value with the flags indicating needed
+    The @sym{gtk:file-filter-flags} value for the flags indicating needed
     fields when calling the @fun{gtk:file-filter-filter} function.
   @end{return}
   @begin{short}

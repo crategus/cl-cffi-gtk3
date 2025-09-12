@@ -60,20 +60,8 @@
 (setf (liber:alias-for-class 'rectangle)
       "GBoxed"
       (documentation 'rectangle 'type)
- "@version{2023-2-3}
-  @begin{short}
-    Defines the position and size of a rectangle.
-  @end{short}
-  It is comparable to the @symbol{cairo:rectangle-int-t} structure.
-
-  The @class{gdk:rectangle} structure is holding the position and size of a
-  rectangle. The intersection of two rectangles can be computed with the
-  @fun{gdk:rectangle-intersect} function. To find the union of two rectangles
-  use the @fun{gdk:rectangle-union} function.
-
-  The @symbol{cairo:region-t} structure is usually used for managing clipping
-  of graphical operations.
-  @begin{pre}
+ "@version{2025-08-31}
+  @begin{declaration}
 (define-gboxed-cstruct rectangle \"GdkRectangle\"
   (:export t
    :type-initializer \"gdk_rectangle_get_type\")
@@ -81,15 +69,33 @@
   (y :int :initform 0)
   (width :int :initform 0)
   (height :int :initform 0))
-  @end{pre}
+  @end{declaration}
+  @begin{values}
+    @begin{simple-table}
+      @entry[x]{The integer for the x coordinate of the top left corner.}
+      @entry[y]{The integer for the y coordinate of the top left corner.}
+      @entry[width]{The integer for the width of the rectangle.}
+      @entry[height]{The integer for the height of the rectangle.}
+    @end{simple-table}
+  @end{values}
+  @begin{short}
+    The @class{gdk:rectangle} structure is holding the position and size of a
+    rectangle.
+  @end{short}
+
+  The intersection of two rectangles can be computed with the
+  @fun{gdk:rectangle-intersect} function. To find the union of two rectangles
+  use the @fun{gdk:rectangle-union} function.
+
+  The @sym{cairo:region-t} structure is usually used for managing clipping
+  of graphical operations.
   @see-constructor{gdk:rectangle-new}
   @see-constructor{gdk:rectangle-copy}
   @see-slot{gdk:rectangle-x}
   @see-slot{gdk:rectangle-y}
   @see-slot{gdk:rectangle-width}
   @see-slot{gdk:rectangle-height}
-  @see-symbol{cairo:region-t}
-  @see-symbol{cairo:rectangle-int-t}")
+  @see-symbol{cairo:region-t}")
 
 ;;; --- gdk:rectangle-x --------------------------------------------------------
 
@@ -97,13 +103,13 @@
 (setf (liber:alias-for-function 'rectangle-x)
       "Accessor"
       (documentation 'rectangle-x 'function)
- "@version{2023-2-3}
+ "@version{2025-08-31}
   @syntax{(gdk:rectangle-x instance) => x}
   @syntax{(setf (gdk:rectangle-x instance) x)}
   @argument[instance]{a @class{gdk:rectangle} instance}
-  @argument[x]{an integer with the x coordinate of the rectangle}
+  @argument[x]{an integer for the x coordinate of the rectangle}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:rectangle} structure.
+    The accessor for the @code{x} slot of the @class{gdk:rectangle} structure.
   @end{short}
   @see-class{gdk:rectangle}")
 
@@ -113,13 +119,13 @@
 (setf (liber:alias-for-function 'rectangle-y)
       "Accessor"
       (documentation 'rectangle-y 'function)
- "@version{2023-2-3}
+ "@version{2025-08-31}
   @syntax{(gdk:rectangle-y instance) => y}
   @syntax{(setf (gdk:rectangle-y instance) y)}
   @argument[instance]{a @class{gdk:rectangle} instance}
-  @argument[y]{an integer with the y coordinate of the rectangle}
+  @argument[y]{an integer for the y coordinate of the rectangle}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:rectangle} structure.
+    The accessor for the @code{y} slot of the @class{gdk:rectangle} structure.
   @end{short}
   @see-class{gdk:rectangle}")
 
@@ -129,13 +135,14 @@
 (setf (liber:alias-for-function 'rectangle-width)
       "Accessor"
       (documentation 'rectangle-width 'function)
- "@version{2023-2-3}
+ "@version{2025-08-31}
   @syntax{(gdk:rectangle-width instance) => width}
   @syntax{(setf (gdk:rectangle-width instance) width)}
   @argument[instance]{a @class{gdk:rectangle} instance}
-  @argument[width]{an integer with the width of the rectangle}
+  @argument[width]{an integer for the width of the rectangle}
   @begin{short}
-    Accessor of the @code{width} slot of the @class{gdk:rectangle} structure.
+    The accessor for the @code{width} slot of the @class{gdk:rectangle}
+    structure.
   @end{short}
   @see-class{gdk:rectangle}")
 
@@ -145,13 +152,14 @@
 (setf (liber:alias-for-function 'rectangle-height)
       "Accessor"
       (documentation 'rectangle-height 'function)
- "@version{2023-2-3}
+ "@version{2025-08-31}
   @syntax{(gdk:rectangle-height instance) => height}
   @syntax{(setf (gdk:rectangle-height instance) height)}
   @argument[instance]{a @class{gdk:rectangle} instance}
-  @argument[height]{an integer with the height of the rectangle}
+  @argument[height]{an integer for the height of the rectangle}
   @begin{short}
-    Accessor of the @code{height} slot of the @class{gdk:rectangle} structure.
+    The accessor for the @code{height} slot of the @class{gdk:rectangle}
+    structure.
   @end{short}
   @see-class{gdk:rectangle}")
 

@@ -484,7 +484,7 @@
 (setf (liber:alias-for-symbol 'geometry)
       "CStruct"
       (liber:symbol-documentation 'geometry)
- "@version{2025-08-23}
+ "@version{2025-08-31}
   @begin{declaration}
 (cffi:defcstruct geometry
   (min-width :int)
@@ -501,24 +501,24 @@
   @end{declaration}
   @begin{values}
     @begin[code]{simple-table}
-      @entry[min-width]{An integer with the minimum width of window or -1 to
+      @entry[min-width]{An integer for the minimum width of window or -1 to
         use requisition, with the @class{gtk:window} widget only.}
-      @entry[min-height]{An integer with the minimum height of window or -1 to
+      @entry[min-height]{An integer for the minimum height of window or -1 to
         use requisition, with the @class{gtk:window} widget only.}
-      @entry[max-width]{An integer with the maximum width of window or -1 to
+      @entry[max-width]{An integer for the maximum width of window or -1 to
         use requisition, with the @class{gtk:window} widget only.}
-      @entry[max-height]{An integer with the maximum height of window or -1 to
+      @entry[max-height]{An integer for the maximum height of window or -1 to
         use requisition, with the @class{gtk:window} widget only.}
-      @entry[base-width]{An integer with the allowed window widths are
+      @entry[base-width]{An integer for the allowed window widths are
         @code{base-width} + @code{width-inc} * @code{N} where @code{N} is any
         integer, -1 is allowed with the @class{gtk:window} widget.}
-      @entry[base-height]{An integer with the allowed window widths are
+      @entry[base-height]{An integer for the allowed window widths are
         @code{base-height} + @code{height-inc} * @code{N} where @code{N} is any
         integer, -1 is allowed with the @class{gtk:window} widget.}
-      @entry[width-increment]{An integer with the width resize increment.}
-      @entry[height-increment]{An integer with the height resize increment.}
-      @entry[min-aspect]{A double float with the minimum width/height ratio.}
-      @entry[max-aspect]{A double float with the maximum width/height ratio.}
+      @entry[width-increment]{An integer for the width resize increment.}
+      @entry[height-increment]{An integer for the height resize increment.}
+      @entry[min-aspect]{A double float for the minimum width/height ratio.}
+      @entry[max-aspect]{A double float for the maximum width/height ratio.}
       @entry[win-gravity]{A @sym{gdk:gravity} value for the window gravity, see
         the @fun{gtk:window-gravity} function.}
     @end{simple-table}
@@ -810,7 +810,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attr)
       "CStruct"
       (liber:symbol-documentation 'window-attr)
- "@version{2025-08-23}
+ "@version{2025-08-31}
   @begin{declaration}
 (cffi:defcstruct window-attr
   (title :string)
@@ -833,12 +833,12 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
       @entry[title]{A string with the title of the window for toplevel windows.}
       @entry[event-mask]{a @sym{gdk:event-mask} value, see the
         @fun{gdk:window-events} function.}
-      @entry[x]{An integer with the x coordinate relative to parent window,
+      @entry[x]{An integer for the x coordinate relative to parent window,
         see the @fun{gdk:window-move} function.}
-      @entry[y]{An integer with the y coordinate relative to parent window,
+      @entry[y]{An integer for the y coordinate relative to parent window,
         see the @fun{gdk:window-move} function.}
-      @entry[width]{An integer with the width of the window.}
-      @entry[height]{An integer with the height of window.}
+      @entry[width]{An integer for the width of the window.}
+      @entry[height]{An integer for the height of window.}
       @entry[wclass]{A @sym{gdk:window-window-class} value,
         @val[gdk:window-window-class]{:input-output} for a normal window or
         @val[gdk:window-window-class]{:input-only} for an invisible window that
@@ -1245,9 +1245,9 @@ lambda (window xembedder yembedder xoffscreen yoffscreen)    :run-last
       @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} offscreen window on which the
           signal is emitted.}
-        @entry[xembedder]{The double float with the x coordinate in the
+        @entry[xembedder]{The double float for the x coordinate in the
           embedder window.}
-        @entry[yembedder]{The double float with the y coordinate in the
+        @entry[yembedder]{The double float for the y coordinate in the
           embedder window.}
         @entry[xoffscreen]{The double float return location for the x coordinate
           in the offscreen window.}
@@ -1287,8 +1287,8 @@ lambda (window x y)    :run-last
       @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} object on which the signal is
           emitted.}
-        @entry[x]{The double float with the x coordinate in the window.}
-        @entry[y]{The double float with the y coordinate in the window.}
+        @entry[x]{The double float for the x coordinate in the window.}
+        @entry[y]{The double float for the y coordinate in the window.}
         @entry[Returns]{The @class{gdk:window} object of the embedded child at
           @arg{x}, @arg{y}, or @code{nil}.}
       @end{simple-table}
@@ -1301,9 +1301,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
       @begin[code]{simple-table}
         @entry[window]{The @class{gdk:window} object with the offscreen window
           on which the signal is emitted.}
-        @entry[xoffscreen]{The double float with the x coordinate in the
+        @entry[xoffscreen]{The double float for the x coordinate in the
           offscreen window.}
-        @entry[yoffscreen]{The double float with the y coordinate in the
+        @entry[yoffscreen]{The double float for the y coordinate in the
           offscreen window.}
         @entry[xembedder]{The double float return location for the x coordinate
           in the embedder window.}
@@ -1499,12 +1499,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-at-pointer ()
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @begin{return}
-    @code{window} -- a @class{gdk:window} object under the mouse pointer @br{}
-    @code{xwin} -- an integer with the origin of the window under the pointer
-    @br{}
-    @code{ywin} -- an integer with the origin of the window under the pointer
+    @arg{window} -- a @class{gdk:window} object under the mouse pointer @br{}
+    @arg{xwin} -- an integer for the origin of the window under the pointer@br{}
+    @arg{ywin} -- an integer for the origin of the window under the pointer
   @end{return}
   @begin{short}
     Obtains the window underneath the mouse pointer, returning the location of
@@ -1909,11 +1908,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 ;;; gdk_window_fullscreen_on_monitor
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_window_fullscreen_on_monitor" window-fullscreen-on-monitor) :void
+(cffi:defcfun ("gdk_window_fullscreen_on_monitor" window-fullscreen-on-monitor)
+    :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[monitor]{an integer with the monitor to display fullscreen on}
+  @argument[monitor]{an integer for the monitor to display fullscreen on}
   @begin{short}
     Moves the window into fullscreen mode on the given monitor.
   @end{short}
@@ -2059,9 +2059,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_opacity" window-set-opacity) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[opacity]{a double float with the opacity}
+  @argument[opacity]{a double float for the opacity}
   @begin{short}
     Request the windowing system to make window partially transparent, with
     opacity 0 being fully transparent and 1 fully opaque.
@@ -2188,10 +2188,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_move" window-move) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{an integer with the x coordinate relative to window's parent}
-  @argument[y]{an integer with the y coordinate relative to window's parent}
+  @argument[x]{an integer for the x coordinate relative to window's parent}
+  @argument[y]{an integer for the y coordinate relative to window's parent}
   @begin{short}
     Repositions a window relative to its parent window.
   @end{short}
@@ -2219,10 +2219,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_resize" window-resize) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[width]{an integer with the new width of the window}
-  @argument[height]{an integer with the new height of the window}
+  @argument[width]{an integer for the new width of the window}
+  @argument[height]{an integer for the new height of the window}
   @begin{short}
     Resizes the window, for toplevel windows, asks the window manager to
     resize the window.
@@ -2251,19 +2251,19 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_move_resize" window-move-resize) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{an integer with the new x position relative to window's parent}
-  @argument[y]{an integer with the new y position relative to window's parent}
-  @argument[width]{an integer with the new width}
-  @argument[height]{an integer with the new height}
+  @argument[x]{an integer for the new x position relative to window's parent}
+  @argument[y]{an integer for the new y position relative to window's parent}
+  @argument[width]{an integer for the new width}
+  @argument[height]{an integer for the new height}
   @begin{short}
     Equivalent to calling the @fun{gdk:window-move} and @fun{gdk:window-resize}
     functions, except that both operations are performed at once, avoiding
     strange visual effects.
   @end{short}
-  I.e. the user may be able to see the window first move, then resize, if you
-  do not use the @fun{gdk:window-move-resize} function.
+  That is, the user may be able to see the window first move, then resize, if
+  you do not use the @fun{gdk:window-move-resize} function.
   @see-class{gdk:window}
   @see-function{gdk:window-move}
   @see-function{gdk:window-resize}"
@@ -2281,10 +2281,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_scroll" window-scroll) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[dx]{an integer with the amount to scroll in the x direction}
-  @argument[dy]{an integer with the amount to scroll in the y direction}
+  @argument[dx]{an integer for the amount to scroll in the x direction}
+  @argument[dy]{an integer for the amount to scroll in the y direction}
   @begin{short}
     Scroll the contents of window, both pixels and children, by the given
     amount.
@@ -2452,11 +2452,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_reparent" window-reparent) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
   @argument[parent]{a new @class{gdk:window} parent to move @arg{window} into}
-  @argument[x]{an integer with the x location inside the new parent}
-  @argument[y]{an integer with the y location inside the new parent}
+  @argument[x]{an integer for the x location inside the new parent}
+  @argument[y]{an integer for the y location inside the new parent}
   @begin{short}
     Reparents @arg{window} into the given @arg{parent}.
   @end{short}
@@ -2559,9 +2559,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_focus" window-focus) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[timestamp]{an unsigned integer with the timestamp of the event
+  @argument[timestamp]{an unsigned integer for the timestamp of the event
     triggering the window focus}
   @begin{short}
     Sets keyboard focus to @arg{window}.
@@ -2672,14 +2672,14 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_begin_move_drag" window-begin-move-drag) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[button]{an integer with the button being used to drag}
-  @argument[xroot]{an integer with the root window x coordinate of mouse click
+  @argument[button]{an integer for the button being used to drag}
+  @argument[xroot]{an integer for the root window x coordinate of mouse click
     that began the drag}
-  @argument[yroot]{an integer with the root window y coordinate of mouse click
+  @argument[yroot]{an integer for the root window y coordinate of mouse click
     that began the drag}
-  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+  @argument[timestamp]{an unsigned integer for the timestamp of mouse click
     that began the drag}
   @begin{short}
     Begins a window move operation for a toplevel window.
@@ -2704,15 +2704,15 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_begin_move_drag_for_device"
            window-begin-move-drag-for-device) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[device]{a @class{gdk:device} object used for the operation}
-  @argument[button]{an integer with the button being used to drag}
-  @argument[xroot]{an integer with the root window x coordinate of mouse click
+  @argument[button]{an integer for the button being used to drag}
+  @argument[xroot]{an integer for the root window x coordinate of mouse click
     that began the drag}
-  @argument[yroot]{an integer with the root window y coordinate of mouse click
+  @argument[yroot]{an integer for the root window y coordinate of mouse click
     that began the drag}
-  @argument[timestamp]{an unsigned integer with the timestamp of mouse click
+  @argument[timestamp]{an unsigned integer for the timestamp of mouse click
     that began the drag}
   @begin{short}
     Begins a window move operation for a toplevel window.
@@ -2825,9 +2825,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_scale_factor" window-scale-factor) :int
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} object to get scale factor for}
-  @return{An integer with the scale factor.}
+  @return{The integer for the scale factor.}
   @begin{short}
     Returns the internal scale factor that maps from window coordinates to the
     actual device pixels.
@@ -4017,13 +4017,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_input_shape_combine_region"
            window-input-shape-combine-region) :void
  #+liber-documentation
- "@version{#2025-08-23}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
   @argument[region]{a @sym{cairo:region-t} region of @arg{window} to be
     non-transparent}
-  @argument[xoffset]{an integer with the x position of @arg{region} in window
+  @argument[xoffset]{an integer for the x position of @arg{region} in window
     coordinates}
-  @argument[yoffset]{an integer with the y position of @arg{region} in window
+  @argument[yoffset]{an integer for the y position of @arg{region} in window
     coordinates}
   @begin{short}
     Like the @fun{gdk:window-shape-combine-region} function, but the shape
@@ -4282,15 +4282,15 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-geometry (window)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{x} -- an integer with the x coordinate of @arg{window}, relative to
-    its parent @br{}
-    @code{y} -- an integer with the y coordinate of @arg{window}, relative to
-    its parent @br{}
-    @code{width} -- an integer with the width of @arg{window} @br{}
-    @code{height} -- an integer with the height of @arg{window}
+    @arg{x} -- an integer for the x coordinate of @arg{window}, relative to
+      its parent @br{}
+    @arg{y} -- an integer for the y coordinate of @arg{window}, relative to
+      its parent @br{}
+    @arg{width} -- an integer for the width of @arg{window} @br{}
+    @arg{height} -- an integer for the height of @arg{window}
   @end{return}
   @begin{short}
     The @arg{x} and @arg{y} coordinates returned are relative to the parent
@@ -4377,9 +4377,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_width" window-width) :int
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @return{An integer with the width of @arg{window}.}
+  @return{The integer for the width of @arg{window}.}
   @begin{short}
     Returns the width of the given window.
   @end{short}
@@ -4399,9 +4399,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_height" window-height) :int
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @return{An integer with the height of @arg{window}.}
+  @return{The integer for the height of @arg{window}.}
   @begin{short}
     Returns the height of the given window.
   @end{short}
@@ -4521,12 +4521,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_shadow_width" window-set-shadow-width) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[left]{an integer with the left extent}
-  @argument[right]{an integer with the right extent}
-  @argument[top]{an integer with the top extent}
-  @argument[bottom]{an integer with the bottom extent}
+  @argument[left]{an integer for the left extent}
+  @argument[right]{an integer for the right extent}
+  @argument[top]{an integer for the top extent}
+  @argument[bottom]{an integer for the bottom extent}
   @begin{short}
     Newer GTK windows using client-side decorations use extra geometry around
     their frames for effects like shadows and invisible borders.
@@ -4624,11 +4624,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-position (window)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{x} -- an integer with the x coordinate of @arg{window} @br{}
-    @code{y} -- an integer with the y coordinate of @arg{window}
+    @arg{x} -- an integer for the x coordinate of @arg{window} @br{}
+    @arg{y} -- an integer for the y coordinate of @arg{window}
   @end{return}
   @begin{short}
     Obtains the position of the window as reported in the
@@ -4661,11 +4661,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-root-origin (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{return}
-    @code{x} -- an integer with the x position of window frame @br{}
-    @code{y} -- an integer with the y position of window frame
+    @arg{x} -- an integer for the x position of window frame @br{}
+    @arg{y} -- an integer for the y position of window frame
   @end{return}
   @begin{short}
     Obtains the top-left corner of the window manager frame in root window
@@ -4722,11 +4722,11 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-origin (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @code{x} -- an integer with the x coordinate @br{}
-    @code{y} -- an integer with the y coordinate
+    @arg{x} -- an integer for the x coordinate @br{}
+    @arg{y} -- an integer for the y coordinate
   @end{return}
   @begin{short}
     Obtains the position of a window in root window coordinates.
@@ -4756,13 +4756,13 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-root-coords (window x y)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2025-08-31}
   @argument[window]{a @class{gdk:window} object}
-  @argument[x]{an integer with the x coordinate in window}
-  @argument[y]{an integer with the y coordinate in window}
+  @argument[x]{an integer for the x coordinate in window}
+  @argument[y]{an integer for the y coordinate in window}
   @begin{return}
-    @code{root-x} -- an integer with the x root coordinate @br{}
-    @code{root-y} -- an integer with the y root coordinate
+    @code{root-x} -- an integer for the x root coordinate @br{}
+    @code{root-y} -- an integer for the y root coordinate
   @end{return}
   @begin{short}
     Obtains the position of a window position in root window coordinates.
@@ -5596,17 +5596,16 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-coords-from-parent (window xparent yparent)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} child window}
-  @argument[xparent]{a number coerced to a double float with the x coordinate
+  @argument[xparent]{a number coerced to a double float for the x coordinate
     in parent's coordinate system}
-  @argument[yparent]{a number coerced to a double float with the y coordinate
+  @argument[yparent]{a number coerced to a double float for the y coordinate
     in parent's coordinate system}
   @begin{return}
-    @code{x} -- a double float with the x coordinate in child's coordinate
-                system @br{}
-    @code{y} -- a double float with the y coordinate in child's coordinate
-                system
+    @arg{x} -- a double float for the x coordinate in child's coordinate system
+      @br{}
+    @arg{y} -- a double float for the y coordinate in child's coordinate system
   @end{return}
   @begin{short}
     Transforms window coordinates from a parent window to a child window, where
@@ -5655,17 +5654,17 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-coords-to-parent (window x y)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2025-08-31}
   @argument[window]{a @class{gdk:window} child window}
-  @argument[x]{a number coerced to a double float with the x coordinate in
+  @argument[x]{a number coerced to a double float for the x coordinate in
     child's coordinate system}
-  @argument[y]{a number coerced to a double float with the y coordinate in
+  @argument[y]{a number coerced to a double float for the y coordinate in
     child's coordinate system}
   @begin{return}
-    @code{xparent} -- a double float with the x coordinate in parent's
-                       coordinate system, or @code{nil} @br{}
-    @code{yparent} -- a double float with the y coordinate in parent's
-                       coordinate system, or @code{nil}
+    @arg{xparent} -- a double float for the x coordinate in parent's coordinate
+      system, or @code{nil} @br{}
+    @arg{yparent} -- a double float for the y coordinate in parent's coordinate
+      system, or @code{nil}
   @end{return}
   @begin{short}
     Transforms window coordinates from a child window to its parent window,

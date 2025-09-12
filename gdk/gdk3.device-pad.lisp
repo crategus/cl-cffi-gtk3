@@ -93,7 +93,7 @@
   @see-class{gdk:device-pad}")
 
 ;;; ----------------------------------------------------------------------------
-;;; struct GdkDevicePad
+;;; GdkDevicePad
 ;;; ----------------------------------------------------------------------------
 
 (gobject:define-ginterface "GdkDevicePad" device-pad
@@ -129,7 +129,7 @@
   @see-class{gdk:device}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_pad_get_n_groups () -> device-pad-n-groups
+;;; gdk_device_pad_get_n_groups
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
@@ -150,7 +150,7 @@
 (export 'device-pad-n-groups)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_pad_get_group_n_modes () -> device-pad-group-n-modes
+;;; gdk_device_pad_get_group_n_modes
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
@@ -172,17 +172,17 @@
 (export 'device-pad-group-n-modes)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_pad_get_n_features () -> device-pad-n-features
+;;; gdk_device_pad_get_n_features
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_pad_get_n_features" device-pad-n-features) :int
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2025-08-31}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @argument[feature]{a @symbol{gdk:device-pad-feature} value with the pad
-    feature}
-  @return{An integer with the amount of elements of type feature that this pad
-    has.}
+  @argument[feature]{a @sym{gdk:device-pad-feature} value for the pad feature}
+  @begin{return}
+    The integer for the amount of elements of type feature that this pad has.
+  @end{return}
   @begin{short}
     Returns the number of features a tablet pad has.
   @end{short}
@@ -196,18 +196,18 @@
 (export 'device-pad-n-features)
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_device_pad_get_feature_group () -> device-pad-feature-group
+;;; gdk_device_pad_get_feature_group
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_device_pad_get_feature_group" device-pad-feature-group) :int
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2025-08-31}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @argument[feature]{a @symbol{gdk:device-pad-feature} value with the pad
-    feature to get the group from}
-  @argument[index]{an integer with the index of the feature to get the
-    group from}
-  @return{An integer with the group number of the queried pad feature.}
+  @argument[feature]{a @sym{gdk:device-pad-feature} value for the pad feature
+  to get the group from}
+  @argument[index]{an integer for the index of the feature to get the group
+    from}
+  @return{The integer for the group number of the queried pad feature.}
   @begin{short}
     Returns the group the given feature and @arg{index} belong to, or -1 if
     feature/index do not exist in pad .

@@ -259,9 +259,9 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_get_frame_time" frame-clock-frame-time) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2025-08-31}
   @argument[clock]{a @class{gdk:frame-clock} object}
-  @return{An integer with a timestamp in microseconds.}
+  @return{The integer for a timestamp in microseconds.}
   @begin{short}
     Gets the time that should currently be used for animations.
   @end{short}
@@ -280,10 +280,10 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_request_phase" frame-clock-request-phase) :void
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2025-08-31}
   @argument[clock]{a @class{gdk:frame-clock} object}
-  @argument[phase]{a @symbol{gdk:frame-clock-phase} value with the phase that
-    is requested}
+  @argument[phase]{a @sym{gdk:frame-clock-phase} value for the phase that is
+    requested}
   @begin{short}
     Asks the frame clock to run a particular phase.
   @end{short}
@@ -458,14 +458,14 @@ lambda (clock)    :run-last
 
 (defun frame-clock-refresh-info (clock time)
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2025-08-31}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @argument[time]{an integer base time for determining a presentaton time}
   @begin{return}
-    @arg{refresh-interval} -- an integer with the determined refresh interval,
+    @arg{refresh-interval} -- an integer for the determined refresh interval,
       or @code{nil}, a default refresh interval of 1/60th of a second will be
       stored if no history is present @br{}
-    @arg{presentation-time} -- an integer with the next candidate presentation
+    @arg{presentation-time} -- an integer for the next candidate presentation
       time after the given base time, 0 will be will be stored if no history is
       present
   @end{return}

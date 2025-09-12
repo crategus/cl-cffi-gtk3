@@ -312,16 +312,16 @@ lambda (keymap)    :run-last
 
 (defun keymap-translate-keyboard-state (keymap keycode state group)
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2025-08-31}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an unsigned integer for the keycode}
   @argument[state]{a @sym{gdk:modifier-type} modifier state}
   @argument[group]{an integer for the active keyboard group}
   @begin{return}
-    @arg{keyval} -- an unsigned integer with the keyval @br{}
-    @arg{effective} -- an integer with the effective group @br{}
-    @arg{level} -- an integer with the level @br{}
-    @arg{consumed} -- a @sym{gdk:modifier-type} value with the flags that were
+    @arg{keyval} -- an unsigned integer for the keyval @br{}
+    @arg{effective} -- an integer for the effective group @br{}
+    @arg{level} -- an integer for the level @br{}
+    @arg{consumed} -- a @sym{gdk:modifier-type} value for the flags that were
       used to determine the group or level
   @end{return}
   @begin{short}
@@ -764,11 +764,11 @@ if (keyval == GDK_PLUS &&
 
 (defun keyval-convert-case (keyval)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2025-08-31}
   @argument[keyval]{an unsigned integer for the keyval}
   @begin{return}
-    @arg{lower} -- an unsigned integer with the lowercase version @br{}
-    @arg{upper} -- an unsigned integer with the uppercase version
+    @arg{lower} -- an unsigned integer for the lowercase version @br{}
+    @arg{upper} -- an unsigned integer for the uppercase version
   @end{return}
   @begin{short}
     Obtains the upper-case and lower-case versions of @arg{keyval}.

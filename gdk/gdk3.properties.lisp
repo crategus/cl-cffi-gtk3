@@ -182,10 +182,10 @@
 #+nil
 (defparameter +none+ "NONE" ; in sbcl defconstant does not work for a string
  #+liber-documentation
- "@version{#2013-6-28}
+ "@version{#2025-08-31}
   @variable-value{\"NONE\"}
-  A null value for @symbol{gdk:atom}, used in a similar way as None in the
-  Xlib API.")
+  A null value for @sym{gdk:atom}, used in a similar way as None in the Xlib
+  API.")
 
 #+nil
 (setf (liber:alias-for-variable '+none+) "Constant")
@@ -256,13 +256,13 @@
 
 (defun atom-intern (name &optional (only-if-exists nil))
  #+liber-documentation
- "@version{#2024-12-29}
+ "@version{#2025-08-31}
   @argument[name]{a string with the atom name}
   @argument[only-if-exists]{if @em{true}, GDK is allowed to not create a new
     atom, but just return a @code{cffi:null-pointer} if the requested atom does
     not already exists. Currently, the flag is ignored, since checking the
     existance of an atom is as expensive as creating it.}
-  @return{The @symbol{gdk:atom} pointer corresponding to @arg{name}.}
+  @return{The @sym{gdk:atom} pointer corresponding to @arg{name}.}
   @begin{short}
     Finds or creates an atom corresponding to a given string.
   @end{short}
@@ -296,15 +296,15 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_atom_name ()                                       not exported
+;;; gdk_atom_name                                          not exported
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_atom_name" %atom-name) (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-3-24}
-  @argument[atom]{a @symbol{gdk:atom} pointer}
+ "@version{#2025-08-31}
+  @argument[atom]{a @sym{gdk:atom} pointer}
   @begin{return}
-    A string containing the string corresponding to @arg{atom}.
+    The string containing the string corresponding to @arg{atom}.
   @end{return}
   @begin{short}
     Determines the string corresponding to the given atom.

@@ -417,10 +417,10 @@
 
 (cffi:defcfun ("gdk_visual_get_colormap_size" visual-colormap-size) :int
  #+liber-documentation
- "@version{2025-07-17}
+ "@version{2025-08-31}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
-    The integer with the size of a colormap that is suitable for @arg{visual}.
+    The integer for the size of a colormap that is suitable for @arg{visual}.
   @end{return}
   @begin{short}
     Returns the size of a colormap for the visual.
@@ -576,8 +576,8 @@
 
 (cffi:defcfun ("gdk_visual_get_best_type" visual-best-type) visual-type
  #+liber-documentation
- "@version{2024-6-28}
-  @return{The @symbol{gdk:visual-type} value with the best visual type.}
+ "@version{2025-08-31}
+  @return{The @sym{gdk:visual-type} value for the best visual type.}
   @begin{short}
     Return the best available visual type for the default GDK screen.
   @end{short}
@@ -652,8 +652,8 @@
 (cffi:defcfun ("gdk_visual_get_best_with_depth" visual-best-with-depth)
     (g:object visual)
  #+liber-documentation
- "@version{2024-6-28}
-  @argument[depth]{an integer with the bit depth}
+ "@version{2025-08-31}
+  @argument[depth]{an integer for the bit depth}
   @return{The best @class{gdk:visual} object for the given @arg{depth}.}
   @begin{short}
     Get the best visual with depth for the default GDK screen.
@@ -717,11 +717,13 @@
 (cffi:defcfun ("gdk_visual_get_best_with_both" visual-best-with-both)
     (g:object visual)
  #+liber-documentation
- "@version{2024-6-28}
-  @argument[depth]{an integer with the bit depth}
-  @argument[visual-type]{a value of the @symbol{gdk:visual-type} enumeration}
-  @return{The best @class{gdk:visual} object with both @arg{depth} and
-    @arg{visual-type}, or @code{nil} if none.}
+ "@version{2025-08-31}
+  @argument[depth]{an integer for the bit depth}
+  @argument[visual-type]{a @sym{gdk:visual-type} value}
+  @begin{return}
+    The best @class{gdk:visual} object for both @arg{depth} and
+    @arg{visual-type}, or @code{nil} if none.
+  @end{return}
   @begin{short}
     Combines the @fun{gdk:visual-best-with-depth} and
     @fun{gdk:visual-best-with-type} functions.

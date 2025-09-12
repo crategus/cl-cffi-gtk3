@@ -611,15 +611,14 @@
 (setf (liber:alias-for-function 'device-tool-axes)
       "Accessor"
       (documentation 'device-tool-axes 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-tool-axes object) => axes}
   @argument[object]{a @class{gdk:device-tool} object}
-  @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
+  @argument[axes]{a value of the @sym{gdk:axis-flags} flags}
   @begin{short}
-    Accessor of the @slot[gdk:device-tool]{axes} slot of the
-    @class{gdk:device-tool} class.
+    The accessor for the @slot[gdk:device-tool]{axes} slot of the
+    @class{gdk:device-tool} class returns the axes of the device tool.
   @end{short}
-  The @fun{gdk:device-tool-axes} function gets the axes of the device tool.
   @see-class{gdk:device-tool}
   @see-symbol{gdk:axis-flags}")
 
@@ -635,25 +634,25 @@
 (setf (liber:alias-for-function 'device-tool-hardware-id)
       "Accessor"
       (documentation 'device-tool-hardware-id 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-tool-hardware-id object) => hardware}
   @argument[object]{a @class{gdk:device-tool} object}
-  @argument[hardware]{an unsigned integer with the hardware ID of the device
+  @argument[hardware]{an unsigned integer for the hardware ID of the device
     tool}
   @begin{short}
-    Accessor of the @slot[gdk:device-tool]{axes} slot of the
-    @class{gdk:device-tool} class.
+    The accessor for the @slot[gdk:device-tool]{axes} slot of the
+    @class{gdk:device-tool} class returns the hardware ID of the device tool,
+    or 0 if it is not known.
   @end{short}
-  The @fun{gdk:device-tool-hardware-id} function gets the hardware ID of the
-  device tool, or 0 if it is not known. When non-zero, the identificator is
-  unique for the given device tool model, meaning that two identical device
-  tools will share the same @arg{hardware} value, but will have different
-  serial numbers, see the @fun{gdk:device-tool-serial} function.
+  When non-zero, the identificator is unique for the given device tool model,
+  meaning that two identical device tools will share the same @arg{hardware}
+  value, but will have different serial numbers, see the
+  @fun{gdk:device-tool-serial} function.
 
   This is a more concrete, and device specific, method to identify a
   @class{gdk:device-tool} object than the @fun{gdk:device-tool-tool-type}
   function, as a tablet may support multiple devices with the same
-  @symbol{gdk:device-tool-type} type, but different hardware identificators.
+  @sym{gdk:device-tool-type} type, but different hardware identificators.
   @see-class{gdk:device-tool}
   @see-symbol{gdk:device-tool-type}
   @see-function{gdk:device-tool-serial}
@@ -671,18 +670,17 @@
 (setf (liber:alias-for-function 'device-tool-serial)
       "Accessor"
       (documentation 'device-tool-serial 'function)
- "@version{2025-07-01}
+ "@version{2025-08-31}
   @syntax{(gdk:device-tool-serial object) => serial}
   @argument[object]{a @class{gdk:device-tool} object}
   @argument[serial]{an unsigned integer for the serial number of the device
     tool}
   @begin{short}
-    Accessor of the @slot[gdk:device-tool]{serial} slot of the
-    @class{gdk:device-tool} class.
+    The accessor for the @slot[gdk:device-tool]{serial} slot of the
+    @class{gdk:device-tool} class returns the serial number of the device tool.
   @end{short}
-  The @fun{gdk:device-tool-serial} function gets the serial number of the device
-  tool. This value can be used to identify a physical tool, for example a tablet
-  pen, across program executions.
+  This value can be used to identify a physical tool, for example a tablet pen,
+  across program executions.
   @see-class{gdk:device-tool}")
 
 ;;; --- gdk:device-tool-tool-type ----------------------------------------------
@@ -697,16 +695,14 @@
 (setf (liber:alias-for-function 'device-tool-tool-type)
       "Accessor"
       (documentation 'device-tool-tool-type 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-tool-tool-type object) => tool-type}
   @argument[object]{a @class{gdk:device-tool} object}
-  @argument[tool-type]{a value of the @symbol{gdk:device-tool-type}
-    enumeration}
+  @argument[tool-type]{a value of the @sym{gdk:device-tool-type} enumeration}
   @begin{short}
-    Accessor of the @slot[gdk:device-tool]{tool-type} slot of the
-    @class{gdk:device-tool} class.
+    The accessor for the @slot[gdk:device-tool]{tool-type} slot of the
+    @class{gdk:device-tool} class returns the type of the device tool.
   @end{short}
-  The @fun{gdk:device-tool-tool-type} function gets the type of the device tool.
   This can be used to figure out what sort of pen is being used, such as an
   airbrush or a pencil.
   @see-class{gdk:device-tool}
@@ -840,20 +836,19 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-associated-device)
       "Accessor"
       (documentation 'device-associated-device 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-associated-device object) => device}
   @argument[object]{a @class{gdk:device} object}
   @argument[device]{an associated @class{gdk:device} object}
   @begin{short}
-    Accessor of the @slot[gdk:device]{associated-device} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{associated-device} slot of the
+    @class{gdk:device} class returns the associated device to @arg{device}.
   @end{short}
-  The @fun{gdk:device-associated-device} function returns the associated device
-  to @arg{device}. If the device is of type @code{:master}, it will return the
-  paired pointer or keyboard. If the device is of type @code{:slave}, it will
-  return the master device to which the device is attached to. If the device is
-  of type @code{:floating}, @code{nil} will be returned, as there is no
-  associated device.
+  If the device is of type @code{:master}, it will return the paired pointer or
+  keyboard. If the device is of type @code{:slave}, it will return the master
+  device to which the device is attached to. If the device is of type
+  @code{:floating}, @code{nil} will be returned, as there is no associated
+  device.
   @see-class{gdk:device}")
 
 ;;; --- gdk:device-axes --------------------------------------------------------
@@ -867,16 +862,14 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-axes)
       "Accessor"
       (documentation 'device-axes 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-axes object) => axes}
   @argument[object]{a @class{gdk:device} object}
-  @argument[axes]{a value of the @symbol{gdk:axis-flags} flags}
+  @argument[axes]{a value of the @sym{gdk:axis-flags} flags}
   @begin{short}
-    Accessor of the @slot[gdk:device]{axes} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{axes} slot of the @class{gdk:device}
+    class returns the axes currently available on the device.
   @end{short}
-  The @fun{gdk:device-axes} function returns the axes currently available on
-  the device.
   @see-class{gdk:device}
   @see-symbol{gdk:axis-flags}")
 
@@ -892,14 +885,15 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-device-manager)
       "Accessor"
       (documentation 'device-device-manager 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-device-manager object) => manager}
   @syntax{(setf (gdk:device-device-manager object) manager)}
   @argument[object]{a @class{gdk:device} object}
   @argument[manager]{a @class{gdk:device-manager} object}
   @begin{short}
-    Accessor of the @slot[gdk:device]{device-manager} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{device-manager} slot of the
+    @class{gdk:device} class gets or sets the device manager the device
+    pertains to.
   @end{short}
   @see-class{gdk:device}
   @see-class{gdk:device-manager}")
@@ -916,17 +910,15 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-display)
       "Accessor"
       (documentation 'device-display 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-display object) => display}
   @syntax{(setf (gdk:device-display object) display)}
   @argument[object]{a @class{gdk:device} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:device]{display} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{display} slot of the
+    @class{gdk:device} class returns the display to which the device pertains.
   @end{short}
-  The @fun{gdk:device-display} function returns the display to which the device
-  pertains.
   @see-class{gdk:device}
   @see-class{gdk:display}")
 
@@ -944,44 +936,41 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-has-cursor)
       "Accessor"
       (documentation 'device-has-cursor 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-has-cursor object) => has-cursor}
   @syntax{(setf (gdk:device-has-cursor object) has-cursor)}
   @argument[object]{a @class{gdk:device} object}
   @argument[has-cursor]{a boolean whether the device is represented by a cursor
     on the screen}
   @begin{short}
-    Accessor of the @slot[gdk:device]{has-cursor} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{has-cursor} slot of the
+    @class{gdk:device} class returns @em{true} if the pointer follows device
+    motion.
   @end{short}
-  The @fun{gdk:device-has-cursor} function returns @em{true} if the pointer
-  follows device motion.
   @see-class{gdk:device}")
 
 ;;; --- gdk:device-input-mode --------------------------------------------------
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-mode" 'device) t)
- "The @code{input-mode} property of type @symbol{gdk:input-mode} (Read / Write)
+ "The @code{input-mode} property of type @sym{gdk:input-mode} (Read / Write)
   @br{}
-  Input mode for the device. @br{}
+  The input mode for the device. @br{}
   Default value: @code{:disabled}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'device-input-mode)
       "Accessor"
       (documentation 'device-input-mode 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-input-mode object) => mode}
   @syntax{(setf (gdk:device-input-mode object) mode)}
   @argument[object]{a @class{gdk:device} object}
-  @argument[mode]{a value of the @symbol{gdk:input-mode} enumeration}
+  @argument[mode]{a value of the @sym{gdk:input-mode} enumeration}
   @begin{short}
-    Accessor of the @slot[gdk:device]{input-mode} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{input-mode} slot of the
+    @class{gdk:device} class gets or sets the mode of the device.
   @end{short}
-  The @fun{gdk:device-input-mode} function returns the mode of the device. The
-  @setf{gdk:device-input-mode} function sets the mode of an input device.
 
   The mode controls if the device is active and whether the range of the device
   is mapped to the entire screen or to a single window.
@@ -992,26 +981,24 @@ lambda (device tool)    :run-last
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "input-source" 'device) t)
- "The @code{input-source} property of type @symbol{gdk:input-source}
+ "The @code{input-source} property of type @sym{gdk:input-source}
   (Read / Write / Construct) @br{}
-  Source type for the device. @br{}
+  The source type for the device. @br{}
   Default value: @code{:mouse}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'device-input-source)
       "Accessor"
       (documentation 'device-input-source 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-input-source object) => source}
   @syntax{(setf (gdk:device-input-source object) source)}
   @argument[object]{a @class{gdk:device} object}
-  @argument[source]{a value of the @symbol{gdk:input-source} enumeration}
+  @argument[source]{a value of the @sym{gdk:input-source} enumeration}
   @begin{short}
-    Accessor of the @slot[gdk:device]{input-source} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{input-source} slot of the
+    @class{gdk:device} class returns the source type of the device.
   @end{short}
-  The @fun{gdk:device-input-source} function returns the source type of the
-  device.
   @see-class{gdk:device}
   @see-symbol{gdk:input-source}")
 
@@ -1020,23 +1007,22 @@ lambda (device tool)    :run-last
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "n-axes" 'device) t)
  "The @code{n-axes} property of type @code{:uint} (Read) @br{}
-  Number of axes in the device. @br{}
+  The number of axes in the device. @br{}
   Default value: 0")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'device-n-axes)
       "Accessor"
       (documentation 'device-n-axes 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-n-axis object) => n-axis}
   @argument[object]{a @class{gdk:device} object}
-  @argument[n-axis]{an unsigned integer with the number of axes in the device}
+  @argument[n-axis]{an unsigned integer for the number of axes in the device}
   @begin{short}
-    Accessor of the @slot[gdk:device]{n-axes} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{n-axes} slot of the
+    @class{gdk:device} class returns the number of axes the device currently
+    has.
   @end{short}
-  The @fun{gdk:device-n-axes} function returns the number of axes the device
-  currently has.
   @see-class{gdk:device}")
 
 ;;; --- gdk:device-name --------------------------------------------------------
@@ -1052,16 +1038,15 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-name)
       "Accessor"
       (documentation 'device-name 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-name object) => name}
   @syntax{(setf (gdk:device-name object) name)}
   @argument[object]{a @class{gdk:device} object}
-  @argument[name]{a string with the device name}
+  @argument[name]{a string for the device name}
   @begin{short}
-    Accessor of the @slot[gdk:device]{name} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{name} slot of the @class{gdk:device}
+    class returns the name of the device.
   @end{short}
-  The @fun{gdk:device-name} function returns the name of the device.
   @see-class{gdk:device}")
 
 ;;; --- gdk:device-num-touches -------------------------------------------------
@@ -1078,16 +1063,17 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-num-touches)
       "Accessor"
       (documentation 'device-num-touches 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-num-touches object) => num-touches}
   @argument[object]{a @class{gdk:device} object}
-  @argument[num-touches]{an unsigned integer with the number of touches}
+  @argument[num-touches]{an unsigned integer for the number of touches}
   @begin{short}
-    Accessor of the @slot[gdk:device]{num-touches} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{num-touches} slot of the
+    @class{gdk:device} class returns the maximal number of concurrent touches
+    on a touch device.
   @end{short}
-  The maximal number of concurrent touches on a touch device. Will be 0 if the
-  device is not a touch device or if the number of touches is unknown.
+  Will be 0 if the device is not a touch device or if the number of touches is
+  unknown.
   @see-class{gdk:device}")
 
 ;;; --- gdk:device-product-id --------------------------------------------------
@@ -1096,24 +1082,23 @@ lambda (device tool)    :run-last
 (setf (documentation (liber:slot-documentation "product-id" 'device) t)
  "The @code{product-id} property of type @code{:string}
   (Read / Write / Construct) @br{}
-  Product ID of the device. @br{}
+  The product ID of the device. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'device-product-id)
       "Accessor"
       (documentation 'device-product-id 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-product-id object) => product-id}
   @argument[object]{a @class{gdk:device} object}
-  @argument[product-id]{a string with the product ID}
+  @argument[product-id]{a string for the product ID}
   @begin{short}
-    Accessor of the @slot[gdk:device]{product-id} slot of the
-    @class{gdk:device} class.
+    The accessor for the @slot[gdk:device]{product-id} slot of the
+    @class{gdk:device} class returns the product ID of this device, or
+    @code{nil} if this information could not be obtained.
   @end{short}
-  The @fun{gdk:device-product-id} function returns the product ID of this
-  device, or @code{nil} if this information could not be obtained. This ID is
-  retrieved from the device, and is thus constant for it. See the
+  This ID is retrieved from the device, and is thus constant for it. See the
   @fun{gdk:device-vendor-id} function for more information.
   @see-class{gdk:device}
   @see-function{gdk:device-vendor-id}")
@@ -1129,15 +1114,14 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-seat)
       "Accessor"
       (documentation 'device-seat 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-seat object) => seat}
   @argument[object]{a @class{gdk:device} object}
   @argument[seat]{a @class{gdk:seat} object}
   @begin{short}
-    Accessor of the @slot[gdk:device]{seat} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{seat} slot of the @class{gdk:device}
+    class returns the seat the device belongs to.
   @end{short}
-  The @fun{gdk:device-seat} function returns the seat the device belongs to.
   @see-class{gdk:device}
   @see-class{gdk:seat}")
 
@@ -1152,15 +1136,14 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-tool)
       "Accessor"
       (documentation 'device-tool 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-tool object) => tool}
   @argument[object]{a @class{gdk:device} object}
   @argument[tool]{a @class{gdk:device-tool} object}
   @begin{short}
-    Accessor of the @slot[gdk:device]{tool} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{tool} slot of the @class{gdk:device}
+    class gets the device tool that is currently used with this device.
   @end{short}
-  The device tool that is currently used with this device.
   @see-class{gdk:device}
   @see-class{gdk:device-tool}")
 
@@ -1177,15 +1160,14 @@ lambda (device tool)    :run-last
 (setf (liber:alias-for-function 'device-type)
       "Accessor"
       (documentation 'device-type 'function)
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-type object) => type}
   @argument[object]{a @class{gdk:device} object}
-  @argument[type]{a @symbol{gdk:device-type} value}
+  @argument[type]{a @sym{gdk:device-type} value}
   @begin{short}
-    Accessor of the @slot[gdk:device]{type} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{type} slot of the @class{gdk:device}
+    class returns the device type.
   @end{short}
-  The @fun{gdk:device-type} function returns the device type.
   @see-class{gdk:device}
   @see-symbol{gdk:device-type}")
 
@@ -1197,24 +1179,23 @@ lambda (device tool)    :run-last
 (setf (documentation (liber:slot-documentation "vendor-id" 'device) t)
  "The @code{vendor-id} property of type @code{:string}
   (Read / Write / Construct) @br{}
-  Vendor ID of this device. @br{}
+  The vendor ID of this device. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'device-vendor-id)
       "Accessor"
       (documentation 'device-vendor-id 'function)
- "@version{2025-07-01}
+ "@version{2025-08-31}
   @syntax{(gdk:device-vendor-id object) => vendor-id}
   @argument[object]{a @class{gdk:device} object}
-  @argument[vendor-id]{a string with the vendor ID}
+  @argument[vendor-id]{a string for the vendor ID}
   @begin{short}
-    Accessor of the @slot[gdk:device]{vendor-id} slot of the @class{gdk:device}
-    class.
+    The accessor for the @slot[gdk:device]{vendor-id} slot of the
+    @class{gdk:device} class returns the vendor ID of this device, or @code{nil}
+    if this information could not be obtained.
   @end{short}
-  The @fun{gdk:device-vendor-id} function returns the vendor ID of this device,
-  or @code{nil} if this information could not be obtained. This ID is retrieved
-  from the device, and is thus constant for it.
+  This ID is retrieved from the device, and is thus constant for it.
 
   This function, together with the @fun{gdk:device-product-id} function, can be
   used to, for example, compose @code{GSettings} paths to store settings for
@@ -1278,14 +1259,13 @@ get_device_settings (GdkDevice *device)
 
 (defun device-key (device index)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @syntax{(gdk:device-key device index) => keyval, modifiers}
   @syntax{(setf (gdk:device-key device index) (list keyval modifiers))}
   @argument[device]{a @class{gdk:device} object}
-  @argument[index]{an unsigned integer with the index of the macro button
-    to get}
-  @argument[keyval]{an unsigned integer with the keyval to generate}
-  @argument[modifiers]{a value of the @symbol{gdk:modifier-type} flags}
+  @argument[index]{an unsigned integer for the index of the macro button to get}
+  @argument[keyval]{an unsigned integer for the keyval to generate}
+  @argument[modifiers]{a value of the @sym{gdk:modifier-type} flags}
   @begin{short}
     If the @arg{index} argument has a valid keyval, the @fun{gdk:device-key}
     function will return @arg{keyval} and @arg{modifiers} with the keyval
@@ -1318,17 +1298,13 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_get_axis_use" device-axis-use) axis-use
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-08-31}
   @syntax{(gdk:device-axis-use device index) => use}
   @syntax{(setf (gdk:device-axis-use device index) use)}
   @argument[device]{a @class{gdk:device} pointer device}
-  @argument[index]{an unsigned integer with the index of the axis}
-  @argument[use]{a @symbol{gdk:axis-use} value specifying how the axis is used}
-  @begin{short}
-    Accessor of the value specifying how the axis is used.
-  @end{short}
-  The @fun{gdk:device-axis-use} function returns the axis use for @arg{index}.
-  The @setf{gdk:device-axis-use} function sets the axis use for @arg{index}.
+  @argument[index]{an unsigned integer for the index of the axis}
+  @argument[use]{a @sym{gdk:axis-use} value specifying how the axis is used}
+  @short{Gets or sets the axis use for @arg{index}.}
   @see-class{gdk:device}
   @see-symbol{gdk:axis-use}"
   (device (g:object device))
@@ -1376,11 +1352,11 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_warp" device-warp) :void
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} object to warp}
   @argument[screen]{a @class{gdk:screen} object to warp @arg{device} to}
-  @argument[x]{an integer with the x coordinate of the destination}
-  @argument[y]{an integer with the y coordinate of the destination}
+  @argument[x]{an integer for the x coordinate of the destination}
+  @argument[y]{an integer for the y coordinate of the destination}
   @begin{short}
     Warps the device to the point @arg{x},@arg{y} on the screen.
   @end{short}
@@ -1405,7 +1381,7 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_grab" device-grab) grab-status
  #+liber-documentation
- "@version{#2025-07-17}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} object, to get the device you can use
     the @fun{gtk:current-event-device} or @fun{gdk:event-device} functions
     if the grab is in reaction to an event, also, you can use the
@@ -1427,7 +1403,7 @@ get_device_settings (GdkDevice *device)
     active if the device is a pointer, if this is @code{nil} then the normal
     cursors are used for window and its descendants, and the cursor for window
     is used elsewhere}
-  @argument[time]{an unsigned integer with the timestamp of the event which led
+  @argument[time]{an unsigned integer for the timestamp of the event which led
     to this pointer grab. This usually comes from the @class{gdk:event} event,
     though @var{gdk:+current-time+} can be used if the time is not known.}
   @return{The @code{:sucess} value if the grab was successful.}
@@ -1479,9 +1455,9 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_ungrab" device-ungrab) :void
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} object}
-  @argument[time]{an unsigned integer with the timestamp, for example,
+  @argument[time]{an unsigned integer for the timestamp, for example,
     @var{gdk:+current-time+}}
   @short{Release any grab on the device.}
   @see-class{gdk:device}
@@ -1542,14 +1518,14 @@ get_device_settings (GdkDevice *device)
 
 (defun device-position (device)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} pointer device to query status about}
   @begin{return}
     @arg{screen} -- a @class{gdk:screen} object the device is on,
       or @code{nil} @br{}
-    @arg{x} -- an integer with the root window x coordinate of device,
+    @arg{x} -- an integer for the root window x coordinate of device,
       or @code{nil} @br{}
-    @arg{y} -- an integer with the root window y coordinate of device,
+    @arg{y} -- an integer for the root window y coordinate of device,
       or @code{nil}
   @end{return}
   @begin{short}
@@ -1620,13 +1596,13 @@ get_device_settings (GdkDevice *device)
 
 (defun device-window-at-position (device)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} pointer device to query info to}
   @begin{return}
     @arg{window} -- a @class{gdk:window} object @br{}
-    @arg{xwin} -- an integer with the x coordinate of the device location,
+    @arg{xwin} -- an integer for the x coordinate of the device location,
       relative to the window origin, or @code{nil} @br{}
-    @arg{ywin} -- an integer with the y coordinate of the device location,
+    @arg{ywin} -- an integer for the y coordinate of the device location,
       relative to the window origin, or @code{nil}
   @end{return}
   @begin{short}
@@ -1707,13 +1683,13 @@ get_device_settings (GdkDevice *device)
 
 (defun device-history (device window start stop)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2025-08-31}
   @argument[device]{a @class{gdk:device} object}
   @argument[window]{a @class{gdk:window} object with respect to which which
     the event coordinates will be reported}
-  @argument[start]{an unsigned integer with the starting timestamp for range of
+  @argument[start]{an unsigned integer for the starting timestamp for range of
     events to return}
-  @argument[stop]{an unsigned integer with the ending timestamp for the range
+  @argument[stop]{an unsigned integer for the ending timestamp for the range
     of events to return}
   @begin{return}
     The list of @class{gdk:time-coord} instances if the windowing system
@@ -1753,9 +1729,9 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_free_history" %device-free-history) :void
  #+liber-documentation
- "@version{#2024-6-27}
-  @argument[events]{an array of @class{gdk:time-coord} instances}
-  @argument[n-events]{an integer with the length of the array}
+ "@version{#2025-08-31}
+  @argument[events]{an array for @class{gdk:time-coord} instances}
+  @argument[n-events]{an integer for the length of the array}
   @begin{short}
     Frees an array of @class{gdk:time-coord} instances that was returned by the
     @fun{gdk:device-history} function.

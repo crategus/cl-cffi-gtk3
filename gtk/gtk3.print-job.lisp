@@ -670,18 +670,15 @@ lambda (job)    :run-last
 (cffi:defcfun ("gtk_print_job_get_n_up_layout" print-job-n-up-layout)
     number-up-layout
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-08-31}
   @syntax{(gtk:print-job-n-up-layout job) => layout}
   @syntax{(setf (gtk:print-job-n-up-layout job) layout)}
   @argument[job]{a @class{gtk:print-job} object}
   @argument[layout]{a @sym{gtk:number-up-layout} value for the layout setting}
-  @return{The @sym{gtk:number-up-layout} value with the n-up layout.}
+  @return{The @sym{gtk:number-up-layout} value for the n-up layout.}
   @begin{short}
-    The @fun{gtk:print-job-n-up-layout} function gets the layout setting for
-    the print job.
+    Gets or sets the layout setting for the print job.
   @end{short}
-  The @setf{gtk:print-job-n-up-layout} function sets the layout setting for the
-  print job.
   @see-class{gtk:print-job}"
   (job (g:object print-job)))
 

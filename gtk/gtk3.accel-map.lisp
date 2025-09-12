@@ -77,7 +77,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-map 'type)
- "@version{2025-07-14}
+ "@version{2025-08-31}
   @begin{short}
     Accelerator maps are used to define runtime configurable accelerators.
   @end{short}
@@ -140,7 +140,7 @@ lambda (object path key mods)    :has-details
         @entry[path]{The string for the path of the accelerator that changed.}
         @entry[key]{The unsigned integer for the key value for the new
           accelerator.}
-        @entry[mods]{The @sym{gdk:modifier-type} value with the modifier mask
+        @entry[mods]{The @sym{gdk:modifier-type} value for the modifier mask
           for the new accelerator.}
       @end{simple-table}
       Notifies of a change in the global accelerator map. The path is also used
