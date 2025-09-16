@@ -4,3 +4,8 @@
 *.ini
 TODO
 test/rtest-templates.lisp
+doc/pages/*
+doc/single-page/*
+doc/index.*
+doc/lambda.icon
+generate-book.lisp
