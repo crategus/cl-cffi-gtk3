@@ -91,12 +91,9 @@
 (test gtk-tree-selection-selected
   (let* ((view (gtk:tree-view-new-with-model (create-and-fill-model-simple)))
          (selection (gtk:tree-view-selection view))
-         (path (gtk:tree-path-new-from-string "1"))
-         iter)
-
+         (path (gtk:tree-path-new-from-string "1")))
     (is-false (gtk:tree-selection-select-path selection path))
-    (is (typep (setf iter
-                     (gtk:tree-selection-selected selection)) 'gtk:tree-iter))))
+    (is (typep (gtk:tree-selection-selected selection) 'gtk:tree-iter))))
 
 ;;;     gtk_tree_selection_selected_foreach
 
@@ -188,4 +185,4 @@
 ;;;     gtk_tree_selection_select_range
 ;;;     gtk_tree_selection_unselect_range
 
-;;; 2024-9-22
+;;; 2025-09-17

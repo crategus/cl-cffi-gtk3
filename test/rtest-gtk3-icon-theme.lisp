@@ -124,8 +124,7 @@
 
 (test gtk-icon-theme-default
   (glib-test:with-check-memory (:strong 1)
-    (let (theme)
-      (is (typep (setf theme (gtk:icon-theme-default)) 'gtk:icon-theme)))))
+    (is (typep (gtk:icon-theme-default) 'gtk:icon-theme))))
 
 ;;;     gtk_icon_theme_get_for_screen
 ;;;     gtk_icon_theme_set_screen
@@ -415,14 +414,11 @@
 (test gtk-icon-info-load-symbolic
   (glib-test:with-check-memory ((info 2) :strong 2)
     (let* ((theme (gtk:icon-theme-default))
-           (name (gtk:icon-theme-example-icon-name theme))
-           pixbuf)
+           (name (gtk:icon-theme-example-icon-name theme)))
       (is (typep (setf info
                        (gtk:icon-theme-lookup-icon theme name 0 0))
                  'gtk:icon-info))
-      (is (typep (setf pixbuf
-                       (gtk:icon-info-load-symbolic info
-                                                    (gdk:rgba-new) nil nil nil))
+      (is (typep (gtk:icon-info-load-symbolic info (gdk:rgba-new) nil nil nil)
                  'gdk:pixbuf)))))
 
 ;;;     gtk_icon_info_load_symbolic_async
@@ -450,4 +446,4 @@
                  'gtk:icon-info))
       (is-true (gtk:icon-info-is-symbolic info)))))
 
-;;; 2025-06-20
+;;; 2025-09-17

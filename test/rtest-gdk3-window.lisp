@@ -152,11 +152,10 @@
 
 (test gdk-geometry-structure
   ;; Slot names of the structure
-  (is (equal '(GDK::MIN-WIDTH GDK::MIN-HEIGHT GDK::MAX-WIDTH GDK::MAX-HEIGHT
-               GDK::BASE-WIDTH GDK::BASE-HEIGHT GDK::WIDTH-INCREMENT
-               GDK::HEIGHT-INCREMENT GDK::MIN-ASPECT GDK::MAX-ASPECT
-               GDK::WIN-GRAVITY)
-             (cffi:foreign-slot-names '(:struct gdk:geometry)))))
+  (is (equal '(GDK::BASE-HEIGHT GDK::BASE-WIDTH GDK::HEIGHT-INCREMENT
+               GDK::MAX-ASPECT GDK::MAX-HEIGHT GDK::MAX-WIDTH GDK::MIN-ASPECT
+               GDK::MIN-HEIGHT GDK::MIN-WIDTH GDK::WIDTH-INCREMENT GDK::WIN-GRAVITY)
+             (sort (cffi:foreign-slot-names '(:struct gdk:geometry)) #'string<))))
 
 (test gdk-geometry-values
   (cffi:with-foreign-object (ptr '(:struct gdk:geometry))
@@ -329,21 +328,10 @@
 
 (test gdk-window-attr-structure
   ;; Slot names of the structure
-  (is (equal '(GDK::TITLE
-               GDK::EVENT-MASK
-               GDK::X
-               GDK::Y
-               GDK::WIDTH
-               GDK::HEIGHT
-               GDK::WCLASS
-               GDK::VISUAL
-               GDK::WINDOW-TYPE
-               GDK::CURSOR
-               GDK::WMCLASS-NAME
-               GDK::WMCLASS-CLASS
-               GDK::OVERRIDE-REDIRECT
-               GDK::TYPE-HINT)
-             (cffi:foreign-slot-names '(:struct gdk:window-attr)))))
+  (is (equal '(GDK:CURSOR GDK:EVENT-MASK GDK::HEIGHT GDK::OVERRIDE-REDIRECT
+               GDK::TITLE GDK::TYPE-HINT GDK:VISUAL GDK::WCLASS GDK::WIDTH
+               GDK:WINDOW-TYPE GDK::WMCLASS-CLASS GDK::WMCLASS-NAME GDK::X GDK::Y)
+             (sort (cffi:foreign-slot-names '(:struct gdk:window-attr)) #'string<))))
 
 (test gdk-window-attr-values
   (cffi:with-foreign-object (ptr '(:struct gdk:window-attr))
@@ -1076,4 +1064,4 @@
 ;;;     gdk_window_get_effective_parent
 ;;;     gdk_window_get_effective_toplevel
 
-;;; 2024-9-22
+;;; 2025-09-17

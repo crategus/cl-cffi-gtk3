@@ -26,7 +26,7 @@
       #+(and sbcl (not windows))
       (is (string= "Sbcl" (gdk:program-class)))
       #+(and ccl (not windows))
-      (is (string= "Lx86cl" (gdk:program-class)))
+      (is (string= "Lx86cl64" (gdk:program-class)))
       #+windows
       (is (string= "Sbcl" (gdk:program-class)))
       (is (string= "Program class" (gdk:program-class)))))
@@ -54,4 +54,4 @@
 ;;;     gdk_error_trap_pop                                 not exported
 ;;;     gdk_error_trap_pop_ignored                         not exported
 
-;;; 2024-9-22
+;;; 2025-09-17

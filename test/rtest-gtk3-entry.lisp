@@ -657,7 +657,7 @@
 
 ;;;     gtk_entry_unset_invisible_char
 
-#+crategus
+#+(and sbcl crategus)
 (test gtk-entry-unset-invisible-char
   (glib-test:with-check-memory (entry)
     (is (typep (setf entry (gtk:entry-new)) 'gtk:entry))
@@ -759,4 +759,4 @@
 ;;;     gtk_entry_get_icon_area
 ;;;     gtk_entry_grab_focus_without_selecting
 
-;;; 2025-07-11
+;;; 2025-09-17

@@ -80,22 +80,15 @@
 (test gtk-statusbar-push
   (let* ((statusbar (gtk:statusbar-new))
          (context-id-1 (gtk:statusbar-context-id statusbar "context1"))
-         (context-id-2 (gtk:statusbar-context-id statusbar "context2"))
-         message-id-1
-         message-id-2)
-
+         (context-id-2 (gtk:statusbar-context-id statusbar "context2")))
     (is (eq 'gtk:statusbar (type-of statusbar)))
     (is (= 1 context-id-1))
     (is (= 2 context-id-2))
     ;; Set some message IDs on the contexts
-    (is (= 1 (setf message-id-1
-                   (gtk:statusbar-push statusbar context-id-1 "message1"))))
-    (is (= 2 (setf message-id-2
-                   (gtk:statusbar-push statusbar context-id-1 "message2"))))
-    (is (= 3 (setf message-id-1
-                   (gtk:statusbar-push statusbar context-id-2 "message1"))))
-    (is (= 4 (setf message-id-2
-                   (gtk:statusbar-push statusbar context-id-2 "message2"))))
+    (is (= 1 (gtk:statusbar-push statusbar context-id-1 "message1")))
+    (is (= 2 (gtk:statusbar-push statusbar context-id-1 "message2")))
+    (is (= 3 (gtk:statusbar-push statusbar context-id-2 "message1")))
+    (is (= 4 (gtk:statusbar-push statusbar context-id-2 "message2")))
     ;; Remove some messages
     (is-false (gtk:statusbar-remove statusbar "context1" 1))
     (is-false (gtk:statusbar-remove-all statusbar "context2"))))
@@ -106,4 +99,4 @@
   (let ((statusbar (gtk:statusbar-new)))
     (is (eq 'gtk:box (type-of (gtk:statusbar-message-area statusbar))))))
 
-;;; 2024-9-22
+;;; 2025-09-17

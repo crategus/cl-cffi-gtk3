@@ -3,6 +3,12 @@
 (def-suite gtk-radio-menu-item :in gtk-suite)
 (in-suite gtk-radio-menu-item)
 
+;; FIXME: These tests generate a warning.
+;; The following warning is thrown with CCL:
+;; Warning: TOGGLE-NOTIFY: GtkRadioMenuItem at #<A Foreign Pointer #x70553CEFD340>
+;; has no Lisp side (weak) reference. While executing:
+;; CFFI-CALLBACKS::|GOBJECT::TOGGLE-NOTIFY|, in process listener(1).
+
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GtkRadioMenuItem
@@ -289,4 +295,4 @@
                      (gtk:bin-child
                          (second (gtk:radio-menu-item-get-group item))))))))
 
-;;; 2024-9-22
+;;; 2025-09-17

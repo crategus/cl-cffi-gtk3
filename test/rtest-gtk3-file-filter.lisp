@@ -116,8 +116,8 @@
 
 ;;;     gtk_file_filter_add_pixbuf_formats
 
-;; TODO: We get a warning from gtk:file-filter-to-gvariant. This seems to be
-;; a problem in the C libraray.
+;; FIXME: We get a warning from gtk:file-filter-to-gvariant. This seems to be
+;; a problem in the C library.
 ;; GLib-CRITICAL **: g_variant_new_string: assertion 'string != NULL' failed
 
 #-windows
@@ -200,4 +200,4 @@
     (is (string= "('[Invalid UTF-8]', [(1, 'text/plain')])"
                  (g:variant-print (gtk:file-filter-to-gvariant filter))))))
 
-;;; 2025-3-28
+;;; 2025-09-17

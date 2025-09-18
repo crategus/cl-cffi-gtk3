@@ -59,15 +59,13 @@
 ;;;     gtk_file_chooser_dialog_new
 
 (test gtk-file-chooser-dialog-new
-  (let ((dialog nil))
-    (is (typep (setf dialog
-                     (gtk:file-chooser-dialog-new "title"
-                                                  nil
-                                                  :save
-                                                  "_OK"
-                                                  :accept
-                                                  "_Canel"
-                                                  :reject))
-               'gtk:file-chooser-dialog))))
+  (is (typep (gtk:file-chooser-dialog-new "title"
+                                          nil
+                                          :save
+                                          "_OK"
+                                          :accept
+                                          "_Canel"
+                                          :reject)
+               'gtk:file-chooser-dialog)))
 
-;;; 2024-9-23
+;;; 2025-09-17

@@ -3,6 +3,12 @@
 (def-suite gtk-radio-button :in gtk-suite)
 (in-suite gtk-radio-button)
 
+;; FIXME: These tests generate a warning.
+;; The following warning is thrown with CCL:
+;; Warning: TOGGLE-NOTIFY: GtkRadioButton at #<A Foreign Pointer #x70553C18F210>
+;; has no Lisp side (weak) reference. While executing:
+;; CFFI-CALLBACKS::|GOBJECT::TOGGLE-NOTIFY|, in process listener(1).
+
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GtkRadioButton
@@ -254,4 +260,4 @@
     (is (string= "First Button"
                  (gtk:label-label (gtk:bin-child (second (gtk:radio-button-get-group button))))))))
 
-;;; 2024-9-22
+;;; 2025-09-17

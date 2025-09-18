@@ -324,16 +324,14 @@
 ;; TODO: Create an example which returns a section
 
 (test gtk-style-context-section.1
-  (let ((context (gtk:style-context-new))
-        (section nil))
+  (let ((context (gtk:style-context-new)))
     ;; We get not a section
-    (is-false (setf section (gtk:style-context-section context "property")))))
+    (is-false (gtk:style-context-section context "property"))))
 
 (test gtk-style-context-section.2
   (let* ((path (glib-sys:sys-path "test/resource/rtest-gtk-css-provider.css"))
          (provider (gtk:css-provider-new))
-         (context (gtk:style-context-new))
-         (section nil))
+         (context (gtk:style-context-new)))
     (is-true (gtk:css-provider-load-from-path provider path))
     (is-false (gtk:style-context-add-provider context
                                               provider
@@ -342,8 +340,7 @@
     (is-true (setf (gtk:style-context-state context) '(:active :dir-ltr)))
     (is (equal '(:active :dir-ltr) (gtk:style-context-state context)))
     ;; We get not a section
-    (is-false (setf section
-                    (gtk:style-context-section context "background-color")))))
+    (is-false (gtk:style-context-section context "background-color"))))
 
 ;;;     gtk_style_context_color
 
@@ -561,4 +558,4 @@
 ;;;     gtk_render_icon
 ;;;     gtk_render_insertion_cursor
 
-;;; 2024-9-21
+;;; 2025-09-17

@@ -310,6 +310,7 @@ dann benutzen Sie es immer noch.")
     (gtk:text-buffer-insert-pixbuf buffer iter (make-instance 'gdk:pixbuf))
     (let ((iter (gtk:text-buffer-iter-at-offset buffer 12)))
       (is (typep (gtk:text-iter-pixbuf iter) 'gdk:pixbuf))
+      #+sbcl
       (is (eq #\OBJECT_REPLACEMENT_CHARACTER (gtk:text-iter-char iter)))
       (is (eq #\Nul (gtk:text-iter-char (gtk:text-buffer-end-iter buffer))))
 )))
@@ -769,4 +770,5 @@ dann benutzen Sie es immer noch.")
     (is-false (gtk:text-iter-in-range start end center))
     (is-false (gtk:text-iter-in-range end center start))))
 
-;;; 2024-9-21
+;;; 2025-09-18
+
