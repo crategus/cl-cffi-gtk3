@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'drawing-context 'type)
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @begin{short}
     The @class{gdk:drawing-context} object is an object that represents the
     current drawing state of a @class{gdk:window} object.
@@ -106,7 +106,7 @@
 (setf (liber:alias-for-function 'drawing-context-clip)
       "Accessor"
       (documentation 'drawing-context-clip 'function)
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @syntax{(gdk:drawing-context-clip object) => region}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[region]{a @symbol{cairo:region-t} instance}
@@ -133,7 +133,7 @@
 (setf (liber:alias-for-function 'drawing-context-window)
       "Accessor"
       (documentation 'drawing-context-window 'function)
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @syntax{(gdk:drawing-context-window object) => window}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[window]{a @class{gdk:window} object}
@@ -155,7 +155,7 @@
 (cffi:defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{2023-3-10}
+ "@version{2023-03-10}
   @argument[object]{a @class{gdk:drawing-context} object}
   @begin{return}
     A @symbol{cairo:context-t} Cairo context to be used to draw the contents of
@@ -186,7 +186,7 @@
 
 (cffi:defcfun ("gdk_drawing_context_is_valid" drawing-context-is-valid) :boolean
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[context]{a @class{gdk:drawing-context} object}
   @return{@em{True} if the drawing context is valid.}
   @begin{short}

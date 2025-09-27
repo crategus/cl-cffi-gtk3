@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.rectangle.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -169,7 +169,7 @@
 
 (defun rectangle-new (&key (x 0) (y 0) (width 0) (height 0))
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[x]{an integer with the value for the @code{x} slot}
   @argument[y]{an integer with the value for the @code{y} slot}
   @argument[width]{an integer with the value for the @code{width} slot}
@@ -191,7 +191,7 @@
 
 (defun rectangle-copy (instance)
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[instance]{a @class{gdk:rectangle} instance}
   @return{The @class{gdk:rectangle} instance.}
   @short{Copy constructor of a @class{gdk:rectangle} structure.}
@@ -212,7 +212,7 @@
 
 (defun rectangle-intersect (rect1 rect2)
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
   @return{The @class{gdk:rectangle} instance with the intersection of
@@ -240,7 +240,7 @@
 
 (defun rectangle-union (rect1 rect2)
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
   @return{The @class{gdk:rectangle} instance with the union of @arg{rect1} and
@@ -264,7 +264,7 @@
 
 (cffi:defcfun ("gdk_rectangle_equal" rectangle-equal) :boolean
  #+liber-documentation
- "@version{2024-1-1}
+ "@version{2024-01-01}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
   @return{@em{True} if the rectangles are equal.}

@@ -178,7 +178,7 @@
   nil)
 
 (setf (documentation 'visual 'type)
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @begin{short}
     The @class{gdk:visual} object describes a particular video hardware display
     format.
@@ -221,7 +221,7 @@
 
 (defun query-depths ()
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @return{The list of integers of the available depths.}
   @begin{short}
     This function returns the available bit depths for the default screen.
@@ -264,7 +264,7 @@
 
 (defun query-visual-types ()
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @return{A list of the available visual types of type
     @symbol{gdk:visual-type}.}
   @begin{short}
@@ -300,7 +300,7 @@
 (cffi:defcfun ("gdk_list_visuals" list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @return{The list of @class{gdk:visual} objects.}
   @begin{short}
     Lists the available visuals for the default screen.
@@ -361,7 +361,7 @@
 
 (defun visual-blue-pixel-details (visual)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -393,7 +393,7 @@
 
 (cffi:defcfun ("gdk_visual_get_byte_order" visual-byte-order) byte-order
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @return{The @symbol{gdk:byte-order} value stating the byte order of
     @arg{visual}.}
@@ -462,7 +462,7 @@
   (precision (:pointer :int)))
 
 (defun visual-green-pixel-details (visual)
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -500,7 +500,7 @@
   (precision (:pointer :int)))
 
 (defun visual-red-pixel-details (visual)
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @begin{return}
     @arg{mask} -- an unsigned integer, or @code{nil} @br{}
@@ -532,7 +532,7 @@
 
 (cffi:defcfun ("gdk_visual_get_visual_type" visual-visual-type) visual-type
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @return{The @symbol{gdk:visual-type} value stating the type of @arg{visual}.}
   @begin{short}
@@ -600,7 +600,7 @@
 
 (cffi:defcfun ("gdk_visual_get_system" visual-system) (g:object visual)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @return{The system @class{gdk:visual} object.}
   @begin{short}
     Get the default visual of the system for the default GDK screen.
@@ -624,7 +624,7 @@
 
 (cffi:defcfun ("gdk_visual_get_best" visual-best) (g:object visual)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @return{The best @class{gdk:visual} object.}
   @begin{short}
     Get the visual with the most available colors for the default GDK screen.
@@ -685,7 +685,7 @@
 (cffi:defcfun ("gdk_visual_get_best_with_type" visual-best-with-type)
     (g:object visual)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual-type]{a value of the @symbol{gdk:visual-type} enumeration}
   @return{The best @class{gdk:visual} object of the given @arg{visual-type}.}
   @begin{short}
@@ -751,7 +751,7 @@
 
 (cffi:defcfun ("gdk_visual_get_screen" visual-screen) (g:object screen)
  #+liber-documentation
- "@version{2024-6-28}
+ "@version{2024-06-28}
   @argument[visual]{a @class{gdk:visual} object}
   @return{The @class{gdk:screen} object to which @arg{visual} belongs.}
   @short{Gets the screen to which the visual belongs.}

@@ -216,7 +216,7 @@ lambda (keymap)    :run-last
 
 (cffi:defcfun ("gdk_keymap_get_default" keymap-default) (g:object keymap)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @return{The @class{gdk:keymap} object attached to the default display.}
   @begin{short}
     Returns the keymap attached to the default display.
@@ -237,7 +237,7 @@ lambda (keymap)    :run-last
 
 (cffi:defcfun ("gdk_keymap_get_for_display" keymap-for-display) (g:object keymap)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[display]{a @class{gdk:display} object}
   @return{The @class{gdk:keymap} object attached to @arg{display}.}
   @short{Returns the keymap attached to the display.}
@@ -386,7 +386,7 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-entries-for-keyval (keymap keyval)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keyval]{a keyval, such as @code{GDK_a}, @code{GDK_Up},
     @code{GDK_Return}, etc.}
@@ -441,7 +441,7 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-entries-for-keycode (keymap keycode)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an integer for a hardware keycode}
   @begin{return}
@@ -487,7 +487,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_direction" keymap-direction) pango:direction
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @begin{return}
     The @code{:ltr} or @code{:rtl} value if it can determine the direction.
@@ -508,7 +508,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_have_bidi_layouts" keymap-have-bidi-layouts) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if there are layouts in both directions, @em{false}
     otherwise.}
@@ -527,7 +527,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_caps_lock_state" keymap-caps-lock-state) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Caps Lock} key is on.}
   @short{Returns whether the @kbd{Caps Lock} modifier is locked.}
@@ -542,7 +542,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_num_lock_state" keymap-num-lock-state) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Num Lock} key is on.}
   @short{Returns whether the @kbd{Num Lock} modifier is locked.}
@@ -558,7 +558,7 @@ if (keyval == GDK_PLUS &&
 (cffi:defcfun ("gdk_keymap_get_scroll_lock_state" keymap-scroll-lock-state)
     :boolean
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Scroll Lock} key is on.}
   @short{Returns whether the @kbd{Scroll Lock} modifier is locked.}
@@ -699,7 +699,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_name" keyval-name) (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     The string containing the name of the key, or @code{nil} if @arg{keyval} is
@@ -787,7 +787,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_upper" keyval-to-upper) :uint
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a key value}
   @return{The upper case form of @arg{keyval}, or @arg{keyval} itself if it is
     already in upper case or it is not subject to case conversion.}
@@ -806,7 +806,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_lower" keyval-to-lower) :uint
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a key value}
   @return{The lower case form of @arg{keyval}, or @arg{keyval} itself if it is
     already in lower case or it is not subject to case conversion.}
@@ -825,7 +825,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_upper" keyval-is-upper) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a key value}
   @return{@em{True} if @arg{keyval} is in upper case, or if @arg{keyval} is not
     subject to case conversion.}
@@ -844,7 +844,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_lower" keyval-is-lower) :boolean
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a key value}
   @return{@em{True} if @arg{keyval} is in lower case, or if @arg{keyval} is not
     subject to case conversion.}
@@ -863,7 +863,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_unicode" keyval-to-unicode) g:unichar
  #+liber-documentation
- "@version{2023-3-4}
+ "@version{2023-03-04}
   @argument[keyval]{an unsigned integer for a GDK key symbol}
   @return{The corresponding unicode character, or @code{#\\Nul} if there is no
     corresponding character.}

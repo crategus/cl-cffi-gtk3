@@ -366,7 +366,7 @@
 
 #+liber-documentation
 (setf (documentation 'cursor 'type)
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     The @class{gdk:cursor} object represents a cursor.
   @end{short}
@@ -407,7 +407,7 @@
 (setf (liber:alias-for-function 'cursor-cursor-type)
       "Accessor"
       (documentation 'cursor-cursor-type 'function)
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @syntax{(gdk:cursor-cursor-type object) => type}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration}
@@ -432,7 +432,7 @@
 (setf (liber:alias-for-function 'cursor-display)
       "Accessor"
       (documentation 'cursor-display 'function)
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @syntax{(gdk:cursor-display object) => display}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[display]{a @class{gdk:display} object}
@@ -451,7 +451,7 @@
 
 (cffi:defcfun ("gdk_cursor_new" cursor-new) (g:object cursor)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration
     with the cursor to create}
   @return{The new @class{gdk:cursor} object.}
@@ -533,7 +533,7 @@
 
 (defun cursor-new-from-surface (display surface x y)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[surface]{a @symbol{cairo:surface-t} instance containing the
@@ -646,7 +646,7 @@
 (cffi:defcfun ("gdk_cursor_new_for_display" cursor-new-for-display)
     (g:object cursor)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration to create
@@ -669,7 +669,7 @@
 
 (cffi:defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[cursor]{a @class{gdk:cursor} object}
   @return{The @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
     @code{nil}.}
@@ -698,7 +698,7 @@
 
 (defun cursor-surface (cursor)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[cursor]{a @class{gdk:cursor} object}
   @begin{return}
     @arg{surface} -- a @symbol{cairo:surface-t} instance representing a cursor

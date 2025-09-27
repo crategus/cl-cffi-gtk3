@@ -180,7 +180,7 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-font-options)
       "Accessor"
       (documentation 'screen-font-options 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gdk:screen-font-options object) => options}
   @syntax{(setf (gdk:screen-font-options object) options)}
   @argument[object]{a @class{gdk:screen} object}
@@ -214,7 +214,7 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-resolution)
       "Accessor"
       (documentation 'screen-resolution 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gdk:screen-resolution object) => dpi}
   @syntax{(setf (gdk:screen-resolution object) dpi)}
   @argument[object]{a @class{gdk:screen} object}
@@ -241,7 +241,7 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_default" screen-default) (g:object screen)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @begin{return}
     The @class{gdk:screen} object, or @code{nil} if there is no default display.
   @end{return}
@@ -261,7 +261,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_system_visual" screen-system-visual)
     (g:object visual)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The system @class{gdk:visual} object.}
   @begin{short}
@@ -281,7 +281,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_rgba_visual" screen-rgba-visual)
     (g:object visual)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
     The @class{gdk:visual} object to use for windows with an alpha channel or
@@ -314,7 +314,7 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_is_composited" screen-is-composited) :boolean
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
     The boolean whether windows with RGBA visuals can reasonably be expected to
@@ -339,7 +339,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_root_window" screen-root-window)
     (g:object window)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The root @class{gdk:window} object.}
   @short{Gets the root window of the screen.}
@@ -355,7 +355,7 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_display" screen-display) (g:object display)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @return{The @class{gdk:display} object to which @arg{screen} belongs.}
   @short{Gets the display to which the screen belongs.}
@@ -484,7 +484,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_list_visuals" screen-list-visuals)
     (g:list-t (g:object visual) :free-from-foreign t)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a relevant @class{gdk:screen} object}
   @return{The list of @class{gdk:visual} objects for @arg{screen}.}
   @begin{short}
@@ -506,7 +506,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_toplevel_windows" screen-toplevel-windows)
     (g:list-t (g:object window :free-from-foreign nil) :free-from-foreign t)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object where the toplevels are located}
   @return{List of toplevel @class{gdk:window} objects for @arg{screen}.}
   @begin{short}
@@ -680,7 +680,7 @@ lambda (screen)    :run-last
 
 (cffi:defcfun ("gdk_screen_get_monitor_at_point" screen-monitor-at-point) :int
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[screen]{a @class{gdk:screen} object}
   @argument[x]{an integer for the x coordinate in the virtual @arg{screen}}
   @argument[y]{an integer for the y coordinate in the virtual @arg{screen}}
@@ -851,7 +851,7 @@ lambda (screen)    :run-last
 
 (defun screen-setting (screen name gtype)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object where the setting is located}
   @argument[name]{a string with the name of the setting}
   @argument[gtype]{a string with the @class{g:type-t} type ID of the setting}
@@ -917,7 +917,7 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_get_window_stack" screen-window-stack)
     (g:list-t (g:object window :free-from-foreign t) :free-from-foreign t)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{return}
     The list of @class{gdk:window} objects for the current window stack, or

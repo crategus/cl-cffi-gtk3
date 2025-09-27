@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.app-launch-context.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2024 Dieter Kaiser
+;;; Copyright (C) 2012 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-launch-context 'type)
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @begin{short}
     The @class{gdk:app-launch-context} object is an implementation of the
     @class{g:app-launch-context} object that handles launching an application
@@ -110,7 +110,7 @@
 (setf (liber:alias-for-function 'app-launch-context-display)
       "Accessor"
       (documentation 'app-launch-context-display 'function)
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @syntax{(gdk:app-launch-context-display object) => display}
   @argument[object]{a @class{gdk:app-launch-context} object}
   @argument[display]{a @class{gdk:display} object}
@@ -138,7 +138,7 @@
 (cffi:defcfun ("gdk_app_launch_context_new" app-launch-context-new)
     (g:object app-launch-context :return)
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @return{The new @class{gdk:app-launch-context} object.}
   @begin{short}
     Creates a new launch context.
@@ -160,7 +160,7 @@
 (cffi:defcfun ("gdk_app_launch_context_set_screen"
                app-launch-context-set-screen) :void
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @argument[context]{a @class{gdk:app-launch-context} object}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
@@ -185,7 +185,7 @@
 (cffi:defcfun ("gdk_app_launch_context_set_desktop"
                app-launch-context-set-desktop) :void
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @argument[context]{a @class{gdk:app-launch-context} object}
   @argument[desktop]{an integer with the number of a workspace, or -1}
   @begin{short}
@@ -211,7 +211,7 @@
 (cffi:defcfun ("gdk_app_launch_context_set_timestamp"
                app-launch-context-set-timestamp) :void
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @argument[context]{a @class{gdk:app-launch-context} object}
   @argument[timestamp]{an unsigned integer with a timestamp}
   @begin{short}
@@ -234,7 +234,7 @@
 (cffi:defcfun ("gdk_app_launch_context_set_icon" app-launch-context-set-icon)
     :void
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @argument[context]{a @class{gdk:app-launch-context} object}
   @argument[icon]{a @class{g:icon} object, or @code{nil}}
   @begin{short}
@@ -262,7 +262,7 @@
 
 (defun app-launch-context-set-icon-name (context name)
  #+liber-documentation
- "@version{2025-1-1}
+ "@version{2025-01-01}
   @argument[context]{a @class{gdk:app-launch-context} object}
   @argument[name]{a string with an icon name, or @code{nil}}
   @begin{short}

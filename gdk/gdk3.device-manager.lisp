@@ -243,7 +243,7 @@
 (setf (liber:alias-for-function 'device-manager-display)
       "Accessor"
       (documentation 'device-manager-display 'function)
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @syntax{(gdk:device-manager-display object) => display}
   @argument[object]{a @class{gdk:device-manager} object}
   @argument[display]{a @class{gdk:display} object}
@@ -280,7 +280,7 @@
 
 (cffi:defcfun ("gdk_disable_multidevice" disable-multidevice) :void
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     Disables multidevice support in GDK.
   @end{short}
@@ -335,7 +335,7 @@
 (cffi:defcfun ("gdk_device_manager_get_client_pointer"
                device-manager-client-pointer) (g:object device)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @argument[manager]{a @class{gdk:device-manager} object}
   @return{The @class{gdk:device} client pointer.}
   @begin{short}

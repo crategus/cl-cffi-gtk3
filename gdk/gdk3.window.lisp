@@ -1399,7 +1399,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_destroy" window-destroy) :void
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Destroys the window system resources associated with @arg{window} and
@@ -1441,7 +1441,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_display" window-display) (g:object display)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:display} object associated with @arg{window}.}
   @begin{short}
@@ -1459,7 +1459,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_screen" window-screen) (g:object screen)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The @class{gdk:screen} object associated with @arg{window}.}
   @begin{short}
@@ -1477,7 +1477,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_visual" window-visual) (g:object visual)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{A @class{gdk:visual} object.}
   @begin{short}
@@ -1532,7 +1532,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_show" window-show) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Like the @fun{gdk:window-show-unraised} function, but also raises the window
@@ -1558,7 +1558,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_show_unraised" window-show-unraised) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Shows a window onscreen, but does not modify its stacking order.
@@ -1582,7 +1582,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_hide" window-hide) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     For toplevel windows, withdraws them, so they will no longer be known to
@@ -1602,7 +1602,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_is_destroyed" window-is-destroyed) :boolean
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is destroyed.}
   @begin{short}
@@ -1620,7 +1620,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_is_visible" window-is-visible) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is mapped.}
   @begin{short}
@@ -1640,7 +1640,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_is_viewable" window-is-viewable) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if @arg{window} is viewable.}
   @begin{short}
@@ -1659,7 +1659,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_is_input_only" window-is-input-only) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @return{@em{True} if @arg{window} is input only.}
   @begin{short}
@@ -1676,7 +1676,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_is_shaped" window-is-shaped) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @return{@em{True} if @arg{window} is shaped.}
   @begin{short}
@@ -1712,7 +1712,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_withdraw" window-withdraw) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Withdraws a window, that is, unmaps it and asks the window manager to
@@ -1732,7 +1732,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_iconify" window-iconify) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Asks to iconify (minimize) window.
@@ -1756,7 +1756,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_deiconify" window-deiconify) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Attempt to deiconify (unminimize) window.
@@ -1781,7 +1781,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_stick" window-stick) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     \"Pins\" a window such that it is on all workspaces and does not scroll with
@@ -1809,7 +1809,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_unstick" window-unstick) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Reverse operation for the @fun{gdk:window-stick} function.
@@ -1828,7 +1828,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_maximize" window-maximize) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Maximizes the window.
@@ -1855,7 +1855,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_unmaximize" window-unmaximize) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Unmaximizes the window.
@@ -1882,7 +1882,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_fullscreen" window-fullscreen) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Moves the window into fullscreen mode.
@@ -1935,7 +1935,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_unfullscreen" window-unfullscreen) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Moves the window out of fullscreen mode.
@@ -2007,7 +2007,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_keep_above" window-set-keep-above) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{a boolean whether to keep @arg{window} above other windows}
   @begin{short}
@@ -2033,7 +2033,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_keep_below" window-set-keep-below) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[setting]{a boolean whether to keep @arg{window} below other windows}
   @begin{short}
@@ -2095,7 +2095,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_composited" window-composited) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-composited window) => composited}
   @syntax{(setf (gdk:window-composited window) composited)}
   @argument[window]{a @class{gdk:window} object}
@@ -2151,7 +2151,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_pass_through" window-pass-through) :boolean
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gdk:window-pass-through window) => pass-through}
   @syntax{(setf (gdk:window-pass-through window) pass-through)}
   @argument[window]{a @class{gdk:window} object}
@@ -2388,7 +2388,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_flush" window-flush) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     This function does nothing.
@@ -2408,7 +2408,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_has_native" window-has-native) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if the window has a native window, @em{false} otherwise.}
   @begin{short}
@@ -2428,7 +2428,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_ensure_native" window-ensure-native) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{@em{True} if the window has a native window, @em{false} otherwise.}
   @begin{short}
@@ -2475,7 +2475,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_raise" window-raise) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Raises the window to the top of the z-order (stacking order), so that other
@@ -2498,7 +2498,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_lower" window-lower) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Lowers the window to the bottom of the z-order (stacking order), so that
@@ -2527,7 +2527,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_restack" window-restack) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[sibling]{a @class{gdk:window} object that is a sibling of
     @arg{window}, or @code{nil}}
@@ -2582,7 +2582,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_register_dnd" window-register-dnd) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @shot{Registers a window as a potential drop destination.}
   @see-class{gdk:window}"
@@ -2738,7 +2738,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_show_window_menu" window-show-window-menu) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[event]{a @class{gdk:event} event to show the menu for}
   @return{@em{True} if the window menu was shown and @em{false} otherwise.}
@@ -2805,7 +2805,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_beep" window-beep) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Emits a short beep associated to @arg{window} in the appropriate display,
@@ -3068,7 +3068,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_begin_paint_rect" window-begin-paint-rect) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[rectangle]{a @class{gdk:rectangle} instance you intend to draw to}
   @begin{short}
@@ -3160,7 +3160,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_end_paint" window-end-paint) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Indicates that the backing store created by the most recent call to the
@@ -3239,7 +3239,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_end_draw_frame" window-end-draw-frame) :void
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @argument[window]{a @class{gdk:window} object}
   @argument[context]{a @class{gdk:drawing-context} object created by the
    @fun{gdk:window-begin-draw-frame} function}
@@ -3337,7 +3337,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_invalidate_rect" window-invalidate-rect) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[rect]{a @class{gdk:rectangle} instance to invalidate or @code{nil}
     to invalidate the whole window}
@@ -3510,7 +3510,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_freeze_updates" window-freeze-updates) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Temporarily freezes a window such that it will not receive expose events.
@@ -3532,7 +3532,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_thaw_updates" window-thaw-updates) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Thaws a window frozen with the @fun{gdk:window-freeze-updates} function.
@@ -3549,7 +3549,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_process_all_updates" window-process-all-updates) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @begin{short}
     Calls the @fun{gdk:window-process-updates} function for all windows.
   @end{short}
@@ -3568,7 +3568,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_process_updates" window-process-updates) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[update]{a boolean whether to also process updates for child windows}
   @begin{short}
@@ -3599,7 +3599,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_debug_updates" window-set-debug-updates) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[setting]{@em{true} to turn on update debugging}
   @begin{short}
     With update debugging enabled, calls to the
@@ -3641,7 +3641,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_enable_synchronized_configure"
            window-enable-synchronized-configure) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Does nothing, present only for compatiblity.
@@ -3663,7 +3663,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_configure_finished" window-configure-finished) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{short}
     Does nothing, present only for compatiblity.
@@ -3686,7 +3686,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_frame_clock" window-frame-clock)
     (g:object frame-clock)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} obeject}
   @return{The @class{gdk:frame-clock} object.}
   @begin{short}
@@ -3718,7 +3718,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-user-data (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-user-data window) => data}
   @syntax{(setf (gdk:window-user-data window) data)}
   @argument[window]{a @class{gdk:window} object}
@@ -3752,7 +3752,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_override_redirect" window-set-override-redirect) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[redirect]{@em{true} if @arg{window} should be override redirect}
   @begin{short}
@@ -3786,7 +3786,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_accept_focus" window-accept-focus) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-accept-focus window) => setting}
   @syntax{(setf (gdk:window-accept-focus window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
@@ -3819,7 +3819,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_focus_on_map" window-focus-on-map) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-focus-on-map window) => setting}
   @syntax{(setf gdk:window-focus-on-map window) setting)}
   @argument[window]{a toplevel @class{gdk:window} object}
@@ -3971,7 +3971,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_child_shapes" window-set-child-shapes) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Sets the shape mask of the window to the union of shape masks for all
@@ -3991,7 +3991,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_merge_child_shapes" window-merge-child-shapes) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Merges the shape masks for any child windows into the shape mask for the
@@ -4057,7 +4057,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_set_child_input_shapes" window-set-child-input-shapes)
     :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Sets the input shape mask of the window to the union of input shape masks
@@ -4078,7 +4078,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_merge_child_input_shapes"
            window-merge-child-input-shapes) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
     Merges the input shape masks for any child windows into the input shape mask
@@ -4105,7 +4105,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_set_static_gravities" window-set-static-gravities)
     :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[use-static]{@em{true} to turn on static gravity}
   @return{@em{True} if the server supports static gravity.}
@@ -4132,7 +4132,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_title" window-set-title) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[title]{a string with the title of @arg{window}}
   @begin{short}
@@ -4155,7 +4155,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_background" window-set-background) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[color]{a @class{gdk:color} instance}
   @begin{short}
@@ -4188,7 +4188,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_background_rgba" window-set-background-rgba) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[rgba]{a @class{gdk:rgba} color}
   @begin{short}
@@ -4261,7 +4261,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defconstant +parent-relative+ 1
  #+liber-documentation
- "@version{#2024-4-2}
+ "@version{#2024-04-02}
   @variable-value{1}
   @begin{short}
     A special value, indicating that the background for a window should be
@@ -4421,7 +4421,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_icon_list" window-set-icon-list) :void
  #+liber-documentation
- "@version{#2023-3-12}
+ "@version{#2023-03-12}
   @argument[window]{a toplevel @class{gdk:window} window to set the icon of}
   @argument[pixbufs]{a list of @class{gdk-pixbuf:pixbuf} objects, of different
     sizes}
@@ -4455,7 +4455,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_modal_hint" window-modal-hint) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-modal-hint window) => modal}
   @syntax{(setf (gdk:window-modal-hint window) modal)}
   @argument[window]{a toplevel @class{gdk:window} object}
@@ -4553,7 +4553,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_skip_taskbar_hint" window-set-skip-taskbar-hint) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[skips-taskbar]{@em{true} to skip the taskbar}
   @begin{short}
@@ -4576,7 +4576,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_skip_pager_hint" window-set-skip-pager-hint) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[skips-pager]{@em{true} to skip the pager}
   @begin{short}
@@ -4601,7 +4601,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_urgency_hint" window-set-urgency-hint) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[urgent]{@em{true} if the window is urgent}
   @begin{short}
@@ -4689,7 +4689,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-frame-extents (window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{return}
     @code{rect} -- a @class{gdk:rectangle} instance with bounding box of the
@@ -4916,7 +4916,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_parent" window-parent) (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The parent @class{gdk:window} object of @arg{window}}
   @begin{short}
@@ -4946,7 +4946,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_toplevel" window-toplevel) (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The toplevel @class{gdk:window} window containing @arg{window}.}
   @begin{short}
@@ -4972,7 +4972,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_children" window-children)
     (g:list-t (g:object window))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{List of @class{gdk:window} child windows inside @arg{window}.}
   @begin{short}
@@ -4994,7 +4994,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_children_with_user_data"
            window-children-with-user-data) (g:list-t (g:object window))
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @argument[data]{user data to look for as a pointer}
   @return{list of @class{gdk:window} child windows inside @arg{window}}
@@ -5019,7 +5019,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_peek_children" window-peek-children)
     (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{A list of @class{gdk:window} child windows in @arg{window}.}
   @begin{short}
@@ -5073,7 +5073,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_icon_name" window-set-icon-name) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[name]{a string with the name of @arg{window} while iconified
     (minimized)}
@@ -5102,7 +5102,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_transient_for" window-set-transient-for) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[parent]{another toplevel @class{gdk:window} object}
   @begin{short}
@@ -5129,7 +5129,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_role" window-set-role) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[role]{a string indicating its role}
   @begin{short}
@@ -5158,7 +5158,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_startup_id" window-set-startup-id) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a toplevel @class{gdk:window} object}
   @argument[startup-id]{a string with startup-notification identifier}
   @begin{short}
@@ -5186,7 +5186,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_group" window-group) (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-group window) => leader}
   @syntax{(setf (gdk:window-group window) leader)}
   @argument[window]{a toplevel @class{gdk:window} object}
@@ -5299,7 +5299,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_get_default_root_window" default-root-window) (g:object window)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @return{The @class{gdk:window} default root window.}
   @begin{short}
     Obtains the root window, parent all other windows are inside, for the
@@ -5324,7 +5324,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_support_multidevice" window-support-multidevice)
     :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-support-multidevice window) => support-multidevice}
   @syntax{(setf (gdk:window-support-multidevice window) support-multidevice)}
   @argument[window]{a @class{gdk:window} object}
@@ -5359,7 +5359,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_device_cursor" window-device-cursor) (g:object cursor)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:window-device-cursor window device) => cursor}
   @syntax{(setf (gdk:window-device-cursor window device) cursor)}
   @argument[window]{a @class{gdk:window} object}
@@ -5541,7 +5541,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_offscreen_window_get_embedder" offscreen-window-embedder)
     (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{gdk:offscreen-window-embedder window) => embedder}
   @syntax{(setf gdk:offscreen-window-embedded window) embedder)}
   @argument[window]{a @class{gdk:window} object}
@@ -5570,7 +5570,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_geometry_changed" window-geometry-changed) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{an embedded offscreen @class{gdk:window} object}
   @begin{short}
     This function informs GDK that the geometry of an embedded offscreen window
@@ -5706,7 +5706,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_effective_parent" window-effective-parent)
     (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{Effective @class{gdk:window} parent of @arg{window}.}
   @begin{short}
@@ -5730,7 +5730,7 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_get_effective_toplevel" window-effective-toplevel)
     (g:object window)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[window]{a @class{gdk:window} object}
   @return{The effective @class{gdk:window} toplevel containing @arg{window}.}
   @begin{short}

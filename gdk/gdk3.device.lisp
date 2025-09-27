@@ -587,7 +587,7 @@
 
 #+liber-documentation
 (setf (documentation 'device-tool 'type)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @short{The physical tool associated to a @class{gdk:device} object.}
   @see-slot{gdk:device-tool-axes}
   @see-slot{gdk:device-tool-hardware-id}
@@ -1319,7 +1319,7 @@ get_device_settings (GdkDevice *device)
 (cffi:defcfun ("gdk_device_list_slave_devices" device-list-slave-devices)
     (g:list-t (g:object device))
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @argument[device]{a @class{gdk:device} object}
   @return{The list of slave @class{gdk:device} objects, or @code{nil}.}
   @begin{short}
@@ -1480,7 +1480,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-state (device window)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
@@ -1557,7 +1557,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-position-double (device)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} pointer device to query status about}
   @begin{return}
     @arg{screen} -- a @class{gdk:screen} object the device is on, or @code{nil}
@@ -1638,7 +1638,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-window-at-position-double (device)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} pointer device to query info to}
   @begin{return}
     @arg{window} -- a @class{gdk:window} object under the device position,
@@ -1753,7 +1753,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-axis (device axes axis-use)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[device]{a @class{gdk:device} object}
   @argument[axes]{a list of double floats of axes}
   @argument[use]{a @symbol{gdk:axis-use} value use to look for}
@@ -1784,7 +1784,7 @@ get_device_settings (GdkDevice *device)
 
 (cffi:defcfun ("gdk_device_list_axes" device-list-axes) (g:list-t atom-as-string)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} object}
   @return{The list of strings containing the labels.}
   @begin{short}
@@ -1808,7 +1808,7 @@ get_device_settings (GdkDevice *device)
 
 (defun device-axis-value (device axes axis-label)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} object for a pointer device}
   @argument[axes]{a list of double float for the axes}
   @argument[label]{a string with the axis label}
@@ -1841,7 +1841,7 @@ get_device_settings (GdkDevice *device)
 (cffi:defcfun ("gdk_device_get_last_event_window" device-last-event-window)
     (g:object window)
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[device]{a @class{gdk:device} object with a source other than
     @code{:keyboard}}
   @return{The last @class{gdk:window} object the device is in.}

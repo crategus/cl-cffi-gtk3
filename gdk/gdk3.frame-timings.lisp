@@ -62,7 +62,7 @@
 (setf (liber:alias-for-class 'frame-timings)
       "GBoxed"
       (documentation 'frame-timings 'type)
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @begin{short}
     A @class{gdk:frame-timings} structure holds timing information for a single
     frame of the application’s displays.
@@ -121,7 +121,7 @@
 (cffi:defcfun ("gdk_frame_timings_get_frame_counter" frame-timings-frame-counter)
     :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @return{The integer frame counter value for this frame.}
   @begin{short}
@@ -138,7 +138,7 @@
 
 (cffi:defcfun ("gdk_frame_timings_get_complete" frame-timings-complete) :boolean
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     @em{True} if all information that will be available for the frame has been
@@ -166,7 +166,7 @@
 
 (cffi:defcfun ("gdk_frame_timings_get_frame_time" frame-timings-frame-time) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the frame time for the frame.
@@ -190,7 +190,7 @@
 (cffi:defcfun ("gdk_frame_timings_get_presentation_time"
            frame-timings-presentation-time) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the time the frame was displayed to the user, or 0 if no
@@ -215,7 +215,7 @@
 (cffi:defcfun ("gdk_frame_timings_get_refresh_interval"
            frame-timings-refresh-interval) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the refresh interval of the display, in microseconds, or 0
@@ -241,7 +241,7 @@
 (cffi:defcfun ("gdk_frame_timings_get_predicted_presentation_time"
            frame-timings-predicted-presentation-time) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[timings]{a @class{gdk:frame-timings} instance}
   @begin{return}
     An integer with the predicted time at which the frame will be presented,

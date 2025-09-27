@@ -149,7 +149,7 @@ lambda (manager display)    :run-last
 (setf (liber:alias-for-function 'display-manager-default-display)
       "Accessor"
       (documentation 'display-manager-default-display 'function)
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @syntax{(gdk:display-manager-default-display object) => display}
   @syntax{(setf (gdk:display-manager-default-display object) display)}
   @argument[object]{a @class{gdk:display-manager} object}
@@ -178,7 +178,7 @@ lambda (manager display)    :run-last
 (cffi:defcfun ("gdk_display_manager_get" display-manager-get)
     (g:object display-manager)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @return{The global @class{gdk:display-manager} singleton object.}
   @begin{short}
     Gets the @class{gdk:display-manager} singleton object.
@@ -203,7 +203,7 @@ lambda (manager display)    :run-last
 (cffi:defcfun ("gdk_display_manager_list_displays" display-manager-list-displays)
     (g:slist-t (g:object display) :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[manager]{a @class{gdk:display-manager} object}
   @return{A list of @class{gdk:display} objects.}
   @short{List all currently open displays.}
@@ -220,7 +220,7 @@ lambda (manager display)    :run-last
 (cffi:defcfun ("gdk_display_manager_open_display" display-manager-open-display)
     (g:object display)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[manager]{a @class{gdk:display-manager} object}
   @argument[name]{a string with the name of the display to open}
   @begin{return}

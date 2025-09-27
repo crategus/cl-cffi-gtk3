@@ -105,7 +105,7 @@
 (setf (liber:alias-for-class 'device-pad)
       "Interface"
       (documentation 'device-pad 'type)
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @begin{short}
     The @class{gdk:device-pad} interface is an interface implemented by devices
     of @code{:tablet-pad} type, it allows querying the features provided by the
@@ -134,7 +134,7 @@
 
 (cffi:defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[pad]{a @class{gdk:device-pad} object}
   @return{An integer with the number of button/ring/strip groups in the pad.}
   @begin{short}
@@ -155,7 +155,7 @@
 
 (cffi:defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[pad]{a @class{gdk:device-pad} object}
   @argument[index]{an integer with the group to get the number of available
     modes from}

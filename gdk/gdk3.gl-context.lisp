@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.gl-context.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2016 - 2024 Dieter Kaiser
+;;; Copyright (C) 2016 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -113,7 +113,7 @@
 
 #+liber-documentation
 (setf (documentation 'gl-context 'type)
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @begin{short}
     The @class{gdk:gl-context} object is representing the platform-specific
     OpenGL drawing context.
@@ -187,7 +187,7 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-display)
       "Accessor"
       (documentation 'gl-context-display 'function)
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-display object) => display}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[display]{a @class{gdk:display} object}
@@ -213,7 +213,7 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-shared-context)
       "Accessor"
       (documentation 'gl-context-shared-context 'function)
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-shared-context object) => shared-context}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[shared-context]{a @class{gdk:gl-context} object}
@@ -237,7 +237,7 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-window)
       "Accessor"
       (documentation 'gl-context-window 'function)
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-window object) => window}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[window]{a @class{gdk:window} object}
@@ -261,7 +261,7 @@ gdk_gl_context_make_current (context);
 
 (defun gl-context-version (context)
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @argument[context]{a @class{gdk:gl-context} object}
   @begin{return}
     @arg{major} - an integer with the major version @br{}
@@ -301,7 +301,7 @@ gdk_gl_context_make_current (context);
 
 (defun gl-context-required-version (context)
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-required-version object) => major, minor}
   @syntax{(setf gdk:gl-context-required-version object) (list major minor))}
   @argument[context]{a @class{gdk:gl-context} object}
@@ -342,7 +342,7 @@ gdk_gl_context_make_current (context);
 (cffi:defcfun ("gdk_gl_context_get_debug_enabled"
                gl-context-debug-enabled) :boolean
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-debug-enabled object) => enabled}
   @syntax{(setf gdk:gl-context-debug-enabled object) enabled)}
   @argument[context]{a @class{gdk:gl-context} object}
@@ -377,7 +377,7 @@ gdk_gl_context_make_current (context);
 (cffi:defcfun ("gdk_gl_context_get_forward_compatible"
                gl-context-forward-compatible) :boolean
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-forward-compatible object) => setting}
   @syntax{(setf gdk:gl-context-forward-compatible object) setting)}
   @argument[context]{a @class{gdk:gl-context} object}
@@ -416,7 +416,7 @@ gdk_gl_context_make_current (context);
 
 (cffi:defcfun ("gdk_gl_context_get_use_es" gl-context-use-es) :boolean
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @syntax{(gdk:gl-context-uses-es object) => setting}
   @syntax{(setf gdk:gl-context-use-es object) setting)}
   @argument[context]{a @class{gdk:gl-context} object}
@@ -448,7 +448,7 @@ gdk_gl_context_make_current (context);
 
 (cffi:defcfun ("gdk_gl_context_is_legacy" gl-context-is-legacy) :boolean
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @argument[context]{a @class{gdk:gl-context} object}
   @return{@em{True} if the GL context is in legacy mode.}
   @begin{short}
@@ -503,7 +503,7 @@ gdk_gl_context_make_current (context);
 
 (cffi:defcfun ("gdk_gl_context_make_current" gl-context-make-current) :void
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @argument[context]{a @class{gdk:gl-context} object}
   @begin{short}
     Makes the GL context the current one.
@@ -520,7 +520,7 @@ gdk_gl_context_make_current (context);
 (cffi:defcfun ("gdk_gl_context_get_current" gl-context-current)
     (g:object gl-context)
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @return{The current @class{gdk:gl-context} object, or @code{nil}.}
   @begin{short}
     Retrieves the current GL context.
@@ -535,7 +535,7 @@ gdk_gl_context_make_current (context);
 
 (cffi:defcfun ("gdk_gl_context_clear_current" gl-context-clear-current) :void
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @begin{short}
     Clears the current GL context.
   @end{short}

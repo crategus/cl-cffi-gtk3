@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.general.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -142,7 +142,7 @@
 (cffi:defcfun ("gdk_get_display_arg_name" get-display-arg-name)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @return{The string with the display name, if specified explicitely, otherwise
     @code{nil}.}
   @begin{short}
@@ -158,7 +158,7 @@
 
 (cffi:defcfun ("gdk_notify_startup_complete" notify-startup-complete) :void
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @begin{short}
     Indicates to the GUI environment that the application has finished loading.
   @end{short}
@@ -182,7 +182,7 @@
 (cffi:defcfun ("gdk_notify_startup_complete_with_id"
                notify-startup-complete-with-id) :void
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[startup]{a string with the startup notification identifier}
   @begin{short}
     Indicates to the GUI environment that the application has finished loading,
@@ -206,7 +206,7 @@
 
 (cffi:defcfun ("gdk_set_allowed_backends" set-allowed-backends) :void
  #+liber-documentation
- "@version{#2024-6-27}
+ "@version{#2024-06-27}
   @argument[backends]{a string with a comma-separated list of backends}
   @begin{short}
     Sets a list of backends that GDK should try to use.
@@ -250,7 +250,7 @@
 (cffi:defcfun ("gdk_get_program_class" program-class)
     (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gdk:program-class) => program-class}
   @syntax{(setf (gdk:program-class) program-class)}
   @argument[program-class]{a string with the program class}

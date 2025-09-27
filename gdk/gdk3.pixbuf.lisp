@@ -46,7 +46,7 @@
 (cffi:defcfun ("gdk_pixbuf_get_from_window" pixbuf-from-window)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2025-3-9}
+ "@version{#2025-03-09}
   @argument[window]{a @class{gdk:window} object for the source window}
   @argument[xsrc]{an integer for the source x coordinate within window}
   @argument[ysrc]{an integer for the source y coordinate within window}
@@ -100,7 +100,7 @@
 (cffi:defcfun ("gdk_pixbuf_get_from_surface" pixbuf-from-surface)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2025-3-9}
+ "@version{#2025-03-09}
   @argument[surface]{a @symbol{cairo:surface-t} instance to copy from}
   @argument[xsrc]{an integer for the x coordinate within surface}
   @argument[ysrc]{an integer for the y coordinate within surface}

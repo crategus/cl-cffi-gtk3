@@ -333,7 +333,7 @@
 
 (cffi:defcfun ("gdk_drag_abort" drag-abort) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[time]{an unsigned integer with the timestamp for this operation}
   @begin{short}
@@ -352,7 +352,7 @@
 
 (cffi:defcfun ("gdk_drop_reply" drop-reply) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[accepted]{@em{true} if the drop is accepted}
   @argument[time]{an unsigned integer with the timestamp for this operation}
@@ -374,7 +374,7 @@
 
 (cffi:defcfun ("gdk_drag_drop" drag-drop) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[time]{an unsigned integer with the timestamp for this operation}
   @begin{short}
@@ -393,7 +393,7 @@
 
 (cffi:defcfun ("gdk_drag_drop_done" drag-drop-done) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[sucess]{a boolean whether the drag was ultimatively succesful}
   @begin{short}
@@ -478,7 +478,7 @@
 
 (defun drag-begin (window targets)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[window]{a @class{gdk:window} source window for this drag}
   @argument[targets]{a list of strings with the offered targets}
   @return{The newly created @class{gdk:drag-context} object.}
@@ -509,7 +509,7 @@
 
 (defun drag-begin-for-device (window device targets)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[window]{a @class{gdk:window} source window for this drag}
   @argument[device]{a @class{gdk:device} object that controls this drag}
   @argument[targets]{a list of strings with the offered targets}
@@ -610,7 +610,7 @@
 
 (cffi:defcfun ("gdk_drop_finish" drop-finish) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[success]{@em{true} if the data was successfully received}
   @argument[time]{an unsigned integer with the timestamp for this operation}
@@ -631,7 +631,7 @@
 
 (cffi:defcfun ("gdk_drag_status" drag-status) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[action]{a selected @symbol{gdk:drag-action} value which will be
     taken when a drop happens, or 0 to indicate that a drop will not be
@@ -657,7 +657,7 @@
 
 (cffi:defcfun ("gdk_drag_drop_succeeded" drag-drop-succeeded) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{@em{True} if the drop was successful.}
   @begin{short}
@@ -679,7 +679,7 @@
 (cffi:defcfun ("gdK_window_get_drag_protocol" window-drag-protocol)
     drag-protocol
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[window]{a @class{gdk:window} destination window}
   @argument[target]{a @class{gdk:window} object where the drop should happen,
     this may be @arg{window} or a proxy window, or @code{nil} if @arg{window}
@@ -702,7 +702,7 @@
 
 (cffi:defcfun ("gdk_drag_context_get_actions" drag-context-actions) drag-action
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @symbol{gdk:drag-action} flags.}
   @begin{short}
@@ -724,7 +724,7 @@
 (cffi:defcfun ("gdk_drag_context_get_suggested_action"
           drag-context-suggested-action) drag-action
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @symbol{gdk:drag-action} flags.}
   @begin{short}
@@ -743,7 +743,7 @@
 (cffi:defcfun ("gdk_drag_context_get_selected_action"
            drag-context-selected-action) drag-action
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @symbol{gdk:drag-action} flags.}
   @begin{short}
@@ -787,7 +787,7 @@
 
 (cffi:defcfun ("gdk_drag_context_get_device" drag-context-device) (g:object device)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gdk:drag-context-device context) => device}
   @syntax{(setf (gdk:drag-context-device context) device)}
   @argument[context]{a @class{gdk:drag-context} object}
@@ -809,7 +809,7 @@
 (cffi:defcfun ("gdk_drag_context_get_source_window" drag-context-source-window)
     (g:object window)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @class{gdk:window} object.}
   @begin{short}
@@ -828,7 +828,7 @@
 (cffi:defcfun ("gdk_drag_context_get_dest_window" drag-context-dest-window)
     (g:object window)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @class{gdk:window} object.}
   @begin{short}
@@ -847,7 +847,7 @@
 (cffi:defcfun ("gdk_drag_context_get_protocol" drag-context-protocol)
     drag-protocol
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @symbol{gdk:drag-protocol} drag protocol.}
   @begin{short}
@@ -866,7 +866,7 @@
 (cffi:defcfun ("gdk_drag_context_get_drag_window" drag-context-drag-window)
     (g:object window)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @return{The @class{gdk:window} drag window, or @code{nil}.}
   @begin{short}
@@ -889,7 +889,7 @@
 
 (cffi:defcfun ("gdk_drag_context_set_hotspot" drag-context-set-hotspot) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[x]{an integer with the x coordinate of the drag window hotspot}
   @argument[y]{an integer with the y coordinate of the drag window hotspot}
@@ -911,7 +911,7 @@
 
 (cffi:defcfun ("gdk_drag_context_manage_dnd" drag-context-manage-dnd) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[window]{a @class{gdk:window} object to use for IPC messaging/events}
   @argument[actions]{a @symbol{gdk:drag-action} value supported by the drag

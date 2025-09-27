@@ -102,7 +102,7 @@
 (setf (liber:alias-for-function 'rgba-red)
       "Accessor"
       (documentation 'rgba-red 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gdk:rgba-red instance) => red}
   @syntax{(setf (gdk:rgba-red instance) red)}
   @argument[instance]{a @struct{gdk:rgba} instance}
@@ -120,7 +120,7 @@
 (setf (liber:alias-for-function 'rgba-green)
       "Accessor"
       (documentation 'rgba-green 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gdk:rgba-green instance) => green}
   @syntax{(setf (gdk:rgba-green instance) green)}
   @argument[instance]{a @struct{gdk:rgba} instance}
@@ -138,7 +138,7 @@
 (setf (liber:alias-for-function 'rgba-blue)
       "Accessor"
       (documentation 'rgba-blue 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gdk:rgba-blue instance) => blue}
   @syntax{(setf (gdk:rgba-blue instance) blue)}
   @argument[instance]{a @struct{gdk:rgba} color}
@@ -156,7 +156,7 @@
 (setf (liber:alias-for-function 'rgba-alpha)
       "Accessor"
       (documentation 'rgba-alpha 'function)
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @syntax{(gdk:rgba-alpha instance) => alpha}
   @syntax{(setf (gdk:rgba-alpha instance) alpha)}
   @argument[instance]{a @struct{gdk:rgba} instance}
@@ -175,7 +175,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (defun rgba-new (&key (red 0.0d0) (green 0.0d0) (blue 0.0d0) (alpha 0.0d0))
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @argument[red]{a number for the intensity of the red channel from 0.0 to 1.0
     inclusive}
   @argument[green]{a number for the intensity of the green channel from 0.0 to
@@ -207,7 +207,7 @@
 
 (defun rgba-copy (rgba)
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[rgba]{a @struct{gdk:rgba} instance}
   @return{The newly allocated @struct{gdk:rgba} instance with the same contents
     as @arg{rgba}.}
@@ -234,7 +234,7 @@
 
 (defun rgba-parse (str)
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[str]{a string specifying the color}
   @return{The @struct{gdk:rgba} instance with the filled in values.}
   @begin{short}
@@ -286,7 +286,7 @@
 
 (cffi:defcfun ("gdk_rgba_equal" rgba-equal) :boolean
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[color1]{a @struct{gdk:rgba} instance}
   @argument[color2]{another @struct{gdk:rgba} instance}
   @return{@em{True} if the two colors compare equal.}
@@ -321,7 +321,7 @@
 
 (cffi:defcfun ("gdk_rgba_to_string" rgba-to-string) :string
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[color]{a @struct{gdk:rgba} instance}
   @return{The string with the textual specification of @arg{color}.}
   @begin{short}

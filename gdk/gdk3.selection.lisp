@@ -51,7 +51,7 @@
 
 (cffi:defcfun ("gdk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
   @argument[selection]{a string identifying a selection}
@@ -83,7 +83,7 @@
 (cffi:defcfun ("gdk_selection_owner_set_for_display"
            selection-owner-set-for-display) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[display]{a @class{gdk:display} object}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
@@ -117,7 +117,7 @@
 
 (cffi:defcfun ("gdk_selection_owner_get" selection-owner-get) (g:object window)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[selection]{a string indentifying a selection}
   @begin{return}
     If there is a selection owner for this window, and it is a window
@@ -142,7 +142,7 @@
 (cffi:defcfun ("gdk_selection_owner_get_for_display"
            selection-owner-get-for-display) (g:object window)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[display]{a @class{gdk:display} object}
   @argument[selection]{a string indentifying a selection}
   @return{If there is a selection owner for this window, and it is a window
@@ -167,7 +167,7 @@
 
 (cffi:defcfun ("gdk_selection_convert" selection-convert) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[requestor]{a @class{gdk:window} object}
   @argument[selection]{a string identifying the selection to get the contents
     of}
@@ -199,7 +199,7 @@
 
 (defun selection-property-get (requestor)
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[requestor]{a @class{gdk:window} object on which the data is stored}
   @begin{return}
     @code{length} -- an integer with the length of the retrieved data @br{}
@@ -239,7 +239,7 @@
 
 (cffi:defcfun ("gdk_selection_send_notify" selection-send-notify) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
   @argument[selection]{a string with the selection that was requested}
   @argument[target]{a string with the target that was selected}
@@ -268,7 +268,7 @@
 (cffi:defcfun ("gdk_selection_send_notify_for_display"
           selection-send-notify-for-display) :void
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @argument[display]{a @class{gdk:display} object where @arg{requestor} is
     realized}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}

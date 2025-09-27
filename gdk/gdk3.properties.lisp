@@ -88,7 +88,7 @@
 (setf (liber:alias-for-symbol 'atom)
       "Type"
       (liber:symbol-documentation 'atom)
- "@version{#2021-3-24}
+ "@version{#2021-03-24}
   @begin{short}
     An opaque type representing a string as an index into a table of strings on
     the X server.
@@ -129,7 +129,7 @@
 (setf (liber:alias-for-class 'atom-as-string)
       "Type"
       (documentation 'atom-as-string 'type)
- "@version{2024-3-23}
+ "@version{2024-03-23}
   @begin{short}
     The @class{gdk:atom-as-string} type represents the C @code{GAtom} type which
     represents a string as an index into a table of strings on the X server.

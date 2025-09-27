@@ -207,7 +207,7 @@ lambda (seat tool)    :run-last
 (setf (liber:alias-for-function 'seat-display)
       "Accessor"
       (documentation 'seat-display 'function)
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @syntax{(gdk:seat-display object) => display}
   @argument[object]{a @class{gdk:seat} object}
   @argument[display]{a @class{gdk:display} object}
@@ -349,7 +349,7 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_ungrab" seat-ungrab) :void
  #+liber-documentation
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @argument[seat]{a @class{gdk:seat} object}
   @short{Releases a grab added through the @fun{gdk:seat-grab} function.}
   @see-class{gdk:seat}
@@ -382,7 +382,7 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_pointer" seat-pointer) (g:object device)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[seat]{a @class{gdk:seat} object}
   @return{A master @class{gdk:device} object with pointer capabilities.}
   @begin{short}
@@ -400,7 +400,7 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_keyboard" seat-keyboard) (g:object device)
  #+liber-documentation
- "@version{#2023-3-7}
+ "@version{#2023-03-07}
   @argument[seat]{a @class{gdk:seat} object}
   @return{A master @class{gdk:device} object with keyboard capabilities.}
   @begin{short}

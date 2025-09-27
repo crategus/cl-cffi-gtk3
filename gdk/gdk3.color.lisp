@@ -112,7 +112,7 @@
 (setf (liber:alias-for-function 'color-pixel)
       "Accessor"
       (documentation 'color-pixel 'function)
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @syntax{(gdk:color-pixel instance) => pixel}
   @syntax{(setf (gdk:color-pixel instance) pixel)}
   @begin{short}
@@ -134,7 +134,7 @@
 (setf (liber:alias-for-function 'color-red)
       "Accessor"
       (documentation 'color-red 'function)
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @syntax{(gdk:color-red instance) => red}
   @syntax{(setf (gdk:color-red instance) red)}
   @begin{short}
@@ -158,7 +158,7 @@
 (setf (liber:alias-for-function 'color-green)
       "Accessor"
       (documentation 'color-green 'function)
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @syntax{(gdk:color-green instance) => green}
   @syntax{(setf (gdk:color-green instance) green)}
   @begin{short}
@@ -182,7 +182,7 @@
 (setf (liber:alias-for-function 'color-blue)
       "Accessor"
       (documentation 'color-blue 'function)
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @syntax{(gdk:color-blue instance) => blue}
   @syntax{(setf (gdk:color-blue instance) blue)}
   @begin{short}
@@ -208,7 +208,7 @@
 
 (defun color-new (&key (pixel 0) (red 0) (green 0) (blue 0))
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[pixel]{an unsigned integer for the pixel value used to draw this
     color on the screen, not used anymore}
   @argument[red]{an unsigned integer for the red component of the color, this
@@ -238,7 +238,7 @@
 
 (defun color-copy (color)
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[color]{a @class{gdk:color} color}
   @return{The newly created @class{gdk:color} instance with the copy of
     @arg{color}.}
@@ -272,7 +272,7 @@
 
 (defun color-parse (spec)
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[spec]{a string specifying the color}
   @return{The @class{gdk:color} instance or @code{nil} if the parsing did not
     succeed.}
@@ -306,7 +306,7 @@
 
 (cffi:defcfun ("gdk_color_equal" color-equal) :boolean
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[color1]{a @class{gdk:color} instance}
   @argument[color2]{another @class{gdk:color} instance}
   @return{@em{True} if the two colors compare equal.}
@@ -356,7 +356,7 @@
 (cffi:defcfun ("gdk_color_to_string" color-to-string)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{2025-1-15}
+ "@version{2025-01-15}
   @argument[color]{a @class{gdk:color} instance}
   @return{The text string representing @arg{color}.}
   @begin{short}

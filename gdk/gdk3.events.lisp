@@ -100,7 +100,7 @@
 
 (defconstant +current-time+ 0
  #+liber-documentation
- "@version{2024-4-2}
+ "@version{2024-04-02}
   @begin{short}
     Represents the current time, and can be used anywhere a time is expected.
   @end{short}")
@@ -125,7 +125,7 @@
 
 (defconstant +priority-redraw+ (+ glib:+priority-high-idle+ 20)
  #+liber-documentation
- "@version{2024-4-2}
+ "@version{2024-04-02}
   @begin{short}
     This is the priority that the idle handler processing window updates is
     given in the GLib Main Loop.
@@ -142,7 +142,7 @@
 
 (defconstant +event-propagate+ nil
  #+liber-documentation
- "@version{2024-4-2}
+ "@version{2024-04-02}
   @variable-value{@em{false}}
   @begin{short}
     Use this value as the return value for continuing the propagation of an
@@ -161,7 +161,7 @@
 
 (defconstant +event-stop+ t
  #+liber-documentation
- "@version{2024-4-2}
+ "@version{2024-04-02}
   @variable-value{@em{true}}
   @begin{short}
     Use this value as the return value for stopping the propagation of an event
@@ -222,7 +222,7 @@
 
 (cffi:defcfun ("gdk_events_pending" events-pending) :boolean
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @return{@em{True} if any events are pending.}
   @begin{short}
     Checks if any events are ready to be processed for any display.
@@ -246,7 +246,7 @@
 
 (cffi:defcfun ("gdk_event_peek" event-peek) (g:boxed event :return)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @begin{return}
     A copy of the first @class{gdk:event} instance on some event queue, or
     @code{nil} if no events are in any queues.
@@ -268,7 +268,7 @@
 
 (cffi:defcfun ("gdk_event_get" event-get) (g:boxed event :return)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @begin{return}
     The next @class{gdk:event} instance to be processed, or @code{nil} if no
     events are pending.
@@ -289,7 +289,7 @@
 
 (cffi:defcfun ("gdk_event_put" event-put) :void
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @begin{short}
     Appends a copy of the given event onto the front of the event queue for
@@ -311,7 +311,7 @@
 
 (defun event-new (event-type &rest args)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event-type]{a value of the @symbol{gdk:event-type} enumeration}
   @argument[args]{pairs of property name and property value}
   @return{A new  @class{gdk:event} instance.}
@@ -402,7 +402,7 @@
 
 (defun event-copy (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @return{A copy of the @class{gdk:event} instance.}
   @begin{short}
@@ -487,7 +487,7 @@
 
 (defun event-click-count (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @return{Click count, or @code{nil} if the event does not deliver a click
     count.}
@@ -516,7 +516,7 @@
 
 (defun event-coords (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
     @code{xwin} -- a double float with the event window x coordinate @br{}
@@ -591,7 +591,7 @@
 
 (defun event-root-coords (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
     @code{xroot} -- a double float with the root window x coordinate @br{}
@@ -641,7 +641,7 @@
 
 (defun event-scroll-deltas (event)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
     @code{xdelta} -- a double float with x delta @br{}
@@ -781,7 +781,7 @@
 (cffi:defcfun ("gdk_event_get_event_sequence" event-event-sequence)
     (g:boxed event-sequence)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @return{The @class{gdk:event-sequence} event sequence that the event belongs
     to.}
@@ -803,7 +803,7 @@
 
 (cffi:defcfun ("gdk_event_request_motions" event-request-motions) :void
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @begin{short}
     Request more motion notifies if the event is a motion notify hint event.
@@ -839,7 +839,7 @@
   (angle (:pointer :double)))
 
 (defun events-angle (event1 event2)
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
   @return{A double float with the relative angle between both events.}
@@ -867,7 +867,7 @@
   (y (:pointer :double)))
 
 (defun events-center (event1 event2)
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
   @begin{return}
@@ -896,7 +896,7 @@
   (distance (:pointer :double)))
 
 (defun events-distance (event1 event2)
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
   @return{A double float with the distance.}
@@ -918,7 +918,7 @@
 
 (cffi:defcfun ("gdk_event_triggers_context_menu" event-triggers-context-menu)
     :boolean
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[event]{a @class{gdk:event} instance}
   @return{@em{True} if the event should trigger a contect menu.}
   @begin{short}
@@ -946,7 +946,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_seat" event-seat) (g:object gdk-seat)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{The @class{gdk:seat} object of this event.}
   @begin{short}
@@ -982,7 +982,7 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gdk_event_get_pointer_emulated" event-pointer-emulated) :boolean
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @argument[event]{a @class{gdk:event} instance}
   @return{@em{True} if this event is emulated.}
   @begin{short}
@@ -1032,7 +1032,7 @@
 
 (defun event-handler-set (func)
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @argument[func]{a @symbol{gdk:event-func} callback function to call to handle
     events from GDK}
   @begin{short}
@@ -1060,7 +1060,7 @@
 
 (cffi:defcfun ("gdk_get_show_events" show-events) :boolean
  #+liber-documentation
- "@version{#2023-2-26}
+ "@version{#2023-02-26}
   @syntax{(gdk:show-events) => show-events}
   @syntax{(setf (gdk:show-events) show-events)}
   @argument[show-events]{@em{True} to output event debugging information.}
@@ -1091,7 +1091,7 @@
 
 (cffi:defcfun ("gdk_event_get_screen" event-screen) (g:object screen)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @syntax{(gdk:event-screen event) => screen}
   @syntax{(setf (gdk:event-screen event) screen)}
   @argument[event]{a @class{gdk:event} instance}
@@ -1129,7 +1129,7 @@
 
 (cffi:defcfun ("gdk_event_get_device" event-device) (g:object device)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @syntax{(gdk:event-device event) => device}
   @syntax{(setf (gdk:event-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
@@ -1163,7 +1163,7 @@
 
 (cffi:defcfun ("gdk_event_get_source_device" event-source-device) (g:object device)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @syntax{(gdk:event-source-device event) => device}
   @syntax{(setf (gdk:event-source-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
@@ -1243,7 +1243,7 @@
 
 (defun setting-get (name gtype)
  #+liber-documentation
- "@version{2023-2-26}
+ "@version{2023-02-26}
   @argument[name]{a string with the name of the setting}
   @argument[gtype]{a string with the GType of the setting}
   @begin{return}

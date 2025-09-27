@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.threads.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -53,7 +53,7 @@
 
 (defmacro with-threads-lock (&body body)
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     A macro to execute @arg{body} between the @fun{gdk:threads-enter} and
     @fun{gdk:threads-leave} functions.
@@ -74,7 +74,7 @@
 
 (cffi:defcfun ("gdk_threads_init" threads-init) :void
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     Initializes GDK so that it can be used from multiple threads in conjunction
     with the @fun{gdk:threads-enter} and @fun{gdk:threads-leave} functions.
@@ -97,7 +97,7 @@
 
 (cffi:defcfun ("gdk_threads_enter" threads-enter) :void
  #+liber-documentation
- "@version{2024-6-29}
+ "@version{2024-06-29}
   @begin{short}
     This function marks the beginning of a critical section in which GDK and
     GTK functions can be called safely and without causing race conditions.
@@ -119,7 +119,7 @@
 
 (cffi:defcfun ("gdk_threads_leave" threads-leave) :void
  #+liber-documentation
- "@version{2026-6-29}
+ "@version{2026-06-29}
   @begin{short}
     Leaves a critical region begun with the @fun{gdk:threads-enter} function.
   @end{short}

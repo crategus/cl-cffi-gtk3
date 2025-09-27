@@ -488,7 +488,7 @@ lambda (monitor)    :run-first
 
 (cffi:defcfun ("gdk_monitor_is_primary" monitor-is-primary) :boolean
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @argument[monitor]{a @class{gdk:monitor} object}
   @return{@em{True} if @arg{monitor} is the primary monitor.}
   @begin{short}

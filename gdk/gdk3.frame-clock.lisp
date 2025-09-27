@@ -308,7 +308,7 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_begin_updating" frame-clock-begin-updating) :void
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
     Starts updates for an animation.
@@ -330,7 +330,7 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_end_updating" frame-clock-end-updating) :void
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{short}
     Stops updates for an animation.
@@ -348,7 +348,7 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_get_frame_counter" frame-clock-frame-counter) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
     Inside frame processing, the unsigned integer of the frame counter for the
@@ -370,7 +370,7 @@ lambda (clock)    :run-last
 
 (cffi:defcfun ("gdk_frame_clock_get_history_start" frame-clock-history-start) :int64
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
     The unsigned integer frame counter value for the oldest frame that is
@@ -399,7 +399,7 @@ lambda (clock)    :run-last
 (cffi:defcfun ("gdk_frame_clock_get_timings" frame-clock-timings)
     (g:boxed frame-timings)
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @argument[counter]{an unsigned integer frame counter value identifying the
     frame to be received}
@@ -430,7 +430,7 @@ lambda (clock)    :run-last
 (cffi:defcfun ("gdk_frame_clock_get_current_timings" frame-clock-current-timings)
     (g:boxed frame-timings)
  #+liber-documentation
- "@version{#2023-3-10}
+ "@version{#2023-03-10}
   @argument[clock]{a @class{gdk:frame-clock} object}
   @begin{return}
     The @class{gdk:frame-timings} instance for the frame currently being
