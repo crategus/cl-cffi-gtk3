@@ -104,7 +104,7 @@
 
 #+liber-documentation
 (setf (documentation 'image-menu-item 'type)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @begin{short}
     The @class{gtk:image-menu-item} widget is a menu item which has an icon
     next to the text label.
@@ -201,7 +201,7 @@
 (setf (liber:alias-for-function 'image-menu-item-accel-group)
       "Accessor"
       (documentation 'image-menu-item-accel-group 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(setf (gtk:image-menu-item-accel-group object) group)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
   @argument[group]{a @class{gtk:accel-group} object}
@@ -242,7 +242,7 @@
 (setf (liber:alias-for-function 'image-menu-item-always-show-image)
       "Accessor"
       (documentation 'image-menu-item-always-show-image 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gtk:image-menu-item-always-show-image object) => always-show}
   @syntax{(setf (gtk:image-menu-item-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -274,7 +274,7 @@
 (setf (liber:alias-for-function 'image-menu-item-image)
       "Accessor"
       (documentation 'image-menu-item-image 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gtk:image-menu-item-image object) => image}
   @syntax{(setf (gtk:image-menu-item-image object) image)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -311,7 +311,7 @@
 (setf (liber:alias-for-function 'image-menu-item-use-stock)
       "Accessor"
       (documentation 'image-menu-item-use-stock 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gtk:image-menu-item-use-stock object) => use-stock}
   @syntax{(setf (gtk:image-menu-item-use-stock object) use-stock)}
   @argument[object]{a @class{gtk:image-menu-item} widget}
@@ -335,7 +335,7 @@
 (declaim (inline image-menu-item-new))
 
 (defun image-menu-item-new ()
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @return{The new @class{gtk:image-menu-item} widget.}
   @begin{short}
     Creates a new image menu item with an empty label.

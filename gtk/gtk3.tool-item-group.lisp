@@ -121,7 +121,7 @@
 
 #+liber-documentation
 (setf (documentation 'tool-item-group 'type)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @begin{short}
     A @class{gtk:tool-item-group} widget is used together with a
     @class{gtk:tool-palette} widget to add @class{gtk:tool-item} widgets to a
@@ -204,7 +204,7 @@
 (setf (liber:alias-for-function 'tool-item-group-collapsed)
       "Accessor"
       (documentation 'tool-item-group-collapsed 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-collapsed object) => collapsed}
   @syntax{(setf (gtk:tool-item-group-collapsed object) collapsed)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
@@ -322,7 +322,7 @@
 (setf (liber:alias-for-function 'tool-item-group-label-widget)
       "Accessor"
       (documentation 'tool-item-group-label-widget 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-label-widget object) => label-widget}
   @syntax{(setf (gtk:tool-item-group-label-widget object) label-widget)}
   @argument[object]{a @class{gtk:tool-item-group} widget}
@@ -355,7 +355,7 @@
 (setf (liber:alias-for-function 'tool-item-group-child-expand)
       "Accessor"
       (documentation 'tool-item-group-child-expand 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-child-expand container child) => expand}
   @syntax{(setf (gtk:tool-item-group-child-expand container child) expand)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
@@ -378,7 +378,7 @@
 (setf (liber:alias-for-function 'tool-item-group-child-fill)
       "Accessor"
       (documentation 'tool-item-group-child-fill 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-child-fill container child) => fill}
   @syntax{(setf (gtk:tool-item-group-child-fill container child) fill)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
@@ -401,7 +401,7 @@
 (setf (liber:alias-for-function 'tool-item-group-child-homogeneous)
       "Accessor"
       (documentation 'tool-item-group-child-homogeneous 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-child-homogeneous container child) => homogeneous}
   @syntax{(setf (gtk:tool-item-group-child-homogeneous container child) homogeneous)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
@@ -424,7 +424,7 @@
 (setf (liber:alias-for-function 'tool-item-group-child-new-row)
       "Accessor"
       (documentation 'tool-item-group-child-new-row 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-item-group-child-new-row container child) => new-row}
   @syntax{(setf (gtk:tool-item-group-child-new-row container child) new-row)}
   @argument[container]{a @class{gtk:tool-item-group} widget}
@@ -472,7 +472,7 @@
 (cffi:defcfun ("gtk_tool_item_group_get_drop_item" tool-item-group-drop-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[group]{a @class{gtk:tool-item-group} widget}
   @argument[x]{an integer for the x position}
   @argument[y]{an integer for the y position}

@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-section 'type)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @begin{short}
     The @class{gtk:shortcuts-section} widget collects all the keyboard shortcuts
     and gestures for a major application mode.
@@ -199,7 +199,7 @@ lambda (section arg)    :action
 (setf (liber:alias-for-function 'shortcuts-section-title)
       "Accessor"
       (documentation 'shortcuts-section-title 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-section-title object) => title}
   @syntax{(setf (gtk:shortcuts-section-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-section} widget}

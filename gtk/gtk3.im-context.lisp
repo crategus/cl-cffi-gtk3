@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'im-context 'type)
- "@version{#2023-2-28}
+ "@version{#2025-09-26}
   @begin{short}
     The @class{gtk:im-context} object defines the interface for GTK input
     methods.
@@ -170,10 +170,10 @@ lambda (context offset n-chars)    :run-last
       @begin[code]{simple-table}
         @entry[context]{The @class{gtk:im-context} object on which the signal
           is emitted.}
-        @entry[offset]{An integer with the character offset from the cursor
+        @entry[offset]{The integer for the character offset from the cursor
           position of the text to be deleted. A negative value indicates a
           position before the cursor.}
-        @entry[n-chars]{An integer with the number of characters to be deleted.}
+        @entry[n-chars]{The integer for the number of characters to be deleted.}
         @entry[Returns]{@em{True} if the signal was handled.}
       @end{simple-table}
       The signal is emitted when the input method needs to delete all or part
@@ -373,7 +373,7 @@ lambda (context)    :run-last
 (cffi:defcfun ("gtk_im_context_filter_keypress" im-context-filter-keypress)
     :boolean
  #+liber-documentation
- "@version{#2023-3-8}
+ "@version{#2023-03-08}
   @argument[context]{a @class{gtk:im-context} context}
   @argument[event]{a @class{gdk:event-key} event}
   @return{@em{True} if the input method handled the key event.}

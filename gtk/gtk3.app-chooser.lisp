@@ -72,7 +72,7 @@
 (setf (liber:alias-for-class 'app-chooser)
       "Interface"
       (documentation 'app-chooser 'type)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @begin{short}
     The @class{gtk:app-chooser} interface is an interface that can be
     implemented by widgets which allow the user to choose an application,
@@ -129,13 +129,13 @@
   @see-class{gtk:app-chooser}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_get_app_info ()
+;;; gtk_app_chooser_get_app_info
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_get_app_info" app-chooser-app-info)
     (g:object g:app-info)
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @argument[object]{a @class{gtk:app-chooser} object}
   @begin{return}
     A @class{g:app-info} object for the currently selected application, or
@@ -150,12 +150,12 @@
 (export 'app-chooser-app-info)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_app_chooser_refresh ()
+;;; gtk_app_chooser_refresh
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_app_chooser_refresh" app-chooser-refresh) :void
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @argument[object]{a @class{gtk:app-chooser} object}
   @short{Reloads the list of applications.}
   @see-class{gtk:app-chooser}"

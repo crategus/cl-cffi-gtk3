@@ -426,7 +426,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-view 'type)
- "@version{2025-07-15}
+ "@version{2025-09-26}
   @begin{short}
     GTK has a powerful framework for multiline text editing.
   @end{short}
@@ -570,7 +570,7 @@ lambda (view step count extend)    :action
         @entry[view]{The @class{gtk:text-view} widget that received the signal.}
         @entry[step]{The granularity of the move, as a value of the
           @sym{gtk:movement-step} enumeration.}
-        @entry[count]{An integer with the number of step units to move.}
+        @entry[count]{The integer for the number of step units to move.}
         @entry[extend]{@em{True} if the move should extend the selection.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
@@ -1773,12 +1773,12 @@ lambda (view)    :action
 
 (defun text-view-line-yrange (view iter)
  #+liber-documentation
- "@version{#2023-03-08}
+ "@version{#2025-09-26}
   @argument[view]{a @class{gtk:text-view} widget}
   @argument[iter]{a @class{gtk:text-iter} iterator}
   @begin{return}
-    @arg{y} -- an integer with the y coordinate @br{}
-    @arg{height} -- an integer with the height
+    @arg{y} -- an integer for the y coordinate @br{}
+    @arg{height} -- an integer for the height
   @end{return}
   @begin{short}
     Gets the @arg{y} coordinate of the top of the line containing @arg{iter},

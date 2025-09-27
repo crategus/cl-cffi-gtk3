@@ -68,7 +68,7 @@
 (setf (liber:alias-for-class 'tool-shell)
       "Interface"
       (documentation 'tool-shell 'type)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @begin{short}
     The @class{gtk:tool-shell} interface allows container widgets to provide
     additional information when embedding @class{gtk:tool-item} widgets.
@@ -232,7 +232,7 @@
 
 (cffi:defcfun ("gtk_tool_shell_rebuild_menu" tool-shell-rebuild-menu) :void
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @begin{short}
     Calling this function signals the tool shell that the overflow menu item
@@ -256,7 +256,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)
     (g:object size-group)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @class{gtk:size-group} object of @arg{shell}.}
   @begin{short}

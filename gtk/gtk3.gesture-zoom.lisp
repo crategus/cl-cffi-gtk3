@@ -100,7 +100,7 @@ lambda (gesture scale)    :run-first
 
 (defun gesture-zoom-new (widget)
  #+liber-documentation
- "@version{#2025-1-15}
+ "@version{#2025-01-15}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The newly created @class{gtk:gesture-zoom} object.}
   @begin{short}

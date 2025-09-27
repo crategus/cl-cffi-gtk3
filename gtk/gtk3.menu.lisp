@@ -455,7 +455,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-accel-group)
       "Accessor"
       (documentation 'menu-accel-group 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-accel-group object) => group}
   @syntax{(setf (gtk:menu-accel-group object) group)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -616,7 +616,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-attach-widget)
       "Accessor"
       (documentation 'menu-attach-widget 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-attach-widget object) => widget}
   @syntax{(setf (gtk:menu-attach-widget object) widget)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -798,7 +798,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-reserve-toggle-size)
       "Accessor"
       (documentation 'menu-reserve-toggle-size 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-reserve-toggle-size object) => reserve}
   @syntax{(setf (gtk:menu-reserve-toggle-size object) reserve)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -831,7 +831,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-tearoff-state)
       "Accessor"
       (documentation 'menu-tearoff-state 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-tearoff-state object) => state}
   @syntax{(setf (gtk:menu-tearoff-state object) state)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -868,7 +868,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (setf (liber:alias-for-function 'menu-tearoff-title)
       "Accessor"
       (documentation 'menu-tearoff-title 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-tearoff-title object) => title}
   @syntax{(setf (gtk:menu-tearoff-title object) title)}
   @argument[object]{a @class{gtk:menu} widget}
@@ -994,7 +994,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (defun menu-new ()
  #+liber-documentation
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @return{The new @class{gtk:menu} widget.}
   @short{Creates a new menu.}
   @see-class{gtk:menu}"
@@ -1008,7 +1008,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_new_from_model" menu-new-from-model) (g:object widget)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2023-03-21}
   @argument[model]{a @class{g:menu-model} object}
   @return{The new @class{gtk:menu} widget.}
   @begin{short}
@@ -1034,7 +1034,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_set_screen" menu-set-screen) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} if the screen
     should be determined by the widget the menu is attached to}
@@ -1052,7 +1052,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_reorder_child" menu-reorder-child) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[child]{a @class{gtk:menu-item} widget to move}
   @argument[position]{the new position to place child, positions are numbered
@@ -1223,7 +1223,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_popup_at_pointer" menu-popup-at-pointer) :void
  #+liber-documentation
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[event]{a @class{gdk:event} instance that initiated this request, or
     @code{nil} if it is the current event}
@@ -1470,7 +1470,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_place_on_monitor" menu-place-on-monitor) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[monitor]{a @class{gdk:monitor} object to place the menu on}
   @short{Places the menu on the given monitor.}
@@ -1487,7 +1487,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_popdown" menu-popdown) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @short{Removes the menu from the screen.}
   @see-class{gtk:menu}"
@@ -1501,7 +1501,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_reposition" menu-reposition) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @short{Repositions the menu according to its position function.}
   @see-class{gtk:menu}"
@@ -1533,7 +1533,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_attach_to_widget" menu-attach-to-widget) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @argument[widget]{a @class{gtk:widget} widget that the menu will be attached
     to}
@@ -1559,7 +1559,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 
 (cffi:defcfun ("gtk_menu_detach" menu-detach) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menu]{a @class{gtk:menu} widget}
   @begin{short}
     Detaches the menu from the widget to which it had been attached.
@@ -1579,7 +1579,7 @@ lambda (menu flipped final xflipped yflipped)    :run-first
 (cffi:defcfun ("gtk_menu_get_for_attach_widget" menu-for-attach-widget)
     (g:list-t (g:object menu) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[widget]{a @class{gtk:widget} widget}
   @return{The list of @class{gtk:menu} widgets attached to @arg{widget}.}
   @begin{short}

@@ -3429,12 +3429,12 @@ lambda (view)    :action
 
 (defun tree-view-tooltip-context (view)
  #+liber-documentation
- "@version{#2025-07-02}
+ "@version{#2025-09-26}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
-    @arg{x} -- an integer with the x coordinate (relative to widget
+    @arg{x} -- an integer for the x coordinate (relative to widget
       coordinates) @br{}
-    @arg{y} -- an integer with the y coordinate (relative to widget
+    @arg{y} -- an integer for the y coordinate (relative to widget
       coordinates) @br{}
     @arg{tip} -- a boolean whether this is a keyboard tooltip or not @br{}
     @arg{model} -- a @class{gtk:tree-model} object @br{}

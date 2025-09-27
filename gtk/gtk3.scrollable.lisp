@@ -123,7 +123,7 @@
 (setf (liber:alias-for-class 'scrollable)
       "Interface"
       (documentation 'scrollable 'type)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:scrollable} interface is an interface that is implemented by
     widgets with native scrolling ability.
@@ -181,7 +181,7 @@
 (setf (liber:alias-for-function 'scrollable-hadjustment)
       "Accessor"
       (documentation 'scrollable-hadjustment 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:scrollable-hadjustment object) => hadjustment}
   @syntax{(setf (gtk:scrollable-hadjustment object) hadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}
@@ -244,7 +244,7 @@
 (setf (liber:alias-for-function 'scrollable-vadjustment)
       "Accessor"
       (documentation 'scrollable-vadjustment 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:scrollable-vadjustment object) => vadjustment}
   @syntax{(setf (gtk:scrollable-vadjustment object) vadjustment)}
   @argument[object]{a @class{gtk:scrollable} widget}

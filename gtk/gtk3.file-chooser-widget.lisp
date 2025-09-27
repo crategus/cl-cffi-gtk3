@@ -300,7 +300,7 @@ lambda (widget)    :action
 (setf (liber:alias-for-function 'file-chooser-widget-search-mode)
       "Accessor"
       (documentation 'file-chooser-widget-search-mode 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:file-chooser-widget object) => search-mode}
   @syntax{(setf (gtk:file-chooser-widget object) search-mode)}
   @argument[object]{a @class{gtk:file-chooser-widget} widget}

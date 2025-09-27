@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-chooser-dialog 'type)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @begin{short}
     The @class{gtk:font-chooser-dialog} widget is a dialog for selecting a font.
   @end{short}

@@ -219,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'places-sidebar 'type)
- "@version{#2025-07-16}
+ "@version{#2025-09-26}
   @begin{short}
     The @class{gtk:places-sidebar} widget is a widget that displays a list of
     frequently-used places in the file system: the user’s home directory, the
@@ -266,9 +266,9 @@ lambda (sidebar actions)    :run-last
       @begin[code]{simple-table}
         @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
-        @entry[actions]{An integer with the possible drag actions that need to
+        @entry[actions]{The integer for the possible drag actions that need to
           be asked for.}
-        @entry[Returns]{An integer with the final drag action that the sidebar
+        @entry[Returns]{The integer for the final drag action that the sidebar
           should pass to the drag side of the drag and drop operation.}
       @end{simple-table}
       The places sidebar emits this signal when it needs to ask the application
@@ -286,7 +286,7 @@ lambda (sidebar context dest source)    :run-last
         @entry[dest]{A @class{g:file} object with the tentative location that
           is being hovered for a drop.}
         @entry[source]{List of @class{g:file} objects that are being dragged.}
-        @entry[Returns]{An integer with the drag action to use, for example,
+        @entry[Returns]{The integer for the drag action to use, for example,
         @code{GDK_ACTION_COPY} or @code{GDK_ACTION_MOVE}, or 0 if no action is
         allowed here, that is, drops are not allowed in the specified
         @arg{dest}.}
@@ -307,7 +307,7 @@ lambda (sidebar dest source action)    :run-first
           the signal.}
         @entry[dest]{Destination @class{g:file} object.}
         @entry[source]{List of @class{g:file} objects that got dropped.}
-        @entry[action]{An integer with the drop action to perform.}
+        @entry[action]{The integer for the drop action to perform.}
       @end{simple-table}
       The places sidebar emits this signal when the user completes a drag and
       drop operation and one of the sidebar's items is the destination. This
@@ -536,7 +536,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-local-only)
       "Accessor"
       (documentation 'places-sidebar-local-only 'function)
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @syntax{(gtk:places-sidebar-local-only object) => local-only}
   @syntax{(setf (gtk:places-sidebar-local-only object) local-only)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -643,7 +643,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-populate-all)
       "Accessor"
       (documentation 'places-sidebar-populate-all 'function)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gtk:places-sidebar-populate-all object) => populate-all}
   @syntax{(setf (gtk:places-sidebar-populate-all object) populate-all)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -672,7 +672,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-connect-to-server)
       "Accessor"
       (documentation 'places-sidebar-show-connect-to-server 'function)
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @syntax{(gtk:places-sidebar-show-connect-to-server object) => setting}
   @syntax{(setf (gtk:places-sidebar-show-connect-to-server object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -709,7 +709,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-desktop)
       "Accessor"
       (documentation 'places-sidebar-show-desktop 'function)
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @syntax{(gtk:places-sidebar-show-desktop) => show-desktop}
   @syntax{(setf (gtk:places-sidebar-show-desktop object) show-desktop)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -740,7 +740,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-enter-location)
       "Accessor"
       (documentation 'places-sidebar-show-enter-location 'function)
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @syntax{(gtk:places-sidebar-show-enter-location) => setting}
   @syntax{(setf (gtk:places-sidebar-show-enter-location object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -771,7 +771,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-other-locations)
       "Accessor"
       (documentation 'places-sidebar-show-other-locations 'function)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gtk:places-sidebar-show-other-locations) => setting}
   @syntax{(setf (gtk:places-sidebar-show-other-locations object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -803,7 +803,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-recent)
       "Accessor"
       (documentation 'places-sidebar-show-recent 'function)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gtk:places-sidebar-show-recent) => show-recent}
   @syntax{(setf (gtk:places-sidebar-show-recent object) show-recent)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -831,7 +831,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-starred-location)
       "Accessor"
       (documentation 'places-sidebar-show-starred-location 'function)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gtk:places-sidebar-show-starred-location object) => setting}
   @syntax{(setf (gtk:places-sidebar-show-starred-location object) setting)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -856,7 +856,7 @@ lambda (sidebar mount)    :run-first
 (setf (liber:alias-for-function 'places-sidebar-show-trash)
       "Accessor"
       (documentation 'places-sidebar-show-trash 'function)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @syntax{(gtk:places-sidebar-show-trash) => show-trash}
   @syntax{(setf (gtk:places-sidebar-show-trash object) show-trash)}
   @argument[object]{a @class{gtk:places-sidebar} widget}
@@ -995,7 +995,7 @@ lambda (sidebar mount)    :run-first
 (cffi:defcfun ("gtk_places_sidebar_set_drop_targets_visible"
                places-sidebar-set-drop-targets-visible) :void
  #+liber-documentation
- "@version{#2023-3-6}
+ "@version{#2023-03-06}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
   @argument[visible]{a boolean whether to show the valid targets or not}
   @argument[context]{a @class{gdk:drag-context} drag context used to ask the

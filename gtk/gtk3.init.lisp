@@ -77,7 +77,7 @@
 
   (defun join-gtk-main ()
    #+liber-documentation
-   "@version{#2023-3-5}
+   "@version{#2023-03-05}
     @begin{short}
       Wait until the GTK program terminates.
     @end{short}

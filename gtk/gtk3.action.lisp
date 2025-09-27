@@ -277,7 +277,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-action-group)
       "Accessor"
       (documentation 'action-action-group 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{gtk:action-action-group object) => group}
   @syntax{(setf (gtk:action-action-group object) group)}
   @argument[object]{a @class{gtk:action} object}
@@ -311,7 +311,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-always-show-image)
       "Accessor"
       (documentation 'action-always-show-image 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-always-show-image object) => always-show}
   @syntax{(setf (gtk:action-always-show-image object) always-show)}
   @argument[object]{a @class{gtk:action} object}
@@ -347,7 +347,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-gicon)
       "Accessor"
       (documentation 'action-gicon 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-gicon object) => icon}
   @syntax{(setf (gtk:action-gicon object) icon)}
   @argument[object]{a @class{gtk:action} object}
@@ -384,7 +384,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-hide-if-empty)
       "Accessor"
       (documentation 'action-hide-if-empty 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-hide-if-empty object) => hide-if-empty}
   @syntax{(setf (gtk:action-hide-if-empty object) hide-if-empty)}
   @argument[object]{a @class{gtk:action} object}
@@ -457,7 +457,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-is-important)
       "Accessor"
       (documentation 'action-is-important 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-is-important object) => is-important}
   @syntax{(setf (gtk:action-is-important object) is-important)}
   @argument[object]{a @class{gtk:action} object}
@@ -559,7 +559,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-sensitive)
       "Accessor"
       (documentation 'action-sensitive 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action} object}
@@ -693,7 +693,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible)
       "Accessor"
       (documentation 'action-visible 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-visible object) => visible}
   @syntax{(setf (gtk:action-visible object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -728,7 +728,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-horizontal)
       "Accessor"
       (documentation 'action-visible-horizontal 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-visible-horizontal object) => visible}
   @syntax{(setf (gtk:action-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -760,7 +760,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-overflown)
       "Accessor"
       (documentation 'action-visible-overflown 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-visible-overflow object) => visible}
   @syntax{(setf (gtk:action-visible-overflow object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -791,7 +791,7 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-vertical)
       "Accessor"
       (documentation 'action-visible-vertical 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:action-visible-vertical object) => visible}
   @syntax{(setf (gtk:action-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:action} object}
@@ -861,7 +861,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_is_sensitive" action-is-sensitive) :boolean
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{@em{True} if the action and its associated action group are both
     sensitive.}
@@ -885,7 +885,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_is_visible" action-is-visible) :boolean
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{@em{True} if the action and its associated action group are
     both visible.}
@@ -972,7 +972,7 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_create_menu_item" action-create-menu-item)
     (g:object image-menu-item)
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:image-menu-item} widget connected to the action.}
   @short{Creates a menu item widget that proxies for the given action.}
@@ -997,7 +997,7 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_create_tool_item" action-create-tool-item)
     (g:object tool-button)
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:tool-button} widget connected to the action.}
   @short{Creates a toolbar item that proxies for the given action.}
@@ -1022,7 +1022,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_create_menu" action-create-menu) g:object
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The @class{gtk:menu} widget provided by the action, or @code{nil}.}
   @begin{short}
@@ -1052,7 +1052,7 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_get_proxies" action-proxies)
     (g:slist-t g:object :free-from-foreign nil)
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @return{The list of @class{gtk:widget} proxy widgets.}
   @short{Returns the proxy widgets for the action.}
@@ -1075,7 +1075,7 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_connect_accelerator" action-connect-accelerator)
     :void
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @begin{short}
     Installs the accelerator for the action if the action has an accel path and
@@ -1112,7 +1112,7 @@ lambda (action)    :no-recurse
 (cffi:defcfun ("gtk_action_disconnect_accelerator"
                action-disconnect-accelerator) :void
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @begin{short}
     Undoes the effect of one call to the @fun{gtk:action-connect-accelerator}
@@ -1138,7 +1138,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_block_activate" action-block-activate) :void
  #+liber-documentation
- "@version{#2024-9-26}
+ "@version{#2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @short{Disable activation signals from the action.}
   This is needed when updating the state of your @class{gtk:activatable} proxy
@@ -1166,7 +1166,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_unblock_activate" action-unblock-activate) :void
  #+liber-documentation
- "@version{#2024-9-26}
+ "@version{#2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @short{Reenable activation signals from the action.}
   @begin[Warning]{dictionary}
@@ -1250,7 +1250,7 @@ lambda (action)    :no-recurse
 
 (cffi:defcfun ("gtk_action_set_accel_group" action-set-accel-group) :void
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:action} object}
   @argument[group]{a @class{gtk:accel-group} object or @code{nil}}
   @begin{short}

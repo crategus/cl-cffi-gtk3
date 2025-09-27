@@ -165,7 +165,7 @@
 
 #+liber-documentation
 (setf (documentation 'status-icon 'type)
- "@version{#2025-07-17}
+ "@version{#2025-09-26}
   @begin{short}
     The \"system tray\" or notification area is normally used for transient
     icons that indicate some special state.
@@ -260,7 +260,7 @@ lambda (icon button time)    :action
           signal.}
         @entry[button]{The unsigned integer for the button that was pressed, or
           0 if the signal is not emitted in response to a button press event.}
-        @entry[time]{An unsigned integer with the timestamp of the event that
+        @entry[time]{The unsigned integer for the timestamp of the event that
           triggered the signal emission.}
       @end{simple-table}
       Gets emitted when the user brings up the context menu of the status icon.
@@ -322,7 +322,7 @@ lambda (icon size)    :run-last
       @begin[code]{simple-table}
         @entry[icon]{The @class{gtk:status-icon} object which received the
           signal.}
-        @entry[size]{An integer with the new size.}
+        @entry[size]{The integer for the new size.}
         @entry[Returns]{@em{True} if the icon was updated for the new size.
           Otherwise, GTK will scale the icon as necessary.}
       @end{simple-table}
@@ -369,7 +369,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-embedded)
       "Accessor"
       (documentation 'status-icon-embedded 'function)
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @syntax{(gtk:status-icon-embedded object) => embedded}
   @argument[object]{a @class{gtk:status-icon} object}
   @argument[embedded]{a boolean whether the status icon is embedded}
@@ -424,7 +424,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-gicon)
       "Accessor"
       (documentation 'status-icon-gicon 'function)
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @syntax{(gtk:status-icon-gicon object) => icon}
   @syntax{(setf (gtk:status-icon-gicon object) icon)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -579,7 +579,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-pixbuf)
       "Accessor"
       (documentation 'status-icon-pixbuf 'function)
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @syntax{(gtk:status-icon-pixbuf object) => pixbuf}
   @syntax{(setf (gtk:status-icon-pixbuf object) pixbuf)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -615,7 +615,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-screen)
       "Accessor"
       (documentation 'status-icon-screen 'function)
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @syntax{(gtk:status-icon-screen object) => screen}
   @syntax{(setf (gtk:status-icon-screen object) screen)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -876,7 +876,7 @@ lambda (icon size)    :run-last
 (setf (liber:alias-for-function 'status-icon-visible)
       "Accessor"
       (documentation 'status-icon-visible 'function)
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @syntax{(gtk:status-icon-visible object) => visible}
   @syntax{(setf (gtk:status-icon-visible object) visible)}
   @argument[object]{a @class{gtk:status-icon} widget}
@@ -906,7 +906,7 @@ lambda (icon size)    :run-last
 
 (defun status-icon-new ()
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @return{The new @class{gtk:status-icon} object.}
   @short{Creates an empty status icon.}
   @begin[Warning]{dictionary}
@@ -925,7 +925,7 @@ lambda (icon size)    :run-last
 (cffi:defcfun ("gtk_status_icon_new_from_pixbuf" status-icon-new-from-pixbuf)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
   @return{The new @class{gtk:status-icon} object.}
   @begin{short}
@@ -1020,7 +1020,7 @@ lambda (icon size)    :run-last
 (cffi:defcfun ("gtk_status_icon_new_from_gicon" status-icon-new-from-gicon)
     (g:object status-icon)
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[icon]{a @class{g:icon} object}
   @return{The new @class{gtk:status-icon} object.}
   @begin{short}
@@ -1044,7 +1044,7 @@ lambda (icon size)    :run-last
 (cffi:defcfun ("gtk_status_icon_set_from_pixbuf" status-icon-set-from-pixbuf)
     :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object or @code{nil}}
   @begin{short}
@@ -1145,7 +1145,7 @@ lambda (icon size)    :run-last
 (cffi:defcfun ("gtk_status_icon_set_from_gicon" status-icon-set-from-gicon)
     :void
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @argument[gicon]{a @class{g:icon} object}
   @begin{short}
@@ -1195,7 +1195,7 @@ lambda (icon size)    :run-last
 
 (cffi:defcfun ("gtk_status_icon_is_embedded" status-icon-is-embedded) :boolean
  #+liber-documentation
- "@version{#2023-3-27}
+ "@version{#2023-03-27}
   @argument[icon]{a @class{gtk:status-icon} object}
   @return{@em{True} if the status icon is embedded in a notification area.}
   @begin{short}

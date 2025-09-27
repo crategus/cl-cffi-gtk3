@@ -168,7 +168,7 @@
 (setf (liber:alias-for-symbol 'resize-mode)
       "GEnum"
       (liber:symbol-documentation 'resize-mode)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-genum \"GtkResizeMode\" resize-mode
   (:export t
@@ -218,7 +218,7 @@
 
 #+liber-documentation
 (setf (documentation 'container 'type)
- "@version{2023-3-3}
+ "@version{2023-03-03}
   @begin{short}
     Base class for widgets which contain other widgets.
   @end{short}
@@ -386,7 +386,7 @@ lambda (container widget)    :run-first
 (setf (liber:alias-for-function 'container-child)
       "Accessor"
       (documentation 'container-child 'function)
- "@version{2023-3-3}
+ "@version{2023-03-03}
   @syntax{(gtk:container-child object) => child}
   @syntax{(setf gtk:container-child object) child)}
   @argument[object]{a @class{gtk:container} widget}
@@ -446,7 +446,7 @@ lambda (container widget)    :run-first
 
 (cffi:defcfun ("gtk_container_add" container-add) :void
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a @class{gtk:widget} child widget to be placed inside
     @arg{container}}
@@ -482,7 +482,7 @@ lambda (container widget)    :run-first
 
 (cffi:defcfun ("gtk_container_remove" container-remove) :void
  #+liber-documentation
- "@version{2023-7-17}
+ "@version{2023-07-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a current @class{gtk:widget} child widget of
     @arg{container}}
@@ -502,7 +502,7 @@ lambda (container widget)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (defun container-add-with-properties (container widget &rest args)
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[widget]{a @class{gtk:widget} child widget}
   @argument[args]{a list of property names and values}
@@ -603,7 +603,7 @@ lambda (container widget)    :run-first
 (cffi:defcfun ("gtk_container_get_children" container-children)
     (g:list-t g:object)
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[container]{a @class{gtk:container} widget}
   @return{The list of the containers non-internal children.}
   @begin{short}
@@ -634,7 +634,7 @@ lambda (container widget)    :run-first
 (cffi:defcfun ("gtk_container_get_path_for_child" container-path-for-child)
     (g:boxed widget-path)
  #+liber-documentation
- "@version{2023-3-3}
+ "@version{2023-03-03}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget of @arg{container}}
   @return{The newly created @class{gtk:widget-path} instance.}
@@ -807,7 +807,7 @@ lambda (container widget)    :run-first
 
 (cffi:defcfun ("gtk_container_resize_children" container-resize-children) :void
  #+liber-documentation
- "@version{#2021-9-12}
+ "@version{#2021-09-12}
   @short{undocumented}
   @begin[Warning]{dictionary}
     The @fun{gtk:container-resize-children} function has been deprecated since
@@ -871,7 +871,7 @@ lambda (container widget)    :run-first
 
 (defun container-child-set (container child &rest args)
  #+liber-documentation
- "@version{2023-6-17}
+ "@version{2023-06-17}
   @argument[container]{a @class{gtk:container} widget}
   @argument[child]{a @class{gtk:widget} child widget which is a child of
     @arg{container}}

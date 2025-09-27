@@ -73,7 +73,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser-widget 'type)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:recent-chooser-widget} widget is a widget suitable for
     selecting recently used files.

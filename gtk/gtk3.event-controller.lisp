@@ -132,7 +132,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller 'type)
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @begin{short}
     The @class{gtk:event-controller} object is a base, low-level implementation
     for event controllers.
@@ -197,7 +197,7 @@
 (setf (liber:alias-for-function 'event-controller-widget)
       "Accessor"
       (documentation 'event-controller-widget 'function)
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @syntax{(gtk:event-controller-widget object) => widget)}
   @syntax{(setf (gtk:event-controller-widget object) widget)}
   @argument[object]{a @class{gtk:event-controller} object}
@@ -217,7 +217,7 @@
 (cffi:defcfun ("gtk_event_controller_handle_event"
                event-controller-handle-event) :boolean
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @argument[controller]{a @class{gtk:event-controller} object}
   @argument[event]{a @class{gdk:event} object}
   @return{@em{True} if @arg{event} was potentially useful to trigger the
@@ -239,7 +239,7 @@
 
 (cffi:defcfun ("gtk_event_controller_reset" event-controller-reset) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @argument[controller]{a @class{gtk:event-controller} object}
   @begin{short}
     Resets the controller to a clean state.

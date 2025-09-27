@@ -310,7 +310,7 @@
 (setf (liber:alias-for-function 'table-homogeneous)
       "Accessor"
       (documentation 'table-homogeneous 'function)
- "@version{2024-6-27}
+ "@version{2024-06-27}
   @syntax{(gtk:table-homogeneous object) => homogeneous}
   @syntax{(setf (gtk:table-homogeneous object) homogeneous)}
   @argument[object]{a @class{gtk:table} widget}
@@ -753,11 +753,11 @@
 
 (defun table-size (table)
  #+liber-documentation
- "@version{2024-6-27}
+ "@version{2025-09-26}
   @argument[table]{a @class{gtk:table} widget}
   @begin{return}
-    @arg{n-rows} -- an unsigned integer with the number of rows @br{}
-    @arg{n-columns} -- an unsigned integer with the number of columns
+    @arg{n-rows} -- an unsigned integer for the number of rows @br{}
+    @arg{n-columns} -- an unsigned integer for the number of columns
   @end{return}
   @short{Gets the number of rows and columns in the table.}
   @begin[Warning]{dictionary}

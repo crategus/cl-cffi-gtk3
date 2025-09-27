@@ -249,7 +249,7 @@
 
 #+liber-documentation
 (setf (documentation 'make-text-attributes 'function)
- "@version{#2021-8-19}
+ "@version{#2021-08-19}
   @begin{short}
     Creates and returns a structure of type @class{gtk:text-attributes}.
   @end{short}
@@ -258,7 +258,7 @@
 
 #+liber-documentation
 (setf (documentation 'copy-text-attributes 'function)
- "@version{#2021-8-19}
+ "@version{#2021-08-19}
   @begin{short}
     Copies and returns a structure of type @class{gtk:text-attributes}.
   @end{short}
@@ -275,10 +275,10 @@
 (setf (liber:alias-for-function 'text-attributes-appearance)
       "Accessor"
       (documentation 'text-attributes-appearance 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{appearance} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{appearance} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
   Pointer to a @code{GtkTextAppearance} structure for text.
   @see-class{gtk:text-attributes}")
@@ -289,12 +289,12 @@
 (setf (liber:alias-for-function 'text-attributes-justification)
       "Accessor"
       (documentation 'text-attributes-justification 'function)
- "@version{#2025-07-11}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{justification} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{justification} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  A value of the @sym{gtk:justification} enumeration for text.
+  The value of the @sym{gtk:justification} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:justification}")
 
@@ -304,12 +304,12 @@
 (setf (liber:alias-for-function 'text-attributes-direction)
       "Accessor"
       (documentation 'text-attributes-direction 'function)
- "@version{#2025-07-11}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{direction} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{direction} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  A value of the @sym{gtk:text-direction} enumeration for text.
+  The value of the @sym{gtk:text-direction} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:text-direction}")
 
@@ -319,9 +319,9 @@
 (setf (liber:alias-for-function 'text-attributes-font)
       "Accessor"
       (documentation 'text-attributes-font 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{font} slot of the @class{gtk:text-attributes}
+    The accessor for the @code{font} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
   The @class{pango:font-description} structure for text.
@@ -334,12 +334,12 @@
 (setf (liber:alias-for-function 'text-attributes-font-scale)
       "Accessor"
       (documentation 'text-attributes-font-scale 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{font-scale} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{font-scale} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  A double float with the font scale factor.
+  The double float for the font scale factor.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-left-margin --------------------------------------------
@@ -348,12 +348,12 @@
 (setf (liber:alias-for-function 'text-attributes-left-margin)
       "Accessor"
       (documentation 'text-attributes-left-margin 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{left-margin} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{left-margin} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the width of the left margin, in pixels.
+  The integer for the width of the left margin, in pixels.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-right-margin -------------------------------------------
@@ -362,12 +362,12 @@
 (setf (liber:alias-for-function 'text-attributes-right-margin)
       "Accessor"
       (documentation 'text-attributes-right-margin 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{right-margin} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{right-margin} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the width of the right margin, in pixels.
+  The integer for the width of the right margin, in pixels.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-indent -------------------------------------------------
@@ -376,12 +376,12 @@
 (setf (liber:alias-for-function 'text-attributes-indent)
       "Accessor"
       (documentation 'text-attributes-indent 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{indent} slot of the @class{gtk:text-attributes}
+    The accessor for the @code{indent} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  An integer with the amount to indent the paragraph, in pixels.
+  The integer for the amount to indent the paragraph, in pixels.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-pixels-above-lines -------------------------------------
@@ -390,12 +390,12 @@
 (setf (liber:alias-for-function 'text-attributes-pixels-above-lines)
       "Accessor"
       (documentation 'text-attributes-pixels-above-lines 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{pixels-above-lines} slot of the
+    The accessor for the @code{pixels-above-lines} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the pixels of blank space above paragraphs.
+  The integer for the pixels of blank space above paragraphs.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-pixels-below-lines -------------------------------------
@@ -404,12 +404,12 @@
 (setf (liber:alias-for-function 'text-attributes-pixels-below-lines)
       "Accessor"
       (documentation 'text-attributes-pixels-below-lines 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{pixels-below-lines} slot of the
+    The accessor for the @code{pixels-below-lines} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the pixels of blank space below paragraphs.
+  The integer for the pixels of blank space below paragraphs.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-pixels-inside-wrap -------------------------------------
@@ -418,12 +418,12 @@
 (setf (liber:alias-for-function 'text-attributes-pixels-inside-wrap)
       "Accessor"
       (documentation 'text-attributes-pixels-inside-wrap 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{pixels-inside-wrap} slot of the
+    The accessor for the @code{pixels-inside-wrap} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the pixels of blank space between wrapped lines in a
+  The integer for the pixels of blank space between wrapped lines in a
   paragraph.
   @see-class{gtk:text-attributes}")
 
@@ -433,12 +433,12 @@
 (setf (liber:alias-for-function 'text-attributes-tabs)
       "Accessor"
       (documentation 'text-attributes-tabs 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{tabs} slot of the @class{gtk:text-attributes}
+    The accessor for the @code{tabs} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  Pointer to a custom @class{pango-tab-array} instance for this text.
+  The pointer to a custom @class{pango-tab-array} instance for this text.
   @see-class{gtk:text-attributes}
   @see-class{pango-tab-array}")
 
@@ -448,12 +448,12 @@
 (setf (liber:alias-for-function 'text-attributes-wrap-mode)
       "Accessor"
       (documentation 'text-attributes-wrap-mode 'function)
- "@version{#2025-07-11}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{wrap-mode} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{wrap-mode} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  A value of the @sym{gtk:wrap-mode} enumeration for text.
+  The value of the @sym{gtk:wrap-mode} enumeration for text.
   @see-class{gtk:text-attributes}
   @see-symbol{gtk:wrap-mode}")
 
@@ -463,12 +463,12 @@
 (setf (liber:alias-for-function 'text-attributes-language)
       "Accessor"
       (documentation 'text-attributes-language 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{language} slot of the @class{gtk:text-attributes}
+    The accessor for the @code{language} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
-  Pointer to a @class{pango:language} instance for text.
+  The pointer to a @class{pango:language} instance for text.
   @see-class{gtk:text-attributes}
   @see-class{pango:language}")
 
@@ -478,12 +478,12 @@
 (setf (liber:alias-for-function 'text-attributes-invisible)
       "Accessor"
       (documentation 'text-attributes-invisible 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{invisible} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{invisible} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
-  An unsigned integer whether to hide the text.
+  The unsigned integer whether to hide the text.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-bg-full-height -----------------------------------------
@@ -492,9 +492,9 @@
 (setf (liber:alias-for-function 'text-attributes-bg-full-height)
       "Accessor"
       (documentation 'text-attributes-bg-full-height 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{bg-full-height} slot of the
+    The accessor for the @code{bg-full-height} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
   Whether background is fit to full line height rather than baseline +/-
@@ -507,9 +507,9 @@
 (setf (liber:alias-for-function 'text-attributes-editable)
       "Accessor"
       (documentation 'text-attributes-editable 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{editable} slot of the @class{gtk:text-attributes}
+    The accessor for the @code{editable} slot of the @class{gtk:text-attributes}
     structure.
   @end{short}
   Whether the text is editable.
@@ -521,10 +521,10 @@
 (setf (liber:alias-for-function 'text-attributes-no-fallback)
       "Accessor"
       (documentation 'text-attributes-no-fallback 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{no-fallback} slot of the @class{gtk:text-attributes}
-    structure.
+    The accessor for the @code{no-fallback} slot of the
+    @class{gtk:text-attributes} structure.
   @end{short}
   Whether to disable font fallback.
   @see-class{gtk:text-attributes}")
@@ -535,12 +535,12 @@
 (setf (liber:alias-for-function 'text-attributes-letter-spacing)
       "Accessor"
       (documentation 'text-attributes-letter-spacing 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{letter-spacing} slot of the
+    The accessor for the @code{letter-spacing} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
-  An integer with the extra space to insert between graphemes, in Pango units.
+  The integer for the extra space to insert between graphemes, in Pango units.
   @see-class{gtk:text-attributes}")
 
 ;;; --- text-attributes-font-features ------------------------------------------
@@ -549,16 +549,16 @@
 (setf (liber:alias-for-function 'text-attributes-font-features)
       "Accessor"
       (documentation 'text-attributes-font-features 'function)
- "@version{#2021-8-19}
+ "@version{#2025-09-26}
   @begin{short}
-    Accessor of the @code{font-features} slot of the
+    The accessor for the @code{font-features} slot of the
     @class{gtk:text-attributes} structure.
   @end{short}
-  A string with font features.
+  The string for font features.
   @see-class{gtk:text-attributes}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_attributes_new ()
+;;; gtk_text_attributes_new
 ;;; ----------------------------------------------------------------------------
 
 (defun text-attributes-new ()
@@ -573,7 +573,7 @@
   (make-text-attributes))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_attributes_copy ()
+;;; gtk_text_attributes_copy
 ;;; ----------------------------------------------------------------------------
 
 (defun text-attributes-copy (src)
@@ -588,13 +588,13 @@
   (copy-text-attributes src))
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_text_attributes_copy_values ()
+;;; gtk_text_attributes_copy_values
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_text_attributes_copy_values" text-attributes-copy-values)
     :void
  #+liber-documentation
- "@version{#2021-8-19}
+ "@version{#2021-08-19}
   @argument[src]{a @class{gtk:text-attributes} instance}
   @argument[dest]{another @class{gtk:text-attributes} instance}
   @begin{short}

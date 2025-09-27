@@ -64,7 +64,7 @@
 
 #+liber-documentation
 (setf (documentation 'im-multicontext 'type)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @begin{short}
     An input method context supporting multiple, loadable input methods.
   @end{short}

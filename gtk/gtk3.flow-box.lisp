@@ -662,7 +662,7 @@ lambda (flowbox)    :action
 
 (cffi:defcfun ("gtk_flow_box_set_hadjustment" flow-box-set-hadjustment) :void
  #+liber-documentation
- "@version{#2024-4-9}
+ "@version{#2024-04-09}
   @argument[flowbox]{a @class{gtk:flow-box} widget}
   @argument[adjustment]{a @class{gtk:adjustment} object that should be adjusted
     when the focus is moved among the descendents of @arg{flowbox}}

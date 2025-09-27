@@ -931,7 +931,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-add-page (notebook child tab &key (position :end) menu)
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{#2025-09-26}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget to use as the content of
     the page}
@@ -968,7 +968,7 @@ lambda (notebook page num)    :run-last
     @end{entry}
     @begin[otherwise]{entry}
       Insert a page into the notebook at the given @arg{position}, which is an
-      integer with the index starting from 0. This replaces the functions:
+      integer for the index starting from 0. This replaces the functions:
       @begin{itemize}
         @item{@fun{gtk:notebook-insert-page}}
         @item{@fun{gtk:notebook-insert-page-menu}}
@@ -1447,7 +1447,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_get_current_page" notebook-current-page) :int
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2025-09-26}
   @syntax{(gtk:notebook-current-page notebook) => num}
   @syntax{(setf (gtk:notebook-current-page notebook) num)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1455,12 +1455,9 @@ lambda (notebook page num)    :run-last
     from 0, if negative, the last page will be used, if greater than the number
     of pages in the notebook, nothing will be done}
   @begin{short}
-    The @fun{gtk:notebook-current-page} function returns an integer with the
-    index starting from 0 of the page number of the current page.
+    Gets or sets an integer for the index starting from 0 of the page number of
+    the current page.
   @end{short}
-  The @setf{gtk:notebook-current-page} function switches to the given page
-  number.
-
   Note that due to historical reasons, the @class{gtk:notebook} widget refuses
   to switch to a page unless the child widget is visible. Therefore, it is
   recommended to show child widgets before adding them to a notebook.

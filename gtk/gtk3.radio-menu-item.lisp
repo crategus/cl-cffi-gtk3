@@ -141,7 +141,7 @@ lambda (radiomenuitem)    :run-first
 (setf (liber:alias-for-function 'radio-menu-item-group)
       "Accessor"
       (documentation 'radio-menu-item-group 'function)
- "@version{2023-2-24}
+ "@version{2023-02-24}
   @begin{short}
     Accessor of the @slot[gtk:radio-menu-item]{group} slot of the
     @class{gtk:radio-menu-item} class.
@@ -292,7 +292,7 @@ lambda (radiomenuitem)    :run-first
 
 (cffi:defcfun ("gtk_radio_menu_item_set_group" radio-menu-item-set-group) :void
  #+liber-documentation
- "@version{2023-2-24}
+ "@version{2023-02-24}
   @argument[item]{a @class{gtk:radio-menu-item} widget}
   @argument[group]{a list of @class{gtk:radio-menu-item} widgets for the group}
   @begin{short}
@@ -311,7 +311,7 @@ lambda (radiomenuitem)    :run-first
 (cffi:defcfun ("gtk_radio_menu_item_get_group" radio-menu-item-get-group)
     (g:slist-t (g:object radio-menu-item) :free-from-foreign nil)
  #+liber-documentation
- "@version{2023-2-24}
+ "@version{2023-02-24}
   @argument[item]{a @class{gtk:radio-menu-item} widget}
   @return{The list @class{gtk:radio-menu-item} widgets in the group of
     @arg{item}.}
@@ -331,7 +331,7 @@ lambda (radiomenuitem)    :run-first
 (cffi:defcfun ("gtk_radio_menu_item_join_group" radio-menu-item-join-group)
     :void
  #+liber-documentation
- "@version{2023-3-13}
+ "@version{2023-03-13}
   @argument[item]{a @class{gtk:radio-menu-item} widget}
   @argument[group]{a @class{gtk:radio-menu-item} widget whose group we
     are joining, or @code{nil} to remove @arg{item} from its current group}

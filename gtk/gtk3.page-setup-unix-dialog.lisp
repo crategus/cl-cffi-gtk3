@@ -75,7 +75,7 @@
 
 #+liber-documentation
 (setf (documentation 'page-setup-unix-dialog 'type)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @begin{short}
     The @class{gtk:page-setup-unix-dialog} widget implements a page setup dialog
     for platforms which do not provide a native page setup dialog, like Unix.
@@ -147,7 +147,7 @@
 (cffi:defcfun ("gtk_page_setup_unix_dialog_get_page_setup"
                page-setup-unix-dialog-page-setup) (g:object page-setup)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:page-setup-unix-dialog-page-setup dialog) => setup}
   @syntax{(setf (gtk:page-setup-unix-dialog-page-setup dialog) setup)}
   @argument[dialog]{a @class{gtk:page-setup-unix-dialog} widget}
@@ -179,7 +179,7 @@
 (cffi:defcfun ("gtk_page_setup_unix_dialog_get_print_settings"
                page-setup-unix-dialog-print-settings) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:page-setup-unix-dialog-print-settings dialog) => settings}
   @syntax{(setf (gtk:page-setup-unix-dialog-print-settings dialog) settings)}
   @argument[dialog]{a @class{gtk:page-setup-unix-dialog} widget}

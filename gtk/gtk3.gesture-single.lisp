@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'gesture-single 'type)
- "@version{#2025-1-16}
+ "@version{#2025-01-16}
   @begin{short}
     The @class{gtk:gesture-single} object is a subclass of the
     @class{gtk:gesture} object, optimized (although not restricted) for dealing
@@ -126,7 +126,7 @@
 (setf (liber:alias-for-function 'gesture-single-button)
       "Accessor"
       (documentation 'gesture-single-button 'function)
- "@version{#2025-1-16}
+ "@version{#2025-01-16}
   @syntax{(gtk:gesture-single-button object) => button)}
   @syntax{(setf (gtk:gesture-single-button object) button)}
   @argument[object]{a @class{gtk:gesture-single} object}
@@ -155,7 +155,7 @@
 (setf (liber:alias-for-function 'gesture-single-exclusive)
       "Accessor"
       (documentation 'gesture-single-exclusive 'function)
- "@version{#2025-1-16}
+ "@version{#2025-01-16}
   @syntax{(gtk:gesture-single-exclusive object) => exclusive)}
   @syntax{(setf (gtk:gesture-single-exclusive object) exclusive)}
   @argument[object]{a @class{gtk:gesture-single} object}
@@ -183,7 +183,7 @@
 (setf (liber:alias-for-function 'gesture-single-touch-only)
       "Accessor"
       (documentation 'gesture-single-touch-only 'function)
- "@version{#2025-1-16}
+ "@version{#2025-01-16}
   @syntax{(gtk:gesture-single-touch-only object) => touch-only)}
   @syntax{(setf (gtk:gesture-single-touch-only object) touch-only)}
   @argument[object]{a @class{gtk:gesture-single} object}
@@ -228,7 +228,7 @@
                gesture-single-current-sequence)
     (g:boxed gdk:event-sequence :return)
  #+liber-documentation
- "@version{#2025-1-16}
+ "@version{#2025-01-16}
   @argument[gesture]{a @class{gtk:gesture-single} object}
   @return{The @class{gdk:event-sequence} instance with the current sequence.}
   @begin{short}

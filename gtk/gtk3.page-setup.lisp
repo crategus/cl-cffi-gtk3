@@ -212,7 +212,7 @@
 (cffi:defcfun ("gtk_page_setup_get_paper_size" page-setup-paper-size)
     (g:boxed paper-size)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:page-setup-paper-size setup) => size}
   @syntax{(setf (gtk:page-setup-paper-size setup) size)}
   @argument[setup]{a @class{gtk:page-setup} object}
@@ -379,7 +379,7 @@
 (cffi:defcfun ("gtk_page_setup_set_paper_size_and_default_margins"
                page-setup-set-paper-size-and-default-margins) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[setup]{a @class{gtk:page-setup} object}
   @argument[size]{a @class{gtk:paper-size} instance}
   @begin{short}

@@ -168,7 +168,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-alpha)
       "Accessor"
       (documentation 'color-selection-current-alpha 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-current-alpha object) => alpha}
   @syntax{(setf (gtk:color-selection-current-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -200,7 +200,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-color)
       "Accessor"
       (documentation 'color-selection-current-color 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-current-color object) => color}
   @syntax{(setf (gtk:color-selection-current-color object) color)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -232,7 +232,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-rgba)
       "Accessor"
       (documentation 'color-selection-current-rgba 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-current-rgba object) => rgba}
   @syntax{(setf (gtk:color-selection-current-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -266,7 +266,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-opacity-control)
       "Accessor"
       (documentation 'color-selection-has-opacity-control 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-has-opacity-control object) => has-opacity}
   @syntax{(setf (gtk:color-selection-has-opacity-control object) has-opacity)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -299,7 +299,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-palette)
       "Accessor"
       (documentation 'color-selection-has-palette 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-has-palette object) => has-palette}
   @syntax{(setf (gtk:color-selection-has-palette object) has-palette)}
   @argument[object]{a @class{gtk:color-selection} widget}
@@ -352,7 +352,7 @@ lambda (selection)    :run-first
 (cffi:defcfun ("gtk_color_selection_get_previous_alpha"
                 color-selection-previous-alpha) :uint16
  #+liber-documentation
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-previous-alpha selection) => alpha}
   @syntax{(setf (gtk:color-selection-previous-alpha selection) alpha)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -394,7 +394,7 @@ lambda (selection)    :run-first
 
 (defun color-selection-previous-color (selection)
  #+liber-documentation
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-previous-color selection) => color}
   @syntax{(setf (gtk:color-selection-previous-color selection) color)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -442,7 +442,7 @@ lambda (selection)    :run-first
 
 (defun color-selection-previous-rgba (selection)
  #+liber-documentation
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-selection-previous-rgba selection) => rgba}
   @syntax{(setf (gtk:color-selection-previous-rgba selection) rgba)}
   @argument[selection]{a @class{gtk:color-selection} widget}
@@ -477,7 +477,7 @@ lambda (selection)    :run-first
 (cffi:defcfun ("gtk_color_selection_is_adjusting" color-selection-is-adjusting)
     :boolean
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[selection]{a @class{gtk:color-selection} widget}
   @begin{return}
     @em{True} if the user is currently dragging a color around, and @em{false}
@@ -507,7 +507,7 @@ lambda (selection)    :run-first
 
 (defun color-selection-palette-from-string (str)
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[str]{a string encoding a color palette}
   @return{@em{True} if a color palette was successfully parsed.}
   @begin{short}
@@ -545,7 +545,7 @@ lambda (selection)    :run-first
 (cffi:defcfun ("gtk_color_selection_palette_to_string"
                 color-selection-palette-to-string) :string
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[colors]{an array of colors}
   @argument[n-colors]{length of the array}
   @return{Allocated string encoding the palette.}

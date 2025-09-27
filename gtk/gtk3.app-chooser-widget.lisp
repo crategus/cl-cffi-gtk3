@@ -237,7 +237,7 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-all)
       "Accessor"
       (documentation 'app-chooser-widget-show-all 'function)
- "@version{#2023-2-15}
+ "@version{#2023-02-15}
   @syntax{(gtk:app-chooser-widget-show-all object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-all object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -270,7 +270,7 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-default)
       "Accessor"
       (documentation 'app-chooser-widget-show-default 'function)
- "@version{#2023-2-15}
+ "@version{#2023-02-15}
   @syntax{(gtk:app-chooser-widget-show-default object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-default object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -302,7 +302,7 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-fallback)
       "Accessor"
       (documentation 'app-chooser-widget-show-fallback 'function)
- "@version{#2023-2-15}
+ "@version{#2023-02-15}
   @syntax{(gtk:app-chooser-widget-show-fallback object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-fallback object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -334,7 +334,7 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-other)
       "Accessor"
       (documentation 'app-chooser-widget-show-other 'function)
- "@version{#2023-2-15}
+ "@version{#2023-02-15}
   @syntax{(gtk:app-chooser-widget-show-other object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-other object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
@@ -366,7 +366,7 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-recommended)
       "Accessor"
       (documentation 'app-chooser-widget-show-recommended 'function)
- "@version{#2023-2-15}
+ "@version{#2023-02-15}
   @syntax{(gtk:app-chooser-widget-show-recommended object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-recommended object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}

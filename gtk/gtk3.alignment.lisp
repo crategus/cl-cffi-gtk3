@@ -440,16 +440,16 @@
 
 (defun alignment-get-padding (alignment)
  #+liber-documentation
- "@version{2023-12-28}
+ "@version{2025-09-26}
   @argument[alignment]{a @class{gtk:alignment} widget}
   @begin{return}
-    @arg{top} -- an unsigned integer with the padding for the top of the child
+    @arg{top} -- an unsigned integer for the padding for the top of the child
     widget @br{}
-    @arg{bottom} -- an unsigned integer with the padding for the bottom of the
+    @arg{bottom} -- an unsigned integer for the padding for the bottom of the
     child widget @br{}
-    @arg{left} -- an unsigned integer with the padding for the left of the
+    @arg{left} -- an unsigned integer for the padding for the left of the
     child widget @br{}
-    @arg{right} -- an unsigned integer with the padding for the right of the
+    @arg{right} -- an unsigned integer for the padding for the right of the
     child widget
   @end{return}
   @begin{short}

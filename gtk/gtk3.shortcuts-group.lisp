@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-group 'type)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @begin{short}
     The @class{gtk:shortcuts-group} widget represents a group of related
     keyboard shortcuts or gestures.
@@ -119,7 +119,7 @@
 (setf (liber:alias-for-function 'shortcuts-group-accel-size-group)
       "Accessor"
       (documentation 'shortcuts-group-accel-size-group 'function)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @syntax{(gtk:shortcuts-group-accel-size-group object) => group}
   @syntax{(setf (gtk:shortcuts-group-accel-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
@@ -197,7 +197,7 @@
 (setf (liber:alias-for-function 'shortcuts-group-title-size-group)
       "Accessor"
       (documentation 'shortcuts-group-title-size-group 'function)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @syntax{(gtk:shortcuts-group-title-size-group object) => group}
   @syntax{(setf (gtk:shortcuts-group-title-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}

@@ -255,7 +255,7 @@ lambda (fontchooser fontname)    :run-first
 (setf (liber:alias-for-function 'font-chooser-font-desc)
       "Accessor"
       (documentation 'font-chooser-font-desc 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-chooser-font-desc object) => font-desc}
   @syntax{(setf (gtk:font-chooser-font-desc object) font-desc)}
   @argument[object]{a @class{gtk:font-chooser} widget}
@@ -313,7 +313,7 @@ lambda (fontchooser fontname)    :run-first
 (setf (liber:alias-for-function 'font-chooser-language)
       "Accessor"
       (documentation 'font-chooser-language 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-chooser-language object) => language}
   @syntax{(setf (gtk:font-chooser-language object) language)}
   @argument[object]{a @class{gtk:font-chooser} widget}
@@ -404,7 +404,7 @@ lambda (fontchooser fontname)    :run-first
 (setf (liber:alias-for-function 'font-chooser-show-preview-entry)
       "Accessor"
       (documentation 'font-chooser-show-preview-entry 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-chooser-show-preview-entry object) => show-entry}
   @syntax{(setf (gtk:font-chooser-show-preview-entry object) show-entry)}
   @argument[object]{a @class{gtk:font-chooser} widget}
@@ -424,7 +424,7 @@ lambda (fontchooser fontname)    :run-first
 (cffi:defcfun ("gtk_font_chooser_get_font_family" font-chooser-font-family)
     (g:object pango:font-family)
  #+liber-documentation
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @begin{return}
     A @class{pango:font-family} object representing the selected font family,
@@ -481,7 +481,7 @@ lambda (fontchooser fontname)    :run-first
 
 (cffi:defcfun ("gtk_font_chooser_get_font_size" font-chooser-font-size) :int
  #+liber-documentation
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}
   @begin{return}
     An integer representing the selected font size in Pango units,
@@ -513,7 +513,7 @@ lambda (fontchooser fontname)    :run-first
 (setf (liber:alias-for-symbol 'font-filter-func)
       "Callback"
       (liber:symbol-documentation 'font-filter-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (family face) => result}
   @argument[family]{a @class{pango:font-family} object}
   @argument[face]{a @class{pango:font-face} object belonging to @arg{family}}
@@ -600,7 +600,7 @@ lambda (fontchooser fontname)    :run-first
 (cffi:defcfun ("gtk_font_chooser_get_font_map" font-chooser-font-map)
     (g:object pango:font-map)
  #+liber-documentation
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-chooser-font-map fontchooser) => fontmap}
   @syntax{(setf (gtk:font-chooser-font-map fontchooser) fontmap)}
   @argument[fontchooser]{a @class{gtk:font-chooser} widget}

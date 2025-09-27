@@ -187,7 +187,7 @@ lambda (handlebox widget)    :run-first
 (setf (liber:alias-for-function 'handle-box-child-detached)
       "Accessor"
       (documentation 'handle-box-child-detached 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:handle-box-child-detached object) => detached}
   @argument[object]{a @class{gtk:handle-box} widget}
   @argument[detached]{a boolean whether the child is detached}
@@ -325,7 +325,7 @@ lambda (handlebox widget)    :run-first
 (setf (liber:alias-for-function 'handle-box-snap-edge-set)
       "Accessor"
       (documentation 'handle-box-snap-edge-set 'function)
- "@version{#2023-3-20}
+ "@version{#2023-03-20}
   @syntax{(gtk:handle-box-snap-edge-set object) => setting}
   @syntax{(setf (gtk:handle-box-snap-edge-set object) setting)}
   @argument[object]{a @class{gtk:handle-box} widget}

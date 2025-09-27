@@ -215,7 +215,7 @@ frame
 (setf (liber:alias-for-function 'frame-label-widget)
       "Accessor"
       (documentation 'frame-label-widget 'function)
- "@version{2023-2-18}
+ "@version{2023-02-18}
   @syntax{(gtk:frame-label-widget object) => widget}
   @syntax{(setf (gtk:frame-label-widget object) widget)}
   @argument[object]{a @class{gtk:frame} widget}

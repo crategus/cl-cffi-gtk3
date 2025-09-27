@@ -80,7 +80,7 @@
 
 #+liber-documentation
 (setf (documentation 'separator-tool-item 'type)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:separator-tool-item} widget is a @class{gtk:tool-item} widget
     that separates groups of other @class{gtk:tool-item} widgets.
@@ -112,7 +112,7 @@
 (setf (liber:alias-for-function 'separator-tool-item-draw)
       "Accessor"
       (documentation 'separator-tool-item-draw 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:separator-tool-item-draw object) => draw)}
   @syntax{(setf (gtk:separator-tool-item-draw object) draw)}
   @argument[object]{a @class{gtk:separator-tool-item} widget}
@@ -140,7 +140,7 @@
 
 (defun separator-tool-item-new ()
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @return{The new @class{gtk:separator-tool-item} widget.}
   @begin{short}
     Create a new separator tool item.

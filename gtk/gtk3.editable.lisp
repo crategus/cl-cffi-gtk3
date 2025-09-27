@@ -82,7 +82,7 @@
 (setf (liber:alias-for-class 'editable)
       "Interface"
       (documentation 'editable 'type)
- "@version{2025-07-08}
+ "@version{2025-09-26}
   @begin{short}
     The @class{gtk:editable} interface is an interface which should be
     implemented by text editing widgets, such as the @class{gtk:entry} widget
@@ -152,7 +152,7 @@ lambda (editable text length pos)    :run-last
         @entry[text]{The string for the new text to insert.}
         @entry[length]{The integer for the length of the new text, in bytes,
            or -1 if @arg{text} is nul-terminated.}
-        @entry[pos]{The pointer to an integer with the position, in characters,
+        @entry[pos]{The pointer to an integer for the position, in characters,
           at which to insert the new text. This is an in-out parameter. After
           the signal emission is finished, it should point after the newly
           inserted text. The Lisp value of @arg{pos} is returned by the

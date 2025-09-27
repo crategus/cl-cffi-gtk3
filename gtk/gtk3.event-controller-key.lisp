@@ -70,7 +70,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller-key 'type)
- "@version{#2023-3-1}
+ "@version{#2025-09-26}
   @begin{short}
     The @class{gtk:event-controller-key} object is an event controller meant for
     situations where you need access to key events.
@@ -110,8 +110,8 @@ lambda (controller keyval keycode state)    :run-last
       @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
-        @entry[keyval]{An unsigned integer with the pressed key.}
-        @entry[keycode]{An unsigned integer with the raw code of the pressed
+        @entry[keyval]{The unsigned integer for the pressed key.}
+        @entry[keycode]{The unsigned integer for the raw code of the pressed
           key.}
         @entry[state]{The @sym{gdk:modifier-type} bitmask representing the
           state of modifier keys and pointer buttons.}
@@ -127,8 +127,8 @@ lambda (controller keyval keycode state)    :run-last
       @begin[code]{simple-table}
         @entry[controller]{The @class{gtk:event-controller-key} object on
           which received the signal.}
-        @entry[keyval]{An unsigned integer with the released key.}
-        @entry[keycode]{An unsigned integer with the raw code of the released
+        @entry[keyval]{The unsigned integer for the released key.}
+        @entry[keycode]{The unsigned integer for the raw code of the released
           key.}
         @entry[state]{The @sym{gdk:modifier-type} bitmask representing the
           state of modifier keys and pointer buttons.}
@@ -159,7 +159,7 @@ lambda (controller state)    :run-last
 
 (defun event-controller-key-new ()
  #+liber-documentation
- "@version{#2023-3-1}
+ "@version{#2023-03-01}
   @return{The new @class{gtk:event-controller-key} object.}
   @short{Creates a new event controller.}
   @see-class{gtk:event-controller-key}"

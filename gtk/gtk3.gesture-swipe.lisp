@@ -110,7 +110,7 @@ lambda (gesture xvelocity yvelocity)    :run-last
 
 (defun gesture-swipe-new (widget orientation)
  #+liber-documentation
- "@version{#2025-1-15}
+ "@version{#2025-01-15}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The newly created @class{gtk:gesture-swipe} object.}
   @begin{short}
@@ -135,7 +135,7 @@ lambda (gesture xvelocity yvelocity)    :run-last
 
 (defun gesture-swipe-velocity (gesture)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[gesture]{a @class{gtk:gesture-swipe} object}
   @begin{return}
     @code{xvelocity} -- a double float with the velocity in the x axis,

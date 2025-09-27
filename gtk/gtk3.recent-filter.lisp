@@ -130,7 +130,7 @@
 (setf (liber:alias-for-symbol 'recent-filter-info)
       "CStruct"
       (liber:symbol-documentation 'recent-filter-info)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:recent-filter-info} structure is used to pass information
     about the tested file to the @fun{gtk:recent-filter-filter} function.
@@ -327,7 +327,7 @@
 (cffi:defcfun ("gtk_recent_filter_add_pixbuf_formats"
                recent-filter-add-pixbuf-formats) :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by the

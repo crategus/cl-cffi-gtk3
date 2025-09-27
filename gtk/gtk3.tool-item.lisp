@@ -243,7 +243,7 @@ lambda (item)    :run-last
 (setf (liber:alias-for-function 'tool-item-visible-horizontal)
       "Accessor"
       (documentation 'tool-item-visible-horizontal 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{gtk:tool-item-visible-horizontal object) => visible}
   @syntax{(setf (gtk:tool-item-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:tool-item} widget}
@@ -274,7 +274,7 @@ lambda (item)    :run-last
 (setf (liber:alias-for-function 'tool-item-visible-vertical)
       "Accessor"
       (documentation 'tool-item-visible-vertical 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{gtk:tool-item-visible-vertical object) => visible}
   @syntax{(setf (gtk:tool-item-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:tool-item} widget}
@@ -302,7 +302,7 @@ lambda (item)    :run-last
 
 (defun tool-item-new ()
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @return{The new @class{gtk:tool-item} widget.}
   @short{Creates a new tool item.}
   @see-class{gtk:tool-item}"
@@ -324,7 +324,7 @@ lambda (item)    :run-last
 
 (cffi:defcfun ("gtk_tool_item_get_homogeneous" tool-item-homogeneous) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-item-homogeneous tool-item) => homogeneous}
   @syntax{(setf (gtk:tool-item-homogeneous tool-item) homogeneous)}
   @argument[item]{a @class{gtk:tool-item} widget}
@@ -359,7 +359,7 @@ lambda (item)    :run-last
 
 (cffi:defcfun ("gtk_tool_item_get_expand" tool-item-expand) :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-item-expand tool-item) => expand}
   @syntax{(setf (gtk:tool-item-expand tool-item) expand)}
   @argument[item]{a @class{gtk:tool-item} widget}
@@ -437,7 +437,7 @@ lambda (item)    :run-last
 (cffi:defcfun ("gtk_tool_item_get_use_drag_window" tool-item-use-drag-window)
     :boolean
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-item-use-drag-window tool-item) => setting}
   @syntax{(setf (gtk:tool-item-use-drag-window tool-item) setting)}
   @argument[item]{a @class{gtk:tool-item} widget}
@@ -598,7 +598,7 @@ lambda (item)    :run-last
 (cffi:defcfun ("gtk_tool_item_get_text_alignment" tool-item-text-alignment)
     :float
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[item]{a @class{gtk:tool-item} widget}
   @begin{return}
     A float indicating the horizontal text alignment used for @arg{item}.
@@ -678,7 +678,7 @@ lambda (item)    :run-last
 (cffi:defcfun ("gtk_tool_item_get_proxy_menu_item" tool-item-proxy-menu-item)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-item-proxy-menu-item item id) => menuitem}
   @syntax{(setf (gtk:tool-item-proxy-menu-item item id) menuitem)}
   @argument[item]{a @class{gtk:tool-item} widget}

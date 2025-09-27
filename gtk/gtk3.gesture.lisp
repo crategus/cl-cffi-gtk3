@@ -98,7 +98,7 @@
 (setf (liber:alias-for-symbol 'event-sequence-state)
       "GEnum"
       (liber:symbol-documentation 'event-sequence-state)
- "@version{2024-3-22}
+ "@version{2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkEventSequenceState\" event-sequence-state
   (:export t
@@ -369,7 +369,7 @@ lambda (gesture sequence)    :run-last
 (setf (liber:alias-for-function 'gesture-window)
       "Accessor"
       (documentation 'gesture-window 'function)
- "@version{2023-3-5}
+ "@version{2023-03-05}
   @syntax{(gtk:gesture-window object) => window)}
   @syntax{(setf (gtk:gesture-window object) window)}
   @argument[object]{a @class{gtk:gesture} object}
@@ -412,7 +412,7 @@ lambda (gesture sequence)    :run-last
 
 (cffi:defcfun ("gtk_gesture_is_active" gesture-is-active) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @return{@em{True} if @arg{gesture} is active.}
   @begin{short}
@@ -430,7 +430,7 @@ lambda (gesture sequence)    :run-last
 
 (cffi:defcfun ("gtk_gesture_is_recognized" gesture-is-recognized) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @return{@em{True} if @arg{gesture} is recognized.}
   @begin{short}
@@ -569,7 +569,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (cffi:defcfun ("gtk_gesture_handles_sequence" gesture-handles-sequence) :boolean
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @argument[sequence]{a @class{gdk:event-sequence} instance}
   @return{@em{True} if @arg{gesture} is handling @arg{sequence}, @em{false}
@@ -592,7 +592,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 (cffi:defcfun ("gtk_gesture_get_last_updated_sequence"
                gesture-last-updated-sequence) (g:boxed gdk:event-sequence)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @return{The last @class{gdk:event-sequence} udate sequence.}
   @begin{short}
@@ -612,7 +612,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 (cffi:defcfun ("gtk_gesture_get_last_event" gesture-last-event)
     (g:boxed gdk:event)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @argument[sequence]{a @class{gdk:event-sequence} instance}
   @return{The last @class{gdk:event} event from @arg{sequence}.}
@@ -641,7 +641,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (defun gesture-point (gesture sequence)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @argument[sequence]{a @class{gdk:event-sequence} instance, or @code{nil}
     for pointer events}
@@ -710,7 +710,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (defun gesture-bounding-box-center (gesture)
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @begin{return}
     @arg{x} -- a double float with the x coordinate for the bounding box center
@@ -737,7 +737,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (cffi:defcfun ("gtk_gesture_group" gesture-group) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[group]{a @class{gtk:gesture} object to group @arg{gesture} with}
   @argument[gesture]{a @class{gtk:gesture} object}
   @begin{short}
@@ -768,7 +768,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (cffi:defcfun ("gtk_gesture_ungroup" gesture-ungroup) :void
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @begin{short}
     Separates @arg{gesture} into an isolated group.
@@ -785,7 +785,7 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 (cffi:defcfun ("gtk_gesture_get_group" gesture-get-group)
     (g:list-t (g:object gesture))
  #+liber-documentation
- "@version{#2023-3-5}
+ "@version{#2023-03-05}
   @argument[gesture]{a @class{gtk:gesture} object}
   @return{The list of @class{gtk:gesture} objects.}
   @begin{short}

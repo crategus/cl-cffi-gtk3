@@ -4963,11 +4963,11 @@ lambda (widget event)    :run-last
 
 (defun widget-pointer (widget)
  #+liber-documentation
- "@version{#2021-09-19}
+ "@version{#2025-09-26}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
-    @code{x} -- an integer with the x coordinate @br{}
-    @code{y} -- an integer with the y coordinate
+    @code{x} -- an integer for the x coordinate @br{}
+    @code{y} -- an integer for the y coordinate
   @end{return}
   @begin{short}
     Obtains the location of the mouse pointer in widget coordinates.
@@ -8260,12 +8260,12 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-height (widget)
  #+liber-documentation
- "@version{2023-06-18}
+ "@version{2025-09-26}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
-    @arg{minimum-height} -- an integer with the minimum height, or @code{nil}
+    @arg{minimum-height} -- an integer for the minimum height, or @code{nil}
       @br{}
-    @arg{natural-height} -- an integer with the natural height, or @code{nil}
+    @arg{natural-height} -- an integer for the natural height, or @code{nil}
   @end{return}
   @begin{short}
     Retrieves an initial minimum and natural height of the widget.
@@ -8299,12 +8299,12 @@ lambda (widget event)    :run-last
 
 (defun widget-preferred-width (widget)
  #+liber-documentation
- "@version{2023-06-18}
+ "@version{2025-09-26}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{return}
-    @arg{minimum-width} -- an integer with the minimum width, or @code{nil}
+    @arg{minimum-width} -- an integer for the minimum width, or @code{nil}
       @br{}
-    @arg{natural-width} -- an integer with the natural width, or @code{nil}
+    @arg{natural-width} -- an integer for the natural width, or @code{nil}
   @end{return}
   @begin{short}
     Retrieves an initial minimum and natural width of the widget.

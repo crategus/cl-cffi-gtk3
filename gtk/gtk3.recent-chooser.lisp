@@ -281,7 +281,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-filter)
       "Accessor"
       (documentation 'recent-chooser-filter 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-filter objet) => filter}
   @syntax{(setf (gtk:recent-chooser-filter object) filter)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -313,7 +313,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-limit)
       "Accessor"
       (documentation 'recent-chooser-limit 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-limit objet) => limit}
   @syntax{(setf (gtk:recent-chooser-limit object) limit)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -343,7 +343,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-local-only)
       "Accessor"
       (documentation 'recent-chooser-local-only 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-local-only objet) => local-only}
   @syntax{(setf (gtk:recent-chooser-local-only object) local-only)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -377,7 +377,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-recent-manager)
       "Accessor"
       (documentation 'recent-chooser-recent-manager 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-recent-manager objet) => recent-manager}
   @syntax{(setf (gtk:recent-chooser-recent-manager object) recent-manager)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -405,7 +405,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-select-multiple)
       "Accessor"
       (documentation 'recent-chooser-select-multiple 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-select-multiple objet) => select-multiple}
   @syntax{(setf (gtk:recent-chooser-select-multiple object) select-multiple)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -433,7 +433,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-show-icons)
       "Accessor"
       (documentation 'recent-chooser-show-icons 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-show-icons objet) => show-icons}
   @syntax{(setf (gtk:recent-chooser-show-icons object) show-icons)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -465,7 +465,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-show-not-found)
       "Accessor"
       (documentation 'recent-chooser-show-not-found 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-show-not-found objet) => show-not-found}
   @syntax{(setf (gtk:recent-chooser-show-not-found object) show-not-found)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -495,7 +495,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-show-private)
       "Accessor"
       (documentation 'recent-chooser-show-private 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-show-private objet) => show-private}
   @syntax{(setf (gtk:recent-chooser-show-private object) show-private)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -523,7 +523,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-show-tips)
       "Accessor"
       (documentation 'recent-chooser-show-tips 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-show-tips objet) => show-tips}
   @syntax{(setf (gtk:recent-chooser-show-tips object) show-tips)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -552,7 +552,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-function 'recent-chooser-sort-type)
       "Accessor"
       (documentation 'recent-chooser-sort-type 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-sort-type objet) => sort-type}
   @syntax{(setf (gtk:recent-chooser-sort-type object) sort-type)}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
@@ -587,7 +587,7 @@ lambda (chooser)    :run-last
 (setf (liber:alias-for-symbol 'recent-sort-func)
       "Callback"
       (liber:symbol-documentation 'recent-sort-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (item1 item2) => result}
   @argument[item1]{a @class{gtk:recent-info} instance}
   @argument[item2]{a second @class{gtk:recent-info} instance}
@@ -681,7 +681,7 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_get_current_item"
                recent-chooser-current-item) (g:boxed recent-info)
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{return}
     A @class{gtk:recent-info} instance.
@@ -744,7 +744,7 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_recent_chooser_select_all" recent-chooser-select-all) :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{short}
     Selects all the items inside @arg{chooser}, if the chooser supports
@@ -763,7 +763,7 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_unselect_all" recent-chooser-unselect-all)
     :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @short{Unselects all the items inside @arg{chooser}.}
   @see-class{gtk:recent-chooser}
@@ -779,7 +779,7 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_get_items" recent-chooser-items)
     (g:list-t (g:boxed recent-info))
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @begin{return}
     A list of @class{gtk:recent-info} instances.
@@ -830,7 +830,7 @@ lambda (chooser)    :run-last
 
 (cffi:defcfun ("gtk_recent_chooser_add_filter" recent-chooser-add-filter) :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}
@@ -855,7 +855,7 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_recent_chooser_remove_filter" recent-chooser-remove-filter)
     :void
  #+liber-documentation
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @argument[chooser]{a @class{gtk:recent-chooser} object}
   @argument[filter]{a @class{gtk:recent-filter} object}
   @begin{short}

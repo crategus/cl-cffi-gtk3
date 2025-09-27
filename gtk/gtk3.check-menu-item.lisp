@@ -174,7 +174,7 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-active)
       "Accessor"
       (documentation 'check-menu-item-active 'function)
- "@version{2023-2-27}
+ "@version{2023-02-27}
   @syntax{(gtk:check-menu-item-active object) => is-active}
   @syntax{(setf (gtk:checkk-menu-item-active object) is-active)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
@@ -202,7 +202,7 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-draw-as-radio)
       "Accessor"
       (documentation 'check-menu-item-draw-as-radio 'function)
- "@version{2023-2-27}
+ "@version{2023-02-27}
   @syntax{(gtk:check-menu-item-draw-as-radio object) => setting}
   @syntax{(setf (gtk:checkk-menu-item-draw-as-radio object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
@@ -232,7 +232,7 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-inconsistent)
       "Accessor"
       (documentation 'check-menu-item-inconsistent 'function)
- "@version{2023-2-27}
+ "@version{2023-02-27}
   @syntax{(gtk:check-menu-item-inconsistent object) => setting}
   @syntax{(setf (gtk:checkk-menu-item-inconsistent object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}

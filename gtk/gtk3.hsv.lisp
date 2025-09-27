@@ -123,7 +123,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-new ()
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @return{The newly created @class{gtk:hsv} widget.}
   @begin{short}
     Creates a new HSV color selector.
@@ -143,7 +143,7 @@ lambda (hsv direction)    :action
 
 (cffi:defcfun ("gtk_hsv_set_color" hsv-set-color) :void
  #+liber-documentation
- "@version{2025-1-25}
+ "@version{2025-01-25}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[h]{a double float for the hue component}
   @argument[s]{a double float for the saturation component}
@@ -176,7 +176,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-color (hsv)
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @arg{h} -- a double float for the hue component @br{}
@@ -206,7 +206,7 @@ lambda (hsv direction)    :action
 
 (cffi:defcfun ("gtk_hsv_set_metrics" hsv-set-metrics) :void
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @argument[size]{an integer for the diameter for the hue ring}
   @argument[width]{an integer for the width of the hue ring}
@@ -233,7 +233,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-get-metrics (hsv)
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @arg{size} -- an integer for the diameter of the hue ring @br{}
@@ -257,7 +257,7 @@ lambda (hsv direction)    :action
 
 (cffi:defcfun ("gtk_hsv_is_adjusting" hsv-is-adjusting) :boolean
  #+liber-documentation
- "@version{#2025-3-9}
+ "@version{#2025-03-09}
   @argument[hsv]{a @class{gtk:hsv} widget}
   @begin{return}
     @em{True} if clients can ignore changes to the color value, since they may
@@ -293,7 +293,7 @@ lambda (hsv direction)    :action
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[h]{a number coerced to a double float for the hue component}
   @argument[s]{a number coerced to a double float for the saturation component}
   @argument[v]{a number coerced to a double float for the value component}
@@ -333,7 +333,7 @@ lambda (hsv direction)    :action
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{2025-3-9}
+ "@version{2025-03-09}
   @argument[r]{a number coerced to a double float for the red component}
   @argument[g]{a number coerced to a double float for the green component}
   @argument[b]{a number coerced to a double float for the blue component}

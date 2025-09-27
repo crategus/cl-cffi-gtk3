@@ -156,7 +156,7 @@ lambda (button)    :run-first
 
 (defun toggle-tool-button-new ()
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @return{The newly created @class{gtk:toggle-tool-button} widget.}
   @begin{short}
     Returns a new toggle tool button.

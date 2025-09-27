@@ -70,7 +70,7 @@
 
 #+liber-documentation
 (setf (documentation 'print-context 'type)
- "@version{2023-2-11}
+ "@version{2023-02-11}
   @begin{short}
     The @class{gtk:print-context} object encapsulates context information that
     is required when drawing pages for printing, such as the Cairo context and
@@ -191,7 +191,7 @@
 (cffi:defcfun ("gtk_print_context_get_page_setup" print-context-page-setup)
     (g:object page-setup)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2023-02-11}
   @argument[context]{a @class{gtk:print-context} object}
   @return{The @class{gtk:page-setup} object of the print context.}
   @begin{short}
@@ -283,7 +283,7 @@
 (cffi:defcfun ("gtk_print_context_get_pango_fontmap" print-context-pango-fontmap)
     (g:object pango:font-map)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2023-02-11}
   @argument[context]{a @class{gtk:print-context} object}
   @return{The @class{pango:font-map} object of @arg{context}.}
   @begin{short}
@@ -348,13 +348,13 @@
 
 (defun print-context-hard-margins (context)
  #+liber-documentation
- "@version{#2023-2-11}
+ "@version{#2025-09-26}
   @argument[context]{a @class{gtk:print-context} object}
   @begin{return}
-    @arg{top} -- an integer with the top hardware printer margin @br{}
-    @arg{bottom} -- an integer with the bottom hardware printer margin @br{}
-    @arg{left} -- an integer with the left hardware printer margin @br{}
-    @arg{right} -- an integer with the right hardware printer margin
+    @arg{top} -- an integer for the top hardware printer margin @br{}
+    @arg{bottom} -- an integer for the bottom hardware printer margin @br{}
+    @arg{left} -- an integer for the left hardware printer margin @br{}
+    @arg{right} -- an integer for the right hardware printer margin
   @end{return}
   @begin{short}
     Obtains the hardware printer margins of the print context, in units.

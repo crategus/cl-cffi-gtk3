@@ -180,7 +180,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-dialog)
       "Accessor"
       (documentation 'file-chooser-button-dialog 'function)
- "@version{2023-6-11}
+ "@version{2023-06-11}
   @syntax{(gtk:file-chooser-button-dialog object) => dialog}
   @syntax{(setf (gtk:file-chooser-button-dialog object) dialog)}
   @argument[object]{a @class{gtk:file-chooser-button} widget}
@@ -210,7 +210,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'file-chooser-button-focus-on-click)
       "Accessor"
       (documentation 'file-chooser-button-focus-on-click 'function)
- "@version{2023-6-11}
+ "@version{2023-06-11}
   @syntax{(gtk:file-chooser-button-focus-on-click object) => focus-on-click}
   @syntax{(setf (gtk:file-chooser-button-focus-on-click object) focus-on-click)}
   @argument[object]{a @class{gtk:file-chooser-button} widget to modify}

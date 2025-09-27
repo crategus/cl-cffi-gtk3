@@ -84,7 +84,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-box 'type)
- "@version{2023-2-23}
+ "@version{2023-02-23}
   @begin{short}
     The @class{gtk:event-box} widget is a subclass of the @class{gtk:bin} class
     which also has its own window.
@@ -153,7 +153,7 @@
 (setf (liber:alias-for-function 'event-box-above-child)
       "Accessor"
       (documentation 'event-box-above-child 'function)
- "@version{2023-2-23}
+ "@version{2023-02-23}
   @syntax{(gtk:event-box-above-child object) => above-child}
   @syntax{(setf gtk:event-box-above-child object) above-child)}
   @argument[object]{a @class{gtk:event-box} widget}
@@ -188,7 +188,7 @@
 (setf (liber:alias-for-function 'event-box-visible-window)
       "Accessor"
       (documentation 'event-box-visible-window 'function)
- "@version{2023-2-23}
+ "@version{2023-02-23}
   @syntax{(gtk:event-box-visible-window object) => visible-window}
   @syntax{(setf gtk:event-box-visible-window object) visible-window)}
   @argument[object]{a @class{gtk:event-box} widget}
@@ -242,7 +242,7 @@
 
 (defun event-box-new ()
  #+liber-documentation
- "@version{2023-2-23}
+ "@version{2023-02-23}
   @return{The new @class{gtk:event-box} widget.}
   @begin{short}
     Creates a new event box.

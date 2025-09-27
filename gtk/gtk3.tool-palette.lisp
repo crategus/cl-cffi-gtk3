@@ -147,7 +147,7 @@
 
 #+liber-documentation
 (setf (documentation 'tool-palette 'type)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @begin{short}
     The @class{gtk:tool-palette} widget allows you to add @class{gtk:tool-item}
     widgets to a palette-like container with different categories and drag and
@@ -294,7 +294,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-icon-size-set)
       "Accessor"
       (documentation 'tool-palette-icon-size-set 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-palette-icon-size.set object) => setting}
   @syntax{(setf (gtk:tool-palette-icon-size-set object) setting)}
   @argument[palette]{a @class{gtk:tool-palette} widget}
@@ -352,7 +352,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-child-exclusive)
       "Accessor"
       (documentation 'tool-palette-child-exclusive 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-palette-child-exclusive container child) => exclusive}
   @syntax{(setf (gtk:tool-palette-child-exclusive container child) exclusive)}
   @argument[container]{a @class{gtk:tool-palette} widget}
@@ -381,7 +381,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (setf (liber:alias-for-function 'tool-palette-child-expand)
       "Accessor"
       (documentation 'tool-palette-child-expand 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:tool-palette-child-expand container child) => expand}
   @syntax{(setf (gtk:tool-palette-child-expand container child) expand)}
   @argument[container]{a @class{gtk:tool-palette} widget}
@@ -485,7 +485,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_unset_icon_size" tool-palette-unset-icon-size)
     :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @begin{short}
     Unsets the tool palette icon size set with the
@@ -516,7 +516,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 
 (cffi:defcfun ("gtk_tool_palette_unset_style" tool-palette-unset-style) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @begin{short}
     Unsets a toolbar style set with the @fun{gtk:tool-palette-toolbar-style}
@@ -573,7 +573,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_get_drag_item" tool-palette-drag-item)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[selection]{a @class{gtk:selection-data} object}
   @return{The @class{gtk:widget} dragged item in @arg{selection}.}
@@ -645,7 +645,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_get_drop_group" tool-palette-drop-group)
     (g:object tool-item-group)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[x]{an integer for the x position}
   @argument[y]{an integer for the y position}
@@ -669,7 +669,7 @@ gtk_tool_palette_add_drag_dest (GTK_TOOL_PALETTE (palette), target,
 (cffi:defcfun ("gtk_tool_palette_get_drop_item" tool-palette-drop-item)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[palette]{a @class{gtk:tool-palette} widget}
   @argument[x]{an integer for the x position}
   @argument[y]{an integer for the y position}

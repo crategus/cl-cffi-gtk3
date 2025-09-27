@@ -306,7 +306,7 @@
 
 (cffi:defcfun ("gtk_drag_dest_unset" drag-dest-unset) :void
  #+liber-documentation
- "@version{#2024-3-24}
+ "@version{#2024-03-24}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Clears information about a drop destination set with the
@@ -401,7 +401,7 @@
 (cffi:defcfun ("gtk_drag_dest_add_text_targets" drag-dest-add-text-targets)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the text targets supported by the selection to the target list of the
@@ -424,7 +424,7 @@
 (cffi:defcfun ("gtk_drag_dest_add_image_targets" drag-dest-add-image-targets)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the image targets supported by the selection to the target list of the
@@ -446,7 +446,7 @@
 
 (cffi:defcfun ("gtk_drag_dest_add_uri_targets" drag-dest-add-uri-targets) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
   @begin{short}
     Add the URI targets supported by the selection to the target list of the
@@ -475,7 +475,7 @@
 
 (cffi:defcfun ("gtk_drag_dest_get_track_motion" drag-dest-track-motion) :boolean
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:drag-dest-track-motion widget) => motion}
   @syntax{(setf (gtk:drag-dest-track-motion widget) motion)}
   @argument[widget]{a @class{gtk:widget} that is a drag destination}
@@ -581,7 +581,7 @@
 
 (cffi:defcfun ("gtk_drag_highlight" drag-highlight) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} object to highlight}
   @begin{short}
     Draws a highlight around a widget.
@@ -601,7 +601,7 @@
 
 (cffi:defcfun ("gtk_drag_unhighlight" drag-unhighlight) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} object to remove the highlight from}
   @begin{short}
     Removes a highlight set by the @fun{gtk:drag-highlight} function from a
@@ -957,7 +957,7 @@
 
 (cffi:defcfun ("gtk_drag_set_icon_default" drag-set-icon-default) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @begin{short}
@@ -974,7 +974,7 @@
 
 (cffi:defcfun ("gtk_drag_check_threshold" drag-check-threshold) :boolean
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[xstart]{an integer for the x coordinate of start of drag}
   @argument[ystart]{an integer for the y coordinate of start of drag}
@@ -1047,7 +1047,7 @@
 (cffi:defcfun ("gtk_drag_source_set_icon_pixbuf" drag-source-set-icon-pixbuf)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object for the drag icon}
   @begin{short}
@@ -1117,7 +1117,7 @@
 (cffi:defcfun ("gtk_drag_source_set_icon_gicon" drag-source-set-icon-gicon)
     :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} object}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
@@ -1139,7 +1139,7 @@
 
 (cffi:defcfun ("gtk_drag_source_unset" drag-source-unset) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
     Undoes the effects of the @fun{gtk:drag-source-set} function.
@@ -1193,7 +1193,7 @@
 (cffi:defcfun ("gtk_drag_source_add_text_targets" drag-source-add-text-targets)
     :void
  #+liber-documentation
- "@version{2024-3-24}
+ "@version{2024-03-24}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the text targets supported by the selection to the target list of the
@@ -1217,7 +1217,7 @@
 (cffi:defcfun ("gtk_drag_source_add_image_targets"
                drag-source-add-image-targets) :void
  #+liber-documentation
- "@version{2024-3-20}
+ "@version{2024-03-20}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the writable image targets supported by the selection to the target
@@ -1240,7 +1240,7 @@
 (cffi:defcfun ("gtk_drag_source_add_uri_targets" drag-source-add-uri-targets)
     :void
  #+liber-documentation
- "@version{2024-3-24}
+ "@version{2024-03-24}
   @argument[widget]{a @class{gtk:widget} object that is a drag source}
   @begin{short}
     Add the URI targets supported by the selection to the target list of the

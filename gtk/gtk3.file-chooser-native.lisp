@@ -83,7 +83,7 @@
 
 #+liber-documentation
 (setf (documentation 'file-chooser-native 'type)
- "@version{#2023-6-12}
+ "@version{#2023-06-12}
   @begin{short}
     The @class{gtk:file-chooser-native} widget is an abstraction of a dialog box
     suitable for use with \"File/Open\" or \"File/Save as\" commands.

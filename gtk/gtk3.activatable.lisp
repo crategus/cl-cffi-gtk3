@@ -90,7 +90,7 @@
 (setf (liber:alias-for-class 'activatable)
       "Interface"
       (documentation 'activatable 'type)
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @begin{short}
     Activatable widgets can be connected to a @class{gtk:action} object and
     reflects the state of its action.
@@ -122,7 +122,7 @@
 (setf (liber:alias-for-function 'activatable-related-action)
       "Accessor"
       (documentation 'activatable-related-action 'function)
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @syntax{(gtk:activatable-related-action object) => action}
   @syntax{(setf (gtk:activatable-related-action object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
@@ -155,7 +155,7 @@
 (setf (liber:alias-for-function 'activatable-use-action-appearance)
       "Accessor"
       (documentation 'activatable-use-action-appearance 'function)
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @syntax{(gtk:activatable-use-action-appearance object) => use-appearance}
   @syntax{(setf (gtk:activatable-use-action-appearance object) use-appearance)}
   @argument[activatable]{a @class{gtk:activatable} widget}
@@ -182,7 +182,7 @@
 (cffi:defcfun ("gtk_activatable_do_set_related_action"
                activatable-do-set-related-action) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @argument[activatable]{a @class{gtk:activatable} object}
   @argument[action]{the @class{gtk:action} object to set}
   @begin{short}
@@ -219,7 +219,7 @@
 (cffi:defcfun ("gtk_activatable_sync_action_properties"
                activatable-sync-action-properties) :void
  #+liber-documentation
- "@version{#2023-1-21}
+ "@version{#2023-01-21}
   @argument[activatable]{a @class{gtk:activatable} object}
   @argument[action]{a related @class{gtk:action} object or @code{nil}}
   @begin{short}

@@ -130,7 +130,7 @@
 
 #+liber-documentation
 (setf (documentation 'menu-bar 'type)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @begin{short}
     The @class{gtk:menu-bar} class is a subclass of the @class{gtk:menu-shell}
     class which contains one or more @class{gtk:menu-item} widgets.
@@ -244,7 +244,7 @@
 
 (defun menu-bar-new ()
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @return{The new @class{gtk:menu-bar} widget.}
   @begin{short}
     Creates a new menu bar.

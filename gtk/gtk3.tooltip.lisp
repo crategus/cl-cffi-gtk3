@@ -131,7 +131,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_markup" tooltip-set-markup) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[markup]{a markup string, see Pango markup format, or @code{nil}}
   @begin{short}
@@ -152,7 +152,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_text" tooltip-set-text) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[text]{a text string or @code{nil}}
   @begin{short}
@@ -173,7 +173,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_icon" tooltip-set-icon) :void
  #+liber-documentation
- "@version{#2023-2-12}
+ "@version{#2023-02-12}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object, or @code{nil}}
   @begin{short}
@@ -274,7 +274,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_custom" tooltip-set-custom) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[widget]{a @class{gtk:widget} widget, or @code{nil} to unset the old
     custom widget}
@@ -303,7 +303,7 @@
 (cffi:defcfun ("gtk_tooltip_trigger_tooltip_query"
                tooltip-trigger-tooltip-query) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
     Triggers a new tooltip query on @arg{display}, in order to update the

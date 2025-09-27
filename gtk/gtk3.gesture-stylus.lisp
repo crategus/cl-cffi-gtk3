@@ -137,7 +137,7 @@ lambda (gesture x y)    :run-last
 
 (defun gesture-stylus-new (widget)
  #+liber-documentation
- "@version{#2025-1-15}
+ "@version{#2025-01-15}
   @argument[widget]{a @class{gtk:gesture-stylus} object}
   @return{The newly created @class{gtk:gesture-stylus} object.}
   @begin{short}

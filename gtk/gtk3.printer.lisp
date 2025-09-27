@@ -103,7 +103,7 @@
 
 #+liber-documentation
 (setf (documentation 'print-backend 'type)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @short{No documentation.}
   @see-class{gtk:printer}")
 
@@ -210,7 +210,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-function 'printer-accepting-jobs)
       "Accessor"
       (documentation 'printer-accepting-jobs 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:printer-accepting-jobs object) => accepting-jobs}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepting-jobs]{a boolean whether the printer is accepting jobs}
@@ -234,7 +234,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-function 'printer-accepts-pdf)
       "Accessor"
       (documentation 'printer-accepts-pdf 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:printer-accepts-pdf object) => accepts-pdf}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepts-pdf]{a boolean whether the printer can accept PDF}
@@ -258,7 +258,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-function 'printer-accepts-ps)
       "Accessor"
       (documentation 'printer-accepts-ps 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:printer-accepts-ps object) => accepts-ps}
   @argument[object]{a @class{gtk:printer} object}
   @argument[accepts-ps]{a boolean whether the printer can accept PostScript}
@@ -281,7 +281,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-function 'printer-backend)
       "Accessor"
       (documentation 'printer-backend 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:printer-backend object) => backend}
   @argument[object]{a @class{gtk:printer} object}
   @argument[backend]{a @class{gtk:print-backend} object}
@@ -426,7 +426,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-function 'printer-paused)
       "Accessor"
       (documentation 'printer-paused 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:printer-paused object) => paused}
   @argument[object]{a @class{gtk:printer} object}
   @argument[paused]{a boolean whether the printer is paused}
@@ -521,7 +521,7 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_is_paused" printer-is-paused) :boolean
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer]{a @class{gtk:printer} object}
   @return{@em{True} if @arg{printer} is paused.}
   @begin{short}
@@ -540,7 +540,7 @@ lambda (printer success)    :run-last
 (cffi:defcfun ("gtk_printer_is_accepting_jobs" printer-is-accepting-jobs)
     :boolean
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer]{a @class{gtk:printer} object}
   @return{@em{True} if @arg{printer} is accepting jobs.}
   @short{Returns whether the printer is accepting jobs.}
@@ -555,7 +555,7 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_is_default" printer-is-default) :boolean
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer]{a @class{gtk:printer} object}
   @return{@em{True} if @arg{printer} is the default.}
   @short{Returns whether the printer is the default printer.}
@@ -606,7 +606,7 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_compare" printer-compare) :int
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer1]{a @class{gtk:printer} object}
   @argument[printer2]{another @class{gtk:printer} object}
   @begin{return}
@@ -626,7 +626,7 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_has_details" printer-has-details) :boolean
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer]{a @class{gtk:printer} object}
   @return{@em{True} if @arg{printer} details are available.}
   @short{Returns whether the printer details are available.}
@@ -642,7 +642,7 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_request_details" printer-request-details) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[printer]{a @class{gtk:printer} object}
   @begin{short}
     Requests the printer details.
@@ -764,7 +764,7 @@ lambda (printer success)    :run-last
 (setf (liber:alias-for-symbol 'printer-func)
       "Callback"
       (liber:symbol-documentation 'printer-func)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @syntax{lambda (printer) => result}
   @argument[widget]{a @class{gtk:printer} object}
   @argument[result]{@em{true} to stop the enumeration, @em{false} to continue}

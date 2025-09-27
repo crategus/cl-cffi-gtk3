@@ -150,7 +150,7 @@ combobox
 
 (defun combo-box-text-new ()
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @return{The new @class{gtk:combo-box-text} widget.}
   @begin{short}
     Creates a new combo box text widget, which is a @class{gtk:combo-box}
@@ -170,7 +170,7 @@ combobox
 
 (defun combo-box-text-new-with-entry ()
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @return{The new @class{gtk:combo-box-text} widget.}
   @begin{short}
     Creates a new combo box text widget, which is a @class{gtk:combo-box}
@@ -373,7 +373,7 @@ combobox
 
 (cffi:defcfun ("gtk_combo_box_text_remove_all" combo-box-text-remove-all) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
   @begin{short}
     Removes all the text entries from the combo box.
@@ -391,7 +391,7 @@ combobox
 (cffi:defcfun ("gtk_combo_box_text_get_active_text" combo-box-text-active-text)
     :string
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box-text} widget}
   @begin{return}
     A string containing the currently active text.

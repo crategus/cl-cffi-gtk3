@@ -149,7 +149,7 @@ lambda (dialog id)    :run-last
 (setf (liber:alias-for-function 'native-dialog-modal)
       "Accessor"
       (documentation 'native-dialog-modal 'function)
- "@version{#2023-6-10}
+ "@version{#2023-06-10}
   @syntax{(gtk:native-dialog-modal object) => modal}
   @syntax{(setf (gtk:native-dialog-modal object) modal)}
   @argument[object]{a @class{gtk:native-dialog} widget}
@@ -240,7 +240,7 @@ lambda (dialog id)    :run-last
 (setf (liber:alias-for-function 'native-dialog-visible)
       "Accessor"
       (documentation 'native-dialog-visible 'function)
- "@version{#2023-6-10}
+ "@version{#2023-06-10}
   @syntax{(gtk:native-dialog-visible object) => visible}
   @syntax{(setf (gtk:native-dialog-visible object) visible)}
   @argument[object]{a @class{gtk:native-dialog} widget}
@@ -302,7 +302,7 @@ lambda (dialog id)    :run-last
 
 (cffi:defcfun ("gtk_native_dialog_destroy" native-dialog-destroy) :void
  #+liber-documentation
- "@version{#2023-6-10}
+ "@version{#2023-06-10}
   @argument[dialog]{a @class{gtk:native-dialog} widget}
   @begin{short}
     Destroys a dialog.

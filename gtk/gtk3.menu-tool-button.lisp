@@ -152,7 +152,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'menu-tool-button-menu)
       "Accessor"
       (documentation 'menu-tool-button-menu 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:menu-tool-button-menu object) => menu}
   @syntax{(setf (gtk:menu-tool-button-menu object) menu)}
   @argument[object]{a @class{gtk:menu-tool-button} widget}
@@ -169,12 +169,12 @@ lambda (button)    :run-first
   @see-class{gtk:menu}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_tool_button_new ()
+;;; gtk_menu_tool_button_new
 ;;; ----------------------------------------------------------------------------
 
 (defun menu-tool-button-new (icon-widget label)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @argument[icon-widget]{a @class{gtk:widget} object that will be used as icon
     widget, or @code{nil}}
   @argument[label]{a string that will be used as label, or @code{nil}}

@@ -78,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'font-chooser-widget 'type)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @begin{short}
     The @class{gtk:font-chooser-widget} widget lists the available fonts,
     styles and sizes, allowing the user to select a font.
@@ -118,7 +118,7 @@
 (setf (liber:alias-for-function 'font-chooser-widget-tweak-action)
       "Accessor"
       (documentation 'font-chooser-widget-tweak-action 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-chooser-widget-tweak-action object) => tweak-action}
   @syntax{(setf (gtk:font-chooser-widget-tweak-action object) tweak-action)}
   @argument[object]{a @class{gtk:font-chooser-widget} widget}

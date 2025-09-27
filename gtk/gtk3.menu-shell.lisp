@@ -289,7 +289,7 @@ lambda (menushell)    :run-first
 (setf (liber:alias-for-function 'menu-shell-take-focus)
       "Accessor"
       (documentation 'menu-shell-take-focus 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-shell-take-focus object) => take-focus}
   @syntax{(setf (gtk:menu-shell-take-focus object) take-focus)}
   @argument[object]{a @class{gtk:menu-shell} widget}
@@ -327,7 +327,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_append" menu-shell-append) :void
  #+liber-documentation
- "@version{2024-3-14}
+ "@version{2024-03-14}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[child]{a @class{gtk:widget} child widget to add}
   @begin{short}
@@ -348,7 +348,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_prepend" menu-shell-prepend) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[child]{the @class{gtk:widget} child widget to add}
   @begin{short}
@@ -394,7 +394,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_deactivate" menu-shell-deactivate) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @begin{short}
     Deactivates the menu shell.
@@ -411,7 +411,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_select_item" menu-shell-select-item) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[menuitem]{the @class{gtk:menu-item} widget to select}
   @begin{short}
@@ -430,7 +430,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_select_first" menu-shell-select-first) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[sensitive]{if @em{true}, search for the first selectable menu item,
     otherwise select nothing if the first item is not sensitive, this should be
@@ -451,7 +451,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_deselect" menu-shell-deselect) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @begin{short}
     Deselects the currently selected item from the menu shell, if any.
@@ -467,7 +467,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_activate_item" menu-shell-activate-item) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @argument[menuitem]{the @class{gtk:menu-item} widget to activate}
   @argument[deactivate]{if @em{true}, force the deactivation of the menu shell
@@ -489,7 +489,7 @@ lambda (menushell)    :run-first
 
 (cffi:defcfun ("gtk_menu_shell_cancel" menu-shell-cancel) :void
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @short{Cancels the selection within the menu shell.}
   @see-class{gtk:menu-shell}"
@@ -504,7 +504,7 @@ lambda (menushell)    :run-first
 (cffi:defcfun ("gtk_menu_shell_get_selected_item" menu-shell-selected-item)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @return{The currently selected @class{gtk:menu-item} widget.}
   @begin{short}
@@ -523,7 +523,7 @@ lambda (menushell)    :run-first
 (cffi:defcfun ("gtk_menu_shell_get_parent_shell" menu-shell-parent-shell)
     (g:object widget)
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @argument[menushell]{a @class{gtk:menu-shell} widget}
   @return{The parent @class{gtk:menu-shell} widget.}
   @begin{short}

@@ -109,7 +109,7 @@
 (setf (liber:alias-for-class 'recent-info)
       "GBoxed"
       (documentation 'recent-info 'type)
- "@version{2023-2-5}
+ "@version{2023-02-05}
   @begin{short}
     The @class{gtk:recent-info} structure constains all the meta-data associated
     with an entry in the recently used files list.
@@ -194,7 +194,7 @@
 (setf (liber:alias-for-symbol 'recent-manager-error)
       "GEnum"
       (liber:symbol-documentation 'recent-manager-error)
- "@version{#2024-3-22}
+ "@version{#2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkRecentManagerError\" recent-manager-error
   (:export t
@@ -590,7 +590,7 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_manager_get_items" recent-manager-items)
     (g:list-t (g:boxed recent-info :return))
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-01-29}
   @argument[manager]{a @class{gtk:recent-manager} object}
   @begin{return}
     A list of newly allocated @class{gtk:recent-info} instances.
@@ -735,10 +735,10 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_added" recent-info-added) :long
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2025-09-26}
   @argument[info]{a @class{gtk:recent-info} instance}
   @begin{return}
-    A long integer with the number of seconds elapsed from system's Epoch when
+    The long integer for the number of seconds elapsed from system's Epoch when
     the resource was added to the list, or -1 on failure.
   @end{return}
   @begin{short}
@@ -756,10 +756,10 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_modified" recent-info-modified) :long
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2025-09-26}
   @argument[info]{a @class{gtk:recent-info} instance}
   @begin{return}
-    A long integer with the number of seconds elapsed from system's Epoch when
+    The long integer for the number of seconds elapsed from system's Epoch when
     the resource was last modified, or -1 on failure.
   @end{return}
   @begin{short}
@@ -777,10 +777,10 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_visited" recent-info-visited) :long
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2025-09-26}
   @argument[info]{a @class{gtk:recent-info} instance}
   @begin{return}
-    A long integer with the number of seconds elapsed from system's Epoch when
+    The long integer for the number of seconds elapsed from system's Epoch when
     the resource was last visited, or -1 on failure.
   @end{return}
   @begin{short}
@@ -799,7 +799,7 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_info_get_private_hint" recent-info-private-hint)
     :boolean
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-01-29}
   @argument[info]{a @class{gtk:recent-info} instance}
   @return{@em{True} if the private flag was found, @em{false} otherwise.}
   @begin{short}
@@ -901,7 +901,7 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_info_has_application" recent-info-has-application)
     :boolean
  #+liber-documentation
- "@version{2023-1-29}
+ "@version{2023-01-29}
   @argument[info]{a @class{gtk:recent-info} instance}
   @argument[name]{a string containing an application name}
   @return{@em{True} if an application with name @arg{app-name} was found,
@@ -1080,7 +1080,7 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_age" recent-info-age) :int
  #+liber-documentation
- "@version{#2023-1-29}
+ "@version{#2023-01-29}
   @argument[info]{a @class{gtk:recent-info} instance}
   @begin{return}
     A positive integer containing the number of days elapsed since the time
@@ -1101,7 +1101,7 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_is_local" recent-info-is-local) :boolean
  #+liber-documentation
- "@version{#2023-1-29}
+ "@version{#2023-01-29}
   @argument[info]{a @class{gtk:recent-info} instance}
   @return{@em{True} if the resource is local.}
   @begin{short}
@@ -1119,7 +1119,7 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_exists" recent-info-exists) :boolean
  #+liber-documentation
- "@version{#2023-1-29}
+ "@version{#2023-01-29}
   @argument[info]{a @class{gtk:recent-info} instance}
   @return{@em{True} if the resource exists.}
   @begin{short}
@@ -1137,7 +1137,7 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_match" recent-info-match) :boolean
  #+liber-documentation
- "@version{#2023-1-29}
+ "@version{#2023-01-29}
   @argument[info1]{a @class{gtk:recent-info}}
   @argument[info2]{a @class{gtk:recent-info}}
   @begin{return}

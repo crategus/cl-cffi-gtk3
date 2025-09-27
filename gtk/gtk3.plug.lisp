@@ -141,7 +141,7 @@ lambda (plug)    :run-last
 (setf (liber:alias-for-function 'plug-embedded)
       "Accessor"
       (documentation 'plug-embedded 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:plug-embedded object) => embedded}
   @argument[object]{a @class{gtk:plug} widget}
   @argument[embedded]{a boolean whether the plug is embedded in a socket}
@@ -163,7 +163,7 @@ lambda (plug)    :run-last
 (setf (liber:alias-for-function 'plug-socket-window)
       "Accessor"
       (documentation 'plug-socket-window 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:plug-socket-window object) => socket-window}
   @argument[object]{a @class{gtk:plug} widget}
   @argument[socket-window]{a @class{gdk:window} of the socket}

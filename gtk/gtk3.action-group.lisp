@@ -251,7 +251,7 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-accel-group)
       "Accessor"
       (documentation 'action-group-accel-group 'function)
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @syntax{(gtk:action-group-accel-group object) => group}
   @syntax{(setf (gtk:action-group-accel-group object) group)}
   @argument[object]{a @class{gtk:action-group} object}
@@ -404,7 +404,7 @@ lambda (group action)
 (cffi:defcfun ("gtk_action_group_list_actions" action-group-list-actions)
     (g:list-t g:object :free-from-foreign t)
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @argument[group]{a @class{gtk:action-group} object}
   @return{The list of the @class{gtk:action} objects in the action group.}
   @short{Lists the actions in the action group.}
@@ -463,7 +463,7 @@ lambda (group action)
 (cffi:defcfun ("gtk_action_group_remove_action" action-group-remove-action)
     :void
  #+liber-documentation
- "@version{2024-9-24}
+ "@version{2024-09-24}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[action]{a @class{gtk:action} object}
   @short{Removes an action from the action group.}
@@ -540,7 +540,7 @@ lambda (group action)
 
 (defun action-group-add-toggle-actions (group entries)
  #+liber-documentation
- "@version{2025-0716}
+ "@version{2025-07-16}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[entries]{a list of toggle action descriptions}
   @begin{short}

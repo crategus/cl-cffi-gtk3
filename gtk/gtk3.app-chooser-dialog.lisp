@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-dialog 'type)
- "@version{2023-2-18}
+ "@version{2023-02-18}
   @begin{short}
     The @class{gtk:app-chooser-dialog} widget shows a
     @class{gtk:app-chooser-widget} widget inside a @class{gtk:dialog} widget.
@@ -126,7 +126,7 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-gfile)
       "Accessor"
       (documentation 'app-chooser-dialog-gfile 'function)
- "@version{2023-2-18}
+ "@version{2023-02-18}
   @begin{short}
     Accessor of the @slot[gtk:app-chooser-dialog]{gfile} slot of the
     @class{gtk:app-chooser-dialog} class.
@@ -146,7 +146,7 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-heading)
       "Accessor"
       (documentation 'app-chooser-dialog-heading 'function)
- "@version{2023-2-18}
+ "@version{2023-02-18}
   @syntax{gtk:app-chooser-dialog-heading object) => heading}
   @syntax{(setf (gtk:app-chooser-dialog-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-dialog} widget}
@@ -219,7 +219,7 @@
 (cffi:defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)
     (g:object widget)
  #+liber-documentation
- "@version{2023-2-18}
+ "@version{2023-02-18}
   @argument[dialog]{a @class{gtk:app-chooser-dialog} widget}
   @return{The @class{gtk:app-chooser-widget} widget of @arg{dialog}.}
   @begin{short}

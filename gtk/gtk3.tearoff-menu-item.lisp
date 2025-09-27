@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'tearoff-menu-item 'type)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @begin{short}
     The @class{gtk:tearoff-menu-item} widget is a special @class{gtk:menu-item}
     widget which is used to tear off and reattach its menu.

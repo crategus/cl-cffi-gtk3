@@ -595,7 +595,7 @@ lambda (manager action)    :no-recurse
 (cffi:defcfun ("gtk_ui_manager_remove_action_group"
                ui-manager-remove-action-group) :void
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @argument[group]{a @class{gtk:action-group} object to be removed}
   @begin{short}
@@ -641,7 +641,7 @@ lambda (manager action)    :no-recurse
 (cffi:defcfun ("gtk_ui_manager_get_accel_group" ui-manager-accel-group)
     (g:object accel-group)
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @return{The @class{gtk:accel-group} object.}
   @begin{short}
@@ -963,7 +963,7 @@ lambda (manager action)    :no-recurse
 
 (cffi:defcfun ("gtk_ui_manager_ensure_update" ui-manager-ensure-update) :void
  #+liber-documentation
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @argument[manager]{a @class{gtk:ui-manager} object}
   @begin{short}
     Makes sure that all pending updates to the UI have been completed.

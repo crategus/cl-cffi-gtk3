@@ -294,7 +294,7 @@ lambda (popover)    :run-last
 (setf (liber:alias-for-function 'popover-modal)
       "Accessor"
       (documentation 'popover-modal 'function)
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @syntax{(gtk:popover-modal object) => modal}
   @syntax{(setf (gtk:popover-modal object) modal)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -323,7 +323,7 @@ lambda (popover)    :run-last
 (setf (liber:alias-for-function 'popover-pointing-to)
       "Accessor"
       (documentation 'popover-pointing-to 'function)
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @syntax{(gtk:popover-pointing-to object) => rect}
   @syntax{(setf (gtk:popover-pointing-to object) rect)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -385,7 +385,7 @@ lambda (popover)    :run-last
 (setf (liber:alias-for-function 'popover-relative-to)
       "Accessor"
       (documentation 'popover-relative-to 'function)
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @syntax{(gtk:popover-relative-to object) => relative-to}
   @syntax{(setf (gtk:popover-relative-to object) relative-to)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -423,7 +423,7 @@ lambda (popover)    :run-last
 (setf (liber:alias-for-function 'popover-transitions-enabled)
       "Accessor"
       (documentation 'popover-transitions-enabled 'function)
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @syntax{(gtk:popover-transitions-enabled object) => enabled}
   @syntax{(setf (gtk:popover-transitions-enabled object) enabled)}
   @argument[object]{a @class{gtk:popover} widget}
@@ -457,7 +457,7 @@ lambda (popover)    :run-last
 
 (defun popover-new (relative-to)
  #+liber-documentation
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @argument[relative-to]{a @class{gtk:widget} widget the popover is related to}
   @return{The new @class{gtk:popover} widget.}
   @short{Creates a new popover to point to @arg{relative-to}.}
@@ -475,7 +475,7 @@ lambda (popover)    :run-last
 (cffi:defcfun ("gtk_popover_new_from_model" popover-new-from-model)
     (g:object widget)
  #+liber-documentation
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @argument[relative-to]{a @class{gtk:widget} the popover is related to}
   @argument[model]{a @class{g:menu-model} object}
   @return{The new @class{gtk:popover} widget.}
@@ -559,7 +559,7 @@ lambda (popover)    :run-last
 
 (cffi:defcfun ("gtk_popover_popup" popover-popup) :void
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover up.
@@ -579,7 +579,7 @@ lambda (popover)    :run-last
 
 (cffi:defcfun ("gtk_popover_popdown" popover-popdown) :void
  #+liber-documentation
- "@version{#2024-6-26}
+ "@version{#2024-06-26}
   @argument[popover]{a @class{gtk:popover} widget}
   @begin{short}
     Pops the popover down.
@@ -608,7 +608,7 @@ lambda (popover)    :run-last
 (cffi:defcfun ("gtk_popover_get_default_widget" popover-default-widget)
     (g:object widget)
  #+liber-documentation
- "@version{2024-6-26}
+ "@version{2024-06-26}
   @syntax{(gtk:popover-default-widget popover) => widget}
   @syntax{(setf (gtk:popover-default-widget popover) widget)}
   @argument[popover]{a @class{gtk:popover} widget}

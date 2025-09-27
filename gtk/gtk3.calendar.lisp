@@ -121,7 +121,7 @@
 (setf (liber:alias-for-symbol 'calendar-display-options)
       "GFlags"
       (liber:symbol-documentation 'calendar-display-options)
- "@version{2024-3-21}
+ "@version{2024-03-21}
   @begin{declaration}
 (gobject:define-gflags \"GtkCalendarDisplayOptions\" calendar-display-options
   (:export t
@@ -733,7 +733,7 @@ lambda (calendar)    :run-first
 
 (cffi:defcfun ("gtk_calendar_clear_marks" calendar-clear-marks) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @begin{short}
     Remove all visual markers.
@@ -784,7 +784,7 @@ lambda (calendar)    :run-first
 
 (defun calendar-date (calendar)
  #+liber-documentation
- "@version{#2024-6-29}
+ "@version{#2024-06-29}
   @argument[calendar]{a @class{gtk:calendar} widget}
   @begin{return}
     @arg{year} -- a year as a decimal number, for example 2024 @br{}

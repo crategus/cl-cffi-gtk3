@@ -245,7 +245,7 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-icon-widget)
       "Accessor"
       (documentation 'tool-button-icon-widget 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-button-icon-widget object) => icon-widget}
   @syntax{(setf (gtk:tool-button-icon-widget object) icon-widget)}
   @argument[button]{a @class{gtk:tool-button} widget}
@@ -279,7 +279,7 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-label)
       "Accessor"
       (documentation 'tool-button-label 'function)
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @syntax{(gtk:tool-button-label object) => label}
   @syntax{(setf (gtk:tool-button-label object) label)}
   @argument[button]{a @class{gtk:tool-button} widget}
@@ -315,7 +315,7 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-label-widget)
       "Accessor"
       (documentation 'tool-button-label-widget 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-button-label-widget object) => label-widget}
   @syntax{(setf (gtk:tool-button-label-widget object) label-widget)}
   @argument[button]{a @class{gtk:tool-button} widget}
@@ -395,7 +395,7 @@ lambda (button)    :action
 (setf (liber:alias-for-function 'tool-button-use-underline)
       "Accessor"
       (documentation 'tool-button-use-underline 'function)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @syntax{(gtk:tool-button-use-underline object) => use-underline}
   @syntax{(setf (gtk:tool-button-use-underline) use-underline)}
   @argument[button]{a @class{gtk:tool-button} widget}
@@ -428,7 +428,7 @@ lambda (button)    :action
 
 (defun tool-button-new (icon label)
  #+liber-documentation
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @argument[icon]{a @class{gtk:widget} object that will be used as the button
     contents, or @code{nil}}
   @argument[label]{a string that will be used as label, or @code{nil}}

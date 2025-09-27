@@ -401,7 +401,7 @@ lambda (clipboard event)    :run-first
 
 (cffi:defcfun ("gtk_clipboard_clear" clipboard-clear) :void
  #+liber-documentation
- "@version{#2023-3-16}
+ "@version{#2023-03-16}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
     Clears the contents of the clipboard.

@@ -82,7 +82,7 @@
 
 #+liber-documentation
 (setf (documentation 'popover-menu 'type)
- "@version{#2023-3-12}
+ "@version{#2023-03-12}
   @begin{short}
     The @class{gtk:popover-menu} class is a subclass of the @class{gtk:popover}
     class that treats its children like menus and allows switching between them.

@@ -166,7 +166,7 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-heading)
       "Accessor"
       (documentation 'app-chooser-button-heading 'function)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @syntax{(gtk:app-chooser-button-heading object) => heading}
   @syntax{(setf (gtk:app-chooser-button-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
@@ -196,7 +196,7 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-show-default-item)
       "Accessor"
       (documentation 'app-chooser-button-show-default-item 'function)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @syntax{(gtk:app-chooser-button-show-default-item object) => setting}
   @syntax{(setf (gtk:app-chooser-button-show-default-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
@@ -228,7 +228,7 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-show-dialog-item)
       "Accessor"
       (documentation 'app-chooser-button-show-dialog-item 'function)
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @syntax{(gtk:app-chooser-button-show-dialog-item object) => setting}
   @syntax{(setf (gtk:app-chooser-button-show-dialog-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
@@ -301,7 +301,7 @@ lambda (widget name)    :has-details
 (cffi:defcfun ("gtk_app_chooser_button_append_separator"
                app-chooser-button-append-separator) :void
  #+liber-documentation
- "@version{#2023-2-14}
+ "@version{#2023-02-14}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
   @begin{short}
     Appends a separator to the list of applications that is shown in the popup.

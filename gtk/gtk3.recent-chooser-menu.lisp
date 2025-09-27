@@ -82,7 +82,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser-menu 'type)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:recent-chooser-menu} widget is a widget suitable for
     displaying recently used files inside a menu.
@@ -128,7 +128,7 @@
 (setf (liber:alias-for-function 'recent-chooser-menu-show-numbers)
       "Accessor"
       (documentation 'recent-chooser-menu-show-numbers 'function)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @syntax{(gtk:recent-chooser-menu-show-numbers object) => show-numbers}
   @syntax{(setf (gtk:recent-chooser-menu-show-numbers object) show-numbers)}
   @argument[obect]{a @class{gtk:recent-chooser-menu} widget}

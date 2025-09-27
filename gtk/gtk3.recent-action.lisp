@@ -78,7 +78,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-action 'type)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @begin{short}
     The @class{gtk:recent-action} object represents a list of recently used
     files, which can be shown by widgets such as a
@@ -115,7 +115,7 @@
 (setf (liber:alias-for-function 'recent-action-show-numbers)
       "Accessor"
       (documentation 'recent-action-show-numbers 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:recent-action-show-numbers object) => show-numbers}
   @syntax{(setf (gtk:recent-action-show-numbers object) show-numbers)}
   @argument[object]{a @class{gtk:recent-action} object}

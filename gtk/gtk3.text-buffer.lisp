@@ -220,7 +220,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-buffer 'type)
- "@version{2025-06-27}
+ "@version{2025-09-26}
   @begin{short}
     You may wish to begin by reading the text widget conceptual overview which
     gives an overview of all the objects and data types related to the text
@@ -340,8 +340,8 @@ lambda (buffer location text len)    :run-last
           signal.}
         @entry[location]{The @class{gtk:text-iter} position to insert @arg{text}
           in @arg{buffer}.}
-        @entry[text]{A string with the UTF-8 text to be inserted.}
-        @entry[len]{An integer with the length of the inserted text in bytes.}
+        @entry[text]{The string for the UTF-8 text to be inserted.}
+        @entry[len]{The integer for the length of the inserted text in bytes.}
       @end{simple-table}
       The signal is emitted to insert text in a text buffer. Insertion actually
       occurs in the default handler. Note that if your handler runs before the

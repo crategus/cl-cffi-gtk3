@@ -172,7 +172,7 @@ lambda (job)    :run-last
 (setf (liber:alias-for-function 'print-job-page-setup)
       "Accessor"
       (documentation 'print-job-page-setup 'function)
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-page-setup object) => setup}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[setup]{a @class{gtk:page-setup} object}
@@ -195,7 +195,7 @@ lambda (job)    :run-last
 (setf (liber:alias-for-function 'print-job-printer)
       "Accessor"
       (documentation 'print-job-printer 'function)
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-printer object) => printer}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[printer]{a @class{gtk:printer} object}
@@ -219,7 +219,7 @@ lambda (job)    :run-last
 (setf (liber:alias-for-function 'print-job-settings)
       "Accessor"
       (documentation 'print-job-settings 'function)
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-settings object) => settings}
   @argument[object]{a @class{gtk:print-job} object}
   @argument[settings]{a @class{gtk:print-settings} object}
@@ -271,7 +271,7 @@ lambda (job)    :run-last
 (setf (liber:alias-for-function 'print-job-track-print-status)
       "Accessor"
       (documentation 'print-job-track-print-status 'function)
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-track-print-status object) => status}
   @syntax{(setf (gtk:print-job-track-print-status object) status)}
   @argument[object]{a @class{gtk:print-job} object}
@@ -698,7 +698,7 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_rotate" print-job-rotate) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-rotate job) => rotate}
   @syntax{(setf (gtk:print-job-rotate job) rotate)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -728,7 +728,7 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_collate" print-job-collate) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-collate job) => collate}
   @syntax{(setf (gtk:print-job-collate job) collate)}
   @argument[job]{a @class{gtk:print-job} object}
@@ -759,7 +759,7 @@ lambda (job)    :run-last
 
 (cffi:defcfun ("gtk_print_job_get_reverse" print-job-reverse) :boolean
  #+liber-documentation
- "@version{#2024-6-28}
+ "@version{#2024-06-28}
   @syntax{(gtk:print-job-reverse job) => reverse}
   @syntax{(setf (gtk:print-job-reverse job) reverse)}
   @argument[job]{a @class{gtk:print-job} object}

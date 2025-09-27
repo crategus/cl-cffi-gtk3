@@ -637,18 +637,18 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-accept-focus)
       "Accessor"
       (documentation 'window-accept-focus 'function)
- "@version{2024-03-16}
+ "@version{2025-09-25}
   @syntax{(gtk:window-accept-focus object) => setting}
   @syntax{(setf (gtk:window-accept-focus object) setting)}
   @argument[object]{a @class{gtk:window} widget}
   @argument[setting]{@em{true} to let this window receive input focus}
   @begin{short}
-    Accessor of the @slot[gtk:window]{accept-focus} slot of the
-    @class{gtk:window} class.
+    The accessor for the @slot[gtk:window]{accept-focus} slot of the
+    @class{gtk:window} class gets or sets whether the window should receive the
+    input focus.
   @end{short}
-  The @fun{gtk:window-accept-focus} function gets the value of the hint. The
-  @setf{gtk:window-accept-focus} function sets the hint. Windows may set a hint
-  asking the desktop environment not to receive the input focus.
+  Windows may set a hint asking the desktop environment not to receive the input
+  focus.
   @see-class{gtk:window}")
 
 ;;; --- gtk:window-application -------------------------------------------------
@@ -668,19 +668,18 @@ lambda (window widget)    :run-last
 (setf (liber:alias-for-function 'window-application)
       "Accessor"
       (documentation 'window-application 'function)
- "@version{2024-03-16}
+ "@version{2025-09-25}
   @syntax{(gtk:window-application object) => application}
   @syntax{(setf (gtk:window-application object) application)}
   @argument[object]{a @class{gtk:window} widget}
   @argument[application]{a @class{gtk:application} instance, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:window]{application} slot of the
-    @class{gtk:window} class.
+    The accessor for the @slot[gtk:window]{application} slot of the
+    @class{gtk:window} class gets or sets the application associated with the
+    window.
   @end{short}
-  The @fun{gtk:window-application} function gets the application associated with
-  the window. The @setf{gtk:window-application} function sets or unsets the
-  application. The application will be kept alive for at least as long as the
-  window is open.
+  Pass @code{nil} to unset the application. The application will be kept alive
+  for at least as long as the window is open.
   @see-class{gtk:window}
   @see-class{gtk:application}")
 

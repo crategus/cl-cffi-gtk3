@@ -87,7 +87,7 @@
 (setf (liber:alias-for-symbol 'shortcut-type)
       "GEnum"
       (liber:symbol-documentation 'shortcut-type)
- "@version{#2024-3-22}
+ "@version{#2024-03-22}
   @begin{declaration}
 (gobject:define-genum \"GtkShortcutType\" shortcut-type
   (:export t
@@ -175,7 +175,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-shortcut 'type)
- "@version{#2023-3-13}
+ "@version{#2023-03-13}
   @begin{short}
     The @class{gtk:shortcuts-shortcut} widget represents a single keyboard
     shortcut or gesture with a short text.
@@ -213,7 +213,7 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-accel-size-group)
       "Accessor"
       (documentation 'shortcuts-shortcut-accel-size-group 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-shortcut-accel-size-group object) => group}
   @syntax{(setf (gtk:shortcuts-shortcut-accel-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
@@ -364,7 +364,7 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-icon)
       "Accessor"
       (documentation 'shortcuts-shortcut-icon 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-shortcut-icon object) => icon}
   @syntax{(setf (gtk:shortcuts-shortcut-icon object) icon)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
@@ -392,7 +392,7 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-icon-set)
       "Accessor"
       (documentation 'shortcuts-shortcut-icon-set 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-shortcut-icon-set object) => setting}
   @syntax{(setf (gtk:shortcuts-shortcut-icon-set object) setting)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
@@ -473,7 +473,7 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-subtitle-set)
       "Accessor"
       (documentation 'shortcuts-shortcut-subtitle-set 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-shortcut-subtitle-set object) => setting}
   @syntax{(setf (gtk:shortcuts-shortcut-subtitle-set object) setting)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
@@ -526,7 +526,7 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-title-size-group)
       "Accessor"
       (documentation 'shortcuts-shortcut-title-size-group 'function)
- "@version{#2023-2-28}
+ "@version{#2023-02-28}
   @syntax{(gtk:shortcuts-shortcut-title-size-group object) => title-size-group}
   @syntax{(setf (gtk:shortcuts-shortcut-title-size-group object) title-size-group)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}

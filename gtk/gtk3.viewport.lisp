@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'viewport 'type)
- "@version{#2023-3-29}
+ "@version{#2023-03-29}
   @begin{short}
     The @class{gtk:viewport} widget acts as an adaptor class, implementing
     scrollability for child widgets that lack their own scrolling capabilities.

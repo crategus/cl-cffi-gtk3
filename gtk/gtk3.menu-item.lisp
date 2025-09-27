@@ -393,7 +393,7 @@ lambda (item arg)    :run-first
 (setf (liber:alias-for-function 'menu-item-right-justified)
       "Accessor"
       (documentation 'menu-item-right-justified 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-item-right-justified object) => justified}
   @syntax{(setf (gtk:menu-item-right-justified object) justified)}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -432,7 +432,7 @@ lambda (item arg)    :run-first
 (setf (liber:alias-for-function 'menu-item-submenu)
       "Accessor"
       (documentation 'menu-item-submenu 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-item-submenu object) => submenu}
   @syntax{(setf (gtk:menu-item-submenu object) submenu)}
   @argument[object]{a @class{gtk:menu-item} widget}
@@ -460,7 +460,7 @@ lambda (item arg)    :run-first
 (setf (liber:alias-for-function 'menu-item-use-underline)
       "Accessor"
       (documentation 'menu-item-use-underline 'function)
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-item-use-underline object) => setting}
   @syntax{(setf (gtk:menu-item-use-underline object) setting)}
   @argument[item]{a @class{gtk:menu-item} widget}
@@ -483,7 +483,7 @@ lambda (item arg)    :run-first
 
 (defun menu-item-new ()
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @return{The newly created @class{gtk:menu-item} widget.}
   @short{Creates a new menu item.}
   @see-class{gtk:menu-item}"
@@ -639,7 +639,7 @@ lambda (item arg)    :run-first
 (cffi:defcfun ("gtk_menu_item_get_reserve_indicator"
                menu-item-reserve-indicator) :boolean
  #+liber-documentation
- "@version{#2023-3-21}
+ "@version{#2023-03-21}
   @syntax{(gtk:menu-item-reserve-indicator item) => reserve}
   @syntax{(setf (gtk:menu-item-reserve-indicator item) reserve)}
   @argument[item]{a @class{gtk:menu-item} widget}

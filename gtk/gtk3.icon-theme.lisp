@@ -1011,11 +1011,11 @@ lambda (theme)    :run-last
 
 (defun icon-theme-icon-sizes (theme name)
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-09-26}
   @argument[theme]{a @class{gtk:icon-theme} object}
   @argument[name]{a string for the name of an icon}
   @begin{return}
-    The Lisp array of integer with the sizes at which the icon is available.
+    The Lisp array of integer for the sizes at which the icon is available.
   @end{return}
   @begin{short}
     Returns an array of integers describing the sizes at which the icon is

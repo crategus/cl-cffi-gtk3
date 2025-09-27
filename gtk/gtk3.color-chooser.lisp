@@ -130,7 +130,7 @@ lambda (chooser color)    :run-first
 (setf (liber:alias-for-function 'color-chooser-rgba)
       "Accessor"
       (documentation 'color-chooser-rgba 'function)
- "@version{2023-6-12}
+ "@version{2023-06-12}
   @syntax{(gtk:color-chooser-rgba object) => color}
   @syntax{(setf (gtk:color-chooser-rgba object) color)}
   @argument[object]{a @class{gtk:color-chooser} widget}
@@ -164,7 +164,7 @@ lambda (chooser color)    :run-first
 (setf (liber:alias-for-function 'color-chooser-use-alpha)
       "Accessor"
       (documentation 'color-chooser-use-alpha 'function)
- "@version{2023-6-12}
+ "@version{2023-06-12}
   @syntax{(gtk:color-chooser-use-alpha object) => use-alpha}
   @syntax{(setf (gtk:color-chooser-use-alpha object) use-alpha)}
   @argument[object]{a @class{gtk:color-chooser} widget}

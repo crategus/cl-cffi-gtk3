@@ -374,7 +374,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-icon-size-set)
       "Accessor"
       (documentation 'toolbar-icon-size-set 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:toolbar-icon-size-set object) => setting}
   @syntax{(setf (gtk:toolbar-icon-size-set object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -398,7 +398,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-show-arrow)
       "Accessor"
       (documentation 'toolbar-show-arrow 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:toolbar-show-arrow object) => setting}
   @syntax{(setf (gtk:toolbar-show-arrow object) setting)}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
@@ -461,7 +461,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-child-expand)
       "Accessor"
       (documentation 'toolbar-child-expand 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:toolbar-child-expand container child) => expand}
   @syntax{(setf (gtk:toolbar-child-expand container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
@@ -483,7 +483,7 @@ lambda (toolbar style)    :run-first
 (setf (liber:alias-for-function 'toolbar-child-homogeneous)
       "Accessor"
       (documentation 'toolbar-child-homogeneous 'function)
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @syntax{(gtk:toolbar-child-homogeneous container child) => expand}
   @syntax{(setf (gtk:toolbar-child-homogeneous container child) expand)}
   @argument[container]{a @class{gtk:toolbar} widget}
@@ -505,7 +505,7 @@ lambda (toolbar style)    :run-first
 
 (defun toolbar-new ()
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @return{The newly created @class{gtk:toolbar} widget.}
   @begin{short}
     Creates a new toolbar.
@@ -550,7 +550,7 @@ lambda (toolbar style)    :run-first
 
 (cffi:defcfun ("gtk_toolbar_get_item_index" toolbar-item-index) :int
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @argument[item]{a @class{gtk:tool-item} widget that is a child of
     @arg{toolbar}}
@@ -665,7 +665,7 @@ lambda (toolbar style)    :run-first
 
 (cffi:defcfun ("gtk_toolbar_unset_icon_size" toolbar-unset-icon-size) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @begin{short}
     Unsets icon size of the toolbar set with the @fun{gtk:toolbar-icon-size}
@@ -704,7 +704,7 @@ lambda (toolbar style)    :run-first
 
 (cffi:defcfun ("gtk_toolbar_unset_style" toolbar-unset-style) :void
  #+liber-documentation
- "@version{#2023-3-28}
+ "@version{#2023-03-28}
   @argument[toolbar]{a @class{gtk:toolbar} widget}
   @begin{short}
     Unsets a toolbar style set with the @fun{gtk:toolbar-toolbar-style}

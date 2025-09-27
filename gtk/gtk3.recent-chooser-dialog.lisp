@@ -75,7 +75,7 @@
 
 #+liber-documentation
 (setf (documentation 'recent-chooser-dialog 'type)
- "@version{#2023-3-1}
+ "@version{#2023-03-01}
   @image[recentchooserdialog]{}
   @begin{short}
     The @class{gtk:recent-chooser-dialog} widget is a dialog box suitable for

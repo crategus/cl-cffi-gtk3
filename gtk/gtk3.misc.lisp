@@ -270,7 +270,7 @@
 
 (defun misc-get-alignment (misc)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2023-03-21}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
     @arg{xalign} -- a float with the x alignment @br{}
@@ -297,11 +297,11 @@
 
 (defun misc-get-padding (misc)
  #+liber-documentation
- "@version{2023-3-21}
+ "@version{2025-09-26}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
-    @arg{xpad} -- an integer with the padding in the x direction @br{}
-    @arg{ypad} -- an integer with the padding in the y direction
+    @arg{xpad} -- an integer for the padding in the x direction @br{}
+    @arg{ypad} -- an integer for the padding in the y direction
   @end{return}
   @short{Gets the padding in the x and y directions of the widget.}
   @begin[Warning]{dictionary}

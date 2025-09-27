@@ -79,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'color-chooser-dialog 'type)
- "@version{2023-6-15}
+ "@version{2023-06-15}
   @begin{short}
     The @class{gtk:color-chooser-dialog} widget is a dialog for choosing a
     color.
@@ -193,7 +193,7 @@
 (setf (liber:alias-for-function 'color-chooser-dialog-show-editor)
       "Accessor"
       (documentation 'color-chooser-dialog-show-editor 'function)
- "@version{2023-6-14}
+ "@version{2023-06-14}
   @syntax{(gtk:color-chooser-dialog-show-editor object) => show-editor}
   @syntax{(setf (gtk:color-chooser-dialog-show-editor object) show-editor)}
   @argument[object]{a @class{gtk:color-chooser-dialog} widget}

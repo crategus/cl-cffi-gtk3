@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'separator-menu-item 'type)
- "@version{#2023-2-27}
+ "@version{#2023-02-27}
   @begin{short}
     The @class{gtk:separator-menu-item} widget is a separator used to group
     items within a menu.

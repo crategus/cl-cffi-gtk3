@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-tool-button 'type)
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @begin{short}
     The @class{gtk:radio-tool-button} widget is a @class{gtk:tool-item} that
     contains a radio button, that is, a button that is part of a group of toggle
@@ -123,7 +123,7 @@
 (setf (liber:alias-for-function 'radio-tool-button-group)
       "Accessor"
       (documentation 'radio-tool-button-group 'function)
- "@version{#2023-3-22}
+ "@version{#2023-03-22}
   @begin{short}
     Accessor of the @slot[gtk:radio-tool-button]{group} slot of the
     @class{gtk:radio-tool-button} class.
@@ -138,7 +138,7 @@
 (cffi:defcfun ("gtk_radio_tool_button_new" radio-tool-button-new)
     (g:object tool-item)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2023-03-22}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil} if you are creating a new group}
   @return{The new @class{gtk:radio-tool-button}.}
@@ -186,7 +186,7 @@
 (cffi:defcfun ("gtk_radio_tool_button_new_from_widget"
                radio-tool-button-new-from-widget) (g:object tool-item)
  #+liber-documentation
- "@version{2024-1-2}
+ "@version{2024-01-02}
   @argument[group]{an existing @class{gtk:radio-tool-button} group, or
     @code{nil}}
   @return{The new @class{gtk:radio-tool-button} widget.}
@@ -234,7 +234,7 @@
 (cffi:defcfun ("gtk_radio_tool_button_get_group" radio-tool-button-get-group)
     (g:slist-t (g:object radio-tool-button) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2023-03-22}
   @argument[button]{a @class{gtk:radio-tool-button} widget}
   @return{The group @arg{button} belongs to.}
   @short{Returns the radio button group @arg{button} belongs to.}
@@ -250,7 +250,7 @@
 (cffi:defcfun ("gtk_radio_tool_button_set_group" radio-tool-button-set-group)
     :void
  #+liber-documentation
- "@version{#2023-3-22}
+ "@version{#2023-03-22}
   @argument[button]{a @class{gtk:radio-tool-button} widget}
   @argument[group]{an existing @class{gtk:radio-tool-button} group}
   @begin{short}

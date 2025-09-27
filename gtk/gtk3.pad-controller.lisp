@@ -189,7 +189,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 (setf (liber:alias-for-function 'pad-controller-action-group)
       "Accessor"
       (documentation 'pad-controller-action-group 'function)
- "@version{2023-3-11}
+ "@version{2023-03-11}
   @syntax{(gtk:pad-controller-action-group object) => group)}
   @syntax{(setf (gtk:pad-controller-action-group object) group)}
   @argument[object]{a @class{gtk:pad-controller} object}
@@ -213,7 +213,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 (setf (liber:alias-for-function 'pad-controller-pad)
       "Accessor"
       (documentation 'pad-controller-pad 'function)
- "@version{2023-3-11}
+ "@version{2023-03-11}
   @syntax{(gtk:pad-controller-pad object) => pad)}
   @syntax{(setf (gtk:pad-controller-pad object) pad)}
   @argument[object]{a @class{gtk:pad-controller} object}
@@ -232,7 +232,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 (cffi:defcfun ("gtk_pad_controller_new" pad-controller-new)
     (g:object pad-controller :return)
  #+liber-documentation
- "@version{2024-4-5}
+ "@version{2024-04-05}
   @argument[window]{a @class{gtk:window} widget}
   @argument[group]{a @class{g:action-group} instance to trigger actions from}
   @argument[pad]{a @class{gdk:device} object of @code{:tablet-pad} type, or
@@ -273,7 +273,7 @@ pad_controller = gtk_pad_controller_new (window, action_group, NULL);
 
 (defun pad-controller-set-action-entries (controller entries)
  #+liber-documentation
- "@version{2024-4-5}
+ "@version{2024-04-05}
   @argument[controller]{a @class{gtk:pad-controller} object}
   @argument[entries]{a list of the action entries to set on @arg{controller}}
   @begin{short}

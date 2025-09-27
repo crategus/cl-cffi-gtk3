@@ -81,7 +81,7 @@
 
 #+liber-documentation
 (setf (documentation 'scrollbar 'type)
- "@version{#2023-3-24}
+ "@version{#2023-03-24}
   @begin{short}
     The @class{gtk:scrollbar} widget is a horizontal or vertical scrollbar,
     depending on the value of the @slot[gtk:orientable]{orientation} property.

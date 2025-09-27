@@ -220,7 +220,7 @@
 (setf (liber:alias-for-function 'size-group-ignore-hidden)
       "Accessor"
       (documentation 'size-group-ignore-hidden 'function)
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @syntax{(gtk:size-group-ignore-hidden object) => ignore-hidden}
   @syntax{(setf (gtk:size-group-ignore-hidden object) ignore-hidden)}
   @argument[size-group]{a @class{gtk:size-group} object}
@@ -303,7 +303,7 @@
 
 (cffi:defcfun ("gtk_size_group_add_widget" size-group-add-widget) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[group]{a @class{gtk:size-group} object}
   @argument[widget]{a @class{gtk:widget} widget to add}
   @begin{short}
@@ -330,7 +330,7 @@
 
 (cffi:defcfun ("gtk_size_group_remove_widget" size-group-remove-widget) :void
  #+liber-documentation
- "@version{#2023-2-23}
+ "@version{#2023-02-23}
   @argument[group]{a @class{gtk:size-group} object}
   @argument[widget]{a @class{gtk:widget} widget to remove}
   @begin{short}

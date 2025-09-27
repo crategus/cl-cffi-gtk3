@@ -222,7 +222,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-show-size)
       "Accessor"
       (documentation 'font-button-show-size 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-button-show-size object) => show-size}
   @syntax{(setf (gtk:font-button-show-size object) show-size)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -249,7 +249,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-show-style)
       "Accessor"
       (documentation 'font-button-show-style 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-button-show-style object) => show-style}
   @syntax{(setf (gtk:font-button-show-style object) show-style)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -274,7 +274,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-title)
       "Accessor"
       (documentation 'font-button-title 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-button-title object) => title}
   @syntax{(setf (gtk:font-button-title object) title)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -302,7 +302,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-use-font)
       "Accessor"
       (documentation 'font-button-use-font 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-button-title object) => use-font}
   @syntax{(setf (gtk:font-button-title object) use-font)}
   @argument[object]{a @class{gtk:font-button} widget}
@@ -328,7 +328,7 @@ lambda (widget)    :run-first
 (setf (liber:alias-for-function 'font-button-use-size)
       "Accessor"
       (documentation 'font-button-use-size 'function)
- "@version{2023-6-16}
+ "@version{2023-06-16}
   @syntax{(gtk:font-button-use-size object) => use-size}
   @syntax{(setf (gtk:font-button-use-size object) use-size)}
   @argument[object]{a @class{gtk:font-button} widget}

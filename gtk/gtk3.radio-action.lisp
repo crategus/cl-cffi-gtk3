@@ -92,7 +92,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-action 'type)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @begin{short}
     The @class{gtk:radio-action} object is similar to the
     @class{gtk:radio-menu-item} widget.
@@ -174,7 +174,7 @@ lambda (action current)    :no-recurse
 (setf (liber:alias-for-function 'radio-action-group)
       "Accessor"
       (documentation 'radio-action-group 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(setf (gtk:radio-action-group object) group)}
   @argument[object]{a @class{gtk:radio-action} object}
   @argument[group]{a list of @class{gtk:radion-action} objects representing a
@@ -269,7 +269,7 @@ lambda (action current)    :no-recurse
 
 (cffi:defcfun ("gtk_radio_action_join_group" radio-action-join-group) :void
  #+liber-documentation
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:radio-action} object}
   @argument[source]{a @class{gtk:radio-action} object whose group we are
     joining, or @code{nil} to remove the radio action from its group}

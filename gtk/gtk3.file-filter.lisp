@@ -123,7 +123,7 @@
 (setf (liber:alias-for-symbol 'file-filter-info)
       "CStruct"
       (liber:symbol-documentation 'file-filter-info)
- "@version{#2024-3-23}
+ "@version{#2024-03-23}
   @begin{declaration}
 (cffi:defcstruct gtk:file-filter
   (contains gtk:file-filter-flags)
@@ -407,7 +407,7 @@
 (cffi:defcfun ("gtk_file_filter_add_pixbuf_formats"
                 file-filter-add-pixbuf-formats) :void
  #+liber-documentation
- "@version{2023-6-11}
+ "@version{2023-06-11}
   @argument[filter]{a @class{gtk:file-filter} object}
   @begin{short}
     Adds a rule allowing image files in the formats supported by a

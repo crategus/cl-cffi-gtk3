@@ -976,9 +976,9 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_widget_path_length" widget-path-length) :int
- "@version{#2025-07-05}
+ "@version{#2025-09-26}
   @argument[path]{a @class{gtk:widget-path} instance}
-  @return{Tje integer with the number of elements in the path.}
+  @return{The integer for the number of elements in the path.}
   @begin{short}
     Returns the number of widget types between the represented widget and its
     topmost container.

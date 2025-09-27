@@ -136,7 +136,7 @@ lambda (gesture xoffset yoffset)    :run-last
 
 (defun gesture-drag-new (widget)
  #+liber-documentation
- "@version{#2025-1-15}
+ "@version{#2025-01-15}
   @argument[widget]{a @class{gtk;widget} object}
   @return{The newly created @class{gtk:gesture-drag} object.}
   @short{Returns a newly created gesture that recognizes drags.}
@@ -158,7 +158,7 @@ lambda (gesture xoffset yoffset)    :run-last
 
 (defun gesture-drag-start-point (gesture)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[gesture]{a @class{gtk:gesture-drag} object}
   @begin{return}
     @arg{x} -- a double float with the x coordinate for the drag start point
@@ -188,7 +188,7 @@ lambda (gesture xoffset yoffset)    :run-last
 
 (defun gesture-drag-offset (gesture)
  #+liber-documentation
- "@version{#2025-1-25}
+ "@version{#2025-01-25}
   @argument[gesture]{a @class{gtk:gesture-drag} object}
   @begin{return}
     @arg{x} -- a double float with the x offset for the current point@br{}

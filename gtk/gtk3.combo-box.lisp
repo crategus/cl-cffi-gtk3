@@ -490,7 +490,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-add-tearoffs)
       "Accessor"
       (documentation 'combo-box-add-tearoffs 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-add-tearoffs object) => add-tearoffs}
   @syntax{(setf (gtk:combo-box-add-tearoffs object) add-tearoffs)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -558,7 +558,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-cell-area)
       "Accessor"
       (documentation 'combo-box-cell-area 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-button-cell-area object) => area}
   @syntax{(setf (gtk:combo-box-cell-area object) area)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -661,7 +661,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-focus-on-click)
       "Accessor"
       (documentation 'combo-box-focus-on-click 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-focus-on-click object) => focus-on-click}
   @syntax{(setf (gtk:combo-box-focus-on-click object) focus-on-click)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -700,7 +700,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-has-entry)
       "Accessor"
       (documentation 'combo-box-has-entry 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-has-entry object) => has-entry}
   @argument[object]{a @class{gtk:combo-box} widget}
   @argument[has-entry]{a boolean whether the combo box has an entry}
@@ -724,7 +724,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-has-frame)
       "Accessor"
       (documentation 'combo-box-has-frame 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-has-frame object) => has-frame}
   @syntax{(setf (gtk:combo-box-has-frame object) has-frame)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -779,7 +779,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-model)
       "Accessor"
       (documentation 'combo-box-model 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-model object) => model}
   @syntax{(setf (gtk:combo-box-model object) model)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -815,7 +815,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-popup-fixed-width)
       "Accessor"
       (documentation 'combo-box-popup-fixed-width 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-popup-fixed-width object) => fixed}
   @syntax{(setf (gtk:combo-box-popup-fixed-width object) fixed)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -844,7 +844,7 @@ lambda (combo)    :action
 (setf (liber:alias-for-function 'combo-box-popup-shown)
       "Accessor"
       (documentation 'combo-box-popup-shown 'function)
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-popup-shown object) => popup-shown}
   @syntax{(setf (gtk:combo-box-popup-shown object) popup-shown)}
   @argument[object]{a @class{gtk:combo-box} widget}
@@ -964,7 +964,7 @@ lambda (combo)    :action
 
 (defun combo-box-new ()
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @return{The new @class{gtk:combo-box} widget.}
   @short{Creates a new empty combo box.}
   @see-class{gtk:combo-box}
@@ -983,7 +983,7 @@ lambda (combo)    :action
 
 (defun combo-box-new-with-entry ()
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @return{The new @class{gtk:combo-box} widget.}
   @begin{short}
     Creates a new empty combo box with an entry.
@@ -1005,7 +1005,7 @@ lambda (combo)    :action
 
 (defun combo-box-new-with-model (model)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{The new @class{gtk:combo-box} widget.}
   @begin{short}
@@ -1029,7 +1029,7 @@ lambda (combo)    :action
 
 (defun combo-box-new-with-model-and-entry (model)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{The new @class{gtk:combo-box} widget.}
   @begin{short}
@@ -1055,7 +1055,7 @@ lambda (combo)    :action
 
 (defun combo-box-new-with-area (area)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[area]{a @class{gtk:cell-area} object to use to layout cell
     renderers}
   @return{The new @class{gtk:combo-box} widget.}
@@ -1078,7 +1078,7 @@ lambda (combo)    :action
 
 (defun combo-box-new-with-area-and-entry (area)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[area]{a @class{gtk:cell-area} object to use to layout cell
     renderers}
   @return{The new @class{gtk:combo-box} widget.}
@@ -1113,7 +1113,7 @@ lambda (combo)    :action
 
 (defun combo-box-active-iter (combo)
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @syntax{(gtk:combo-box-active-iter combo-box) => iter}
   @syntax{(setf (gtk:combo-box-active-iter combo-box) iter)}
   @argument[combo]{a @class{gtk:combo-box} widget}
@@ -1140,7 +1140,7 @@ lambda (combo)    :action
 
 (cffi:defcfun ("gtk_combo_box_popup_for_device" combo-box-popup-for-device) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
@@ -1162,7 +1162,7 @@ lambda (combo)    :action
 
 (cffi:defcfun ("gtk_combo_box_popup" combo-box-popup) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @begin{short}
     Pops up the menu or dropdown list of the combo box.
@@ -1180,7 +1180,7 @@ lambda (combo)    :action
 
 (cffi:defcfun ("gtk_combo_box_popdown" combo-box-popdown) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @begin{short}
     Hides the menu or dropdown list of the combo box.
@@ -1199,7 +1199,7 @@ lambda (combo)    :action
 (cffi:defcfun ("gtk_combo_box_get_popup_accessible" combo-box-popup-accessible)
     g:object
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo]{a @class{gtk:combo-box} widget}
   @return{The accessible object corresponding to the combo box's popup.}
   @begin{short}
@@ -1221,7 +1221,7 @@ lambda (combo)    :action
 (cffi:defcfun ("gtk_combo_box_get_row_separator_func"
                combo-box-get-row-separator-func) :pointer
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}
   @return{The current row separator function.}
   @short{Returns the current row separator function.}
@@ -1269,7 +1269,7 @@ lambda (combo)    :action
 
 (cffi:defcfun ("gtk_combo_box_set_title" combo-box-set-title) :void
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}
   @argument[title]{a title for the menu in tearoff mode}
   @begin{short}
@@ -1293,7 +1293,7 @@ lambda (combo)    :action
 
 (cffi:defcfun ("gtk_combo_box_get_title" combo-box-get-title) :string
  #+liber-documentation
- "@version{#2023-3-17}
+ "@version{#2023-03-17}
   @argument[combo-box]{a @class{gtk:combo-box} widget}
   @return{The menu's title in tearoff mode.}
   @begin{short}

@@ -119,7 +119,7 @@ lambda (controller x y)    :run-first
 
 (defun event-controller-motion-new (widget)
  #+liber-documentation
- "@version{#2023-3-1}
+ "@version{#2023-03-01}
   @argument[widget]{a @class{gtk:widget} object}
   @return{The new @class{gtk:event-controller-motion} object.}
   @begin{short}

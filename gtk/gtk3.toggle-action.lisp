@@ -134,7 +134,7 @@ lambda (action)    :run-first
 (setf (liber:alias-for-function 'toggle-action-active)
       "Accessor"
       (documentation 'toggle-action-active 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:toggle-action-active object) => is-active}
   @syntax{(setf (gtk:toggle-action-active object) is-active)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -165,7 +165,7 @@ lambda (action)    :run-first
 (setf (liber:alias-for-function 'toggle-action-draw-as-radio)
       "Accessor"
       (documentation 'toggle-action-draw-as-radio 'function)
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @syntax{(gtk:toggle-action-draw-as-radio object) => draw-as-radio}
   @syntax{(setf (gtk:toggle-action-draw-as-radio object) draw-as-radio)}
   @argument[object]{a @class{gtk:toggle-action} object}
@@ -224,7 +224,7 @@ lambda (action)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_toggle_action_toggled" toggle-action-toggled) :void
- "@version{2024-9-26}
+ "@version{2024-09-26}
   @argument[action]{a @class{gtk:toggle-action} object}
   @begin{short}
     Emits the @code{\"toggled\"} signal on the toggle action.
