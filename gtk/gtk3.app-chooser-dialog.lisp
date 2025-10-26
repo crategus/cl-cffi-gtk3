@@ -126,9 +126,9 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-gfile)
       "Accessor"
       (documentation 'app-chooser-dialog-gfile 'function)
- "@version{2023-02-18}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:app-chooser-dialog]{gfile} slot of the
+    The accessor for the @slot[gtk:app-chooser-dialog]{gfile} slot of the
     @class{gtk:app-chooser-dialog} class.
   @end{short}
   @see-class{gtk:app-chooser-dialog}")
@@ -146,19 +146,17 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-heading)
       "Accessor"
       (documentation 'app-chooser-dialog-heading 'function)
- "@version{2023-02-18}
+ "@version{2025-10-21}
   @syntax{gtk:app-chooser-dialog-heading object) => heading}
   @syntax{(setf (gtk:app-chooser-dialog-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-dialog} widget}
   @argument[heading]{a string containing Pango markup}
   @begin{short}
-    Accessor of the @slot[gtk:app-chooser-dialog]{heading} slot of the
-    @class{gtk:app-chooser-dialog} class.
+    The accessor for the @slot[gtk:app-chooser-dialog]{heading} slot of the
+    @class{gtk:app-chooser-dialog} class gets or sets the text to display at the
+    top of the dialog.
   @end{short}
-  The @fun{gtk:app-chooser-dialog-heading} function returns the text to display
-  at the top of the dialog. The @setf{gtk:app-chooser-dialog-heading} function
-  sets the text to display at the top of the dialog. If the heading is not set,
-  the dialog displays a default text.
+  If the heading is not set, the dialog displays a default text.
   @see-class{gtk:app-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------

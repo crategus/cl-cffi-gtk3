@@ -407,16 +407,15 @@
 (setf (liber:alias-for-function 'cursor-cursor-type)
       "Accessor"
       (documentation 'cursor-cursor-type 'function)
- "@version{2024-06-29}
+ "@version{2025-10-09}
   @syntax{(gdk:cursor-cursor-type object) => type}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[type]{a value of the @symbol{gdk:cursor-type} enumeration}
   @begin{short}
-    Accessor of the @slot[gdk:cursor]{cursor-type} slot of the
-    @class{gdk:cursor} class.
+    The accessor for the @slot[gdk:cursor]{cursor-type} slot of the
+    @class{gdk:cursor} class returns the cursor type for the cursor.
   @end{short}
-  The @fun{gdk:cursor-cursor-type} function returns the cursor type for the
-  cursor. This is a value from the @symbol{gdk:cursor-type} enumeration.
+  This is a value from the @symbol{gdk:cursor-type} enumeration.
   @see-class{gdk:cursor}
   @see-symbol{gdk:cursor-type}")
 
@@ -432,16 +431,14 @@
 (setf (liber:alias-for-function 'cursor-display)
       "Accessor"
       (documentation 'cursor-display 'function)
- "@version{2024-06-29}
+ "@version{2025-10-09}
   @syntax{(gdk:cursor-display object) => display}
   @argument[object]{a @class{gdk:cursor} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:cursor]{display} slot of the @class{gdk:cursor}
-    class.
+    The accessor for the @slot[gdk:cursor]{display} slot of the
+    @class{gdk:cursor} class returns the display on which the cursor is defined.
   @end{short}
-  The @fun{gdk:cursor-display} function returns the display on which the cursor
-  is defined.
   @see-class{gdk:cursor}
   @see-class{gdk:display}")
 
@@ -533,14 +530,14 @@
 
 (defun cursor-new-from-surface (display surface x y)
  #+liber-documentation
- "@version{2024-06-29}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object for which the cursor will
     be created}
   @argument[surface]{a @symbol{cairo:surface-t} instance containing the
     cursor pixel data}
-  @argument[x]{a number coerced to a double float with the horizontal offset of
+  @argument[x]{a number coerced to a double float for the horizontal offset of
     the 'hotspot' of the cursor}
-  @argument[y]{a number coerced to a double float with the vertical offset of
+  @argument[y]{a number coerced to a double float for the vertical offset of
     the 'hotspot' of the cursor}
   @return{The new @class{gdk:cursor} object.}
   @begin{short}
@@ -576,12 +573,14 @@
 (cffi:defcfun ("gdk_cursor_new_from_name" cursor-new-from-name)
     (g:object cursor)
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object for which the cursor will be
     created}
-  @argument[name]{a string with the name of the cursor}
-  @return{The new @class{gdk:cursor} object, or @code{nil} if there is no cursor
-    with the given @arg{name}.}
+  @argument[name]{a string for the name of the cursor}
+  @begin{return}
+    The new @class{gdk:cursor} object, or @code{nil} if there is no cursor with
+    the given @arg{name}.
+  @end{return}
   @begin{short}
     Creates a new cursor by looking up @arg{name} in the current cursor theme.
   @end{short}
@@ -669,10 +668,12 @@
 
 (cffi:defcfun ("gdk_cursor_get_image" cursor-image) (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{2024-06-29}
+ "@version{2025-10-09}
   @argument[cursor]{a @class{gdk:cursor} object}
-  @return{The @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
-    @code{nil}.}
+  @begin{return}
+    The @class{gdk-pixbuf:pixbuf} object representing @arg{cursor}, or
+    @code{nil}.
+  @end{return}
   @begin{short}
     Returns a @class{gdk-pixbuf:pixbuf} object with the image used to display
     the cursor.
@@ -698,13 +699,13 @@
 
 (defun cursor-surface (cursor)
  #+liber-documentation
- "@version{2024-06-29}
+ "@version{2025-10-09}
   @argument[cursor]{a @class{gdk:cursor} object}
   @begin{return}
     @arg{surface} -- a @symbol{cairo:surface-t} instance representing a cursor
     @br{}
-    @arg{xhot} -- a double float with the hotspot x position @br{}
-    @arg{yhot} -- a double float with the hotspot y position
+    @arg{xhot} -- a double float for the hotspot x position @br{}
+    @arg{yhot} -- a double float for the hotspot y position
   @end{return}
   @begin{short}
     Returns a Cairo image surface with the image used to display the cursor.

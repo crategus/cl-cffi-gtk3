@@ -116,16 +116,15 @@
 (setf (liber:alias-for-function 'app-chooser-content-type)
       "Accessor"
       (documentation 'app-chooser-content-type 'function)
- "@version{#2025-07-07}
+ "@version{#2025-10-21}
   @syntax{(gtk:app-chooser-content-type object) => content-type}
   @argument[object]{a @class{gtk:app-chooser} object}
   @argument[content-type]{a string for the content type}
   @begin{short}
-    Accessor of the @slot[gtk:app-chooser]{content-type} slot of the
-    @class{gtk:app-chooser} interface.
+    The accessor for the @slot[gtk:app-chooser]{content-type} slot of the
+    @class{gtk:app-chooser} interface returns the current value of the content
+    type.
   @end{short}
-  The @fun{gtk:app-chooser-content-type} function returns the current value of
-  the content type.
   @see-class{gtk:app-chooser}")
 
 ;;; ----------------------------------------------------------------------------

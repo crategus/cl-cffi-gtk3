@@ -180,20 +180,18 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-font-options)
       "Accessor"
       (documentation 'screen-font-options 'function)
- "@version{2024-06-27}
+ "@version{2025-10-09}
   @syntax{(gdk:screen-font-options object) => options}
   @syntax{(setf (gdk:screen-font-options object) options)}
   @argument[object]{a @class{gdk:screen} object}
   @argument[options]{a @symbol{cairo:font-options-t} instance, or
     @code{cffi:null-pointer} to unset any previously set default font options}
   @begin{short}
-    Accessor of the @slot[gdk:screen]{font-options} slot of the
-    @class{gdk:screen} class.
+    The accessor for the @slot[gdk:screen]{font-options} slot of the
+    @class{gdk:screen} class gets or sets the default font options for the
+    screen.
   @end{short}
-  The @fun{gdk:screen-font-options} function returns the current font options
-  for the screen, or @code{cffi:null-pointer} if no default font options have
-  been set. The @setf{gdk:screen-font-options} function sets the default font
-  options.
+  Returns @code{cffi:null-pointer} if no default font options have been set.
 
   These font options will be set on any Pango context newly created with the
   @fun{gdk:pango-context-for-screen} function. Changing the default set
@@ -214,19 +212,16 @@ lambda (screen)    :run-last
 (setf (liber:alias-for-function 'screen-resolution)
       "Accessor"
       (documentation 'screen-resolution 'function)
- "@version{2024-06-27}
+ "@version{2025-10-09}
   @syntax{(gdk:screen-resolution object) => dpi}
   @syntax{(setf (gdk:screen-resolution object) dpi)}
   @argument[object]{a @class{gdk:screen} object}
-  @argument[dpi]{a double float with the resolution in \"dots per inch\"}
+  @argument[dpi]{a double float for the resolution in \"dots per inch\"}
   @begin{short}
-    Accessor of the @slot[gdk:screen]{resolution} slot of the @class{gdk:screen}
-    class.
+    The accessor for the @slot[gdk:screen]{resolution} slot of the
+    @class{gdk:screen} class the resolution for font handling on the screen.
   @end{short}
-  The @fun{gdk:screen-resolution} function gets the resolution for font
-  handling on the screen, or -1 if no resolution has been set. The
-  @setf{gdk:screen-resolution} function sets the resolution for font handling
-  on the screen.
+  Returns -1 if no resolution has been set.
 
   This is a scale factor between points specified in a
   @class{pango:font-description} instance and Cairo units. The default value
@@ -528,9 +523,9 @@ lambda (screen)    :run-last
 (cffi:defcfun ("gdk_screen_make_display_name" screen-make-display-name)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2021-12-13}
+ "@version{#2025-10-09}
   @argument[screen]{a @class{gdk:screen} object}
-  @return{The string with the name of the default display.}
+  @return{The string for the name of the default display.}
   @begin{short}
     Determines the name to pass to the @fun{gdk:display-open} function to get
     a @class{gdk:display} object with this screen as the default screen.
@@ -851,10 +846,10 @@ lambda (screen)    :run-last
 
 (defun screen-setting (screen name gtype)
  #+liber-documentation
- "@version{2024-06-27}
+ "@version{2025-10-09}
   @argument[screen]{a @class{gdk:screen} object where the setting is located}
-  @argument[name]{a string with the name of the setting}
-  @argument[gtype]{a string with the @class{g:type-t} type ID of the setting}
+  @argument[name]{a string for the name of the setting}
+  @argument[gtype]{a string for the @class{g:type-t} type ID of the setting}
   @begin{return}
     The value of the setting, or @code{nil} if the setting does not exist.
   @end{return}

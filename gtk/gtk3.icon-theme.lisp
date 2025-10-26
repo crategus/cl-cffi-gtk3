@@ -1035,9 +1035,9 @@ lambda (theme)    :run-last
 (cffi:defcfun ("gtk_icon_theme_get_example_icon_name"
                icon-theme-example-icon-name) :string
  #+liber-documentation
- "@version{2025-06-20}
+ "@version{2025-10-09}
   @argument[theme]{a @class{gtk:icon-theme} object}
-  @return{The string with the name of an example icon or @code{nil}.}
+  @return{The string for the name of an example icon or @code{nil}.}
   @begin{short}
     Gets the name of an icon that is representative of the current icon theme,
     for instance, to use when presenting a list of icon themes to the user.
@@ -1205,9 +1205,9 @@ lambda (theme)    :run-last
 
 (cffi:defcfun ("gtk_icon_info_get_filename" icon-info-filename) :string
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:icon-info} instance}
-  @return{The string with the filename for the icon.}
+  @return{The string for the filename for the icon.}
   @begin{short}
     Gets the filename for the icon.
   @end{short}
@@ -1272,9 +1272,9 @@ lambda (theme)    :run-last
 
 (defun icon-info-load-icon (info)
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-10-09}
   @argument[info]{a @sym{gtk:icon-info} instance}
-  @return{The @class{gdk-pixbuf:pixbuf} object with the rendered icon.}
+  @return{The @class{gdk-pixbuf:pixbuf} object for the rendered icon.}
   @begin{short}
     Renders an icon previously looked up in an icon theme using the
     @fun{gtk:icon-theme-lookup-icon} function.

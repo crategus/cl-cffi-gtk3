@@ -112,11 +112,11 @@
 (setf (liber:alias-for-function 'color-pixel)
       "Accessor"
       (documentation 'color-pixel 'function)
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @syntax{(gdk:color-pixel instance) => pixel}
   @syntax{(setf (gdk:color-pixel instance) pixel)}
   @begin{short}
-    Accessor of the @code{pixel} slot of the @class{gdk:color} structure.
+    The accessor for the @code{pixel} slot of the @class{gdk:color} structure.
   @end{short}
   For allocated colors, the pixel value used to draw this color on the screen.
   Not used anymore.
@@ -134,11 +134,11 @@
 (setf (liber:alias-for-function 'color-red)
       "Accessor"
       (documentation 'color-red 'function)
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @syntax{(gdk:color-red instance) => red}
   @syntax{(setf (gdk:color-red instance) red)}
   @begin{short}
-    Accessor of the @code{red} slot of the @class{gdk:color} structure.
+    The accessor for the @code{red} slot of the @class{gdk:color} structure.
   @end{short}
   The red component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
@@ -158,11 +158,11 @@
 (setf (liber:alias-for-function 'color-green)
       "Accessor"
       (documentation 'color-green 'function)
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @syntax{(gdk:color-green instance) => green}
   @syntax{(setf (gdk:color-green instance) green)}
   @begin{short}
-    Accessor of the @code{green} slot of the @class{gdk:color} structure.
+    The accessor for the @code{green} slot of the @class{gdk:color} structure.
   @end{short}
   The green component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
@@ -182,11 +182,11 @@
 (setf (liber:alias-for-function 'color-blue)
       "Accessor"
       (documentation 'color-blue 'function)
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @syntax{(gdk:color-blue instance) => blue}
   @syntax{(setf (gdk:color-blue instance) blue)}
   @begin{short}
-    Accessor of the @code{blue} slot of the @class{gdk:color} structure.
+    The accessor for the @code{blue} slot of the @class{gdk:color} structure.
   @end{short}
   The blue component of the color. This is a value between 0 and 65535, with
   65535 indicating full intensity.
@@ -238,10 +238,11 @@
 
 (defun color-copy (color)
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @argument[color]{a @class{gdk:color} color}
-  @return{The newly created @class{gdk:color} instance with the copy of
-    @arg{color}.}
+  @begin{return}
+    The newly created @class{gdk:color} instance for the copy of @arg{color}.
+  @end{return}
   @begin{short}
     Makes a copy of a color.
   @end{short}
@@ -272,10 +273,11 @@
 
 (defun color-parse (spec)
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @argument[spec]{a string specifying the color}
-  @return{The @class{gdk:color} instance or @code{nil} if the parsing did not
-    succeed.}
+  @begin{return}
+    The @class{gdk:color} instance or @code{nil} if the parsing did not succeed.
+  @end{return}
   @begin{short}
     Parses a textual specification of a color and fill in the red, green, and
     blue fields of a @class{gdk:color} color.

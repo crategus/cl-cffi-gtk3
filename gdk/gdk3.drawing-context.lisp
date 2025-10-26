@@ -106,16 +106,15 @@
 (setf (liber:alias-for-function 'drawing-context-clip)
       "Accessor"
       (documentation 'drawing-context-clip 'function)
- "@version{#2023-03-10}
+ "@version{#2025-10-09}
   @syntax{(gdk:drawing-context-clip object) => region}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[region]{a @symbol{cairo:region-t} instance}
   @begin{short}
-    Accessor of the @slot[gdk:drawing-context]{clip} slot of the
-    @class{gdk:drawing-context} class.
+    The accessor for the @slot[gdk:drawing-context]{clip} slot of the
+    @class{gdk:drawing-context} class retrieves a copy of the clip region used
+    when creating the context.
   @end{short}
-  The @fun{gdk:drawing-context-clip} function retrieves a copy of the clip
-  region used when creating the context.
 
   Since 3.22
   @see-class{gdk:drawing-context}
@@ -133,33 +132,33 @@
 (setf (liber:alias-for-function 'drawing-context-window)
       "Accessor"
       (documentation 'drawing-context-window 'function)
- "@version{#2023-03-10}
+ "@version{#2025-10-09}
   @syntax{(gdk:drawing-context-window object) => window}
   @argument[object]{a @class{gdk:drawing-context} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
-    Accessor of the @slot[gdk:drawing-context]{window} slot of the
-    @class{gdk:drawing-context} class.
+    The accessor for the @slot[gdk:drawing-context]{window} slot of the
+    @class{gdk:drawing-context} class retrieves the window that created the
+    drawing context.
   @end{short}
-  The @fun{gdk:drawing-context-window} function retrieves the window that
-  created the drawing context.
 
   Since 3.22
   @see-class{gdk:drawing-context}
   @see-class{gdk:window}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gdk_drawing_context_get_cairo_context () -> drawing-context-cairo-context
+;;; gdk_drawing_context_get_cairo_context
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_drawing_context_get_cairo_context" drawing-context-cairo-context)
+(cffi:defcfun ("gdk_drawing_context_get_cairo_context"
+               drawing-context-cairo-context)
     (:pointer (:struct cairo:context-t))
  #+liber-documentation
- "@version{2023-03-10}
+ "@version{2025-10-09}
   @argument[object]{a @class{gdk:drawing-context} object}
   @begin{return}
-    A @symbol{cairo:context-t} Cairo context to be used to draw the contents of
-    the @class{gdk:window} object.
+    The @symbol{cairo:context-t} Cairo context to be used to draw the contents
+    of the @class{gdk:window} object.
   @end{return}
   @begin{short}
     Retrieves a Cairo context to be used to draw on the window that created the

@@ -1983,12 +1983,12 @@ lambda (view)    :action
 
 (defun tree-view-get-cursor (view)
  #+liber-documentation
- "@version{2024-03-12}
+ "@version{2025-10-09}
   @argument[view]{a @class{gtk:tree-view} widget}
   @begin{return}
-    @arg{path} -- a @class{gtk:tree-path} instance with the current cursor path,
+    @arg{path} -- a @class{gtk:tree-path} instance for the current cursor path,
       or @code{nil} @br{}
-    @arg{focus} -- a @class{gtk:tree-view-column} object with the current focus
+    @arg{focus} -- a @class{gtk:tree-view-column} object for the current focus
       column, or @code{nil}
   @end{return}
   @begin{short}

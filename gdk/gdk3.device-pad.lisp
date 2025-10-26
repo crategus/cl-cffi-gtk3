@@ -134,9 +134,9 @@
 
 (cffi:defcfun ("gdk_device_pad_get_n_groups" device-pad-n-groups) :int
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @return{An integer with the number of button/ring/strip groups in the pad.}
+  @return{The integer for the number of button/ring/strip groups in the pad.}
   @begin{short}
     Returns the number of groups this pad device has.
   @end{short}
@@ -155,11 +155,11 @@
 
 (cffi:defcfun ("gdk_device_pad_get_group_n_modes" device-pad-group-n-modes) :int
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[pad]{a @class{gdk:device-pad} object}
-  @argument[index]{an integer with the group to get the number of available
+  @argument[index]{an integer for the group to get the number of available
     modes from}
-  @return{An integer with the number of modes available in the group,}
+  @return{The integer for the number of modes available in the group,}
   @begin{short}
     Returns the number of modes that the group may have.
   @end{short}

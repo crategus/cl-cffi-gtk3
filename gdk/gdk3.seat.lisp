@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.seat.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2023 Dieter Kaiser
+;;; Copyright (C) 2019 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -207,15 +207,14 @@ lambda (seat tool)    :run-last
 (setf (liber:alias-for-function 'seat-display)
       "Accessor"
       (documentation 'seat-display 'function)
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @syntax{(gdk:seat-display object) => display}
   @argument[object]{a @class{gdk:seat} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:seat]{display} slot of the
-    @class{gdk:seat} class.
+    The accessor for the @slot[gdk:seat]{display} slot of the
+    @class{gdk:seat} class returns the display this seat belongs to.
   @end{short}
-  The @fun{gdk:seat-display} function returns the display this seat belongs to.
   @see-class{gdk:seat}
   @see-class{gdk:display}")
 
@@ -382,9 +381,9 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_pointer" seat-pointer) (g:object device)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[seat]{a @class{gdk:seat} object}
-  @return{A master @class{gdk:device} object with pointer capabilities.}
+  @return{The master @class{gdk:device} object for pointer capabilities.}
   @begin{short}
     Returns the master device that routes pointer events.
   @end{short}
@@ -400,9 +399,9 @@ lambda (seat tool)    :run-last
 
 (cffi:defcfun ("gdk_seat_get_keyboard" seat-keyboard) (g:object device)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[seat]{a @class{gdk:seat} object}
-  @return{A master @class{gdk:device} object with keyboard capabilities.}
+  @return{The master @class{gdk:device} object for keyboard capabilities.}
   @begin{short}
     Returns the master device that routes keyboard events.
   @end{short}

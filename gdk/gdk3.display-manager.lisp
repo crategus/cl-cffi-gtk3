@@ -149,19 +149,16 @@ lambda (manager display)    :run-last
 (setf (liber:alias-for-function 'display-manager-default-display)
       "Accessor"
       (documentation 'display-manager-default-display 'function)
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @syntax{(gdk:display-manager-default-display object) => display}
   @syntax{(setf (gdk:display-manager-default-display object) display)}
   @argument[object]{a @class{gdk:display-manager} object}
   @argument[display]{a default @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:display-manager]{default-display} slot of the
-    @class{gdk:display-manager} class.
+    The accessor for the @slot[gdk:display-manager]{default-display} slot of the
+    @class{gdk:display-manager} class gets or sete the default display for GDK.
   @end{short}
-  The @fun{gdk:display-manager-default-display} function gets the default
-  @class{gdk:display} object, or @code{nil} if there is no default display. The
-  @setf{gdk:display-manager-default-display} function sets @arg{display} as the
-  default display.
+  Returns @code{nil} if there is no default display.
   @begin[Example]{dictionary}
     @begin{pre}
 (gdk:display-manager-default-display (gdk:display-manager-get))
@@ -203,9 +200,9 @@ lambda (manager display)    :run-last
 (cffi:defcfun ("gdk_display_manager_list_displays" display-manager-list-displays)
     (g:slist-t (g:object display) :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[manager]{a @class{gdk:display-manager} object}
-  @return{A list of @class{gdk:display} objects.}
+  @return{The list of @class{gdk:display} objects.}
   @short{List all currently open displays.}
   @see-class{gdk:display}
   @see-class{gdk:display-manager}"
@@ -220,11 +217,11 @@ lambda (manager display)    :run-last
 (cffi:defcfun ("gdk_display_manager_open_display" display-manager-open-display)
     (g:object display)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2025-10-09}
   @argument[manager]{a @class{gdk:display-manager} object}
-  @argument[name]{a string with the name of the display to open}
+  @argument[name]{a string for the name of the display to open}
   @begin{return}
-    A @class{gdk:display} object, or @code{nil} if the display could not be
+    The @class{gdk:display} object, or @code{nil} if the display could not be
     opened.
   @end{return}
   @short{Opens a display.}

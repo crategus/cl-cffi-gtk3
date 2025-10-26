@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'im-context 'type)
- "@version{#2025-09-26}
+ "@version{#2025-10-09}
   @begin{short}
     The @class{gtk:im-context} object defines the interface for GTK input
     methods.
@@ -156,7 +156,7 @@ lambda (context str)    :run-last
       @begin[code]{simple-table}
         @entry[context]{The @class{gtk:im-context} object on which the signal
           is emitted.}
-        @entry[str]{The string with the completed character(s) entered by the
+        @entry[str]{The string for the completed character(s) entered by the
           user.}
       @end{simple-table}
       The signal is emitted when a complete input sequence has been entered by

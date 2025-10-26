@@ -539,9 +539,9 @@ lambda (infobar response)    :run-last
 (cffi:defcfun ("gtk_info_bar_get_action_area" info-bar-action-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{#2025-10-09}
   @argument[infobar]{a @class{gtk:info-bar} widget}
-  @return{The @class{gtk:widget} object with the action area.}
+  @return{The @class{gtk:widget} object for the action area.}
   @short{Returns the action area of the info bar.}
   @see-class{gtk:info-bar}
   @see-class{gtk:widget}"

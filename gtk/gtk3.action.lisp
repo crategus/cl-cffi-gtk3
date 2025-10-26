@@ -277,17 +277,16 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-action-group)
       "Accessor"
       (documentation 'action-action-group 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{gtk:action-action-group object) => group}
   @syntax{(setf (gtk:action-action-group object) group)}
   @argument[object]{a @class{gtk:action} object}
   @argument[group]{a @class{gtk:action-group} object}
   @begin{short}
-    Accessor of the @slot[gtk:action]{action-group} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{action-group} slot of the
+    @class{gtk:action} class gets or sets the action group the action is
+    associated with, or @code{nil} for internal use.
   @end{short}
-  The action group the action is associated with, or @code{nil} for internal
-  use.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-action-group} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -318,14 +317,12 @@ lambda (action)    :no-recurse
   @argument[always-show]{@em{true} if menu item proxies should always show
     their image}
   @begin{short}
-    Accessor of the @slot[gtk:action]{always-show-image} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{always-show-image} slot of the
+    @class{gtk:action} class gets or sets whether the action menu item proxies
+    will ignore the @slot[gtk:settings]{gtk-menu-images} setting and always show
+    their image, if available.
   @end{short}
-  The @fun{gtk:action-always-show-image} function returns whether the action
-  menu item proxies will ignore the @slot[gtk:settings]{gtk-menu-images}
-  setting and always show their image, if available. The
-  @setf{gtk:action-always-show-image} function sets the property. Use this if
-  the menu item would be useless or hard to use without their image.
+  Use this if the menu item would be useless or hard to use without their image.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-always-show-image} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -347,18 +344,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-gicon)
       "Accessor"
       (documentation 'action-gicon 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-gicon object) => icon}
   @syntax{(setf (gtk:action-gicon object) icon)}
   @argument[object]{a @class{gtk:action} object}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
-    Accessor of the @slot[gtk:action]{gicon} slot of the @class{gtk:action}
-    class.
+    The accessor for the @slot[gtk:action]{gicon} slot of the @class{gtk:action}
+    class gets or sets the icon of the action.
   @end{short}
-  The @fun{gtk:action-gicon} function gets the icon of the action. The
-  @setf{gtk:action-gicon} function sets the icon.
-
   The icon displayed in the action. Note that the stock icon is preferred, if
   the @slot[gtk:action]{stock-id} property holds the ID of an existing stock
   icon. This is an appearance property and thus only applies if the
@@ -384,16 +378,16 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-hide-if-empty)
       "Accessor"
       (documentation 'action-hide-if-empty 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-hide-if-empty object) => hide-if-empty}
   @syntax{(setf (gtk:action-hide-if-empty object) hide-if-empty)}
   @argument[object]{a @class{gtk:action} object}
   @argument[hide-if-empty]{a boolean whether empty menu proxies are hidden}
   @begin{short}
-    Accessor of the @slot[gtk:action]{hide-if-empty} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{hide-if-empty} slot of the
+    @class{gtk:action} class gets or sets whether empty menu proxies for this
+    action are hidden.
   @end{short}
-  When @em{true}, empty menu proxies for this action are hidden.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-hide-if-empty} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -417,18 +411,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-icon-name)
       "Accessor"
       (documentation 'action-icon-name 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-icon-name object) => name}
   @syntax{(setf (gtk:action-icon-name object) name)}
   @argument[object]{a @class{gtk:action} object}
   @argument[name]{a string for the icon name to set}
   @begin{short}
-    Accessor of the @slot[gtk:action]{icon-name} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{icon-name} slot of the
+    @class{gtk:action} class gets or sets the icon name of the action.
   @end{short}
-  The @fun{gtk:action-icon-name} function gets the icon name of the action. The
-  @setf{gtk:action-icon-name} function sets the icon name.
-
   The name of the icon from the icon theme. Note that the stock icon is
   preferred, if the @slot[gtk:action]{stock-id} property holds the ID of an
   existing stock icon, and the @class{g:icon} object is preferred if the
@@ -457,20 +448,19 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-is-important)
       "Accessor"
       (documentation 'action-is-important 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-is-important object) => is-important}
   @syntax{(setf (gtk:action-is-important object) is-important)}
   @argument[object]{a @class{gtk:action} object}
   @argument[is-important]{@em{true} to make the action important}
   @begin{short}
-    Accessor of the @slot[gtk:action]{is-important} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{is-important} slot of the
+    @class{gtk:action} class gets or sets whether the action is important or
+    not.
   @end{short}
-  The @fun{gtk:action-is-important} function checks whether the action is
-  important or not. The @setf{gtk:action-is-important} function sets whether
-  the action is important. This attribute is used primarily by toolbar items to
-  decide whether to show a label or not. When @em{true}, toolitem proxies for
-  this action show text in @val[gtk:toolbar-style]{:both-horiz} mode.
+  This attribute is used primarily by toolbar items to decide whether to show a
+  label or not. When @em{true}, toolitem proxies for this action show text in
+  @val[gtk:toolbar-style]{:both-horiz} mode.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-is-important} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -494,18 +484,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-label)
       "Accessor"
       (documentation 'action-label 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-label object) => label}
   @syntax{(setf (gtk:action-label object) label)}
   @argument[object]{a @class{gtk:action} object}
   @argument[label]{a string for the label text to set}
   @begin{short}
-    Accessor of the @slot[gtk:action]{label} slot of the @class{gtk:action}
-    class.
+    The accessor for the @slot[gtk:action]{label} slot of the @class{gtk:action}
+    class gets or sets the label text of the action.
   @end{short}
-  The @fun{gtk:action-label} function gets the label text of the action. The
-  @setf{gtk:action-label} function sets the label.
-
   The label used for menu items and buttons that activate this action. If the
   label is @code{nil}, GTK uses the stock label specified via the
   @slot[gtk:action]{stock-id} property. This is an appearance property and thus
@@ -532,15 +519,14 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-name)
       "Accessor"
       (documentation 'action-name 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-name object) => name}
   @argument[object]{a @class{gtk:action} object}
   @argument[name]{a string for the name of the action}
   @begin{short}
-    Accessor of the @slot[gtk:action]{name} slot of the @class{gtk:action}
-    class.
+    The accessor for the @slot[gtk:action]{name} slot of the @class{gtk:action}
+    class returns the unique name of the action.
   @end{short}
-  The @fun{gtk:action-name} function returns the unique name of the action.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-name} function has been deprecated since version 3.10
     and should not be used in newly written code.
@@ -559,18 +545,16 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-sensitive)
       "Accessor"
       (documentation 'action-sensitive 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action} object}
   @argument[sensitive]{@em{true} to make the action sensitive}
   @begin{short}
-    Accessor of the @slot[gtk:action]{sensitive} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{sensitive} slot of the
+    @class{gtk:action} class gets or sets whether the action itself is
+    sensitive.
   @end{short}
-  The @fun{gtk:action-label} function returns whether the action itself is
-  sensitive. The @setf{gtk:action-label} function sets the sensitivity.
-
   Note that this does not necessarily mean effective sensitivity. See the
   @fun{gtk:action-is-sensitive} function for that.
   @begin[Warning]{dictionary}
@@ -594,18 +578,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-short-label)
       "Accessor"
       (documentation 'action-short-label 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-short-label object) => label}
   @syntax{(setf (gtk:action-short-label object) label)}
   @argument[object]{a @class{gtk:action} object}
   @argument[label]{a string for the label text to set}
   @begin{short}
-    Accessor of the @slot[gtk:action]{short-label} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{short-label} slot of the
+    @class{gtk:action} class gets or sets the short label text of the action.
   @end{short}
-  The @fun{gtk:action-short-label} function gets the short label text of the
-  action. The @setf{gtk:action-short-label} function sets a shorter label text.
-
   A shorter label that may be used on toolbar buttons. This is an appearance
   property and thus only applies if the
   @slot[gtk:activatable]{use-action-appearance} property is @em{true}.
@@ -630,18 +611,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-stock-id)
       "Accessor"
       (documentation 'action-stock-id 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-stock-id object) => stock-id}
   @syntax{(setf (gtk:action-stock-id object) stock-id)}
   @argument[object]{a @class{gtk:action} object}
   @argument[stock-id]{a string for the stock ID}
   @begin{short}
-    Accessor of the @slot[gtk:action]{stock-id} slot of the @class{gtk:action}
-    class.
+    The accessor for the @slot[gtk:action]{stock-id} slot of the
+    @class{gtk:action} class gets or sets the stock ID of the action.
   @end{short}
-  The @fun{gtk:action-stock-id} function gets the stock ID of the action. The
-  @setf{gtk:action-stock-id} function sets the stock ID.
-
   The stock icon displayed in widgets representing the action. This is an
   appearance property and thus only applies if the
   @slot[gtk:activatable]{use-action-appearance} property is @em{true}.
@@ -664,17 +642,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-tooltip)
       "Accessor"
       (documentation 'action-tooltip 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-tooltip object) => tooltip}
   @syntax{(setf (gtk:action-tooltip object) tooltip)}
   @argument[object]{a @class{gtk:action} object}
   @argument[tooltip]{a string for the tooltip text}
   @begin{short}
-    Accessor of the @slot[gtk:action]{tooltip} slot of the @class{gtk:action}
-    class.
+    The accessor for the @slot[gtk:action]{tooltip} slot of the
+    @class{gtk:action} class gets or sets the tooltip for this action.
   @end{short}
-  The @fun{gtk:action-tooltip} function gets the tooltip text of the action.
-  The @setf{gtk:action-tooltip} function sets the tooltip text.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-tooltip} function has been deprecated since version
     3.10 and should not be used in newly written code.
@@ -693,18 +669,15 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible)
       "Accessor"
       (documentation 'action-visible 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-visible object) => visible}
   @syntax{(setf (gtk:action-visible object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible}
   @begin{short}
-    Accessor of the @slot[gtk:action]{visible} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{visible} slot of the
+    @class{gtk:action} class gets or sets whether the action itself is visible.
   @end{short}
-  The @fun{gtk:action-visible} function returns whether the action itself is
-  visible. The @setf{gtk:action-visible} function sets the visibility.
-
   Note that this does not necessarily mean effective visibility. See the
   @fun{gtk:action-is-visible} function for that.
   @begin[Warning]{dictionary}
@@ -728,18 +701,16 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-horizontal)
       "Accessor"
       (documentation 'action-visible-horizontal 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-visible-horizontal object) => visible}
   @syntax{(setf (gtk:action-visible-horizontal object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible horizontally}
   @begin{short}
-    Accessor of the @slot[gtk:action]{visible-horizontal} slot of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{visible-horizontal} slot of the
+    @class{gtk:action} class gets or sets whether the action is visible when
+    horizontal.
   @end{short}
-  The @fun{gtk:action-visible-horizontal} function checks whether the action is
-  visible when horizontal. The @setf{gtk:action-visible-horizontal} function
-  sets the visibility.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-visible-horizontal} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -760,13 +731,13 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-overflown)
       "Accessor"
       (documentation 'action-visible-overflown 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-visible-overflow object) => visible}
   @syntax{(setf (gtk:action-visible-overflow object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{a boolean whether a toolbar overflow menu is shown}
   @begin{short}
-    Accessor of the @slot[gtk:action]{visible-overflown} slot of the
+    The accessor for the @slot[gtk:action]{visible-overflown} slot of the
     @class{gtk:action} class.
   @end{short}
   When @em{true}, toolitem proxies for this action are represented in the
@@ -791,18 +762,16 @@ lambda (action)    :no-recurse
 (setf (liber:alias-for-function 'action-visible-vertical)
       "Accessor"
       (documentation 'action-visible-vertical 'function)
- "@version{2024-09-26}
+ "@version{2025-10-09}
   @syntax{(gtk:action-visible-vertical object) => visible}
   @syntax{(setf (gtk:action-visible-vertical object) visible)}
   @argument[object]{a @class{gtk:action} object}
   @argument[visible]{@em{true} to make the action visible vertically}
   @begin{short}
-    Accessor of the @slot[gtk:action]{visible-vertical} of the
-    @class{gtk:action} class.
+    The accessor for the @slot[gtk:action]{visible-vertical} of the
+    @class{gtk:action} class gets or sets whether the action is visible when
+    vertical.
   @end{short}
-  The @fun{gtk:action-visible-vertical} function checks whether the action is
-  visible when vertical. The @setf{gtk:action-visible-vertical} function sets
-  the visibility.
   @begin[Warning]{dictionary}
     The @fun{gtk:action-visible-vertical} function has been deprecated since
     version 3.10 and should not be used in newly written code.

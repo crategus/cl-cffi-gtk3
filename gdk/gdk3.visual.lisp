@@ -264,9 +264,10 @@
 
 (defun query-visual-types ()
  #+liber-documentation
- "@version{2024-06-28}
-  @return{A list of the available visual types of type
-    @symbol{gdk:visual-type}.}
+ "@version{2025-10-09}
+  @begin{return}
+    The list of the available visual types of type @symbol{gdk:visual-type}.
+  @end{return}
   @begin{short}
     This function returns the available visual types for the default screen.
   @end{short}

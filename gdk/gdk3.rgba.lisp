@@ -102,14 +102,14 @@
 (setf (liber:alias-for-function 'rgba-red)
       "Accessor"
       (documentation 'rgba-red 'function)
- "@version{2025-01-25}
+ "@version{2025-10-09}
   @syntax{(gdk:rgba-red instance) => red}
   @syntax{(setf (gdk:rgba-red instance) red)}
   @argument[instance]{a @struct{gdk:rgba} instance}
   @argument[red]{a number coerced to a double float for the intensity of
     the red channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{red} slot of the @struct{gdk:rgba} structure.
+    The accessor for the @code{red} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-green}
@@ -120,14 +120,14 @@
 (setf (liber:alias-for-function 'rgba-green)
       "Accessor"
       (documentation 'rgba-green 'function)
- "@version{2025-01-25}
+ "@version{2025-10-09}
   @syntax{(gdk:rgba-green instance) => green}
   @syntax{(setf (gdk:rgba-green instance) green)}
   @argument[instance]{a @struct{gdk:rgba} instance}
   @argument[green]{a number coerced to a double float for the intensity
     of the green channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{green} slot of the @struct{gdk:rgba} structure.
+    The accessor for the @code{green} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -138,14 +138,14 @@
 (setf (liber:alias-for-function 'rgba-blue)
       "Accessor"
       (documentation 'rgba-blue 'function)
- "@version{2025-01-25}
+ "@version{2025-10-09}
   @syntax{(gdk:rgba-blue instance) => blue}
   @syntax{(setf (gdk:rgba-blue instance) blue)}
   @argument[instance]{a @struct{gdk:rgba} color}
   @argument[blue]{a number coerced to a double float for the intensity
     of the blue channel from 0.0 to 1.0}
   @begin{short}
-    Accessor of the @code{blue} slot of the @struct{gdk:rgba} structure.
+    The accessor for the @code{blue} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -156,14 +156,14 @@
 (setf (liber:alias-for-function 'rgba-alpha)
       "Accessor"
       (documentation 'rgba-alpha 'function)
- "@version{2025-01-25}
+ "@version{2025-10-09}
   @syntax{(gdk:rgba-alpha instance) => alpha}
   @syntax{(setf (gdk:rgba-alpha instance) alpha)}
   @argument[instance]{a @struct{gdk:rgba} instance}
   @argument[alpha]{a number coerced to a double float for the opacity of
     the color from 0.0 for completely translucent to 1.0 for opaque}
   @begin{short}
-    Accessor of the @code{alpha} slot of the @struct{gdk:rgba} structure.
+    The accessor for the @code{alpha} slot of the @struct{gdk:rgba} structure.
   @end{short}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-red}
@@ -207,10 +207,12 @@
 
 (defun rgba-copy (rgba)
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @argument[rgba]{a @struct{gdk:rgba} instance}
-  @return{The newly allocated @struct{gdk:rgba} instance with the same contents
-    as @arg{rgba}.}
+  @begin{return}
+    The newly allocated @struct{gdk:rgba} instance for the same contents as
+    @arg{rgba}.
+  @end{return}
   @short{Makes a copy of a RGBA color.}
   @see-struct{gdk:rgba}
   @see-function{gdk:rgba-new}"
@@ -234,9 +236,9 @@
 
 (defun rgba-parse (str)
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @argument[str]{a string specifying the color}
-  @return{The @struct{gdk:rgba} instance with the filled in values.}
+  @return{The @struct{gdk:rgba} instance for the filled in values.}
   @begin{short}
     Parses a textual representation of a color, and returns a RGBA instance
     filling in the @code{red}, @code{green}, @code{blue} and @code{alpha}
@@ -321,9 +323,9 @@
 
 (cffi:defcfun ("gdk_rgba_to_string" rgba-to-string) :string
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2025-10-09}
   @argument[color]{a @struct{gdk:rgba} instance}
-  @return{The string with the textual specification of @arg{color}.}
+  @return{The string for the textual specification of @arg{color}.}
   @begin{short}
     Returns a textual specification of @arg{color} in the form @code{rgb(r,g,b)}
     or @code{rgba(r,g,b,a)}, where @code{r}, @code{g}, @code{b} and @code{a}

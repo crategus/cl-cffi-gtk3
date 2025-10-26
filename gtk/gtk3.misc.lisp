@@ -270,11 +270,11 @@
 
 (defun misc-get-alignment (misc)
  #+liber-documentation
- "@version{2023-03-21}
+ "@version{2025-10-09}
   @argument[misc]{a @class{gtk:misc} widget}
   @begin{return}
-    @arg{xalign} -- a float with the x alignment @br{}
-    @arg{yalign} -- a float with the y alignment
+    @arg{xalign} -- a float for the x alignment @br{}
+    @arg{yalign} -- a float for the y alignment
   @end{return}
   @short{Gets the x and y alignment of the widget within its allocation.}
   @begin[Warning]{dictionary}

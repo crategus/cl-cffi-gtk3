@@ -187,16 +187,15 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-display)
       "Accessor"
       (documentation 'gl-context-display 'function)
- "@version{#2024-06-26}
+ "@version{#2025-10-09}
   @syntax{(gdk:gl-context-display object) => display}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:gl-context]{display} slot of the
-    @class{gdk:gl-context} class.
+    The accessor for the @slot[gdk:gl-context]{display} slot of the
+    @class{gdk:gl-context} class retrieves the display the OpenGL drawing
+    context is created for.
   @end{short}
-  The @fun{gdk:gl-context-display} function retrieves the display the OpenGL
-  drawing context is created for.
   @see-class{gdk:gl-context}
   @see-class{gdk:display}")
 
@@ -213,16 +212,15 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-shared-context)
       "Accessor"
       (documentation 'gl-context-shared-context 'function)
- "@version{#2024-06-26}
+ "@version{#2025-10-09}
   @syntax{(gdk:gl-context-shared-context object) => shared-context}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[shared-context]{a @class{gdk:gl-context} object}
   @begin{short}
-    Accessor of the @slot[gdk:gl-context]{shared-context} slot of the
-    @class{gdk:gl-context} class.
+    The ccessor for the @slot[gdk:gl-context]{shared-context} slot of the
+    @class{gdk:gl-context} class retrieves the OpenGL drawing context that this
+    context share data with.
   @end{short}
-  The @fun{gdk:gl-context-shared-context} function retrieves the OpenGL drawing
-  context that this context share data with.
   @see-class{gdk:gl-context}")
 
 ;;; --- gdk:gl-context-window --------------------------------------------------
@@ -237,16 +235,15 @@ gdk_gl_context_make_current (context);
 (setf (liber:alias-for-function 'gl-context-window)
       "Accessor"
       (documentation 'gl-context-window 'function)
- "@version{#2024-06-26}
+ "@version{#2025-10-09}
   @syntax{(gdk:gl-context-window object) => window}
   @argument[object]{a @class{gdk:gl-context} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{short}
-    Accessor of the @slot[gdk:gl-context]{window} slot of the
-    @class{gdk:gl-context} class.
+    The accessor for the @slot[gdk:gl-context]{window} slot of the
+    @class{gdk:gl-context} class retrieves the window used by the OpenGL drawing
+    context.
   @end{short}
-  The @fun{gdk:gl-context-window} function retrieves the window used by the
-  OpenGL drawing context.
   @see-class{gdk:gl-context}
   @see-class{gdk:window}")
 
@@ -261,11 +258,11 @@ gdk_gl_context_make_current (context);
 
 (defun gl-context-version (context)
  #+liber-documentation
- "@version{#2024-06-26}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:gl-context} object}
   @begin{return}
-    @arg{major} - an integer with the major version @br{}
-    @arg{minor} - an integer with the minor version
+    @arg{major} - an integer for the major version @br{}
+    @arg{minor} - an integer for the minor version
   @end{return}
   @begin{short}
     Retrieves the OpenGL version of the GL context.
@@ -301,13 +298,13 @@ gdk_gl_context_make_current (context);
 
 (defun gl-context-required-version (context)
  #+liber-documentation
- "@version{#2024-06-26}
+ "@version{#2025-10-09}
   @syntax{(gdk:gl-context-required-version object) => major, minor}
   @syntax{(setf gdk:gl-context-required-version object) (list major minor))}
   @argument[context]{a @class{gdk:gl-context} object}
   @begin{return}
-    @arg{major} - an integer with the major version to request @br{}
-    @arg{minor} - an integer with the minor version to request
+    @arg{major} - an integer for the major version to request @br{}
+    @arg{minor} - an integer for the minor version to request
   @end{return}
   @begin{short}
     The @fun{gdk:gl-context-required-version} function retrieves the major and

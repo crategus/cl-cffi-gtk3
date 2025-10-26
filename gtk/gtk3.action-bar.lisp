@@ -128,7 +128,7 @@
 (setf (liber:alias-for-function 'action-bar-child-pack-type)
       "Accessor"
       (documentation 'action-bar-child-pack-type 'function)
- "@version{2025-06-27}
+ "@version{2025-10-09}
   @syntax{(gtk:action-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:action-bar-child-pack-type container child) packtype)}
   @argument[container]{a @class{gtk:action-bar} widget}
@@ -136,7 +136,7 @@
   @argument[packtype]{a value of the @sym{gtk:pack-type} enumeration for
     the child}
   @begin{short}
-    Accessor of the @prop[gtk:action-bar]{pack-type} child property of the
+    The accessor for the @prop[gtk:action-bar]{pack-type} child property of the
     @class{gtk:action-bar} class.
   @end{short}
   A value of the @sym{gtk:pack-type} enumeration indicating whether the child
@@ -154,14 +154,14 @@
 (setf (liber:alias-for-function 'action-bar-child-position)
       "Accessor"
       (documentation 'action-bar-child-position 'function)
- "@version{2025-06-27}
+ "@version{2025-10-09}
   @syntax{(gtk:action-bar-child-position container child) => pos)}
   @syntax{(setf (gtk:action-bar-child-position container child) pos)}
   @argument[container]{a @class{gtk:action-bar} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[pos]{an integer for the index of the child widget in the  parent}
   @begin{short}
-    Accessor of the @prop[gtk:action-bar]{position} child property of the
+    The accessor for the @prop[gtk:action-bar]{position} child property of the
     @class{gtk:action-bar} class.
   @end{short}
   The index of the child widget in the parent.

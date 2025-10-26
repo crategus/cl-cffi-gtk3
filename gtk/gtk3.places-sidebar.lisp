@@ -219,7 +219,7 @@
 
 #+liber-documentation
 (setf (documentation 'places-sidebar 'type)
- "@version{#2025-09-26}
+ "@version{#2025-10-09}
   @begin{short}
     The @class{gtk:places-sidebar} widget is a widget that displays a list of
     frequently-used places in the file system: the user’s home directory, the
@@ -281,9 +281,9 @@ lambda (sidebar context dest source)    :run-last
       @begin[code]{simple-table}
         @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
-        @entry[context]{The @class{gdk:drag-context} object with information
+        @entry[context]{The @class{gdk:drag-context} object for information
           about the drag operation.}
-        @entry[dest]{A @class{g:file} object with the tentative location that
+        @entry[dest]{The @class{g:file} object for the tentative location that
           is being hovered for a drop.}
         @entry[source]{List of @class{g:file} objects that are being dragged.}
         @entry[Returns]{The integer for the drag action to use, for example,
@@ -356,7 +356,7 @@ lambda (sidebar container item volume)    :run-first
           the signal.}
         @entry[container]{A @class{gtk:menu} widget or another
           @class{gtk:container} widget.}
-        @entry[item]{A @class{g:file} object with the item to which the popup
+        @entry[item]{The @class{g:file} object for the item to which the popup
           should refer, or @code{nil} in the case of a @arg{volume}.}
         @entry[volume]{A @class{g:volume} object if the selected item is a
           volume, or @code{nil} if it is a file.}
@@ -430,9 +430,9 @@ lambda (sidebar primary secondary)    :run-first
       @begin[code]{simple-table}
         @entry[sidebar]{The @class{gtk:places-sidebar} widget that received
           the signal.}
-        @entry[primary]{A string with the primary message with a summary of the
+        @entry[primary]{The string for the primary message with a summary of the
           error to show.}
-        @entry[secondary]{A string with the secondary message with details of
+        @entry[secondary]{The string for the secondary message with details of
           the error to show.}
       @end{simple-table}
       The places sidebar emits this signal when it needs the calling application
@@ -968,10 +968,10 @@ lambda (sidebar mount)    :run-first
 (cffi:defcfun ("gtk_places_sidebar_get_nth_bookmark"
                places-sidebar-nth-bookmark) g:file-as-namestring
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2025-10-09}
   @argument[sidebar]{a @class{gtk:places-sidebar} widget}
   @argument[n]{an integer for the index of bookmark to query}
-  @return{The namestring with the bookmark specified by the index @arg{n}, or
+  @return{The namestring for the bookmark specified by the index @arg{n}, or
     @code{nil} if no such index exist. Note that the indices start at 0, even
     though the file chooser starts them with the keyboard shortcut @kbd{Alt-1}.}
   @begin{short}

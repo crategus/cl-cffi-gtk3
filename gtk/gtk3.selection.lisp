@@ -956,9 +956,9 @@
 (cffi:defcfun ("gtk_selection_data_get_selection" selection-data-selection)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-10-09}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{The string with the selection.}
+  @return{The string for the selection.}
   @begin{short}
     Retrieves the selection of the selection data.
   @end{short}
@@ -1040,9 +1040,9 @@
 (cffi:defcfun ("gtk_selection_data_get_data_type" selection-data-data-type)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-10-09}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{The string with the type of the selection.}
+  @return{The string for the type of the selection.}
   @begin{short}
     Retrieves the data type of the selection.
   @end{short}
@@ -1094,9 +1094,9 @@
 (cffi:defcfun ("gtk_selection_data_get_target" selection-data-target)
     gdk:atom-as-string
  #+liber-documentation
- "@version{#2025-06-19}
+ "@version{#2025-10-09}
   @argument[data]{a @class{gtk:selection-data} instance}
-  @return{The string with the target.}
+  @return{The string for the target.}
   @begin{short}
     The target of the selection.
   @end{short}

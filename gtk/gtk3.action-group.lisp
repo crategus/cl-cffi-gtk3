@@ -251,13 +251,13 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-accel-group)
       "Accessor"
       (documentation 'action-group-accel-group 'function)
- "@version{2024-09-24}
+ "@version{2025-10-09}
   @syntax{(gtk:action-group-accel-group object) => group}
   @syntax{(setf (gtk:action-group-accel-group object) group)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[group]{a @class{gtk:accel-group} object to set or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:action-group]{accel-group} slot of the
+    The accessor for the @slot[gtk:action-group]{accel-group} slot of the
     @class{gtk:action-group} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -280,13 +280,13 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-name)
       "Accessor"
       (documentation 'action-group-name 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-group-name object) => name}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[name]{a string for the name of the action group}
   @begin{short}
-    Accessor of the @slot[gtk:action-group]{name} slot of the
-    @class{gtk:action-group} class.
+    The accessor for the @slot[gtk:action-group]{name} slot of the
+    @class{gtk:action-group} class returns the name of the action group.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-name} function has been deprecated since version
@@ -306,14 +306,15 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-sensitive)
       "Accessor"
       (documentation 'action-group-sensitive 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-group-sensitive object) => sensitive}
   @syntax{(setf (gtk:action-group-sensitive object) sensitive)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[sensitive]{a boolean for the sensitivity}
   @begin{short}
-    Accessor of the @slot[gtk:action-group]{sensitive} slot of the
-    @class{gtk:action-group} class.
+    The accessor for the @slot[gtk:action-group]{sensitive} slot of the
+    @class{gtk:action-group} class gets or sets whether the action group is
+    enabled.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-sensitive} function has been deprecated since
@@ -333,14 +334,15 @@ lambda (group action)
 (setf (liber:alias-for-function 'action-group-visible)
       "Accessor"
       (documentation 'action-group-visible 'function)
- "@version{2025-07-02}
+ "@version{2025-10-09}
   @syntax{(gtk:action-group-visible object) => visible}
   @syntax{(setf (gtk:action-group-visible object) visible)}
   @argument[object]{a @class{gtk:action-group} object}
   @argument[visible]{a boolean for the visibility}
   @begin{short}
-    Accessor of the @slot[gtk:action-group]{visible} slot of the
-    @class{gtk:action-group} class.
+    The accessor for the @slot[gtk:action-group]{visible} slot of the
+    @class{gtk:action-group} class gets or sets whether the action group is
+    visible.
   @end{short}
   @begin[Warning]{dictionary}
     The @fun{gtk:action-group-visible} function has been deprecated since
@@ -743,10 +745,10 @@ lambda (group action)
 (cffi:defcfun ("gtk_action_group_translate_string"
                action-group-translate-string) (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{#2025-07-02}
+ "@version{#2025-10-09}
   @argument[group]{a @class{gtk:action-group} object}
   @argument[string]{a string}
-  @return{The string with the translation.}
+  @return{The string for the translation.}
   @begin{short}
     Translates a string using the specified @sym{gtk:translate-func} callback
     function.

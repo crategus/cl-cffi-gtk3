@@ -556,13 +556,13 @@
 
 (defun text-iter-slice (start end &key (visible nil))
  #+liber-documentation
- "@version{2025-07-01}
+ "@version{2025-10-09}
   @argument[start]{a @class{gtk:text-iter} instance for the start of a range}
   @argument[end]{a @class{gtk:text-iter} instance for the end of a range}
   @argument[visible]{a boolean keyword argument, the default is @code{false}}
-  @return{The string with a slice of text from the text buffer.}
+  @return{The string for a slice of text from the text buffer.}
   @begin{short}
-    Returns a string with the text in the given range.
+    Returns the text in the given range.
   @end{short}
   If the @arg{visible} keyword argument is @code{true}, invisible text is not
   included. Invisible text is usually invisible because a @class{gtk:text-tag}
@@ -603,13 +603,13 @@
 
 (defun text-iter-text (start end &key (visible nil))
  #+liber-documentation
- "@version{2025-07-01}
+ "@version{2025-10-09}
   @argument[start]{a @class{gtk:text-iter} instance for the start of a range}
   @argument[end]{a @class{gtk:text-iter} instance for the end of a range}
   @argument[visible]{a boolean keyword argument, the default is @code{false}}
-  @return{The string with characters from the text buffer.}
+  @return{The string for characters from the text buffer.}
   @begin{short}
-    Returns a string with the text in the given range.
+    Returns the text in the given range.
   @end{short}
   If the @arg{visible} keyword argument is @code{true}, invisible text is not
   included. Invisible text is usually invisible because a @class{gtk:text-tag}

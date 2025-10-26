@@ -375,9 +375,9 @@
 
 (cffi:defcfun ("gtk_tree_path_to_string" tree-path-to-string) :string
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2025-10-09}
   @argument[path]{a @class{gtk:tree-path} instance}
-  @return{The string with the representation for the tree path.}
+  @return{The string for the representation for the tree path.}
   @begin{short}
     Generates a string representation for the tree path.
   @end{short}

@@ -243,16 +243,15 @@
 (setf (liber:alias-for-function 'device-manager-display)
       "Accessor"
       (documentation 'device-manager-display 'function)
- "@version{2024-06-29}
+ "@version{2024-10-08}
   @syntax{(gdk:device-manager-display object) => display}
   @argument[object]{a @class{gdk:device-manager} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:device-manager]{display} slot of the
-    @class{gdk:device-manager} class.
+    The accessor for the @slot[gdk:device-manager]{display} slot of the
+    @class{gdk:device-manager} class returns the display to which the device
+    manager is associated to.
   @end{short}
-  The @fun{gdk:device-manager-display} function returns the display to which
-  the device manager is associated to.
   @see-class{gdk:device-manager}
   @see-class{gdk:display}")
 

@@ -250,7 +250,7 @@
 
 #+liber-documentation
 (setf (documentation 'cell-renderer 'type)
- "@version{2025-07-05}
+ "@version{2025-10-09}
   @begin{short}
     The @class{gtk:cell-renderer} class is a base class of a set of objects used
     for rendering a cell to a @sym{cairo:context-t} context.
@@ -312,7 +312,7 @@ lambda (renderer editable path)    :run-first
         @entry[renderer]{The @class{gtk:cell-renderer} object which received
           the signal.}
         @entry[editable]{The @class{gtk:cell-editable} widget.}
-        @entry[path]{The string with the path identifying the edited cell.}
+        @entry[path]{The string for the path identifying the edited cell.}
       @end{simple-table}
       The signal gets emitted when a cell starts to be edited. The intended
       use of this signal is to do special setup on editable, for example, adding

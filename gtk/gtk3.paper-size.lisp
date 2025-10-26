@@ -371,9 +371,9 @@
 
 (cffi:defcfun ("gtk_paper_size_get_name" paper-size-name) :string
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2025-10-09}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @return{The string with the name of the paper size.}
+  @return{The string for the name of the paper size.}
   @begin{short}
     Gets the name of the paper size.
   @end{short}
@@ -389,9 +389,9 @@
 (cffi:defcfun ("gtk_paper_size_get_display_name" paper-size-display-name)
     :string
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2025-10-09}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @return{The string with the human readable name of the paper size.}
+  @return{The string for the human readable name of the paper size.}
   @begin{short}
     Gets the human readable name of the paper size.
   @end{short}
@@ -406,9 +406,9 @@
 
 (cffi:defcfun ("gtk_paper_size_get_ppd_name" paper-size-ppd-name) :string
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2025-10-09}
   @argument[size]{a @class{gtk:paper-size} instance}
-  @return{The string with the PPD name of the paper size.}
+  @return{The string for the PPD name of the paper size.}
   @begin{short}
     Gets the PPD name of the paper size, which may be @code{nil}.
   @end{short}
@@ -622,10 +622,8 @@
 
 (cffi:defcfun ("gtk_paper_size_get_default" paper-size-default) :string
  #+liber-documentation
- "@version{2025-01-06}
-  @begin{return}
-    The string with the name of the default paper size.
-  @end{return}
+ "@version{2025-10-09}
+  @return{The string with the name of the default paper size.}
   @begin{short}
     Returns the name of the default paper size, which depends on the current
     locale.

@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.pango.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -115,7 +115,7 @@
 
 (defun pango-layout-line-clip-region (line xorigin yorigin ranges)
  #+liber-documentation
- "@version{#2025-08-31}
+ "@version{#2025-10-09}
   @argument[line]{a @class{pango:layout-line} instance}
   @argument[xorigin]{an integer for the x pixel where you intend to draw the
     Pango layout line with this clip}
@@ -124,7 +124,7 @@
   @argument[ranges]{list of byte indexes into the Pango layout, where even
     members of list are start indexes and odd elements are end indexes}
   @begin{return}
-    The @sym{cairo:region-t} instance with the clip region containing the given
+    The @sym{cairo:region-t} instance for the clip region containing the given
     ranges.
   @end{return}
   @begin{short}

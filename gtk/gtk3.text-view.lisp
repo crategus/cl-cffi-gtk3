@@ -426,7 +426,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-view 'type)
- "@version{2025-09-26}
+ "@version{2025-10-09}
   @begin{short}
     GTK has a powerful framework for multiline text editing.
   @end{short}
@@ -545,7 +545,7 @@ lambda (view text)    :action
       @end{pre}
       @begin[code]{simple-table}
         @entry[view]{The @class{gtk:text-view} widget that received the signal.}
-        @entry[text]{The string with the text to insert.}
+        @entry[text]{The string for the text to insert.}
       @end{simple-table}
       The signal is a keybinding signal which gets emitted when the user
       initiates the insertion of text at the cursor. The signal has no default
@@ -638,7 +638,7 @@ lambda (view preedit)    :action
       @end{pre}
       @begin[code]{simple-table}
         @entry[view]{The @class{gtk:text-view} object that received the signal.}
-        @entry[preedit]{A string with the current preedit text.}
+        @entry[preedit]{The string for the current preedit text.}
       @end{simple-table}
       If an input method is used, the typed text will not immediately be
       committed to the text buffer. So if you are interested in the text,

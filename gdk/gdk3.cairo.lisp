@@ -134,7 +134,7 @@
                window-create-similar-image-surface)
     (:pointer (:struct cairo:surface-t))
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-10-09}
   @argument[window]{a @class{gdk:window} object to make the new surface similar
     to}
   @argument[format]{a value of the @symbol{cairo:format-t} enumeration for the
@@ -144,7 +144,7 @@
   @argument[scale]{an integer for the scale of the new surface, or 0 to use
     same as @arg{window}}
   @begin{return}
-    A newly allocated @symbol{cairo:surface-t} instance. The caller owns the
+    The newly allocated @symbol{cairo:surface-t} instance. The caller owns the
     surface and should call the @fun{cairo:surface-destroy} function when done
     with it. This function always returns a valid pointer, but it will return a
     \"nil\" surface if the surface is in an error state or any other error
@@ -246,10 +246,10 @@
 
 (defun cairo-clip-rectangle (cr)
  #+liber-documentation
- "@version{2025-06-03}
+ "@version{2025-10-09}
   @argument[cr]{a @symbol{cairo:context-t} context}
   @begin{return}
-    The @class{gdk:rectangle} instance with the clip or @em{false} if all of
+    The @class{gdk:rectangle} instance for the clip or @em{false} if all of
     @arg{cr} is clipped and all drawing can be skipped.
   @end{return}
   @begin{short}

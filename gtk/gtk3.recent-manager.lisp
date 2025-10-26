@@ -670,9 +670,9 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_uri" recent-info-uri) :string
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:recent-info} instance}
-  @return{The string with the URI of the resource.}
+  @return{The string for the URI of the resource.}
   @short{Gets the URI of the resource.}
   @see-class{gtk:recent-info}"
   (info (g:boxed recent-info)))
@@ -686,9 +686,9 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_info_get_display_name" recent-info-display-name)
     :string
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:recent-info} instance}
-  @return{The string with the display name of the resource.}
+  @return{The string for the display name of the resource.}
   @begin{short}
     Gets the name of the resource.
   @end{short}
@@ -705,9 +705,9 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_info_get_description" recent-info-description)
     :string
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:recent-info} instance}
-  @return{The string with the description of the resource.}
+  @return{The string for the description of the resource.}
   @short{Gets the (short) description of the resource.}
   @see-class{gtk:recent-info}"
   (info (g:boxed recent-info)))
@@ -720,9 +720,9 @@ lambda (manager)    :run-first
 
 (cffi:defcfun ("gtk_recent_info_get_mime_type" recent-info-mime-type) :string
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:recent-info} instance}
-  @return{The string with the MIME type of the resource.}
+  @return{The string for the MIME type of the resource.}
   @short{Gets the MIME type of the resource.}
   @see-class{gtk:recent-info}"
   (info (g:boxed recent-info)))
@@ -882,9 +882,9 @@ lambda (manager)    :run-first
 (cffi:defcfun ("gtk_recent_info_last_application" recent-info-last-application)
     (:string :free-from-foreign t)
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[info]{a @class{gtk:recent-info} instance}
-  @return{The string with an application name.}
+  @return{The string for an application name.}
   @begin{short}
     Gets the name of the last application that have registered the recently used
     resource represented by @arg{info}.

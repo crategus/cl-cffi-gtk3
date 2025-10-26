@@ -157,9 +157,9 @@
 (setf (liber:alias-for-function 'alignment-bottom-padding)
       "Accessor"
       (documentation 'alignment-bottom-padding 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{bottom-padding} slot of the
+    The accessor for the @slot[gtk:alignment]{bottom-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -183,9 +183,9 @@
 (setf (liber:alias-for-function 'alignment-left-padding)
       "Accessor"
       (documentation 'alignment-left-padding 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{left-padding} slot of the
+    The accessor for the @slot[gtk:alignment]{left-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -209,9 +209,9 @@
 (setf (liber:alias-for-function 'alignment-right-padding)
       "Accessor"
       (documentation 'alignment-right-padding 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{right-padding} slot of the
+    The accessor for the @slot[gtk:alignment]{right-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -235,9 +235,9 @@
 (setf (liber:alias-for-function 'alignment-top-padding)
       "Accessor"
       (documentation 'alignment-top-padding 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{top-padding} slot of the
+    The accessor for the @slot[gtk:alignment]{top-padding} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -253,7 +253,7 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "xalign" 'alignment) t)
  "The @code{xalign} property of type @code{:float} (Read / Write) @br{}
-  Horizontal position of the child widget in available space. 0.0 is left
+  The horizontal position of the child widget in available space. 0.0 is left
   aligned, 1.0 is right aligned. @br{}
   Allowed values: [0.0, 1.0] @br{}
   Default value: 0.5")
@@ -262,9 +262,9 @@
 (setf (liber:alias-for-function 'alignment-xalign)
       "Accessor"
       (documentation 'alignment-xalign 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{xalign} slot of the
+    The accessor for the @slot[gtk:alignment]{xalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -289,9 +289,9 @@
 (setf (liber:alias-for-function 'alignment-xscale)
       "Accessor"
       (documentation 'alignment-xscale 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{xscale} slot of the
+    The accessor for the @slot[gtk:alignment]{xscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -307,8 +307,8 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "yalign" 'alignment) t)
  "The @code{yalign} property of type @code{:float} (Read / Write) @br{}
-  Vertical position of the child widget in available space. 0.0 is top aligned,
-  1.0 is bottom aligned. @br{}
+  The vertical position of the child widget in available space. 0.0 is top
+  aligned, 1.0 is bottom aligned. @br{}
   Allowed values: [0.0, 1.0] @br{}
   Default value: 0.5")
 
@@ -316,9 +316,9 @@
 (setf (liber:alias-for-function 'alignment-yalign)
       "Accessor"
       (documentation 'alignment-yalign 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{yalign} slot of the
+    The accessor for the @slot[gtk:alignment]{yalign} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}
@@ -343,9 +343,9 @@
 (setf (liber:alias-for-function 'alignment-yscale)
       "Accessor"
       (documentation 'alignment-yscale 'function)
- "@version{2023-12-28}
+ "@version{2025-10-21}
   @begin{short}
-    Accessor of the @slot[gtk:alignment]{yscale} slot of the
+    The accessor for the @slot[gtk:alignment]{yscale} slot of the
     @class{gtk:alignment} class.
   @end{short}
   @begin[Warning]{dictionary}

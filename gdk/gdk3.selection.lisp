@@ -1,12 +1,12 @@
 ;;; ----------------------------------------------------------------------------
 ;;; gdk3.selections.lisp
 ;;;
-;;; The documentation of this file is taken from the GDK 3 Reference Manual
-;;; Version 3.24 and modified to document the Lisp binding to the GDK library.
-;;; See <http://www.gtk.org>. The API documentation of the Lisp binding is
-;;; available from <http://www.crategus.com/books/cl-cffi-gtk3/>.
+;;; The documentation in this file is taken from the GDK 3 Reference Manual
+;;; version 3.24 and modified to document the Lisp binding to the GDK library,
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
+;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2024 Dieter Kaiser
+;;; Copyright (C) 2011 - 2025 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -51,16 +51,18 @@
 
 (cffi:defcfun ("gdk_selection_owner_set" selection-owner-set) :boolean
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
   @argument[selection]{a string identifying a selection}
-  @argument[time]{an unsigned integer with the timestamp to use when setting
+  @argument[time]{an unsigned integer for the timestamp to use when setting
     the selection}
   @argument[send]{if @em{true}, and the new owner is different from the current
     owner, the current owner will be sent a @code{:selection-clear} event}
-  @return{@em{True} if the selection owner was successfully changed to
-    @arg{owner}, otherwise @em{false}.}
+  @begin{return}
+    @em{True} if the selection owner was successfully changed to @arg{owner},
+    otherwise @em{false}.
+  @end{return}
   @begin{short}
     Sets the owner of the given selection.
   @end{short}
@@ -83,17 +85,19 @@
 (cffi:defcfun ("gdk_selection_owner_set_for_display"
            selection-owner-set-for-display) :boolean
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[owner]{a @class{gdk:window} object or @code{nil} to indicate that
     the owner for the given selection should be unset}
   @argument[selection]{a string identifying a selection}
-  @argument[time]{an unsigned integer with the timestamp to use when setting
+  @argument[time]{an unsigned integer for the timestamp to use when setting
     the selection}
   @argument[send]{if @em{true}, and the new owner is different from the current
     owner, the current owner will be sent a @code{:selection-clear} event}
-  @return{@em{True} if the selection owner was successfully changed to
-    @arg{owner}, otherwise @em{false}.}
+  @begin{return}
+     @em{True} if the selection owner was successfully changed to @arg{owner},
+     otherwise @em{false}.
+  @end{return}
   @begin{short}
     Sets the owner of the given selection.
   @end{short}
@@ -142,12 +146,14 @@
 (cffi:defcfun ("gdk_selection_owner_get_for_display"
            selection-owner-get-for-display) (g:object window)
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[selection]{a string indentifying a selection}
-  @return{If there is a selection owner for this window, and it is a window
-    known to the current process, the @class{gdk:window} object that owns the
-    selection, otherwise @code{nil}.}
+  @begin{return}
+    If there is a selection owner for this window, and it is a window known to
+    the current process, the @class{gdk:window} object that owns the selection,
+    otherwise @code{nil}.
+  @end{return}
   @begin{short}
     Determine the owner of the given selection.
   @end{short}
@@ -167,12 +173,12 @@
 
 (cffi:defcfun ("gdk_selection_convert" selection-convert) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[requestor]{a @class{gdk:window} object}
   @argument[selection]{a string identifying the selection to get the contents
     of}
-  @argument[target]{a string with the form in which to retrieve the selection}
-  @argument[time]{an unsigned integer with the timestamp to use when retrieving
+  @argument[target]{a string for the form in which to retrieve the selection}
+  @argument[time]{an unsigned integer for the timestamp to use when retrieving
     the selection}
   @begin{short}
     Retrieves the contents of a selection in a given form.
@@ -199,13 +205,13 @@
 
 (defun selection-property-get (requestor)
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[requestor]{a @class{gdk:window} object on which the data is stored}
   @begin{return}
-    @code{length} -- an integer with the length of the retrieved data @br{}
+    @code{length} -- an integer for the length of the retrieved data @br{}
     @code{data} -- a foreign pointer to the retrieved data @br{}
-    @code{type} -- a string with the type of the property @br{}
-    @code{format} -- an integer with the format of the property
+    @code{type} -- a string for the type of the property @br{}
+    @code{format} -- an integer for the format of the property
   @end{return}
   @begin{short}
     Retrieves selection data that was stored in response to a call to the
@@ -239,14 +245,14 @@
 
 (cffi:defcfun ("gdk_selection_send_notify" selection-send-notify) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
-  @argument[selection]{a string with the selection that was requested}
-  @argument[target]{a string with the target that was selected}
-  @argument[property]{a string with the property in which the selection owner
+  @argument[selection]{a string for the selection that was requested}
+  @argument[target]{a string for the target that was selected}
+  @argument[property]{a string for the property in which the selection owner
     stored the data, or @code{\"NONE\"} to indicate that the request was
     rejected}
-  @argument[time]{an unsigned integer with the timestamp}
+  @argument[time]{an unsigned integer for the timestamp}
   @begin{short}
     Sends a response to the @code{:selection-request} event.
   @end{short}
@@ -268,16 +274,16 @@
 (cffi:defcfun ("gdk_selection_send_notify_for_display"
           selection-send-notify-for-display) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object where @arg{requestor} is
     realized}
   @argument[requestor]{a @class{gdk:window} object to which to deliver response}
-  @argument[selection]{a string with the selection that was requested}
-  @argument[target]{a string with the target that was selected}
-  @argument[property]{a string with the property in which the selection owner
+  @argument[selection]{a string for the selection that was requested}
+  @argument[target]{a string for the target that was selected}
+  @argument[property]{a string for the property in which the selection owner
     stored the data, or @code{\"NONE\"} to indicate that the request was
     rejected}
-  @argument[time]{an unsigned integer with the timestamp}
+  @argument[time]{an unsigned integer for the timestamp}
   @begin{short}
     Send a response to the @code{:selection-request} event.
   @end{short}

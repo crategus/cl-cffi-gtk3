@@ -489,9 +489,9 @@ lambda (printer success)    :run-last
 
 (cffi:defcfun ("gtk_printer_get_description" printer-description) :string
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-10-09}
   @argument[printer]{a @class{gtk:printer} object}
-  @return{The string with the description of @arg{printer}.}
+  @return{The string for the description of @arg{printer}.}
   @short{Gets the description of the printer.}
   @see-class{gtk:printer}"
   (printer (g:object printer)))
@@ -691,9 +691,9 @@ lambda (printer success)    :run-last
 (cffi:defcfun ("gtk_printer_get_default_page_size" printer-default-page-size)
     (g:object page-setup)
  #+liber-documentation
- "@version{#2025-07-05}
+ "@version{#2025-10-09}
   @argument[printer]{a @class{gtk:printer} object}
-  @return{The @class{gtk:page-setup} object with the default page size of the
+  @return{The @class{gtk:page-setup} object for the default page size of the
     printer.}
   @short{Returns the default page size of the printer.}
   @see-class{gtk:printer}
@@ -715,13 +715,13 @@ lambda (printer success)    :run-last
 
 (defun printer-hard-margins (printer)
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2025-10-09}
   @argument[printer]{a @class{gtk:printer} object}
   @begin{return}
-    @arg{top} -- a double float with the top margin @br{}
-    @arg{bottom} -- a double float with the bottom margin @br{}
-    @arg{left} -- a double float with the left margin in @br{}
-    @arg{right} -- a double float with the right margin
+    @arg{top} -- a double float for the top margin @br{}
+    @arg{bottom} -- a double float for the bottom margin @br{}
+    @arg{left} -- a double float for the left margin in @br{}
+    @arg{right} -- a double float for the right margin
   @end{return}
   @begin{short}
     Retrieve the hard margins of the printer, that is, the margins that define

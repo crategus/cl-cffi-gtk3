@@ -386,11 +386,11 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-entries-for-keyval (keymap keyval)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keyval]{a keyval, such as @code{GDK_a}, @code{GDK_Up},
     @code{GDK_Return}, etc.}
-  @return{A list of keycode, group, and level values.}
+  @return{The list of keycode, group, and level values.}
   @begin{short}
     Obtains a list of keycode/group/level combinations that will generate
     @arg{keyval}.
@@ -508,10 +508,11 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_have_bidi_layouts" keymap-have-bidi-layouts) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keymap]{a @class{gdk:keymap} object}
-  @return{@em{True} if there are layouts in both directions, @em{false}
-    otherwise.}
+  @begin{return}
+    @em{True} if there are layouts in both directions, @em{false} otherwise.
+  @end{return}
   @begin{short}
     Determines if keyboard layouts for both right-to-left and left-to-right
     languages are in use.
@@ -787,10 +788,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_upper" keyval-to-upper) :uint
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keyval]{an unsigned integer for a key value}
-  @return{The upper case form of @arg{keyval}, or @arg{keyval} itself if it is
-    already in upper case or it is not subject to case conversion.}
+  @begin{return}
+    The upper case form of @arg{keyval}, or @arg{keyval} itself if it is already
+    in upper case or it is not subject to case conversion.
+  @end{return}
   @begin{short}
     Converts a key value to upper case, if applicable.
   @end{short}
@@ -806,10 +809,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_lower" keyval-to-lower) :uint
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keyval]{an unsigned integer for a key value}
-  @return{The lower case form of @arg{keyval}, or @arg{keyval} itself if it is
-    already in lower case or it is not subject to case conversion.}
+  @begin{return}
+    The lower case form of @arg{keyval}, or @arg{keyval} itself if it is already
+    in lower case or it is not subject to case conversion.
+  @end{return}
   @begin{short}
     Converts a key value to lower case, if applicable.
   @end{short}
@@ -825,10 +830,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_upper" keyval-is-upper) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keyval]{an unsigned integer for a key value}
-  @return{@em{True} if @arg{keyval} is in upper case, or if @arg{keyval} is not
-    subject to case conversion.}
+  @begin{return}
+    @em{True} if @arg{keyval} is in upper case, or if @arg{keyval} is not
+    subject to case conversion.
+  @end{return}
   @begin{short}
     Returns @em{true} if the given key value is in upper case.
   @end{short}
@@ -844,10 +851,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_lower" keyval-is-lower) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keyval]{an unsigned integer for a key value}
-  @return{@em{True} if @arg{keyval} is in lower case, or if @arg{keyval} is not
-    subject to case conversion.}
+  @begin{return}
+    @em{True} if @arg{keyval} is in lower case, or if @arg{keyval} is not
+    subject to case conversion.
+  @end{return}
   @begin{short}
     Returns @em{true} if the given key value is in lower case.
   @end{short}
@@ -863,10 +872,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_unicode" keyval-to-unicode) g:unichar
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[keyval]{an unsigned integer for a GDK key symbol}
-  @return{The corresponding unicode character, or @code{#\\Nul} if there is no
-    corresponding character.}
+  @begin{return}
+    The corresponding unicode character, or @code{#\\Nul} if there is no
+    corresponding character.
+  @end{return}
   @begin{short}
     Convert from a GDK key symbol to the corresponding ISO10646 (Unicode)
     character.

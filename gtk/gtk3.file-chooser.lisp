@@ -1413,10 +1413,10 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_preview_filename"
                 file-chooser-preview-filename) (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2023-03-14}
+ "@version{#2025-10-09}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @begin{return}
-    A string with the filename to preview, or @code{nil} if no file is
+    The string for the filename to preview, or @code{nil} if no file is
     selected, or if the selected file cannot be represented as a local filename.
   @end{return}
   @begin{short}
@@ -1436,10 +1436,10 @@ lambda (chooser)    :run-last
 (cffi:defcfun ("gtk_file_chooser_get_preview_uri" file-chooser-preview-uri)
     :string
  #+liber-documentation
- "@version{#2023-03-14}
+ "@version{#2025-10-09}
   @argument[chooser]{a @class{gtk:file-chooser} widget}
   @begin{return}
-    A string with the URI for the file to preview, or @code{nil} if no file is
+    The string for the URI for the file to preview, or @code{nil} if no file is
     selected.
   @end{return}
   @begin{short}

@@ -256,8 +256,8 @@
 
 (defun atom-intern (name &optional (only-if-exists nil))
  #+liber-documentation
- "@version{#2025-08-31}
-  @argument[name]{a string with the atom name}
+ "@version{#2025-10-09}
+  @argument[name]{a string for the atom name}
   @argument[only-if-exists]{if @em{true}, GDK is allowed to not create a new
     atom, but just return a @code{cffi:null-pointer} if the requested atom does
     not already exists. Currently, the flag is ignored, since checking the

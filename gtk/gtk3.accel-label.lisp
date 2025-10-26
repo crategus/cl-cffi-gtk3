@@ -161,20 +161,19 @@
 (setf (liber:alias-for-function 'accel-label-accel-closure)
       "Accessor"
       (documentation 'accel-label-accel-closure 'function)
- "@version{#2023-03-15}
+ "@version{#2025-10-09}
   @syntax{(gtk:accel-label-accel-closure object) => closure}
   @syntax{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[closure]{a @sym{g:closure} instance to monitor for accelerator
     changes}
   @begin{short}
-    Accessor of the @slot[gtk:accel-label]{accel-closure} slot of the
-    @class{gtk:accel-label} class.
+    The accessor for the @slot[gtk:accel-label]{accel-closure} slot of the
+    @class{gtk:accel-label} class gets or sets the closure to be monitored by
+    this accelerator.
   @end{short}
-  The @fun{gtk:accel-label-accel-closure} function gets the closure to be
-  monitored by this accelerator. The @setf{gtk:accel-label-accel-closure}
-  function sets the closure. The closure must be connected to an accelerator
-  group, see the @code{gtk_accel_group_connect()} function.
+  The closure must be connected to an accelerator group, see the
+  @code{gtk_accel_group_connect()} function.
   @see-class{gtk:accel-label}
   @see-symbol{g:closure}")
 
@@ -190,18 +189,16 @@
 (setf (liber:alias-for-function 'accel-label-accel-widget)
       "Accessor"
       (documentation 'accel-label-accel-widget 'function)
- "@version{#2023-03-15}
+ "@version{#2025-10-09}
   @syntax{(gtk:accel-label-accel-widget object) => widget}
   @syntax{(setf (gtk:accel-label-accel-widget object) widget)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[widget]{a @class{gtk:widget} object to be monitored}
   @begin{short}
-    Accessor of the @slot[gtk:accel-label]{accel-widget} slot of the
-    @class{gtk:accel-label} class.
+    The accessor for the @slot[gtk:accel-label]{accel-widget} slot of the
+    @class{gtk:accel-label} class gets or sets the widget monitored by the
+    accelerator label.
   @end{short}
-  The @fun{gtk:accel-label-accel-widget} function returns the widget monitored
-  by the accelerator label. The @setf{gtk:accel-label-accel-widget} function
-  sets the widget.
   @see-class{gtk:accel-label}
   @see-class{gtk:widget}")
 

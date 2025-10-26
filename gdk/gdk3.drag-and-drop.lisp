@@ -333,9 +333,9 @@
 
 (cffi:defcfun ("gdk_drag_abort" drag-abort) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
-  @argument[time]{an unsigned integer with the timestamp for this operation}
+  @argument[time]{an unsigned integer for the timestamp for this operation}
   @begin{short}
     Aborts a drag without dropping.
   @end{short}
@@ -352,10 +352,10 @@
 
 (cffi:defcfun ("gdk_drop_reply" drop-reply) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[accepted]{@em{true} if the drop is accepted}
-  @argument[time]{an unsigned integer with the timestamp for this operation}
+  @argument[time]{an unsigned integer for the timestamp for this operation}
   @begin{short}
     Accepts or rejects a drop.
   @end{short}
@@ -374,9 +374,9 @@
 
 (cffi:defcfun ("gdk_drag_drop" drag-drop) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
-  @argument[time]{an unsigned integer with the timestamp for this operation}
+  @argument[time]{an unsigned integer for the timestamp for this operation}
   @begin{short}
     Drops on the current destination.
   @end{short}
@@ -427,17 +427,15 @@
 
 (defun drag-find-window-for-screen (context window screen x y)
  #+liber-documentation
- "@version{#2025-07-17}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[window]{a @class{gdk:window} object that may be at the pointer
     position, but should be ignored, since it is put up by the drag source as
     an icon}
   @argument[screen]{a @class{gdk:screen} object where the destination window
     is sought}
-  @argument[x]{an integer with the x position of the pointer in root
-    coordinates}
-  @argument[y]{an integer with the y position of the pointer in root
-    coordinates}
+  @argument[x]{an integer for the x position of the pointer in root coordinates}
+  @argument[y]{an integer for the y position of the pointer in root coordinates}
   @begin{return}
     @code{dest} -- a @class{gdk:window} destination window @br{}
     @code{protocol} -- a @symbol{gdk:drag-protocol} DND protocol
@@ -610,10 +608,10 @@
 
 (cffi:defcfun ("gdk_drop_finish" drop-finish) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[success]{@em{true} if the data was successfully received}
-  @argument[time]{an unsigned integer with the timestamp for this operation}
+  @argument[time]{an unsigned integer for the timestamp for this operation}
   @begin{short}
     Ends the drag operation after a drop.
   @end{short}
@@ -631,12 +629,12 @@
 
 (cffi:defcfun ("gdk_drag_status" drag-status) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
   @argument[action]{a selected @symbol{gdk:drag-action} value which will be
     taken when a drop happens, or 0 to indicate that a drop will not be
     accepted}
-  @argument[time]{an integer with the timestamp for this operation}
+  @argument[time]{an integer for the timestamp for this operation}
   @begin{short}
     Selects one of the actions offered by the drag source.
   @end{short}
@@ -889,10 +887,10 @@
 
 (cffi:defcfun ("gdk_drag_context_set_hotspot" drag-context-set-hotspot) :void
  #+liber-documentation
- "@version{#2024-06-28}
+ "@version{#2025-10-09}
   @argument[context]{a @class{gdk:drag-context} object}
-  @argument[x]{an integer with the x coordinate of the drag window hotspot}
-  @argument[y]{an integer with the y coordinate of the drag window hotspot}
+  @argument[x]{an integer for the x coordinate of the drag window hotspot}
+  @argument[y]{an integer for the y coordinate of the drag window hotspot}
   @begin{short}
     Sets the position of the drag window that will be kept under the cursor
     hotspot.

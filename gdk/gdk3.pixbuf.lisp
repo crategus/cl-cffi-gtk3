@@ -3,7 +3,7 @@
 ;;;
 ;;; The documentation in this file is taken from the GDK 3 Reference Manual
 ;;; Version 3.24 and modified to document the Lisp binding to the GDK library,
-;;; see <http://www.gtk.org>. The API documentation of the Lisp binding is
+;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
 ;;; Copyright (C) 2012 - 2025 Dieter Kaiser
@@ -46,14 +46,15 @@
 (cffi:defcfun ("gdk_pixbuf_get_from_window" pixbuf-from-window)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2025-03-09}
+ "@version{#2025-10-09}
   @argument[window]{a @class{gdk:window} object for the source window}
   @argument[xsrc]{an integer for the source x coordinate within window}
   @argument[ysrc]{an integer for the source y coordinate within window}
   @argument[width]{an integer for the width in pixels of the region to get}
   @argument[height]{an integer for the height in pixels of the region to get}
-  @return{The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
-    error.}
+  @begin{return}
+    The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on error.
+  @end{return}
   @begin{short}
     Transfers image data from a @class{gdk:window} object and converts it to an
     RGB(A) representation inside a @class{gdk-pixbuf:pixbuf} object.
@@ -100,14 +101,15 @@
 (cffi:defcfun ("gdk_pixbuf_get_from_surface" pixbuf-from-surface)
     (g:object gdk-pixbuf:pixbuf)
  #+liber-documentation
- "@version{#2025-03-09}
+ "@version{#2025-10-09}
   @argument[surface]{a @symbol{cairo:surface-t} instance to copy from}
   @argument[xsrc]{an integer for the x coordinate within surface}
   @argument[ysrc]{an integer for the y coordinate within surface}
   @argument[width]{an integer for the width in pixels of the region to get}
   @argument[height]{an integer for the height in pixels of the region to get}
-  @return{The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on
-    error.}
+  @begin{return}
+    The newly created @class{gdk-pixbuf:pixbuf} object, or @code{nil} on error.
+  @end{return}
   @begin{short}
     Transfers image data from a @symbol{cairo:surface-t} instance and converts
     it to an RGB(A) representation inside a @class{gdk-pixbuf:pixbuf} object.

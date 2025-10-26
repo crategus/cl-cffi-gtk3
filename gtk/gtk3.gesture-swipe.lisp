@@ -135,12 +135,12 @@ lambda (gesture xvelocity yvelocity)    :run-last
 
 (defun gesture-swipe-velocity (gesture)
  #+liber-documentation
- "@version{#2025-01-25}
+ "@version{#2025-10-09}
   @argument[gesture]{a @class{gtk:gesture-swipe} object}
   @begin{return}
-    @code{xvelocity} -- a double float with the velocity in the x axis,
+    @code{xvelocity} -- a double float for the velocity in the x axis,
     in pixels/sec. @br{}
-    @code{yvelocity} -- a double float with the velocity in the y axis,
+    @code{yvelocity} -- a double float for the velocity in the y axis,
     in pixels/sec.
   @end{return}
   @begin{short}

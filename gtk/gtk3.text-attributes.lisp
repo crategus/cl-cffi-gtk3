@@ -214,7 +214,7 @@
     @entry[no-fallback]{Whether to disable font fallback.}
     @entry[letter-spacing]{The integer for the extra space to insert between
       graphemes, in Pango units.}
-    @entry[font-features]{The string with font features.}
+    @entry[font-features]{The string for the font features.}
   @end{simple-table}
   @see-slot{gtk:text-attributes-appearance}
   @see-slot{gtk:text-attributes-justification}

@@ -246,9 +246,9 @@
 
 (cffi:defcfun ("gdk_event_peek" event-peek) (g:boxed event :return)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @begin{return}
-    A copy of the first @class{gdk:event} instance on some event queue, or
+    The copy of the first @class{gdk:event} instance on some event queue, or
     @code{nil} if no events are in any queues.
   @end{return}
   @begin{short}
@@ -311,10 +311,10 @@
 
 (defun event-new (event-type &rest args)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event-type]{a value of the @symbol{gdk:event-type} enumeration}
   @argument[args]{pairs of property name and property value}
-  @return{A new  @class{gdk:event} instance.}
+  @return{The new  @class{gdk:event} instance.}
   @begin{short}
     Creates a new event of the given type.
   @end{short}
@@ -402,9 +402,9 @@
 
 (defun event-copy (event)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
-  @return{A copy of the @class{gdk:event} instance.}
+  @return{The copy of the @class{gdk:event} instance.}
   @begin{short}
     Copies an event.
   @end{short}
@@ -487,10 +487,11 @@
 
 (defun event-click-count (event)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
-  @return{Click count, or @code{nil} if the event does not deliver a click
-    count.}
+  @begin{return}
+    Click count, or @code{nil} if the event does not deliver a click count.
+  @end{return}
   @begin{short}
     Extracts the click count from an event.
   @end{short}
@@ -516,11 +517,11 @@
 
 (defun event-coords (event)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
-    @code{xwin} -- a double float with the event window x coordinate @br{}
-    @code{ywin} -- a double float with the event window y coordinate
+    @code{xwin} -- a double float for the event window x coordinate @br{}
+    @code{ywin} -- a double float for the event window y coordinate
   @end{return}
   @begin{short}
     Extract the event window relative x/y coordinates from an event.
@@ -591,11 +592,11 @@
 
 (defun event-root-coords (event)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
-    @code{xroot} -- a double float with the root window x coordinate @br{}
-    @code{yroot} -- a double float with the root window y coordinate
+    @code{xroot} -- a double float for the root window x coordinate @br{}
+    @code{yroot} -- a double float for the root window y coordinate
   @end{return}
   @begin{short}
     Extract the root window relative x/y coordinates from an event.
@@ -641,11 +642,11 @@
 
 (defun event-scroll-deltas (event)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
   @begin{return}
-    @code{xdelta} -- a double float with x delta @br{}
-    @code{ydelta} -- a double float with y delta
+    @code{xdelta} -- a double float for x delta @br{}
+    @code{ydelta} -- a double float for y delta
   @end{return}
   @begin{short}
     Retrieves the scroll deltas from an event.
@@ -781,10 +782,11 @@
 (cffi:defcfun ("gdk_event_get_event_sequence" event-event-sequence)
     (g:boxed event-sequence)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[event]{a @class{gdk:event} instance}
-  @return{The @class{gdk:event-sequence} event sequence that the event belongs
-    to.}
+  @begin{return}
+    The @class{gdk:event-sequence} event sequence that the event belongs to.
+  @end{return}
   @begin{short}
     If the event is of type @code{:touch-begin}, @code{:touch-update},
     @code{:touch-end} or @code{:touch-cancel}, returns the
@@ -839,10 +841,10 @@
   (angle (:pointer :double)))
 
 (defun events-angle (event1 event2)
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
-  @return{A double float with the relative angle between both events.}
+  @return{The double float for the relative angle between both events.}
   @begin{short}
     If both events contain X/Y information, this function will return the
     relative angle from @arg{event1} to @arg{event2}.
@@ -867,12 +869,12 @@
   (y (:pointer :double)))
 
 (defun events-center (event1 event2)
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
   @begin{return}
-    @code{x} -- a double float with the x coordinate of the center @br{}
-    @code{y} -- a double float with the y coordinate of the center
+    @code{x} -- a double float for the x coordinate of the center @br{}
+    @code{y} -- a double float for the y coordinate of the center
   @end{return}
   @begin{short}
     If both events contain X/Y information, the center of both coordinates will
@@ -896,10 +898,10 @@
   (distance (:pointer :double)))
 
 (defun events-distance (event1 event2)
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[event1]{a @class{gdk:event} instance}
   @argument[event2]{a @class{gdk:event} instance}
-  @return{A double float with the distance.}
+  @return{The double float for the distance.}
   @begin{short}
     If both events have X/Y information, the distance between both coordinates,
     will be returned, as in a straight line going from @code{event1} to
@@ -1091,17 +1093,14 @@
 
 (cffi:defcfun ("gdk_event_get_screen" event-screen) (g:object screen)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @syntax{(gdk:event-screen event) => screen}
   @syntax{(setf (gdk:event-screen event) screen)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
-    Accessor of the screen of an event.
+    Gets or sets the screen of an event.
   @end{short}
-  The @fun{gdk:event-screen} function returns the screen for the event. The
-  @setf{gdk:event-screen} function sets the screen of the event.
-
   The event must have been allocated by GTK, for instance, by the
   @fun{gdk:event-copy} function.
 
@@ -1129,17 +1128,16 @@
 
 (cffi:defcfun ("gdk_event_get_device" event-device) (g:object device)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @syntax{(gdk:event-device event) => device}
   @syntax{(setf (gdk:event-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
-    Accessor of the \"device\" field of an event.
+    Gets or sets the \"device\" field of an event.
   @end{short}
-  If the event contains a \"device\" field, the @fun{gdk:event-device} function
-  will return it, else it will return @code{nil}. The
-  @setf{gdk:event-device} function sets the device for an event.
+  If the event contains a \"device\" field, this function will return it, else
+  it will return @code{nil}.
 
   The event must have been allocated by GTK, for instance, by the
   @fun{gdk:event-copy} function.
@@ -1163,19 +1161,18 @@
 
 (cffi:defcfun ("gdk_event_get_source_device" event-source-device) (g:object device)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @syntax{(gdk:event-source-device event) => device}
   @syntax{(setf (gdk:event-source-device event) device)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[device]{a @class{gdk:device} object}
   @begin{short}
-    Accessor of the slave device for the event.
+    Gets or sets the slave device for the event.
   @end{short}
-  The @fun{gdk:event-source-device} function returns the hardware (slave)
-  device that has triggered the event, falling back to the virtual (master)
-  device, as in the @fun{gdk:event-device} function, if the event was not
-  caused by interaction with a hardware device. The
-  @setf{gdk:event-source-device} function sets the slave device for the event.
+  This function returns the hardware (slave) device that has triggered the
+  event, falling back to the virtual (master) device, as in the
+  @fun{gdk:event-device} function, if the event was not caused by interaction
+  with a hardware device.
 
   This may happen for example in synthesized crossing events after a
   @class{gdk:window} object updates its geometry or a grab is acquired/released.
@@ -1206,19 +1203,18 @@
   tool)
 
 (cffi:defcfun ("gdk_event_get_device_tool" event-device-tool) (g:object device-tool)
- "@version{#205-07-01}
+ "@version{#2025-10-09}
   @syntax{(gdk:event-device-tool event) => tool}
   @syntax{(setf (gdk:event-device-tool event) tool)}
   @argument[event]{a @class{gdk:event} instance}
   @argument[tool]{a @class{gdk:device-tool} object}
   @begin{short}
-    Accessor of the device tool representing the tool that caused the event.
+    Gets or sets the device tool representing the tool that caused the event.
   @end{short}
   If the event was generated by a device that supports different tools, for
-  example a tablet, the @fun{gdk:event-device-tool} function will return a
-  @class{gdk:device-tool} object representing the tool that caused the event.
-  Otherwise, @code{nil} will be returned. The @setf{gdk:event-device-tool}
-  function sets the device tool for this event, should be rarely used.
+  example a tablet, this function will return a @class{gdk:device-tool} object
+  representing the tool that caused the event. Otherwise, @code{nil} will be
+  returned.
   @begin[Notes]{dictionary}
     The @class{gdk:device-tool} object will be constant during the application
     lifetime, if settings must be stored persistently across runs, see the
@@ -1243,9 +1239,9 @@
 
 (defun setting-get (name gtype)
  #+liber-documentation
- "@version{2023-02-26}
-  @argument[name]{a string with the name of the setting}
-  @argument[gtype]{a string with the GType of the setting}
+ "@version{2025-10-09}
+  @argument[name]{a string for the name of the setting}
+  @argument[gtype]{a string for the GType of the setting}
   @begin{return}
     The value of the setting.
   @end{return}

@@ -169,7 +169,7 @@
 (setf (liber:alias-for-class 'font-chooser)
       "Interface"
       (documentation 'font-chooser 'type)
- "@version{2025-07-14}
+ "@version{2025-10-09}
   @begin{short}
     The @sym{gtk:font-chooser} interface is an interface that can be
     implemented by widgets displaying the list of fonts.
@@ -185,7 +185,7 @@ lambda (fontchooser fontname)    :run-first
       @begin[code]{simple-table}
         @entry[fontchooser]{The @class{gtk:font-chooser} widget that received
           the signal.}
-        @entry[fontname]{The string with the font name.}
+        @entry[fontname]{The string for the font name.}
       @end{simple-table}
       Emitted when a font is activated. This usually happens when the user
       double clicks an item, or an item is selected and the user presses one

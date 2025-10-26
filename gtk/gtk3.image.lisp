@@ -708,10 +708,10 @@
 
 (defun image-get-stock (image)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{#2025-10-09}
   @argument[image]{a @class{gtk:image} widget}
   @begin{return}
-    @arg{stock-id} -- a string with a stock icon name @br{}
+    @arg{stock-id} -- a string for a stock icon name @br{}
     @arg{size} -- a stock icon size of type @sym{gtk:icon-size}
   @end{return}
   @begin{short}

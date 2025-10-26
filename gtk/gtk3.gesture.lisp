@@ -641,13 +641,13 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (defun gesture-point (gesture sequence)
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-10-09}
   @argument[gesture]{a @class{gtk:gesture} object}
   @argument[sequence]{a @class{gdk:event-sequence} instance, or @code{nil}
     for pointer events}
   @begin{return}
-    @arg{x} -- a double float with the x axis for the sequence coordinates @br{}
-    @arg{y} -- a double float with the y axis for the sequence coordinates
+    @arg{x} -- a double float for the x axis for the sequence coordinates @br{}
+    @arg{y} -- a double float for the y axis for the sequence coordinates
   @end{return}
   @begin{short}
     If @arg{sequence} is currently being interpreted by @arg{gesture}, this
@@ -710,12 +710,12 @@ second_gesture_begin_cb (GtkGesture       *second_gesture,
 
 (defun gesture-bounding-box-center (gesture)
  #+liber-documentation
- "@version{#2023-03-05}
+ "@version{#2025-10-09}
   @argument[gesture]{a @class{gtk:gesture} object}
   @begin{return}
-    @arg{x} -- a double float with the x coordinate for the bounding box center
+    @arg{x} -- a double float for the x coordinate for the bounding box center
     @br{}
-    @arg{y} -- a double float with the y coordinate for the bounding box center
+    @arg{y} -- a double float for the y coordinate for the bounding box center
   @end{return}
   @begin{short}
     If there are touch sequences being currently handled by @arg{gesture}, this

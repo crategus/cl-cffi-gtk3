@@ -810,7 +810,7 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
 (setf (liber:alias-for-symbol 'window-attr)
       "CStruct"
       (liber:symbol-documentation 'window-attr)
- "@version{2025-08-31}
+ "@version{2025-10-09}
   @begin{declaration}
 (cffi:defcstruct window-attr
   (title :string)
@@ -830,27 +830,28 @@ gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
   @end{declaration}
   @begin{values}
     @begin[code]{simple-table}
-      @entry[title]{A string with the title of the window for toplevel windows.}
+      @entry[title]{The string for the title of the window for toplevel
+        windows.}
       @entry[event-mask]{a @sym{gdk:event-mask} value, see the
         @fun{gdk:window-events} function.}
-      @entry[x]{An integer for the x coordinate relative to parent window,
+      @entry[x]{The integer for the x coordinate relative to parent window,
         see the @fun{gdk:window-move} function.}
-      @entry[y]{An integer for the y coordinate relative to parent window,
+      @entry[y]{The integer for the y coordinate relative to parent window,
         see the @fun{gdk:window-move} function.}
-      @entry[width]{An integer for the width of the window.}
-      @entry[height]{An integer for the height of window.}
-      @entry[wclass]{A @sym{gdk:window-window-class} value,
+      @entry[width]{The integer for the width of the window.}
+      @entry[height]{The integer for the height of window.}
+      @entry[wclass]{The @sym{gdk:window-window-class} value,
         @val[gdk:window-window-class]{:input-output} for a normal window or
         @val[gdk:window-window-class]{:input-only} for an invisible window that
         receives events.}
-      @entry[visual]{A @class{gdk:visual} object for the window.}
-      @entry[window-type]{A @sym{gdk:window-type} value.}
-      @entry[cursor]{A @class{gdk:cursor} object for the window, see the
+      @entry[visual]{The @class{gdk:visual} object for the window.}
+      @entry[window-type]{The @sym{gdk:window-type} value.}
+      @entry[cursor]{The @class{gdk:cursor} object for the window, see the
         @fun{gdk:window-cursor} function.}
       @entry[wmclass-name]{A string, do not use.}
       @entry[wmclass-class]{A string, do not use.}
       @entry[override-redirect]{@em{True} to bypass the window manager.}
-      @entry[type-hint]{A @sym{gdk:window-type-hint} value of the function of
+      @entry[type-hint]{The @sym{gdk:window-type-hint} value of the function of
         the window.}
     @end{simple-table}
   @end{values}
@@ -1333,20 +1334,18 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (setf (liber:alias-for-function 'window-cursor)
       "Accessor"
       (documentation 'window-cursor 'function)
- "@version{2025-08-23}
+ "@version{2025-10-08}
   @syntax{(gdk:window-cursor object) => cursor}
   @syntax{(setf (gdk:window-cursor object) cursor)}
   @argument[object]{a @class{gdk:window} object}
   @argument[cursor]{a @class{gdk:cursor} object}
   @begin{short}
-    Accessor of the @slot[gdk:window]{cursor} slot of the @class{gdk:window}
-    class.
+    The accessor for the @slot[gdk:window]{cursor} slot of the
+    @class{gdk:window} class gets or sets The @class{gdk:cursor} pointer for the
+    cursor set on the specified window.
   @end{short}
-  The @fun{gdk:window-cursor} function retrieves a @class{gdk:cursor} pointer
-  for the cursor currently set on the specified window, or @code{nil}. If the
-  return value is @code{nil} then there is no custom cursor set on the specified
-  window, and it is using the cursor for its parent window. The
-  @setf{gdk:window-cursor} function sets the default mouse pointer for a window.
+  If @code{nil} then there is no custom cursor set on the specified window, and
+  it is using the cursor for its parent window.
 
   Use the @fun{gdk:cursor-new-for-display}, @fun{gdk:cursor-new-from-name}, or
   @fun{gdk:cursor-new-from-pixbuf} functions to create the cursor. To make the
@@ -1368,10 +1367,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_new" window-new) (g:object window :return)
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2025-1ß-09}
   @argument[parent]{a @class{gdk:window} object, or @code{nil} to create the
     window as a child of the default root window for the default display}
-  @argument[attributes]{a @sym{gdk:window-attr} instance with the attributes of
+  @argument[attributes]{a @sym{gdk:window-attr} instance for the attributes of
     type  of the new window}
   @argument[mask]{a @sym{gdk:window-attributes-type} mask indicating which
     fields in @arg{attributes} are valid}
@@ -1477,9 +1476,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_visual" window-visual) (g:object visual)
  #+liber-documentation
- "@version{2023-02-26}
+ "@version{2025-10-09}
   @argument[window]{a @class{gdk:window} object}
-  @return{A @class{gdk:visual} object.}
+  @return{The @class{gdk:visual} object.}
   @begin{short}
     Gets the visual describing the pixel format of a window.
   @end{short}
@@ -4132,9 +4131,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_title" window-set-title) :void
  #+liber-documentation
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[title]{a string with the title of @arg{window}}
+  @argument[title]{a string for the title of @arg{window}}
   @begin{short}
     Sets the title of a toplevel window, to be displayed in the titlebar.
   @end{short}
@@ -4332,9 +4331,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_geometry_hints" window-set-geometry-hints) :void
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2025-10-09}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[geometry]{a @sym{gdk:geometry} instance with the geometry hints}
+  @argument[geometry]{a @sym{gdk:geometry} instance for the geometry hints}
   @argument[mask]{a @sym{gdk:window-hints} bitmask indicating fields of
     @arg{geometry} to pay attention to}
   @begin{short}
@@ -4689,10 +4688,10 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (defun window-frame-extents (window)
  #+liber-documentation
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[window]{a toplevel @class{gdk:window} object}
   @begin{return}
-    @code{rect} -- a @class{gdk:rectangle} instance with bounding box of the
+    @code{rect} -- a @class{gdk:rectangle} instance for bounding box of the
     window frame
   @end{return}
   @begin{short}
@@ -5019,9 +5018,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 (cffi:defcfun ("gdk_window_peek_children" window-peek-children)
     (g:list-t (g:object window) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[window]{a @class{gdk:window} object}
-  @return{A list of @class{gdk:window} child windows in @arg{window}.}
+  @return{The list of @class{gdk:window} child windows in @arg{window}.}
   @begin{short}
     Like the @fun{gdk:window-children} function, but does not copy the list
     of children, so the list does not need to be freed.
@@ -5046,16 +5045,12 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_get_events" window-events) event-mask
  #+liber-documentation
- "@version{#2025-08-23}
+ "@version{#2025-10-08}
   @argument[window]{a @class{gdk:window} object}
   @argument[event-mask]{a @sym{gdk:event-mask} event mask for @arg{window}}
   @begin{short}
-    Accessor of the event mask for the window.
+    Gets or sets the event mask for the window for all master input devices.
   @end{short}
-  The @fun{gdk:window-events} function gets the event mask for the window for
-  all master input devices. The @setf{gdk:window-events} function sets the
-  event mask.
-
   The event mask for a window determines which events will be reported for that
   window from all master input devices. For example, an event mask including
   @code{:button-press-mask} means the window should report button press events.
@@ -5073,9 +5068,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_icon_name" window-set-icon-name) :void
  #+liber-documentation
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[name]{a string with the name of @arg{window} while iconified
+  @argument[name]{a string for the name of @arg{window} while iconified
     (minimized)}
   @begin{short}
     Windows may have a name used while minimized, distinct from the name they
@@ -5158,9 +5153,9 @@ lambda (window xoffscreen yoffscreen xembedder yembedder)    :run-last
 
 (cffi:defcfun ("gdk_window_set_startup_id" window-set-startup-id) :void
  #+liber-documentation
- "@version{#2023-02-26}
+ "@version{#2025-10-09}
   @argument[window]{a toplevel @class{gdk:window} object}
-  @argument[startup-id]{a string with startup-notification identifier}
+  @argument[startup-id]{a string for startup-notification identifier}
   @begin{short}
     When using GTK, typically you should use the @fun{gtk:window-startup-id}
     function instead of this low-level function.

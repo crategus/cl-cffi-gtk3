@@ -647,20 +647,15 @@
 
 (cffi:defcfun ("gtk_print_settings_get_bool" print-settings-bool) :boolean
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @syntax{(gtk:print-settings-bool settings key) => value}
   @syntax{(setf (gtk:print-settings-bool settings key) value)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[key]{a string for a key}
   @argument[value]{a boolean value}
   @begin{short}
-    Accessor of the boolean value of a key in a print setting.
+    Gets or sets the boolean value of a key in a print setting.
   @end{short}
-  The @fun{gtk:print-settings-bool} function returns the boolean represented
-  by the value that is associated with @arg{key}. The
-  @setf{gtk:print-settings-bool} function sets @arg{key} to a boolean
-  value.
-
   The string \"true\" represents @em{true}, any other string @em{false}.
   @see-class{gtk:print-settings}"
   (settings (g:object print-settings))
@@ -683,18 +678,15 @@
 
 (cffi:defcfun ("gtk_print_settings_get_double" print-settings-double) :double
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @syntax{(gtk:print-settings-double settings key) => value}
   @syntax{(setf (gtk:print-settings-double settings key) value)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[key]{a string for a key}
   @argument[value]{a number coerced to a double float}
   @begin{short}
-    Accessor of the double float of a key in a print setting.
+    Gets or sets the double float of a key in a print setting.
   @end{short}
-  The @fun{gtk:print-settings-double} function gets the double float of
-  @arg{key}. The @setf{gtk:print-settings-double} function sets @arg{key} to a
-  double float.
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-double-with-default}"
   (settings (g:object print-settings))
@@ -749,7 +741,7 @@
 
 (cffi:defcfun ("gtk_print_settings_get_length" print-settings-length) :double
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @syntax{(gtk:print-settings-length settings key unit) => value}
   @syntax{(setf (gtk:print-settings-length settings key unit) value)}
   @argument[settings]{a @class{gtk:print-settings} object}
@@ -757,11 +749,8 @@
   @argument[unit]{a @sym{gtk:unit} unit for the return value}
   @argument[value]{a number coerced to a double float for the length}
   @begin{short}
-    Accessor of the length value of a key in a print setting.
+    Gets or sets the length value of a key in a print setting.
   @end{short}
-  The @fun{gtk:print-settings-length} function returns the length value of
-  @arg{key}, converted to @arg{unit}. The @setf{gtk:print-settings-length}
-  function associates a length in units of @arg{unit} with @arg{key}.
   @begin[Examples]{dictionary}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
@@ -793,17 +782,15 @@
 
 (cffi:defcfun ("gtk_print_settings_get_int" print-settings-int) :int
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @syntax{(gtk:print-settings-int settings key) => value}
   @syntax{(setf (gtk:print-settings-int settings key) value)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[key]{a string for a key}
   @argument[value]{an integer}
   @begin{short}
-    Accessor of the integer of a key in a print setting.
+    Gets or sets the integer of a key in a print setting.
   @end{short}
-  The @fun{gtk:print-settings-int} function returns the integer for @arg{key},
-  or 0. The @setf{gtk:print-settings-int} function sets @arg{key} to an integer.
   @see-class{gtk:print-settings}
   @see-class{gtk:print-settings-int-with-default}"
   (settings (g:object print-settings))
@@ -818,7 +805,7 @@
 (cffi:defcfun ("gtk_print_settings_get_int_with_default"
                 print-settings-int-with-default) :int
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[key]{a string for a key}
   @argument[default]{an integer for the default value}
@@ -849,17 +836,15 @@
 
 (cffi:defcfun ("gtk_print_settings_get_printer" print-settings-printer) :string
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-10-09}
   @syntax{(gtk:print-settings-printer settings) => printer}
   @syntax{(setf (gtk:print-settings-printer settings) printer)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[printer]{a string for the printer name}
   @begin{short}
-    Accessor of the printer name of a print setting.
+    Gets or sets the printer name of a print setting.
   @end{short}
-  The @fun{gtk:print-settings-printer} function obtains the value of
-  \"printer\". The @setf{gtk:print-settings-printer} function sets \"printer\"
-  to @arg{printer}.
+  This function obtains the value of \"printer\".
   @see-class{gtk:print-settings}
   @see-function{gtk:print-settings-set}
   @see-function{gtk:print-settings-get}"

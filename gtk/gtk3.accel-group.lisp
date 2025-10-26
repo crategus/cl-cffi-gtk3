@@ -225,17 +225,16 @@ lambda (group keyval modifier func)    :detailed
 (setf (liber:alias-for-function 'accel-group-is-locked)
       "Accessor"
       (documentation 'accel-group-is-locked 'function)
- "@version{2023-03-01}
+ "@version{2025-10-09}
   @syntax{(gtk:accel-group-is-locked object) => is-locked}
   @argument[object]{a @class{gtk:accel-group} object}
   @argument[is-locked]{a boolean whether the accelerator group is locked}
   @begin{short}
-    Accessor of the @slot[gtk:accel-group]{is-locked} slot of the
-    @class{gtk:accel-group} class.
+    The accessor for the @slot[gtk:accel-group]{is-locked} slot of the
+    @class{gtk:accel-group} classreturns @em{true} if there are one or more
+    locks on the accelerator group, @em{false} otherwise.
   @end{short}
-  The @fun{gtk:accel-group-is-locked} function returns @em{true} if there are
-  one or more locks on the accelerator group, @em{false} otherwise. Locks are
-  added and removed using the @fun{gtk:accel-group-lock} and
+  Locks are added and removed using the @fun{gtk:accel-group-lock} and
   @fun{gtk:accel-group-unlock} functions.
   @see-class{gtk:accel-group}
   @see-function{gtk:accel-group-lock}
@@ -254,18 +253,17 @@ lambda (group keyval modifier func)    :detailed
 (setf (liber:alias-for-function 'accel-group-modifier-mask)
       "Accessor"
       (documentation 'accel-group-modifier-mask 'function)
- "@version{2025-07-11}
+ "@version{2025-10-09}
   @syntax{(gtk:accelerator-group object) => mask}
   @argument[object]{a @class{gtk:accel-group} object}
   @argument[mask]{a @sym{gdk:modifier-type} value for the modifier mask}
   @begin{short}
-    Accessor of the @slot[gtk:accel-group]{modifier-mask} slot of the
-    @class{gtk:accel-group} class.
+    The accessor for the @slot[gtk:accel-group]{modifier-mask} slot of the
+    @class{gtk:accel-group} class returns the modifier mask for this accelerator
+    group.
   @end{short}
-  The @fun{gtk:accel-group-modifier-mask} function gets the modifier mask for
-  this accelerator group. For example, the
-  @val[gdk:modifier-type]{:control-mask}, @val[gtk:modifier-type]{:shift-mask}
-  values, and so on.
+  For example, the @val[gdk:modifier-type]{:control-mask},
+  @val[gtk:modifier-type]{:shift-mask} values, and so on.
   @see-class{gtk:accel-group}
   @see-symbol{gdk:modifier-type}")
 
@@ -487,10 +485,10 @@ lambda (group keyval modifier func)    :detailed
 
 (cffi:defcfun ("gtk_accelerator_name" accelerator-name) :string
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2025-10-09}
   @argument[key]{an unsigned integer for the accelerator keyval}
   @argument[mask]{a @sym{gdk:modifier-type} value for the modifier mask}
-  @return{The string with the accelerator name.}
+  @return{The string for the accelerator name.}
   @begin{short}
     Converts an accelerator keyval and modifier mask into a string parseable by
     the @fun{gtk:accelerator-parse} function.

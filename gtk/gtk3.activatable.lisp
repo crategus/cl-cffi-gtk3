@@ -122,17 +122,15 @@
 (setf (liber:alias-for-function 'activatable-related-action)
       "Accessor"
       (documentation 'activatable-related-action 'function)
- "@version{2024-09-24}
+ "@version{2025-10-21}
   @syntax{(gtk:activatable-related-action object) => action}
   @syntax{(setf (gtk:activatable-related-action object) action)}
   @argument[activatable]{a @class{gtk:activatable} widget}
   @argument[action]{a @class{gtk:action} object to set}
   @begin{short}
-    Accessor of the @slot[gtk:activatable]{related-action} slot of the
-    @class{gtk:activatable} class.
+    The accessor for the @slot[gtk:activatable]{related-action} slot of the
+    @class{gtk:activatable} class gets or sets the related action.
   @end{short}
-  The @fun{gtk:activatable-related-action} function gets the related action.
-  The @setf{gtk:activatable-related-action} sets the related action.
   @begin[Warning]{dictionary}
     The @fun{gtk:activatable-related-action} function has been deprecated since
     version 3.10 and should not be used in newly written code.
@@ -155,20 +153,17 @@
 (setf (liber:alias-for-function 'activatable-use-action-appearance)
       "Accessor"
       (documentation 'activatable-use-action-appearance 'function)
- "@version{2024-09-24}
+ "@version{2025-10-21}
   @syntax{(gtk:activatable-use-action-appearance object) => use-appearance}
   @syntax{(setf (gtk:activatable-use-action-appearance object) use-appearance)}
   @argument[activatable]{a @class{gtk:activatable} widget}
   @argument[use-appearance]{a boolean whether to use the actions appearance}
   @begin{short}
-    Accessor of the @slot[gtk:activatable]{use-action-appearance} slot of the
-    @class{gtk:activatable} class.
+    The accessor for the @slot[gtk:activatable]{use-action-appearance} slot of
+    the @class{gtk:activatable} class gets or sets whether the activatable
+    should reset its layout and appearance when setting the related action or
+    when the action changes appearance.
   @end{short}
-  The @fun{gtk:activatable-use-action-appearance} function gets whether the
-  activatable should reset its layout and appearance when setting the related
-  action or when the action changes appearance. The
-  @setf{gtk:activatable-use-action-appearance} function sets whether this
-  activatable should reset its layout and appearance.
   @begin[Warning]{dictionary}
     The @fun{gtk:activatable-use-action-appearance} function has been deprecated
     since version 3.10 and should not be used in newly written code.

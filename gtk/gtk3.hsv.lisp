@@ -293,14 +293,14 @@ lambda (hsv direction)    :action
 
 (defun hsv-to-rgb (h s v)
  #+liber-documentation
- "@version{2025-03-09}
+ "@version{2025-10-09}
   @argument[h]{a number coerced to a double float for the hue component}
   @argument[s]{a number coerced to a double float for the saturation component}
   @argument[v]{a number coerced to a double float for the value component}
   @begin{return}
-    @arg{r} -- a double float with the red component @br{}
-    @arg{g} -- a double float with the green component @br{}
-    @arg{b} -- a double float with the blue component
+    @arg{r} -- a double float for the red component @br{}
+    @arg{g} -- a double float for the green component @br{}
+    @arg{b} -- a double float for the blue component
   @end{return}
   @begin{short}
     Converts a color from HSV space to RGB. Input values must be in the
@@ -333,14 +333,14 @@ lambda (hsv direction)    :action
 
 (defun rgb-to-hsv (r g b)
  #+liber-documentation
- "@version{2025-03-09}
+ "@version{2025-10-09}
   @argument[r]{a number coerced to a double float for the red component}
   @argument[g]{a number coerced to a double float for the green component}
   @argument[b]{a number coerced to a double float for the blue component}
   @begin{return}
-    @arg{h} -- a double float with the hue component @br{}
-    @arg{s} -- a double float with the saturation component @br{}
-    @arg{v} -- a double float with the value component
+    @arg{h} -- a double float for the hue component @br{}
+    @arg{s} -- a double float for the saturation component @br{}
+    @arg{v} -- a double float for the value component
   @end{return}
   @begin{short}
     Converts a color from RGB space to HSV. Input values must be in the

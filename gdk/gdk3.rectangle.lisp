@@ -169,14 +169,14 @@
 
 (defun rectangle-new (&key (x 0) (y 0) (width 0) (height 0))
  #+liber-documentation
- "@version{2024-01-01}
-  @argument[x]{an integer with the value for the @code{x} slot}
-  @argument[y]{an integer with the value for the @code{y} slot}
-  @argument[width]{an integer with the value for the @code{width} slot}
-  @argument[height]{an integer with the value for the @code{height} slot}
+ "@version{2025-10-09}
+  @argument[x]{an integer for the value for the @code{x} slot}
+  @argument[y]{an integer for the value for the @code{y} slot}
+  @argument[width]{an integer for the value for the @code{width} slot}
+  @argument[height]{an integer for the value for the @code{height} slot}
   @return{The newly created @class{gdk:rectangle} instance.}
   @begin{short}
-    Returns a @class{gdk:rectangle} instance with the initial values given to
+    Returns a @class{gdk:rectangle} instance for the initial values given to
     @arg{x}, @arg{y}, @arg{width}, and @arg{height}.
   @end{short}
   @see-class{gdk:rectangle}
@@ -212,11 +212,13 @@
 
 (defun rectangle-intersect (rect1 rect2)
  #+liber-documentation
- "@version{2024-01-01}
+ "@version{2025-10-09}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
-  @return{The @class{gdk:rectangle} instance with the intersection of
-    @arg{rect1} and @arg{rect2}, or @code{nil}.}
+  @begin{return}
+    The @class{gdk:rectangle} instance for the intersection of @arg{rect1} and
+    @arg{rect2}, or @code{nil}.
+  @end{return}
   @begin{short}
     Calculates the intersection of two rectangles.
   @end{short}
@@ -240,11 +242,13 @@
 
 (defun rectangle-union (rect1 rect2)
  #+liber-documentation
- "@version{2024-01-01}
+ "@version{2025-10-09}
   @argument[rect1]{a @class{gdk:rectangle} instance}
   @argument[rect2]{a @class{gdk:rectangle} instance}
-  @return{The @class{gdk:rectangle} instance with the union of @arg{rect1} and
-    @arg{rect2}.}
+  @begin{return}
+    The @class{gdk:rectangle} instance for the union of @arg{rect1} and
+    @arg{rect2}.
+  @end{return}
   @begin{short}
     Calculates the union of two rectangles.
   @end{short}

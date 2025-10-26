@@ -216,10 +216,10 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_open" display-open) (g:object display)
  #+liber-documentation
- "@version{2023-03-04}
-  @argument[name]{a string with the name of the display to open}
+ "@version{2025-10-09}
+  @argument[name]{a string for the name of the display to open}
   @begin{return}
-    A @class{gdk:display} object, or @code{nil} if the display could not be
+    The @class{gdk:display} object, or @code{nil} if the display could not be
     opened.
   @end{return}
   @short{Opens a display named by @arg{display-name}.}
@@ -235,9 +235,10 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_get_default" display-default)
     (g:object display)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @begin{return}
-    A @class{gdk:display} object, or @code{nil} if there is no default display.
+    The @class{gdk:display} object, or @code{nil} if there is no default
+    display.
   @end{return}
   @begin{short}
     Gets the default display.
@@ -258,10 +259,10 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_get_name" display-name) :string
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
-    A string representing the display name.
+    The string representing the display name.
   @end{return}
   @short{Gets the name of the display.}
   @see-class{gdk:display}"
@@ -337,10 +338,10 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_get_device_manager" display-device-manager)
     (g:object device-manager)
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
-    A @class{gdk:device-manager} object, or @code{nil}.
+    The @class{gdk:device-manager} object, or @code{nil}.
   @end{return}
   @begin{short}
     Returns the device manager associated to the display.
@@ -430,11 +431,12 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_device_is_grabbed" display-device-is-grabbed) :boolean
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[device]{a @class{gdk:device} object}
-  @return{A boolean that is @em{true} if there is a grab in effect for
-    @arg{device}.}
+  @begin{return}
+    The boolean that is @em{true} if there is a grab in effect for @arg{device}.
+  @end{return}
   @begin{short}
     Returns @em{true} if there is an ongoing grab on the device for the
     display.
@@ -531,9 +533,9 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_is_closed" display-is-closed) :boolean
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if @arg{display} is closed.}
+  @return{The boolean that is @em{true} if @arg{display} is closed.}
   @short{Finds out if the display has been closed.}
   @see-class{gdk:display}"
   (display (g:object display)))
@@ -570,10 +572,10 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_peek_event" display-peek-event)
     (g:boxed event :return)
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @begin{return}
-    A copy of the first @class{gdk:event} event on the event queue, or
+    The copy of the first @class{gdk:event} event on the event queue, or
     @code{nil} if no events are in the queue.
   @end{return}
   @begin{short}
@@ -616,10 +618,11 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_has_pending" display-has-pending) :boolean
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if there are events ready to be
-    processed.}
+  @begin{return}
+    The boolean that is @em{true} if there are events ready to be processed.
+  @end{return}
   @begin{short}
     Returns whether the display has events that are waiting to be processed.
   @end{short}
@@ -813,9 +816,9 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_cursor_color"
                display-supports-cursor-color) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean whether cursors can have multiple colors.}
+  @return{The boolean whether cursors can have multiple colors.}
   @begin{short}
     Returns @em{true} if multicolored cursors are supported on the display.
   @end{short}
@@ -833,9 +836,9 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_cursor_alpha"
                display-supports-cursor-alpha) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean whether cursors can have alpha channels.}
+  @return{The boolean whether cursors can have alpha channels.}
   @begin{short}
     Returns @em{true} if cursors can use an 8 bit alpha channel on the display.
   @end{short}
@@ -933,9 +936,11 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_selection_notification"
                display-supports-selection-notification) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean whether @class{gdk:event-owner-change} events will be sent.}
+  @begin{return}
+    The boolean whether @class{gdk:event-owner-change} events will be sent.
+  @end{return}
   @begin{short}
     Returns whether @class{gdk:event-owner-change} events will be sent when the
     owner of a selection changes.
@@ -954,11 +959,13 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_request_selection_notification"
                display-request-selection-notification) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[selection]{an atom as a string naming the selection for which
     ownership change notification is requested}
-  @return{A boolean whether @class{gdk:event-owner-change} events will be sent.}
+  @begin{return}
+    The boolean whether @class{gdk:event-owner-change} events will be sent.
+  @end{return}
   @begin{short}
     Request @class{gdk:event-owner-change} events for ownership changes of the
     selection named by the given atom.
@@ -978,15 +985,17 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_clipboard_persistence"
                display-supports-clipboard-persistence) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if @arg{display} supports clipboard
-    persistance.}
+  @begin{return}
+    The boolean that is @em{true} if @arg{display} supports clipboard
+    persistance.
+  @end{return}
   @begin{short}
     Returns whether the specified display supports clipboard persistance.
   @end{short}
-  I.e. if it is possible to store the clipboard data after an application has
-  quit. On X11 this checks if a clipboard daemon is running.
+  That is, if it is possible to store the clipboard data after an application
+  has quit. On X11 this checks if a clipboard daemon is running.
   @see-class{gdk:display}"
   (display (g:object display)))
 
@@ -1039,9 +1048,9 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_supports_shapes" display-supports-shapes) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if shaped windows are supported.}
+  @return{The boolean that is @em{true} if shaped windows are supported.}
   @begin{short}
     Returns @em{true} if the @fun{gdk:window-shape-combine-region} function can
     be used to create shaped windows on the display.
@@ -1059,10 +1068,12 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_input_shapes"
                display-supports-input-shapes) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if windows with modified input shape are
-    supported.}
+  @begin{return}
+    The boolean that is @em{true} if windows with modified input shape are
+    supported.
+  @end{return}
   @begin{short}
     Returns @em{true} if the @fun{gdk:window-input-shape-combine-region}
     function can be used to modify the input shape of windows on the display.
@@ -1080,9 +1091,9 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_supports_composite" display-supports-composite)
     :boolean
  #+liber-documentation
- "@version{#2023-03-04}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{A boolean that is @em{true} if windows may be composited.}
+  @return{The boolean that is @em{true} if windows may be composited.}
   @begin{short}
     Returns @em{true} if the @fun{gdk:window-composited} function can be used
     to redirect drawing on the window using compositing.
@@ -1129,9 +1140,9 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_notify_startup_complete"
                display-notify-startup-complete) :void
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @argument[startup]{a string with a startup notification identifier, for which
+  @argument[startup]{a string for a startup notification identifier, for which
     notification process should be completed}
   @begin{short}
     Indicates to the GUI environment that the application has finished loading,
@@ -1212,11 +1223,13 @@ lambda (display seat)    :run-last
 
 (cffi:defcfun ("gdk_display_get_monitor" display-monitor) (g:object monitor)
  #+liber-documentation
- "@version{2023-03-13}
+ "@version{2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[monitor-num]{an integer for the number of the monitor}
-  @return{The @class{gdk:monitor} object, or @code{nil} if the
-  @code{monitor-num} arugment is not a valid monitor number.}
+  @begin{return}
+    The @class{gdk:monitor} object, or @code{nil} if the @code{monitor-num}
+    argument is not a valid monitor number.
+  @end{return}
   @begin{short}
     Gets a monitor associated with this display.
   @end{short}
@@ -1234,10 +1247,12 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_get_primary_monitor" display-primary-monitor)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-03-13}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
-  @return{The primary @class{gdk:monitor} object, or @code{nil} if no primary
-    monitor is configured by the user.}
+  @begin{return}
+    The primary @class{gdk:monitor} object, or @code{nil} if no primary monitor
+    is configured by the user.
+  @end{return}
   @begin{short}
     Gets the primary monitor for the display.
   @end{short}
@@ -1282,11 +1297,12 @@ lambda (display seat)    :run-last
 (cffi:defcfun ("gdk_display_get_monitor_at_window" display-monitor-at-window)
     (g:object monitor)
  #+liber-documentation
- "@version{#2023-03-13}
+ "@version{#2025-10-09}
   @argument[display]{a @class{gdk:display} object}
   @argument[window]{a @class{gdk:window} object}
-  @return{The @class{gdk:monitor} object with the largest overlap with
-    @arg{window}.}
+  @begin{return}
+    The @class{gdk:monitor} object with the largest overlap with @arg{window}.
+  @end{return}
   @begin{short}
     Gets the monitor in which the largest area of window resides, or a monitor
     close to the window if it is outside of all monitors.

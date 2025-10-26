@@ -1472,15 +1472,16 @@
 (setf (liber:alias-for-function 'event-type)
       "Accessor"
       (documentation 'event-type 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-type instance) => type}
   @syntax{(setf (gdk:event-type instance) type)}
   @argument[instance]{a @class{gdk:event} instance}
   @argument[type]{a value of the @sym{gdk:event-type} enumeration}
   @begin{short}
-    Accessor of the @code{type} slot of the @class{gdk:event} structure.
+    The accessor for the @code{type} slot of the @class{gdk:event} structure
+    gets or sets the type of the event as a value of the @sym{gdk:event-type}
+    enumeration.
   @end{short}
-  The type of the event as a value of the @sym{gdk:event-type} enumeration.
   @begin[Examples]{dictionary}
     Check for a button press event in a handler for the @code{\"event\"} signal
     on a drawing area.
@@ -1503,13 +1504,13 @@
 (setf (liber:alias-for-function 'event-window)
       "Accessor"
       (documentation 'event-window 'function)
- "@version{2025-07-17}
+ "@version{2025-10-08}
   @syntax{(gdk:event-window instance) => window}
   @syntax{(setf (gdk:event-window instance) window)}
   @argument[instance]{a @class{gdk:event} instance}
   @argument[window]{a @class{gdk:window} object that received the event}
   @begin{short}
-    Accessor of the @code{window} slot of the @class{gdk:event} structure.
+    The accessor for the @code{window} slot of the @class{gdk:event} structure.
   @end{short}
   @see-class{gdk:event}
   @see-class{gdk:window}")
@@ -1522,13 +1523,14 @@
 (setf (liber:alias-for-function 'event-send-event)
       "Accessor"
       (documentation 'event-send-event 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-send-event instance) => send-event}
   @syntax{(setf (gdk:event-send-event instance) send-event)}
   @argument[instance]{a @class{gdk:event} instance}
   @argument[send-event]{a boolean whether the event was sent explicitly}
   @begin{short}
-    Accessor of the @code{send-event} slot of the @class{gdk:event} structure.
+    The accessor for the @code{send-event} slot of the @class{gdk:event}
+    structure.
   @end{short}
   @see-class{gdk:event}")
 
@@ -1621,14 +1623,14 @@
 (setf (liber:alias-for-function 'event-key-time)
       "Accessor"
       (documentation 'event-key-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-time instance) => time}
   @syntax{(setf (gdk:event-key-time instance) time)}
   @argument[instance]{a @class{gdk:event-key} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{time} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}")
 
@@ -1640,7 +1642,7 @@
 (setf (liber:alias-for-function 'event-key-state)
       "Accessor"
       (documentation 'event-key-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-state instance) => state}
   @syntax{(setf (gdk:event-key-state instance) state)}
   @argument[instance]{a @class{gdk:event-key} instance}
@@ -1648,7 +1650,8 @@
     the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{state} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}
   @see-symbol{gdk:modifier-type}")
@@ -1661,14 +1664,15 @@
 (setf (liber:alias-for-function 'event-key-keyval)
       "Accessor"
       (documentation 'event-key-keyval 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-keyval instance) => keyval}
   @syntax{(setf (gdk:event-key-keyval instance) keyval)}
   @argument[instance]{a @class{gdk:event-key} instance}
-  @argument[keyval]{an unsigned integer with the key that was pressed or
+  @argument[keyval]{an unsigned integer for the key that was pressed or
     released}
   @begin{short}
-    Accessor of the @code{keyval} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{keyval} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}")
 
@@ -1680,13 +1684,14 @@
 (setf (liber:alias-for-function 'event-key-length)
       "Accessor"
       (documentation 'event-key-length 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-length instance) => length}
   @syntax{(setf (gdk:event-key-length instance) length)}
   @argument[instance]{a @class{gdk:event-key} instance}
-  @argument[length]{an integer with the length of the @code{string} field}
+  @argument[length]{an integer for the length of the @code{string} field}
   @begin{short}
-    Accessor of the @code{length} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{length} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}
   @see-function{gdk:event-key-string}")
@@ -1699,14 +1704,15 @@
 (setf (liber:alias-for-function 'event-key-string)
       "Accessor"
       (documentation 'event-key-string 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-string instance) => string}
   @syntax{(setf (gdk:event-key-string instance) string)}
   @argument[instance]{a @class{gdk:event-key} instance}
   @argument[string]{a string containing an approximation of the text that
     would result from the keypress}
   @begin{short}
-    Accessor of the @code{string} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{string} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}")
 
@@ -1718,14 +1724,14 @@
 (setf (liber:alias-for-function 'event-key-hardware-keycode)
       "Accessor"
       (documentation 'event-key-hardware-keycode 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-hardware-keycode instance) => keycode}
   @syntax{(setf (gdk:event-key-hardware-keycode instance) keycode)}
   @argument[instance]{a @class{gdk:event-key} instance}
-  @argument[keycode]{an unsigned integer with the raw code of the key that was
+  @argument[keycode]{an unsigned integer for the raw code of the key that was
     pressed or released}
   @begin{short}
-    Accessor of the @code{keycode} slot of the @class{gdk:event-key}
+    The accessor for the @code{keycode} slot of the @class{gdk:event-key}
     structure.
   @end{short}
   @see-class{gdk:event-key}")
@@ -1738,13 +1744,14 @@
 (setf (liber:alias-for-function 'event-key-group)
       "Accessor"
       (documentation 'event-key-group 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-group instance) => group}
   @syntax{(setf (gdk:event-key-group instance) group)}
   @argument[instance]{a @class{gdk:event-key} instance}
-  @argument[group]{an unsigned integer with the keyboard group}
+  @argument[group]{an unsigned integer for the keyboard group}
   @begin{short}
-    Accessor of the @code{group} slot of the @class{gdk:event-key} structure.
+    The accessor for the @code{group} slot of the @class{gdk:event-key}
+    structure.
   @end{short}
   @see-class{gdk:event-key}")
 
@@ -1756,14 +1763,14 @@
 (setf (liber:alias-for-function 'event-key-is-modifier)
       "Accessor"
       (documentation 'event-key-is-modifier 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-key-is-modifier instance) => is-modifier}
   @syntax{(setf (gdk:event-key-is-modifier instance) is-modifier)}
   @argument[instance]{a @class{gdk:event-key} instance}
   @argument[is-modifier]{a flag that indicates if the @code{hardware-keycode}
     field is mapped to a modifier}
   @begin{short}
-    Accessor of the @code{is-modifier} slot of the @class{gdk:event-key}
+    The accessor for the @code{is-modifier} slot of the @class{gdk:event-key}
     structure.
   @end{short}
   @see-class{gdk:event-key}
@@ -1892,14 +1899,13 @@
 (setf (liber:alias-for-function 'event-button-time)
       "Accessor"
       (documentation 'event-button-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-time instance) => time}
   @syntax{(setf (gdk:event-button-time instance) time)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-button}
+    The accessor for the @code{time} slot of the @class{gdk:event-button}
     structure.
   @end{short}
   @see-class{gdk:event-button}")
@@ -1912,14 +1918,15 @@
 (setf (liber:alias-for-function 'event-button-x)
       "Accessor"
       (documentation 'event-button-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-x instance) => x}
   @syntax{(setf (gdk:event-button-x instance) x)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[x]{a double float with the x coordinate of the pointer relative to
+  @argument[x]{a double float for the x coordinate of the pointer relative to
     the window}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-button} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-button}
+    structure.
   @end{short}
   @see-class{gdk:event-button}")
 
@@ -1931,14 +1938,15 @@
 (setf (liber:alias-for-function 'event-button-y)
       "Accessor"
       (documentation 'event-button-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-y instance) => y}
   @syntax{(setf (gdk:event-button-y instance) y)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[y]{a double float with the y coordinate of the pointer relative to
+  @argument[y]{a double float for the y coordinate of the pointer relative to
     the window}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-button} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-button}
+    structure.
   @end{short}
   @see-class{gdk:event-button}")
 
@@ -1950,14 +1958,15 @@
 (setf (liber:alias-for-function 'event-button-axes)
       "Accessor"
       (documentation 'event-button-axes 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-axes instance) => axes}
   @syntax{(setf (gdk:event-button-axes instance) axes)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[axes]{an array of double float with the x,y coordinates translated
+  @argument[axes]{an array of double float for the x,y coordinates translated
     to the axes of the device}
   @begin{short}
-    Accessor of the @code{axes} slot of the @class{gdk:event-button} structure.
+    The accessor for the @code{axes} slot of the @class{gdk:event-button}
+    structure.
   @end{short}
   @see-class{gdk:event-button}")
 
@@ -1969,7 +1978,7 @@
 (setf (liber:alias-for-function 'event-button-state)
       "Accessor"
       (documentation 'event-button-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-state instance) => state}
   @syntax{(setf (gdk:event-button-state instance) state)}
   @argument[instance]{a @class{gdk:event-button} instance}
@@ -1977,7 +1986,8 @@
     the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-button} structure.
+    The accessor for the @code{state} slot of the @class{gdk:event-button}
+    structure.
   @end{short}
   @see-class{gdk:event-button}
   @see-symbol{gdk:modifier-type}")
@@ -1990,19 +2000,19 @@
 (setf (liber:alias-for-function 'event-button-button)
       "Accessor"
       (documentation 'event-button-button 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-button instance) => button}
   @syntax{(setf (gdk:event-button-button instance) button)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[button]{an unsigned integer with the button which was pressed}
+  @argument[button]{an unsigned integer for the button which was pressed}
   @begin{short}
-    Accessor of the @code{button} slot of the @class{gdk:event-button}
-    structure.
+    The accessor for the @code{button} slot of the @class{gdk:event-button}
+    structure returns the button which was pressed or released, numbered from
+    1 to 5.
   @end{short}
-  The button which was pressed or released, numbered from 1 to 5. Normally
-  button 1 is the left mouse button, 2 is the middle button, and 3 is the right
-  button. On 2-button mice, the middle button can often be simulated by
-  pressing both mouse buttons together.
+  Normally button 1 is the left mouse button, 2 is the middle button, and 3 is
+  the right button. On 2-button mice, the middle button can often be simulated
+  by pressing both mouse buttons together.
   @see-class{gdk:event-button}")
 
 (export 'event-button-button)
@@ -2013,14 +2023,14 @@
 (setf (liber:alias-for-function 'event-button-device)
       "Accessor"
       (documentation 'event-button-device 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-button-device instance) => device}
   @syntax{(setf (gdk:event-button-device instance) device)}
   @argument[instance]{a @class{gdk:event-button} instance}
   @argument[device]{a @class{gdk:device} master device that the event
     originated from}
   @begin{short}
-    Accessor of the @code{device} slot of the @class{gdk:event-button}
+    The accessor for the @code{device} slot of the @class{gdk:event-button}
     structure.
   @end{short}
   Use the @fun{gdk:event-source-device} function to get the slave device.
@@ -2036,14 +2046,14 @@
 (setf (liber:alias-for-function 'event-button-x-root)
       "Accessor"
       (documentation 'event-button-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-button-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-button-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-button-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-button-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-button}
+    The accessor for the @code{x-root} slot of the @class{gdk:event-button}
     structure.
   @end{short}
   @see-class{gdk:event-button}")
@@ -2056,14 +2066,14 @@
 (setf (liber:alias-for-function 'event-button-y-root)
       "Accessor"
       (documentation 'event-button-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-button-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-button-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-button-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-button-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-button} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer
-    relative to the root of the screen}
+  @argument[yroot]{a double float for the y coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-button}
+    The accessor for the @code{y-root} slot of the @class{gdk:event-button}
     structure.
   @end{short}
   @see-class{gdk:event-button}")
@@ -2168,14 +2178,14 @@
 (setf (liber:alias-for-function 'event-touch-time)
       "Accessor"
       (documentation 'event-touch-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-time instance) => time}
   @syntax{(setf (gdk:event-touch-time instance) time)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{time} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2187,14 +2197,14 @@
 (setf (liber:alias-for-function 'event-touch-x)
       "Accessor"
       (documentation 'event-touch-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-x instance) => x}
   @syntax{(setf (gdk:event-touch-x instance) x)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[x]{a double float with the x coordinate of the pointer relative
+  @argument[x]{a double float for the x coordinate of the pointer relative
     to the window}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-touch} structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2206,14 +2216,14 @@
 (setf (liber:alias-for-function 'event-touch-y)
       "Accessor"
       (documentation 'event-touch-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-y instance) => y}
   @syntax{(setf (gdk:event-touch-y instance) y)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[y]{a double float with the y coordinate of the pointer relative
-    to the window}
+  @argument[y]{a double float for the y coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-touch} structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2225,14 +2235,15 @@
 (setf (liber:alias-for-function 'event-touch-axes)
       "Accessor"
       (documentation 'event-touch-axes 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-axes instance) => axes}
   @syntax{(setf (gdk:event-touch-axes instance) axes)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[axes]{an array of double float with the x,y coordinates translated
+  @argument[axes]{an array of double float for the x,y coordinates translated
     to the axes of the device}
   @begin{short}
-    Accessor of the @code{axes} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{axes} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2244,7 +2255,7 @@
 (setf (liber:alias-for-function 'event-touch-state)
       "Accessor"
       (documentation 'event-touch-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-state instance) => state}
   @syntax{(setf (gdk:event-touch-state instance) state)}
   @argument[instance]{a @class{gdk:event-touch} instance}
@@ -2252,7 +2263,8 @@
     of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
     @kbd{Alt} keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{state} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   @see-class{gdk:event-touch}
   @see-symbol{gdk:modifier-type}")
@@ -2265,14 +2277,14 @@
 (setf (liber:alias-for-function 'event-touch-sequence)
       "Accessor"
       (documentation 'event-touch-sequence 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-sequence instance) => sequence}
   @syntax{(setf (gdk:event-touch-sequence instance) sequence)}
   @argument[instance]{a @class{gdk:event-touch} instance}
   @argument[sequence]{a @class{gdk:event-sequence} event sequence that the
     event belongs to}
   @begin{short}
-    Accessor of the @code{sequence} slot of the @class{gdk:event-touch}
+    The accessor for the @code{sequence} slot of the @class{gdk:event-touch}
     structure.
   @end{short}
   @see-class{gdk:event-touch}
@@ -2286,15 +2298,15 @@
 (setf (liber:alias-for-function 'event-touch-emulating-pointer)
       "Accessor"
       (documentation 'event-touch-emulating-pointer 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-emulating-pointer instance) => emulating}
   @syntax{(setf (gdk:event-touch-emulating-pointer instance) emulating)}
   @argument[instance]{a @class{gdk:event-touch} instance}
   @argument[emulating]{a boolean whether the event should be used for emulating
     pointer event}
   @begin{short}
-    Accessor of the @code{emulating-pointer} slot of the @class{gdk:event-touch}
-    structure.
+    The accessor for the @code{emulating-pointer} slot of the
+    @class{gdk:event-touch} structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2306,14 +2318,15 @@
 (setf (liber:alias-for-function 'event-touch-device)
       "Accessor"
       (documentation 'event-touch-device 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touch-device instance) => device}
   @syntax{(setf (gdk:event-touch-device instance) device)}
   @argument[instance]{a @class{gdk:event-touch} instance}
   @argument[device]{a @class{gdk:device} master device that the event
     originated from}
   @begin{short}
-    Accessor of the @code{device} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{device} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   Use the @fun{gdk:event-source-device} function to get the slave device.
   @see-class{gdk:event-touch}
@@ -2328,14 +2341,15 @@
 (setf (liber:alias-for-function 'event-touch-x-root)
       "Accessor"
       (documentation 'event-touch-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touch-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-touch-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touch-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-touch-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{x-root} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2347,14 +2361,15 @@
 (setf (liber:alias-for-function 'event-touch-y-root)
       "Accessor"
       (documentation 'event-touch-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touch-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-touch-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touch-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-touch-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-touch} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer
+  @argument[yroot]{a double float for the y coordinate of the pointer
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-touch} structure.
+    The accessor for the @code{y-root} slot of the @class{gdk:event-touch}
+    structure.
   @end{short}
   @see-class{gdk:event-touch}")
 
@@ -2451,14 +2466,14 @@
 (setf (liber:alias-for-function 'event-scroll-time)
       "Accessor"
       (documentation 'event-scroll-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-time instance) => time}
   @syntax{(setf (gdk:event-scroll-time instance) time)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{time} slot of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   @see-class{gdk:event-scroll}")
 
@@ -2470,14 +2485,15 @@
 (setf (liber:alias-for-function 'event-scroll-x)
       "Accessor"
       (documentation 'event-scroll-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-x instance) => x}
   @syntax{(setf (gdk:event-scroll-x instance) x)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[x]{a double float with the x coordinate of the pointer relative
-    to the window}
+  @argument[x]{a double float for the x coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   @see-class{gdk:event-scroll}")
 
@@ -2489,14 +2505,15 @@
 (setf (liber:alias-for-function 'event-scroll-y)
       "Accessor"
       (documentation 'event-scroll-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-y instance) => y}
   @syntax{(setf (gdk:event-scroll-y instance) y)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[y]{a double float with the y coordinate of the pointer relative
-    to the window}
+  @argument[y]{a double float for the y coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   @see-class{gdk:event-scroll}")
 
@@ -2508,7 +2525,7 @@
 (setf (liber:alias-for-function 'event-scroll-state)
       "Accessor"
       (documentation 'event-scroll-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-state instance) => state}
   @syntax{(setf (gdk:event-scroll-state instance) state)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
@@ -2516,7 +2533,8 @@
     the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{state} slot of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   @see-class{gdk:event-scroll}
   @see-symbol{gdk:modifier-type}")
@@ -2529,18 +2547,15 @@
 (setf (liber:alias-for-function 'event-scroll-direction)
       "Accessor"
       (documentation 'event-scroll-direction 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-direction instance) => direction}
   @syntax{(setf (gdk:event-scroll-direction instance) direction)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
   @argument[direction]{a value of the @sym{gdk:scroll-direction} enumeration}
   @begin{short}
-    Accessor of the @code{direction} slot of the @class{gdk:event-scroll}
-    structure.
+    The accessor for the @code{direction} slot of the @class{gdk:event-scroll}
+    structure gets or sets the scroll direction for a scroll event.
   @end{short}
-  The @fun{gdk:scroll-direction} function extracts the scroll direction from a
-  scroll event.
-
   If you wish to handle both discrete and smooth scrolling, you should check
   the return value of this function, or of the @fun{gdk:event-scroll-deltas}
   function. For instance:
@@ -2585,14 +2600,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-scroll-device)
       "Accessor"
       (documentation 'event-scroll-device 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-scroll-device instance) => device}
   @syntax{(setf (gdk:event-scroll-device instance) device)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
   @argument[device]{a @class{gdk:device} master device that the event
     originated from}
   @begin{short}
-    Accessor of the @code{device} of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{device} of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   Use the @fun{gdk:event-source-device} function to get the slave device.
   @see-class{gdk:event-scroll}
@@ -2606,14 +2622,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-scroll-x-root)
       "Accessor"
       (documentation 'event-scroll-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-scroll-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-scroll-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-scroll-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-scroll-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-scroll}
+    The accessor for the @code{x-root} slot of the @class{gdk:event-scroll}
     structure.
   @end{short}
   @see-class{gdk:event-scroll}")
@@ -2626,14 +2642,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-scroll-y-root)
       "Accessor"
       (documentation 'event-scroll-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-scroll-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-scroll-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-scroll-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-scroll-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer
+  @argument[y-root]{a double float for the y coordinate of the pointer
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-scroll}
+    The accessor for the @code{y-root} slot of the @class{gdk:event-scroll}
     structure.
   @end{short}
   @see-class{gdk:event-scroll}")
@@ -2646,13 +2662,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-scroll-delta-x)
       "Accessor"
       (documentation 'event-scroll-delta-x 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-scroll-delta-x instance) => delta-x}
-  @syntax{(setf (gdk:event-scroll-delta-x instance) delta-x)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-scroll-delta-x instance) => xdelta}
+  @syntax{(setf (gdk:event-scroll-delta-x instance) xdelta)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[delta-x]{a double float with the x coordinate of the scroll deltas}
+  @argument[xdelta]{a double float for the x coordinate of the scroll deltas}
   @begin{short}
-    Accessor of the @code{delta-x} of the @class{gdk:event-scroll} structure.
+    The accessor for the @code{delta-x} of the @class{gdk:event-scroll}
+    structure.
   @end{short}
   @see-class{gdk:event-scroll}")
 
@@ -2664,13 +2681,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-scroll-delta-y)
       "Accessor"
       (documentation 'event-scroll-delta-y 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-scroll-delta-y instance) => delta-y}
-  @syntax{(setf (gdk:event-scroll-delta-y instance) delta-y)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-scroll-delta-y instance) => ydelta}
+  @syntax{(setf (gdk:event-scroll-delta-y instance) ydelta)}
   @argument[instance]{a @class{gdk:event-scroll} instance}
-  @argument[delta-y]{a double float with the y coordinate of the scroll deltas}
+  @argument[ydelta]{a double float for the y coordinate of the scroll deltas}
   @begin{short}
-    Accessor of the @code{delta-y} slot of the @class{gdk:event-scroll}
+    The accessor for the @code{delta-y} slot of the @class{gdk:event-scroll}
     structure.
   @end{short}
   @see-class{gdk:event-scroll}")
@@ -2757,14 +2774,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-time)
       "Accessor"
       (documentation 'event-motion-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-time instance) => time}
   @syntax{(setf (gdk:event-motion-time instance) time)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-motion} structure.
+    The accessor for the @code{time} slot of the @class{gdk:event-motion}
+    structure.
   @end{short}
   @see-class{gdk:event-motion}")
 
@@ -2776,14 +2793,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-x)
       "Accessor"
       (documentation 'event-motion-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-x instance) => x}
   @syntax{(setf (gdk:event-motion-x instance) x)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[x]{a double float with the x coordinate of the pointer relative
-    to the window}
+  @argument[x]{a double float for the x coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-motion} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-motion}
+    structure.
   @end{short}
   @see-class{gdk:event-motion}")
 
@@ -2795,14 +2813,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-y)
       "Accessor"
       (documentation 'event-motion-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-y instance) => y}
   @syntax{(setf (gdk:event-motion-y instance) y)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[y]{a double float with the y coordinate of the pointer relative
-    to the window}
+  @argument[y]{a double float for the y coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-motion} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-motion}
+    structure.
   @end{short}
   @see-class{gdk:event-motion}")
 
@@ -2814,14 +2833,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-axes)
       "Accessor"
       (documentation 'event-motion-axes 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-axes instance) => axes}
   @syntax{(setf (gdk:event-motion-axes instance) axes)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[axes]{an array of double float with the x,y coordinates translated
+  @argument[axes]{an array of double float for the x,y coordinates translated
     to the axes of the device}
   @begin{short}
-    Accessor of the @code{axes} slot of the @class{gdk:event-motion} structure.
+    The accessor for the @code{axes} slot of the @class{gdk:event-motion}
+    structure.
   @end{short}
   @see-class{gdk:event-motion}")
 
@@ -2833,7 +2853,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-state)
       "Accessor"
       (documentation 'event-motion-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-state instance) => state}
   @syntax{(setf (gdk:event-motion-state instance) state)}
   @argument[instance]{a @class{gdk:event-motion} instance}
@@ -2841,7 +2861,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     the modifier keys, for example, @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-motion} structure.
+    The accessor for the @code{state} slot of the @class{gdk:event-motion}
+    structure.
   @end{short}
   @see-class{gdk:event-motion}
   @see-symbol{gdk:modifier-state}")
@@ -2854,14 +2875,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-is-hint)
       "Accessor"
       (documentation 'event-motion-is-hint 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-is-hint instance) => is-hint}
   @syntax{(setf (gdk:event-motion-is-hint instance) is-hint)}
   @argument[instance]{a @class{gdk:event-motion} instance}
   @argument[is-hint]{set to 1 if this event is just a hint, see the
       @code{:pointer-motion-hint-mask} value of the @sym{gdk:event-mask} flags}
   @begin{short}
-    Accessor of the @code{is-hint} slot of the @class{gdk:event-motion}
+    The accessor for the @code{is-hint} slot of the @class{gdk:event-motion}
     structure.
   @end{short}
   @see-class{gdk:event-motion}")
@@ -2874,14 +2895,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-device)
       "Accessor"
       (documentation 'event-motion-device 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-motion-device instance) => device}
   @syntax{(setf (gdk:event-motion-device instance) device)}
   @argument[instance]{a @class{gdk:event-motion} instance}
   @argument[device]{a @class{gdk:device} master device that the event
     originated from}
   @begin{short}
-    Accessor of the @code{device} slot of the @class{gdk:event-motion}
+    The accessor for the @code{device} slot of the @class{gdk:event-motion}
     structure.
   @end{short}
   Use the @fun{gdk:event-source-device} function to get the slave device.
@@ -2897,14 +2918,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-x-root)
       "Accessor"
       (documentation 'event-motion-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-motion-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-motion-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-motion-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-motion-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-motion}
+    The accessor for the @code{x-root} slot of the @class{gdk:event-motion}
     structure.
   @end{short}
   @see-class{gdk:event-motion}")
@@ -2917,14 +2938,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-motion-y-root)
       "Accessor"
       (documentation 'event-motion-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-motion-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-motion-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-motion-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-motion-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-motion} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer
+  @argument[yroot]{a double float for the y coordinate of the pointer
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-motion}
+    The accessor for the @code{y-root} slot of the @class{gdk:event-motion}
     structure.
   @end{short}
   @see-class{gdk:event-motion}")
@@ -2991,14 +3012,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-expose-area)
       "Accessor"
       (documentation 'event-expose-area 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-expose-area instance) => area}
   @syntax{(setf (gdk:event-expose-area instance) area)}
   @argument[instance]{a @class{gdk:event-expose} instance}
   @argument[area]{bounding @class{gdk:rectangle} box of the region that
     needs to be redrawn}
   @begin{short}
-    Accessor of the @code{area} slot of the @class{gdk:event-expose} structure.
+    The accessor for the @code{area} slot of the @class{gdk:event-expose}
+    structure.
   @end{short}
   @see-class{gdk:event-expose}
   @see-class{gdk:rectangle}")
@@ -3011,13 +3033,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-expose-region)
       "Accessor"
       (documentation 'event-expose-region 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-expose-region instance) => region}
   @syntax{(setf (gdk:event-expose-region instance) region)}
   @argument[instance]{a @class{gdk:event-expose} instance}
-  @argument[region]{a @sym{cairo:region-t} region that needs to be redrawn}
+  @argument[region]{a @sym{cairo:region-t} instance that needs to be redrawn}
   @begin{short}
-    Accessor of the @code{region} slot of the @class{gdk:event-expose}
+    The accessor for the @code{region} slot of the @class{gdk:event-expose}
     structure.
   @end{short}
   @see-class{gdk:event-expose}
@@ -3031,14 +3053,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-expose-count)
       "Accessor"
       (documentation 'event-expose-count 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-expose-count instance) => count}
   @syntax{(setf (gdk:event-expose-count instance) count)}
   @argument[instance]{a @class{gdk:event-expose} instance}
-  @argument[count]{an integer with the the number of contiguous
+  @argument[count]{an integer for the the number of contiguous
     @class{gdk:event-expose} events following this one}
   @begin{short}
-    Accessor of the @code{count} of the @class{gdk:event-expose} structure.
+    The accessor for the @code{count} of the @class{gdk:event-expose} structure.
   @end{short}
   The number of contiguous @class{gdk:event-expose} events following this one.
   The only use for this is \"exposure compression\", that is handling all
@@ -3102,13 +3124,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-visibility-state)
       "Accessor"
       (documentation 'event-visibility-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-visibility-state instance) => visibility}
   @syntax{(setf (gdk:event-visibility-state instance) visibility)}
   @argument[instance]{a @class{gdk:event-visibility} instance}
   @argument[visibility]{a @sym{gdk:visibility-state} value}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-visibility}
+    The accessor for the @code{state} slot of the @class{gdk:event-visibility}
     structure.
   @end{short}
   @see-class{gdk:event-visibility}
@@ -3197,14 +3219,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-subwindow)
       "Accessor"
       (documentation 'event-crossing-subwindow 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-subwindow instance) => subwindow}
   @syntax{(setf (gdk:event-crossing-subwindow instance) subwindow)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
   @argument[subwindow]{a @class{gdk:window} object that was entered or left}
   @begin{short}
-    Accessor of the @code{subwindow} slot of the @class{gdk:event-crossing}
-    structure
+    The accessor for the @code{subwindow} slot of the @class{gdk:event-crossing}
+    structure.
   @end{short}
   @see-class{gdk:event-crossing}
   @see-class{gdk:window}")
@@ -3217,14 +3239,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-time)
       "Accessor"
       (documentation 'event-crossing-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-time instance) => time}
   @syntax{(setf (gdk:event-crossing-time instance) time)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
-  @argument[time]{an unsigned integer with the time of the event in
+  @argument[time]{an unsigned integer for the time of the event in
     milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{time} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}")
@@ -3237,14 +3259,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-x)
       "Accessor"
       (documentation 'event-crossing-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-x instance) => x}
   @syntax{(setf (gdk:event-crossing-x instance) x)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
-  @argument[x]{a double float with the x coordinate of the pointer relative
-    to the window}
+  @argument[x]{a double float for the x coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-crossing} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-crossing}
+    structure.
   @end{short}
   @see-class{gdk:event-crossing}")
 
@@ -3256,14 +3279,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-y)
       "Accessor"
       (documentation 'event-crossing-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-y instance) => y}
   @syntax{(setf (gdk:event-crossing-y instance) y)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
-  @argument[y]{a double float with the y coordinate of the pointer relative
-    to the window}
+  @argument[y]{a double float for the y coordinate of the pointer relative to
+    the window}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-crossing} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-crossing}
+    structure.
   @end{short}
   @see-class{gdk:event-crossing}")
 
@@ -3275,14 +3299,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-x-root)
       "Accessor"
       (documentation 'event-crossing-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-crossing-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-crossing-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-crossing-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-crossing-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} of the @class{gdk:event-crossing} structure.
+    The accessor for the @code{x-root} slot of the @class{gdk:event-crossing}
+    structure.
   @end{short}
   @see-class{gdk:event-crossing}")
 
@@ -3294,14 +3319,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-y-root)
       "Accessor"
       (documentation 'event-crossing-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-crossing-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-crossing-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-crossing-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-crossing-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer
-    relative to the root of the screen}
+  @argument[yroot]{a double float for the y coordinate of the pointer relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{y-root} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}")
@@ -3314,13 +3339,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-mode)
       "Accessor"
       (documentation 'event-crossing-mode 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-mode instance) => mode}
   @syntax{(setf (gdk:event-crossing-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
   @argument[mode]{a @sym{gdk:crossing-mode} value}
   @begin{short}
-    Accessor of the @code{mode} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{mode} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}")
@@ -3333,13 +3358,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-detail)
       "Accessor"
       (documentation 'event-crossing-detail 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-detail instance) => detail}
   @syntax{(setf (gdk:event-crossing-detail instance) detail)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
   @argument[detail]{a @sym{gdk:notify-type} value}
   @begin{short}
-    Accessor of the @code{detail} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{detail} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}
@@ -3353,13 +3378,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-focus)
       "Accessor"
       (documentation 'event-crossing-focus 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-focus instance) => focus}
   @syntax{(setf (gdk:event-crossing-focus instance) focus)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
   @argument[focus]{@em{true} if the window is focus window or an inferior}
   @begin{short}
-    Accessor of the @code{focus} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{focus} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}")
@@ -3372,7 +3397,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-crossing-state)
       "Accessor"
       (documentation 'event-crossing-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-crossing-state instance) => state}
   @syntax{(setf (gdk:event-crossing-state instance) state)}
   @argument[instance]{a @class{gdk:event-crossing} instance}
@@ -3380,7 +3405,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
     @kbd{Alt} keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-crossing}
+    The accessor for the @code{state} slot of the @class{gdk:event-crossing}
     structure.
   @end{short}
   @see-class{gdk:event-crossing}
@@ -3433,14 +3458,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-focus-in)
       "Accessor"
       (documentation 'event-focus-in 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-focus-in instance) => focus}
   @syntax{(setf (gdk:event-focus-in instance) focus)}
   @argument[instance]{a @class{gdk:event-focus} instance}
   @argument[focus]{@em{true} if the window has gained the keyboard focus,
     @em{false} if it has lost the focus}
   @begin{short}
-    Accessor of the @code{in} slot of the @class{gdk:event-focus} structure.
+    The accessor for the @code{in} slot of the @class{gdk:event-focus}
+    structure.
   @end{short}
   @see-class{gdk:event-focus}")
 
@@ -3503,14 +3529,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-configure-x)
       "Accessor"
       (documentation 'event-configure-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-configure-x instance) => x}
   @syntax{(setf (gdk:event-configure-x instance) x)}
   @argument[instance]{a @class{gdk:event-configure} instance}
-  @argument[x]{an integer with the new x coordinate of the window, relative
-    to its parent}
+  @argument[x]{an integer for the new x coordinate of the window, relative to
+    its parent}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-configure} structure.
+    The accessor for the @code{x} slot of the @class{gdk:event-configure}
+    structure.
   @end{short}
   @see-class{gdk:event-configure}")
 
@@ -3522,14 +3549,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-configure-y)
       "Accessor"
       (documentation 'event-configure-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-configure-y instance) => y}
   @syntax{(setf (gdk:event-configure-y instance) y)}
   @argument[instance]{a @class{gdk:event-configure} instance}
-  @argument[y]{an integer with the new y coordinate of the window, relative
-    to its parent}
+  @argument[y]{an integer for the new y coordinate of the window, relative to
+    its parent}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-configure} structure.
+    The accessor for the @code{y} slot of the @class{gdk:event-configure}
+    structure.
   @end{short}
   @see-class{gdk:event-configure}")
 
@@ -3541,13 +3569,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-configure-width)
       "Accessor"
       (documentation 'event-configure-width 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-configure-width instance) => width}
   @syntax{(setf (gdk:event-configure-width instance) width)}
   @argument[instance]{a @class{gdk:event-configure} instance}
-  @argument[width]{an integer with the new width of the window}
+  @argument[width]{an integer for the new width of the window}
   @begin{short}
-    Accessor of the @code{width} of the @class{gdk:event-configure} structure.
+    The accessor for the @code{width} of the @class{gdk:event-configure}
+    structure.
   @end{short}
   @see-class{gdk:event-configure}")
 
@@ -3559,13 +3588,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-configure-height)
       "Accessor"
       (documentation 'event-configure-height 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-configure-height instance) => height}
   @syntax{(setf (gdk:event-configure-height instance) height)}
   @argument[instance]{a @class{gdk:event-configure} instance}
-  @argument[height]{an integer with the new height of the window}
+  @argument[height]{an integer for the new height of the window}
   @begin{short}
-    Accessor of the @code{height} of the @class{gdk:event-configure} structure.
+    The accessor for the @code{height} of the @class{gdk:event-configure}
+    structure.
   @end{short}
   @see-class{gdk:event-configure}")
 
@@ -3598,7 +3628,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[type]{The @sym{gdk:event-type} type of the event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[atom]{The @sym{gdk:atom} string with the property that was
+      @entry[atom]{The @sym{gdk:atom} string for the property that was
         changed.}
       @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
@@ -3626,13 +3656,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-property-atom)
       "Accessor"
       (documentation 'event-property-atom 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-property-atom instance) => atom}
   @syntax{(setf (gdk:event-property-atom instance) atom)}
   @argument[instance]{a @class{gdk:event-property} instance}
   @argument[atom]{a @sym{gdk:atom} property that was changed}
   @begin{short}
-    Accessor of the @code{atom} slot of the @class{gdk:event-property}
+    The accessor for the @code{atom} slot of the @class{gdk:event-property}
     structure.
   @end{short}
   @see-class{gdk:event-property}
@@ -3646,14 +3676,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-property-time)
       "Accessor"
       (documentation 'event-property-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-property-time instance) => time}
   @syntax{(setf (gdk:event-property-time instance) time)}
   @argument[instance]{a @class{gdk:event-property} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-property}
+    The accessor for the @code{time} slot of the @class{gdk:event-property}
     structure.
   @end{short}
   @see-class{gdk:event-property}")
@@ -3666,13 +3695,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-property-state)
       "Accessor"
       (documentation 'event-property-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-property-state instance) => state}
   @syntax{(setf (gdk:event-property-state instance) state)}
   @argument[instance]{a @class{gdk:event-property} instance}
   @argument[state]{a value of the @sym{gdk:property-state} enumeration}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-property}
+    The accessor for the @code{state} slot of the @class{gdk:event-property}
     structure.
   @end{short}
   @see-class{gdk:event-property}
@@ -3710,8 +3739,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[type]{The @sym{gdk:event-type} type of the event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[selection]{The @sym{gdk:atom} string with the selection.}
-      @entry[target]{The @sym{gdk:atom} string with the target to which the
+      @entry[selection]{The @sym{gdk:atom} string for the selection.}
+      @entry[target]{The @sym{gdk:atom} string for the target to which the
         selection should be converted.}
       @entry[property]{The @sym{gdk:atom} property in which to place the
         result of the conversion.}
@@ -3746,14 +3775,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-selection-selection)
       "Accessor"
       (documentation 'event-selection-selection 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-selection-selection instance) => selection}
   @syntax{(setf (gdk:event-selection-selection instance) selection)}
   @argument[instance]{a @class{gdk:event-selection} instance}
-  @argument[selection]{a @sym{gdk:atom} with the selection}
+  @argument[selection]{a @sym{gdk:atom} for the selection}
   @begin{short}
-    Accessor of the @code{selection} slot of the @class{gdk:event-selection}
-    structure.
+    The accessor for the @code{selection} slot of the
+    @class{gdk:event-selection} structure.
   @end{short}
   @see-class{gdk:event-selection}
   @see-symbol{gdk:atom}")
@@ -3766,14 +3795,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-selection-target)
       "Accessor"
       (documentation 'event-selection-target 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-selection-target instance) => target}
   @syntax{(setf (gdk:event-selection-target instance) target)}
   @argument[instance]{a @class{gdk:event-selection} instance}
-  @argument[selection]{a @sym{gdk:atom} with the target to which the selection
+  @argument[selection]{a @sym{gdk:atom} for the target to which the selection
     should be converted}
   @begin{short}
-    Accessor of the @code{target} slot of the @class{gdk:event-selection}
+    The accessor for the @code{target} slot of the @class{gdk:event-selection}
     structure.
   @end{short}
   @see-class{gdk:event-selection}
@@ -3787,14 +3816,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-selection-property)
       "Accessor"
       (documentation 'event-selection-property 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-selection-property instance) => property}
   @syntax{(setf (gdk:event-selection-property instance) property)}
   @argument[instance]{a @class{gdk:event-selection} instance}
-  @argument[property]{a @sym{gdk:atom} with the property in which to place
+  @argument[property]{a @sym{gdk:atom} for the property in which to place
     the result of the conversion}
   @begin{short}
-    Accessor of the @code{property} slot of the @class{gdk:event-selection}
+    The accessor for the @code{property} slot of the @class{gdk:event-selection}
     structure.
   @end{short}
   @see-class{gdk:event-selection}
@@ -3808,14 +3837,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-selection-time)
       "Accessor"
       (documentation 'event-selection-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-selection-time instance) => time}
   @syntax{(setf (gdk:event-selection-time instance) time)}
   @argument[instance]{a @class{gdk:event-selection} instance}
-  @argument[time]{an unsigned integer with the time of the event in
+  @argument[time]{an unsigned integer for the time of the event in
     milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-selection}
+    The accessor for the @code{time} slot of the @class{gdk:event-selection}
     structure.
   @end{short}
   @see-class{gdk:event-selection}")
@@ -3828,15 +3857,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-selection-requestor)
       "Accessor"
       (documentation 'event-selection-requestor 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-selection-requestor instance) => requestor}
   @syntax{(setf (gdk:event-selection-requestor instance) requestor)}
   @argument[instance]{a @class{gdk:event-selection} instance}
   @argument[requestor]{a @class{gdk:window} object on which to place the
     property}
   @begin{short}
-    Accessor of the @code{requestor} slot of the @class{gdk:event-selection}
-    structure.
+    The accessor for the @code{requestor} slot of the
+    @class{gdk:event-selection} structure.
   @end{short}
   @see-class{gdk:event-selection}
   @see-symbol{gdk:window}")
@@ -3877,12 +3906,12 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[send-event]{@em{True} if the event was sent explicitly.}
       @entry[context]{The @class{gdk:drag-context} object for the current DND
         operation.}
-      @entry[time]{An unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
-      @entry[x-root]{A short integer with the x coordinate of the pointer
+      @entry[x-root]{The short integer for the x coordinate of the pointer
         relative to the root of the screen, only set for @code{:drag-motion}
         and @code{:drop-start} events.}
-      @entry[y-root]{A short integer with the y coordinate of the pointer
+      @entry[y-root]{The short integer for the y coordinate of the pointer
         relative to the root of the screen, only set for @code{:drag-motion}
         and @code{:drop-start} events.}
     @end{simple-table}
@@ -3910,14 +3939,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-dnd-context)
       "Accessor"
       (documentation 'event-dnd-context 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-dnd-context instance) => context}
   @syntax{(setf (gdk:event-dnd-context instance) context)}
   @argument[instance]{a @class{gdk:event-dnd} instance}
   @argument[context]{a @class{gdk:drag-context} object for the current DND
     operation}
   @begin{short}
-    Accessor of the @code{context} slot of the @class{gdk:event-dnd}
+    The accessor for the @code{context} slot of the @class{gdk:event-dnd}
     structure.
   @end{short}
   @see-class{gdk:event-dnd}
@@ -3931,14 +3960,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-dnd-time)
       "Accessor"
       (documentation 'event-dnd-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-dnd-time instance) => time}
   @syntax{(setf (gdk:event-dnd-time instance) time)}
   @argument[instance]{a @class{gdk:event-dnd} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-dnd}
+    The accessor for the @code{time} slot of the @class{gdk:event-dnd}
     structure.
   @end{short}
   @see-class{gdk:event-dnd}")
@@ -3951,14 +3979,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-dnd-x-root)
       "Accessor"
       (documentation 'event-dnd-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-dnd-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-dnd-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-dnd-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-dnd-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-dnd} instance}
-  @argument[x-root]{a short integer with the x coordinate of the pointer
+  @argument[xroot]{a short integer for the x coordinate of the pointer
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-dnd} structure.
+    The accessor for the @code{x-root} slot of the @class{gdk:event-dnd}
+    structure.
   @end{short}
   @see-class{gdk:event-dnd}")
 
@@ -3970,14 +3999,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-dnd-y-root)
       "Accessor"
       (documentation 'event-dnd-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-dnd-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-dnd-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-dnd-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-dnd-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-dnd} instance}
-  @argument[y-root]{a short integer with the y coordinate of the pointer
+  @argument[yroot]{a short integer for the y coordinate of the pointer
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-dnd} structure.
+    The accessor for the @code{y-root} slot of the @class{gdk:event-dnd}
+    structure.
   @end{short}
   @see-class{gdk:event-dnd}")
 
@@ -4009,7 +4039,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[type]{The @sym{gdk:event-type} type of the event.}
       @entry[window]{The @class{gdk:window} object which received the event.}
       @entry[send-event]{@em{True} if the event was sent explicitly.}
-      @entry[time]{An unsigned integer with the time of the event in
+      @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
       @entry[device]{The @class{gdk:device} object where the event originated.}
     @end{simple-table}
@@ -4044,14 +4074,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-proximity-time)
       "Accessor"
       (documentation 'event-proximity-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-proximity-time instance) => time}
   @syntax{(setf (gdk:event-proximity-time instance) time)}
   @argument[instance]{a @class{gdk:event-proximity} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-proximity}
+    The accessor for the @code{time} slot of the @class{gdk:event-proximity}
     structure.
   @end{short}
   @see-class{gdk:event-proximity}")
@@ -4064,14 +4093,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-proximity-device)
       "Accessor"
       (documentation 'event-proximity-device 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-proximity-device instance) => device}
   @syntax{(setf (gdk:event-proximity-device instance) device)}
   @argument[instance]{a @class{gdk:event-proximity} instance}
   @argument[device]{a @class{gdk:device} master device that the event
     originated from}
   @begin{short}
-    Accessor of the @code{device} slot of the @class{gdk:event-proximity}
+    The accessor for the @code{device} slot of the @class{gdk:event-proximity}
     structure.
   @end{short}
   @see-class{gdk:event-proximity}
@@ -4131,14 +4160,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-window-state-changed-mask)
       "Accessor"
       (documentation 'event-window-state-changed-mask 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-window-state-changed-mask instance) => mask}
   @syntax{(setf (gdk:event-window-state-changed-mask instance) mask)}
   @argument[instance]{a @class{gdk:event-window-state} instance}
   @argument[mask]{a @sym{gdk:window-state} mask specifying what flags have
     changed}
   @begin{short}
-    Accessor of the  @code{changed-mask} slot of the
+    The accessor for the  @code{changed-mask} slot of the
     @class{gdk:event-window-state} structure.
   @end{short}
   @see-class{gdk:event-window-state}
@@ -4152,13 +4181,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-window-state-new-window-state)
       "Accessor"
       (documentation 'event-window-state-new-window-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-window-state-new-window-state instance) => state}
   @syntax{(setf (gdk:event-window-state-new-window-state instance) state)}
   @argument[instance]{a @class{gdk:event-window-state} instance}
   @argument[state]{a new @sym{gdk:window-state} mask}
   @begin{short}
-    Accessor of the @code{new-window-state} slot of the
+    The accessor for the @code{new-window-state} slot of the
     @class{gdk:event-window-state} structure.
   @end{short}
   @see-class{gdk:event-window-state}
@@ -4193,7 +4222,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
       @entry[send-event]{@em{True} if the event was sent explicitly.}
       @entry[action]{What happened to the setting as a value of the
         @sym{gdk:setting-action} enumeration.}
-      @entry[name]{The string with the name of the setting.}
+      @entry[name]{The string for the name of the setting.}
     @end{simple-table}
   @end{values}
   @begin{short}
@@ -4217,13 +4246,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-setting-action)
       "Accessor"
       (documentation 'event-setting-action 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-setting-action instance) => action}
   @syntax{(setf (gdk:event-setting-action instance) action)}
   @argument[instance]{a @class{gdk:event-setting} instance}
   @argument[action]{a @sym{gdk:setting-action} value}
   @begin{short}
-    Accessor of the @code{action} slot of the @class{gdk:event-setting}
+    The accessor for the @code{action} slot of the @class{gdk:event-setting}
     structure.
   @end{short}
   @see-class{gdk:event-setting}
@@ -4237,13 +4266,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-setting-name)
       "Accessor"
       (documentation 'event-setting-name 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-setting-name instance) => name}
   @syntax{(setf (gdk:event-setting-name instance) name)}
   @argument[instance]{a @class{gdk:event-setting} instance}
-  @argument[name]{a string with the name of the setting}
+  @argument[name]{a string for the name of the setting}
   @begin{short}
-    Accessor of the @code{name} slot of the @class{gdk:event-setting}
+    The accessor for the @code{name} slot of the @class{gdk:event-setting}
     structure.
   @end{short}
   @see-class{gdk:event-setting}")
@@ -4314,13 +4343,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-owner-change-owner)
       "Accessor"
       (documentation 'event-owner-change-owner 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-owner-change-owner instance) => owner}
   @syntax{(setf (gdk:event-owner-change-owner instance) owner)}
   @argument[instance]{a @class{gdk:event-owner-change} instance}
   @argument[owner]{a @class{gdk:window} owner of the selection}
   @begin{short}
-    Accessor of the @code{owner} slot of the @class{gdk:event-owner-change}
+    The accessor for the @code{owner} slot of the @class{gdk:event-owner-change}
     structure.
   @end{short}
   @see-class{gdk:event-owner-change}
@@ -4334,15 +4363,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-owner-change-reason)
       "Accessor"
       (documentation 'event-owner-change-reason 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-owner-change-reason instance) => reason}
   @syntax{(setf (gdk:event-owner-change-reason instance) reason)}
   @argument[instance]{a @class{gdk:event-owner-change} instance}
   @argument[reason]{a reason for the ownership change as a
     @sym{gdk:owner-change} value}
   @begin{short}
-    Accessor of the @code{reason} slot of the @class{gdk:event-owner-change}
-    structure.
+    The accessor for the @code{reason} slot of the
+    @class{gdk:event-owner-change} structure.
   @end{short}
   @see-class{gdk:event-owner-change}
   @see-symbol{gdk:owner-change}")
@@ -4355,14 +4384,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-owner-change-selection)
       "Accessor"
       (documentation 'event-owner-change-selection 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-owner-change-selection instance) => selection}
   @syntax{(setf (gdk:event-owner-change-selection instance) selection)}
   @argument[instance]{a @class{gdk:event-owner-change} instance}
   @argument[selection]{a @sym{gdk:atom} identifying the selection}
   @begin{short}
-    Accessor of the @code{selection} slot of the @class{gdk:event-owner-change}
-    structure.
+    The accessor for the @code{selection} slot of the
+    @class{gdk:event-owner-change} structure.
   @end{short}
   @see-class{gdk:event-owner-change}
   @see-symbol{gdk:atom}")
@@ -4375,14 +4404,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-owner-change-time)
       "Accessor"
       (documentation 'event-owner-change-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-owner-change-time instance) => time}
   @syntax{(setf (gdk:event-owner-change-time instance) time)}
   @argument[instance]{a @class{gdk:event-owner-change} instance}
-  @argument[time]{an unsigned integer with the timestamp of the event in
+  @argument[time]{an unsigned integer for the timestamp of the event in
     milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-owner-change}
+    The accessor for the @code{time} slot of the @class{gdk:event-owner-change}
     structure.
   @end{short}
   @see-class{gdk:event-owner-change}")
@@ -4395,14 +4424,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-owner-change-selection-time)
       "Accessor"
       (documentation 'event-owner-change-selection-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-owner-change-selection-time instance) => time}
   @syntax{(setf (gdk:event-owner-change-selection-time instance) time)}
   @argument[instance]{a @class{gdk:event-owner-change} instance}
-  @argument[time]{an unsigned integer with the time at which the selection
+  @argument[time]{an unsigned integer for the time at which the selection
     ownership was taken over}
   @begin{short}
-    Accessor of the @code{selection-time} slot of the
+    The accessor for the @code{selection-time} slot of the
     @class{gdk:event-owner-change} structure.
   @end{short}
   @see-class{gdk:event-owner-change}")
@@ -4469,15 +4498,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-grab-broken-keyboard)
       "Accessor"
       (documentation 'event-grab-broken-keyboard 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-grab-broken-keyboard instance) => keyboard}
   @syntax{(setf (gdk:event-grab-broken-keyboard instance) keyboard)}
   @argument[instance]{a @class{gdk:event-grab-broken} instance}
   @argument[keyboard]{@em{true} if a keyboard grab was broken, @em{false}
     if a pointer grab was broken}
   @begin{short}
-    Accessor of the @code{keyboard} slot of the @class{gdk:event-grab-broken}
-    structure.
+    The accessor for the @code{keyboard} slot of the
+    @class{gdk:event-grab-broken} structure.
   @end{short}
   @see-class{gdk:event-grab-broken}")
 
@@ -4489,14 +4518,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-grab-broken-implicit)
       "Accessor"
       (documentation 'event-grab-broken-implicit 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-grab-broken-implicit instance) => implicit}
   @syntax{(setf (gdk:event-grab-broken-implicit instance) implicit)}
   @argument[instance]{a @class{gdk:event-grab-broken} instance}
   @argument[implicit]{@em{true} if the broken grab was implicit}
   @begin{short}
-    Accessor of the @code{implicit} slot of the @class{gdk:event-grab-broken}
-    structure.
+    The accessor for the @code{implicit} slot of the
+    @class{gdk:event-grab-broken} structure.
   @end{short}
   @see-class{gdk:event-grab-broken}")
 
@@ -4508,7 +4537,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-grab-broken-grab-window)
       "Accessor"
       (documentation 'event-grab-broken-grab-window 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-grab-broken-grab-window instance) => grab-window}
   @syntax{(setf (gdk:event-grab-broken-grab-window instance) grab-window)}
   @argument[instance]{a @class{gdk:event-grab-broken} instance}
@@ -4516,8 +4545,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     application, @arg{grab-window} contains the new @class{gdk:window} grab
     window}
   @begin{short}
-    Accessor of the @code{grab-window} slot of the @class{gdk:event-grab-broken}
-    structure.
+    The accessor for the @code{grab-window} slot of the
+    @class{gdk:event-grab-broken} structure.
   @end{short}
   @see-class{gdk:event-grab-broken}
   @see-class{gdk:window}")
@@ -4564,15 +4593,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
         swipe.}
       @entry[time]{The unsigned integer for the time of the event in
         milliseconds.}
-      @entry[x]{The double float x coordinate of the pointer.}
-      @entry[y]{The double float y coordinate of the pointer.}
-      @entry[dx]{The double float with the movement delta in the x axis of the
+      @entry[x]{The double float x coordinate for the pointer.}
+      @entry[y]{The double float y coordinate for the pointer.}
+      @entry[dx]{The double float for the movement delta in the x axis of the
         swipe focal point.}
-      @entry[dy]{The double float with the movement delta in the y axis of the
+      @entry[dy]{The double float for the movement delta in the y axis of the
         swipe focal point.}
-      @entry[x-root]{The double float x coordinate of the pointer, relative to
+      @entry[x-root]{The double float x coordinate for the pointer, relative to
         the root of the screen.}
-      @entry[y-root]{The double float y coordinate of the pointer, relative to
+      @entry[y-root]{The double float y coordinate for the pointer, relative to
         the root of the screen.}
       @entry[state]{The @sym{gdk:modifier-type} bit-mask representing the state
         of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
@@ -4606,14 +4635,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-phase)
       "Accessor"
       (documentation 'event-touchpad-swipe-phase 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-phase instance) => phase}
   @syntax{(setf (gdk:event-touchpad-swipe-phase instance) phase)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[phase]{an integer with the current phase of the gesture}
+  @argument[phase]{an integer for the current phase of the gesture}
   @begin{short}
-    Accessor of the @code{phase} slot of the @class{gdk:event-touchpad-swipe}
-    structure.
+    The accessor for the @code{phase} slot of the
+    @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
 
@@ -4625,14 +4654,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-n-fingers)
       "Accessor"
       (documentation 'event-touchpad-swipe-n-fingers 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-n-fingers instance) => n-fingers}
   @syntax{(setf (gdk:event-touchpad-swipe-n-fingers instance) n-fingers)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[n-fingers]{an integer with the number of fingers triggering the
+  @argument[n-fingers]{an integer for the number of fingers triggering the
     swipe}
   @begin{short}
-    Accessor of the @code{n-fingers} slot of the
+    The accessor for the @code{n-fingers} slot of the
     @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
@@ -4645,15 +4674,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-time)
       "Accessor"
       (documentation 'event-touchpad-swipe-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-time instance) => time}
   @syntax{(setf (gdk:event-touchpad-swipe-time instance) time)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-touchpad-swipe}
-    structure.
+    The accessor for the @code{time} slot of the
+    @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
 
@@ -4665,13 +4693,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-x)
       "Accessor"
       (documentation 'event-touchpad-swipe-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-x instance) => x}
   @syntax{(setf (gdk:event-touchpad-swipe-x instance) x)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[x]{a double float with the x coordinate of the pointer}
+  @argument[x]{a double float for the x coordinate of the pointer}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-touchpad-swipe}
+    The accessor for the @code{x} slot of the @class{gdk:event-touchpad-swipe}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
@@ -4684,13 +4712,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-y)
       "Accessor"
       (documentation 'event-touchpad-swipe-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-y instance) => y}
   @syntax{(setf (gdk:event-touchpad-swipe-y instance) y)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[y]{a double float with the y coordinate of the pointer}
+  @argument[y]{a double float for the y coordinate of the pointer}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-touchpad-swipe}
+    The accessor for the @code{y} slot of the @class{gdk:event-touchpad-swipe}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
@@ -4703,14 +4731,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-dx)
       "Accessor"
       (documentation 'event-touchpad-swipe-dx 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-dx instance) => dx}
   @syntax{(setf (gdk:event-touchpad-swipe-dx instance) dx)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[dx]{a double float with the movement delta in the x axis of the
+  @argument[dx]{a double float for the movement delta in the x axis of the
     swipe focal point}
   @begin{short}
-    Accessor of the @code{dx} slot of the @class{gdk:event-touchpad-swipe}
+    The accessor for the @code{dx} slot of the @class{gdk:event-touchpad-swipe}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
@@ -4723,14 +4751,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-dy)
       "Accessor"
       (documentation 'event-touchpad-swipe-dy 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-dy instance) => dy}
   @syntax{(setf (gdk:event-touchpad-swipe-dy instance) dy)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[dy]{a double float with the movement delta in the y axis of the
+  @argument[dy]{a double float for the movement delta in the y axis of the
     swipe focal point}
   @begin{short}
-    Accessor of the @code{dy} slot of the @class{gdk:event-touchpad-swipe}
+    The accessor for the @code{dy} slot of the @class{gdk:event-touchpad-swipe}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
@@ -4743,15 +4771,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-x-root)
       "Accessor"
       (documentation 'event-touchpad-swipe-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touchpad-swipe-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-touchpad-swipe-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touchpad-swipe-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-touchpad-swipe-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer,
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer, relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-touchpad-swipe}
-    structure.
+    The accessor for the @code{x-root} slot of the
+    @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
 
@@ -4763,15 +4791,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-y-root)
       "Accessor"
       (documentation 'event-touchpad-swipe-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touchpad-swipe-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-touchpad-swipe-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touchpad-swipe-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-touchpad-swipe-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer,
+  @argument[yroot]{a double float for the y coordinate of the pointer,
     relative to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-touchpad-swipe}
-    structure.
+    The accessor for the @code{y-root} slot of the
+    @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}")
 
@@ -4783,7 +4811,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-swipe-state)
       "Accessor"
       (documentation 'event-touchpad-swipe-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-swipe-state instance) => state}
   @syntax{(setf (gdk:event-touchpad-swipe-state instance) state)}
   @argument[instance]{a @class{gdk:event-touchpad-swipe} instance}
@@ -4791,8 +4819,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-touchpad-swipe}
-    structure.
+    The accessor for the @code{state} slot of the
+    @class{gdk:event-touchpad-swipe} structure.
   @end{short}
   @see-class{gdk:event-touchpad-swipe}
   @see-symbol{gdk:modifier-type}")
@@ -4847,14 +4875,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
         focal point.}
       @entry[dy]{The double float movement delta in the y axis of the swipe
         focal point.}
-      @entry[angle-delta]{The double float with the angle change in radians,
+      @entry[angle-delta]{The double float for the angle change in radians,
         negative angles denote counter-clockwise movements.}
-      @entry[scale]{The double float with the current scale, relative to that at
+      @entry[scale]{The double float for the current scale, relative to that at
         the time of the corresponding @code{:begin} value of the
         @sym{gdk:touchpad-gesture-phase} enumeration.}
-      @entry[x-root]{The double float x coordinate of the pointer, relative to
+      @entry[x-root]{The double float x coordinate for the pointer, relative to
         the root of the screen.}
-      @entry[y-root]{The double float y coordinate of the pointer, relative to
+      @entry[y-root]{The double float y coordinate for the pointer, relative to
         the root of the screen.}
       @entry[state]{The @sym{gdk:modifier-type} bit-mask representing the state
         of the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and
@@ -4890,14 +4918,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-phase)
       "Accessor"
       (documentation 'event-touchpad-pinch-phase 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-phase instance) => phase}
   @syntax{(setf (gdk:event-touchpad-pinch-phase instance) phase)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[phase]{an integer with the current phase of the gesture}
+  @argument[phase]{an integer for the current phase of the gesture}
   @begin{short}
-    Accessor of the @code{phase} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{phase} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
 
@@ -4909,14 +4937,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-n-fingers)
       "Accessor"
       (documentation 'event-touchpad-pinch-n-fingers 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-n-fingers instance) => n-fingers}
   @syntax{(setf (gdk:event-touchpad-pinch-n-fingers instance) n-fingers)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[n-fingers]{an integer with the number of fingers triggering the
+  @argument[n-fingers]{an integer for the number of fingers triggering the
     event}
   @begin{short}
-    Accessor of the @code{n-fingers} slot of the
+    The accessor for the @code{n-fingers} slot of the
     @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -4929,15 +4957,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-time)
       "Accessor"
       (documentation 'event-touchpad-pinch-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-time instance) => time}
   @syntax{(setf (gdk:event-touchpad-pinch-time instance) time)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{time} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
 
@@ -4949,13 +4976,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-x)
       "Accessor"
       (documentation 'event-touchpad-pinch-x 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-x instance) => x}
   @syntax{(setf (gdk:event-touchpad-pinch-x instance) x)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[x]{a double float with the x coordinate of the pointer}
+  @argument[x]{a double float for the x coordinate of the pointer}
   @begin{short}
-    Accessor of the @code{x} slot of the @class{gdk:event-touchpad-pinch}
+    The accessor for the @code{x} slot of the @class{gdk:event-touchpad-pinch}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -4968,13 +4995,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-y)
       "Accessor"
       (documentation 'event-touchpad-pinch-y 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-y instance) => y}
   @syntax{(setf (gdk:event-touchpad-pinch-y instance) y)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[y]{a double float with the y coordinate of the pointer}
+  @argument[y]{a double float for the y coordinate of the pointer}
   @begin{short}
-    Accessor of the @code{y} slot of the @class{gdk:event-touchpad-pinch}
+    The accessor for the @code{y} slot of the @class{gdk:event-touchpad-pinch}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -4987,14 +5014,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-dx)
       "Accessor"
       (documentation 'event-touchpad-pinch-dx 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-dx instance) => dx}
   @syntax{(setf (gdk:event-touchpad-pinch-dx instance) dx)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[dx]{a double float with the movement delta in the x axis of the
-    swipe focal point}
+  @argument[dx]{a double float for the movement delta in the x axis of the swipe
+    focal point}
   @begin{short}
-    Accessor of the @code{dx} slot of the @class{gdk:event-touchpad-pinch}
+    The accessor for the @code{dx} slot of the @class{gdk:event-touchpad-pinch}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -5007,14 +5034,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-dy)
       "Accessor"
       (documentation 'event-touchpad-pinch-dy 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-dy instance) => dy}
   @syntax{(setf (gdk:event-touchpad-pinch-dy instance) dy)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[dy]{a double float with the movement delta in the y axis of the
+  @argument[dy]{a double float for the movement delta in the y axis of the
     swipe focal point}
   @begin{short}
-    Accessor of the @code{dy} slot of the @class{gdk:event-touchpad-pinch}
+    The accessor for the @code{dy} slot of the @class{gdk:event-touchpad-pinch}
     structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -5027,14 +5054,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-angle-delta)
       "Accessor"
       (documentation 'event-touchpad-pinch-angle-delta 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-angle-delta instance) => angle-delta}
   @syntax{(setf (gdk:event-touchpad-pinch-angle-delta instance) angle-delta)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[angle-delta]{a double float with the angle change in radians,
+  @argument[angle-delta]{a double float for the angle change in radians,
     negative anlges denote counter-clockwise movements}
   @begin{short}
-    Accessor of the @code{angle-delta} slot of the
+    The accessor for the @code{angle-delta} slot of the
     @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
@@ -5047,16 +5074,16 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-scale)
       "Accessor"
       (documentation 'event-touchpad-pinch-scale 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-scale instance) => scale}
   @syntax{(setf (gdk:event-touchpad-pinch-scale instance) scale)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[scale]{a double float with the current scale, relative to that at
+  @argument[scale]{a double float for the current scale, relative to that at
     the time of the corresponding @code{:begin} value of the
     @sym{gdk:touchpad-gesture-phase} enumeration}
   @begin{short}
-    Accessor of the @code{scale} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{scale} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
 
@@ -5068,15 +5095,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-x-root)
       "Accessor"
       (documentation 'event-touchpad-pinch-x-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touchpad-pinch-x-root instance) => x-root}
-  @syntax{(setf (gdk:event-touchpad-pinch-x-root instance) x-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touchpad-pinch-x-root instance) => xroot}
+  @syntax{(setf (gdk:event-touchpad-pinch-x-root instance) xroot)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[x-root]{a double float with the x coordinate of the pointer,
-    relative to the root of the screen}
+  @argument[xroot]{a double float for the x coordinate of the pointer, relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{x-root} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{x-root} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
 
@@ -5088,15 +5115,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-y-root)
       "Accessor"
       (documentation 'event-touchpad-pinch-y-root 'function)
- "@version{2024-06-28}
-  @syntax{(gdk:event-touchpad-pinch-y-root instance) => y-root}
-  @syntax{(setf (gdk:event-touchpad-pinch-y-root instance) y-root)}
+ "@version{2025-10-08}
+  @syntax{(gdk:event-touchpad-pinch-y-root instance) => yroot}
+  @syntax{(setf (gdk:event-touchpad-pinch-y-root instance) yroot)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
-  @argument[y-root]{a double float with the y coordinate of the pointer,
-    relative to the root of the screen}
+  @argument[yroot]{a double float for the y coordinate of the pointer, relative
+    to the root of the screen}
   @begin{short}
-    Accessor of the @code{y-root} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{y-root} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}")
 
@@ -5108,7 +5135,7 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-touchpad-pinch-state)
       "Accessor"
       (documentation 'event-touchpad-pinch-state 'function)
- "@version{2025-07-03}
+ "@version{2025-10-08}
   @syntax{(gdk:event-touchpad-pinch-state instance) => state}
   @syntax{(setf (gdk:event-touchpad-pinch-state instance) state)}
   @argument[instance]{a @class{gdk:event-touchpad-pinch} instance}
@@ -5116,8 +5143,8 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
     the modifier keys, for example, the @kbd{Control}, @kbd{Shift} and @kbd{Alt}
     keys, and the pointer buttons}
   @begin{short}
-    Accessor of the @code{state} slot of the @class{gdk:event-touchpad-pinch}
-    structure.
+    The accessor for the @code{state} slot of the
+    @class{gdk:event-touchpad-pinch} structure.
   @end{short}
   @see-class{gdk:event-touchpad-pinch}
   @see-symbol{gdk:modifier-type}")
@@ -5184,14 +5211,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-button-time)
       "Accessor"
       (documentation 'event-pad-button-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-button-time instance) => time}
   @syntax{(setf (gdk:event-pad-button-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-pad-button}
+    The accessor for the @code{time} slot of the @class{gdk:event-pad-button}
     structure.
   @end{short}
   @see-class{gdk:event-pad-button}")
@@ -5204,15 +5230,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-button-group)
       "Accessor"
       (documentation 'event-pad-button-group 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-button-group instance) => group}
   @syntax{(setf (gdk:event-pad-button-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
-  @argument[group]{an unsigned integer with the pad group the button belongs
+  @argument[group]{an unsigned integer for the pad group the button belongs
     to, a @code{:tablet-pad} device may have one or more groups containing a
     set of buttons/ring/strips each}
   @begin{short}
-    Accessor of the @code{group} slot of the @class{gdk:event-pad-button}
+    The accessor for the @code{group} slot of the @class{gdk:event-pad-button}
     structure.
   @end{short}
   @see-class{gdk:event-pad-button}")
@@ -5225,13 +5251,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-button-button)
       "Accessor"
       (documentation 'event-pad-button-button 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-button-button instance) => button}
   @syntax{(setf (gdk:event-pad-button-button instance) button)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
-  @argument[button]{an unsigned integer with the pad button that was pressed}
+  @argument[button]{an unsigned integer for the pad button that was pressed}
   @begin{short}
-    Accessor of the @code{button} slot of the @class{gdk:event-pad-button}
+    The accessor for the @code{button} slot of the @class{gdk:event-pad-button}
     structure.
   @end{short}
   @see-class{gdk:event-pad-button}")
@@ -5244,15 +5270,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-button-mode)
       "Accessor"
       (documentation 'event-pad-button-mode 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-button-mode instance) => mode}
   @syntax{(setf (gdk:event-pad-button-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-button} instance}
-  @argument[mode]{an unsigned integer with the current mode of the pad group,
+  @argument[mode]{an unsigned integer for the current mode of the pad group,
     different groups in a @code{:tablet-pad} device may have different current
     modes}
   @begin{short}
-    Accessor of the @code{mode} slot of the @class{gdk:event-pad-button}
+    The accessor for the @code{mode} slot of the @class{gdk:event-pad-button}
     structure.
   @end{short}
   @see-class{gdk:event-pad-button}")
@@ -5323,14 +5349,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-axis-time)
       "Accessor"
       (documentation 'event-pad-axis-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-axis-time instance) => time}
   @syntax{(setf (gdk:event-pad-axis-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} of the @class{gdk:event-pad-axis}
+    The accessor for the @code{time} of the @class{gdk:event-pad-axis}
     structure.
   @end{short}
   @see-class{gdk:event-pad-axis}")
@@ -5343,15 +5368,15 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-axis-group)
       "Accessor"
       (documentation 'event-pad-axis-group 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-axis-group instance) => group}
   @syntax{(setf (gdk:event-pad-axis-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
-  @argument[group]{an unsigned integer with the pad group the ring/strip
+  @argument[group]{an unsigned integer for the pad group the ring/strip
     belongs to. A @code{:table-pad} device may have one or more groups
     containing a set of buttons/rings/strips each}
   @begin{short}
-    Accessor of the @code{group} slot of the @class{gdk:event-pad-axis}
+    The accessor for the @code{group} slot of the @class{gdk:event-pad-axis}
     structure.
   @end{short}
   @see-class{gdk:event-pad-axis}")
@@ -5364,14 +5389,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-axis-index)
       "Accessor"
       (documentation 'event-pad-axis-index 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-axis-index instance) => index}
   @syntax{(setf (gdk:event-pad-axis-index instance) index)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
-  @argument[index]{an unsigned integer with the number of strip/ring that was
+  @argument[index]{an unsigned integer for the number of strip/ring that was
     interacted, this number is zero-indexed}
   @begin{short}
-    Accessor of the @code{index} slot of the @class{gdk:event-pad-axis}
+    The accessor for the @code{index} slot of the @class{gdk:event-pad-axis}
     structure.
   @end{short}
   @see-class{gdk:event-pad-axis}")
@@ -5384,14 +5409,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-axis-mode)
       "Accessor"
       (documentation 'event-pad-axis-mode 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-axis-mode instance) => mode}
   @syntax{(setf (gdk:event-pad-axis-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
-  @argument[mode]{an unsigned integer with the currrent mode of group, different
+  @argument[mode]{an unsigned integer for the currrent mode of group, different
     groups in a @code{:tablet-pad} device may have a different current modes}
   @begin{short}
-    Accessor of the @code{mode} slot of the @class{gdk:event-pad-axis}
+    The accessor for the @code{mode} slot of the @class{gdk:event-pad-axis}
     structure.
   @end{short}
   @see-class{gdk:event-pad-axis}")
@@ -5404,13 +5429,13 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-axis-value)
       "Accessor"
       (documentation 'event-pad-axis-value 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-axis-value instance) => value}
   @syntax{(setf (gdk:event-pad-axis-value instance) value)}
   @argument[instance]{a @class{gdk:event-pad-axis} instance}
-  @argument[value]{a double float with the currrent value for the given axis}
+  @argument[value]{a double float for the currrent value for the given axis}
   @begin{short}
-    Accessor of the @code{value} slot of the @class{gdk:event-pad-axis}
+    The accessor for the @code{value} slot of the @class{gdk:event-pad-axis}
     structure.
   @end{short}
   @see-class{gdk:event-pad-axis}")
@@ -5474,15 +5499,14 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-group-mode-time)
       "Accessor"
       (documentation 'event-pad-group-mode-time 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-group-mode-time instance) => time}
   @syntax{(setf (gdk:event-pad-group-mode-time instance) time)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}
-  @argument[time]{an unsigned integer with the time of the event in
-    milliseconds}
+  @argument[time]{an unsigned integer for the time of the event in milliseconds}
   @begin{short}
-    Accessor of the @code{time} slot of the @class{gdk:event-pad-group-mode}
-    structure.
+    The accessor for the @code{time} slot of the
+    @class{gdk:event-pad-group-mode} structure.
   @end{short}
   @see-class{gdk:event-pad-group-mode}")
 
@@ -5494,16 +5518,16 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-group-mode-group)
       "Accessor"
       (documentation 'event-pad-group-mode-group 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-group-mode-group instance) => group}
   @syntax{(setf (gdk:event-pad-group-mode-group instance) group)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}
-  @argument[group]{an unsigned integer with the pad group the ring/strip belongs
+  @argument[group]{an unsigned integer for the pad group the ring/strip belongs
     to. A @code{:table-pad} device may have one or more groups containing a set
     of buttons/rings/strips each}
   @begin{short}
-    Accessor of the @code{group} slot of the @class{gdk:event-pad-group-mode}
-    structure.
+    The accessor for the @code{group} slot of the
+    @class{gdk:event-pad-group-mode} structure.
   @end{short}
   @see-class{gdk:event-pad-group-mode}")
 
@@ -5515,16 +5539,16 @@ else if (gdk_event_get_scroll_deltas (event, &x_scroll, &y_scroll))
 (setf (liber:alias-for-function 'event-pad-group-mode-mode)
       "Accessor"
       (documentation 'event-pad-group-mode-mode 'function)
- "@version{2024-06-28}
+ "@version{2025-10-08}
   @syntax{(gdk:event-pad-group-mode-mode instance) => mode}
   @syntax{(setf (gdk:event-pad-group-mode-mode instance) mode)}
   @argument[instance]{a @class{gdk:event-pad-group-mode} instance}
-  @argument[mode]{an unsigned integer with the current mode of the pad group,
+  @argument[mode]{an unsigned integer for the current mode of the pad group,
     different groups in a @code{:tablet-pad} device may have different current
     modes}
   @begin{short}
-    Accessor of the @code{mode} slot of the @class{gdk:event-pad-group-mode}
-    structure.
+    The accessor for the @code{mode} slot of the
+    @class{gdk:event-pad-group-mode} structure.
   @end{short}
   @see-class{gdk:event-pad-group-mode}")
 

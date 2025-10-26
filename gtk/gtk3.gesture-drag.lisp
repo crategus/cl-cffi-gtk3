@@ -158,12 +158,11 @@ lambda (gesture xoffset yoffset)    :run-last
 
 (defun gesture-drag-start-point (gesture)
  #+liber-documentation
- "@version{#2025-01-25}
+ "@version{#2025-10-09}
   @argument[gesture]{a @class{gtk:gesture-drag} object}
   @begin{return}
-    @arg{x} -- a double float with the x coordinate for the drag start point
-    @br{}
-    @arg{y} -- a double float with the y coordinate for the drag start point
+    @arg{x} -- a double float for the x coordinate for the drag start point@br{}
+    @arg{y} -- a double float for the y coordinate for the drag start point
   @end{return}
   @begin{short}
     If the gesture is active, this function returns the drag start coordinates,
@@ -188,11 +187,11 @@ lambda (gesture xoffset yoffset)    :run-last
 
 (defun gesture-drag-offset (gesture)
  #+liber-documentation
- "@version{#2025-01-25}
+ "@version{#2025-10-09}
   @argument[gesture]{a @class{gtk:gesture-drag} object}
   @begin{return}
-    @arg{x} -- a double float with the x offset for the current point@br{}
-    @arg{y} -- a double float with the y offset for the current point
+    @arg{x} -- a double float for the x offset for the current point @br{}
+    @arg{y} -- a double float for the y offset for the current point
   @end{return}
   @begin{short}
     If the gesture is active, this function returns the coordinates of the

@@ -185,10 +185,10 @@ lambda (provider section error)    :run-last
 
 (defun css-provider-named (name variant)
  #+liber-documentation
- "@version{2025-07-05}
+ "@version{2025-10-09}
   @argument[name]{a string for the theme name}
   @argument[variant]{a string for a variant to load}
-  @return{The @class{gtk:css-provider} object with the theme loaded.}
+  @return{The @class{gtk:css-provider} object for the theme loaded.}
   @begin{short}
     Loads a theme from the usual theme paths, for example, \"dark\", or
     @code{nil} for the default theme.

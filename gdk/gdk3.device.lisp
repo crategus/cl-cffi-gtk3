@@ -1480,11 +1480,11 @@ get_device_settings (GdkDevice *device)
 
 (defun device-state (device window)
  #+liber-documentation
- "@version{#2024-06-27}
+ "@version{#2025-10-09}
   @argument[device]{a @class{gdk:device} object}
   @argument[window]{a @class{gdk:window} object}
   @begin{return}
-    @arg{axes} -- a list of double float numbers with the axes value @br{}
+    @arg{axes} -- a list of double float numbers or the axes value @br{}
     @arg{mask} -- a value of the @symbol{gdk:modifier-type} flags, or @code{nil}
   @end{return}
   @begin{short}
@@ -1557,14 +1557,14 @@ get_device_settings (GdkDevice *device)
 
 (defun device-position-double (device)
  #+liber-documentation
- "@version{#2024-06-27}
+ "@version{#2025-10-09}
   @argument[device]{a @class{gdk:device} pointer device to query status about}
   @begin{return}
     @arg{screen} -- a @class{gdk:screen} object the device is on, or @code{nil}
       @br{}
-    @arg{x} -- a double float with the root window x coordinate of the device,
+    @arg{x} -- a double float for the root window x coordinate of the device,
       or @code{nil} @br{}
-    @arg{y} -- a double float with the root window y coordinate of the device,
+    @arg{y} -- a double float for the root window y coordinate of the device,
       or @code{nil}
   @end{return}
   @begin{short}
@@ -1808,11 +1808,11 @@ get_device_settings (GdkDevice *device)
 
 (defun device-axis-value (device axes axis-label)
  #+liber-documentation
- "@version{#2024-06-27}
+ "@version{#2025-10-09}
   @argument[device]{a @class{gdk:device} object for a pointer device}
   @argument[axes]{a list of double float for the axes}
-  @argument[label]{a string with the axis label}
-  @return{The double float with the found value, or @code{nil}.}
+  @argument[label]{a string for the axis label}
+  @return{The double float for the found value, or @code{nil}.}
   @begin{short}
     Interprets a list of double floats as axis values for a given device, and
     locates the value in the array for a given axis label, as returned by the

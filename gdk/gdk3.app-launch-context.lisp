@@ -110,17 +110,16 @@
 (setf (liber:alias-for-function 'app-launch-context-display)
       "Accessor"
       (documentation 'app-launch-context-display 'function)
- "@version{2025-01-01}
+ "@version{2025-10-09}
   @syntax{(gdk:app-launch-context-display object) => display}
   @argument[object]{a @class{gdk:app-launch-context} object}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
-    Accessor of the @slot[gdk:app-launch-context]{display} slot of the
-    @class{gdk:app-launch-context} class.
+    The accessor for the @slot[gdk:app-launch-context]{display} slot of the
+    @class{gdk:app-launch-context} class returns the display on which
+    applications will be launched when using the launch context.
   @end{short}
-  The @fun{gdk:app-launch-context-display} function gets the display on which
-  applications will be launched when using the launch context. See also the
-  @fun{gdk:app-launch-context-set-screen} function.
+  See also the @fun{gdk:app-launch-context-set-screen} function.
   @begin[Warning]{dictionary}
     The @fun{gdk:app-launch-context-display} function has been deprecated since
     version 3.0 and should not be used in newly written code. Use the
@@ -185,9 +184,9 @@
 (cffi:defcfun ("gdk_app_launch_context_set_desktop"
                app-launch-context-set-desktop) :void
  #+liber-documentation
- "@version{2025-01-01}
+ "@version{2025-10-09}
   @argument[context]{a @class{gdk:app-launch-context} object}
-  @argument[desktop]{an integer with the number of a workspace, or -1}
+  @argument[desktop]{an integer for the number of a workspace, or -1}
   @begin{short}
     Sets the workspace on which applications will be launched when using the
     launch context when running under a window manager that supports multiple
@@ -211,9 +210,9 @@
 (cffi:defcfun ("gdk_app_launch_context_set_timestamp"
                app-launch-context-set-timestamp) :void
  #+liber-documentation
- "@version{2025-01-01}
+ "@version{2025-10-09}
   @argument[context]{a @class{gdk:app-launch-context} object}
-  @argument[timestamp]{an unsigned integer with a timestamp}
+  @argument[timestamp]{an unsigned integer for a timestamp}
   @begin{short}
     Sets the timestamp of the launch context.
   @end{short}
@@ -262,9 +261,9 @@
 
 (defun app-launch-context-set-icon-name (context name)
  #+liber-documentation
- "@version{2025-01-01}
+ "@version{2025-10-09}
   @argument[context]{a @class{gdk:app-launch-context} object}
-  @argument[name]{a string with an icon name, or @code{nil}}
+  @argument[name]{a string for an icon name, or @code{nil}}
   @begin{short}
     Sets the icon for applications that are launched with the launch context.
   @end{short}
