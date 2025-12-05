@@ -168,22 +168,20 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-alpha)
       "Accessor"
       (documentation 'color-selection-current-alpha 'function)
- "@version{2023-06-14}
+ "@version{2025-11-20}
   @syntax{(gtk:color-selection-current-alpha object) => alpha}
   @syntax{(setf (gtk:color-selection-current-alpha object) alpha)}
   @argument[object]{a @class{gtk:color-selection} widget}
-  @argument[alpha]{an integer between 0 and 65535}
+  @argument[alpha]{an integer for the alpha value between 0 and 65535}
   @begin{short}
-    Accessor of the @slot[gtk:color-selection]{current-alpha} slot of the
-    @class{gtk:color-selection} class.
+    The accessor for the @slot[gtk:color-selection]{current-alpha} slot of the
+    @class{gtk:color-selection} class gets or sets the opacity.
   @end{short}
-  The @fun{gtk:color-selection-current-alpha} function returns the current
-  alpha value. The @setf{gtk:color-selection-current-alpha} function sets the
-  current opacity. The first time this is called, it will also set the original
-  opacity to be @arg{alpha} too.
+  The first time this is called, it will also set the original opacity to be
+  @arg{alpha} too.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-current-alpha} function is deprecated since
-    version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}")
 
@@ -200,22 +198,21 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-color)
       "Accessor"
       (documentation 'color-selection-current-color 'function)
- "@version{2023-06-14}
+ "@version{2025-11-20}
   @syntax{(gtk:color-selection-current-color object) => color}
   @syntax{(setf (gtk:color-selection-current-color object) color)}
   @argument[object]{a @class{gtk:color-selection} widget}
-  @argument[color]{a @class{gdk:color} color}
+  @argument[color]{a @class{gdk:color} instance for the color}
   @begin{short}
-    Accessor of the @slot[gtk:color-selection]{current-color} slot of the
-    @class{gtk:color-selection} class.
+    The accessor fir the @slot[gtk:color-selection]{current-color} slot of the
+    @class{gtk:color-selection} class gets or sets the color in the color
+    selector.
   @end{short}
-  The @fun{gtk:color-selection-current-alpha} function gets the current color
-  in the color selector. The @setf{gtk:color-selection-current-alpha} function
-  sets the current color. The first time this is called, it will also set the
-  original color to be @arg{color} too.
+  The first time this is called, it will also set the original color to be
+  @arg{color} too.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-current-color} function is deprecated since
-    version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}
   @see-class{gdk:color}")
@@ -232,22 +229,22 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-current-rgba)
       "Accessor"
       (documentation 'color-selection-current-rgba 'function)
- "@version{2023-06-14}
+ "@version{2025-11-20}
   @syntax{(gtk:color-selection-current-rgba object) => rgba}
   @syntax{(setf (gtk:color-selection-current-rgba object) rgba)}
   @argument[object]{a @class{gtk:color-selection} widget}
-  @argument[rgba]{a @class{gdk:rgba} color to set the current color with}
+  @argument[rgba]{a @class{gdk:rgba} instance for the color to set the color
+    with}
   @begin{short}
-    Accessor of the @slot[gtk:color-selection]{current-rgba} slot of the
-    @class{gtk:color-selection} class.
+    The accessor for the @slot[gtk:color-selection]{current-rgba} slot of the
+    @class{gtk:color-selection} class gets or sets the color in the color
+    selector.
   @end{short}
-  The @fun{gtk:color-selection-current-rgba} function gets the current color in
-  the color selector. The @setf{gtk:color-selection-current-rgba} function sets
-  the current color. The first time this is called, it will also set the
-  original color to be @arg{rgba} too.
+  The first time this is called, it will also set the original color to be
+  @arg{rgba} too.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-current-rgba} function is deprecated since
-    version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}
   @see-class{gdk:rgba}")
@@ -266,23 +263,20 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-opacity-control)
       "Accessor"
       (documentation 'color-selection-has-opacity-control 'function)
- "@version{2023-06-14}
+ "@version{2024-11-20}
   @syntax{(gtk:color-selection-has-opacity-control object) => has-opacity}
   @syntax{(setf (gtk:color-selection-has-opacity-control object) has-opacity)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[has-opacity]{@em{true} if the color selector can set the opacity,
     @em{false} otherwise}
   @begin{short}
-    Accessor of the @slot[gtk:color-selection]{has-opacity-control} slot of the
-    @class{gtk:color-selection} class.
+    The accessor for the @slot[gtk:color-selection]{has-opacity-control} slot of
+    the @class{gtk:color-selection} class gets or sets whether the color
+    selector has an opacity control.
   @end{short}
-  The @fun{gtk:color-selection-has-opacity-control} function determines whether
-  the color selector has an opacity control. The
-  @setf{gtk:color-selection-has-opacity-control} function sets the color
-  selector to use or not use opacity.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-has-opacity-control} function is deprecated
-    since version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}")
 
@@ -299,23 +293,20 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'color-selection-has-palette)
       "Accessor"
       (documentation 'color-selection-has-palette 'function)
- "@version{2023-06-14}
+ "@version{2025-11-20}
   @syntax{(gtk:color-selection-has-palette object) => has-palette}
   @syntax{(setf (gtk:color-selection-has-palette object) has-palette)}
   @argument[object]{a @class{gtk:color-selection} widget}
   @argument[has-palette]{@em{true} if the color palette is to be visible,
     @em{false} otherwise}
   @begin{short}
-    Accessor of the @slot[gtk:color-selection]{has-palette} slot of the
-    @class{gtk:color-selection} class.
+    The accessor for the @slot[gtk:color-selection]{has-palette} slot of the
+    @class{gtk:color-selection} class gets or sets whether the color selector
+    has a color palette.
   @end{short}
-  The @fun{gtk:color-selection-has-palette} function determines whether the
-  color selector has a color palette. The
-  @setf{gtk:color-selection-has-palette} function shows and hides the color
-  palette.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-has-palette} function is deprecated since
-    version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}")
 

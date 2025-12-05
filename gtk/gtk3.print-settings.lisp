@@ -867,19 +867,16 @@
 (cffi:defcfun ("gtk_print_settings_get_orientation" print-settings-orientation)
     page-orientation
  #+liber-documentation
- "@version{2025-07-06}
+ "@version{2025-11-20}
   @syntax{(gtk:print-settings-orientation settings) => orientation}
   @syntax{(setf (gtk:print-settings-orientation settings) orientation)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[orientation]{a @sym{gtk:page-orientation} value for the page
     orientation}
   @begin{short}
-    Accessor of the \"orientation\" value of a print setting.
+    Gets or sets the value of \"orientation\", converted to a
+    @sym{gtk:page-orientation} value.
   @end{short}
-  The @fun{gtk:print-settings-orientation} function gets the value of
-  \"orientation\", converted to a @sym{gtk:page-orientation} value. The
-   @setf{gtk:print-settings-orientation} function sets the value of
-   \"orientation\".
   @see-class{gtk:print-settings}
   @see-symbol{gtk:page-orientation}
   @see-function{gtk:print-settings-set}
@@ -903,18 +900,15 @@
 (cffi:defcfun ("gtk_print_settings_get_paper_size" print-settings-paper-size)
     (g:boxed paper-size)
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-11-20}
   @syntax{(gtk:print-settings-paper-size settings) => size}
   @syntax{(setf (gtk:print-settings-paper-size settings) size)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[size]{a @class{gtk:paper-size} instance for the paper size}
   @begin{short}
-    Accessor of the \"paper-format\" of a print setting.
+    Gets or sets the value of \"paper-format\", converted to a
+    @class{gtk:paper-size} instance.
   @end{short}
-  The @fun{gtk:print-settings-paper-size} function gets the value of
-  \"paper-format\", converted to a @class{gtk:paper-size} instance. The
-  @setf{gtk:print-settings-paper-size} function sets the value of
-  \"paper-format\", \"paper-width\", and \"paper-height\".
   @begin[Examples]{dictionary}
     @begin{pre}
 (setq settings (make-instance 'gtk:print-settings))
@@ -949,19 +943,15 @@
 (cffi:defcfun ("gtk_print_settings_get_paper_width"
                 print-settings-paper-width) :double
  #+liber-documentation
- "@version{2025-07-03}
+ "@version{2025-11-20}
   @syntax{(gtk:print-settings-paper-width settings) => width}
   @syntax{(setf (gtk:print-settings-paper-width settings) width)}
   @argument[settings]{a @class{gtk:print-settings} object}
   @argument[unit]{a @sym{gtk:unit} unit for the return value}
   @argument[width]{a number coerced to a double float for the paper width}
   @begin{short}
-    Accessor of the paper width of a print setting, in units of @arg{unit}.
+    Gets or sets the value of \"paper-width\" converted to @arg{unit}.
   @end{short}
-  The @fun{gtk:print-settings-paper-width} function gets the value of
-  \"paper-width\" converted to @arg{unit}. The
-  @setf{gtk:print-settings-paper-width} function sets the value of
-  \"paper-width\".
   @see-class{gtk:print-settings}
   @see-symbol{gtk:unit}
   @see-function{gtk:print-settings-set}
