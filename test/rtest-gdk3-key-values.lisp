@@ -185,7 +185,7 @@
 (test gdk-keymap-add-virtual-modifiers
   (let ((keymap (gdk:keymap-for-display (gdk:display-default))))
     #-windows
-    (is (equal '(:MOD4-MASK :SUPER-MASK :HYPER-MASK)
+    (is (equal '(:MOD4-MASK :SUPER-MASK)
                (gdk:keymap-add-virtual-modifiers keymap '(:mod4-mask))))
     #+windows
     (is (equal '(:MOD4-MASK)
@@ -268,4 +268,4 @@
 (test gdk-unicode-to-keyval
   (is (eq 65 (gdk:unicode-to-keyval #\A))))
 
-;;; 2024-9-22
+;;; 2025-05-14

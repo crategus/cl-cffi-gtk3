@@ -144,11 +144,11 @@
 (test gtk-target-list-add-image-targets.1
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 t)
-    (is (equal '("application/ico" "audio/x-riff" "image/avif" "image/bmp"
-                 "image/ico" "image/icon" "image/jpeg" "image/jxl" "image/png"
-                 "image/tiff" "image/vnd.microsoft.icon" "image/webp"
-                 "image/x-bmp" "image/x-ico" "image/x-icon" "image/x-MS-bmp"
-                 "image/x-win-bitmap" "text/ico")
+    (is (equal '("application/ico" "audio/x-riff" "image/avif" "image/avif"
+                 "image/bmp" "image/ico" "image/icon" "image/jpeg" "image/jxl"
+                 "image/png" "image/tiff" "image/vnd.microsoft.icon"
+                 "image/webp" "image/webp" "image/x-bmp" "image/x-ico"
+                 "image/x-icon" "image/x-MS-bmp" "image/x-win-bitmap" "text/ico")
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
                      #'string-lessp)))))
@@ -156,18 +156,23 @@
 (test gtk-target-list-add-image-targets.2
   (let ((tlist (gtk:target-list-new)))
     (gtk:target-list-add-image-targets tlist 0 nil)
-    (is (equal '("application/ico" "application/x-navi-animation" "audio/x-riff"
-                 "image/avif" "image/avif" "image/bmp" "image/gif" "image/heic"
-                 "image/heif" "image/ico" "image/icon" "image/jpeg" "image/jxl"
-                 "image/png" "image/qtif" "image/svg" "image/svg+xml"
-                 "image/svg+xml-compressed" "image/svg-xml" "image/tiff"
+    (is (equal '("application/ico" "audio/x-riff" "image/avif" "image/avif"
+                 "image/avif" "image/bmp" "image/gif" "image/heic" "image/heic"
+                 "image/heif" "image/heif" "image/ico" "image/icon" "image/jp2"
+                 "image/jpeg" "image/jxl" "image/jxl" "image/png" "image/qoi"
+                 "image/raw" "image/svg" "image/svg" "image/svg+xml"
+                 "image/svg+xml" "image/svg+xml-compressed"
+                 "image/svg+xml-compressed" "image/svg-xml" "image/svg-xml"
+                 "image/tiff" "image/vnd.adobe.svg+xml"
                  "image/vnd.adobe.svg+xml" "image/vnd.microsoft.icon"
-                 "image/webp" "image/x-bmp" "image/x-icns" "image/x-ico"
-                 "image/x-icon" "image/x-MS-bmp" "image/x-portable-anymap"
-                 "image/x-portable-bitmap" "image/x-portable-graymap"
-                 "image/x-portable-pixmap" "image/x-quicktime" "image/x-tga"
-                 "image/x-win-bitmap" "image/x-wmf" "image/x-xbitmap"
-                 "image/x-xpixmap" "text/ico" "text/xml-svg")
+                 "image/webp" "image/webp" "image/x-bmp" "image/x-dds"
+                 "image/x-exr" "image/x-ico" "image/x-icon"
+                 "image/x-jp2-codestream" "image/x-MS-bmp"
+                 "image/x-portable-anymap" "image/x-portable-bitmap"
+                 "image/x-portable-graymap" "image/x-portable-pixmap"
+                 "image/x-qoi" "image/x-tga" "image/x-win-bitmap" "image/x-wmf"
+                 "image/x-xbitmap" "image/x-xbitmap" "image/x-xpixmap"
+                 "image/x-xpixmap" "text/ico" "text/xml-svg" "text/xml-svg")
                (sort (mapcar #'first
                              (gtk:target-table-new-from-list tlist))
                      #'string-lessp)))))
@@ -537,4 +542,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2025-06-02
+;;; 2026-05-14

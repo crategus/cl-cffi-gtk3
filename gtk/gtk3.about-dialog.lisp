@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -137,11 +137,8 @@
   (:lgpl-3-0-only 12)
   (:agpl-3-0 13)
   (:agpl-3-0-only 14)
-  #+gtk-3-24
   (:BSD-3 15)
-  #+gtk-3-24
   (:APACHE-2-0 16)
-  #+gtk3-24
   (:MPL-2-0 17))
 
 #+liber-documentation

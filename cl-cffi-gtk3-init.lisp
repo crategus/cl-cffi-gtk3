@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; cl-cffi-gtk3-init.lisp
 ;;;
-;;; Copyright (C) 2011 - 2023 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -61,13 +61,6 @@
     ;; gtk:minor-version because GTK is not compiled at this time.
     (cffi:foreign-funcall "gtk_get_major_version" :size)
     (cffi:foreign-funcall "gtk_get_minor_version" :size)
-    3 10
-    3 12
-    3 14
-    3 16
-    3 18
-    3 20
-    3 22
     3 24
     )
 
