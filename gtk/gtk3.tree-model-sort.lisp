@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -86,7 +86,7 @@
 
 #+liber-documentation
 (setf (documentation 'tree-model-sort 'type)
- "@version{2025-02-23}
+ "@version{2026-05-06}
   @begin{short}
     The @class{gtk:tree-model-sort} object is a model which implements the
     @class{gtk:tree-sortable} interface.
@@ -97,16 +97,14 @@
   to provide a way to sort a different model without modifying it. Note that
   the sort function used by the @class{gtk:tree-model-sort} object is not
   guaranteed to be stable.
-
-  The use of this is best demonstrated through an example. In the following
-  sample code we create two @class{gtk:tree-view} widgets each with a view of
-  the same data. As the model is wrapped here by a @class{gtk:tree-model-sort}
-  object, the two @class{gtk:tree-view} widgets can each sort their view of the
-  data without affecting the other. By contrast, if we simply put the same
-  model in each widget, then sorting the first would sort the second.
-
-  @b{Example:} Using a @class{gtk:tree-model-sort} object
-  @begin{pre}
+  @begin[Examples]{dictionary}
+    The use of this is best demonstrated through an example. In the following
+    sample code we create two @class{gtk:tree-view} widgets each with a view of
+    the same data. As the model is wrapped here by a @class{gtk:tree-model-sort}
+    object, the two @class{gtk:tree-view} widgets can each sort their view of
+    the data without affecting the other. By contrast, if we simply put the same
+    model in each widget, then sorting the first would sort the second.
+    @begin{pre}
 (let* (;; Get the child model
        (child-model (gtk:my-model()))
        ;; Create the first tree view
@@ -116,33 +114,33 @@
        (sort-model2 (gtk:tree-vmodel-sort-new-with-model child-model))
        (tree-view2 (gtk:tree-view-new-with-model sort-model2)))
   ;; Now we can sort the two models independently
-  (setf (gtk:tree-sortable-sort-column-id sort-model1) col-1)
+  (setf (gtk:tree-sortable-sort-column-id sort-model1) col1)
   (setf (gtk:tree-sortable-sort-column-id sort-model1) '(col1 :descending))
   ... )
-  @end{pre}
-  To demonstrate how to access the underlying child model from the sort model,
-  the next example will be a callback for the @code{\"changed\"} signal of the
-  @class{gtk:tree-selection} class. In this callback, we get a string from
-  @code{COLUMN_1} of the model. We then modify the string, find the same
-  selected row on the child model, and change the row there.
-
-  @b{Example:} Accessing the child model in a selection changed callback
-  @begin{pre}
+    @end{pre}
+    To demonstrate how to access the underlying child model from the sort model,
+    the next example will be a callback for the
+    @sig[gtk:tree-selection]{changed} signal of the @class{gtk:tree-selection}
+    class. In this callback, we get a string from @code{col1} of the model.
+    We then modify the string, find the same selected row on the child model,
+    and change the row there.
+    @begin{pre}
 (defun selection-changed (selection)
   (let* ((view (gtk:tree-selection-tree-view selection))
          ;; Get the current selected row and the model
          (sort-model (gtk:tree-view-model view))
          (sort-iter (gtk:tree-selection-selected selection))
          ;; Look up the current value on the selected row and get a new value
-         (value (gtk:tree-model-value sort-model sort-iter col-1))
+         (value (gtk:tree-model-value sort-model sort-iter col1))
          (new-value (change-the-value value))
          ;; Get the child model and an iterator on the child model
          (model (gtk:tree-model-sort-model sort-model))
          (iter (gtk:tree-model-sort-convert-iter-to-child-iter sort-model
                                                                sort-iter)))
     ;; Change the value of the row in the child model
-    (gtk:list-store-set-value model iter col-1 new-value)))
-  @end{pre}
+    (gtk:list-store-set-value model iter col1 new-value)))
+    @end{pre}
+  @end{dictionary}
   @see-constructor{gtk:tree-model-sort-new-with-model}
   @see-slot{gtk:tree-model-sort-model}
   @see-class{gtk:tree-model}
@@ -162,16 +160,15 @@
 (setf (liber:alias-for-function 'tree-model-sort-model)
       "Accessor"
       (documentation 'tree-model-sort-model 'function)
- "@version{#2023-01-21}
+ "@version{2026-05-06}
   @syntax{(gtk:tree-model-sort-model object) => model}
   @argument[object]{a @class{gtk:tree-model-sort} object}
   @argument[model]{a @class{gtk:tree-model} child model being sorted}
   @begin{short}
-    Accessor of the @slot[gtk:tree-model-sort]{model} slot of the
-    @class{gtk:tree-model-sort} class.
+    The accessor for the @slot[gtk:tree-model-sort]{model} slot of the
+    @class{gtk:tree-model-sort} class returns the model the
+    @class{gtk:tree-model-sort} object is sorting.
   @end{short}
-  The @fun{gtk:tree-model-sort-model} function returns the model the
-  @class{gtk:tree-model-sort} object is sorting.
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-model-sort}")
 
@@ -183,11 +180,11 @@
 
 (defun tree-model-sort-new-with-model (model)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-06}
   @argument[model]{a @class{gtk:tree-model} object}
-  @return{The new @class{gtk:tree-model} object.}
+  @return{The new @class{gtk:tree-model-sort} object.}
   @begin{short}
-    Creates a new tree model, with @arg{model} as the child model.
+    Creates a new tree model with @arg{model} as the child model.
   @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-model-sort}"
@@ -204,7 +201,7 @@
                tree-model-sort-convert-child-path-to-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
   @argument[path]{a @class{gtk:tree-path} instance to convert}
   @return{The @class{gtk:tree-path} instance, or @code{nil}.}
@@ -233,13 +230,13 @@
 
 (defun tree-model-sort-convert-child-iter-to-iter (model iter)
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
   @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to a
     row on the child model}
   @begin{return}
-    A valid @class{gtk:tree-iter} iterator to a visible row in the sorted model,
-    or @code{nil}.
+    The valid @class{gtk:tree-iter} instance to a visible row in the sorted
+    model, or @code{nil}.
   @end{return}
   @begin{short}
     Returns the iterator to the row in @arg{model} that corresponds to the row
@@ -261,7 +258,7 @@
                tree-model-sort-convert-path-to-child-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
   @argument[path]{a @class{gtk:tree-path} instance to convert}
   @return{The @class{gtk:tree-path} instance, or @code{nil}.}
@@ -290,15 +287,13 @@
 
 (defun tree-model-sort-convert-iter-to-child-iter (model iter)
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to a
-    row on @arg{model}}
-  @begin{return}
-    A @class{gtk:tree-iter} iterator.
-  @end{return}
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to a row on
+    @arg{model}}
+  @return{The @class{gtk:tree-iter} instance.}
   @begin{short}
-  Converts @arg{iter} to point to a row on @arg{model}.
+    Converts @arg{iter} to point to a row on @arg{model}.
   @end{short}
   @see-class{gtk:tree-model-sort}
   @see-class{gtk:tree-iter}"
@@ -315,7 +310,7 @@
 (cffi:defcfun ("gtk_tree_model_sort_reset_default_sort_func"
                tree-model-sort-reset-default-sort-func) :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
   @begin{short}
     This resets the default sort function to be in the 'unsorted' state.
@@ -335,7 +330,7 @@
 (cffi:defcfun ("gtk_tree_model_sort_clear_cache" tree-model-sort-clear-cache)
     :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
   @begin{short}
     This function should almost never be called. It clears the @arg{model} of
@@ -344,7 +339,7 @@
   @end{short}
   This might be useful if the child model being sorted is static (and does not
   change often) and there has been a lot of unreffed access to nodes. As a side
-  effect of this function, all unreffed iters will be invalid.
+  effect of this function, all unreffed iterators will be invalid.
   @see-class{gtk:tree-model-sort}
   @see-function{gtk:tree-model-ref-node}"
   (model (g:object tree-model-sort)))
@@ -358,14 +353,14 @@
 (cffi:defcfun ("gtk_tree_model_sort_iter_is_valid"
                tree-model-sort-iter-is-valid) :boolean
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-06}
   @argument[model]{a @class{gtk:tree-model-sort} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @begin{return}
     @em{True} if @arg{iter} is valid, @code{nil} if @arg{iter} is invalid.
   @end{return}
   @begin{short}
-    Checks if the given @arg{iter} is a valid iter for this
+    Checks if the given @arg{iter} is a valid iterator for this
     @class{gtk:tree-model-sort} object.
   @end{short}
   @begin[Warning]{dictionary}

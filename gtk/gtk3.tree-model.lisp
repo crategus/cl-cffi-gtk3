@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,6 +87,8 @@
 ;;;     gtk_tree_model_get_iter_from_string
 ;;;     gtk_tree_model_get_iter_first
 ;;;     gtk_tree_model_get_path
+;;;     gtk_tree_model_get
+;;;     gtk_tree_model_get_valist                           not needed
 ;;;     gtk_tree_model_get_value
 ;;;     gtk_tree_model_iter_next
 ;;;     gtk_tree_model_iter_previous
@@ -98,15 +100,13 @@
 ;;;     gtk_tree_model_get_string_from_iter
 ;;;     gtk_tree_model_ref_node
 ;;;     gtk_tree_model_unref_node
-;;;     gtk_tree_model_get
-;;;     gtk_tree_model_get_valist
 ;;;     gtk_tree_model_foreach
 ;;;     gtk_tree_model_row_changed
 ;;;     gtk_tree_model_row_inserted
 ;;;     gtk_tree_model_row_has_child_toggled
 ;;;     gtk_tree_model_row_deleted
 ;;;     gtk_tree_model_rows_reordered
-;;;     gtk_tree_model_rows_reordered_with_length
+;;;     gtk_tree_model_rows_reordered_with_length           not implemented
 ;;;
 ;;; Signals
 ;;;
@@ -147,9 +147,6 @@
 
 ;;; ----------------------------------------------------------------------------
 
-;; TODO: Implement this as an opaque boxed type. See gtk:text-iter for an
-;; example.
-
 (glib:define-gboxed-cstruct tree-iter "GtkTreeIter"
   (:export t
    :type-initializer "gtk_tree_iter_get_type")
@@ -162,7 +159,7 @@
 (setf (liber:alias-for-class 'tree-iter)
       "GBoxed"
       (documentation 'tree-iter 'type)
- "@version{2025-06-27}
+ "@version{2026-05-14}
   @begin{declaration}
 (gobject:define-gboxed-cstruct tree-iter \"GtkTreeIter\"
   (:export t
@@ -190,35 +187,9 @@
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-path}")
 
-;;; ----------------------------------------------------------------------------
-;;; Accessors of the slots of the GtkTreeIter structure
-;;; ----------------------------------------------------------------------------
-
-;; not exported
-
-#+liber-documentation
-(setf (liber:alias-for-function 'tree-iter-stamp)
-      "Accessor"
-      (documentation 'tree-iter-stamp 'function)
- "@version{#2020-06-08}
-  @begin{short}
-    Accessor of the @code{stamp} slot of the @class{gtk:tree-iter} structure.
-  @end{short}
-  @see-class{gtk:tree-iter}")
+;; do not export accessors
 
 (unexport 'tree-iter-stamp)
-
-#+liber-documentation
-(setf (liber:alias-for-function 'tree-iter-user-data)
-      "Accessor"
-      (documentation 'tree-iter-user-data 'function)
- "@version{#2020-06-08}
-  @begin{short}
-    Accessor of the @code{user-data} slot of the @class{gtk:tree-iter}
-    structure.
-  @end{short}
-  @see-class{gtk:tree-iter}")
-
 (unexport 'tree-iter-user-data)
 (unexport 'tree-iter-user-data-2)
 (unexport 'tree-iter-user-data-3)
@@ -229,7 +200,7 @@
 
 (cffi:defcfun ("gtk_tree_iter_copy" tree-iter-copy) (g:boxed tree-iter :return)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{The newly allocated @class{gtk:tree-iter} instance.}
   @short{Creates a newly allocated tree iterator as a copy of @arg{iter}.}
@@ -255,7 +226,7 @@
 (setf (liber:alias-for-class 'tree-path)
       "GBoxed"
       (documentation 'tree-path 'type)
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @begin{declaration}
 (glib:define-gboxed-opaque tree-path \"GtkTreePath\"
   :export t
@@ -282,7 +253,7 @@
 
 (cffi:defcfun ("gtk_tree_path_new" tree-path-new) (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @return{The newly created @class{gtk:tree-path} instance.}
   @short{Creates a new  tree path.}
   @see-class{gtk:tree-path}")
@@ -296,7 +267,7 @@
 (cffi:defcfun ("gtk_tree_path_new_first" tree-path-new-first)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @return{The new @class{gtk:tree-path} instance.}
   @short{Creates a new tree path.}
   The string representation for this tree path is @code{\"0\"}.
@@ -311,22 +282,22 @@
 (cffi:defcfun ("gtk_tree_path_new_from_string" tree-path-new-from-string)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2025-07-04}
-  @argument[pathstr]{a string representation for a path}
+ "@version{2026-05-14}
+  @argument[str]{a string representation for a path}
   @return{The newly created @class{gtk:tree-path} instance, or @code{nil}.}
   @begin{short}
-    Creates a tree path initialized to @arg{pathstr}.
+    Creates a tree path initialized to @arg{str}.
   @end{short}
-  The @arg{pathstr} argument is expected to be a colon separated list of
-  numbers. For example, the string @code{\"10:4:0\"} would create a path of
-  depth 3 pointing to the 11th child of the root node, the 5th child of that
-  11th child, and the 1st child of that 5th child. If an invalid path string is
-  passed in, @code{nil} is returned.
+  The @arg{str} argument is expected to be a colon separated list of numbers.
+  For example, the string @code{\"10:4:0\"} would create a path of depth 3
+  pointing to the 11th child of the root node, the 5th child of that 11th child,
+  and the 1st child of that 5th child. If an invalid path string is passed in,
+  @code{nil} is returned.
   @see-class{gtk:tree-path}
   @see-function{gtk:tree-path-new}
   @see-function{gtk:tree-path-new-from-indices}
   @see-function{gtk:tree-path-to-string}"
-  (pathstr :string))
+  (str :string))
 
 (export 'tree-path-new-from-string)
 
@@ -336,7 +307,7 @@
 
 (defun tree-path-new-from-indices (&rest indices)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[indices]{integers for the indices}
   @return{The newly created @class{gtk:tree-path} instance.}
   @short{Creates a new tree path with @arg{indices} as indices.}
@@ -356,7 +327,7 @@
 
 (cffi:defcfun ("gtk_tree_path_copy" tree-path-copy) (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The new @class{gtk:tree-path} instance.}
   @short{Creates a new tree path as a copy of @arg{path}.}
@@ -375,9 +346,9 @@
 
 (cffi:defcfun ("gtk_tree_path_to_string" tree-path-to-string) :string
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
-  @return{The string for the representation for the tree path.}
+  @return{The string for the representation of the tree path.}
   @begin{short}
     Generates a string representation for the tree path.
   @end{short}
@@ -401,7 +372,7 @@
 
 (defun tree-path-append-index (path index)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[index]{an integer for the index}
   @return{The @class{gtk:tree-path} instance.}
@@ -428,7 +399,7 @@
 
 (defun tree-path-prepend-index (path index)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[index]{an integer for the index}
   @return{The @class{gtk:tree-path} instance.}
@@ -449,7 +420,7 @@
 
 (cffi:defcfun ("gtk_tree_path_get_depth" tree-path-depth) :int
  #+liber-documentation
- "@version{2025-07-15}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The integer for the depth of @arg{path}.}
   @short{Returns the current depth of the tree path.}
@@ -467,7 +438,7 @@
 
 (defun tree-path-indices (path)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The list of integers with the current indices, or @code{nil}.}
   @begin{short}
@@ -494,7 +465,7 @@
 
 (cffi:defcfun ("gtk_tree_path_compare" tree-path-compare ) :int
  #+liber-documentation
- "@version{2025-07-15}
+ "@version{2026-05-14}
   @argument[path1]{a @class{gtk:tree-path} instance}
   @argument[path2]{a @class{gtk:tree-path} instance to compare with}
   @begin{return}
@@ -521,7 +492,7 @@
 
 (defun tree-path-next (path)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The @class{gtk:tree-path} instance.}
   @begin{short}
@@ -545,7 +516,7 @@
 
 (defun tree-path-prev (path)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{return}
     The @class{gtk:tree-path} instance to point to the previous node, if it
@@ -572,7 +543,7 @@
 
 (defun tree-path-up (path)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{return}
     The @class{gtk:tree-path} instance to point to the parent node, if it has
@@ -599,7 +570,7 @@
 
 (defun tree-path-down (path)
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @return{The @class{gtk:tree-path} instance to point the first child.}
   @begin{short}
@@ -620,7 +591,7 @@
 
 (cffi:defcfun ("gtk_tree_path_is_ancestor" tree-path-is-ancestor) :boolean
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[descendant]{another @class{gtk:tree-path} instance}
   @return{@em{True} if @arg{descendant} is contained inside @arg{path}.}
@@ -640,7 +611,7 @@
 
 (cffi:defcfun ("gtk_tree_path_is_descendant" tree-path-is-descendant) :boolean
  #+liber-documentation
- "@version{2024-03-28}
+ "@version{2026-05-14}
   @argument[path]{a @class{gtk:tree-path} instance}
   @argument[ancestor]{another @class{gtk:tree-path} instance}
   @return{@em{True} if @arg{ancestor} contains @arg{path} somewhere below it.}
@@ -667,7 +638,7 @@
 (setf (liber:alias-for-class 'tree-row-reference)
       "GBoxed"
       (documentation 'tree-row-reference 'type)
- "@version{2025-01-06}
+ "@version{2026-05-14}
   @begin{declaration}
 (glib:define-gboxed-opaque tree-row-reference \"GtkTreeRowReference\"
   :export t
@@ -693,7 +664,7 @@
 (cffi:defcfun ("gtk_tree_row_reference_new" tree-row-reference-new)
     (g:boxed tree-row-reference :return)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a valid @class{gtk:tree-path} instance to monitor}
   @begin{return}
@@ -715,13 +686,29 @@
 (export 'tree-row-reference-new)
 
 ;;; ----------------------------------------------------------------------------
+;;; gtk_tree_row_reference_copy
+;;; ----------------------------------------------------------------------------
+
+(cffi:defcfun ("gtk_tree_row_reference_copy" tree-row-reference-copy)
+    (g:boxed tree-row-reference :return)
+ #+liber-documentation
+ "@version{2026-05-14}
+  @argument[reference]{a @class{gtk:tree-row-reference} instance}
+  @return{The @class{gtk:tree-row-reference} instance.}
+  @short{Copies a tree row reference.}
+  @see-class{gtk:tree-row-reference}"
+  (reference (g:boxed tree-row-reference)))
+
+(export 'tree-row-reference-copy)
+
+;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_row_reference_get_model
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_row_reference_get_model" tree-row-reference-model)
     (g:object tree-model)
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2026-05-14}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
   @return{The @class{gtk:tree-model} object.}
   @short{Returns the model that the row reference is monitoring.}
@@ -738,7 +725,7 @@
 (cffi:defcfun ("gtk_tree_row_reference_get_path" tree-row-reference-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2026-05-14}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
   @return{The current @class{gtk:tree-path} instance, or @code{nil}.}
   @begin{short}
@@ -757,7 +744,7 @@
 
 (cffi:defcfun ("gtk_tree_row_reference_valid" tree-row-reference-valid) :boolean
  #+liber-documentation
- "@version{2025-01-06}
+ "@version{2026-05-14}
   @argument[reference]{a @class{gtk:tree-row-reference}, or @code{nil}}
   @return{@em{True} if @arg{reference} points to a valid path.}
   @begin{short}
@@ -774,63 +761,19 @@
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_copy
-;;; ----------------------------------------------------------------------------
-
-(cffi:defcfun ("gtk_tree_row_reference_copy" tree-row-reference-copy)
-    (g:boxed tree-row-reference :return)
- #+liber-documentation
- "@version{2025-01-06}
-  @argument[reference]{a @class{gtk:tree-row-reference} instance}
-  @return{The @class{gtk:tree-row-reference} instance.}
-  @begin{short}
-    Copies a tree row reference.
-  @end{short}
-  @see-class{gtk:tree-row-reference}"
-  (reference (g:boxed tree-row-reference)))
-
-(export 'tree-row-reference-copy)
-
-;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_row_reference_new_proxy                        not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_inserted
-;;;
-;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-;;; know that the model emitted the "row-inserted" signal.
+;;; gtk_tree_row_reference_inserted                         not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_deleted
-;;;
-;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-;;; know that the model emitted the "row-deleted" signal.
+;;; gtk_tree_row_reference_deleted                          not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_row_reference_reordered ()
-;;;
-;;; void gtk_tree_row_reference_reordered (GObject *proxy,
-;;;                                        GtkTreePath *path,
-;;;                                        GtkTreeIter *iter,
-;;;                                        gint *new_order);
-;;;
-;;; Lets a set of row reference created by gtk_tree_row_reference_new_proxy()
-;;; know that the model emitted the "rows-reordered" signal.
-;;;
-;;; proxy :
-;;;     a GObject
-;;;
-;;; path :
-;;;     the parent path of the reordered signal
-;;;
-;;; iter :
-;;;     the iter pointing to the parent of the reordered
-;;;
-;;; new_order :
-;;;     the new order of rows
+;;; gtk_tree_row_reference_reordered                        not implemented
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -847,7 +790,7 @@
 (setf (liber:alias-for-symbol 'tree-model-flags)
       "Flags"
       (liber:symbol-documentation 'tree-model-flags)
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @begin{declaration}
 (gobject:define-gflags \"GtkTreeModelFlags\" tree-model-flags
   (:export t
@@ -865,7 +808,7 @@
     These flags indicate various properties of a @class{gtk:tree-model} object.
   @end{short}
   They are returned by the @fun{gtk:tree-model-flags} function, and must be
-  static for the lifetime of the object. A more complete description of
+  static for the lifetime of the object. A more complete description of the
   @val[gtk:tree-model-flags]{:iters-persist} value can be found in the overview
   of this section.
   @see-class{gtk:tree-model}
@@ -884,7 +827,7 @@
 (setf (liber:alias-for-class 'tree-model)
       "Interface"
       (documentation 'tree-model 'type)
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @begin{short}
     The @class{gtk:tree-model} interface defines a generic tree interface for
     use by the @class{gtk:tree-view} widget.
@@ -897,10 +840,11 @@
   data. In other words, the model can be seen as a tree where every node has
   different values depending on which column is being queried. The type of
   data found in a column is determined by using the GType system (that is
-  \"gint\", \"GtkButton\", \"gpointer\", and so on). The types are homogeneous
-  per column across all nodes. It is important to note that this interface only
-  provides a way of examining a model and observing changes. The implementation
-  of each individual model decides how and if changes are made.
+  @code{\"gint\"}, @code{\"GtkButton\"}, @code{\"gpointer\"}, and so on). The
+  types are homogeneous per column across all nodes. It is important to note
+  that this interface only provides a way of examining a model and observing
+  changes. The implementation of each individual model decides how and if
+  changes are made.
 
   In order to make life simpler for programmers who do not need to write their
   own specialized model, two generic models are provided - the
@@ -915,7 +859,7 @@
   There are two structures used to reference a particular node in a model.
   They are the @class{gtk:tree-path} and the @class{gtk:tree-iter} structures.
   Most of the interface consists of operations on a @class{gtk:tree-iter}
-  iterator.
+  instance.
 
   A path is essentially a potential node. It is a location on a model that may
   or may not actually correspond to a node on a specific model. The
@@ -925,7 +869,7 @@
   '0' refers to the root node and the path '2:4' refers to the fifth child of
   the third node.
 
-  By contrast, a @class{gtk:tree-iter} iterator is a reference to a specific
+  By contrast, a @class{gtk:tree-iter} instance is a reference to a specific
   node on a specific model. It is a generic structure with an integer and three
   generic pointers. These are filled in by the model in a model-specific way.
   One can convert a path to an iterator by calling the @fun{gtk:tree-model-iter}
@@ -961,7 +905,7 @@
   '3:2:5'. While the first method shown is easier, the second is much more
   common, as you often get paths from callbacks.
 
-  @b{Example:} Acquiring a @class{gtk:tree-iter} iterator
+  @b{Example:} Acquiring a @class{gtk:tree-iter} instance
   @begin{pre}
 ;; Three ways of getting the iter pointing to the location
 (let (path iter parent)
@@ -1037,7 +981,7 @@ lambda (model path iter)    :run-last
           is emitted.}
         @entry[path]{The @class{gtk:tree-path} instance identifying the changed
           row.}
-        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[iter]{The valid @class{gtk:tree-iter} instance pointing to the
           changed row.}
       @end{simple-table}
       The signal is emitted when a row in the model has changed.
@@ -1065,7 +1009,7 @@ lambda (model path iter)    :run-last
         @entry[model]{The @class{gtk:tree-model} object on which the signal
           is emitted.}
         @entry[path]{The @class{gtk:tree-path} instance identifying the row.}
-        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[iter]{The valid @class{gtk:tree-iter} instance pointing to the
           row.}
       @end{simple-table}
       The signal is emitted when a row has gotten the first child row or lost
@@ -1080,7 +1024,7 @@ lambda (model path iter)    :run-first
           emitted.}
         @entry[path]{The @class{gtk:tree-path} instance identifying the new
           row.}
-        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[iter]{The valid @class{gtk:tree-iter} instance pointing to the
           new row.}
       @end{simple-table}
       The signal is emitted when a new row has been inserted in the model. Note
@@ -1097,7 +1041,7 @@ lambda (model path iter new-order)    :run-first
           is emitted.}
         @entry[path]{The @class{gtk:tree-path} instance identifying the tree
           node whose children have been reordered.}
-        @entry[iter]{The valid @class{gtk:tree-iter} iterator pointing to the
+        @entry[iter]{The valid @class{gtk:tree-iter} instance pointing to the
          node whose children have been reordered.}
         @entry[new-order]{The array of integers mapping the current position of
           each child to its old position before the re-ordering, that is
@@ -1105,8 +1049,8 @@ lambda (model path iter new-order)    :run-first
       @end{simple-table}
       The signal is emitted when the children of a node in the
       @class{gtk:tree-model} object have been reordered. Note that the signal
-      is not emitted when rows are reordered by DND, since this is implemented
-      by removing and then reinserting the row.
+      is not emitted when rows are reordered by Drag and Drop, since this is
+      implemented by removing and then reinserting the row.
     @end{signal}
   @end{dictionary}
   @see-class{gtk:tree-view}
@@ -1120,7 +1064,7 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_get_flags" tree-model-flags) tree-model-flags
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{The @sym{gtk:tree-model-flags} flags supported by this interface.}
   @begin{short}
@@ -1140,7 +1084,7 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_get_n_columns" tree-model-n-columns) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @return{The integer for the number of columns.}
   @begin{short}
@@ -1158,7 +1102,7 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_get_column_type" tree-model-column-type) g:type-t
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[index]{an integer for the column index}
   @return{The @class{g:type-t} type ID of the column.}
@@ -1183,11 +1127,11 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter (model path)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance}
   @begin{return}
-    The @class{gtk:tree-iter} iterator or @code{nil}, if the iterator is
+    The @class{gtk:tree-iter} instance or @code{nil}, if the iterator is
     not set.
   @end{return}
   @begin{short}
@@ -1211,23 +1155,23 @@ lambda (model path iter new-order)    :run-first
                %tree-model-iter-from-string) :boolean
   (model (g:object tree-model))
   (iter (g:boxed tree-iter))
-  (pathstr :string))
+  (str :string))
 
-(defun tree-model-iter-from-string (model pathstr)
+(defun tree-model-iter-from-string (model str)
  #+liber-documentation
- "@version{2024-03-14}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[pathstr]{a string representation for a @class{gtk:tree-path} object}
-  @return{The @class{gtk:tree-iter} iterator.}
+  @argument[str]{a string representation for a @class{gtk:tree-path} object}
+  @return{The @class{gtk:tree-iter} instance.}
   @begin{short}
-    Returns a valid iterator pointing to @arg{pathstr}, if it exists.
+    Returns a valid iterator pointing to @arg{str}, if it exists.
   @end{short}
   Otherwise, @code{nil} is returned.
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}
   @see-class{gtk:tree-path}"
   (let ((iter (make-tree-iter)))
-    (when (%tree-model-iter-from-string model iter pathstr)
+    (when (%tree-model-iter-from-string model iter str)
       iter)))
 
 (export 'tree-model-iter-from-string)
@@ -1242,9 +1186,9 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-first (model)
  #+liber-documentation
- "@version{2024-03-14}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @return{The @class{gtk:tree-iter} iterator.}
+  @return{The @class{gtk:tree-iter} instance.}
   @begin{short}
     Returns the first iterator in the tree model, the one at the path \"0\".
   @end{short}
@@ -1265,13 +1209,11 @@ lambda (model path iter new-order)    :run-first
 (cffi:defcfun ("gtk_tree_model_get_path" tree-model-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{The newly created @class{gtk:tree-path} instance.}
-  @begin{short}
-    Returns a tree path referenced by the given iterator.
-  @end{short}
+  @short{Returns a tree path referenced by the given iterator.}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}
   @see-class{gtk:tree-path}"
@@ -1279,6 +1221,40 @@ lambda (model path iter new-order)    :run-first
   (iter (g:boxed tree-iter)))
 
 (export 'tree-model-path)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_tree_model_get
+;;; ----------------------------------------------------------------------------
+
+(defun tree-model-get (model iter &rest colums)
+ #+liber-documentation
+ "@version{2026-05-14}
+  @argument[model]{a @class{gtk:tree-model} object}
+  @argument[iter]{a @class{gtk:tree-iter} instance to a row}
+  @argument[columns]{a list of integers for column numbers}
+  @return{The list of values for the columns.}
+  @begin{short}
+    Gets the value of one or more cells in the row referenced by @arg{iter}.
+  @end{short}
+  The variable argument list should contain integer column numbers.
+  For example, to get a value from columns 1 and 3, you would write:
+  @begin{pre}
+(gtk:tree-model-get model iter 1 3)
+  @end{pre}
+  @see-class{gtk:tree-model}
+  @see-class{gtk:tree-iter}
+  @see-function{gtk:tree-model-value}"
+  (let ((result nil))
+    (dolist (column colums)
+      (setf result
+            (cons (tree-model-value model iter column) result)))
+    (reverse result)))
+
+(export 'tree-model-get)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_tree_model_get_valist                               not needed
+;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tree_model_get_value
@@ -1292,14 +1268,12 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-value (model iter colnum)
  #+liber-documentation
- "@version{2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @argument[colnum]{an integer for the column to lookup the value at}
   @return{The value at @arg{colnum}.}
-  @begin{short}
-    Returns the value at @arg{colnum}.
-  @end{short}
+  @short{Returns the value at @arg{colnum}.}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}"
   (cffi:with-foreign-object (value '(:struct g:value))
@@ -1321,10 +1295,10 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-next (model iter)
  #+liber-documentation
- "@version{2024-03-14}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
-  @return{The @class{gtk:tree-iter} iterator.}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
+  @return{The next @class{gtk:tree-iter} instance.}
   @begin{short}
     Returns the iterator to the node following @arg{iter} at the current level.
   @end{short}
@@ -1350,10 +1324,10 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-previous (model iter)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
-  @return{The @class{gtk:tree-iter} iterator.}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
+  @return{The previous @class{gtk:tree-iter} instance.}
   @begin{short}
     Returns the iterator to the previous node at the current level.
   @end{short}
@@ -1379,10 +1353,10 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-children (model parent)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[parent]{a @class{gtk:tree-iter} iterator, or @code{nil}}
-  @return{The @class{gtk:tree-iter} iterator.}
+  @argument[parent]{a @class{gtk:tree-iter} instance, or @code{nil}}
+  @return{The @class{gtk:tree-iter} instance.}
   @begin{short}
     Returns the iterator to the first child of @arg{parent}.
   @end{short}
@@ -1411,13 +1385,11 @@ lambda (model path iter new-order)    :run-first
 (cffi:defcfun ("gtk_tree_model_iter_has_child" tree-model-iter-has-child)
     :boolean
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator to test for children}
+  @argument[iter]{a @class{gtk:tree-iter} instance to test for children}
   @return{@em{True} if @arg{iter} has children.}
-  @begin{short}
-    Returns @em{true} if @arg{iter} has children, @code{nil} otherwise.
-  @end{short}
+  @short{Returns @em{true} if @arg{iter} has children, @code{nil} otherwise.}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-iter}"
   (model (g:object tree-model))
@@ -1431,9 +1403,9 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_iter_n_children" tree-model-iter-n-children) :int
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator, or @code{nil}}
+  @argument[iter]{a @class{gtk:tree-iter} instance, or @code{nil}}
   @return{The number of children of @arg{iter}.}
   @begin{short}
     Returns the number of children that @arg{iter} has.
@@ -1460,12 +1432,12 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-nth-child (model parent n)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[parent]{a @class{gtk:tree-iter} iterator to get the child from, or
+  @argument[parent]{a @class{gtk:tree-iter} instance to get the child from, or
     @code{nil}}
   @argument[n]{an integer for the index of the desired child}
-  @return{The @class{gtk:tree-iter} iterator to the nth child.}
+  @return{The @class{gtk:tree-iter} instance to the nth child.}
   @begin{short}
     Returns the iterator to the child of @arg{parent}, using the given index.
   @end{short}
@@ -1492,10 +1464,10 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-iter-parent (model child)
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[child]{a @class{gtk:tree-iter} iterator}
-  @return{The @class{gtk:tree-iter} iterator to the parent.}
+  @argument[child]{a @class{gtk:tree-iter} instance}
+  @return{The @class{gtk:tree-iter} instance to the parent.}
   @begin{short}
     Returns the iterator to the parent of @arg{child}.
   @end{short}
@@ -1518,7 +1490,7 @@ lambda (model path iter new-order)    :run-first
 (cffi:defcfun ("gtk_tree_model_get_string_from_iter"
                tree-model-string-from-iter) (:string :free-from-foreign t)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{The string representation for @arg{iter}.}
@@ -1535,14 +1507,14 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-string-from-iter)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_ref_node                                 not exported
+;;; gtk_tree_model_ref_node
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_ref_node" tree-model-ref-node) :void
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @begin{short}
     Lets the tree ref the node.
   @end{short}
@@ -1564,15 +1536,17 @@ lambda (model path iter new-order)    :run-first
   (model (g:object tree-model))
   (iter (g:boxed tree-iter)))
 
+(export 'tree-model-ref-node)
+
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_unref_node                               not exported
+;;; gtk_tree_model_unref_node
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_unref_node" tree-model-unref-node) :void
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{the @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @begin{short}
     Lets the tree unref the node.
   @end{short}
@@ -1588,61 +1562,7 @@ lambda (model path iter new-order)    :run-first
   (model (g:object tree-model))
   (iter (g:boxed tree-iter)))
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get
-;;; ----------------------------------------------------------------------------
-
-;; TODO: Consider to return all values of the row. This would be more consistent
-;; to the function tree-model-set.
-
-(defun tree-model-get (model iter &rest colums)
- #+liber-documentation
- "@version{#2025-07-04}
-  @argument[model]{a @class{gtk:tree-model} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator to a row}
-  @argument[columns]{a list of integers for column numbers}
-  @return{The list of values for the columns.}
-  @begin{short}
-    Gets the value of one or more cells in the row referenced by @arg{iter}.
-  @end{short}
-  The variable argument list should contain integer column numbers.
-  For example, to get a value from columns 1 and 3, you would write:
-  @begin{pre}
-(gtk:tree-model-get model iter 1 3)
-  @end{pre}
-  @see-class{gtk:tree-model}
-  @see-class{gtk:tree-iter}
-  @see-function{gtk:tree-model-value}"
-  (let ((result nil))
-    (dolist (column colums)
-      (setf result
-            (cons (tree-model-value model iter column) result)))
-    (reverse result)))
-
-(export 'tree-model-get)
-
-;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_get_valist ()
-;;;
-;;; void gtk_tree_model_get_valist (GtkTreeModel *tree_model,
-;;;                                 GtkTreeIter *iter,
-;;;                                 va_list var_args);
-;;;
-;;; See gtk_tree_model_get(), this version takes a va_list for language
-;;; bindings
-;;; to use.
-;;;
-;;; tree_model :
-;;;     a GtkTreeModel
-;;;
-;;; iter :
-;;;     a row in tree_model
-;;;
-;;; var_args :
-;;;     va_list of column/return location pairs
-;;; ----------------------------------------------------------------------------
-
-;; not needed
+(export 'tree-model-unref-node)
 
 ;;; ----------------------------------------------------------------------------
 ;;; GtkTreeModelForeachFunc
@@ -1663,11 +1583,11 @@ lambda (model path iter new-order)    :run-first
 (setf (liber:alias-for-symbol 'tree-model-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-foreach-func)
- "@version{#2024-03-23}
+ "@version{2026-05-14}
   @syntax{lambda (model path iter) => result}
   @argument[model]{a @class{gtk:tree-model} object being iterated}
   @argument[path]{a current @class{gtk:tree-path} instance}
-  @argument[iter]{a current @class{gtk:tree-iter} iterator}
+  @argument[iter]{a current @class{gtk:tree-iter} instance}
   @argument[result]{@em{true} to stop iterating, @em{false} to continue}
   @begin{short}
     Type of the callback function passed to the @fun{gtk:tree-model-foreach}
@@ -1691,15 +1611,15 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-foreach (model func)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[func]{a @sym{gtk:tree-model-foreach-func} callback function to be
     called on each row}
   @begin{short}
     Calls @arg{func} on each node in @arg{model} in a depth-first fashion.
   @end{short}
-  If @arg{func} returns @em{true}, then the tree ceases to be walked, and the
-  @fun{gtk:tree-model-foreach} function returns.
+  If @arg{func} returns @em{true}, then the tree ceases to be walked, and this
+  function returns.
   @see-class{gtk:tree-model}
   @see-symbol{gtk:tree-model-foreach-func}"
   (glib:with-stable-pointer (ptr func)
@@ -1715,10 +1635,10 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_row_changed" tree-model-row-changed) :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the changed row}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to the
     changed row}
   @begin{short}
     Emits the @sig[gtk:tree-model]{row-changed} signal on @arg{model}.
@@ -1738,10 +1658,10 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_row_inserted" tree-model-row-inserted) :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the inserted row}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to the
     inserted row}
   @begin{short}
     Emits the @sig[gtk:tree-model]{row-inserted} signal on @arg{model}.
@@ -1762,10 +1682,10 @@ lambda (model path iter new-order)    :run-first
 (cffi:defcfun ("gtk_tree_model_row_has_child_toggled"
                tree-model-row-has-child-toggled) :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the changed row}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to the
     changed row}
   @begin{short}
     Emits the @sig[gtk:tree-model]{row-has-child-toggled} signal on @arg{model}.
@@ -1786,7 +1706,7 @@ lambda (model path iter new-order)    :run-first
 
 (cffi:defcfun ("gtk_tree_model_row_deleted" tree-model-row-deleted) :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the previous
     location of the deleted row}
@@ -1820,11 +1740,11 @@ lambda (model path iter new-order)    :run-first
 
 (defun tree-model-rows-reordered (model path iter order)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-14}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a @class{gtk:tree-path} instance pointing to the tree node
     whose children have been reordered}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to the node
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to the node
     whose children have been reordered, or @code{nil} if the depth of path is 0}
   @argument[order]{a list of integers mapping the current position of each
     child to its old position before the re-ordering}
@@ -1843,42 +1763,7 @@ lambda (model path iter new-order)    :run-first
 (export 'tree-model-rows-reordered)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tree_model_rows_reordered_with_length ()
-;;;
-;;; void
-;;; gtk_tree_model_rows_reordered_with_length
-;;;                                (GtkTreeModel *tree_model,
-;;;                                 GtkTreePath *path,
-;;;                                 GtkTreeIter *iter,
-;;;                                 gint *new_order,
-;;;                                 gint length);
-;;;
-;;; Emits the "rows-reordered" signal on tree_model .
-;;;
-;;; This should be called by models when their rows have been reordered.
-;;;
-;;; tree_model :
-;;;     a GtkTreeModel
-;;;
-;;; path :
-;;;     a GtkTreePath pointing to the tree node whose children have been
-;;;     reordered
-;;;
-;;; iter :
-;;;     a valid GtkTreeIter pointing to the node whose children have been
-;;;     reordered, or NULL if the depth of path is 0.
-;;;
-;;; new_order :
-;;;     an array of integers mapping the current position of each child to its
-;;;     old position before the re-ordering, that is, new_order [newpos] =
-;;;     oldpos.
-;;;
-;;; length :
-;;;     length of new_order array
-;;;
-;;; Since 3.10
+;;; gtk_tree_model_rows_reordered_with_length               not implemented
 ;;; ----------------------------------------------------------------------------
-
-;; not needed
 
 ;;; --- End of file gtk3.tree-model.lisp ---------------------------------------

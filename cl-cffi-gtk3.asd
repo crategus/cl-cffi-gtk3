@@ -1,7 +1,7 @@
 ;;; ----------------------------------------------------------------------------
 ;;; cl-cffi-gtk3.asd
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -503,7 +503,7 @@
      (:file "rtest-gtk3-tree-sortable")
      (:file "rtest-gtk3-tree-view-drag-and-drop")
      (:file "rtest-gtk3-tree-model-sort")
-;    (:file "gtk.tree-model-filter")
+     (:file "rtest-gtk3-tree-model-filter")
      (:file "rtest-gtk3-tree-view")
      (:file "rtest-gtk3-tree-view-column")
 ;    (:file "gtk.tree-store")
@@ -522,7 +522,7 @@
 
      (:file "rtest-gtk3-cell-area")
      (:file "rtest-gtk3-cell-area-box")
-;    (:file "gtk.cell-area-context")
+     (:file "rtest-gtk3-cell-area-context")
      (:file "rtest-gtk3-cell-view")
      (:file "rtest-gtk3-icon-view")
      (:file "rtest-gtk3-list-store")
@@ -624,7 +624,7 @@
 ;    (:file "gtk.app-chooser-widget")
 
      ;; Gestures and event handling
-;    (:file "gtk.event-controller")
+     (:file "rtest-gtk3-event-controller")
 ;    (:file "gtk.event-controller-key")
 ;    (:file "gtk.event-controller-scroll")
 ;    (:file "gtk.event-controller-motion")

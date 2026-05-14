@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -36,12 +36,15 @@
 ;;;     GtkEventController
 ;;;     GtkPropagationPhase
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_event_controller_get_propagation_phase
+;;;     gtk_event_controller_set_propagation_phase
+;;;     gtk_event_controller_get_widget
+;;;
 ;;; Functions
 ;;;
-;;;     gtk_event_controller_get_propagation_phase         Accessor
-;;;     gtk_event_controller_set_propagation_phase         Accessor
 ;;;     gtk_event_controller_handle_event
-;;;     gtk_event_controller_get_widget                    Accessor
 ;;;     gtk_event_controller_reset
 ;;;
 ;;; Properties
@@ -69,42 +72,41 @@
 (gobject:define-genum "GtkPropagationPhase" propagation-phase
   (:export t
    :type-initializer "gtk_propagation_phase_get_type")
-  (:phase-none 0)
-  (:phase-capture 1)
-  (:phase-bubble 2)
-  (:phase-target 3))
+  (:none 0)
+  (:capture 1)
+  (:bubble 2)
+  (:target 3))
 
 #+liber-documentation
 (setf (liber:alias-for-symbol 'propagation-phase)
       "GEnum"
       (liber:symbol-documentation 'propagation-phase)
- "@version{#2025-06-27}
+ "@version{2026-05-10}
   @begin{declaration}
 (gobject:define-genum \"GtkPropagationPhase\" propagation-phase
   (:export t
    :type-initializer \"gtk_propagation_phase_get_type\")
-  (:phase-none 0)
-  (:phase-capture 1)
-  (:phase-bubble 2)
-  (:phase-target 3))
+  (:none 0)
+  (:capture 1)
+  (:bubble 2)
+  (:target 3))
   @end{declaration}
   @begin{values}
     @begin[code]{simple-table}
-      @entry[:phase-none]{Events are not delivered automatically. Those can be
+      @entry[:none]{Events are not delivered automatically. Those can be
         manually fed through the @fun{gtk:event-controller-handle-event}
         function. This should only be used when full control about when, or
         whether the controller handles the event is needed.}
-      @entry[:phase-capture]{Events are delivered in the capture phase. The
-        capture phase happens before the bubble phase, runs from the toplevel
-        down to the event widget. This option should only be used on containers
-        that might possibly handle events before their children do.}
-      @entry[:phase-bubble]{Events are delivered in the bubble phase. The bubble
-        phase happens after the capture phase, and before the default handlers
-        are run. This phase runs from the event widget, up to the toplevel.}
-      @entry[:phase-target]{Events are delivered in the default widget event
-        handlers, note that widget implementations must chain up on button,
-        motion, touch and grab broken handlers for controllers in this phase to
-        be run.}
+      @entry[:capture]{Events are delivered in the capture phase. The capture
+        phase happens before the bubble phase, runs from the toplevel down to
+        the event widget. This option should only be used on containers that
+        might possibly handle events before their children do.}
+      @entry[:bubble]{Events are delivered in the bubble phase. The bubble phase
+        happens after the capture phase, and before the default handlers are
+        run. This phase runs from the event widget, up to the toplevel.}
+      @entry[:target]{Events are delivered in the default widget event handlers,
+        note that widget implementations must chain up on button, motion, touch
+        and grab broken handlers for controllers in this phase to be run.}
     @end{simple-table}
   @end{values}
   @begin{short}
@@ -132,14 +134,14 @@
 
 #+liber-documentation
 (setf (documentation 'event-controller 'type)
- "@version{#2023-01-21}
+ "@version{2026-05-10}
   @begin{short}
     The @class{gtk:event-controller} object is a base, low-level implementation
     for event controllers.
   @end{short}
   Those react to a series of @class{gdk:event} objects, and possibly trigger
   actions as a consequence of those.
-  @see-slot{gtk:event-controller-propagate-phase}
+  @see-slot{gtk:event-controller-propagation-phase}
   @see-slot{gtk:event-controller-widget}
   @see-class{gdk:event}
   @see-class{gtk:gesture}
@@ -157,30 +159,26 @@
  "The @code{propagation-phase} property of type @sym{gtk:propagation-phase}
   (Read / Write) @br{}
   The propagation phase at which this controller will handle events. @br{}
-  Default value: @val[gtk:propagation-phase]{:phase-bubble}")
+  Default value: @val[gtk:propagation-phase]{:bubble}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'event-controller-propagation-phase)
       "Accessor"
       (documentation 'event-controller-propagation-phase 'function)
- "@version{#2025-07-11}
+ "@version{2026-05-10}
   @syntax{(gtk:event-controller-propagation-phase object) => phase)}
   @syntax{(setf (gtk:event-controller-propagation-phase object) phase)}
   @argument[object]{a @class{gtk:event-controller} object}
-  @argument[phase]{a propagation phase of @sym{gtk:propagation-phase} type}
+  @argument[phase]{a @sym{gtk:propagation-phase} value}
   @begin{short}
-    Accessor of the @slot[gtk:event-controller]{propagation-phase} slot of the
-    @class{gtk:event-controller} class.
+    The accessor for the @slot[gtk:event-controller]{propagation-phase} slot of
+    the @class{gtk:event-controller} class gets or sets the propagation phase at
+    which controller handles events.
   @end{short}
-  The @fun{gtk:event-controller-propagation-phase} function gets the propagation
-  phase at which controller handles events. The
-  @setf{gtk:event-controller-propagation-phase} function sets the propagation
-  phase at which a controller handles events.
-
-  If @arg{phase} is @code{:phase-none}, no automatic event handling will be
-  performed, but other additional gesture maintenance will. In that phase, the
-  events can be managed by calling the @fun{gtk:event-controller-handle-event}
-  function.
+  If @arg{phase} is @val[gtk:propagation-phase]{:none}, no automatic event
+  handling will be performed, but other additional gesture maintenance will. In
+  that phase, the events can be managed by calling the
+  @fun{gtk:event-controller-handle-event} function.
   @see-class{gtk:event-controller}
   @see-symbol{gtk:propagation-phase}
   @see-function{gtk:event-controller-handle-event}")
@@ -189,24 +187,22 @@
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "widget" 'event-controller) t)
- "The @code{widget} property of type @class{gtk:widget} (Read / Write) @br{}
-  The widget receiving the @class{gdk:event} that the controller will handle.
-  @br{}")
+ "The @code{widget} property of type @class{gtk:widget}
+  (Read / Write / Construct only) @br{}
+  The widget receiving the event that the controller will handle. @br{}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'event-controller-widget)
       "Accessor"
       (documentation 'event-controller-widget 'function)
- "@version{#2023-01-21}
+ "@version{2026-05-10}
   @syntax{(gtk:event-controller-widget object) => widget)}
-  @syntax{(setf (gtk:event-controller-widget object) widget)}
   @argument[object]{a @class{gtk:event-controller} object}
   @begin{short}
-    Accessor of the @slot[gtk:event-controller]{widget} slot of the
-    @class{gtk:event-controller} class.
+    The accessor for the @slot[gtk:event-controller]{widget} slot of the
+    @class{gtk:event-controller} class returns the @class{gtk:widget} object
+    this controller relates to.
   @end{short}
-  The @fun{gtk:event-controller-widget} function returns the @class{gtk:widget}
-  object this controller relates to.
   @see-class{gtk:event-controller}
   @see-class{gtk:widget}")
 
@@ -217,13 +213,13 @@
 (cffi:defcfun ("gtk_event_controller_handle_event"
                event-controller-handle-event) :boolean
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-10}
   @argument[controller]{a @class{gtk:event-controller} object}
   @argument[event]{a @class{gdk:event} object}
   @return{@em{True} if @arg{event} was potentially useful to trigger the
     controller action}
   @begin{short}
-    Feeds an events into the controller, so it can be interpreted and the
+    Feeds an event into the controller, so it can be interpreted and the
     controller actions triggered.
   @end{short}
   @see-class{gtk:event-controller}
@@ -239,7 +235,7 @@
 
 (cffi:defcfun ("gtk_event_controller_reset" event-controller-reset) :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{2026-05-10}
   @argument[controller]{a @class{gtk:event-controller} object}
   @begin{short}
     Resets the controller to a clean state.

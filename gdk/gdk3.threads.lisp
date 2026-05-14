@@ -119,7 +119,7 @@
 
 (cffi:defcfun ("gdk_threads_leave" threads-leave) :void
  #+liber-documentation
- "@version{2026-06-29}
+ "@version{2024-06-29}
   @begin{short}
     Leaves a critical region begun with the @fun{gdk:threads-enter} function.
   @end{short}

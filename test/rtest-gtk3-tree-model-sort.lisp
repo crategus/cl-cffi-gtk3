@@ -189,4 +189,4 @@
 ;;;     gtk_tree_model_sort_clear_cache
 ;;;     gtk_tree_model_sort_iter_is_valid
 
-;;; 2025-2-23
+;;; 2026-05-06

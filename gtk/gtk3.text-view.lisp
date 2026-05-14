@@ -1247,7 +1247,7 @@ lambda (view)    :action
 (setf (liber:alias-for-function 'text-view-right-margin)
       "Accessor"
       (documentation 'text-view-right-margin 'function)
- "@version{#2026-06-30}
+ "@version{#2025-06-30}
   @syntax{(gtk:text-view-right-margin object) => margin}
   @syntax{(setf (gtk:text-view-right-margin object) margin)}
   @argument[object]{a @class{gtk:text-view} widget}

@@ -32,13 +32,33 @@
              (glib-test:list-signals "GtkTreeSelection")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTreeSelection" GTK:TREE-SELECTION
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_tree_selection_get_type")
-                       ((MODE TREE-SELECTION-MODE
-                         "mode" "GtkSelectionMode" T T)))
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_tree_selection_get_type")
+                      ((MODE TREE-SELECTION-MODE
+                        "mode" "GtkSelectionMode" T T)))
              (gobject:get-gtype-definition "GtkTreeSelection"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     changed
+
+(test gtk-tree-selection-changed-signal
+  (let* ((name "changed")
+         (gtype (g:gtype "GtkTreeSelection"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Properties -------------------------------------------------------------
 
@@ -49,10 +69,6 @@
     (is (eq :single (gtk:tree-selection-mode selection)))
     (is (eq :multiple (setf (gtk:tree-selection-mode selection) :multiple)))
     (is (eq :multiple (gtk:tree-selection-mode selection)))))
-
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     changed
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -185,4 +201,4 @@
 ;;;     gtk_tree_selection_select_range
 ;;;     gtk_tree_selection_unselect_range
 
-;;; 2025-09-17
+;;; 2026-05-13

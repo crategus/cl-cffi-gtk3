@@ -226,7 +226,7 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'radio-button-group)
       "Accessor"
       (documentation 'radio-button-group 'function)
- "@version{#2026-06-18}
+ "@version{#2025-06-18}
   @syntax{(setf (gtk:radio-button-group object) group)}
   @argument[object]{a @class{gtk:radio-button} widget}
   @argument[group]{another @class{gtk:radio-button} widget}

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -88,12 +88,12 @@
 
 #+liber-documentation
 (setf (documentation 'tree-model-filter 'type)
- "@version{#2025-07-04}
+ "@version{2026-05-08}
   @begin{short}
     The @class{gtk:tree-model-filter} object is a tree model which wraps another
     tree model.
   @end{short}
-  The @class{gtk:tree-model-filter} object can do the following things:
+  This tree model can do the following things:
   @begin{itemize}
     @begin{item}
       Filter specific rows, based on data from a \"visible column\", a column
@@ -117,16 +117,16 @@
   example on its usage, see the @class{gtk:tree-model-sort} documentation.
 
   When using the @class{gtk:tree-model-filter} object, it is important to
-  realize that the @class{gtk:tree-model-filter} object maintains an internal
-  cache of all nodes which are visible in its clients. The cache is likely to
-  be a subtree of the tree exposed by the child model. The
-  @class{gtk:tree-model-filter} object will not cache the entire child model
-  when unnecessary to not compromise the caching mechanism that is exposed by
-  the reference counting scheme. If the child model implements reference
-  counting, unnecessary signals may not be emitted because of reference counting
-  rule 3, see the @class{gtk:tree-model} documentation. Note that, for example,
-  the @class{gtk:tree-store} object does not implement reference counting and
-  will always emit all signals, even when the receiving node is not visible.
+  realize that the it maintains an internal cache of all nodes which are visible
+  in its clients. The cache is likely to be a subtree of the tree exposed by the
+  child model. The @class{gtk:tree-model-filter} object will not cache the
+  entire child model when unnecessary to not compromise the caching mechanism
+  that is exposed by the reference counting scheme. If the child model
+  implements reference counting, unnecessary signals may not be emitted because
+  of reference counting rule 3, see the @class{gtk:tree-model} documentation.
+  Note that, for example, the @class{gtk:tree-store} object does not implement
+  reference counting and will always emit all signals, even when the receiving
+  node is not visible.
 
   Because of this, limitations for possible visible functions do apply. In
   general, visible functions should only use data or properties from the node
@@ -134,7 +134,7 @@
   parents. Usually, having a dependency on the state of any child node is not
   possible, unless references are taken on these explicitly. When no such
   reference exists, no signals may be received for these child nodes. See
-  reference couting rule number 3 in the @class{gtk:tree-model} documentation.
+  reference counting rule number 3 in the @class{gtk:tree-model} documentation.
 
   Determining the visibility state of a given node based on the state of its
   child nodes is a frequently occurring use case. Therefore, the
@@ -184,16 +184,15 @@
 (setf (liber:alias-for-function 'tree-model-filter-child-model)
       "Accessor"
       (documentation 'tree-model-filter-child-model 'function)
- "@version{#2023-01-21}
+ "@version{2026-05-08}
   @syntax{(gtk:tree-model-filter-child-model object) => model}
-  @syntax{(setf (gtk:tree-model-filter-child-model object) model)}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
-    Accessor of the @slot[gtk:tree-model-filter]{child-model} slot of the
-    @class{gtk:tree-model-filter} class.
+    The accessor for the @slot[gtk:tree-model-filter]{child-model} slot of the
+    @class{gtk:tree-model-filter} class returns the model for the filter model
+    to filter.
   @end{short}
-  The model for the filter model to filter.
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-model}")
 
@@ -210,16 +209,15 @@
 (setf (liber:alias-for-function 'tree-model-filter-virtual-root)
       "Accessor"
       (documentation 'tree-model-filter-virtual-root 'function)
- "@version{#2023-01-21}
+ "@version{2026-05-08}
   @syntax{(gtk:tree-model-filter-virtual-root object) => root}
-  @syntax{(setf (gtk:tree-model-filter-virtual-root object) root)}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[root]{a @class{gtk:tree-path} instance}
   @begin{short}
-    Accessor of the @slot[gtk:tree-model-filter]{virtual-root} slot of the
-    @class{gtk:tree-model-filter} class.
+    The accessor for the @slot[gtk:tree-model-filter]{virtual-root} slot of the
+    @class{gtk:tree-model-filter} class returns the virtual root, relative to
+    the child model, for this filter model.
   @end{short}
-  The virtual root, relative to the child model, for this filter model.
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-path}")
 
@@ -228,15 +226,15 @@
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tree_model_filter_new" tree-model-filter-new)
-    (g:object tree-model)
+    (g:object tree-model :return)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-05-08}
   @argument[child]{a @class{gtk:tree-model} object}
   @argument[root]{a @class{gtk:tree-path} instance or @code{nil}}
-  @return{The new @class{gtk:tree-model} object.}
+  @return{The new @class{gtk:tree-model-filter} object.}
   @begin{short}
-    Creates a new @class{gtk:tree-model} object, with @arg{child} as the child
-    model and @arg{root} as the virtual root.
+    Creates a new tree model with @arg{child} as the child model and @arg{root}
+    as the virtual root.
   @end{short}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-path}"
@@ -263,10 +261,10 @@
 (setf (liber:alias-for-symbol 'tree-model-filter-visible-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-visible-func)
- "@version{#2024-03-23}
+ "@version{#2026-05-08}
   @syntax{lambda (model iter) => result}
   @argument[model]{a child model of the @class{gtk:tree-model-filter} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator pointing to the row in model
+  @argument[iter]{a @class{gtk:tree-iter} instance pointing to the row in model
     whose visibility is determined}
   @argument[result]{whether the row indicated by @arg{iter} is visible}
   @begin{short}
@@ -292,10 +290,9 @@
 
 (defun tree-model-filter-set-visible-func (filter func)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[func]{a @sym{gtk:tree-model-filter-visible-func}, the visible
-    callback function}
+  @argument[func]{a @sym{gtk:tree-model-filter-visible-func} callback function}
   @begin{short}
     Sets the visible function used when filtering the filter to be @arg{func}.
   @end{short}
@@ -340,13 +337,13 @@
 (setf (liber:alias-for-symbol 'tree-model-filter-modify-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-modify-func)
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @syntax{lambda (model iter value column)}
   @argument[model]{a @class{gtk:tree-model-filter} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator pointing to the row whose
+  @argument[iter]{a @class{gtk:tree-iter} instance pointing to the row whose
     display values are determined}
-  @argument[value]{a @sym{g:value} instance which is already initialized for
-    with the correct type for the column @arg{column}}
+  @argument[value]{a @sym{g:value} instance which is already initialized with
+    the correct type for the column @arg{column}}
   @argument[column]{an integer for the column whose display value is determined}
   @begin{short}
     A callback function which calculates display values from raw values in the
@@ -377,7 +374,7 @@
 
 (defun tree-model-filter-set-modify-func (filter gtypes func)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
   @argument[gtypes]{a list of @class{g:type-t} type IDs for the columns}
   @argument[func]{a @sym{gtk:tree-model-filter-modify-func} callback function}
@@ -390,6 +387,7 @@
   return the data which should be displayed at the location specified using the
   parameters of the modify function.
   @see-class{gtk:tree-model-filter}
+  @see-class{g:type-t}
   @see-symbol{gtk:tree-model-filter-modify-func}"
   (let ((n (length gtypes)))
     (cffi:with-foreign-object (gtypes-ar 'g:type-t n)
@@ -413,16 +411,16 @@
 (cffi:defcfun ("gtk_tree_model_filter_set_visible_column"
                tree-model-filter-set-visible-column) :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[column]{an integer which is the column containing the visible
+  @argument[column]{an integer for the column containing the visible
     information}
   @begin{short}
     Sets @arg{column} of the child model to be the column where @arg{filter}
     should look for visibility information.
   @end{short}
-  The column should be of type \"gboolean\", where @em{true} means that a row
-  is visible, and @em{false} if not.
+  The column should be of type @code{\"gboolean\"}, where @em{true} means that
+  a row is visible, and @em{false} if not.
   @see-class{gtk:tree-model-filter}"
   (filter (g:object tree-model-filter))
   (column :int))
@@ -436,11 +434,11 @@
 (cffi:defcfun ("gtk_tree_model_filter_get_model" tree-model-filter-model)
     (g:object tree-model)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @return{The @class{gtk:tree-model} object.}
+  @return{The @class{gtk:tree-model} object for the child model.}
   @begin{short}
-    Returns the child model of the filter.
+    Returns the child model of the filter model.
   @end{short}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-model}"
@@ -460,13 +458,13 @@
 
 (defun tree-model-filter-convert-child-iter-to-iter (filter iter)
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to a row on
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to a row on
     the child model}
   @begin{return}
-    A @class{gtk:tree-iter} iterator if @arg{iter} is a valid iterator pointing
-    to a visible row in child model.
+    The @class{gtk:tree-iter} instance if @arg{iter} is a valid iterator
+    pointing to a visible row in child model.
   @end{return}
   @begin{short}
     Returns an interator to point to the row in @arg{filter} that corresponds
@@ -495,12 +493,12 @@
 
 (defun tree-model-filter-convert-iter-to-child-iter (filter iter)
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
-  @argument[iter]{a valid @class{gtk:tree-iter} iterator pointing to a row on
+  @argument[iter]{a valid @class{gtk:tree-iter} instance pointing to a row on
     @arg{filter}}
   @begin{return}
-    A @class{gtk:tree-iter} iterator.
+    The @class{gtk:tree-iter} instance.
   @end{return}
   @begin{short}
     Returns the iterator to point to the row pointed to by @arg{iter}.
@@ -521,7 +519,7 @@
                tree-model-filter-convert-child-path-to-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
   @argument[path]{a @class{gtk:tree-path} instance to convert}
   @return{The newly allocated @class{gtk:tree-path} instance, or @code{nil}.}
@@ -547,7 +545,7 @@
                tree-model-filter-convert-path-to-child-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
   @argument[path]{a @class{gtk:tree-path} instance to convert}
   @return{The newly allocated @class{gtk:tree-path} instance, or @code{nil}.}
@@ -572,11 +570,12 @@
 (cffi:defcfun ("gtk_tree_model_filter_refilter" tree-model-filter-refilter)
     :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
   @begin{short}
-    Emits the signal \"row_changed\" for each row in the child model, which
-    causes the filter to re-evaluate whether a row is visible or not.
+    Emits the @sig[gtk:tree-model]{row-changed} signal for each row in the
+    child model, which causes the filter to re-evaluate whether a row is visible
+    or not.
   @end{short}
   @see-class{gtk:tree-model-filter}"
   (filter (g:object tree-model-filter)))
@@ -593,7 +592,7 @@
 (cffi:defcfun ("gtk_tree_model_filter_clear_cache"
                tree-model-filter-clear-cache) :void
  #+liber-documentation
- "@version{#2023-01-21}
+ "@version{#2026-05-08}
   @argument[filter]{a @class{gtk:tree-model-filter} object}
   @begin{short}
     This function clears the filter of any cached iterators that have not been

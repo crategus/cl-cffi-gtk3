@@ -27,6 +27,60 @@
     ;; Return the new list store
     liststore))
 
+(defun create-and-fill-tree-store ()
+  (let* ((model (gtk:tree-store-new "gchararray" "gchararray"))
+         (parent (gtk:tree-store-append model nil))
+         (parent1 nil)
+         (child nil)
+         (path (gtk:tree-model-path model parent)))
+    (gtk:tree-store-set model
+                        parent
+                        (gtk:tree-path-to-string path)
+                        "Songs")
+    (setf child (gtk:tree-store-append model parent))
+    (setf path (gtk:tree-model-path model child))
+    (gtk:tree-store-set model
+                        child
+                        (gtk:tree-path-to-string path)
+                        "MP3s")
+    (setf child (gtk:tree-store-append model parent))
+    (setf path (gtk:tree-model-path model child))
+    (gtk:tree-store-set model
+                        child
+                        (gtk:tree-path-to-string path)
+                        "Oggs")
+    (setf parent (gtk:tree-store-append model nil))
+    (setf path (gtk:tree-model-path model parent))
+    (gtk:tree-store-set model
+                        parent
+                        (gtk:tree-path-to-string path)
+                        "Videos")
+    (setf parent1 (gtk:tree-store-append model parent))
+    (setf path (gtk:tree-model-path model parent1))
+    (gtk:tree-store-set model
+                        parent1
+                        (gtk:tree-path-to-string path)
+                        "Clips")
+    (setf child (gtk:tree-store-append model parent1))
+    (setf path (gtk:tree-model-path model child))
+    (gtk:tree-store-set model
+                        child
+                        (gtk:tree-path-to-string path)
+                        "Funny Clips")
+    (setf child (gtk:tree-store-append model parent1))
+    (setf path (gtk:tree-model-path model child))
+    (gtk:tree-store-set model
+                        child
+                        (gtk:tree-path-to-string path)
+                        "Movie Trailers")
+    (setf child (gtk:tree-store-append model parent))
+    (setf path (gtk:tree-model-path model child))
+    (gtk:tree-store-set model
+                        child
+                        (gtk:tree-path-to-string path)
+                        "Movies")
+    model))
+
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GtkTreeIter
@@ -227,8 +281,7 @@
         (is (typep (gtk:tree-row-reference-model row) 'gtk:tree-model))
         (is (typep (gtk:tree-row-reference-path row) 'gtk:tree-path))))))
 
-;;;     gtk_tree_row_reference_new_proxy
-;;;     gtk_tree_row_reference_free
+;;;     gtk_tree_row_reference_free                         not needed
 
 ;;;     gtk_tree_row_reference_copy
 
@@ -249,14 +302,155 @@
                 (glib:pointer (gtk:tree-row-reference-model row1))
                 (glib:pointer (gtk:tree-row-reference-model row2))))))))
 
-;;;     gtk_tree_row_reference_inserted
-;;;     gtk_tree_row_reference_deleted
-;;;     gtk_tree_row_reference_reordered
+;;;     gtk_tree_row_reference_new_proxy                    not implemented
+;;;     gtk_tree_row_reference_inserted                     not implemented
+;;;     gtk_tree_row_reference_deleted                      not implemented
+;;;     gtk_tree_row_reference_reordered                    not implemented
 
-;;;     GtkTreeModelIface
+;;; ----------------------------------------------------------------------------
+
 ;;;     GtkTreeModelFlags
 
+(test gtk-tree-model-flags
+  ;; Check type
+  (is (g:type-is-flags "GtkTreeModelFlags"))
+  ;; Check registered name
+  (is (eq 'gtk:tree-model-flags
+          (glib:symbol-for-gtype "GtkTreeModelFlags")))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkTreeModelFlags")
+          (g:gtype (cffi:foreign-funcall "gtk_tree_model_flags_get_type" :size))))
+  ;; Check names
+  (is (equal '()
+             (glib-test:list-flags-item-names "GtkTreeModelFlags")))
+  ;; Check values
+  (is (equal '()
+             (glib-test:list-flags-item-values "GtkTreeModelFlags")))
+  ;; Check nick names
+  (is (equal '()
+             (glib-test:list-flags-item-nicks "GtkTreeModelFlags")))
+  ;; Check flags definition
+  (is (equal '()
+             (gobject:get-gtype-definition "GtkTreeModelFlags"))))
+
 ;;;     GtkTreeModel
+
+(test gtk-tree-model-interface
+  ;; Check type
+  (is (g:type-is-interface "GtkTreeModel"))
+  ;; Check registered name
+  (is (eq 'gtk:tree-model
+          (glib:symbol-for-gtype "GtkTreeModel")))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkTreeModel")
+          (g:gtype (cffi:foreign-funcall "gtk_tree_model_get_type" :size))))
+  ;; Check interface prerequisites
+  (is (equal '("GObject")
+             (glib-test:list-interface-prerequisites "GtkTreeModel")))
+  ;; Check interface properties
+  (is (equal '()
+             (glib-test:list-interface-properties "GtkTreeModel")))
+  ;; Check signals
+  (is (equal '("row-changed" "row-deleted" "row-has-child-toggled"
+               "row-inserted" "rows-reordered")
+             (glib-test:list-signals "GtkTreeModel")))
+  ;; Check interface definition
+  (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkTreeModel" GTK:TREE-MODEL
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_tree_model_get_type"))
+             (gobject:get-gtype-definition "GtkTreeModel"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     row-changed
+
+(test gtk-tree-model-row-changed-signal
+  (let* ((name "row-changed")
+         (gtype (g:gtype "GtkTreeModel"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTreePath" "GtkTreeIter")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     row-deleted
+
+(test gtk-tree-model-row-deleted-signal
+  (let* ((name "row-deleted")
+         (gtype (g:gtype "GtkTreeModel"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTreePath")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     row-has-child-toggled
+
+(test gtk-tree-model-row-has-child-toggled-signal
+  (let* ((name "row-has-child-toggled")
+         (gtype (g:gtype "GtkTreeModel"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTreePath" "GtkTreeIter")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     row-inserted
+
+(test gtk-tree-model-row-inserted-signal
+  (let* ((name "row-inserted")
+         (gtype (g:gtype "GtkTreeModel"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTreePath" "GtkTreeIter")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     rows-reordered
+
+(test gtk-tree-model-rows-reordered-signal
+  (let* ((name "rows-reordered")
+         (gtype (g:gtype "GtkTreeModel"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTreePath" "GtkTreeIter" "gpointer")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -313,27 +507,117 @@
 
 ;;;     gtk_tree_model_get_path
 
-;(test tree-model-path
-;  (let* ((model (create-and-fill-list-store))
-;         (iter (gtk:tree-model-iter-from-string model "2")))
-;    (is (string= "2"
-;                 (gtk:tree-path-to-string (gtk:tree-model-path model iter))))
-;))
+(test gtk-tree-model-path
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-list-store))
+    (let ((iter (gtk:tree-model-iter-from-string model "2")))
+      (is (string= "2"
+                   (gtk:tree-path-to-string (gtk:tree-model-path model iter)))))))
 
 ;;;     gtk_tree_model_get_value
+;;;     gtk_tree_model_get
+
+(test gtk-tree-model-value
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-list-store))
+    (let ((iter (gtk:tree-model-iter-from-string model "2")))
+      (is (= 2 (gtk:tree-model-value model iter 0)))
+      (is (string= "Name3" (gtk:tree-model-value model iter 1)))
+      (is-true (gtk:tree-model-value model iter 2))
+
+      (is (equal '(2) (gtk:tree-model-get model iter 0)))
+      (is (equal '("Name3") (gtk:tree-model-get model iter 1)))
+      (is (equal '(T) (gtk:tree-model-get model iter 2)))
+      (is (equal '(2 "Name3" T) (gtk:tree-model-get model iter 0 1 2))))))
+
+;;;     gtk_tree_model_get_valist                           not implemented
+
 ;;;     gtk_tree_model_iter_next
 ;;;     gtk_tree_model_iter_previous
+
+(test gtk-tree-model-iter-next/previous
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-list-store))
+    (let* ((iter (gtk:tree-model-iter-from-string model "2"))
+           (next (gtk:tree-model-iter-next model iter))
+           (prev (gtk:tree-model-iter-previous model iter)))
+      ;; Check iterator
+      (is (= 2 (gtk:tree-model-value model iter 0)))
+      (is (string= "Name3" (gtk:tree-model-value model iter 1)))
+      (is-true (gtk:tree-model-value model iter 2))
+      ;; Check next iterator
+      (is (= 3 (gtk:tree-model-value model next 0)))
+      (is (string= "Name4" (gtk:tree-model-value model next 1)))
+      (is-false (gtk:tree-model-value model next 2))
+      ;; Check previous iterator
+      (is (= 1 (gtk:tree-model-value model prev 0)))
+      (is (string= "Name2" (gtk:tree-model-value model prev 1)))
+      (is-false (gtk:tree-model-value model prev 2)))))
+
 ;;;     gtk_tree_model_iter_children
 ;;;     gtk_tree_model_iter_has_child
 ;;;     gtk_tree_model_iter_n_children
 ;;;     gtk_tree_model_iter_nth_child
 ;;;     gtk_tree_model_iter_parent
 ;;;     gtk_tree_model_get_string_from_iter
+
+(test gtk-tree-model-iter-children
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-tree-store))
+    (let* ((parent (gtk:tree-model-iter-first model))
+           (child (gtk:tree-model-iter-children model parent)))
+
+      (is-true (gtk:tree-model-iter-has-child model parent))
+      (is-false (gtk:tree-model-iter-has-child model child))
+
+      (is (= 2 (gtk:tree-model-iter-n-children model parent)))
+      (is (= 0 (gtk:tree-model-iter-n-children model child)))
+
+      (is (string= "0" (gtk:tree-model-string-from-iter model parent)))
+      (is (string= "0:0" (gtk:tree-model-string-from-iter model child)))
+
+      (is (string= "0" (gtk:tree-model-value model parent 0)))
+      (is (string= "Songs" (gtk:tree-model-value model parent 1)))
+
+      (is (string= "0:0" (gtk:tree-model-value model child 0)))
+      (is (string= "MP3s" (gtk:tree-model-value model child 1)))
+
+      (let ((iter (gtk:tree-model-iter-parent model child)))
+        (is (string= "0" (gtk:tree-model-value model iter 0)))
+        (is (string= "Songs" (gtk:tree-model-value model iter 1))))
+
+      (let ((iter (gtk:tree-model-iter-nth-child model parent 0)))
+        (is (string= "0:0" (gtk:tree-model-value model iter 0)))
+        (is (string= "MP3s" (gtk:tree-model-value model iter 1))))
+
+      (let ((iter (gtk:tree-model-iter-nth-child model parent 1)))
+        (is (string= "0:1" (gtk:tree-model-value model iter 0)))
+        (is (string= "Oggs" (gtk:tree-model-value model iter 1)))))))
+
 ;;;     gtk_tree_model_ref_node
 ;;;     gtk_tree_model_unref_node
-;;;     gtk_tree_model_get
-;;;     gtk_tree_model_get_valist
+
+(test gtk-tree-model-ref/unref-node
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-tree-store))
+    (let ((node (gtk:tree-model-iter-first model)))
+      (is-false (gtk:tree-model-ref-node model node))
+      (is-false (gtk:tree-model-unref-node model node)))))
+
 ;;;     gtk_tree_model_foreach
+
+(test gtk-tree-model-foreach
+  (glib-test:with-check-memory (model)
+    (setf model (create-and-fill-tree-store))
+    (let (result)
+      (gtk:tree-model-foreach model
+          (lambda (model path iter)
+            (declare (ignore path))
+            (push (gtk:tree-model-get model iter 0) result)
+            nil))
+      (is (equal '(("0") ("0:0") ("0:1") ("1") ("1:0") ("1:0:0") ("1:0:1") ("1:1"))
+                 (reverse result))))))
+
 ;;;     gtk_tree_model_row_changed
 ;;;     gtk_tree_model_row_inserted
 ;;;     gtk_tree_model_row_has_child_toggled
@@ -341,4 +625,4 @@
 ;;;     gtk_tree_model_rows_reordered
 ;;;     gtk_tree_model_rows_reordered_with_length
 
-;;; 2025-1-6
+;;; 2026-05-14

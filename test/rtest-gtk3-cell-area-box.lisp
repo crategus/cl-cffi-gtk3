@@ -33,31 +33,71 @@
              (glib-test:list-signals "GtkCellAreaBox")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellAreaBox" GTK:CELL-AREA-BOX
-                       (:SUPERCLASS GTK:CELL-AREA
-                        :EXPORT T
-                        :INTERFACES
-                        ("GtkBuildable" "GtkCellLayout" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_cell_area_box_get_type")
-                       ((SPACING CELL-AREA-BOX-SPACING "spacing" "gint" T T)))
+                      (:SUPERCLASS GTK:CELL-AREA
+                       :EXPORT T
+                       :INTERFACES
+                       ("GtkBuildable" "GtkCellLayout" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_cell_area_box_get_type")
+                      ((SPACING CELL-AREA-BOX-SPACING "spacing" "gint" T T)))
              (gobject:get-gtype-definition "GtkCellAreaBox"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 ;;;     spacing
 
-;;; --- Child Properties -------------------------------------------------------
+(test gtk-cell-area-box-properties
+  (glib-test:with-check-memory (box)
+    (is (typep (setf box (make-instance 'gtk:cell-area-box)) 'gtk:cell-area-box))
+    (is (=  0 (gtk:cell-area-box-spacing box)))
+    (is (= 12 (setf (gtk:cell-area-box-spacing box) 12)))
+    (is (= 12 (gtk:cell-area-box-spacing box)))))
+
+;;; --- Cell Properties --------------------------------------------------------
 
 ;;;     align
 ;;;     expand
 ;;;     fixed-size
 ;;;     pack-type
 
+(test gtk-cell-area-box-cell-properties
+  (glib-test:with-check-memory (box renderer)
+    ;; Create cell area box with cell renderer
+    (is (typep (setf box (gtk:cell-area-box-new)) 'gtk:cell-area-box))
+    (is (typep (setf renderer
+                     (gtk:cell-renderer-text-new)) 'gtk:cell-renderer-text))
+    (is-false (gtk:cell-area-box-pack-start box renderer))
+    ;; Check child-properties
+    (is-true (gtk:cell-area-cell-property box renderer "align"))
+    (is-true (gtk:cell-area-cell-property box renderer "expand"))
+    (is-true (gtk:cell-area-cell-property box renderer "fixed-size"))
+    (is (eq :start (gtk:cell-area-cell-property box renderer "pack-type")))
+    ;; Remove references
+    (is-false (gtk:cell-area-remove box renderer))))
+
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_cell_area_box_new
+
+(test gtk-cell-area-box-new
+  (glib-test:with-check-memory (box)
+    (is (typep (setf box (gtk:cell-area-box-new)) 'gtk:cell-area-box))))
+
 ;;;     gtk_cell_area_box_pack_start
 ;;;     gtk_cell_area_box_pack_end
-;;;     gtk_cell_area_box_get_spacing                      Accessor
-;;;     gtk_cell_area_box_set_spacing                      Accessor
 
-;;; 2024-9-22
+(test gtk-cell-area-box-pack-start/end
+  (glib-test:with-check-memory (box renderer1 renderer2)
+    (is (typep (setf box (gtk:cell-area-box-new)) 'gtk:cell-area-box))
+    (is (typep (setf renderer1 (gtk:cell-renderer-text-new)) 'gtk:cell-renderer))
+    (is (typep (setf renderer2 (gtk:cell-renderer-text-new)) 'gtk:cell-renderer))
+    ;; Pack renderer into box
+    (is-false (gtk:cell-area-box-pack-start box renderer1))
+    (is-false (gtk:cell-area-box-pack-end box renderer2))
+    ;; Check packing
+    (is-true (gtk:cell-area-has-renderer box renderer1))
+    (is-true (gtk:cell-area-has-renderer box renderer2))
+    ;; Remove references
+    (is-false (gtk:cell-area-remove box renderer1))
+    (is-false (gtk:cell-area-remove box renderer2))))
+
+;;; 2026-05-13

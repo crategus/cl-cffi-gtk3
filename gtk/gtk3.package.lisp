@@ -1881,6 +1881,7 @@ setup_tree (void)
       @about-function{tree-model-iter-from-string}
       @about-function{tree-model-iter-first}
       @about-function{tree-model-path}
+      @about-function{tree-model-get}
       @about-function{tree-model-value}
       @about-function{tree-model-iter-next}
       @about-function{tree-model-iter-previous}
@@ -1892,8 +1893,6 @@ setup_tree (void)
       @about-function{tree-model-string-from-iter}
       @about-function{tree-model-ref-node}
       @about-function{tree-model-unref-node}
-      @about-function{tree-model-get}
-      @about-function{tree-model-get-valist}
       @about-symbol{tree-model-foreach-func}
       @about-function{tree-model-foreach}
       @about-function{tree-model-row-changed}
@@ -2263,7 +2262,7 @@ setup_tree (void)
       @about-function{cell-area-box-pack-start}
       @about-function{cell-area-box-pack-end}
     @end{subsection}
-    @begin[GtkcellAreaContext]{subsection}
+    @begin[GtkCellAreaContext]{subsection}
       @about-class{cell-area-context}
       @about-generic{cell-area-context-area}
       @about-generic{cell-area-context-minimum-height}
@@ -3767,20 +3766,7 @@ setup_tree (void)
     @end{subsection}
   @end{section}
   @begin[Recently Used Documents]{section}
-    @begin[GtkRecentManager]{subsection}
-      @about-class{recent-manager}
-      @about-generic{recent-manager-filename}
-      @about-generic{recent-manager-size}
-      @about-function{recent-manager-new}
-      @about-function{recent-manager-default}
-      @about-function{recent-manager-add-item}
-      @about-function{recent-manager-add-full}
-      @about-function{recent-manager-remove-item}
-      @about-function{recent-manager-lookup-item}
-      @about-function{recent-manager-has-item}
-      @about-function{recent-manager-move-item}
-      @about-function{recent-manager-items}
-      @about-function{recent-manager-purge-items}
+    @begin[GtkRecentInfo]{subsection}
       @about-class{recent-info}
       @about-function{recent-info-uri}
       @about-function{recent-info-display-name}
@@ -3790,13 +3776,6 @@ setup_tree (void)
       @about-function{recent-info-modified}
       @about-function{recent-info-visited}
       @about-function{recent-info-private-hint}
-      @about-function{recent-info-application-info}
-      @about-function{recent-info-applications}
-      @about-function{recent-info-last-application}
-      @about-function{recent-info-has-application}
-      @about-function{recent-info-create-app-info}
-      @about-function{recent-info-groups}
-      @about-function{recent-info-has-group}
       @about-function{recent-info-icon}
       @about-function{recent-info-gicon}
       @about-function{recent-info-short-name}
@@ -3804,7 +3783,29 @@ setup_tree (void)
       @about-function{recent-info-age}
       @about-function{recent-info-is-local}
       @about-function{recent-info-exists}
+      @about-function{recent-info-application-info}
+      @about-function{recent-info-applications}
+      @about-function{recent-info-last-application}
+      @about-function{recent-info-has-application}
+      @about-function{recent-info-create-app-info}
+      @about-function{recent-info-groups}
+      @about-function{recent-info-has-group}
       @about-function{recent-info-match}
+    @end{subsection}
+    @begin[GtkRecentManager]{subsection}
+      @about-class{recent-manager}
+      @about-generic{recent-manager-filename}
+      @about-generic{recent-manager-size}
+      @about-function{recent-manager-new}
+      @about-function{recent-manager-default}
+      @about-function{recent-manager-has-item}
+      @about-function{recent-manager-lookup-item}
+      @about-function{recent-manager-add-item}
+      @about-function{recent-manager-add-full}
+      @about-function{recent-manager-remove-item}
+      @about-function{recent-manager-move-item}
+      @about-function{recent-manager-items}
+      @about-function{recent-manager-purge-items}
     @end{subsection}
     @begin[GtkRecentChooser]{subsection}
       @about-symbol{GTK_RECENT_CHOOSER_ERROR}
