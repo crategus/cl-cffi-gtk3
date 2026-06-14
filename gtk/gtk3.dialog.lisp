@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -116,7 +116,7 @@
 (setf (liber:alias-for-symbol 'dialog-flags)
       "GFlags"
       (liber:symbol-documentation 'dialog-flags)
- "@version{2024-03-16}
+ "@version{2026-06-05}
   @begin{declaration}
 (gobject:define-gflags \"GtkDialogFlags\" dialog-flags
   (:export t
@@ -165,7 +165,7 @@
 (setf (liber:alias-for-symbol 'response-type)
       "GEnum"
       (liber:symbol-documentation 'response-type)
- "@version{2024-03-16}
+ "@version{2026-06-05}
   @begin{declaration}
 (gobject:define-genum \"GtkResponseType\" response-type
   (:export t
@@ -223,7 +223,7 @@
 
 #+liber-documentation
 (setf (documentation 'dialog 'type)
- "@version{2025-07-15}
+ "@version{2026-06-05}
   @begin{short}
     Dialogs are a convenient way to prompt the user for a small amount of input,
     for example, to display a message, ask a question, or anything else that
@@ -463,14 +463,13 @@ lambda (dialog response)    :run-last
 (setf (liber:alias-for-function 'dialog-use-header-bar)
       "Accessor"
       (documentation 'dialog-use-header-bar 'function)
- "@version{2024-03-16}
+ "@version{2026-06-05}
   @syntax{(gtk:dialog-use-header-bar object) => setting}
   @syntax{(setf (gtk:dialog-use-header-bar object) setting)}
   @argument[object]{a @class{gtk:dialog} widget}
   @argument[setting]{@em{true} if the dialog uses a header bar}
   @begin{short}
-    Accessor of the @slot[gtk:dialog]{use-header-bar} slot of the
-    @class{gtk:dialog} class.
+    The accessor for the @slot[gtk:dialog]{use-header-bar} slot.
   @end{short}
   @em{True} if the dialog uses a header bar for action buttons instead of the
   action area. For technical reasons, this property is declared as an integer
@@ -486,7 +485,7 @@ lambda (dialog response)    :run-last
 
 (defun dialog-new ()
  #+liber-documentation
- "@version{2024-03-16}
+ "@version{2026-06-05}
   @return{The new @class{gtk:dialog} widget.}
   @short{Creates a new dialog.}
   Widgets should not be packed into this dialog directly, but into the content
@@ -507,7 +506,7 @@ lambda (dialog response)    :run-last
 
 (defun dialog-new-with-buttons (title parent flags &rest buttons)
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[title]{a string for the title of the dialog, or @code{nil}}
   @argument[parent]{a @class{gtk:window} transient parent of the dialog,
     or @code{nil}}
@@ -581,7 +580,7 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_run" dialog-run) response-type
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @begin{return}
     The response ID, which is a positive integer or a value of the
@@ -644,7 +643,7 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_response" dialog-response) :void
  #+liber-documentation
- "@version{#2025-06-23}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, which is a positive integer or a value of
     the @sym{gtk:response-type} enumeration}
@@ -668,7 +667,7 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_add_button" dialog-add-button) (g:object widget)
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[text]{a string for the text of the button}
   @argument[response]{a response ID for the button, which is a positive integer
@@ -697,7 +696,7 @@ lambda (dialog response)    :run-last
 
 (defun dialog-add-buttons (dialog &rest buttons)
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[buttons]{pairs for a button text and the response ID, which is a
     positive integer or a value of the @sym{gtk:response-type} enumeration}
@@ -725,7 +724,7 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_add_action_widget" dialog-add-action-widget) :void
  #+liber-documentation
- "@version{2025-07-15}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[child]{an activatable @class{gtk:widget} widget}
   @argument[response]{a response ID for @arg{child}, that is a positive integer
@@ -756,7 +755,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_set_default_response" dialog-set-default-response)
     :void
  #+liber-documentation
- "@version{2025-07-15}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, that is a positive integer or a value of
   the @sym{gtk:response-type} enumeration}
@@ -779,7 +778,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_set_response_sensitive"
                dialog-set-response-sensitive) :void
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, that is a positive integer or a value
     of the @sym{gtk:response-type} enumeration}
@@ -805,7 +804,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_response_for_widget" dialog-response-for-widget)
     :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[widget]{a @class{gtk:widget} widget in the action area of
     @arg{dialog}}
@@ -834,7 +833,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_widget_for_response" dialog-widget-for-response)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a response ID, that is a positive integer or a value
     of the @sym{gtk:response-type} enumeration}
@@ -862,7 +861,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_action_area" dialog-action-area)
     (g:object widget)
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The @class{gtk:widget} action area of the dialog.}
   @short{Returns the action area of the dialog.}
@@ -886,7 +885,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_content_area" dialog-content-area)
     (g:object widget)
  #+liber-documentation
- "@version{2025-06-23}
+ "@version{2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @begin{return}
     The @class{gtk:box} content area with a @val[gtk:orientation]{:vertical}
@@ -906,7 +905,7 @@ lambda (dialog response)    :run-last
 
 (cffi:defcfun ("gtk_dialog_get_header_bar" dialog-header-bar) (g:object widget)
  #+liber-documentation
- "@version{#2023-03-17}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The @class{gtk:header-bar} widget.}
   @begin{short}
@@ -928,7 +927,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_alternative_dialog_button_order"
                alternative-dialog-button-order) :boolean
  #+liber-documentation
- "@version{#2023-03-17}
+ "@version{#2026-06-05}
   @argument[screen]{a @class{gdk:screen} object, or @code{nil} to use the
     default screen}
   @return{The boolean whether the alternative button order should be used.}
@@ -944,8 +943,8 @@ lambda (dialog response)    :run-last
   @class{gtk:settings} object associated to the screen, in order to be notified
   if the button order setting changes.
   @begin[Warning]{dictionary}
-    The @fun{gtk:alternative-dialog-button-order} function has been deprecated
-    since version 3.10 and should not be used in newly written code.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}
   @see-class{gdk:screen}
@@ -959,7 +958,7 @@ lambda (dialog response)    :run-last
 
 (defun dialog-set-alternative-button-order (dialog response)
  #+liber-documentation
- "@version{#2023-03-17}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[response]{a list of response IDs, that are positive integer or
     values of the @sym{gtk:response-type} enumeration}
@@ -1001,8 +1000,8 @@ lambda (dialog response)    :run-last
     @end{pre}
   @end{dictionary}
   @begin[Warning]{dictionary}
-    The @fun{gtk:dialog-set-alternative-button-order} function has been
-    deprecated since version 3.10 and should not be used in newly written code.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}
   @see-class{gtk:message-dialog}
@@ -1027,7 +1026,7 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_set_alternative_button_order_from_array"
                %dialog-set-alternative-button-order-from-array) :void
  #+liber-documentation
- "@version{#2023-03-17}
+ "@version{#2026-06-05}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @argument[n-params]{the number of response IDs in @arg{new-order}}
   @argument[new-order]{an array of response IDs of dialog's buttons}
@@ -1041,8 +1040,8 @@ lambda (dialog response)    :run-last
 
   This function is for use by language bindings.
   @begin[Warning]{dictionary}
-    The @fun{gtk:dialog-set-alternative-button-order} function has been
-    deprecated since version 3.10 and should not be used in newly written code.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code.
   @end{dictionary}
   @see-class{gtk:dialog}"
   (dialog (g:object dialog))
