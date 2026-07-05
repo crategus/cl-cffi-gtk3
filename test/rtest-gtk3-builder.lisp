@@ -81,8 +81,6 @@
 
 ;;; --- Types and Values -------------------------------------------------------
 
-;;;     GtkBuilderError
-
 ;;;     GtkBuilder
 
 (test gtk-builder-class
@@ -130,7 +128,7 @@
 ;;;     gtk_builder_new
 
 (test gtk-builder-new
-  (glib-test:with-check-memory (builder :strong 2)
+  (glib-test:with-check-memory (builder (dialog 2) (menu 2) :strong 2)
     (let ((path (glib-sys:sys-path "test/resource/rtest-application.ui")))
       ;; gtk:builder-new is implemented with make-instance
       (is (typep (setf builder (gtk:builder-new)) 'gtk:builder))
@@ -138,13 +136,16 @@
       (is (typep (setf builder
                        (make-instance 'gtk:builder :from-string *dialog*))
                  'gtk:builder))
-      (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
+      (is (typep (setf dialog
+                       (gtk:builder-object builder "dialog1")) 'gtk:dialog))
       ;; Create builder from file
       (is (typep (setf builder
                        (make-instance 'gtk:builder
                                       :from-file (namestring path)))
                  'gtk:builder))
-      (is (typep (gtk:builder-object builder "menubar") 'g:menu)))))
+      (is (typep (setf menu (gtk:builder-object builder "menubar")) 'g:menu))
+      ;; Destroy dialog
+      (is-false (gtk:widget-destroy dialog)))))
 
 ;;;     gtk_builder_new_from_file
 
@@ -207,12 +208,13 @@
 ;;;     gtk_builder_add_objects_from_file
 
 (test gtk-builder-add-objects-from-file.1
-  (let ((builder (gtk:builder-new))
-        (path (glib-sys:sys-path "test/resource/rtest-dialog.ui")))
-    (is-true (gtk:builder-add-objects-from-file builder path "dialog1"))
-    (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
-    (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
-               (mapcar 'type-of (gtk:builder-objects builder))))))
+  (glib-test:with-check-memory (builder :strong 4)
+    (let ((path (glib-sys:sys-path "test/resource/rtest-dialog.ui")))
+      (setf builder (gtk:builder-new))
+      (is-true (gtk:builder-add-objects-from-file builder path "dialog1"))
+      (is (typep (gtk:builder-object builder "dialog1") 'gtk:dialog))
+      (is (equal '(GTK:DIALOG GTK:BOX GTK:BUTTON-BOX GTK:BUTTON)
+                 (mapcar 'type-of (gtk:builder-objects builder)))))))
 
 (test gtk-builder-add-objects-from-file.2
   (glib-test:with-check-memory (builder :strong 2)
@@ -279,4 +281,4 @@
 ;;;     gtk_builder_value_from_string
 ;;;     gtk_builder_value_from_string_type
 
-;;; 2025-07-11
+;;; 2026-06-17

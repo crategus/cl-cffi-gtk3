@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -34,7 +34,6 @@
 ;;; Types and Values
 ;;;
 ;;;     GtkBuilder
-;;;     GtkBuilderError
 ;;;
 ;;; Accessors
 ;;;
@@ -82,87 +81,6 @@
 (in-package :gtk)
 
 ;;; ----------------------------------------------------------------------------
-;;; GtkBuilderError                                         not exported
-;;; ----------------------------------------------------------------------------
-
-(gobject:define-genum "GtkBuilderError" builder-error
-  (:export nil
-   :type-initializer "gtk_builder_error_get_type")
-  (:invalid-type-function 0)
-  (:unhandled-tag 1)
-  (:missing-attribute 2)
-  (:invalid-attribute 3)
-  (:invalid-tag 4)
-  (:missing-property-value 5)
-  (:invalid-value 6)
-  (:version-mismatch 7)
-  (:duplicate-id 8)
-  (:type-refused 9)
-  (:template-mismatch 10)
-  (:invalid-property 11)
-  (:invalid-signal 12)
-  (:invalid-id 13))
-
-#+liber-documentation
-(setf (liber:alias-for-symbol 'builder-error)
-      "GEnum"
-      (liber:symbol-documentation 'builder-error)
- "@version{#2024-03-21}
-  @begin{declaration}
-(gobject:define-genum \"GtkBuilderError\" builder-error
-  (:export t
-   :type-initializer \"gtk_builder_error_get_type\")
-  (:invalid-type-function 0)
-  (:unhandled-tag 1)
-  (:missing-attribute 2)
-  (:invalid-attribute 3)
-  (:invalid-tag 4)
-  (:missing-property-value 5)
-  (:invalid-value 6)
-  (:version-mismatch 7)
-  (:duplicate-id 8)
-  (:type-refused 9)
-  (:template-mismatch 10)
-  (:invalid-property 11)
-  (:invalid-signal 12)
-  (:invalid-id 13))
-  @end{declaration}
-  @begin{values}
-    @begin[code]{simple-table}
-      @entry[:invalid-type-function]{A @code{type-func} attribute did not name
-        a function that returns a @class{g:type-t} type ID.}
-      @entry[:unhandled-tag]{The input contained a tag that a
-        @class{gtk:builder} object cannot handle.}
-      @entry[:missing-attribute]{An attribute that is required by a
-        @class{gtk:builder} object was missing.}
-      @entry[:invalid-attribute]{A @class{gtk:builder} object found an attribute
-        that it does not understand.}
-      @entry[:invalid-tag]{A @class{gtk:builder} object found a tag that it does
-        not understand.}
-      @entry[:missing-property-value]{A required property value was missing.}
-      @entry[:invalid-value]{A @class{gtk:builder} object could not parse some
-        attribute value.}
-      @entry[:version-mismatch]{The input file requires a newer version of GTK.}
-      @entry[:duplicate-id]{An object ID occurred twice.}
-      @entry[:type-refused]{A specified object type is of the same type or
-        derived from the type of the composite class being extended with builder
-        XML.}
-      @entry[:template-mismatch]{The wrong type was specified in a composite
-        class’s template XML.}
-      @entry[:invalid-property]{The specified property is unknown for the object
-        class.}
-      @entry[:invalid-signal]{The specified signal is unknown for the object
-        class.}
-      @entry[:invalid-id]{An object ID is unknown.}
-    @end{simple-table}
-  @end{values}
-  @begin{short}
-    Error codes that identify various errors that can occur while parsing the
-    @class{gtk:builder} UI definition.
-  @end{short}
-  @see-class{gtk:builder}")
-
-;;; ----------------------------------------------------------------------------
 ;;; GtkBuilder
 ;;; ----------------------------------------------------------------------------
 
@@ -185,7 +103,7 @@
 
 #+liber-documentation
 (setf (documentation 'builder 'type)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @begin{short}
     The @class{gtk:builder} object is an auxiliary object that reads textual
     descriptions of a user interface and instantiates the described objects.
@@ -201,7 +119,7 @@
   @fun{gtk:builder-add-from-resource} or @fun{gtk:builder-add-from-string}
   functions.
 
-  A @class{gtk:builder} object holds a reference to all objects that it has
+  The @class{gtk:builder} object holds a reference to all objects that it has
   constructed and drops these references when it is finalized. This finalization
   can cause the destruction of non-widget objects or widgets which are not
   contained in a toplevel window. For toplevel windows constructed by a builder,
@@ -392,18 +310,15 @@
 (setf (liber:alias-for-function 'builder-translation-domain)
       "Accessor"
       (documentation 'builder-translation-domain 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:builder-translation-domain object) => domain}
   @syntax{(setf (gtk:builder-translation-domain object) domain)}
   @argument[object]{a @class{gtk:builder} object}
   @argument[domain]{a string for the translation domain or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:builder]{translation-domain} slot of the
-    @class{gtk:builder} class.
+    The accessor for the @slot[gtk:builder]{translation-domain} slot gets or
+    sets the translation domain.
   @end{short}
-  The @fun{gtk:builder-translation-domain} function gets the translation domain
-  of @arg{object}. The @setf{gtk:builder-translation-domain} function sets the
-  translation domain.
   @see-class{gtk:builder}")
 
 ;;; ----------------------------------------------------------------------------
@@ -1063,22 +978,19 @@
 (cffi:defcfun ("gtk_builder_get_application" builder-application)
     (g:object application)
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-17}
   @syntax{(gtk:builder-application builder) => application}
   @syntax{(setf (gtk:builder-application builder) application)}
   @argument[builder]{a @class{gtk:builder} object}
   @argument[application]{a @class{gtk:application} instance}
   @begin{short}
-    The @fun{gtk:builder-application} function gets the application associated
-    with the builder.
+    Gets or sets the application associated with the builder.
   @end{short}
-  The @setf{gtk:builder-application} function sets the application.
-
   The application is used for creating action proxies as requested from XML
   that the builder is loading. By default, the builder uses the default
-  application: the one from the @fun{g:application-default} function. If you
-  want to use another application for constructing proxies, use the
-  @setf{gtk:builder-application} function.
+  application: the one from the @fun{g:application-default} function.
+  Use this function, if you want to use another application for constructing
+  proxies.
 
   You only need this function if there is more than one
   @class{g:application} instance in your process. The @arg{application}

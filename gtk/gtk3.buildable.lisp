@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -69,16 +69,13 @@
 (setf (liber:alias-for-class 'buildable)
       "Interface"
       (documentation 'buildable 'type)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @begin{short}
-    Interface for objects that can be built by a @class{gtk:builder} UI
-    description.
+    The @class{gtk:buildable} interface allows objects to extend and customize
+    their deserialization from @class{gtk:builder} UI descriptions.
   @end{short}
-
-  The @class{gtk:buildable} interface allows objects to extend and customize
-  their deserialization from @class{gtk:builder} UI descriptions. The interface
-  includes methods for setting names and properties of objects, parsing custom
-  tags and constructing child objects.
+  The interface includes methods for setting names and properties of objects,
+  parsing custom tags and constructing child objects.
 
   The @class{gtk:buildable} interface is implemented by all widgets and many of
   the non-widget objects that are provided by GTK. The main user of this
@@ -106,17 +103,14 @@
 
 (cffi:defcfun ("gtk_buildable_get_name" buildable-name) :string
  #+liber-documentation
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:buildable-name buildable) => name}
   @syntax{(setf (gtk:buildable-name buildable) name)}
   @argument[buildable]{a @class{gtk:buildable} widget}
   @argument[name]{a string for the name}
   @begin{short}
-    Accessor of the name of the buildable widget.
+    Gets or sets the name of the buildable widget.
   @end{short}
-  The @fun{gtk:buildable-name} function gets the name of the buildable widget.
-  The @setf{gtk:buildable-name} function sets the name.
-
   The @class{gtk:builder} object sets the name based on the the
   @class{gtk:builder} UI definition used to construct the buildable widget.
   @see-class{gtk:buildable}
