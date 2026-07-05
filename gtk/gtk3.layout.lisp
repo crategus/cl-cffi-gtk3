@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -145,17 +145,15 @@
 (setf (liber:alias-for-function 'layout-height)
       "Accessor"
       (documentation 'layout-height 'function)
- "@version{2025-06-16}
+ "@version{2026-06-20}
   @syntax{(gtk:layout-height object) => height}
   @syntax{(setf (gtk:layout-height object) height)}
   @argument[object]{a @class{gtk:layout} widget}
   @argument[height]{an unsigned integer for the height of the layout}
   @begin{short}
-    Accessor of the @slot[gtk:layout]{height} slot of the @class{gtk:layout}
-    class.
+    The accessor for the @slot[gtk:layout]{height} slot gets or sets the height
+    of the layout.
   @end{short}
-  The @fun{gtk:layout-height} function gets the height of the layout. The
-  @setf{gtk:layout-height} function sets the height.
   @see-class{gtk:layout}")
 
 ;;; --- gtk:layout-width -------------------------------------------------------
@@ -171,17 +169,15 @@
 (setf (liber:alias-for-function 'layout-width)
       "Accessor"
       (documentation 'layout-width 'function)
- "@version{2025-06-16}
+ "@version{2026-06-20}
   @syntax{(gtk:layout-width object) => width}
   @syntax{(setf (gtk:layout-width object) width)}
   @argument[object]{a @class{gtk:layout} widget}
   @argument[width]{an unsigned integer for the width of the layout}
   @begin{short}
-    Accessor of the @slot[gtk:layout]{width} slot of the @class{gtk:layout}
-    class.
+    The accessor for the @slot[gtk:layout]{width} slot gets or sets the width
+    of the layout.
   @end{short}
-  The @fun{gtk:layout-width} function gets the width of the layout. The
-  @setf{gtk:layout-width} function sets the width.
   @see-class{gtk:layout}")
 
 ;;; ----------------------------------------------------------------------------
@@ -196,17 +192,16 @@
 (setf (liber:alias-for-function 'layout-child-x)
       "Accessor"
       (documentation 'layout-child-x 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:layout-child-x container child) => x}
   @syntax{(setf (gtk:layout-child-x container child) x)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[x]{an integer for the x position of the child widget}
   @begin{short}
-    Accessor of the @prop[gtk:layout]{x} child property of the
-    @class{gtk:layout} class.
+    The accessor for the @prop[gtk:layout]{x} child property gets or sets the
+    x position of the child widget in the layout.
   @end{short}
-  The x position of the child widget in the layout.
   @see-class{gtk:layout}
   @see-class{gtk:widget}")
 
@@ -218,17 +213,16 @@
 (setf (liber:alias-for-function 'layout-child-y)
       "Accessor"
       (documentation 'layout-child-y 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:layout-child-y container child) => y}
   @syntax{(setf (gtk:layout-child-y container child) y)}
   @argument[container]{a @class{gtk:layout} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[y]{an integer for the y position of the child widget}
   @begin{short}
-    Accessor of the @prop[gtk:layout]{y} child property of the
-    @class{gtk:layout} class.
+    The accessor for the @prop[gtk:layout]{y} child property gets or sets the
+    y position of the child widget in the layout.
   @end{short}
-  The y position of the child widget in the layout.
   @see-class{gtk:layout}
   @see-class{gtk:widget}")
 
@@ -327,7 +321,7 @@
 
 (defun layout-size (layout)
  #+liber-documentation
- "@version{2024-04-10}
+ "@version{2026-06-20}
   @syntax{(gtk:layout-size layout) => width, height}
   @syntax{(setf (gtk:layout-size layout)  (list width height))}
   @argument[layout]{a @class{gtk:layout} widget}
@@ -336,11 +330,9 @@
   @argument[height]{an unsigned integer for the height of the entire scrollable
     area}
   @begin{short}
-    Accessor of the width and height of the scrollable area.
+  Gets or sets the size in pixels on the layout, that determines the total
+  extents of the scrollbar of the layout area.
   @end{short}
-  The @fun{gtk:layout-size} function gets the size in pixels that has been set
-  on the layout, and that determines the total extents of the scrollbar of the
-  layout area. The @setf{gtk:layout-size} function sets the size.
   @begin[Lisp binding]{dictionary}
     In the Lisp binding the @fun{gtk:layout-width} and @fun{gtk:layout-height}
     functions get or set the width and height of the scrollable area.

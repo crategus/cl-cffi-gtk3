@@ -39,20 +39,21 @@
              (glib-test:list-signals "GtkStackSwitcher")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStackSwitcher" GTK:STACK-SWITCHER
-                       (:SUPERCLASS GTK:BOX
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_stack_switcher_get_type")
-                       ((ICON-SIZE STACK-SWITCHER-ICON-SIZE
-                         "icon-size" "gint" T T)
-                        (STACK STACK-SWITCHER-STACK "stack" "GtkStack" T T)))
+                      (:SUPERCLASS GTK:BOX
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_stack_switcher_get_type")
+                      ((ICON-SIZE STACK-SWITCHER-ICON-SIZE
+                        "icon-size" "gint" T T)
+                       (STACK STACK-SWITCHER-STACK "stack" "GtkStack" T T)))
              (gobject:get-gtype-definition "GtkStackSwitcher"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-stack-switcher-properties
-  (let ((switcher (make-instance 'gtk:stack-switcher)))
+  (glib-test:with-check-memory (switcher)
+    (setf switcher (make-instance 'gtk:stack-switcher))
     (is (= 1 (gtk:stack-switcher-icon-size switcher)))
     (is-false (gtk:stack-switcher-stack switcher))))
 
@@ -61,6 +62,7 @@
 ;;;     gtk_stack_switcher_new
 
 (test gtk-stack-switcher-new
-  (is (typep (gtk:stack-switcher-new) 'gtk:stack-switcher)))
+  (glib-test:with-check-memory (switcher)
+    (is (typep (setf switcher (gtk:stack-switcher-new)) 'gtk:stack-switcher))))
 
-;;; 2024-9-21
+;;; 2026-06-20

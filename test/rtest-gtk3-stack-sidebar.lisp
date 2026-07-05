@@ -42,17 +42,18 @@
                (gtk:widget-class-css-name "GtkStackSidebar")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStackSidebar" GTK:STACK-SIDEBAR
-                       (:SUPERCLASS GTK:BIN
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_stack_sidebar_get_type")
-                       ((STACK STACK-SIDEBAR-STACK "stack" "GtkStack" T T)))
+                      (:SUPERCLASS GTK:BIN
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_stack_sidebar_get_type")
+                      ((STACK STACK-SIDEBAR-STACK "stack" "GtkStack" T T)))
              (gobject:get-gtype-definition "GtkStackSidebar"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-stack-sidebar-stack
-  (let ((sidebar (make-instance 'gtk:stack-sidebar)))
+  (glib-test:with-check-memory (sidebar)
+    (setf sidebar (make-instance 'gtk:stack-sidebar))
     (is-false (gtk:stack-sidebar-stack sidebar))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -60,6 +61,7 @@
 ;;;     gtk_stack_sidebar_new
 
 (test gtk-stack-sidebar-new
-  (is (typep (gtk:stack-sidebar-new) 'gtk:stack-sidebar)))
+  (glib-test:with-check-memory (sidebar)
+    (is (typep (setf sidebar (gtk:stack-sidebar-new)) 'gtk:stack-sidebar))))
 
-;;; 2024-9-21
+;;; 2026-06-20

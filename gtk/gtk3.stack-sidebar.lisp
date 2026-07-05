@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -117,19 +117,15 @@
 (setf (liber:alias-for-function 'stack-sidebar-stack)
       "Accessor"
       (documentation 'stack-sidebar-stack 'function)
- "@version{2024-04-09}
+ "@version{2026-06-19}
   @syntax{(gtk:stack-sidebar-stack object) => stack}
   @syntax{(setf (gtk:stack-sidebar-stack object) stack)}
   @argument[object]{a @class{gtk:stack-sidebar} widget}
   @argument[stack]{a @class{gtk:stack} widget}
   @begin{short}
-    Accessor of the @slot[gtk:stack-sidebar]{stack} slot of the
-    @class{gtk:stack-sidebar} class.
+    The accessor for the @slot[gtk:stack-sidebar]{stack} slot gets or sets
+    the stack associated with this stack sidebar.
   @end{short}
-  The @fun{gtk:stack-sidebar-stack} function retrieves the stack. The
-  @setf{gtk:stack-sidebar-stack} function sets the stack associated with this
-  stack sidebar.
-
   The stack sidebar will automatically update according to the order (packing)
   and items within the given stack.
   @see-class{gtk:stack-sidebar}

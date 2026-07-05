@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -165,17 +165,16 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-index)
       "Accessor"
       (documentation 'overlay-child-index 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:overlay-child-index container child) => index)}
   @syntax{(setf (gtk:overlay-child-index container child) index)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[index]{an integer for the index of the child widget in the parent}
   @begin{short}
-    Accessor of the @prop[gtk:overlay]{index} child property of the
-    @class{gtk:overlay} class.
+    The accessor for the @prop[gtk:overlay]{index} child property gets or sets
+    the index of the child widget in the parent, -1 for the main child.
   @end{short}
-  The index of the child widget in the parent, -1 for the main child.
   @see-class{gtk:overlay}
   @see-class{gtk:widget}")
 
@@ -188,17 +187,16 @@ lambda (overlay widget allocation)    :run-last
 (setf (liber:alias-for-function 'overlay-child-pass-through)
       "Accessor"
       (documentation 'overlay-child-pass-through 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:overlay-child-pass-through container child) => setting)}
   @syntax{(setf (gtk:overlay-child-pass-through container child) setting)}
   @argument[container]{a @class{gtk:overlay} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[setting]{a boolean whether to pass through input}
   @begin{short}
-    Accessor of the @prop[gtk:overlay]{pass-through} child property of the
-    @class{gtk:overlay} class.
+    The accessor for the @prop[gtk:overlay]{pass-through} child property gets
+    or sets whether pass through input, does not affect main child.
   @end{short}
-  Pass through input, does not affect main child.
   @see-class{gtk:overlay}
   @see-class{gtk:widget}")
 

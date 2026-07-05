@@ -40,26 +40,27 @@
              (glib-test:list-signals "GtkPaned")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPaned" GTK:PANED
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_paned_get_type")
-                       ((MAX-POSITION PANED-MAX-POSITION
-                         "max-position" "gint" T NIL)
-                        (MIN-POSITION PANED-MIN-POSITION
-                         "min-position" "gint" T NIL)
-                        (POSITION PANED-POSITION "position" "gint" T T)
-                        (POSITION-SET PANED-POSITION-SET
-                         "position-set" "gboolean" T T)
-                        (WIDE-HANDLE PANED-WIDE-HANDLE
-                         "wide-handle" "gboolean" T T)))
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_paned_get_type")
+                      ((MAX-POSITION PANED-MAX-POSITION
+                        "max-position" "gint" T NIL)
+                       (MIN-POSITION PANED-MIN-POSITION
+                        "min-position" "gint" T NIL)
+                       (POSITION PANED-POSITION "position" "gint" T T)
+                       (POSITION-SET PANED-POSITION-SET
+                        "position-set" "gboolean" T T)
+                       (WIDE-HANDLE PANED-WIDE-HANDLE
+                        "wide-handle" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkPaned"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-paned-properties
-  (let ((paned (make-instance 'gtk:paned :orientation :horizontal)))
+  (glib-test:with-check-memory (paned)
+    (setf paned (make-instance 'gtk:paned :orientation :horizontal))
     ;; max-position
     (is (= 2147483647 (gtk:paned-max-position paned)))
     (signals (error) (setf (gtk:paned-max-position paned) 1000))
@@ -82,9 +83,10 @@
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-paned-child-properties
-  (let* ((paned (make-instance 'gtk:paned :orientation :horizontal))
-         (child1 (make-instance 'gtk:button))
-         (child2 (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (paned child1 child2)
+    (setf paned (make-instance 'gtk:paned :orientation :horizontal))
+    (setf child1 (make-instance 'gtk:button))
+    (setf child2 (make-instance 'gtk:button))
     ;; add child1
     (is-false (gtk:paned-add1 paned child1))
     ;; resize for child1
@@ -104,12 +106,16 @@
     ;; shrink for child2
     (is-true (gtk:paned-child-shrink paned child2))
     (is-false (setf (gtk:paned-child-shrink paned child2) nil))
-    (is-false (gtk:paned-child-shrink paned child2))))
+    (is-false (gtk:paned-child-shrink paned child2))
+    ;; Removed children
+    (is-false (gtk:container-remove paned child1))
+    (is-false (gtk:container-remove paned child2))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-paned-style-properties
-  (let ((paned (make-instance 'gtk:paned :orientation :horizontal)))
+  (glib-test:with-check-memory (paned)
+    (setf paned (make-instance 'gtk:paned :orientation :horizontal))
     (is (= 5 (gtk:widget-style-property paned "handle-size")))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -117,73 +123,85 @@
 ;;;     gtk_paned_new
 
 (test gtk-paned-new
-  (is (eq 'gtk:paned (type-of (gtk:paned-new :vertical))))
-  (is (eq 'gtk:paned (type-of (gtk:paned-new :horizontal)))))
+  (glib-test:with-check-memory (paned)
+    (is (eq 'gtk:paned (type-of (setf paned (gtk:paned-new :vertical)))))
+    (is (eq 'gtk:paned (type-of (setf paned (gtk:paned-new :horizontal)))))))
 
 ;;;     gtk_paned_add1
 ;;;     gtk_paned_add2
 
 (test gtk-paned-add
-  (let ((paned (gtk:paned-new :horizontal))
-        (child1 (make-instance 'gtk:frame))
-        (child2 (make-instance 'gtk:frame)))
-
+  (glib-test:with-check-memory (paned child1 child2)
+    (setf paned (gtk:paned-new :horizontal))
+    (setf child1 (make-instance 'gtk:frame))
+    (setf child2 (make-instance 'gtk:frame))
     (is-false (gtk:paned-add1 paned child1))
     (is-false (gtk:paned-child-resize paned child1))
     (is-true (gtk:paned-child-shrink paned child1))
-
     (is-false (gtk:paned-add2 paned child2))
     (is-true (gtk:paned-child-resize paned child2))
-    (is-true (gtk:paned-child-shrink paned child2))))
+    (is-true (gtk:paned-child-shrink paned child2))
+    ;; Remove children from paned
+    (is-false (gtk:container-remove paned child1))
+    (is-false (gtk:container-remove paned child2))))
 
 ;;;     gtk_paned_pack1
 ;;;     gtk_paned_pack2
 
 (test gtk-paned-pack.1
-  (let ((paned (gtk:paned-new :horizontal))
-        (child1 (make-instance 'gtk:frame))
-        (child2 (make-instance 'gtk:frame)))
-
+  (glib-test:with-check-memory (paned child1 child2)
+    (setf paned (gtk:paned-new :horizontal))
+    (setf child1 (make-instance 'gtk:frame))
+    (setf child2 (make-instance 'gtk:frame))
     (is-false (gtk:paned-pack1 paned child1))
     (is-false (gtk:paned-child-resize paned child1))
     (is-true (gtk:paned-child-shrink paned child1))
-
     (is-false (gtk:paned-pack2 paned child2))
     (is-true (gtk:paned-child-resize paned child2))
-    (is-true (gtk:paned-child-shrink paned child2))))
+    (is-true (gtk:paned-child-shrink paned child2))
+    ;; Remove children from paned
+    (is-false (gtk:container-remove paned child1))
+    (is-false (gtk:container-remove paned child2))))
 
 (test gtk-paned-pack.2
-  (let ((paned (gtk:paned-new :horizontal))
-        (child1 (make-instance 'gtk:frame))
-        (child2 (make-instance 'gtk:frame)))
-
+  (glib-test:with-check-memory (paned child1 child2)
+    (setf paned (gtk:paned-new :horizontal))
+    (setf child1 (make-instance 'gtk:frame))
+    (setf child2 (make-instance 'gtk:frame))
     (is-false (gtk:paned-pack1 paned child1 :resize t :shrink nil))
     (is-true (gtk:paned-child-resize paned child1))
     (is-false (gtk:paned-child-shrink paned child1))
-
     (is-false (gtk:paned-pack2 paned child2 :resize nil :shrink nil))
     (is-false (gtk:paned-child-resize paned child2))
-    (is-false (gtk:paned-child-shrink paned child2))))
+    (is-false (gtk:paned-child-shrink paned child2))
+    ;; Remove children from paned
+    (is-false (gtk:container-remove paned child1))
+    (is-false (gtk:container-remove paned child2))))
 
 ;;;     gtk_paned_get_child1
 ;;;     gtk_paned_get_child2
 
 (test gtk-paned-child
-  (let ((paned (gtk:paned-new :horizontal))
-        (child1 (make-instance 'gtk:frame))
-        (child2 (make-instance 'gtk:frame)))
+  (glib-test:with-check-memory (paned child1 child2)
+    (setf paned (gtk:paned-new :horizontal))
+    (setf child1 (make-instance 'gtk:frame))
+    (setf child2 (make-instance 'gtk:frame))
 
     (is-false (gtk:paned-pack1 paned child1 :resize t :shrink nil))
     (is (eq 'gtk:frame (type-of (gtk:paned-child1 paned))))
 
     (is-false (gtk:paned-pack2 paned child2 :resize nil :shrink nil))
-    (is (eq 'gtk:frame (type-of (gtk:paned-child2 paned))))))
+    (is (eq 'gtk:frame (type-of (gtk:paned-child2 paned))))
+    ;; Remove children from paned
+    (is-false (gtk:container-remove paned child1))
+    (is-false (gtk:container-remove paned child2))))
 
 ;;;     gtk_paned_get_handle_window
 
 (test gtk-paned-handle-window
-  (let ((paned (gtk:paned-new :horizontal)))
+  (glib-test:with-check-memory (paned)
+    (setf paned (gtk:paned-new :horizontal))
     ;; no handle because paned is not realized
     (is-false (gtk:paned-handle-window paned))))
 
-;;; 2024-9-21
+;;; 2026-06-12

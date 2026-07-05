@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2016 - 2025 Dieter Kaiser
+;;; Copyright (C) 2016 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -184,19 +184,15 @@
 (setf (liber:alias-for-function'header-bar-custom-title)
       "Accessor"
       (documentation 'header-bar-custom-title 'function)
- "@version{2024-04-09}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-custom-title object) => widget}
   @syntax{(setf (gtk:header-bar-custom-title object) widget)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[widget]{a @class{gtk:widget} custom widget to use for a title}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{custom-title} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{custom-title} slot gets or sets
+    the custom title widget of the header bar.
   @end{short}
-  The @fun{gtk:header-bar-custom-title} function retrieves the custom title
-  widget of the header bar. The @setf{gtk:header-bar-custom-title} function
-  sets a custom title widget.
-
   The title should help a user identify the current view. This supersedes any
   title set by the @fun{gtk:header-bar-title} or @fun{gtk:header-bar-subtitle}
   functions. To achieve the same style as the built-in title and subtitle, use
@@ -226,21 +222,17 @@
 (setf (liber:alias-for-function 'header-bar-decoration-layout)
       "Accessor"
       (documentation 'header-bar-decoration-layout 'function)
- "@version{2025-06-13}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-decoration-layout object) => layout}
   @syntax{(setf (gtk:header-bar-decoration-layout object) layout)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[layout]{a string for the decoration layout, or @code{nil} to unset
     the layout}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{decoration-layout} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{decoration-layout} slot gets or
+    sets the decoration layout for the header bar, overriding the
+    @slot[gtk:settings]{gtk-decoration-layout} setting.
   @end{short}
-  The @fun{gtk:header-bar-decoration-layout} function gets the decoration
-  layout. The @setf{gtk:header-bar-decoration-layout} function sets the
-  decoration layout for the header bar, overriding the
-  @slot[gtk:settings]{gtk-decoration-layout} setting.
-
   There can be valid reasons for overriding the setting, such as a header bar
   design that does not allow for buttons to take room on the right, or only
   offers room for a single Close button. Split header bars are another example
@@ -272,14 +264,13 @@
 (setf (liber:alias-for-function 'header-bar-decoration-layout-set)
       "Accessor"
       (documentation 'header-bar-decoration-layout-set 'function)
- "@version{2024-04-09}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-decoration-layout-set object) => setting}
   @syntax{(setf (gtk:header-bar-decoration-layout-set object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{a boolean whether a decoration layout is set}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{decoration-layout-set} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{decoration-layout-set} slot.
   @end{short}
   Set to @em{true} if the @slot[gtk:header-bar]{decoration-layout} property
   is set.
@@ -299,19 +290,16 @@
 (setf (liber:alias-for-function 'header-bar-has-subtitle)
       "Accessor"
       (documentation 'header-bar-has-subtitle 'function)
- "@version{2024-04-09}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-has-subtitle object) => setting}
   @syntax{(setf gtk:header-bar-has-subtitle object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{@em{true} to reserve space for a subtitle}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{has-subtitle} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{has-subtitle} slot gets or sets
+    whether the header bar reserves space for a subtitle, regardless if one is
+    currently set or not.
   @end{short}
-  The @fun{gtk:header-bar-has-subtitle} function retrieves whether the header
-  bar reserves space for a subtitle, regardless if one is currently set or not.
-  The @setf{gtk:header-bar-has-subtitle} function sets whether the header bar
-  should reserve space for a subtitle.
   @see-class{gtk:header-bar}")
 
 ;;; --- gtk:header-bar-show-close-button ---------------------------------------
@@ -331,19 +319,16 @@
 (setf (liber:alias-for-function 'header-bar-show-close-button)
       "Accessor"
       (documentation 'header-bar-show-close-button 'function)
- "@version{2024-04-09}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-show-close-button object) => setting}
   @syntax{(setf gtk:header-bar-show-close-button object) setting)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[setting]{@em{true} to show standard window decorations}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{show-close-button} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{show-close-button} slot gets or
+    sets whether the header bar shows the standard window decorations, including
+    Close, Maximize, and Minimize buttons.
   @end{short}
-  The @fun{gtk:header-bar-show-close-button} function returns whether the header
-  bar shows the standard window decorations, including Close, Maximize, and
-  Minimize buttons. The @setf{gtk:header-bar-show-close-button} function sets
-  whether the header bar shows decorations.
   @see-class{gtk:header-bar}")
 
 ;;; --- gtk:header-bar-spacing -------------------------------------------------
@@ -359,16 +344,15 @@
 (setf (liber:alias-for-function 'header-bar-spacing)
       "Accessor"
       (documentation 'header-bar-spacing 'function)
- "@version{2025-06-13}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-spacing object) => spacing}
   @syntax{(setf gtk:header-bar-spacing object) spacing)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[spacing]{an integer for the amount of space between children}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{spacing} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{spacing} slot gets or sets
+    the amount of space between children in pixels.
   @end{short}
-  The amount of space between children in pixels.
   @see-class{gtk:header-bar}")
 
 ;;; --- gtk:header-bar-subtitle ------------------------------------------------
@@ -383,17 +367,15 @@
 (setf (liber:alias-for-function 'header-bar-subtitle)
       "Accessor"
       (documentation 'header-bar-subtitle 'function)
- "@version{2025-06-13}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-subtitle object) => subtitle}
   @syntax{(setf (gtk:header-bar-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[subtitle]{a string for the subtitle, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{subtitle} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{subtitle} slot gets or sets
+    the subtitle of the header bar.
   @end{short}
-  The @fun{gtk:header-bar-subtitle} function retrieves the subtitle of the
-  header bar. The @setf{gtk:header-bar-subtitle} function sets the subtitle.
   The title should give a user an additional detail to help him identify the
   current view.
 
@@ -415,18 +397,16 @@
 (setf (liber:alias-for-function 'header-bar-title)
       "Accessor"
       (documentation 'header-bar-title 'function)
- "@version{2025-06-13}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-title object) => title}
   @syntax{(setf (gtk:header-bar-title object) title)}
   @argument[object]{a @class{gtk:header-bar} widget}
   @argument[title]{a string for the title, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:header-bar]{title} slot of the
-    @class{gtk:header-bar} class.
+    The accessor for the @slot[gtk:header-bar]{title} slot gets or sets
+    the title of the header bar.
   @end{short}
-  The @fun{gtk:header-bar-title} function retrieves the title of the header
-  bar, or @code{nil} if none has been set explicitly. The
-  @setf{gtk:header-bar-title} function sets the title.
+  Returns @code{nil} if none has been set explicitly.
 
   The title should help a user identify the current view. A good title should
   not include the application name.
@@ -445,7 +425,7 @@
 (setf (liber:alias-for-function 'header-bar-child-pack-type)
       "Accessor"
       (documentation 'header-bar-child-pack-type 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-child-pack-type container child) => packtype)}
   @syntax{(setf (gtk:header-bar-child-pack-type object) packtype)}
   @argument[container]{a @class{gtk:header-bar} widget}
@@ -453,8 +433,7 @@
   @argument[packtype]{a value of the @sym{gtk:pack-type} enumeration for the
     child widget}
   @begin{short}
-    Accessor of the @prop[gtk:header-bar]{pack-type} child property of the
-    @class{gtk:header-bar} class.
+    The accessor for the @prop[gtk:header-bar]{pack-type} child property.
   @end{short}
   A value of the @sym{gtk:pack-type} enumeration indicating whether the
   child widget is packed with reference to the start or end of the parent.
@@ -471,7 +450,7 @@
 (setf (liber:alias-for-function 'header-bar-child-position)
       "Accessor"
       (documentation 'header-bar-child-position 'function)
- "@version{2025-06-27}
+ "@version{2026-06-20}
   @syntax{(gtk:header-bar-child-position container child) => position)}
   @syntax{(setf (gtk:header-bar-child-position container child) position)}
   @argument[container]{a @class{gtk:header-bar} widget}
@@ -479,10 +458,9 @@
   @argument[position]{an integer for the index of the child widget in the
     header bar}
   @begin{short}
-    Accessor of the @prop[gtk:header-bar]{position} child property of the
-    @class{gtk:header-bar} class.
+    The accessor for the @prop[gtk:header-bar]{position} child property gets
+    or sets the index of the child widget in the heaer bar.
   @end{short}
-  The index of the child widget in the heaer bar.
   @see-class{gtk:header-bar}
   @see-class{gtk:widget}")
 

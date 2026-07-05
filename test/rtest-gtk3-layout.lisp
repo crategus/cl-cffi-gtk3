@@ -36,19 +36,20 @@
              (gtk-test:list-child-properties "GtkLayout")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkLayout" GTK:LAYOUT
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
-                        :TYPE-INITIALIZER "gtk_layout_get_type")
-                       ((HEIGHT LAYOUT-HEIGHT "height" "guint" T T)
-                        (WIDTH LAYOUT-WIDTH "width" "guint" T T)))
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkScrollable")
+                       :TYPE-INITIALIZER "gtk_layout_get_type")
+                      ((HEIGHT LAYOUT-HEIGHT "height" "guint" T T)
+                       (WIDTH LAYOUT-WIDTH "width" "guint" T T)))
              (gobject:get-gtype-definition "GtkLayout"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-layout-properties
-  (let ((layout (make-instance 'gtk:layout)))
+  (glib-test:with-check-memory (layout)
+    (setf layout (make-instance 'gtk:layout))
     ;; height
     (is (= 100 (gtk:layout-height layout)))
     (is (= 200 (setf (gtk:layout-height layout) 200)))
@@ -61,8 +62,9 @@
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-layout-child-properties
-  (let ((layout (make-instance 'gtk:layout))
-        (child (make-instance 'gtk:frame)))
+  (glib-test:with-check-memory (layout child)
+    (setf layout (make-instance 'gtk:layout))
+    (setf child (make-instance 'gtk:frame))
     (is-false (gtk:container-add layout child))
     ;; x
     (is (=  0 (gtk:layout-child-x layout child)))
@@ -71,46 +73,44 @@
     ;; y
     (is (=  0 (gtk:layout-child-y layout child)))
     (is (= 20 (setf (gtk:layout-child-y layout child) 20)))
-    (is (= 20 (gtk:layout-child-y layout child)))))
+    (is (= 20 (gtk:layout-child-y layout child)))
+    ;; Remove child from layout
+    (is-false (gtk:container-remove layout child))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_layout_new
 
 (test gtk-layout-new
-  (let ((layout (make-instance 'gtk:layout)))
-    (is (eq 'gtk:layout (type-of (gtk:layout-new))))
+  (glib-test:with-check-memory (layout (adjustment 3) :strong 3)
+    (is (typep (setf layout (gtk:layout-new)) 'gtk:layout))
     (is (eq 'gtk:adjustment (type-of (gtk:scrollable-hadjustment layout))))
-    (is (eq 'gtk:adjustment (type-of (gtk:scrollable-vadjustment layout)))))
-  (let* ((adjustment (make-instance 'gtk:adjustment))
-         (layout (gtk:layout-new adjustment adjustment)))
-    (is (eq 'gtk:layout (type-of layout)))
-    (is (equal adjustment (gtk:scrollable-hadjustment layout)))
-    (is (equal adjustment (gtk:scrollable-vadjustment layout))))
-  (let* ((adjustment (make-instance 'gtk:adjustment))
-         (layout (gtk:layout-new adjustment)))
-    (is (eq 'gtk:layout (type-of layout)))
-    (is (equal adjustment (gtk:scrollable-hadjustment layout))))
-  (let* ((adjustment (make-instance 'gtk:adjustment))
-         (layout (gtk:layout-new nil adjustment)))
-    (is (eq 'gtk:layout (type-of layout)))
-    (is (equal adjustment (gtk:scrollable-vadjustment layout)))))
+    (is (eq 'gtk:adjustment (type-of (gtk:scrollable-vadjustment layout))))
+
+    (setf adjustment (make-instance 'gtk:adjustment))
+    (is (typep (setf layout (gtk:layout-new adjustment adjustment)) 'gtk:layout))
+    (is (eq adjustment (gtk:scrollable-hadjustment layout)))
+    (is (eq adjustment (gtk:scrollable-vadjustment layout)))))
 
 ;;;     gtk_layout_put
 
 (test gtk-layout-put
-  (let ((layout (make-instance 'gtk:layout))
-        (button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (layout button)
+    (setf layout (make-instance 'gtk:layout))
+    (setf button (make-instance 'gtk:button))
     ;; Put a button in the layout
     (is-false (gtk:layout-put layout button 10 20))
     (is (= 10 (gtk:layout-child-x layout button)))
-    (is (= 20 (gtk:layout-child-y layout button)))))
+    (is (= 20 (gtk:layout-child-y layout button)))
+    ;; Remove button from layout
+    (is-false (gtk:container-remove layout button))))
 
 ;;;     gtk_layout_move
 
 (test gtk-layout-move
-  (let ((layout (make-instance 'gtk:layout))
-        (button (make-instance 'gtk:button)))
+  (glib-test:with-check-memory (layout button)
+    (setf layout (make-instance 'gtk:layout))
+    (setf button (make-instance 'gtk:button))
     ;; Add a button to the layout
     (is-false (gtk:container-add layout button))
     (is (=  0 (gtk:layout-child-x layout button)))
@@ -118,12 +118,15 @@
     ;; Move the button
     (is-false (gtk:layout-move layout button 10 20))
     (is (= 10 (gtk:layout-child-x layout button)))
-    (is (= 20 (gtk:layout-child-y layout button)))))
+    (is (= 20 (gtk:layout-child-y layout button)))
+    ;; Remove button from layout
+    (is-false (gtk:container-remove layout button))))
 
 ;;;     gtk_layout_size
 
 (test gtk-layout-size
-  (let ((layout (make-instance 'gtk:layout)))
+  (glib-test:with-check-memory (layout)
+    (setf layout (make-instance 'gtk:layout))
     (is (equal '(100 100)
                (multiple-value-list (gtk:layout-size layout))))
     (is (equal '(200 200)
@@ -138,4 +141,4 @@
 
 ;;;     gtk_layout_get_bin_window
 
-;;; 2024-9-21
+;;; 2026-06-20

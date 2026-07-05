@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -133,17 +133,15 @@
 (setf (liber:alias-for-function 'stack-switcher-icon-size)
       "Accessor"
       (documentation 'stack-switcher-icon-size 'function)
- "@version{2025-06-12}
+ "@version{2026-06-19}
   @syntax{(gtk:stack-switcher-icon-size object) => size}
   @syntax{(setf (gtk:stack-switcher-icon-size object) size)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
   @argument[size]{an integer for the size of the image}
   @begin{short}
-    Accessor of the @slot[gtk:stack-switcher]{icon-size} slot of the
-    @class{gtk:stack-switcher} class.
+    The accessor for the @slot[gtk:stack-switcher]{icon-size} slot gets or sets
+    the size of the image displayed when a stack switcher is displaying icons.
   @end{short}
-  Use the @slot[gtk:stack-switcher]{icon-size} property to change the size of
-  the image displayed when a stack switcher is displaying icons.
   @see-class{gtk:stack-switcher}")
 
 ;;; --- gtk:stack-switcher-stack -----------------------------------------------
@@ -157,17 +155,15 @@
 (setf (liber:alias-for-function 'stack-switcher-stack)
       "Accessor"
       (documentation 'stack-switcher-stack 'function)
- "@version{2024-04-09}
+ "@version{2026-06-19}
   @syntax{(gtk:stack-switcher-stack object) => stack}
   @syntax{(setf (gtk:stack-switcher-stack object) stack)}
   @argument[object]{a @class{gtk:stack-switcher} widget}
   @argument[stack]{a @class{gtk:stack} widget}
   @begin{short}
-    Accessor of the @slot[gtk:stack-switcher]{stack} slot of the
-    @class{gtk:stack-switcher} class.
+    The accessor for the @slot[gtk:stack-switcher]{stack} slot gets or sets
+    the stack control.
   @end{short}
-  The @fun{gtk:stack-switcher-stack} function retrieves the stack. The
-  @setf{gtk:stack-switcher-stack} function sets the stack to control.
   @see-class{gtk:stack-switcher}
   @see-class{gtk:stack}")
 

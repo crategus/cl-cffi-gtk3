@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -75,7 +75,7 @@
 
 #+liber-documentation
 (setf (documentation 'fixed 'type)
- "@version{2023-03-17}
+ "@version{2026-06-16}
   @begin{short}
     The @class{gtk:fixed} widget is a container which can place child widgets at
     fixed positions and with fixed sizes, given in pixels.
@@ -148,17 +148,16 @@
 (setf (liber:alias-for-function 'fixed-child-x)
       "Accessor"
       (documentation 'fixed-child-x 'function)
- "@version{2025-06-27}
+ "@version{2026-06-16}
   @syntax{(gtk:fixed-child-x container child) => x}
   @syntax{(setf (gtk:fixed-child-x container child) x)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[x]{an integer for the x position of the child}
   @begin{short}
-    Accessor of the @prop[gtk:fixed]{x} child property of the @class{gtk:fixed}
-    class.
+    The accessor for the @prop[gtk:fixed]{x} child property gets or sets the x
+    position of the child widget in the fixed widget.
   @end{short}
-  The x position of the child widget in the fixed widget.
   @see-class{gtk:fixed}
   @see-class{gtk:widget}
   @see-function{gtk:fixed-child-y}")
@@ -171,17 +170,16 @@
 (setf (liber:alias-for-function 'fixed-child-y)
       "Accessor"
       (documentation 'fixed-child-y 'function)
- "@version{2025-06-27}
+ "@version{2026-06-16}
   @syntax{(gtk:fixed-child-y container child) => y}
   @syntax{(setf (gtk:fixed-child-y container child) y)}
   @argument[container]{a @class{gtk:fixed} widget}
   @argument[child]{a @class{gtk:widget} object}
   @argument[y]{an integer for the y position of the child}
   @begin{short}
-    Accessor of the @prop[gtk:fixed]{y} child property of the @class{gtk:fixed}
-    class.
+    The accessor for the @prop[gtk:fixed]{y} child property gets or sets the y
+    position of the child widget in the fixed widget.
   @end{short}
-  The y position of the child widget in the fixed widget.
   @see-class{gtk:fixed}
   @see-class{gtk:widget}
   @see-function{gtk:fixed-child-x}")
@@ -194,7 +192,7 @@
 
 (defun fixed-new ()
  #+liber-documentation
- "@version{2023-03-17}
+ "@version{2026-06-16}
   @return{The new @class{gtk:fixed} widget.}
   @short{Creates a new fixed widget.}
   @see-class{gtk:fixed}"
@@ -208,7 +206,7 @@
 
 (cffi:defcfun ("gtk_fixed_put" fixed-put) :void
  #+liber-documentation
- "@version{2025-06-16}
+ "@version{2026-06-16}
   @argument[fixed]{a @class{gtk:fixed} widget}
   @argument[widget]{a @class{gtk:widget} child widget to add}
   @argument[x]{an integer for the horizontal position to place the child
@@ -234,7 +232,7 @@
 
 (cffi:defcfun ("gtk_fixed_move" fixed-move) :void
  #+liber-documentation
- "@version{2025-06-16}
+ "@version{2026-06-16}
   @argument[fixed]{a @class{gtk:fixed} widget}
   @argument[widget]{a @class{gtk:widget} child widget}
   @argument[x]{an integer for the horizontal position to move the child widget

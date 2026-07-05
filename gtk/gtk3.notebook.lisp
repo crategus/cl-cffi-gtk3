@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -33,7 +33,10 @@
 ;;;
 ;;; Types and Values
 ;;;
+;;;     GtkNotebookTab
 ;;;     GtkNotebook
+;;;
+;;; Accessors
 ;;;
 ;;;     gtk_notebook_set_group_name
 ;;;     gtk_notebook_get_group_name
@@ -158,7 +161,7 @@
 (setf (liber:alias-for-symbol 'notebook-tab)
       "GEnum"
       (liber:symbol-documentation 'notebook-tab)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @begin{declaration}
 (gobject:define-genum \"GtkNotebookTab\" notebook-tab
   (:export t
@@ -212,7 +215,7 @@
 
 #+liber-documentation
 (setf (documentation 'notebook 'type)
- "@version{#2025-07-17}
+ "@version{2026-06-12}
   @begin{short}
     The @class{gtk:notebook} widget is a @class{gtk:container} widget whose
     children are pages that can be switched between using tab labels along one
@@ -346,10 +349,10 @@ notebook
     @begin[notebook:arrow-spacing]{property}
       The @code{arrow-spacing} style property of type @code{:int} (Read) @br{}
       Defines the spacing between the scroll arrows and the tabs. @br{}
-      @em{Warning:} The @code{arrow-spacing} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. This property is ignored. Use margins on arrows or the @code{tabs}
-      node to achieve the same effect. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. This property is ignored.
+      Use margins on arrows or the @code{tabs} node to achieve the same effect.
+      @br{}
       Allowed values: >= 0 @br{}
       Default value: 0
     @end{property}
@@ -384,38 +387,35 @@ notebook
       The @code{has-tab-gap} style property of type @code{:boolean} (Read)
       @br{}
       Defines whether the active tab is draw with a gap at the bottom. @br{}
-      @em{Warning:} The @code{has-tab-gap} style property has been deprecated
-      since version 3.20 and should not be used in newly written code. This
-      function always behaves as if it was set to @em{false}. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. This function always behaves
+      as if it was set to @em{false}. @br{}
       Default value: @em{true}
     @end{property}
     @begin[notebook:initial-gap]{property}
       The @code{initial-gap} style property of type @code{:int} (Read) @br{}
       Defines the minimum size for the initial gap between the first tab.@br{}
-      @em{Warning:} The @code{initial-gap} style property has been deprecated
-      since version 3.20 and should not be used in newly written code. The
-      intial gap is ignored. Use margins on the header node to achieve the
-      same effect. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. The intial gap is ignored.
+      Use margins on the header node to achieve the same effect. @br{}
       Allowed values: >= 0 @br{}
       Default value: 0
     @end{property}
     @begin[notebook:tab-curvature]{property}
       The @code{tab-curvature} style property of type @code{:int} (Read) @br{}
       Defines size of tab curvature. @br{}
-      @em{Warning:} The @code{tab-curvature} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. This property is ignored. Use margins on tab nodes to achieve the
-      same effect. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. This property is ignored.
+      Use margins on tab nodes to achieve the same effect. @br{}
       Allowed values: >= 0 @br{}
       Default value: 1
     @end{property}
     @begin[notebook:tab-overlap]{property}
       The @code{tab-overlap} style property of type @code{:int} (Read) @br{}
       Defines size of tab overlap area. @br{}
-      @em{Warning;} The @code{tab-overlap} style property has been deprecated
-      since version 3.20 and should not be used in newly written code. This
-      property is ignored. Use margins on tab nodes to achieve the same
-      effect. @br{}
+      @em{Warning;} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. This property is ignored.
+      Use margins on tab nodes to achieve the same effect. @br{}
       Default value: 2
     @end{property}
   @end{dictionary}
@@ -562,14 +562,13 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-enable-popup)
       "Accessor"
       (documentation 'notebook-enable-popup 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-enable-popup object) => enable}
   @syntax{(setf (gtk:notebook-enable-popup object) enable)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[enable]{if @em{true}, pops up a menu}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{enable-popup} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{enable-popup} slot.
   @end{short}
   If @em{true}, pressing the right mouse button on the notebook pops up a menu
   that you can use to go to a page.
@@ -589,21 +588,18 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-group-name)
       "Accessor"
       (documentation 'notebook-group-name 'function)
- "@version{#2025-06-16}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-group-name object) => name}
   @syntax{(setf (gtk:notebook-group-name object) name)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[name]{a string for the name of the notebook group, or @code{nil}
     to unset it}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{group-name} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{group-name} slot gets or sets
+    the group name for the notebook.
   @end{short}
-  The @fun{gtk:notebook-group-name} function gets the current group name for the
-  notebook. The @setf{gtk:notebook-group-name} function sets a group name.
-
-  Notebooks with the same name will be able to exchange tabs via drag and
-  drop. A notebook with a @code{nil} group name will not be able to exchange
+  Notebooks with the same name will be able to exchange tabs via Drag and
+  Drop. A notebook with a @code{nil} group name will not be able to exchange
   tabs with any other notebook.
   @see-class{gtk:notebook}")
 
@@ -620,16 +616,15 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-page)
       "Accessor"
       (documentation 'notebook-page 'function)
- "@version{#2025-06-16}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-page object) => page}
   @syntax{(setf (gtk:notebook-page object) page)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[page]{an integer for the index of the current page}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{page} slot of the @class{gtk:notebook}
-    class.
+    The accessor for the @slot[gtk:notebook]{page} slot gets or sets the index
+    of the current page.
   @end{short}
-  The index of the current page.
   @see-class{gtk:notebook}")
 
 ;;; --- gtk:notebook-scrollable ------------------------------------------------
@@ -644,19 +639,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-scrollable)
       "Accessor"
       (documentation 'notebook-scrollable 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-scrollable object) => scrollable}
   @syntax{(setf (gtk:notebook-scrollable object) scrollable)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[scrollable]{@em{true} if scroll arrows should be added}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{scrollable} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{scrollable} slot gets or sets
+    whether the tab label area has arrows for scrolling if there are too many
+    tabs to fit in the area.
   @end{short}
-  The @fun{gtk:notebook-scrollable} function returns whether the tab label area
-  has arrows for scrolling if there are too many tabs to fit in the area. The
-  @setf{gtk:notebook-scrollable} function sets whether the tab label area will
-  have arrows for scrolling.
   @see-class{gtk:notebook}")
 
 ;;; --- gtk:notebook-show-border -----------------------------------------------
@@ -671,20 +663,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-show-border)
       "Accessor"
       (documentation 'notebook-show-border 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-show-border object) => show-border}
   @syntax{(setf (gtk:notebook-show-border object) show-border)}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[show-border]{@em{true} if a bevel should be drawn around the
     notebook}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{show-border} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{show-border} slot gets or sets
+    whether a bevel will be drawn around the notebook pages.
   @end{short}
-  The @fun{gtk:notebook-show-border} function returns whether a bevel will be
-  drawn around the notebook pages. The @setf{gtk:notebook-show-border} function
-  sets whether a bevel will be drawn.
-
   This only has a visual effect when the tabs are not shown. See the
   @fun{gtk:notebook-show-tabs} function.
   @see-class{gtk:notebook}
@@ -702,18 +690,15 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-show-tabs)
       "Accessor"
       (documentation 'notebook-show-tabs 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-show-tabs object) => show-tabs}
   @syntax{(setf (gtk:notebook-show-tabs object) show-tabs)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[show-tabs]{@em{true} if the tabs should be shown}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{show-tabs} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{show-tabs} slot gets or sets
+    whether the tabs of the notebook are shown.
   @end{short}
-  The @fun{gtk:notebook-show-tabs} function returns whether the tabs of the
-  notebook are shown. The @setf{gtk:notebook-show-tabs} function sets whether
-  to show the tabs.
   @see-class{gtk:notebook}")
 
 ;;; --- gtk:notebook-tab-pos ---------------------------------------------------
@@ -729,19 +714,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-tab-pos)
       "Accessor"
       (documentation 'notebook-tab-pos 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-tab-pos object) => pos}
   @syntax{(setf (gtk:notebook-tab-pos object) pos)}
   @argument[object]{a @class{gtk:notebook} widget}
   @argument[pos]{a value of the @sym{gtk:position-type} enumeration for the
     edge to draw the tabs at}
   @begin{short}
-    Accessor of the @slot[gtk:notebook]{tab-pos} slot of the
-    @class{gtk:notebook} class.
+    The accessor for the @slot[gtk:notebook]{tab-pos} slot gets or sets
+    the edge at which the tabs for switching pages in the notebook are drawn.
   @end{short}
-  The @fun{gtk:notebook-tab-pos} function gets the edge at which the tabs for
-  switching pages in the notebook are drawn. The
-  @setf{gtk:notebook-tab-pos} function sets the edge.
   @see-class{gtk:notebook}
   @see-symbol{gtk:position-type}")
 
@@ -757,17 +739,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-detachable)
       "Accessor"
       (documentation 'notebook-child-detachable 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-detachable container child) => detachable}
   @syntax{(setf (gtk:notebook-child-detachable container child) detachable)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[detachable]{a boolean whether the tab is detachable}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{detachable} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{detachable} child property gets or
+    sets whether the tab is detachable.
   @end{short}
-  Whether the tab is detachable.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -780,17 +761,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-menu-label)
       "Accessor"
       (documentation 'notebook-child-menu-label 'function)
- "@version{#2025-06-28}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-menu-label container child) => label}
   @syntax{(setf (gtk:notebook-child-menu-label container child) label)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[label]{a string displayed in the menu entry of the child widget}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{menu-label} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{menu-label} child property gets
+    or sets the string displayed in the menu entry of the child widget.
   @end{short}
-  The string displayed in the menu entry of the child widget.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -802,7 +782,7 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-position)
       "Accessor"
       (documentation 'notebook-child-position 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-position container child) => position}
   @syntax{(setf (gtk:notebook-child-position container child) position)}
   @argument[container]{a @class{notebook} widget}
@@ -810,10 +790,9 @@ lambda (notebook page num)    :run-last
   @argument[position]{an integer for the index of the child widget in the
     notebook}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{position} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{position} child property gets
+    or sets the index of the child widget in the notebook.
   @end{short}
-  The index of the child widget in the notebook.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -826,17 +805,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-reorderable)
       "Accessor"
       (documentation 'notebook-child-reorderable 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-reorderable container child) => reorderable}
   @syntax{(setf (gtk:notebook-child-reorderable container child) reorderable)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[reorderable]{a boolean whether the tab is reorderable}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{reorderable} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{reorderable} child property gets
+    or sets whether the tab is reorderable by user action.
   @end{short}
-  Whether the tab is reorderable by user action.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -848,17 +826,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-expand)
       "Accessor"
       (documentation 'notebook-child-tab-expand 'function)
- "@version{#2025-06-28}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-tab-expand container child) => expand}
   @syntax{(setf (gtk:notebook-child-tab-expand container child) expand)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[expand]{a boolean whether to expand the tab of the child widget}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{tab-expand} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{tab-expand} child property gets
+    or sets whether to expand the tab of the child widget.
   @end{short}
-  Whether to expand the tab of the child widget.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -870,7 +847,7 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-fill)
       "Accessor"
       (documentation 'notebook-child-tab-fill 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-tab-fill container child) => fill}
   @syntax{(setf (gtk:notebook-child-tab-fill container child) fill)}
   @argument[container]{a @class{notebook} widget}
@@ -878,10 +855,9 @@ lambda (notebook page num)    :run-last
   @argument[fill]{a boolean whether the tab of the child widget should fill
     the allocated area}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{tab-fill} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{tab-fill} child property gets
+    or sets whether the tab of the child widget should fill the allocated area.
   @end{short}
-  Whether the tab of the child widget should fill the allocated area.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -893,17 +869,16 @@ lambda (notebook page num)    :run-last
 (setf (liber:alias-for-function 'notebook-child-tab-label)
       "Accessor"
       (documentation 'notebook-child-tab-label 'function)
- "@version{#2025-06-27}
+ "@version{2026-06-12}
   @syntax{(gtk:notebook-child-tab-label container child) => label}
   @syntax{(setf (gtk:notebook-child-tab-label container child) label)}
   @argument[container]{a @class{notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget}
   @argument[label]{a string displayed on the tab label of the child widget}
   @begin{short}
-    Accessor of the @prop[gtk:notebook]{tab-label} child property of the
-    @class{gtk:notebook} class.
+    The accessor for the @prop[gtk:notebook]{tab-label} child property gets
+    or sets the string displayed on the tab label of the child page.
   @end{short}
-  The string displayed on the tab label of the child page.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}")
 
@@ -915,7 +890,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-new ()
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{2026-06-12}
   @return{The newly created @class{gtk:notebook} widget.}
   @begin{short}
     Creates a new notebook with no pages.
@@ -931,7 +906,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-add-page (notebook child tab &key (position :end) menu)
  #+liber-documentation
- "@version{#2025-09-26}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child widget to use as the content of
     the page}
@@ -1031,9 +1006,9 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_append_page" notebook-append-page) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-20}
   @argument[notebook]{a @class{gtk:notebook} widget}
-  @argument[child]{the @class{gtk:widget} child to use as the content of the
+  @argument[child]{a @class{gtk:widget} child to use as the content of the
     page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
     or @code{nil} to use the default label, \"page N\"}
@@ -1059,7 +1034,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_append_page_menu" notebook-append-page-menu) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1097,7 +1072,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_prepend_page" notebook-prepend-page) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1124,7 +1099,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_prepend_page_menu" notebook-prepend-page-menu) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1162,7 +1137,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_insert_page" notebook-insert-page) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1192,7 +1167,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_insert_page_menu" notebook-insert-page-menu) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child to use as the content of the page}
   @argument[tab]{a @class{gtk:widget} object to use as the label for the page,
@@ -1237,7 +1212,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-remove-page (notebook page-or-number)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[page-or-number]{an integer for the index of a notebook page,
     starting from 0, if -1, the last page will be removed, or the
@@ -1282,7 +1257,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_detach_tab" notebook-detach-tab) :void
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child}
   @begin{short}
@@ -1305,7 +1280,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_page_num" notebook-page-num) :int
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child}
   @begin{return}
@@ -1328,7 +1303,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_next_page" notebook-next-page) :void
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @begin{short}
     Switches to the next page.
@@ -1346,7 +1321,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_prev_page" notebook-prev-page) :void
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @begin{short}
     Switches to the previous page.
@@ -1364,7 +1339,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_reorder_child" notebook-reorder-child) :void
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child page to move}
   @argument[position]{an integer for the position, or -1 to move to the end}
@@ -1390,7 +1365,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-popup-enable (notebook)
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @begin{short}
     Enables the popup menu.
@@ -1409,14 +1384,14 @@ lambda (notebook page num)    :run-last
 (export 'notebook-popup-enable)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_notebook_popup_disable ()
+;;; gtk_notebook_popup_disable
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline notebook-popup-disable))
 
 (defun notebook-popup-disable (notebook)
  #+liber-documentation
- "@version{#2023-03-21}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @begin{short}
     Disables the popup menu.
@@ -1447,7 +1422,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_get_current_page" notebook-current-page) :int
  #+liber-documentation
- "@version{#2025-09-26}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-current-page notebook) => num}
   @syntax{(setf (gtk:notebook-current-page notebook) num)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1482,7 +1457,7 @@ lambda (notebook page num)    :run-last
 (cffi:defcfun ("gtk_notebook_get_menu_label" notebook-menu-label)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-menu-label notebook child) => menu}
   @syntax{(setf (gtk:notebook-menu-label notebook child) menu)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1490,12 +1465,10 @@ lambda (notebook page num)    :run-last
     notebook}
   @argument[menu]{a @class{gtk:widget} menu label, or @code{nil} for default}
   @begin{short}
-    The @fun{gtk:notebook-menu-label} function returns the menu label, or
-    @code{nil} if the notebook page does not have a menu label other than the
-    default tab label.
+    Gets or sets the menu label for the page containing the child.
   @end{short}
-  The @setf{gtk:notebook-menu-label} function changes the menu label for the
-  page containing the child.
+  Returns @code{nil} if the notebook page does not have a menu label other than
+  the default tab label.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-menu-label-text}
@@ -1511,7 +1484,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook" notebook-nth-page) (g:object widget)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[num]{an integer for the index of a page in the notebook, or -1 to
     get the last page}
@@ -1535,7 +1508,7 @@ lambda (notebook page num)    :run-last
 
 (cffi:defcfun ("gtk_notebook_get_n_pages" notebook-n-pages) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{#2026-06-14}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @return{The integer for the number of pages in the notebook.}
   @short{Gets the number of pages in a notebook.}
@@ -1560,7 +1533,7 @@ lambda (notebook page num)    :run-last
 (cffi:defcfun ("gtk_notebook_get_tab_label" notebook-tab-label)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-tab-label notebook child) => tab}
   @syntax{(setf (gtk:notebook-tab-label notebook child) tab)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1568,13 +1541,11 @@ lambda (notebook page num)    :run-last
   @argument[tab]{a @class{gtk:widget} tab label to use, or @code{nil} for
     default tab label}
   @begin{short}
-    The @fun{gtk:notebook-tab-label} function returns the tab label widget for
-    the page child.
+    Gets or sets the tab label widget for the page child.
   @end{short}
   The @code{nil} value is returned if the child is not in the notebook or if no
-  tab label has been set for the child. The @setf{gtk:notebook-tab-label}
-  function changes the tab label for the child page. If the @code{nil} value is
-  specified for @arg{tab}, then the page will have the label 'page N'.
+  tab label has been set for the child. If the @code{nil} value is specified
+  for @arg{tab}, then the page will have the label 'page N'.
   @see-class{gtk:notebook}
   @see-class{gtk:widget}
   @see-function{gtk:notebook-tab-label-text}
@@ -1594,18 +1565,16 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-menu-label-text (notebook child)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-menu-label-text notebook child) => text}
   @syntax{(setf (gtk:notebook-menu-label-text notebook child) text)}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child of a page of the notebook}
   @argument[text]{a string for the label text}
   @begin{short}
-    The @fun{gtk:notebook-menu-label-text} function retrieves the text of the
-    menu label for the page containing child.
+    Retrieves the text of the menu label for the page containing child or
+    creates a new label and sets it as the menu label of the child page.
   @end{short}
-  The @setf{gtk:notebook-menu-label-text} function creates a new label and sets
-  it as the menu label of the child page.
   @begin[Notes]{dictionary}
     This function is implemented with the @fun{gtk:notebook-child-menu-label}
     function.
@@ -1628,7 +1597,7 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-tab-label-text (notebook child)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-tab-label-text notebook child) => text}
   @syntax{(setf (gtk:notebook-tab-label-text notebook child) text)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1636,11 +1605,10 @@ lambda (notebook page num)    :run-last
     notebook}
   @argument[text]{a string for the label text}
   @begin{short}
-    The @fun{gtk:notebook-tab-label-text} function retrieves the text of the
-    tab label for the page containing child.
+    Retrieves the text of the tab label for the page containing child or
+    creates a new label and sets it as the tab label for the page containing
+    child.
   @end{short}
-  The @setf{gtk:notebook-tab-label-text} function creates a new label and sets
-  it as the tab label for the page containing child.
   @begin[Notes]{dictionary}
     This function is implemented with the @fun{gtk:notebook-child-tab-label}
     function.
@@ -1663,18 +1631,15 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-tab-reorderable (notebook child)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-tab-reorderable notebook child) => reorderable}
   @syntax{(setf (gtk:notebook-tab-reorderable notebook child) reorderable)}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child page}
   @argument[reorderable]{a boolean whether the tab is reorderable or not}
   @begin{short}
-    The @fun{gtk:notebook-tab-reorderable} function gets whether the tab can be
-    reordered via drag and drop or not.
+    Gets or sets whether the tab can be reordered via drag and drop or not.
   @end{short}
-  The @setf{gtk:notebook-tab-reorderable} function sets whether the notebook
-  tab can be reordered.
   @begin[Notes]{dictionary}
     This function duplicates the implementation of the
     @fun{gtk:notebook-child-reorderable} function.
@@ -1696,18 +1661,16 @@ lambda (notebook page num)    :run-last
 
 (defun notebook-tab-detachable (notebook child)
  #+liber-documentation
- "@version{#2025-06-16}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-tab-detachable notebook child) => detachable}
   @syntax{(setf (gtk:notebook-tab-detachable notebook child) detachable)}
   @argument[notebook]{a @class{gtk:notebook} widget}
   @argument[child]{a @class{gtk:widget} child page}
   @argument[detachable]{a boolean whether the tab is detachable or not}
   @begin{short}
-    The @fun{gtk:notebook-tab-detachable} function returns whether the tab
-    content can be detached from the notebook to another notebook or widget.
+    Gets or sets whether the tab content can be detached from the notebook to
+    another notebook or widget.
   @end{short}
-  The @setf{gtk:notebook-tab-detachable} function sets whether the tab can be
-  detached.
 
   Note that two notebooks must share a common group identificator, see the
   @fun{gtk:notebook-group-name} function, to allow automatic tabs interchange
@@ -1774,7 +1737,7 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
 (cffi:defcfun ("gtk_notebook_get_action_widget" notebook-action-widget)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-27}
+ "@version{#2026-06-14}
   @syntax{(gtk:notebook-action-widget notebook pack-type) => widget}
   @syntax{(setf (gtk:notebook-action-widget notebook pack-type) widget)}
   @argument[notebook]{a @class{gtk:notebook} widget}
@@ -1782,13 +1745,11 @@ on_drop_zone_drag_data_received (GtkWidget        *widget,
     the action}
   @argument[widget]{a @class{gtk:widget} object}
   @begin{short}
-    The @fun{gtk:notebook-action-widget} function gets one of the action
-    widgets.
+    Gets or sets the widget as one of the action widgets.
   @end{short}
-  The @setf{gtk:notebook-action-widget} function sets the widget as one of the
-  action widgets. Depending on the pack type the widget will be placed before
-  or after the tabs. You can use a @class{gtk:box} widget if you need to pack
-  more than one widget on the same side.
+  Depending on the pack type the widget will be placed before or after the tabs.
+  You can use a @class{gtk:box} widget if you need to pack more than one widget
+  on the same side.
 
   Note that action widgets are \"internal\" children of the notebook and thus
   not included in the list returned from the @fun{gtk:container-foreach}

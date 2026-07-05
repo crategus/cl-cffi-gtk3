@@ -52,28 +52,29 @@
   ;; Check enum definition
   (is (equal '(GOBJECT:DEFINE-GENUM "GtkStackTransitionType"
                                     GTK:STACK-TRANSITION-TYPE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_stack_transition_type_get_type")
-                       (:NONE 0)
-                       (:CROSSFADE 1)
-                       (:SLIDE-RIGHT 2)
-                       (:SLIDE-LEFT 3)
-                       (:SLIDE-UP 4)
-                       (:SLIDE-DOWN 5)
-                       (:SLIDE-LEFT-RIGHT 6)
-                       (:SLIDE-UP-DOWN 7)
-                       (:OVER-UP 8)
-                       (:OVER-DOWN 9)
-                       (:OVER-LEFT 10)
-                       (:OVER-RIGHT 11)
-                       (:UNDER-UP 12)
-                       (:UNDER-DOWN 13)
-                       (:UNDER-LEFT 14)
-                       (:UNDER-RIGHT 15)
-                       (:OVER-UP-DOWN 16)
-                       (:OVER-DOWN-UP 17)
-                       (:OVER-LEFT-RIGHT 18)
-                       (:OVER-RIGHT-LEFT 19))
+                                    (:EXPORT T
+                                     :TYPE-INITIALIZER
+                                     "gtk_stack_transition_type_get_type")
+                                    (:NONE 0)
+                                    (:CROSSFADE 1)
+                                    (:SLIDE-RIGHT 2)
+                                    (:SLIDE-LEFT 3)
+                                    (:SLIDE-UP 4)
+                                    (:SLIDE-DOWN 5)
+                                    (:SLIDE-LEFT-RIGHT 6)
+                                    (:SLIDE-UP-DOWN 7)
+                                    (:OVER-UP 8)
+                                    (:OVER-DOWN 9)
+                                    (:OVER-LEFT 10)
+                                    (:OVER-RIGHT 11)
+                                    (:UNDER-UP 12)
+                                    (:UNDER-DOWN 13)
+                                    (:UNDER-LEFT 14)
+                                    (:UNDER-RIGHT 15)
+                                    (:OVER-UP-DOWN 16)
+                                    (:OVER-DOWN-UP 17)
+                                    (:OVER-LEFT-RIGHT 18)
+                                    (:OVER-RIGHT-LEFT 19))
              (gobject:get-gtype-definition "GtkStackTransitionType"))))
 
 ;;;     GtkStack
@@ -112,34 +113,35 @@
              (glib-test:list-signals "GtkStack")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStack" GTK:STACK
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_stack_get_type")
-                       ((HHOMOGENEOUS STACK-HHOMOGENEOUS
-                         "hhomogeneous" "gboolean" T T)
-                        (HOMOGENEOUS STACK-HOMOGENEOUS
-                         "homogeneous" "gboolean" T T)
-                        (INTERPOLATE-SIZE STACK-INTERPOLATE-SIZE
-                         "interpolate-size" "gboolean" T T)
-                        (TRANSITION-DURATION STACK-TRANSITION-DURATION
-                         "transition-duration" "guint" T T)
-                        (TRANSITION-RUNNING STACK-TRANSITION-RUNNING
-                         "transition-running" "gboolean" T NIL)
-                        (TRANSITION-TYPE STACK-TRANSITION-TYPE
-                         "transition-type" "GtkStackTransitionType" T T)
-                        (VHOMOGENEOUS STACK-VHOMOGENEOUS
-                         "vhomogeneous" "gboolean" T T)
-                        (VISIBLE-CHILD STACK-VISIBLE-CHILD
-                         "visible-child" "GtkWidget" T T)
-                        (VISIBLE-CHILD-NAME STACK-VISIBLE-CHILD-NAME
-                         "visible-child-name" "gchararray" T T)))
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_stack_get_type")
+                      ((HHOMOGENEOUS STACK-HHOMOGENEOUS
+                        "hhomogeneous" "gboolean" T T)
+                       (HOMOGENEOUS STACK-HOMOGENEOUS
+                        "homogeneous" "gboolean" T T)
+                       (INTERPOLATE-SIZE STACK-INTERPOLATE-SIZE
+                        "interpolate-size" "gboolean" T T)
+                       (TRANSITION-DURATION STACK-TRANSITION-DURATION
+                        "transition-duration" "guint" T T)
+                       (TRANSITION-RUNNING STACK-TRANSITION-RUNNING
+                        "transition-running" "gboolean" T NIL)
+                       (TRANSITION-TYPE STACK-TRANSITION-TYPE
+                        "transition-type" "GtkStackTransitionType" T T)
+                       (VHOMOGENEOUS STACK-VHOMOGENEOUS
+                        "vhomogeneous" "gboolean" T T)
+                       (VISIBLE-CHILD STACK-VISIBLE-CHILD
+                        "visible-child" "GtkWidget" T T)
+                       (VISIBLE-CHILD-NAME STACK-VISIBLE-CHILD-NAME
+                        "visible-child-name" "gchararray" T T)))
              (gobject:get-gtype-definition "GtkStack"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-stack-properties
-  (let ((stack (make-instance 'gtk:stack)))
+  (glib-test:with-check-memory (stack)
+    (setf stack (make-instance 'gtk:stack))
     (is-true (gtk:stack-hhomogeneous stack))
     (is-true (gtk:stack-homogeneous stack))
     (is-false (gtk:stack-interpolate-size stack))
@@ -153,10 +155,10 @@
 ;;; --- Child Properties -------------------------------------------------------
 
 (test gtk-stack-child-properties
-  (let ((stack (make-instance 'gtk:stack))
-        (child1 (make-instance 'gtk:button))
-        (child2 (make-instance 'gtk:button)))
-    (is (typep stack 'gtk:stack))
+  (glib-test:with-check-memory (stack child1 child2)
+    (setf stack (make-instance 'gtk:stack))
+    (setf child1 (make-instance 'gtk:button))
+    (setf child2 (make-instance 'gtk:button))
     (is (g:type-is-a (g:type-from-instance stack) "GtkContainer"))
     ;; Add two buttons to the stack
     (is-false (gtk:stack-add-named stack child1 "button1"))
@@ -172,18 +174,22 @@
     (is (string= "button2" (gtk:stack-child-name stack child2)))
     (is-false (gtk:stack-child-needs-attention stack child2))
     (is (= 1 (gtk:stack-child-position stack child2)))
-    (is (string= "title" (gtk:stack-child-title stack child2)))))
+    (is (string= "title" (gtk:stack-child-title stack child2)))
+    ;; Remove buttons from stack
+    (is-false (gtk:container-remove stack child1))
+    (is-false (gtk:container-remove stack child2))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_stack_new
 
 (test gtk-stack-new
-  (is (typep (gtk:stack-new) 'gtk:stack)))
+  (glib-test:with-check-memory (stack)
+    (is (typep (setf stack (gtk:stack-new)) 'gtk:stack))))
 
 ;;;     gtk_stack_add_named
 ;;;     gtk_stack_add_titled
 ;;;     gtk_stack_get_child_by_name
 ;;;     gtk_stack_set_visible_child_full
 
-;;; 2024-9-21
+;;; 2026-06-20

@@ -42,15 +42,15 @@
                (gtk:widget-class-css-name "GtkAspectFrame")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAspectFrame" GTK:ASPECT-FRAME
-                       (:SUPERCLASS GTK:FRAME
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_aspect_frame_get_type")
-                       ((OBEY-CHILD ASPECT-FRAME-OBEY-CHILD
-                         "obey-child" "gboolean" T T)
-                        (RATIO ASPECT-FRAME-RATIO "ratio" "gfloat" T T)
-                        (XALIGN ASPECT-FRAME-XALIGN "xalign" "gfloat" T T)
-                        (YALIGN ASPECT-FRAME-YALIGN "yalign" "gfloat" T T)))
+                      (:SUPERCLASS GTK:FRAME
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_aspect_frame_get_type")
+                      ((OBEY-CHILD ASPECT-FRAME-OBEY-CHILD
+                        "obey-child" "gboolean" T T)
+                       (RATIO ASPECT-FRAME-RATIO "ratio" "gfloat" T T)
+                       (XALIGN ASPECT-FRAME-XALIGN "xalign" "gfloat" T T)
+                       (YALIGN ASPECT-FRAME-YALIGN "yalign" "gfloat" T T)))
              (gobject:get-gtype-definition "GtkAspectFrame"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -61,7 +61,8 @@
 ;;;     yalign
 
 (test gtk-aspect-frame-properties
-  (let ((frame (make-instance 'gtk:aspect-frame)))
+  (glib-test:with-check-memory (frame)
+    (setf frame (make-instance 'gtk:aspect-frame))
     (is-true (gtk:aspect-frame-obey-child frame))
     (is (= 1.0 (gtk:aspect-frame-ratio frame)))
     (is (= 0.5 (gtk:aspect-frame-xalign frame)))
@@ -72,16 +73,19 @@
 ;;;     gtk_aspect_frame_new
 
 (test gtk-aspect-frame-new
-  (is (typep (gtk:aspect-frame-new "label" 1.0 1.0 0.5 nil) 'gtk:aspect-frame)))
+  (glib-test:with-check-memory (frame)
+    (is (typep (setf frame
+                     (gtk:aspect-frame-new "label" 1.0 1.0 0.5 nil)) 'gtk:aspect-frame))))
 
 ;;;     gtk_aspect_frame_set
 
 (test gtk-aspect-frame-set
-  (let ((frame (make-instance 'gtk:aspect-frame)))
+  (glib-test:with-check-memory (frame)
+    (setf frame (make-instance 'gtk:aspect-frame))
     (is-false (gtk:aspect-frame-set frame 1.0 1.0 0.5 nil))
     (is-false (gtk:aspect-frame-obey-child frame))
     (is (= 0.5 (gtk:aspect-frame-ratio frame)))
     (is (= 1.0 (gtk:aspect-frame-xalign frame)))
     (is (= 1.0 (gtk:aspect-frame-yalign frame)))))
 
-;;; 2024-9-21
+;;; 2026-06-16

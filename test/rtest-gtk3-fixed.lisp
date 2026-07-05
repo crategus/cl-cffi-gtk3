@@ -39,11 +39,11 @@
              (glib-test:list-signals "GtkFixed")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkFixed" GTK:FIXED
-                       (:SUPERCLASS GTK:CONTAINER
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_fixed_get_type")
-                       NIL)
+                      (:SUPERCLASS GTK:CONTAINER
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_fixed_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkFixed"))))
 
 ;;; --- Child Properties -------------------------------------------------------
@@ -52,15 +52,18 @@
 ;;;     y
 
 (test gtk-fixed-child-properties
-  (let ((fixed (make-instance 'gtk:fixed))
-        (button (gtk:button-new)))
+  (glib-test:with-check-memory (fixed button)
+    (setf fixed (make-instance 'gtk:fixed))
+    (setf button (gtk:button-new))
     (is-false (gtk:container-add fixed button))
     (is (= 0 (gtk:fixed-child-x fixed button)))
     (is (= 0 (gtk:fixed-child-y fixed button)))
     (is (= 10 (setf (gtk:fixed-child-x fixed button) 10)))
     (is (= 20 (setf (gtk:fixed-child-y fixed button) 20)))
     (is (= 10 (gtk:fixed-child-x fixed button)))
-    (is (= 20 (gtk:fixed-child-y fixed button)))))
+    (is (= 20 (gtk:fixed-child-y fixed button)))
+    ;; Remove button from fixed
+    (is-false (gtk:container-remove fixed button))))
 
 (test gtk-fixed-child-x-property
   (is (equal '(PROGN
@@ -83,19 +86,23 @@
 ;;;     gtk_fixed_new
 
 (test gtk-fixed-new
-  (is (typep (gtk:fixed-new) 'gtk:fixed)))
+  (glib-test:with-check-memory (fixed)
+    (is (typep (setf fixed (gtk:fixed-new)) 'gtk:fixed))))
 
 ;;;     gtk_fixed_put
 ;;;     gtk_fixed_move
 
 (test gtk-fixed-put/move
-  (let ((fixed (gtk:fixed-new))
-        (button (gtk:button-new)))
+  (glib-test:with-check-memory (fixed button)
+    (setf fixed (gtk:fixed-new))
+    (setf button (gtk:button-new))
     (gtk:fixed-put fixed button 10 20)
     (is (= 10 (gtk:fixed-child-x fixed button)))
     (is (= 20 (gtk:fixed-child-y fixed button)))
     (gtk:fixed-move fixed button 15 25)
     (is (= 15 (gtk:fixed-child-x fixed button)))
-    (is (= 25 (gtk:fixed-child-y fixed button)))))
+    (is (= 25 (gtk:fixed-child-y fixed button)))
+    ;; Remove button from fixed
+    (is-false (gtk:container-remove fixed button))))
 
-;;; 2024-9-21
+;;; 2026-06-16
