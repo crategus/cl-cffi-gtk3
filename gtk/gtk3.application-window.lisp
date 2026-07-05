@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2025 Dieter Kaiser
+;;; Copyright (C) 2013 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -229,19 +229,16 @@
 (setf (liber:alias-for-function 'application-window-show-menubar)
       "Accessor"
       (documentation 'application-window-show-menubar 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-window-show-menubar object) => show}
   @syntax{(setf (gtk:application-window-show-menubar object) show)}
   @argument[window]{a @class{gtk:application-window} widget}
   @argument[show]{a boolean whether to show a menubar when needed}
   @begin{short}
-    Accessor of the @slot[gtk:application-window]{show-menubar} slot of the
-    @class{gtk:application-window} class.
+    The accessor for the @slot[gtk:application-window]{show-menubar} slot gets
+    or sets whether the window will display a menubar for the application menu
+    and menubar as needed.
   @end{short}
-  The @fun{gtk:application-window-show-menubar} function returns whether the
-  window will display a menubar for the application menu and menubar as needed.
-  The @setf{gtk:application-window-show-menubar} function sets whether the
-  window will display a menubar.
   @see-class{gtk:application-window}")
 
 ;;; ----------------------------------------------------------------------------
@@ -267,11 +264,11 @@
 
 (cffi:defcfun ("gtk_application_window_get_id" application-window-id) :uint
  #+liber-documentation
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @argument[window]{a @class{gtk:application-window} widget}
   @begin{return}
-    The unique ID for @arg{window}, or 0 if @arg{window} has not yet been
-    added to a @class{gtk:application} instance.
+    The unique integer ID for @arg{window}, or 0 if @arg{window} has not yet
+    been added to a @class{gtk:application} instance.
   @end{return}
   @begin{short}
     Returns the unique ID of the application window. If the application window
@@ -298,18 +295,16 @@
 (cffi:defcfun ("gtk_application_window_get_help_overlay"
                application-window-help-overlay) (g:object shortcuts-window)
  #+liber-documentation
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-window-help-overlay window) => overlay}
   @syntax{(setf (gtk:application-window-help-overlay window) overlay)}
   @argument[window]{a @class{gtk:application-window} widget}
   @argument[overlay]{a @class{gtk:shortcuts-window} widget}
   @begin{short}
-    The @fun{gtk:application-window-help-overlay} function gets the shortcuts
-    window associated with the application window.
+    Gets or sets the shortcuts window associated with the application window.
   @end{short}
-  The @setf{gtk:application-window-help-overlay} function associates a shortcuts
-  window with the application window, and sets up an action with the name
-  @code{\"win.show-help-overlay\"} to present it.
+  Sets up an action with the name @code{\"win.show-help-overlay\"} to present
+  it.
   @see-class{gtk:application-window}
   @see-class{gtk:shortcuts-window}"
   (window (g:object application-window)))

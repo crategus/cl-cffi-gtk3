@@ -46,7 +46,7 @@
 
 ;;; --- Properties and Accessors -----------------------------------------------
 
-;;; --- gtk-application-window-show-menubar ------------------------------------
+;;;     gtk-application-window-show-menubar
 
 (test gtk-application-window-show-menubar
   (glib-test:with-check-memory (window)
@@ -54,21 +54,22 @@
                      (make-instance 'gtk:application-window))
                'gtk:application-window))
     ;; Default value is true
-    (is-true  (gtk:application-window-show-menubar window))
+    (is-true (gtk:application-window-show-menubar window))
     ;; Set show-menubar property to nil
     (setf (gtk:application-window-show-menubar window) nil)
     (is-false (gtk:application-window-show-menubar window))
+    ;; Destroy window
     (is-false (gtk:widget-destroy window))))
 
 ;;; --- Functions --------------------------------------------------------------
 
-;;; --- gtk-application-window-new ---------------------------------------------
+;;;     gtk-application-window-new
 
 ;; Works only in a "startup" handler
 ;; Gtk-CRITICAL : New application windows must be added after the
 ;; GApplication::startup signal has been emitted.
 
-;;; --- gtk-application-window-id ----------------------------------------------
+;;;     gtk-application-window-id
 
 (test gtk-application-window-id
   (glib-test:with-check-memory (window)
@@ -77,10 +78,11 @@
                'gtk:application-window))
     ;; Zero if the window is not added to a GtkApplication
     (is (= 0 (gtk:application-window-id window)))
+    ;; Destroy window
     (is-false (gtk:widget-destroy window))))
 
-;;; --- gtk_application_window_set_help_overlay --------------------------------
-;;; --- gtk_application_window_get_help_overlay --------------------------------
+;;;     gtk_application_window_set_help_overlay
+;;;     gtk_application_window_get_help_overlay
 
 (test gtk-application-window-help-overlay
   (glib-test:with-check-memory (window overlay)
@@ -97,7 +99,9 @@
     ;; Retrieve the GtkShortcutsWindow
     (is (typep (gtk:application-window-help-overlay window)
                'gtk:shortcuts-window))
+    ;; Remove shortcuts window and destory the windows
     (is-false (setf (gtk:application-window-help-overlay window) nil))
+    (is-false (gtk:widget-destroy overlay))
     (is-false (gtk:widget-destroy window))))
 
-;;; 2025-06-02
+;;; 2025-07-05

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2025 Dieter Kaiser
+;;; Copyright (C) 2013 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -325,17 +325,14 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-active-window)
       "Accessor"
       (documentation 'application-active-window 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-active-window object) => window}
   @argument[object]{a @class{gtk:application} instance}
   @argument[window]{a @class{gtk:window} widget}
   @begin{short}
-    Accessor of the @slot[gtk:application]{active-window} slot of the
-    @class{gtk:application} class.
+    The accessor for the @slot[gtk:application]{active-window} slot gets the
+    active window for the application.
   @end{short}
-  The @fun{gtk:application-active-window} function gets the active window for
-  the application.
-
   The active window is the one that was most recently focused within the
   application. This window may not have the focus at the moment if another
   application has it - this is just the most recently focused window within
@@ -354,20 +351,18 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-app-menu)
       "Accessor"
       (documentation 'application-app-menu 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-app-menu object) => menu}
   @syntax{(setf (gtk:application-app-menu object) menu)}
   @argument[object]{a @class{gtk:application} instance}
   @argument[menu]{a @class{g:menu-model} object, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:application]{app-menu} slot of the
-    @class{gtk:application} class.
+    The accessor for the @slot[gtk:application]{app-menu} slot gets or sets
+    the application menu.
   @end{short}
-  The @fun{gtk:application-app-menu} function returns the application menu that
-  has been set. The @setf{gtk:application-app-menu} function sets the
-  application menu. This can only be done in the primary instance of the
-  application, after it has been registered. The handler for the
-  @sig[g:application]{startup} signal is a good place to call this.
+  This can only be done in the primary instance of the application, after it
+  has been registered. The handler for the @sig[g:application]{startup} signal
+  is a good place to call this.
 
   The application menu is a single menu containing items that typically impact
   the application as a whole, rather than acting on a specific window or
@@ -392,19 +387,15 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-menubar)
       "Accessor"
       (documentation 'application-menubar 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-menubar object) => menubar}
   @syntax{(setf (gtk:application-menubar object) menubar)}
   @argument[object]{a @class{gtk:application} instance}
   @argument[menubar]{a @class{g:menu-model} object, or @code{nil}}
   @begin{short}
-    Accessor of the @slot[gtk:application]{menubar} slot of the
-    @class{gtk:application} class.
+    The accessor for the @slot[gtk:application]{menubar} slot gets or sets the
+    menubar for windows of the application.
   @end{short}
-  The @fun{gtk:application-menubar} function returns the menubar for windows of
-  the application. The @setf{gtk:application-menubar} function sets or unsets
-  the menubar.
-
   This is a menubar in the traditional sense. This can only be done in the
   primary instance of the application, after it has been registered. The
   handler for the @sig[g:application]{startup} signal is a good place to call
@@ -438,14 +429,13 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-register-session)
       "Accessor"
       (documentation 'application-register-session 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-register-session object) => setting}
   @syntax{(setf (gtk:application-register-session object) setting)}
   @argument[object]{a @class{gtk:application} instance}
   @argument[setting]{a boolean whether to register with the session manager}
   @begin{short}
-    Accessor of the @slot[gtk:application]{register-session} slot of the
-    @class{gtk:application} class.
+    The accessor for the @slot[gtk:application]{register-session} slot.
   @end{short}
   Set the @slot[gtk:application]{register-session} property to @em{true} to
   register with the session mananger.
@@ -467,13 +457,12 @@ lambda (application window)    :run-first
 (setf (liber:alias-for-function 'application-screensaver-active)
       "Accessor"
       (documentation 'application-screensaver-active 'function)
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-screensaver-active object) => active}
   @argument[object]{a @class{gtk:application} instance}
   @argument[active]{a boolean whether the screensaver is active}
   @begin{short}
-    Accessor of the @slot[gtk:application]{screensaver-active} slot of the
-    @class{gtk:application} class.
+    The accessor for the @slot[gtk:application]{screensaver-active} slot.
   @end{short}
   The @slot[gtk:application]{screensaver-active} property is @em{true} if GTK
   believes that the screensaver is currently active. GTK only tracks session
@@ -850,11 +839,11 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_menu_by_id" application-menu-by-id)
     (g:object menu)
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-17}
   @argument[application]{a @class{gtk:application} instance}
   @argument[id]{a string for the ID of the menu to look up}
   @begin{return}
-    Gets the @class{g:menu} object for the given @arg{id} argument from the
+    The @class{g:menu} object for the given @arg{id} argument from the
     automatically loaded resources.
   @end{return}
   @begin{short}
@@ -997,7 +986,7 @@ lambda (application window)    :run-first
 (cffi:defcfun ("gtk_application_get_accels_for_action"
                 application-accels-for-action) g:strv-t
  #+liber-documentation
- "@version{2025-07-11}
+ "@version{2026-06-17}
   @syntax{(gtk:application-accels-for-action application name) => accels}
   @syntax{(setf (gtk:application-accels-for-action application name) accels)}
   @argument[application]{a @class{gtk:application} instance}
@@ -1006,12 +995,8 @@ lambda (application window)    :run-first
   @argument[accels]{a string or a list of strings of accelerators in the format
     understood by the @fun{gtk:accelerator-parse} function}
   @begin{short}
-    The @fun{gtk:application-accels-for-action} function gets the keyboard
-    accelerators that will trigger the given action.
+    Gets or sets the keyboard accelerators that will trigger the given action.
   @end{short}
-  The @setf{gtk:application-accels-for-action} function sets zero or more
-  keyboard accelerators.
-
   The first item in the list of accelerators will be the primary accelerator,
   which may be displayed in the UI. To remove all accelerators for an action,
   use an empty list.
