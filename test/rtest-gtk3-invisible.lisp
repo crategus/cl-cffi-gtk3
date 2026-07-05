@@ -46,7 +46,7 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-invisible-properties
-  (glib-test:with-check-memory (invisible)
+  (glib-test:with-check-memory (invisible :strong 1)
     (is (typep (setf invisible (make-instance 'gtk:invisible)) 'gtk:invisible))
     (is (typep (gtk:invisible-screen invisible) 'gdk:screen))
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))
@@ -74,4 +74,4 @@
     (is (eq (gdk:screen-default) (gtk:invisible-screen invisible)))
     (is-false (gtk:widget-destroy invisible))))
 
-;;; 2025-06-06
+;;; 2026-06-18

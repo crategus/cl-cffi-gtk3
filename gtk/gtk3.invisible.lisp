@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -104,18 +104,15 @@
 (setf (liber:alias-for-function 'invisible-screen)
       "Accessor"
       (documentation 'invisible-screen 'function)
- "@version{2025-07-15}
+ "@version{2026-06-18}
   @syntax{(gtk:invisible-screen object) => screen}
   @syntax{(setf (gtk:invisible-screen object) screen)}
   @argument[object]{a @class{gtk:invisible} widget}
   @argument[screen]{a @class{gdk:screen} object}
   @begin{short}
-    Accessor of the @slot[gtk:invisible]{screen} slot of the
-    @class{gtk:invisible} class.
+    The accessor for the @slot[gtk:invisible]{screen} slot gets or sets the
+    screen associated with the invisible widget.
   @end{short}
-  The @fun{gtk:invisible-screen} function returns the screen associated with
-  the invisible widget. The @setf{gtk:invisible-screen} function sets the
-  screen.
   @see-class{gtk:invisible}
   @see-class{gdk:screen}")
 

@@ -266,7 +266,7 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-window-properties
-  (glib-test:with-check-memory (window window1)
+  (glib-test:with-check-memory (window window1 :strong 1)
     (setf window (make-instance 'gtk:window))
     ;; Property ACCEPT-FOCUS
     (is (equal '(:READABLE :WRITABLE)
@@ -491,7 +491,9 @@
 ;;;     gtk_window_list_toplevels
 
 (test gtk-window-list-toplevels
-  (glib-test:with-check-memory (window :strong 1)
+  (glib-test:with-check-memory (window :strong 2)
+    (dolist (window (gtk:window-list-toplevels))
+      (gtk:widget-destroy window))
     (setf window (gtk:window-new :toplevel))
     (is (member window (gtk:window-list-toplevels) :test #'eq))
     (is-false (gtk:widget-destroy window))))
@@ -505,6 +507,7 @@
     (setf group (gtk:accel-group-new))
     (is-false (gtk:window-add-accel-group window group))
     (is-false (gtk:window-remove-accel-group window group))
+    ;; Destroy window
     (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_window_default_size

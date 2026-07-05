@@ -498,8 +498,6 @@ lambda (dialog response)    :run-last
 
 (export 'dialog-new)
 
-
-
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_dialog_new_with_buttons
 ;;; ----------------------------------------------------------------------------
@@ -861,14 +859,14 @@ lambda (dialog response)    :run-last
 (cffi:defcfun ("gtk_dialog_get_action_area" dialog-action-area)
     (g:object widget)
  #+liber-documentation
- "@version{2026-06-05}
+ "@version{2026-06-18}
   @argument[dialog]{a @class{gtk:dialog} widget}
   @return{The @class{gtk:widget} action area of the dialog.}
   @short{Returns the action area of the dialog.}
   @begin[Warning]{dictionary}
-    The @fun{gtk:dialog-action-area} function has been deprecated since version
-    3.12 and should not be used in newly written code. Direct access to the
-    action area is discouraged. Use the @fun{gtk:dialog-add-button} function.
+    This function has been deprecated since version 3.12 and should not be used
+    in newly written code. Direct access to the action area is discouraged. Use
+    the @fun{gtk:dialog-add-button} function.
   @end{dictionary}
   @see-class{gtk:dialog}
   @see-class{gtk:widget}

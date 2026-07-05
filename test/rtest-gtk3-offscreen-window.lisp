@@ -39,11 +39,11 @@
              (glib-test:list-signals "GtkOffscreenWindow")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkOffscreenWindow" GTK:OFFSCREEN-WINDOW
-                       (:SUPERCLASS GTK:WINDOW
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_offscreen_window_get_type")
-                       NIL)
+                      (:SUPERCLASS GTK:WINDOW
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_offscreen_window_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkOffscreenWindow"))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -51,20 +51,27 @@
 ;;;     gtk_offscreen_window_new
 
 (test gtk-offscreen-window-new
-  (is (typep (gtk:offscreen-window-new) 'gtk:offscreen-window)))
+  (glib-test:with-check-memory (window)
+    (is (typep (setf window
+                     (gtk:offscreen-window-new)) 'gtk:offscreen-window))
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_offscreen_window_get_surface
 
-#+nil
 (test gtk-offscreen-window-surface
-  (let ((offscreen (gtk:offscreen-window-new)))
-    (is-false (gtk:offscreen-window-surface offscreen))))
+  (glib-test:with-check-memory (window)
+    (setf window (gtk:offscreen-window-new))
+    (is-false (gtk:widget-realize window))
+    (is (cffi:pointerp (gtk:offscreen-window-surface window)))
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_offscreen_window_get_pixbuf
 
-#+nil
 (test gtk-offscreen-window-pixbuf
-  (let ((offscreen (gtk:offscreen-window-new)))
-    (is-false (gtk:offscreen-window-pixbuf offscreen))))
+  (glib-test:with-check-memory (window :strong 1)
+    (setf window (gtk:offscreen-window-new))
+    (is-false (gtk:widget-realize window))
+    (is (typep (gtk:offscreen-window-pixbuf window) 'gdk-pixbuf:pixbuf))
+    (is-false (gtk:widget-destroy window))))
 
-;;; 2024-9-22
+;;; 2026-06-18

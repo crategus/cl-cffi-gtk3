@@ -132,31 +132,6 @@
                         "use-header-bar" "gint" T NIL)))
              (gobject:get-gtype-definition "GtkDialog"))))
 
-;;; --- Properties -------------------------------------------------------------
-
-(test gtk-dialog-properties.1
-  (glib-test:with-check-memory (dialog)
-    (setf dialog (make-instance 'gtk:dialog))
-    (is (= 0 (gtk:dialog-use-header-bar dialog)))
-    (is-false (gtk:widget-destroy dialog))))
-
-(test gtk-dialog-properties.2
-  (glib-test:with-check-memory (dialog)
-    (setf dialog (make-instance 'gtk:dialog :use-header-bar 1))
-    (is (= 1 (gtk:dialog-use-header-bar dialog)))
-    (is-false (gtk:widget-destroy dialog))))
-
-;;; --- Style Properties -------------------------------------------------------
-
-(test gtk-dialog-style-properties
-  (glib-test:with-check-memory (dialog)
-    (setf dialog (make-instance 'gtk:dialog))
-    (is (= 0 (gtk:widget-style-property dialog "action-area-border")))
-    (is (= 4 (gtk:widget-style-property dialog "button-spacing")))
-    (is (= 2 (gtk:widget-style-property dialog "content-area-border")))
-    (is (= 0 (gtk:widget-style-property dialog "content-area-spacing")))
-    (is-false (gtk:widget-destroy dialog))))
-
 ;;; --- Signals ----------------------------------------------------------------
 
 (test gtk-dialog-close-signal
@@ -190,6 +165,31 @@
     ;; Check parameter types
     (is (equal '("gint")
                (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;; --- Properties -------------------------------------------------------------
+
+(test gtk-dialog-properties.1
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
+    (is (= 0 (gtk:dialog-use-header-bar dialog)))
+    (is-false (gtk:widget-destroy dialog))))
+
+(test gtk-dialog-properties.2
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog :use-header-bar 1))
+    (is (= 1 (gtk:dialog-use-header-bar dialog)))
+    (is-false (gtk:widget-destroy dialog))))
+
+;;; --- Style Properties -------------------------------------------------------
+
+(test gtk-dialog-style-properties
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:dialog))
+    (is (= 0 (gtk:widget-style-property dialog "action-area-border")))
+    (is (= 4 (gtk:widget-style-property dialog "button-spacing")))
+    (is (= 2 (gtk:widget-style-property dialog "content-area-border")))
+    (is (= 0 (gtk:widget-style-property dialog "content-area-spacing")))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -324,4 +324,4 @@
 ;;;     gtk_dialog_set_alternative_button_order
 ;;;     gtk_dialog_set_alternative_button_order_from_array
 
-;;; 2025-06-05
+;;; 2026-06-18

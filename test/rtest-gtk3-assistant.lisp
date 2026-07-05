@@ -85,6 +85,14 @@
                         "use-header-bar" "gint" T NIL)))
              (gobject:get-gtype-definition "GtkAssistant"))))
 
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     apply
+;;;     cancel
+;;;     close
+;;;     escape
+;;;     prepare
+
 ;;; --- Properties -------------------------------------------------------------
 
 ;;;     use-header-bar
@@ -120,14 +128,6 @@
     (is (= 1 (gtk:widget-style-property assistant "content-padding")))
     (is (= 6 (gtk:widget-style-property assistant "header-padding")))
     (is-false (gtk:widget-destroy assistant))))
-
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     apply
-;;;     cancel
-;;;     close
-;;;     escape
-;;;     prepare
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -169,4 +169,4 @@
 ;;;     gtk_assistant_next_page
 ;;;     gtk_assistant_previous_page
 
-;;; 2025-06-06
+;;; 2026-06-18
