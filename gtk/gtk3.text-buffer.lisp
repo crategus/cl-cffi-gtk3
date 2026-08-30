@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -36,12 +36,20 @@
 ;;;     GtkTextBuffer
 ;;;     GtkTextBufferTargetInfo
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_text_buffer_get_tag_table
+;;;     gtk_text_buffer_set_text
+;;;     gtk_text_buffer_get_text
+;;;     gtk_text_buffer_get_has_selection
+;;;     gtk_text_buffer_get_copy_target_list
+;;;     gtk_text_buffer_get_paste_target_list
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_text_buffer_new
 ;;;     gtk_text_buffer_get_line_count
 ;;;     gtk_text_buffer_get_char_count
-;;;     gtk_text_buffer_get_tag_table                      Accessor
 ;;;     gtk_text_buffer_insert
 ;;;     gtk_text_buffer_insert_at_cursor
 ;;;     gtk_text_buffer_insert_interactive
@@ -54,8 +62,6 @@
 ;;;     gtk_text_buffer_delete
 ;;;     gtk_text_buffer_delete_interactive
 ;;;     gtk_text_buffer_backspace
-;;;     gtk_text_buffer_set_text                           Accessor
-;;;     gtk_text_buffer_get_text                           Accessor
 ;;;     gtk_text_buffer_get_slice
 ;;;     gtk_text_buffer_insert_pixbuf
 ;;;     gtk_text_buffer_insert_child_anchor
@@ -69,7 +75,6 @@
 ;;;     gtk_text_buffer_get_mark
 ;;;     gtk_text_buffer_get_insert
 ;;;     gtk_text_buffer_get_selection_bound
-;;;     gtk_text_buffer_get_has_selection                  Accessor
 ;;;     gtk_text_buffer_place_cursor
 ;;;     gtk_text_buffer_select_range
 ;;;     gtk_text_buffer_apply_tag
@@ -102,9 +107,7 @@
 ;;;     gtk_text_buffer_deserialize
 ;;;     gtk_text_buffer_deserialize_get_can_create_tags
 ;;;     gtk_text_buffer_deserialize_set_can_create_tags
-;;;     gtk_text_buffer_get_copy_target_list               Accessor
 ;;;     gtk_text_buffer_get_deserialize_formats
-;;;     gtk_text_buffer_get_paste_target_list              Accessor
 ;;;     gtk_text_buffer_get_serialize_formats
 ;;;     gtk_text_buffer_register_deserialize_format
 ;;;     gtk_text_buffer_register_deserialize_tagset
@@ -162,7 +165,7 @@
 (setf (liber:alias-for-symbol 'text-buffer-target-info)
       "GEnum"
       (liber:symbol-documentation 'text-buffer-target-info)
- "@version{#2025-06-27}
+ "@version{2026-06-29}
   @begin{declaration}
 (gobject:define-genum \"GtkTextBufferTargetInfo\" gtk:text-buffer-target-info
   (:export t
@@ -220,7 +223,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-buffer 'type)
- "@version{2025-09-26}
+ "@version{2026-06-29}
   @begin{short}
     You may wish to begin by reading the text widget conceptual overview which
     gives an overview of all the objects and data types related to the text
@@ -373,7 +376,8 @@ lambda (buffer location mark)    :run-last
           @arg{buffer}.}
         @entry[mark]{The @class{gtk:text-mark} object that is set.}
       @end{simple-table}
-      The signal is emitted as notification after a @class{gtk:text-mark}
+      The signal is emitted as notification after a @class{gtk:text-mark} is
+      set.
     @end{signal}
     @begin[text-buffer::modifed-changed]{signal}
       @begin{pre}
@@ -449,18 +453,18 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-copy-target-list)
       "Accessor"
       (documentation 'text-buffer-copy-target-list 'function)
- "@version{#2025-07-01}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-copy-target-list object) => tlist}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{copy-target-list} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{copy-target-list} slot returns
+    the list of targets this text buffer can provide for copying and as drag
+    and drag source.
   @end{short}
-  This function returns the list of targets this text buffer can provide
-  for copying and as drag and drag source. The targets in the list are added
-  with info values from the @sym{gtk:text-buffer-target-info} enumeration using
-  the @fun{gtk:target-list-add-rich-text-targets} and
+  The targets in the list are added with info values from the
+  @sym{gtk:text-buffer-target-info} enumeration using the
+  @fun{gtk:target-list-add-rich-text-targets} and
   @fun{gtk:target-list-add-text-targets} functions.
   @see-class{gtk:text-buffer}
   @see-class{gtk:target-list}
@@ -483,23 +487,22 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-cursor-position)
       "Accessor"
       (documentation 'text-buffer-cursor-position 'function)
- "@version{#2025-06-30}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-cursor-position object) => position}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[position]{an integer for the position of the insert mark}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{cursor-position} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{cursor-position} slot returns
+    the position of the insert mark, as offset from the beginning of the text
+    buffer.
   @end{short}
-  The position of the insert mark, as offset from the beginning of the text
-  buffer. It is useful for getting notified when the cursor moves.
+  It is useful for getting notified when the cursor moves.
   @see-class{gtk:text-buffer}")
 
 ;;; --- gtk:text-buffer-has-selection ------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "has-selection"
-                                               'text-buffer) t)
+(setf (documentation (liber:slot-documentation "has-selection" 'text-buffer) t)
  "The @code{has-selection} property of type @code{:boolean} (Read) @br{}
   Whether the text buffer has some text currently selected. @br{}
   Default value: @em{false}")
@@ -508,15 +511,14 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-has-selection)
       "Accessor"
       (documentation 'text-buffer-has-selection 'function)
- "@version{#2023-03-07}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-has-selection object) => setting}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[setting]{@em{true} if there is text selected}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{has-selection} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{has-selection} slot indicates
+    whether the text buffer has some text currently selected.
   @end{short}
-  Indicates whether the text buffer has some text currently selected.
   @see-class{gtk:text-buffer}")
 
 ;;; --- gtk:text-buffer-paste-target-list --------------------------------------
@@ -533,18 +535,18 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-paste-target-list)
       "Accessor"
       (documentation 'text-buffer-paste-target-list 'function)
- "@version{#2025-07-01}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-paste-target-list object) => tlist}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[tlist]{a @class{gtk:target-list} instance}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{paste-target-list} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{paste-target-list} slot returns
+    the list of targets the text buffer supports for pasting and as Drag and
+    Drop destination.
   @end{short}
-  This function returns the list of targets the text buffer supports for
-  pasting and as drag and drop destination. The targets in the list are added
-  with info values from the @sym{gtk:text-buffer-target-info} enumeration using
-  the @fun{gtk:target-list-add-rich-text-targets} and
+  The targets in the list are added with info values from the
+  @sym{gtk:text-buffer-target-info} enumeration using the
+  @fun{gtk:target-list-add-rich-text-targets} and
   @fun{gtk:target-list-add-text-targets} functions.
   @see-class{gtk:text-buffer}
   @see-class{gtk:target-list}
@@ -564,15 +566,14 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-tag-table)
       "Accessor"
       (documentation 'text-buffer-tag-table 'function)
- "@version{2024-01-02}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-tag-table object) => table}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[table]{a @class{gtk:text-tag-table} object}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{tag-table} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{tag-table} slot returns the tag
+    table associated with the text buffer.
   @end{short}
-  Gets the tag table associated with the text buffer.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-tag-table}")
 
@@ -588,18 +589,15 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-function 'text-buffer-text)
       "Accessor"
       (documentation 'text-buffer-text 'function)
- "@version{2025-06-30}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-text object) => text}
   @syntax{(setf (gtk:text-buffer-text object) text)}
   @argument[object]{a @class{gtk:text-buffer} object}
   @argument[text]{a string for the UTF-8 text}
   @begin{short}
-    Accessor of the @slot[gtk:text-buffer]{text} slot of the
-    @class{gtk:text-buffer} class.
+    The accessor for the @slot[gtk:text-buffer]{text} slot gets or sets the
+    text of the text buffer, without child widgets and images.
   @end{short}
-  The @fun{gtk:text-buffer} function retrieves the text of the text buffer,
-  without child widgets and images. The @setf{gtk:text-buffer-text} function
-  deletes current contents of the text buffer, and inserts @arg{text} instead.
   The text must be valid UTF-8.
   @begin[Notes]{dictionary}
     Use the @fun{gtk:text-buffer-get-text} function to retrieve a range of text
@@ -618,7 +616,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-new (&optional table)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{2026-06-29}
   @argument[table]{an optional @class{gtk:text-tag-table} object, or no
     argument to create a new one}
   @return{The new @class{gtk:text-buffer} object.}
@@ -638,7 +636,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_get_line_count" text-buffer-line-count) :int
  #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The integer for the number of lines in the text buffer.}
   @begin{short}
@@ -657,7 +655,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_get_char_count" text-buffer-char-count) :int
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The integer for the number of characters in the text buffer.}
   @begin{short}
@@ -686,7 +684,7 @@ lambda (buffer tag start end)    :run-last
                                             (interactive nil)
                                             (editable t))
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{2026-06-29}
   @syntax{(gtk:text-buffer-insert buffer text) => t}
   @syntax{(gtk:text-buffer-insert buffer text :position position) => t}
   @syntax{(gtk:text-buffer-insert buffer text :interactive t) => t}
@@ -765,7 +763,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-at-cursor (buffer text)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[text]{a string for the text in UTF-8 format}
   @begin{short}
@@ -790,7 +788,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-interactive (buffer iter text editable)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} iterator for a position in the text
     buffer}
@@ -826,7 +824,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-interactive-at-cursor (buffer text editable)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[text]{a string for the text in UTF-8 format}
   @argument[editable]{a boolean whether @arg{buffer} is editable by default}
@@ -857,7 +855,7 @@ lambda (buffer tag start end)    :run-last
 (defun text-buffer-insert-range (buffer iter start end
                                  &key interactive editable)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @syntax{(gtk:text-buffer-insert-range buffer iter start end) => t}
   @syntax{(gtk:text-buffer-insert-range buffer iter start end :interactive t)
     => t}
@@ -916,7 +914,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_insert_range_interactive"
                %text-buffer-insert-range-interactive) :boolean
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} iterator for a position in the text
     buffer}
@@ -953,7 +951,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-with-tags (buffer iter text &rest tags)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} iterator in the text buffer}
   @argument[text]{a string for the UTF-8 text}
@@ -992,37 +990,6 @@ lambda (buffer tag start end)    :run-last
 ;;; gtk_text_buffer_insert_with_tags_by_name                not implemented
 ;;; ----------------------------------------------------------------------------
 
-#+nil
-(defun text-buffer-insert-with-tags-by-name (buffer iter text &rest tags)
- #+liber-documentation
- "@version{#2025-06-30}
-  @argument[buffer]{a @class{gtk:text-buffer} object}
-  @argument[iter]{a @class{gtk:text-iter} iterator in text buffer}
-  @argument[text]{a string for the UTF-8 text}
-  @argument[tags]{strings for the tag names to apply to @arg{text}}
-  @begin{short}
-    Same as the @fun{gtk:text-buffer-insert-with-tags} function, but allows you
-    to pass in tag names instead of tag objects.
-  @end{short}
-  @begin[Notes]{dictionary}
-    The Lisp implementation does not call the C function, but uses the
-    @fun{gtk:text-buffer-insert} and @fun{gtk:text-buffer-apply-tag} functions.
-  @end{dictionary}
-  @see-class{gtk:text-buffer}
-  @see-class{gtk:text-iter}
-  @see-function{gtk:text-buffer-insert-with-tags}
-  @see-function{gtk:text-buffer-insert}
-  @see-function{gtk:text-buffer-apply-tag-by-name}"
-  (let ((offset (text-iter-offset iter)))
-    (prog1
-      (text-buffer-insert buffer text :position iter)
-      (let ((start (text-buffer-iter-at-offset buffer offset)))
-        (dolist (tag tags)
-          (text-buffer-apply-tag-by-name buffer tag start iter))))))
-
-#+nil
-(export 'text-buffer-insert-with-tags-by-name)
-
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_text_buffer_insert_markup
 ;;; ----------------------------------------------------------------------------
@@ -1035,7 +1002,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-markup (buffer iter markup)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} iterator for a position in the text
     buffer}
@@ -1064,7 +1031,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-delete (buffer start end &key interactive editable)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @syntax{(gtk:text-buffer-delete buffer start end) => t}
   @syntax{(gtk:text-buffer-delete buffer start end :interactive t) => t}
   @syntax{(gtk:text-buffer-delete buffer start end :interactive t
@@ -1112,7 +1079,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_delete_interactive"
                %text-buffer-delete-interactive) :boolean
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} start of range to delete}
   @argument[end]{a @class{gtk:text-iter} end of range}
@@ -1149,7 +1116,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-backspace (buffer iter &key interactive editable)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} position in @arg{buffer}}
   @argument[interactive]{a boolean whether the deletion is caused by user
@@ -1186,7 +1153,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-get-text (buffer start end &optional include)
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} start iterator of a range}
   @argument[end]{a @class{gtk:text-iter} end iterator of a range}
@@ -1221,7 +1188,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-get-slice (buffer start end &optional include)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} start of a range}
   @argument[end]{a @class{gtk:text-iter} end of a range}
@@ -1252,7 +1219,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_insert_pixbuf" text-buffer-insert-pixbuf) :void
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the pixbuf}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object}
@@ -1287,7 +1254,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-insert-child-anchor (buffer position &optional anchor)
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location to insert the anchor}
   @argument[anchor]{an optional @class{gtk:text-child-anchor} object}
@@ -1330,7 +1297,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_create_child_anchor"
           text-buffer-create-child-anchor) (g:object text-child-anchor)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[iter]{a @class{gtk:text-iter} location in the text buffer}
   @return{The created @class{gtk:text-child-anchor} anchor.}
@@ -1358,11 +1325,11 @@ lambda (buffer tag start end)    :run-last
   (buffer (g:object text-buffer))
   (name (:string :free-to-foreign t))
   (where (g:boxed text-iter))
-  (left-gravity :boolean))
+  (gravity :boolean))
 
 (defun text-buffer-create-mark (buffer name pos &optional (gravity t))
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name for the mark, or @code{nil}}
   @argument[pos]{a @class{gtk:text-iter} location to place the mark}
@@ -1405,7 +1372,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-move-mark (buffer mark pos)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mark]{a @class{gtk:text-mark} object, or a string for the name
     of the mark}
@@ -1431,7 +1398,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_move_mark_by_name"
                %text-buffer-move-mark-by-name) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name of a mark}
   @argument[where]{new @class{gtk:text-iter} location for mark}
@@ -1451,7 +1418,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_add_mark" text-buffer-add-mark) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mark]{a @class{gtk:text-mark} object for the mark to add}
   @argument[pos]{a @class{gtk:text-iter} iterator for the location to place
@@ -1484,7 +1451,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-delete-mark (buffer mark)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mark]{a @class{gtk:text-mark} object, or a string for the name
     of a mark in the text buffer}
@@ -1519,7 +1486,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_delete_mark_by_name"
                %text-buffer-delete-mark-by-name) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name of a mark in text buffer}
   @begin{short}
@@ -1539,7 +1506,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_get_mark" text-buffer-mark)
     (g:object text-mark)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for a mark name}
   @return{The @class{gtk:text-mark} object, or @code{nil}.}
@@ -1564,14 +1531,14 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_get_insert" text-buffer-get-insert)
     (g:object text-mark)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The @class{gtk:text-mark} insertion point mark.}
   @begin{short}
     Returns the mark that represents the cursor (insertion point).
   @end{short}
   Equivalent to calling the @fun{gtk:text-buffer-mark} function to get the mark
-  named \"insert\", but more efficient.
+  named @code{\"insert\"}, but more efficient.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-mark}
   @see-function{gtk:text-buffer-mark}"
@@ -1586,22 +1553,22 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_get_selection_bound"
                text-buffer-selection-bound) (g:object text-mark)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The @class{gtk:text-mark} selection bound mark.}
   @begin{short}
     Returns the mark that represents the selection bound.
   @end{short}
   Equivalent to calling the @fun{gtk:text-buffer-mark} function to get the mark
-  named \"selection_bound\", but very slightly more efficient, and involves less
-  typing.
+  named @code{\"selection_bound\"}, but very slightly more efficient, and
+  involves less typing.
 
   The currently selected text in the text buffer is the region between the
-  \"selection_bound\" and \"insert\" marks. If the \"selection_bound\" and
-  \"insert\" marks are in the same place, then there is no current selection.
-  The @fun{gtk:text-buffer-selection-bounds} function is another convenient
-  function for handling the selection, if you just want to know whether there
-  is a selection and what its bounds are.
+  @code{\"selection_bound\"} and @code{\"insert\"} marks. If the
+  @code{\"selection_bound\"} and @code{\"insert\"} marks are in the same place,
+  then there is no current selection. The @fun{gtk:text-buffer-selection-bounds}
+  function is another convenient function for handling the selection, if you
+  just want to know whether there is a selection and what its bounds are.
   @see-class{gtk:text-buffer}
   @see-class{gtk:text-mark}
   @see-function{gtk:text-buffer-mark}
@@ -1616,12 +1583,12 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_place_cursor" text-buffer-place-cursor) :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[pos]{a @class{gtk:text-iter} iterator where to put the cursor}
   @begin{short}
-    This function moves the \"insert\" and \"selection_bound\" marks
-    simultaneously.
+    This function moves the @code{\"insert\"} and @code{\"selection_bound\"}
+    marks simultaneously.
   @end{short}
   If you move them to the same place in two steps with the
   @fun{gtk:text-buffer-move-mark} function, you will temporarily select a region
@@ -1642,15 +1609,15 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_select_range" text-buffer-select-range) :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[insertion]{a @class{gtk:text-iter} iterator where to put the
-    \"insert\" mark}
+    @code{\"insert\"} mark}
   @argument[selection]{a @class{gtk:text-iter} iterator where to put the
-    \"selection_bound\" mark}
+    @code{\"selection_bound\"} mark}
   @begin{short}
-    This function moves the \"insert\" and \"selection_bound\" marks
-    simultaneously.
+    This function moves the @code{\"insert\"} and @code{\"selection_bound\"}
+    marks simultaneously.
   @end{short}
   If you move them in two steps with the @fun{gtk:text-buffer-move-mark}
   function, you will temporarily select a region in between their old and new
@@ -1678,7 +1645,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-apply-tag (buffer tag start end)
  #+liber-documentation
- "@version{2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[tag]{a @class{gtk:text-tag} object, or a string for the tag name}
   @argument[start]{a @class{gtk:text-iter} iterator for the start bound of
@@ -1706,7 +1673,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_apply_tag_by_name"
                %text-buffer-apply-tag-by-name) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name of a named @class{gtk:text-tag} object}
   @argument[start]{a @class{gtk:text-iter} iterator for the start bound of
@@ -1740,7 +1707,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-remove-tag (buffer tag start end)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[tag]{a @class{gtk:text-tag} object, or a string for the tag name}
   @argument[start]{a @class{gtk:text-iter} iterator for the start bound of the
@@ -1769,7 +1736,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_remove_tag_by_name"
                %text-buffer-remove-tag-by-name) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name of a @class{gtk:text-tag} object}
   @argument[start]{a @class{gtk:text-iter} iterator for one bound of range
@@ -1798,7 +1765,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_remove_all_tags" text-buffer-remove-all-tags)
     :void
  #+liber-documentation
- "@version{2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} iterator for the start bound of the
     range to be untagged}
@@ -1826,7 +1793,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-create-tag (buffer name &rest args)
  #+liber-documentation
- "@version{2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for the name of the new tag, or @code{nil}}
   @argument[args]{list of property keywords and values}
@@ -1874,7 +1841,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-line-offset (buffer line offset)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer for the line number counting from 0}
   @argument[offset]{an integer for the char offset from the start of the line}
@@ -1907,7 +1874,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-offset (buffer offset)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[offset]{an integer for the char offset from the start of the text
     buffer, counting from 0, or -1}
@@ -1939,7 +1906,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-line (buffer line)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer for the line number counting from 0}
   @return{The @class{gtk:text-iter} iterator.}
@@ -1967,7 +1934,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-line-index (buffer line index)
  #+liber-documentation
- "@version{2025-06-30}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[line]{an integer for the line number counting from 0}
   @argument[index]{an integer for the byte index from the start of the line}
@@ -2001,7 +1968,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-mark (buffer mark)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mark]{a @class{gtk:text-mark} object, or a string for the mark
     name in the text buffer}
@@ -2030,7 +1997,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-iter-at-child-anchor (buffer anchor)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[anchor]{a @class{gtk:text-child-anchor} anchor that appears in text
     buffer}
@@ -2057,7 +2024,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-start-iter (buffer)
  #+liber-documentation
- "@version{2024-01-01}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
@@ -2084,7 +2051,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-end-iter (buffer)
  #+liber-documentation
- "@version{2024-01-02}
+ "@version{2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The @class{gtk:text-iter} iterator.}
   @begin{short}
@@ -2116,7 +2083,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-bounds (buffer)
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-29}
   @syntax{(gtk:text-buffer-bounds buffer) => start, end}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[start]{a @class{gtk:text-iter} iterator for the first position in
@@ -2149,7 +2116,7 @@ lambda (buffer tag start end)    :run-last
   setting)
 
 (cffi:defcfun ("gtk_text_buffer_get_modified" text-buffer-modified) :boolean
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @syntax{(gtk:text-buffer-modified buffer) => setting}
   @syntax{(setf (gtk:text-buffer-modified buffer) setting)}
   @argument[buffer]{a @class{gtk:text-buffer} object}
@@ -2157,16 +2124,11 @@ lambda (buffer tag start end)    :run-last
   @begin{short}
     Returns @em{true} if the text buffer has been modified.
   @end{short}
-  The @fun{gtk:text-buffer-modified} function indicates whether the text buffer
-  has been modified since the last call to the
-  @setf{gtk:text-buffer-modified} function.
-
   Used to keep track of whether the text buffer has been modified since the
-  last time it was saved. Whenever the text buffer is saved to disk, call the
-  @setf{gtk:text-buffer-modified} function with the @em{false} value. When the
-  text buffer is modified, it will automatically toggle on the modified bit
-  again. When the modified bit flips, the text buffer emits a
-  @sig[text-buffer]{modified-changed} signal.
+  last time it was saved. Whenever the text buffer is saved to disk, call this
+  function with the @em{false} value. When the text buffer is modified, it will
+  automatically toggle on the modified bit again. When the modified bit flips,
+  the text buffer emits a @sig[text-buffer]{modified-changed} signal.
   @see-class{gtk:text-buffer}"
   (buffer (g:object text-buffer)))
 
@@ -2184,15 +2146,15 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-delete-selection (buffer &key interactive editable)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[interactive]{a boolean whether the deletion is caused by user
     interaction}
   @argument[editable]{a boolean whether the text buffer is editable by default}
   @return{The boolean whether there was a non-empty selection to delete.}
   @begin{short}
-    Deletes the range between the \"insert\" and \"selection_bound\" marks,
-    that is, the currently selected text.
+    Deletes the range between the @code{\"insert\"} and
+    @code{\"selection_bound\"} marks, that is, the currently selected text.
   @end{short}
   If the @arg{interactive} argument is @em{true}, the editability of the
   selection will be considered, users cannot delete uneditable text.
@@ -2214,7 +2176,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-paste-clipboard (buffer clipboard &key override editable)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[clipboard]{a @class{gtk:clipboard} object to paste from}
   @argument[override]{a @class{gtk:text-iter} location to insert pasted text,
@@ -2243,7 +2205,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_copy_clipboard" text-buffer-copy-clipboard)
     :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[clipboard]{a @class{gtk:clipboard} object to copy to}
   @begin{short}
@@ -2262,7 +2224,7 @@ lambda (buffer tag start end)    :run-last
 
 (cffi:defcfun ("gtk_text_buffer_cut_clipboard" text-buffer-cut-clipboard) :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[clipboard]{a @class{gtk:clipboard} object to cut to}
   @argument[editable]{a boolean whether the text buffer is editable by default}
@@ -2290,7 +2252,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-selection-bounds (buffer)
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{return}
     @arg{start} -- a @class{gtk:text-iter} iterator with the selection start,
@@ -2333,7 +2295,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_begin_user_action"
                text-buffer-begin-user-action) :void
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{short}
     Called to indicate that the text buffer operations between here and a call
@@ -2366,7 +2328,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_end_user_action" text-buffer-end-user-action)
     :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @begin{short}
     Should be paired with a call to the @fun{gtk:text-buffer-begin-user-action}
@@ -2386,7 +2348,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_add_selection_clipboard"
                text-buffer-add-selection-clipboard) :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[clipboard]{a @class{gtk:clipboard} object}
   @begin{short}
@@ -2409,7 +2371,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_remove_selection_clipboard"
                text-buffer-remove-selection-clipboard) :void
  #+liber-documentation
- "@version{#2023-03-07}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[clipboard]{a @class{gtk:clipboard} object added to the text buffer}
   @begin{short}
@@ -2462,7 +2424,7 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-symbol 'text-buffer-deserialize-func)
       "Callback"
       (liber:symbol-documentation 'text-buffer-deserialize-func)
- "@version{#2024-11-20}
+ "@version{#2026-06-29}
   @syntax{lambda (buffer content iter data create) => result}
   @argument[buffer]{a @class{gtk:text-buffer} object the format is registered
     with}
@@ -2498,7 +2460,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-deserialize (buffer content format iter data)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object format is registered with}
   @argument[content]{a @class{gtk:text-buffer} object to deserialize into}
   @argument[format]{a string for the rich text format to use for deserializing}
@@ -2549,7 +2511,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_deserialize_get_can_create_tags"
                text-buffer-deserialize-can-create-tags) :boolean
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-29}
   @syntax{(gtk:text-buffer-deserialize-can-create-tags buffer format) => create}
   @syntax{(setf (gtk:text-buffer-deserialize-can-create-tags buffer format) create)}
   @argument[buffer]{a @class{gtk:text-buffer} object}
@@ -2591,7 +2553,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-deserialize-formats (buffer)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The list of strings representing the registered formats.}
   @begin{short}
@@ -2621,7 +2583,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-serialize-formats (buffer)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @return{The list of strings representing the registered formats.}
   @begin{short}
@@ -2654,7 +2616,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-register-deserialize-format (buffer mime func)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mime]{a string for the MIME type of the format}
   @argument[func]{a @sym{gtk:text-buffer-deserialize-func} deserialize function
@@ -2684,7 +2646,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_register_deserialize_tagset"
                text-buffer-register-deserialize-tagset) gdk:atom-as-string
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for an optional tagset name, or @code{nil}}
   @begin{return}
@@ -2716,7 +2678,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-register-serialize-format (buffer mime func)
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[mime]{a string for the MIME type of the format}
   @argument[func]{a @sym{gtk:text-buffer-serialize-func} serialize function
@@ -2746,7 +2708,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_register_serialize_tagset"
                text-buffer-register-serialize-tagset) gdk:atom-as-string
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[name]{a string for an optional tagset name, or @code{nil}}
   @begin{return}
@@ -2762,9 +2724,9 @@ lambda (buffer tag start end)    :run-last
 
   This function is just a wrapper around the
   @fun{gtk:text-buffer-register-serialize-format} function. The MIME type used
-  for registering is \"application/x-gtk:text-buffer-rich-text\", or
-  \"application/x-gtk:text-buffer-rich-text;format=tagset_name\" if a tagset
-  name was passed.
+  for registering is @code{\"application/x-gtk:text-buffer-rich-text\"}, or
+  @code{\"application/x-gtk:text-buffer-rich-text;format=tagset_name\"} if a
+  tagset name was passed.
 
   The @arg{name} argument can be used to restrict the transfer of rich text to
   text buffers with compatible sets of tags, in order to avoid unknown tags from
@@ -2803,7 +2765,7 @@ lambda (buffer tag start end)    :run-last
 (setf (liber:alias-for-symbol 'text-buffer-serialize-func)
       "Callback"
       (liber:symbol-documentation 'text-buffer-serialize-func)
- "@version{#2024-03-23}
+ "@version{#2026-06-29}
   @syntax{lambda (buffer content start end) => result}
   @argument[buffer]{a @class{gtk:text-buffer} object for which the format is
     registered}
@@ -2838,7 +2800,7 @@ lambda (buffer tag start end)    :run-last
 
 (defun text-buffer-serialize (buffer content format start end)
  #+liber-documentation
- "@version{#2025-06-30}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object the format is registered
     with}
   @argument[content]{a @class{gtk:text-buffer} object to serialize}
@@ -2879,7 +2841,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_unregister_deserialize_format"
                text-buffer-unregister-deserialize-format) :void
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[format]{a string representing a registered rich text format}
   @begin{short}
@@ -2902,7 +2864,7 @@ lambda (buffer tag start end)    :run-last
 (cffi:defcfun ("gtk_text_buffer_unregister_serialize_format"
                text-buffer-unregister-serialize-format) :void
  #+liber-documentation
- "@version{#2025-07-03}
+ "@version{#2026-06-29}
   @argument[buffer]{a @class{gtk:text-buffer} object}
   @argument[format]{a string representing a registered rich text format}
   @begin{short}

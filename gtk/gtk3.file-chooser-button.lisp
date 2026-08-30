@@ -295,11 +295,14 @@ lambda (widget)    :run-first
 ;;; gtk_file_chooser_button_new
 ;;; ----------------------------------------------------------------------------
 
-(declaim (inline file-chooser-button-new))
+(cffi:defcfun ("gtk_file_chooser_button_new" %file-chooser-button-new)
+    (g:object file-chooser-button)
+  (title :string)
+  (action file-chooser-action))
 
 (defun file-chooser-button-new (title action)
  #+liber-documentation
- "@version{2025-07-06}
+ "@version{2026-06-10}
   @argument[title]{a string for the title of the browse dialog}
   @argument[action]{a @sym{gtk:file-chooser-action} value for the open mode
     of the widget}
@@ -309,9 +312,7 @@ lambda (widget)    :run-first
   @end{short}
   @see-class{gtk:file-chooser-button}
   @see-symbol{gtk:file-chooser-action}"
-  (make-instance 'file-chooser-button
-                 :title title
-                 :action action))
+  (%file-chooser-button-new (or title (cffi:null-pointer)) action))
 
 (export 'file-chooser-button-new)
 

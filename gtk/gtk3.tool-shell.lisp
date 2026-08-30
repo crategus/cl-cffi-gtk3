@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -68,7 +68,7 @@
 (setf (liber:alias-for-class 'tool-shell)
       "Interface"
       (documentation 'tool-shell 'type)
- "@version{#2023-02-27}
+ "@version{2026-05-29}
   @begin{short}
     The @class{gtk:tool-shell} interface allows container widgets to provide
     additional information when embedding @class{gtk:tool-item} widgets.
@@ -82,7 +82,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_ellipsize_mode" tool-shell-ellipsize-mode)
     pango:ellipsize-mode
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @sym{pango:ellipsize-mode} value for @arg{shell}.}
   @begin{short}
@@ -103,7 +103,7 @@
 
 (cffi:defcfun ("gtk_tool_shell_get_icon_size" tool-shell-icon-size) icon-size
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @sym{gtk:icon-size} value for icons of @arg{shell}.}
   @begin{short}
@@ -125,7 +125,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_orientation" tool-shell-orientation)
     orientation
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @sym{gtk:orientation} value for @arg{shell}.}
   @begin{short}
@@ -147,7 +147,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_relief_style" tool-shell-relief-style)
     relief-style
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The @sym{gtk:relief-style} value for buttons on @arg{shell}.}
   @begin{short}
@@ -168,7 +168,7 @@
 
 (cffi:defcfun ("gtk_tool_shell_get_style" tool-shell-style) toolbar-style
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @sym{gtk:toolbar-style} value for @arg{shell}.}
   @begin{short}
@@ -190,7 +190,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_text_alignment" tool-shell-text-alignment)
     :float
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The single float for the current text alignment of @arg{shell}.}
   @begin{short}
@@ -211,7 +211,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_text_orientation"
                tool-shell-text-orientation) orientation
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @sym{gtk:orientation} value for @arg{shell}.}
   @begin{short}
@@ -232,17 +232,15 @@
 
 (cffi:defcfun ("gtk_tool_shell_rebuild_menu" tool-shell-rebuild-menu) :void
  #+liber-documentation
- "@version{#2023-02-27}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @begin{short}
     Calling this function signals the tool shell that the overflow menu item
     for tool items have changed.
   @end{short}
   If there is an overflow menu and if it is visible when this function it
-  called, the menu will be rebuilt.
-
-  Tool items must not call this function directly, but rely on the
-  @fun{gtk:tool-item-rebuild-menu} function instead.
+  called, the menu will be rebuilt. Tool items must not call this function
+  directly, but rely on the @fun{gtk:tool-item-rebuild-menu} function instead.
   @see-class{gtk:tool-shell}
   @see-function{gtk:tool-item-rebuild-menu}"
   (shell (g:object tool-shell)))
@@ -256,7 +254,7 @@
 (cffi:defcfun ("gtk_tool_shell_get_text_size_group" tool-shell-text-size-group)
     (g:object size-group)
  #+liber-documentation
- "@version{#2023-02-27}
+ "@version{2026-05-29}
   @argument[shell]{a @class{gtk:tool-shell} widget}
   @return{The current @class{gtk:size-group} object of @arg{shell}.}
   @begin{short}
@@ -266,7 +264,7 @@
   @fun{gtk:tool-item-text-size-group} function instead.
   @see-class{gtk:tool-shell}
   @see-class{gtk:size-group}
-  @see-function{gtk:tool-item-get-text-size-group}"
+  @see-function{gtk:tool-item-text-size-group}"
   (shell (g:object tool-shell)))
 
 (export 'tool-shell-text-size-group)

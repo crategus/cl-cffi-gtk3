@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -38,7 +38,7 @@
 ;;; Functions
 ;;;
 ;;;     gtk_im_multicontext_new
-;;;     gtk_im_multicontext_append_menuitems
+;;;     gtk_im_multicontext_append_menuitems                Deprecated 3.10
 ;;;     gtk_im_multicontext_get_context_id
 ;;;     gtk_im_multicontext_set_context_id
 ;;;
@@ -64,83 +64,66 @@
 
 #+liber-documentation
 (setf (documentation 'im-multicontext 'type)
- "@version{#2023-02-28}
+ "@version{2026-06-03}
   @begin{short}
-    An input method context supporting multiple, loadable input methods.
+    The @class{gtk:im-multicontext} class is an input method context supporting
+    multiple, switchable input methods.
   @end{short}
+  Text widgets such as the @class{gtk:text} widget use a
+  @class{gtk:im-multicontext} object to implement their
+  @slot[gtk:text-view]{im-module} property for switching between different
+  input methods.
   @see-class{gtk:im-context}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_im_multicontext_new ()
-;;;
-;;; GtkIMContext * gtk_im_multicontext_new (void);
-;;;
-;;; Creates a new GtkIMMulticontext.
-;;;
-;;; Returns :
-;;;     a new GtkIMMulticontext.
+;;; gtk_im_multicontext_new
+;;; ----------------------------------------------------------------------------
+
+(defun im-multicontext-new ()
+ #+liber-documentation
+ "@version{2026-06-03}
+  @return{The new @class{gtk:im-multicontext} object.}
+  @begin{short}
+    Creates a new input method context supporting multiple, switchable
+    input methods.
+  @end{short}
+  @see-class{gtk:im-multicontext}"
+  (make-instance 'im-multicontext))
+
+(export 'im-multicontext-new)
+
+;;; ----------------------------------------------------------------------------
+;;; gtk_im_multicontext_append_menuitems                    Deprecated 3.10
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_im_multicontext_append_menuitems ()
-;;;
-;;; void gtk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
-;;;                                            GtkMenuShell *menushell);
-;;;
-;;; Add menuitems for various available input methods to a menu; the menuitems,
-;;; when selected, will switch the input method for the context and the global
-;;; default input method.
-;;;
-;;; Warning
-;;;
-;;; gtk_im_multicontext_append_menuitems has been deprecated since version 3.10
-;;; and should not be used in newly written code.
-;;;
-;;; It is better to use the system-wide input method framework for changing
-;;; input methods. Modern desktop shells offer on-screen displays for this that
-;;; can triggered with a keyboard shortcut, for example Super-Space.
-;;;
-;;; context :
-;;;     a GtkIMMulticontext
-;;;
-;;; menushell :
-;;;     a GtkMenuShell
+;;; gtk_im_multicontext_get_context_id
+;;; gtk_im_multicontext_set_context_id
 ;;; ----------------------------------------------------------------------------
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_im_multicontext_get_context_id ()
-;;;
-;;; const char * gtk_im_multicontext_get_context_id (GtkIMMulticontext *context)
-;;;
-;;; Gets the id of the currently active slave of the context.
-;;;
-;;; context :
-;;;     a GtkIMMulticontext
-;;;
-;;; Returns :
-;;;     the id of the currently active slave
-;;;
-;;; Since 2.16
-;;; ----------------------------------------------------------------------------
+(defun (setf im-multicontext-context-id) (id context)
+  (cffi:foreign-funcall "gtk_im_multicontext_set_context_id"
+                        (g:object im-multicontext) context
+                        :string id
+                        :void)
+  id)
 
-;;; ----------------------------------------------------------------------------
-;;; gtk_im_multicontext_set_context_id ()
-;;;
-;;; void gtk_im_multicontext_set_context_id (GtkIMMulticontext *context,
-;;;                                          const char *context_id);
-;;;
-;;; Sets the context id for context.
-;;;
-;;; This causes the currently active slave of context to be replaced by the
-;;; slave corresponding to the new context id.
-;;;
-;;; context :
-;;;     a GtkIMMulticontext
-;;;
-;;; context_id :
-;;;     the id to use
-;;;
-;;; Since 2.16
-;;; ----------------------------------------------------------------------------
+(cffi:defcfun ("gtk_im_multicontext_get_context_id"
+               im-multicontext-context-id) :string
+ #+liber-documentation
+ "@version{2026-06-03}
+  @syntax{(gtk:im-multicontext-context-id context) => id}
+  @syntax{(setf (gtk:im-multicontext-context-id content) id)}
+  @argument[context]{a @class{gtk:im-multicontext} object}
+  @argument[id]{a string for the context ID}
+  @begin{short}
+    Gets or sets the ID of the currently active delegate of the context.
+  @end{short}
+  Setting the context causes the currently active delegate of @arg{context} to
+  be replaced by the delegate corresponding to the new context ID.
+  @see-class{gtk:im-multicontext}"
+  (context (g:object im-multicontext)))
+
+(export 'im-multicontext-context-id)
 
 ;;; --- End of file gtk3.im-multicontext.lisp ----------------------------------

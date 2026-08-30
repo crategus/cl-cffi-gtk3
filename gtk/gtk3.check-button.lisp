@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -82,7 +82,7 @@
 
 #+liber-documentation
 (setf (documentation 'check-button 'type)
- "@version{2025-07-17}
+ "@version{2026-06-21}
   @begin{short}
     The @class{gtk:check-button} widget places a discrete
     @class{gtk:toggle-button} widget next to a widget, usually a
@@ -116,10 +116,9 @@ button.check
       The @code{indicator-size} style property of type @code{:int} (Read)
       @br{}
       The size of check or radio indicator. @br{}
-      @em{Warning:} The @code{indicator-size} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. Use CSS @code{min-width} and @code{min-height} on the indicator
-      node. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. Use CSS @code{min-width}
+      and @code{min-height} on the indicator node. @br{}
       Allowed values: >= 0 @br{}
       Default value: 16
     @end{property}
@@ -127,10 +126,9 @@ button.check
       The @code{indicator-spacing} style property of type @code{:int}
       (Read) @br{}
       The spacing around check or radio indicator. @br{}
-      @em{Warning:} The @code{indicator-spacing} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. Use CSS @code{min-width} and @code{min-height} on the indicator
-      node. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. Use CSS @code{min-width}
+      and @code{min-height} on the indicator node. @br{}
       Allowed values: >= 0 @br{}
       Default value: 2
     @end{property}

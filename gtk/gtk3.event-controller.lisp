@@ -165,15 +165,14 @@
 (setf (liber:alias-for-function 'event-controller-propagation-phase)
       "Accessor"
       (documentation 'event-controller-propagation-phase 'function)
- "@version{2026-05-10}
+ "@version{2026-05-31}
   @syntax{(gtk:event-controller-propagation-phase object) => phase)}
   @syntax{(setf (gtk:event-controller-propagation-phase object) phase)}
   @argument[object]{a @class{gtk:event-controller} object}
   @argument[phase]{a @sym{gtk:propagation-phase} value}
   @begin{short}
-    The accessor for the @slot[gtk:event-controller]{propagation-phase} slot of
-    the @class{gtk:event-controller} class gets or sets the propagation phase at
-    which controller handles events.
+    The accessor for the @slot[gtk:event-controller]{propagation-phase} slot
+    gets or sets the propagation phase at which controller handles events.
   @end{short}
   If @arg{phase} is @val[gtk:propagation-phase]{:none}, no automatic event
   handling will be performed, but other additional gesture maintenance will. In
@@ -195,13 +194,12 @@
 (setf (liber:alias-for-function 'event-controller-widget)
       "Accessor"
       (documentation 'event-controller-widget 'function)
- "@version{2026-05-10}
+ "@version{2026-05-31}
   @syntax{(gtk:event-controller-widget object) => widget)}
   @argument[object]{a @class{gtk:event-controller} object}
   @begin{short}
-    The accessor for the @slot[gtk:event-controller]{widget} slot of the
-    @class{gtk:event-controller} class returns the @class{gtk:widget} object
-    this controller relates to.
+    The accessor for the @slot[gtk:event-controller]{widget} slot returns
+    the @class{gtk:widget} object this controller relates to.
   @end{short}
   @see-class{gtk:event-controller}
   @see-class{gtk:widget}")

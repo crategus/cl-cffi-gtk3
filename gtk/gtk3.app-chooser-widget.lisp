@@ -116,7 +116,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-widget 'type)
- "@version{#2025-07-14}
+ "@version{2026-06-02}
   @begin{short}
     The @class{gtk:app-chooser-widget} widget is a widget for selecting
     applications.
@@ -126,13 +126,17 @@
   part of a larger widget if you have special needs.
 
   The @class{gtk:app-chooser-widget} widget offers detailed control over what
-  applications are shown, using the @code{show-default},
-  @code{show-recommended}, @code{show-fallback}, @code{show-other} and
-  @code{show-all} properties. See the @class{gtk:app-chooser} documentation for
-  more information about these groups of applications.
+  applications are shown, using the @slot[gtk:app-chooser-widget]{show-default},
+  @slot[gtk:app-chooser-widget]{show-recommended},
+  @slot[gtk:app-chooser-widget]{show-fallback},
+  @slot[gtk:app-chooser-widget]{show-other} and
+  @slot[gtk:app-chooser-widget]{show-all} properties. See the
+  @class{gtk:app-chooser} documentation for more information about these groups
+  of applications.
 
-  To keep track of the selected application, use the \"application-selected\"
-  and @code{\"application-activated\"} signals.
+  To keep track of the selected application, use the
+  @sig[gtk:app-chooser-widget]{application-selected} and
+  @sig[gtk:app-chooser-widget]{application-activated} signals.
   @begin[CSS nodes]{dictionary}
     The @class{gtk:app-chooser-widget} implementation has a single CSS node with
     name @code{appchooser}.
@@ -185,7 +189,8 @@ lambda (widget menu application)    :run-first
   @see-slot{gtk:app-chooser-widget-show-default}
   @see-slot{gtk:app-chooser-widget-show-fallback}
   @see-slot{gtk:app-chooser-widget-show-other}
-  @see-slot{gtk:app-chooser-widget-show-recommended}")
+  @see-slot{gtk:app-chooser-widget-show-recommended}
+  @see-class{gtk:app-chooser}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -206,15 +211,15 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-default-text)
       "Accessor"
       (documentation 'app-chooser-widget-default-text 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-default-text object) => text}
   @syntax{(setf (gtk:app-chooser-widget-default-text object) text)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[text]{a string for the text that appears in the widget}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{default-text} slot of the
-    @class{gtk:app-chooser-widget} class gets or sets the text that is shown if
-    there are not applications that can handle the content type.
+    The accessor for the @slot[gtk:app-chooser-widget]{default-text} slot gets
+    or sets the text that is shown if there are not applications that can handle
+    the content type.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -225,25 +230,25 @@ lambda (widget menu application)    :run-first
                                                'app-chooser-widget) t)
  "The @code{show-all} property of type @code{:boolean}
   (Read / Write / Construct) @br{}
-  If the @code{show-all} property is @em{true}, the application chooser
-  presents all applications in a single list, without subsections for default,
-  recommended or related applications. @br{}
+  If @em{true}, the application chooser presents all applications in a single
+  list, without subsections for default, recommended or related applications.
+  @br{}
   Default value: @em{false}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'app-chooser-widget-show-all)
       "Accessor"
       (documentation 'app-chooser-widget-show-all 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-show-all object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-all object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser presents all
     applications in a single list}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{show-all} slot of the
-    @class{gtk:app-chooser-widget} class gets or sets whether the application
-    chooser should show all applications in a flat list.
+    The accessor for the @slot[gtk:app-chooser-widget]{show-all} slot gets or
+    sets whether the application chooser should show all applications in a flat
+    list.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -263,17 +268,16 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-default)
       "Accessor"
       (documentation 'app-chooser-widget-show-default 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-show-default object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-default object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show the
     default handler}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{show-default} slot of the
-    @class{gtk:app-chooser-widget} class gets or sets whether the application
-    chooser should the default handler for the content type in a separate
-    section.
+    The accessor for the @slot[gtk:app-chooser-widget]{show-default} slot gets
+    or sets whether the application chooser should the default handler for the
+    content type in a separate section.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -293,16 +297,16 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-fallback)
       "Accessor"
       (documentation 'app-chooser-widget-show-fallback 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-show-fallback object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-fallback object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show a
     section for fallback applications}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{show-fallback} slot of
-    the @class{gtk:app-chooser-widget} class gets or sets whether the
-    application chooser should show a section for fallback applications.
+    The accessor for the @slot[gtk:app-chooser-widget]{show-fallback} slot gets
+    or sets whether the application chooser should show a section for fallback
+    applications.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -321,16 +325,16 @@ lambda (widget menu application)    :run-first
 (setf (liber:alias-for-function 'app-chooser-widget-show-other)
       "Accessor"
       (documentation 'app-chooser-widget-show-other 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-show-other object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-other object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser should show a
     section for other applications}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{show-other} slot of the
-    @class{gtk:app-chooser-widget} class gets or sets whether the application
-    chooser should show a section for other applications.
+    The accessor for the @slot[gtk:app-chooser-widget]{show-other} slot gets or
+    sets whether the application chooser should show a section for other
+    applications.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -341,26 +345,25 @@ lambda (widget menu application)    :run-first
                                                'app-chooser-widget) t)
  "The @code{show-recommended} property of type @code{:boolean}
   (Read / Write / Construct) @br{}
-  The @code{show-recommended} property determines whether the application
-  chooser should show a section for recommended applications. If @em{false},
-  the recommended applications are listed among the other applications. @br{}
+  Determines whether the application chooser should show a section for
+  recommended applications. If @em{false}, the recommended applications are
+  listed among the other applications. @br{}
   Default value: @em{true}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'app-chooser-widget-show-recommended)
       "Accessor"
       (documentation 'app-chooser-widget-show-recommended 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-widget-show-recommended object) => setting}
   @syntax{(setf (gtk:app-chooser-widget-show-recommended object) setting)}
   @argument[object]{a @class{gtk:app-chooser-widget} widget}
   @argument[setting]{a boolean whether the application chooser shuld show a
     section for recommended applications}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-widget]{show-recommended} slot of
-    the @class{gtk:app-chooser-widget} class gets or sets whether the
-    application chooser should show recommended applications for the content
-    type in a separate section.
+    The accessor for the @slot[gtk:app-chooser-widget]{show-recommended} slot
+    gets or sets whether the application chooser should show recommended
+    applications for the content type in a separate section.
   @end{short}
   @see-class{gtk:app-chooser-widget}")
 
@@ -372,7 +375,7 @@ lambda (widget menu application)    :run-first
 
 (defun app-chooser-widget-new (content-type)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-06-02}
   @argument[content-type]{a string for the content type to show applications
     for}
   @return{The newly created @class{gtk:app-chooser-widget} widget.}

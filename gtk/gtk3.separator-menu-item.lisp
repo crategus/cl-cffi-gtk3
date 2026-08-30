@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -72,7 +72,7 @@
 
 #+liber-documentation
 (setf (documentation 'separator-menu-item 'type)
- "@version{#2023-02-27}
+ "@version{2026-05-29}
   @begin{short}
     The @class{gtk:separator-menu-item} widget is a separator used to group
     items within a menu.
@@ -94,7 +94,7 @@
 
 (defun separator-menu-item-new ()
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-29}
   @return{The new @class{gtk:separator-menu-item} widget.}
   @begin{short}
     Creates a new separator menu item.

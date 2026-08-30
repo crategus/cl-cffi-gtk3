@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -93,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'radio-button 'type)
- "@version{#2025-07-17}
+ "@version{2026-06-22}
   @begin{short}
     A single radio button performs the same basic function as a
     @class{gtk:check-button} widget, as its position in the object hierarchy
@@ -226,26 +226,28 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'radio-button-group)
       "Accessor"
       (documentation 'radio-button-group 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-22}
   @syntax{(setf (gtk:radio-button-group object) group)}
   @argument[object]{a @class{gtk:radio-button} widget}
   @argument[group]{another @class{gtk:radio-button} widget}
   @begin{short}
-    Accessor of the @slot[gtk:radio-button]{group} slot of the
-    @class{gtk:radio-button} class.
+    The accessor for the @slot[gtk:radio-button]{group} slot sets a new group
+    for a radio button.
   @end{short}
-  Sets a new group for a radio button.
   @see-class{gtk:radio-button}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_radio_button_new
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_radio_button_new" radio-button-new) (g:object widget)
+(cffi:defcfun ("gtk_radio_button_new" %radio-button-new) (g:object widget)
+  (group (g:slist-t (g:object radio-button))))
+
+(defun radio-button-new (&optional group)
  #+liber-documentation
- "@version{#2023-03-22}
-  @argument[group]{an existing @class{gtk:radio-button} group, or @code{nil} if
-    you are creating a new group}
+ "@version{2026-06-26}
+  @argument[group]{an existing @class{gtk:radio-button} group, or the default
+    @code{nil} value if you are creating a new group}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button.
@@ -253,7 +255,7 @@ lambda (button)    :run-first
   To be of any practical value, a widget should then be packed into the radio
   button.
   @see-class{gtk:radio-button}"
-  (group (g:slist-t (g:object radio-button))))
+  (%radio-button-new group))
 
 (export 'radio-button-new)
 
@@ -261,11 +263,15 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_from_widget
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_radio_button_new_from_widget" radio-button-new-from-widget)
+(cffi:defcfun ("gtk_radio_button_new_from_widget" %radio-button-new-from-widget)
     (g:object widget)
+  (member (g:object radio-button)))
+
+(defun radio-button-new-from-widget (&optional member)
  #+liber-documentation
- "@version{#2023-03-22}
-  @argument[member]{an existing @class{gtk:radio-button} widget}
+ "@version{2026-06-26}
+  @argument[member]{an existing @class{gtk:radio-button} widget, or the default
+    @code{nil} value if you are creating a new group}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button, adding it to the same group as @arg{member}.
@@ -274,7 +280,7 @@ lambda (button)    :run-first
   into the radio button.
   @see-class{gtk:radio-button}
   @see-function{gtk:radio-button-new}"
-  (member (g:object radio-button)))
+  (%radio-button-new-from-widget member))
 
 (export 'radio-button-new-from-widget)
 
@@ -282,21 +288,24 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_new_with_label
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_radio_button_new_with_label" radio-button-new-with-label)
+(cffi:defcfun ("gtk_radio_button_new_with_label" %radio-button-new-with-label)
     (g:object widget)
+  (group (g:slist-t (g:object radio-button)))
+  (label :string))
+
+(defun radio-button-new-with-label (group &optional label)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-26}
   @argument[group]{an existing @class{gtk:radio-button} group, or @code{nil} if
     you are creating a new group}
-  @argument[label]{a string for the text label to display next to the radio
+  @argument[label]{an optinal string for the text to display next to the radio
     button}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button with a text label.
   @end{short}
   @see-class{gtk:radio-button}"
-  (group (g:slist-t (g:object radio-button)))
-  (label :string))
+  (%radio-button-new-with-label group (or label (cffi:null-pointer))))
 
 (export 'radio-button-new-with-label)
 
@@ -305,20 +314,25 @@ lambda (button)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_button_new_with_label_from_widget"
-               radio-button-new-with-label-from-widget) (g:object widget)
+               %radio-button-new-with-label-from-widget) (g:object widget)
+  (member (g:object radio-button))
+  (label :string))
+
+(defun radio-button-new-with-label-from-widget (member &optional label)
  #+liber-documentation
- "@version{#2023-03-22}
+ "@version{2026-06-26}
   @argument[member]{a @class{gtk:radio-button} widget to get the radio group
     from or @code{nil}}
-  @argument[label]{a text string to display next to the radio button}
+  @argument[label]{an optional string for the text to display next to the radio
+    button}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button with a text label, adding it to the same group
     as @arg{member}.
   @end{short}
   @see-class{gtk:radio-button}"
-  (member (g:object radio-button))
-  (label :string))
+  (%radio-button-new-with-label-from-widget member
+                                            (or label (cffi:null-pointer))))
 
 (export 'radio-button-new-with-label-from-widget)
 
@@ -327,12 +341,16 @@ lambda (button)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_button_new_with_mnemonic"
-               radio-button-new-with-mnemonic) (g:object widget)
+               %radio-button-new-with-mnemonic) (g:object widget)
+  (group (g:slist-t (g:object radio-button)))
+  (label :string))
+
+(defun radio-button-new-with-mnemonic (group &optional label)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-26}
   @argument[group]{a @class{gtk:radio-button} group}
-  @argument[label]{a string for the text of the button, with an underscore in
-    front of the mnemonic character}
+  @argument[label]{an optional string for the text of the button, with an
+    underscore in front of the mnemonic character}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button containing a label, adding it to the same group
@@ -342,8 +360,7 @@ lambda (button)    :run-first
   function, so underscores in label indicate the mnemonic for the button.
   @see-class{gtk:radio-button}
   @see-function{gtk:label-new-with-mnemonic}"
-  (group (g:slist-t (g:object radio-button)))
-  (label :string))
+  (%radio-button-new-with-mnemonic group (or label (cffi:null-pointer))))
 
 (export 'radio-button-new-with-mnemonic)
 
@@ -352,13 +369,17 @@ lambda (button)    :run-first
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_radio_button_new_with_mnemonic_from_widget"
-               radio-button-new-with-mnemonic-from-widget) (g:object widget)
+               %radio-button-new-with-mnemonic-from-widget) (g:object widget)
+  (member (g:object radio-button))
+  (label :string))
+
+(defun radio-button-new-with-mnemonic-from-widget (member &optional label)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-26}
   @argument[member]{a @class{gtk:radio-button} widget to get radio group from or
     @code{nil}}
-  @argument[label]{a string for the text of the button, with an underscore in
-    front of the mnemonic character}
+  @argument[label]{an optinal string for the text of the button, with an
+    underscore in front of the mnemonic character}
   @return{The new @class{gtk:radio-button} widget.}
   @begin{short}
     Creates a new radio button containing a label.
@@ -367,8 +388,8 @@ lambda (button)    :run-first
   function, so underscores in label indicate the mnemonic for the button.
   @see-class{gtk:radio-button}
   @see-function{gtk:label-new-with-mnemonic}"
-  (member (g:object radio-button))
-  (label :string))
+  (%radio-button-new-with-mnemonic-from-widget member
+                                               (or label (cffi:null-pointer))))
 
 (export 'radio-button-new-with-mnemonic-from-widget)
 
@@ -378,7 +399,7 @@ lambda (button)    :run-first
 
 (defun radio-button-set-group (button group)
  #+liber-documentation
- "@version{#2023-03-22}
+ "@version{2026-06-22}
   @argument[button]{a @class{gtk:radio-button} widget}
   @argument[group]{an existing @class{gtk:radio-button} group, such as one
     returned from the @fun{gtk:radio-button-get-group} function}
@@ -398,10 +419,12 @@ lambda (button)    :run-first
 ;;; gtk_radio_button_get_group
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gtk_radio_button_get_group" radio-button-get-group)
+;; TODO: Do we have a problem with the memory management for this function?
+
+(cffi:defcfun ("gtk_radio_button_get_group" %radio-button-get-group)
     (g:slist-t (g:object radio-button) :free-from-foreign nil)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-22}
   @argument[button]{a @class{gtk:radio-button} widget}
   @begin{return}
     The list containing all the @class{gtk:radio-button} widgets in the same
@@ -414,6 +437,10 @@ lambda (button)    :run-first
   @see-function{gtk:radio-button-set-group}"
   (button (g:object radio-button)))
 
+(defun radio-button-get-group (button)
+; (mapcar #'g:object-ref (%radio-button-get-group button)))
+  (%radio-button-get-group button))
+
 (export 'radio-button-get-group)
 
 ;;; ----------------------------------------------------------------------------
@@ -422,7 +449,7 @@ lambda (button)    :run-first
 
 (cffi:defcfun ("gtk_radio_button_join_group" radio-button-join-group) :void
  #+liber-documentation
- "@version{#2023-03-22}
+ "@version{2026-06-22}
   @argument[button]{a @class{gtk:radio-button} widget}
   @argument[group]{a @class{gtk:radio-button} widget whose group we are joining,
     or @code{nil} to remove the radio button from its group}

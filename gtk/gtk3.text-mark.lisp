@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,15 +35,18 @@
 ;;;
 ;;;     GtkTextMark
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_text_mark_get_left_gravity
+;;;     gtk_text_mark_get_name
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_text_mark_new
 ;;;     gtk_text_mark_set_visible
 ;;;     gtk_text_mark_get_visible
 ;;;     gtk_text_mark_get_deleted
-;;;     gtk_text_mark_get_name
 ;;;     gtk_text_mark_get_buffer
-;;;     gtk_text_mark_get_left_gravity
 ;;;
 ;;; Properties
 ;;;
@@ -76,7 +79,7 @@
 
 #+liber-documentation
 (setf (documentation 'text-mark 'type)
- "@version{#2023-03-15}
+ "@version{2026-06-29}
   @begin{short}
     The @class{gtk:text-mark} object is like a bookmark in a text buffer.
   @end{short}
@@ -128,16 +131,14 @@
 (setf (liber:alias-for-function 'text-mark-left-gravity)
       "Accessor"
       (documentation 'text-mark-left-gravity 'function)
- "@version{#2023-03-15}
+ "@version{2026-06-29}
   @syntax{(gtk:text-mark-left-gravity object) => gravity}
   @argument[object]{a @class{gtk:text-mark} object}
   @return{@em{True} if the text mark has left gravity.}
   @begin{short}
-    Accessor of the @slot[gtk:text-mark]{left-gravity} slot of the
-    @class{gtk:text-mark} class.
+    The accessor for the @slot[gtk:text-mark]{left-gravity} slot returns
+    whether the text mark has left gravity.
   @end{short}
-  The @fun{gtk:text-mark-left-gravity} function determines whether the text
-  mark has left gravity.
   @see-class{gtk:text-mark}")
 
 ;;; --- gtk:text-mark-name -----------------------------------------------------
@@ -153,16 +154,14 @@
 (setf (liber:alias-for-function 'text-mark-name)
       "Accessor"
       (documentation 'text-mark-name 'function)
- "@version{#2025-07-01}
+ "@version{2026-06-29}
   @syntax{(gtk:text-mark-name object) => name}
   @argument[object]{a @class{gtk:text-mark} object}
   @argument[name]{a string for the name of the text mark}
   @begin{short}
-    Accessor of the @slot[gtk:text-mark]{name} slot of the
-    @class{gtk:text-mark} class.
+    The accessor for the @slot[gtk:text-mark]{name} slot returns the name of
+    the text mark or @code{nil} for anonymous text marks.
   @end{short}
-  The @fun{gtk:text-mark-name} function returns the name of the text mark or
-  @code{nil} for anonymous text marks.
   @see-class{gtk:text-mark}")
 
 ;;; ----------------------------------------------------------------------------
@@ -171,7 +170,7 @@
 
 (defun text-mark-new (name gravity)
  #+liber-documentation
- "@version{#2025-07-01}
+ "@version{2026-06-29}
   @argument[name]{a string for the name of the text mark or @code{nil}}
   @argument[gravity]{a boolean whether the text mark should have left gravity}
   @return{New @class{gtk:text-mark} object.}
@@ -214,18 +213,16 @@
 
 (cffi:defcfun ("gtk_text_mark_get_visible" text-mark-visible) :boolean
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{2026-06-29}
   @syntax{(gtk:text-mark-visible mark) => visibility}
   @syntax{(setf (gtk:text-mark-visible mark) visibility)}
   @argument[mark]{a @class{gtk:text-mark} object}
   @argument[visibility]{a boolean whether the text mark is visible}
   @return{@em{True} if the text mark is visible.}
   @begin{short}
-    The @fun{gtk:text-mark-visible} function returns @em{true} if the text mark
-    is visible, that is, a cursor is displayed for it.
+    Gets or sets whether the text mark is visible, that is, a cursor is
+    displayed for it.
   @end{short}
-  The @setf{gtk:text-mark-visible} function sets the visibility.
-
   The insertion point is normally visible, that is, you can see it as a vertical
   bar. Also, the text widget uses a visible text mark to indicate where a drop
   will occur when dragging-and-dropping text. Most other text marks are not
@@ -241,7 +238,7 @@
 
 (cffi:defcfun ("gtk_text_mark_get_deleted" text-mark-deleted) :boolean
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-06-29}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{The boolean whether the text mark is deleted.}
   @begin{short}
@@ -264,7 +261,7 @@
 (cffi:defcfun ("gtk_text_mark_get_buffer" text-mark-buffer)
     (g:object text-buffer)
  #+liber-documentation
- "@version{#2023-03-15}
+ "@version{2026-06-29}
   @argument[mark]{a @class{gtk:text-mark} object}
   @return{The @class{gtk:text-buffer} object of the text mark.}
   @begin{short}

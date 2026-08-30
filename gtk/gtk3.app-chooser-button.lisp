@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2025 Dieter Kaiser
+;;; Copyright (C) 2013 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -101,7 +101,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-button 'type)
- "@version{#2025-07-16}
+ "@version{2026-06-02}
   @begin{short}
     The @class{gtk:app-chooser-button} widget is a widget that lets the user
     select an application.
@@ -110,14 +110,15 @@
 
   Initially, a @class{gtk:app-chooser-button} widget selects the first application
   in its list, which will either be the most recently used application or, if
-  the @code{show-default-item} property is @em{true}, the default application.
+  the @slot[gtk:app-chooser-button]{show-default-item} property is @em{true},
+  the default application.
 
   The list of applications shown in a @class{gtk:app-chooser-button} widget
   includes the recommended applications for the given content type. When the
-  @code{show-default-item} property is set, the default application is also
-  included. To let the user chooser other applications, you can set the
-  @code{show-dialog-item} property, which allows to open a full
-  @class{gtk:app-chooser-dialog} widget.
+  @slot[gtk:app-chooser-button]{show-default-item} property is set, the default
+  application is also included. To let the user chooser other applications, you
+  can set the @slot[gtk:app-chooser-button]{show-dialog-item} property, which
+  allows to open a full @class{gtk:app-chooser-dialog} widget.
 
   It is possible to add custom items to the list, using the
   @fun{gtk:app-chooser-button-append-custom-item} function. These items cause
@@ -146,8 +147,7 @@ lambda (widget name)    :has-details
   @see-slot{gtk:app-chooser-button-show-default-item}
   @see-slot{gtk:app-chooser-button-show-dialog-item}
   @see-class{gtk:app-chooser}
-  @see-class{gtk:app-chooser-dialog}
-  @see-function{gtk:app-chooser-button-append-custom-item}")
+  @see-class{gtk:app-chooser-dialog}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -166,15 +166,14 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-heading)
       "Accessor"
       (documentation 'app-chooser-button-heading 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-button-heading object) => heading}
   @syntax{(setf (gtk:app-chooser-button-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
   @argument[heading]{a string containing Pango markup}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-button]{heading} slot of the
-    @class{gtk:app-chooser-button} class gets or sets the text to display at the
-    top of the dialog.
+    The accessor for the @slot[gtk:app-chooser-button]{heading} slot gets or
+    sets the text to display at the top of the dialog.
   @end{short}
   If the heading is not set, the dialog displays a default text.
   @see-class{gtk:app-chooser-button}")
@@ -194,7 +193,7 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-show-default-item)
       "Accessor"
       (documentation 'app-chooser-button-show-default-item 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-button-show-default-item object) => setting}
   @syntax{(setf (gtk:app-chooser-button-show-default-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
@@ -202,9 +201,8 @@ lambda (widget name)    :has-details
     application}
   @begin{short}
     The accessor for the @slot[gtk:app-chooser-button]{show-default-item} slot
-    of the @class{gtk:app-chooser-button} class gets or sets whether the
-    dropdown menu of the button should show the default application for the
-    given content type at top.
+    gets or sets whether the dropdown menu of the button should show the default
+    application for the given content type at top.
   @end{short}
   @see-class{gtk:app-chooser-button}")
 
@@ -223,17 +221,16 @@ lambda (widget name)    :has-details
 (setf (liber:alias-for-function 'app-chooser-button-show-dialog-item)
       "Accessor"
       (documentation 'app-chooser-button-show-dialog-item 'function)
- "@version{#2025-10-21}
+ "@version{2026-06-02}
   @syntax{(gtk:app-chooser-button-show-dialog-item object) => setting}
   @syntax{(setf (gtk:app-chooser-button-show-dialog-item object) setting)}
   @argument[object]{a @class{gtk:app-chooser-button} widget}
   @argument[setting]{a boolean whether the dropdown menu should show a
     @class{gtk:app-chooser-dialog} widget}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-button]{show-dialog-item} slot of
-    the @class{gtk:app-chooser-button} class gets or sets whether the dropdown
-    menu of the button should show an entry to trigger a
-    @class{gtk:app-chooser-dialog} widget.
+    The accessor for the @slot[gtk:app-chooser-button]{show-dialog-item} slot
+    gets or sets whether the dropdown menu of the button should show an entry
+    to trigger a @class{gtk:app-chooser-dialog} widget.
   @end{short}
   @see-class{gtk:app-chooser-button}
   @see-class{gtk:app-chooser-dialog}")
@@ -244,7 +241,7 @@ lambda (widget name)    :has-details
 
 (defun app-chooser-button-new (content-type)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-06-02}
   @argument[content-type]{a string for the content type to show applications
     for}
   @return{The newly created @class{gtk:app-chooser-button} widget.}
@@ -265,7 +262,7 @@ lambda (widget name)    :has-details
 (cffi:defcfun ("gtk_app_chooser_button_append_custom_item"
                app-chooser-button-append-custom-item) :void
  #+liber-documentation
- "@version{#2025-07-16}
+ "@version{#2026-06-02}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
   @argument[name]{a string for the name of the custom item}
   @argument[label]{a string for the label for the custom item}
@@ -294,7 +291,7 @@ lambda (widget name)    :has-details
 (cffi:defcfun ("gtk_app_chooser_button_append_separator"
                app-chooser-button-append-separator) :void
  #+liber-documentation
- "@version{#2023-02-14}
+ "@version{#2026-06-02}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
   @begin{short}
     Appends a separator to the list of applications that is shown in the popup.
@@ -311,7 +308,7 @@ lambda (widget name)    :has-details
 (cffi:defcfun ("gtk_app_chooser_button_set_active_custom_item"
                app-chooser-button-set-active-custom-item) :void
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-02}
   @argument[widget]{a @class{gtk:app-chooser-button} widget}
   @argument[name]{a string for the name of the custom item}
   @begin{short}

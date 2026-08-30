@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2013 - 2025 Dieter Kaiser
+;;; Copyright (C) 2013 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 
 #+liber-documentation
 (setf (documentation 'app-chooser-dialog 'type)
- "@version{2023-02-18}
+ "@version{2026-06-02}
   @begin{short}
     The @class{gtk:app-chooser-dialog} widget shows a
     @class{gtk:app-chooser-widget} widget inside a @class{gtk:dialog} widget.
@@ -105,9 +105,7 @@
   @see-slot{gtk:app-chooser-dialog-gfile}
   @see-slot{gtk:app-chooser-dialog-heading}
   @see-class{gtk:dialog}
-  @see-class{gtk:app-chooser}
-  @see-function{gtk:app-chooser-dialog-widget}
-  @see-function{gtk:app-chooser-dialog-heading}")
+  @see-class{gtk:app-chooser}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -126,10 +124,9 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-gfile)
       "Accessor"
       (documentation 'app-chooser-dialog-gfile 'function)
- "@version{2025-10-21}
+ "@version{2026-06-02}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-dialog]{gfile} slot of the
-    @class{gtk:app-chooser-dialog} class.
+    The accessor for the @slot[gtk:app-chooser-dialog]{gfile} slot.
   @end{short}
   @see-class{gtk:app-chooser-dialog}")
 
@@ -146,15 +143,14 @@
 (setf (liber:alias-for-function 'app-chooser-dialog-heading)
       "Accessor"
       (documentation 'app-chooser-dialog-heading 'function)
- "@version{2025-10-21}
+ "@version{2026-06-02}
   @syntax{gtk:app-chooser-dialog-heading object) => heading}
   @syntax{(setf (gtk:app-chooser-dialog-heading object) heading)}
   @argument[object]{a @class{gtk:app-chooser-dialog} widget}
   @argument[heading]{a string containing Pango markup}
   @begin{short}
-    The accessor for the @slot[gtk:app-chooser-dialog]{heading} slot of the
-    @class{gtk:app-chooser-dialog} class gets or sets the text to display at the
-    top of the dialog.
+    The accessor for the @slot[gtk:app-chooser-dialog]{heading} slot gets or
+    sets the text to display at the top of the dialog.
   @end{short}
   If the heading is not set, the dialog displays a default text.
   @see-class{gtk:app-chooser-dialog}")
@@ -166,7 +162,7 @@
 (cffi:defcfun ("gtk_app_chooser_dialog_new" app-chooser-dialog-new)
     (g:object widget)
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2026-06-02}
   @argument[parent]{a @class{gtk:window} widget, or @code{nil}}
   @argument[flags]{a @sym{gtk:dialog-flags} value for this dialog}
   @argument[file]{a @class{g:file} object}
@@ -192,7 +188,7 @@
 (cffi:defcfun ("gtk_app_chooser_dialog_new_for_content_type"
                app-chooser-dialog-new-for-content-type) (g:object widget)
  #+liber-documentation
- "@version{2025-07-07}
+ "@version{2026-06-02}
   @argument[parent]{a @class{gtk:window} widget, or @code{nil}}
   @argument[flags]{a @sym{gtk:dialog-flags} value for this dialog}
   @argument[content-type]{a content type string}
@@ -217,7 +213,7 @@
 (cffi:defcfun ("gtk_app_chooser_dialog_get_widget" app-chooser-dialog-widget)
     (g:object widget)
  #+liber-documentation
- "@version{2023-02-18}
+ "@version{2026-06-02}
   @argument[dialog]{a @class{gtk:app-chooser-dialog} widget}
   @return{The @class{gtk:app-chooser-widget} widget of @arg{dialog}.}
   @begin{short}

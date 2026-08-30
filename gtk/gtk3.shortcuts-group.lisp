@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -89,7 +89,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-group 'type)
- "@version{#2023-02-14}
+ "@version{2026-06-03}
   @begin{short}
     The @class{gtk:shortcuts-group} widget represents a group of related
     keyboard shortcuts or gestures.
@@ -119,14 +119,12 @@
 (setf (liber:alias-for-function 'shortcuts-group-accel-size-group)
       "Accessor"
       (documentation 'shortcuts-group-accel-size-group 'function)
- "@version{#2023-02-14}
-  @syntax{(gtk:shortcuts-group-accel-size-group object) => group}
+ "@version{2026-06-03}
   @syntax{(setf (gtk:shortcuts-group-accel-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-group]{accel-size-group} slot of the
-    @class{gtk:shortcuts-group} class.
+    The accessor for the @slot[gtk:shortcuts-group]{accel-size-group} slot.
   @end{short}
   The size group for the accelerator portion of shortcuts in this group. This
   is used internally by GTK, and must not be modified by applications.
@@ -138,24 +136,22 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "height" 'shortcuts-group) t)
  "The @code{height} property of type @code{:uint} (Read) @br{}
-  A rough measure for the number of lines in this group. This is used internally
-  by GTK, and is not useful for applications. @br{}
+  The rough measure for the number of lines in this group. This is used
+  internally by GTK, and is not useful for applications. @br{}
   Default value: 1")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-group-height)
       "Accessor"
       (documentation 'shortcuts-group-height 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-04}
   @syntax{(gtk:shortcuts-group-height object) => height}
-  @syntax{(setf (gtk:shortcuts-group-height object) height)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[height]{an unsigned integer for the measure for the number of lines}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-group]{height} slot of the
-    @class{gtk:shortcuts-group} class.
+    The accessor for the @slot[gtk:shortcuts-group]{height} slot.
   @end{short}
-  A rough measure for the number of lines in this group. This is used
+  The rough measure for the number of lines in this group. This is used
   internally by GTK, and is not useful for applications.
   @see-class{gtk:shortcuts-group}")
 
@@ -171,14 +167,13 @@
 (setf (liber:alias-for-function 'shortcuts-group-title)
       "Accessor"
       (documentation 'shortcuts-group-title 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-group-title object) => title}
   @syntax{(setf (gtk:shortcuts-group-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[title]{a string for the title for this group of shortcuts}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-group]{title} slot of the
-    @class{gtk:shortcuts-group} class.
+    The accessor for the @slot[gtk:shortcuts-group]{title} slot.
   @end{short}
   The title for this group of shortcuts.
   @see-class{gtk:shortcuts-group}")
@@ -197,14 +192,12 @@
 (setf (liber:alias-for-function 'shortcuts-group-title-size-group)
       "Accessor"
       (documentation 'shortcuts-group-title-size-group 'function)
- "@version{#2023-02-14}
-  @syntax{(gtk:shortcuts-group-title-size-group object) => group}
+ "@version{2026-06-03}
   @syntax{(setf (gtk:shortcuts-group-title-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-group]{title-size-group} slot of the
-    @class{gtk:shortcuts-group} class.
+    The accessor for the @slot[gtk:shortcuts-group]{title-size-group} slot.
   @end{short}
   The size group for the textual portion of shortcuts in this group. This is
   used internally by GTK, and must not be modified by applications.
@@ -216,7 +209,7 @@
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "view" 'shortcuts-group) t)
  "The @code{view} property of type @code{:string} (Read / Write) @br{}
-  An optional view that the shortcuts in this group are relevant for. The group
+  The optional view that the shortcuts in this group are relevant for. The group
   will be hidden if the @slot[gtk:shortcuts-window]{view-name} property does not
   match the view of this group. Set this to @code{nil} to make the group always
   visible. @br{}
@@ -226,16 +219,15 @@
 (setf (liber:alias-for-function 'shortcuts-group-view)
       "Accessor"
       (documentation 'shortcuts-group-view 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-group-view object) => view}
   @syntax{(setf (gtk:shortcuts-group-view object) view)}
   @argument[object]{a @class{gtk:shortcuts-group} widget}
   @argument[view]{a string for an optional view}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-group]{view} slot of the
-    @class{gtk:shortcuts-group} class.
+    The accessor for the @slot[gtk:shortcuts-group]{view} slot.
   @end{short}
-  An optional view that the shortcuts in this group are relevant for. The group
+  The optional view that the shortcuts in this group are relevant for. The group
   will be hidden if the @slot[gtk:shortcuts-window]{view-name} property does not
   match the view of this group. Set this to @code{nil} to make the group always
   visible.

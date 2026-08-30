@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2012 - 2025 Dieter Kaiser
+;;; Copyright (C) 2012 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -71,7 +71,7 @@
 
 #+liber-documentation
 (setf (documentation 'spinner 'type)
- "@version{#2023-03-26}
+ "@version{2026-06-20}
   @begin{short}
     The @class{gtk:spinner} widget displays an icon size spinning animation.
   @end{short}
@@ -86,10 +86,7 @@
     pseudoclass is added to this node.
   @end{dictionary}
   @see-slot{gtk:spinner-active}
-  @see-class{gtk:cell-renderer-spinner}
-  @see-class{gtk:progress-bar}
-  @see-function{gtk:spinner-start}
-  @see-function{gtk:spinner-stop}")
+  @see-class{gtk:progress-bar}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -105,14 +102,14 @@
 (setf (liber:alias-for-function 'spinner-active)
       "Accessor"
       (documentation 'spinner-active 'function)
- "@version{#2023-03-26}
+ "@version{2026-06-20}
   @syntax{(gtk:spinner-active object) => active}
   @syntax{(setf (gtk:spinner-active object) active)}
   @argument[object]{a @class{gtk:spinner} widget}
   @argument[active]{a boolean whether the spinner is active}
   @begin{short}
-    Accessor of the @slot[gtk:spinner]{active} slot of the @class{gtk:spinner}
-    class.
+    The accessor for the @slot[gtk:spinner]{active} slot gets or sets
+    whether the spinner is active.
   @end{short}
   @see-class{gtk:spinner}")
 
@@ -124,7 +121,7 @@
 
 (defun spinner-new ()
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{2026-06-20}
   @return{The new @class{gtk:spinner} widget.}
   @short{Returns a new spinner. Not yet started.}
   @see-class{gtk:spinner}
@@ -139,7 +136,7 @@
 
 (cffi:defcfun ("gtk_spinner_start" spinner-start) :void
  #+liber-documentation
- "@version{#2023-03-26}
+ "@version{2026-06-20}
   @argument[spinner]{a @class{gtk:spinner} widget}
   @short{Starts the animation of the spinner.}
   @see-class{gtk:spinner}
@@ -154,7 +151,7 @@
 
 (cffi:defcfun ("gtk_spinner_stop" spinner-stop) :void
  #+liber-documentation
- "@version{#2023-03-26}
+ "@version{2026-06-20}
   @argument[spinner]{a @class{gtk:spinner} widget}
   @short{Stops the animation of the spinner.}
   @see-class{gtk:spinner}

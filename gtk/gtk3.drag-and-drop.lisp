@@ -875,7 +875,7 @@
 
 (cffi:defcfun ("gtk_drag_set_icon_surface" drag-set-icon-surface) :void
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-28}
   @argument[context]{a @class{gdk:drag-context} object for a drag, this must be
     called with a drag context for the source side of a drag}
   @argument[surface]{a @sym{cairo:surface-t} surface to use as icon}
@@ -886,11 +886,11 @@
   are no longer needed.
 
   To position the surface relative to the mouse, use the
-  @fun{cairo:surface-set-device-offset} function on the surface. The mouse
-  cursor will be positioned at the (0,0) coordinate of the surface.
+  @fun{cairo:surface device-offset} function on the surface. The mouse cursor
+  will be positioned at the (0,0) coordinate of the surface.
   @see-class{gdk:drag-context}
   @see-symbol{cairo:surface-t}
-  @see-function{cairo:surface-set-device-offset}"
+  @see-function{cairo:surface-device-offset}"
   (context (g:object gdk:drag-context))
   (surface (:pointer (:struct cairo:surface-t))))
 

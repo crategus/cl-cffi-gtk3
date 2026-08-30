@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,13 +35,16 @@
 ;;;
 ;;;     GtkSwitch
 ;;;
-;;; Functions
+;;; Accessors
 ;;;
-;;;     gtk_switch_new
 ;;;     gtk_switch_set_active
 ;;;     gtk_switch_get_active
 ;;;     gtk_switch_set_state
 ;;;     gtk_switch_get_state
+;;;
+;;; Functions
+;;;
+;;;     gtk_switch_new
 ;;;
 ;;; Properties
 ;;;
@@ -94,7 +97,7 @@
 
 #+liber-documentation
 (setf (documentation 'switch 'type)
- "@version{#2025-07-14}
+ "@version{2026-06-27}
   @begin{short}
     The @class{gtk:switch} widget is a widget that has two states: on or off.
   @end{short}
@@ -116,18 +119,18 @@
     @begin[switch:slider-height]{property}
       The @code{slider-height} style property of type @code{:int} (Read) @br{}
       The minimum height of the switch handle, in pixels. @br{}
-      @em{Warning:} The @code{slider-height} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. Use the CSS @code{min-height} property instead. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. Use the CSS
+      @code{min-height} property instead. @br{}
       Allowed values: >= 22 @br{}
       Default value: 22
     @end{property}
     @begin[switch:slider-width]{property}
       The @code{slider-width} style property of type @code{:int} (Read) @br{}
       The minimum width of the switch handle, in pixels. @br{}
-      @em{Warning:} The @code{slider-width} style property has been deprecated
-      since version 3.20 and should not be used in newly written code. Use the
-      CSS @code{min-height} property instead. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. Use the CSS
+      @code{min-height} property instead. @br{}
       Allowed values: >= 36 @br{}
       Default value: 36
     @end{property}
@@ -169,7 +172,8 @@ lambda (widget state)    :run-last
     @end{signal}
   @end{dictionary}
   @see-constructor{gtk:switch-new}
-  @see-slot{gtk:switch-active}")
+  @see-slot{gtk:switch-active}
+  @see-slot{gtk:switch-state}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -187,19 +191,16 @@ lambda (widget state)    :run-last
 (setf (liber:alias-for-function 'switch-active)
       "Accessor"
       (documentation 'switch-active 'function)
- "@version{#2023-03-27}
+ "@version{2026-06-27}
   @syntax{(gtk:switch-active object) => is-active)}
   @syntax{(setf (gtk:switch-active object) is-active)}
   @argument[object]{a @class{gtk:switch} widget}
   @argument[is-active]{@em{true} if the switch should be active,
     and @em{false} otherwise}
   @begin{short}
-    Accessor of the @slot[gtk:switch]{active} slot of the @class{gtk:switch}
-    class.
+    The accessor for the @slot[gtk:switch]{active} slot gets or sets whether
+    the switch is in its \"on\" or \"off\" state.
   @end{short}
-  The @fun{gtk:switch-active} function gets whether the switch is in its \"on\"
-  or \"off\" state. The @setf{gtk:switch-active} function changes the state of
-  the switch to the desired one.
   @see-class{gtk:switch}")
 
 ;;; --- gtk:switch-state -------------------------------------------------------
@@ -215,18 +216,15 @@ lambda (widget state)    :run-last
 (setf (liber:alias-for-function 'switch-state)
       "Accessor"
       (documentation 'switch-state 'function)
- "@version{#2025-06-28}
+ "@version{2026-06-27}
   @syntax{(gtk:switch-state object) => state)}
   @syntax{(setf (gtk:switch-state object) state)}
   @argument[object]{a @class{gtk:switch} widget}
   @argument[state]{a boolean for the state}
   @begin{short}
-    Accessor of the @slot[gtk:switch]{state} slot of the @class{gtk:switch}
-    class.
+    The accessor for the @slot[gtk:switch]{state} slot gets or sets the
+    underlying state of the switch.
   @end{short}
-  The @fun{gtk:switch-active} function gets the underlying state of the switch.
-  The @setf{gtk:switch-active} function sets the underlying state of the switch.
-
   Normally, this is the same as the @slot[gtk:switch]{active} property, unless
   the switch is set up for delayed state changes. This function is typically
   called from a @sig[gtk:switch]{state-set} signal handler.
@@ -241,7 +239,7 @@ lambda (widget state)    :run-last
 
 (defun switch-new ()
  #+liber-documentation
- "@version{#2023-03-27}
+ "@version{2026-06-27}
   @return{The newly created @class{gtk:switch} widget.}
   @short{Creates a new switch.}
   @see-class{gtk:switch}"

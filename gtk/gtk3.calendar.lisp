@@ -815,6 +815,7 @@ lambda (calendar)    :run-first
      (day :uint)
      (data :pointer))
   (let ((func (glib:get-stable-pointer-value data)))
+    (declare (type (function (g:object integer integer integer) t) func))
     (restart-case
       (or (funcall func calendar year month day)
           (cffi:null-pointer))

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,7 +85,7 @@
 (setf (liber:alias-for-symbol 'button-role)
       "GEnum"
       (liber:symbol-documentation 'button-role)
- "@version{#2025-06-28}
+ "@version{2026-06-28}
   @begin{declaration}
 (gobject:define-genum \"GtkButtonRole\" button-role
   (:export t
@@ -149,7 +149,7 @@
 
 #+liber-documentation
 (setf (documentation 'model-button 'type)
- "@version{#2025-06-18}
+ "@version{2026-06-28}
   @begin{short}
     The @class{gtk:model-button} class is a button class that can use a
     @class{g:action} instance as its model.
@@ -274,17 +274,16 @@ button.model
 (setf (liber:alias-for-function 'model-button-active)
       "Accessor"
       (documentation 'model-button-active 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-active object) => active}
   @syntax{(setf (gtk:model-button-active object) active)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[active]{a boolean for the state of the button}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{active} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{active} slot gets or sets the
+    state of the button.
   @end{short}
-  The state of the button. This is reflecting the state of the associated
-  @class{g:action} instance.
+  This is reflecting the state of the associated @class{g:action} instance.
   @see-class{gtk:model-button}
   @see-class{g:action}")
 
@@ -301,18 +300,17 @@ button.model
 (setf (liber:alias-for-function 'model-button-centered)
       "Accessor"
       (documentation 'model-button-centered 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-centered object) => centered}
   @syntax{(setf (gtk:model-button-centered object) centered)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[active]{a boolean whether to render the button contents centered
     instead of left-aligned}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{centered} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{centered} slot gets or sets
+    whether to render the button contents centered instead of left-aligned.
   @end{short}
-  Whether to render the button contents centered instead of left-aligned. This
-  property should be set for title-like items.
+  This property should be set for title-like items.
   @see-class{gtk:model-button}")
 
 ;;; --- gtk:model-button-icon --------------------------------------------------
@@ -326,16 +324,15 @@ button.model
 (setf (liber:alias-for-function 'model-button-icon)
       "Accessor"
       (documentation 'model-button-icon 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-icon object) => icon}
   @syntax{(setf (gtk:model-button-icon object) icon)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{icon} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{icon} slot gets or sets
+    the icon that will be used if iconic appearance for the button is desired.
   @end{short}
-  An icon that will be used if iconic appearance for the button is desired.
   @see-class{gtk:model-button}
   @see-class{g:icon}
   @see-function{gtk:model-button-iconic}")
@@ -354,14 +351,13 @@ button.model
 (setf (liber:alias-for-function 'model-button-iconic)
       "Accessor"
       (documentation 'model-button-iconic 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-iconic object) => iconic}
   @syntax{(setf (gtk:model-button-iconic object) iconic)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[iconic]{a boolean whether the button will show an icon}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{iconic} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{iconic} slot.
   @end{short}
   If this property is set, the button will show an icon if one is set. If no
   icon is set, the text will be used. This is typically used for horizontal
@@ -382,18 +378,17 @@ button.model
 (setf (liber:alias-for-function 'model-button-inverted)
       "Accessor"
       (documentation 'model-button-inverted 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-inverted object) => inverted}
   @syntax{(setf (gtk:model-button-inverted object) inverted)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[inverted]{a boolean whether to show the submenu indicator at the
     opposite side than normal}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{inverted} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{inverted} slot gets or sets
+    whether to show the submenu indicator at the opposite side than normal.
   @end{short}
-  Whether to show the submenu indicator at the opposite side than normal. This
-  property should be set for model buttons that 'go back' to a parent menu.
+  This property should be set for model buttons that 'go back' to a parent menu.
   @see-class{gtk:model-button}")
 
 ;;; --- gtk:model-button-menu-name ---------------------------------------------
@@ -409,17 +404,16 @@ button.model
 (setf (liber:alias-for-function 'model-button-menu-name)
       "Accessor"
       (documentation 'model-button-menu-name 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-menu-name object) => name}
   @syntax{(setf (gtk:model-button-menu-name object) name)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[name]{a string for the name of a submenu}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{menu-name} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{menu-name} slot gets or sets
+    the name of a submenu to open when the button is activated.
   @end{short}
-  The name of a submenu to open when the button is activated. If this is set,
-  the button should not have an action associated with it.
+  If this is set, the button should not have an action associated with it.
   @see-class{gtk:model-button}")
 
 ;;; --- gtk:model-button-role --------------------------------------------------
@@ -436,17 +430,16 @@ button.model
 (setf (liber:alias-for-function 'model-button-role)
       "Accessor"
       (documentation 'model-button-role 'function)
- "@version{#2025-06-28}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-role object) => role}
   @syntax{(setf (gtk:model-button-role object) role)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[role]{a value of the @sym{gtk:button-role} enumeration}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{role} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{role} slot gets or sets
+    whether the button is a plain, check or radio button.
   @end{short}
-  Specifies whether the button is a plain, check or radio button. When the
-  @slot[gtk:actionable]{action-name} property is set, the role will be
+  When the @slot[gtk:actionable]{action-name} property is set, the role will be
   determined from the action and does not have to be set explicitly.
   @see-class{gtk:model-button}
   @see-symbol{gtk:button-role}")
@@ -463,16 +456,15 @@ button.model
 (setf (liber:alias-for-function 'model-button-text)
       "Accessor"
       (documentation 'model-button-text 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-text object) => text}
   @syntax{(setf (gtk:model-button-text object) text)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[text]{a string for the label for the button}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{text} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{text} slot gets or sets the
+    label for the button.
   @end{short}
-  The label for the button.
   @see-class{gtk:model-button}")
 
 ;;; --- gtk:model-button-use-markup --------------------------------------------
@@ -489,17 +481,17 @@ button.model
 (setf (liber:alias-for-function 'model-button-use-markup)
       "Accessor"
       (documentation 'model-button-use-markup 'function)
- "@version{#2023-03-21}
+ "@version{2026-06-28}
   @syntax{(gtk:model-button-use-markup object) => use-markup}
   @syntax{(setf (gtk:model-button-use-markup object) use-markup)}
   @argument[object]{a @class{gtk:model-button} widget}
   @argument[use-markup]{a boolean whether to use Pango markup}
   @begin{short}
-    Accessor of the @slot[gtk:model-button]{use-markup} slot of the
-    @class{gtk:model-button} class.
+    The accessor for the @slot[gtk:model-button]{use-markup} slot gets or sets
+    whether XML tags in the text of the button are interpreted to format the
+    enclosed spans of text.
   @end{short}
-  If @em{true}, XML tags in the text of the button are interpreted to format the
-  enclosed spans of text. If @em{false}, the text will be displayed verbatim.
+  If @em{false}, the text will be displayed verbatim.
   @see-class{gtk:model-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -510,7 +502,7 @@ button.model
 
 (defun model-button-new ()
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-28}
   @return{The new @class{gtk:model-button} widget.}
   @short{Creates a new model button widget.}
   @see-class{gtk:model-button}"

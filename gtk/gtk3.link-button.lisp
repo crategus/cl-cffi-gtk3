@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,14 +35,17 @@
 ;;;
 ;;;     GtkLinkButton
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_link_button_get_uri
+;;;     gtk_link_button_set_uri
+;;;     gtk_link_button_get_visited
+;;;     gtk_link_button_set_visited
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_link_button_new
 ;;;     gtk_link_button_new_with_label
-;;;     gtk_link_button_get_uri                             Accessor
-;;;     gtk_link_button_set_uri                             Accessor
-;;;     gtk_link_button_get_visited                         Accessor
-;;;     gtk_link_button_set_visited                         Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -92,7 +95,7 @@
 
 #+liber-documentation
 (setf (documentation 'link-button 'type)
- "@version{#2025-06-28}
+ "@version{2026-06-27}
   @begin{short}
     The @class{gtk:link-button} widget is a @class{gtk:button} widget with a
     hyperlink, similar to the one used by web browsers, which triggers an
@@ -155,18 +158,16 @@ lambda (button)    :run-last
 (setf (liber:alias-for-function 'link-button-uri)
       "Accessor"
       (documentation 'link-button-uri 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-27}
   @syntax{(gtk:link-button-uri object) => uri}
   @syntax{(setf (gtk:link-button-uri object) uri)}
   @argument[object]{a @class{gtk:link-button} widget}
   @argument[uri]{a string for a valid URI}
   @begin{short}
-    Accessor of the @slot[gtk:link-button]{uri} slot of the
-    @class{gtk:link-button} class.
+    The accessor for the @slot[gtk:link-button]{uri} slot gets or sets the URI
+    where the link button points.
   @end{short}
-  The @fun{gtk:link-button-uri} function retrieves the URI. The
-  @fun{gtk:link-button-uri} function sets @arg{uri} as the URI where the link
-  button points. As a side-effect this unsets the visited state of the button.
+  As a side-effect this unsets the visited state of the button.
   @see-class{gtk:link-button}")
 
 ;;; --- gtk:link-button-visited ------------------------------------------------
@@ -182,19 +183,15 @@ lambda (button)    :run-last
 (setf (liber:alias-for-function 'link-button-visited)
       "Accessor"
       (documentation 'link-button-visited 'function)
- "@version{#2025-06-18}
+ "@version{2026-06-27}
   @syntax{(gtk:link-button-visited object) => visited}
   @syntax{(setf (gtk:link-button-visited object) visited)}
   @argument[object]{a @class{gtk:link-button} widget}
   @argument[visited]{a boolean for the \"visited\" state}
   @begin{short}
-    Accessor of the @slot[gtk:link-button]{visited} slot of the
-    @class{gtk:link-button} class.
+    The accessor for the @slot[gtk:link-button]{visited} slot gets or sets
+    the \"visited\" state of the URI where the link button points.
   @end{short}
-  The @fun{gtk:link-button-visited} function retrieves the \"visited\" state of
-  the URI where the link button points. The @setf{gtk:link-button-visited}
-  function sets the \"visited\" state of the URI.
-
   The button becomes visited when it is clicked. If the URI is changed on the
   button, the visited state is unset again.
   @see-class{gtk:link-button}")
@@ -207,7 +204,7 @@ lambda (button)    :run-last
 
 (defun link-button-new (uri)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-27}
   @argument[uri]{a string for a valid URI}
   @return{The new @class{gtk:link-button} widget.}
   @short{Creates a new link button with the URI as its text.}
@@ -227,7 +224,7 @@ lambda (button)    :run-last
 
 (defun link-button-new-with-label (uri label)
  #+liber-documentation
- "@version{#2025-06-18}
+ "@version{2026-06-27}
   @argument[uri]{a string for a valid URI}
   @argument[label]{a string for the text of the button}
   @return{The new @class{gtk:link-button} widget.}

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -159,7 +159,6 @@
       @about-generic{window-is-maximized}
       @about-generic{window-mnemonics-visible}
       @about-generic{window-modal}
-      @about-generic{window-opacity}
       @about-generic{window-resizable}
       @about-generic{window-resize-grip-visible}
       @about-generic{window-role}
@@ -174,26 +173,21 @@
       @about-generic{window-urgency-hint}
       @about-generic{window-window-position}
       @about-function{window-new}
-      @about-function{window-set-wmclass}
-      @about-function{window-add-accel-group}
-      @about-function{window-remove-accel-group}
-      @about-function{window-activate-focus}
-      @about-function{window-activate-default}
-      @about-function{window-default-size}
-      @about-function{window-set-default-geometry}
-      @about-function{window-set-geometry-hints}
-      @about-function{window-list-toplevels}
-      @about-function{window-add-mnemonic}
-      @about-function{window-remove-mnemonic}
-      @about-function{window-mnemonic-activate}
-      @about-function{window-activate-key}
-      @about-function{window-propagate-key-event}
-      @about-function{window-focus}
-      @about-function{window-default-widget}
-      @about-function{window-set-default}
+      @about-function{window-close}
       @about-function{window-present}
       @about-function{window-present-with-time}
-      @about-function{window-close}
+      @about-function{window-list-toplevels}
+      @about-function{window-add-accel-group}
+      @about-function{window-remove-accel-group}
+      @about-function{window-default-size}
+      @about-function{window-size}
+      @about-function{window-position}
+      @about-function{window-set-default-geometry}
+      @about-function{window-set-geometry-hints}
+      @about-function{window-focus}
+      @about-function{window-activate-focus}
+      @about-function{window-default-widget}
+      @about-function{window-activate-default}
       @about-function{window-iconify}
       @about-function{window-deiconify}
       @about-function{window-stick}
@@ -205,29 +199,33 @@
       @about-function{window-unfullscreen}
       @about-function{window-set-keep-above}
       @about-function{window-set-keep-below}
-      @about-function{window-begin-resize-drag}
-      @about-function{window-begin-move-drag}
-      @about-function{window-mnemonic-modifier}
-      @about-function{window-default-icon-list}
-      @about-function{window-default-icon-name}
-      @about-function{window-icon-list}
-      @about-function{window-position}
-      @about-function{window-size}
       @about-function{window-group}
       @about-function{window-has-group}
       @about-function{window-move}
-      @about-function{window-parse-geometry}
-      @about-function{window-reshow-with-initial-size}
       @about-function{window-resize}
       @about-function{window-resize-to-geometry}
+      @about-function{window-parse-geometry}
+      @about-function{window-reshow-with-initial-size}
+      @about-function{window-add-mnemonic}
+      @about-function{window-remove-mnemonic}
+      @about-function{window-mnemonic-activate}
+      @about-function{window-activate-key}
+      @about-function{window-propagate-key-event}
+      @about-function{window-mnemonic-modifier}
+      @about-function{window-default-icon-name}
+      @about-function{window-default-icon-list}
+      @about-function{window-icon-list}
       @about-function{window-set-default-icon}
-      @about-function{window-set-default-icon-from-file}
       @about-function{window-set-icon-from-file}
-      @about-function{window-set-auto-startup-notification}
+      @about-function{window-set-default-icon-from-file}
+      @about-function{window-begin-resize-drag}
+      @about-function{window-begin-move-drag}
+      @about-function{window-opacity}
+      @about-function{window-titlebar}
       @about-function{window-resize-grip-is-visible}
       @about-function{window-resize-grip-area}
       @about-function{window-set-has-user-ref-count}
-      @about-function{window-titlebar}
+      @about-function{window-set-auto-startup-notification}
       @about-function{window-interactive-debugging}
     @end{subsection}
     @begin[GtkDialog]{subsection}
@@ -639,6 +637,16 @@
       @about-function{expander-new}
       @about-function{expander-new-with-mnemonic}
     @end{subsection}
+    @begin[GtkFrame]{subsection}
+      @about-class{frame}
+      @about-generic{frame-label}
+      @about-generic{frame-label-widget}
+      @about-generic{frame-label-xalign}
+      @about-generic{frame-label-yalign}
+      @about-generic{frame-shadow-type}
+      @about-function{frame-new}
+      @about-function{frame-label-align}
+    @end{subsection}
     @begin[GtkAspectFrame]{subsection}
       @about-class{aspect-frame}
       @about-generic{aspect-frame-obey-child}
@@ -683,15 +691,15 @@
       @about-generic{label-xalign}
       @about-generic{label-yalign}
       @about-function{label-new}
+      @about-function{label-new-with-mnemonic}
       @about-function{label-text}
       @about-function{label-set-markup}
       @about-function{label-set-markup-with-mnemonic}
+      @about-function{label-set-text-with-mnemonic}
       @about-function{label-line-wrap}
       @about-function{label-line-wrap-mode}
       @about-function{label-layout-offsets}
-      @about-function{label-new-with-mnemonic}
       @about-function{label-select-region}
-      @about-function{label-set-text-with-mnemonic}
       @about-function{label-layout}
       @about-function{label-selection-bounds}
       @about-function{label-current-uri}
@@ -712,9 +720,7 @@
       @about-generic{image-storage-type}
       @about-generic{image-surface}
       @about-generic{image-use-fallback}
-      @about-function{image-get-animation}
-      @about-function{image-get-icon-name}
-      @about-function{image-get-gicon}
+      @about-function{image-new}
       @about-function{image-new-from-file}
       @about-function{image-new-from-pixbuf}
       @about-function{image-new-from-animation}
@@ -722,6 +728,10 @@
       @about-function{image-new-from-gicon}
       @about-function{image-new-from-resource}
       @about-function{image-new-from-surface}
+      @about-function{image-clear}
+      @about-function{image-get-animation}
+      @about-function{image-get-icon-name}
+      @about-function{image-get-gicon}
       @about-function{image-set-from-file}
       @about-function{image-set-from-pixbuf}
       @about-function{image-set-from-animation}
@@ -729,8 +739,6 @@
       @about-function{image-set-from-gicon}
       @about-function{image-set-from-resource}
       @about-function{image-set-from-surface}
-      @about-function{image-clear}
-      @about-function{image-new}
     @end{subsection}
     @begin[GtkSpinner]{subsection}
       @about-class{spinner}
@@ -1488,19 +1496,24 @@
     @begin[GtkTextTagTable]{subsection}
       @about-class{text-tag-table}
       @about-function{text-tag-table-new}
+      @about-function{text-tag-table-size}
       @about-function{text-tag-table-add}
       @about-function{text-tag-table-remove}
+      @about-function{text-tag-table-remove-all}
       @about-function{text-tag-table-lookup}
       @about-symbol{text-tag-table-foreach-func}
       @about-function{text-tag-table-foreach}
-      @about-function{text-tag-table-size}
+    @end{subsection}
+    @begin[GtkTextChildAnchor]{subsection}
+      @about-class{text-child-anchor}
+      @about-function{text-child-anchor-new}
+      @about-function{text-child-anchor-widgets}
+      @about-function{text-child-anchor-deleted}
     @end{subsection}
     @begin[GtkTextView]{subsection}
-      @about-symbol{GTK_TEXT_VIEW_PRIORITY_VALIDATE}
       @about-symbol{text-view-layer}
       @about-symbol{text-window-type}
       @about-symbol{text-extend-selection}
-      @about-class{text-child-anchor}
       @about-class{text-view}
       @about-generic{text-view-accepts-tab}
       @about-generic{text-view-bottom-margin}
@@ -1550,9 +1563,6 @@
       @about-function{text-view-starts-display-line}
       @about-function{text-view-move-visually}
       @about-function{text-view-add-child-at-anchor}
-      @about-function{text-child-anchor-new}
-      @about-function{text-child-anchor-widgets}
-      @about-function{text-child-anchor-deleted}
       @about-function{text-view-add-child-in-window}
       @about-function{text-view-move-child}
       @about-function{text-view-reset-cursor-blink}
@@ -1837,12 +1847,11 @@ setup_tree (void)
    ...
 @}
       @end{pre}
-    @begin[GtkTreeModel]{subsection}
+    @begin[GtkTreeIter]{subsection}
       @about-struct{tree-iter}
-      @about-function{tree-iter-stamp}
-      @about-function{tree-iter-user-data}
       @about-function{tree-iter-copy}
-      @about-function{tree-iter-free}
+    @end{subsection}
+    @begin[GtkTreePath]{subsection}
       @about-class{tree-path}
       @about-function{tree-path-new}
       @about-function{tree-path-new-first}
@@ -1862,6 +1871,8 @@ setup_tree (void)
       @about-function{tree-path-down}
       @about-function{tree-path-is-ancestor}
       @about-function{tree-path-is-descendant}
+    @end{subsection}
+    @begin[GtkTreeRowReference]{subsection}
       @about-class{tree-row-reference}
       @about-function{tree-row-reference-new}
       @about-function{tree-row-reference-copy}
@@ -1872,6 +1883,8 @@ setup_tree (void)
       @about-function{tree-row-reference-inserted}
       @about-function{tree-row-reference-deleted}
       @about-function{tree-row-reference-reordered}
+    @end{subsection}
+    @begin[GtkTreeModel]{subsection}
       @about-symbol{tree-model-flags}
       @about-class{tree-model}
       @about-function{tree-model-flags}
@@ -1924,6 +1937,47 @@ setup_tree (void)
       @about-function{tree-selection-unselect-all}
       @about-function{tree-selection-select-range}
       @about-function{tree-selection-unselect-range}
+    @end{subsection}
+    @begin[GtkTreeSortable]{subsection}
+      @about-variable{+default-sort-column-id+}
+      @about-variable{+unsorted-sort-column-id+}
+      @about-class{tree-sortable}
+      @about-function{tree-sortable-sort-column-id}
+      @about-function{tree-sortable-has-default-sort-func}
+      @about-symbol{tree-iter-compare-func}
+      @about-function{tree-sortable-set-default-sort-func}
+      @about-function{tree-sortable-set-sort-func}
+      @about-function{tree-sortable-sort-column-changed}
+    @end{subsection}
+    @begin[GtkTreeModelSort]{subsection}
+      @about-class{tree-model-sort}
+      @about-generic{tree-model-sort-model}
+      @about-function{tree-model-sort-new-with-model}
+      @about-function{tree-model-sort-convert-child-path-to-path}
+      @about-function{tree-model-sort-convert-child-iter-to-iter}
+      @about-function{tree-model-sort-convert-path-to-child-path}
+      @about-function{tree-model-sort-convert-iter-to-child-iter}
+      @about-function{tree-model-sort-reset-default-sort-func}
+      @about-function{tree-model-sort-clear-cache}
+      @about-function{tree-model-sort-iter-is-valid}
+    @end{subsection}
+    @begin[GtkTreeModelFilter]{subsection}
+      @about-class{tree-model-filter}
+      @about-generic{tree-model-filter-child-model}
+      @about-generic{tree-model-filter-virtual-root}
+      @about-function{tree-model-filter-new}
+      @about-symbol{tree-model-filter-visible-func}
+      @about-function{tree-model-filter-set-visible-func}
+      @about-symbol{tree-model-filter-modify-func}
+      @about-function{tree-model-filter-set-modify-func}
+      @about-function{tree-model-filter-set-visible-column}
+      @about-function{tree-model-filter-model}
+      @about-function{tree-model-filter-convert-child-iter-to-iter}
+      @about-function{tree-model-filter-convert-iter-to-child-iter}
+      @about-function{tree-model-filter-convert-child-path-to-path}
+      @about-function{tree-model-filter-convert-path-to-child-path}
+      @about-function{tree-model-filter-refilter}
+      @about-function{tree-model-filter-clear-cache}
     @end{subsection}
     @begin[GtkTreeViewColumn]{subsection}
       @about-symbol{tree-view-column-sizing}
@@ -2145,47 +2199,6 @@ setup_tree (void)
       @about-function{icon-view-get-drag-dest-item}
       @about-function{icon-view-dest-item-at-pos}
       @about-function{icon-view-create-drag-icon}
-    @end{subsection}
-    @begin[GtkTreeSortable]{subsection}
-      @about-variable{+default-sort-column-id+}
-      @about-variable{+unsorted-sort-column-id+}
-      @about-class{tree-sortable}
-      @about-function{tree-sortable-sort-column-changed}
-      @about-function{tree-sortable-sort-column-id}
-      @about-symbol{tree-iter-compare-func}
-      @about-function{tree-sortable-set-sort-func}
-      @about-function{tree-sortable-set-default-sort-func}
-      @about-function{tree-sortable-has-default-sort-func}
-    @end{subsection}
-    @begin[GtkTreeModelSort]{subsection}
-      @about-class{tree-model-sort}
-      @about-generic{tree-model-sort-model}
-      @about-function{tree-model-sort-new-with-model}
-      @about-function{tree-model-sort-convert-child-path-to-path}
-      @about-function{tree-model-sort-convert-child-iter-to-iter}
-      @about-function{tree-model-sort-convert-path-to-child-path}
-      @about-function{tree-model-sort-convert-iter-to-child-iter}
-      @about-function{tree-model-sort-reset-default-sort-func}
-      @about-function{tree-model-sort-clear-cache}
-      @about-function{tree-model-sort-iter-is-valid}
-    @end{subsection}
-    @begin[GtkTreeModelFilter]{subsection}
-      @about-class{tree-model-filter}
-      @about-generic{tree-model-filter-child-model}
-      @about-generic{tree-model-filter-virtual-root}
-      @about-function{tree-model-filter-new}
-      @about-symbol{tree-model-filter-visible-func}
-      @about-function{tree-model-filter-set-visible-func}
-      @about-symbol{tree-model-filter-modify-func}
-      @about-function{tree-model-filter-set-modify-func}
-      @about-function{tree-model-filter-set-visible-column}
-      @about-function{tree-model-filter-model}
-      @about-function{tree-model-filter-convert-child-iter-to-iter}
-      @about-function{tree-model-filter-convert-iter-to-child-iter}
-      @about-function{tree-model-filter-convert-child-path-to-path}
-      @about-function{tree-model-filter-convert-path-to-child-path}
-      @about-function{tree-model-filter-refilter}
-      @about-function{tree-model-filter-clear-cache}
     @end{subsection}
     @begin[GtkCellLayout]{subsection}
       @about-class{cell-layout}
@@ -2999,22 +3012,6 @@ setup_tree (void)
       @about-function{places-sidebar-set-drop-targets-visible}
     @end{subsection}
   @end{section}
-  @begin[Ornaments]{section}
-    @begin[GtkFrame]{subsection}
-      @about-class{frame}
-      @about-generic{frame-label}
-      @about-generic{frame-label-widget}
-      @about-generic{frame-label-xalign}
-      @about-generic{frame-label-yalign}
-      @about-generic{frame-shadow-type}
-      @about-function{frame-new}
-      @about-function{frame-label-align}
-    @end{subsection}
-    @begin[GtkSeparator]{subsection}
-      @about-class{separator}
-      @about-function{separator-new}
-    @end{subsection}
-  @end{section}
   @begin[Scrolling]{section}
     @begin[GtkScrollbar]{subsection}
       @about-class{scrollbar}
@@ -3059,11 +3056,16 @@ setup_tree (void)
     @end{subsection}
   @end{section}
   @begin[Printing]{section}
+    @begin[GtkPrintOperationPreview]{subsection}
+      @about-class{print-operation-preview}
+      @about-function{print-operation-preview-end-preview}
+      @about-function{print-operation-preview-is-selected}
+      @about-function{print-operation-preview-render-page}
+    @end{subsection}
     @begin[GtkPrintOperation]{subsection}
       @about-symbol{print-status}
       @about-symbol{print-operation-action}
       @about-symbol{print-operation-result}
-      @about-symbol{print-error}
       @about-class{print-operation}
       @about-generic{print-operation-allow-async}
       @about-generic{print-operation-current-page}
@@ -3093,10 +3095,6 @@ setup_tree (void)
       @about-function{print-run-page-setup-dialog}
       @about-symbol{page-setup-done-func}
       @about-function{print-run-page-setup-dialog-async}
-      @about-class{print-operation-preview}
-      @about-function{print-operation-preview-end-preview}
-      @about-function{print-operation-preview-is-selected}
-      @about-function{print-operation-preview-render-page}
     @end{subsection}
     @begin[GtkPrintContext]{subsection}
       @about-class{print-context}
@@ -3121,7 +3119,15 @@ setup_tree (void)
       @about-symbol{page-set}
       @about-class{print-settings}
       @about-function{print-settings-new}
+      @about-function{print-settings-new-from-file}
+      @about-function{print-settings-new-from-key-file}
+      @about-function{print-settings-new-from-gvariant}
       @about-function{print-settings-copy}
+      @about-function{print-settings-load-file}
+      @about-function{print-settings-load-key-file}
+      @about-function{print-settings-to-file}
+      @about-function{print-settings-to-key-file}
+      @about-function{print-settings-to-gvariant}
       @about-function{print-settings-has-key}
       @about-function{print-settings-get}
       @about-function{print-settings-set}
@@ -3161,14 +3167,6 @@ setup_tree (void)
       @about-function{print-settings-dither}
       @about-function{print-settings-finishings}
       @about-function{print-settings-output-bin}
-      @about-function{print-settings-new-from-file}
-      @about-function{print-settings-new-from-key-file}
-      @about-function{print-settings-new-from-gvariant}
-      @about-function{print-settings-load-file}
-      @about-function{print-settings-load-key-file}
-      @about-function{print-settings-to-file}
-      @about-function{print-settings-to-key-file}
-      @about-function{print-settings-to-gvariant}
     @end{subsection}
     @begin[GtkPageSetup]{subsection}
       @about-class{page-setup}
@@ -3353,6 +3351,10 @@ setup_tree (void)
       @about-function{adjustment-configure}
       @about-function{adjustment-minimum-increment}
     @end{subsection}
+    @begin[GtkSeparator]{subsection}
+      @about-class{separator}
+      @about-function{separator-new}
+    @end{subsection}
     @begin[GtkCalendar]{subsection}
       @about-symbol{calendar-display-options}
       @about-class{calendar}
@@ -3396,9 +3398,7 @@ setup_tree (void)
     @begin[GtkIMMulticontex]{subsection}
       @about-class{im-multicontext}
       @about-function{im-multicontext-new}
-      @about-function{im-multicontext-append-menuitems}
-      @about-function{im-multicontext-get-context-id}
-      @about-function{im-multicontext-set-context-id}
+      @about-function{im-multicontext-context-id}
     @end{subsection}
     @begin[GtkSizeGroup]{subsection}
       @about-symbol{size-group-mode}
@@ -4184,12 +4184,12 @@ setup_tree (void)
     @end{subsection}
     @begin[Drag and drop handling]{subsection}
       GTK has a rich set of functions for doing inter-process communication via
-      the drag-and-drop metaphor. GTK can do drag-and-drop (DND) via multiple
+      the drag and drop metaphor. GTK can do drag and drop (DND) via multiple
       protocols. The currently supported protocols are the Xdnd and Motif
       protocols.
 
       As well as the functions listed here, applications may need to use some
-      facilities provided for Selections. Also, the Drag and Drop API makes use
+      facilities provided for Selections. Also, the drag and drop API makes use
       of signals in the @class{gtk:widget} class.
       @about-symbol{dest-defaults}
       @about-symbol{target-flags}

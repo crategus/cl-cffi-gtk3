@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,6 +35,11 @@
 ;;;
 ;;;     GtkPlug
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_plug_get_embedded
+;;;     gtk_plug_get_socket_window
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_plug_construct
@@ -42,8 +47,6 @@
 ;;;     gtk_plug_new
 ;;;     gtk_plug_new_for_display
 ;;;     gtk_plug_get_id
-;;;     gtk_plug_get_embedded                              Accessor
-;;;     gtk_plug_get_socket_window                         Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -90,7 +93,7 @@
 
 #+liber-documentation
 (setf (documentation 'plug 'type)
- "@version{#2025-07-11}
+ "@version{2026-06-04}
   @begin{short}
     Together with the @class{gtk:socket} widget, the @class{gtk:plug} widget
     provides the ability to embed widgets from one process into another process
@@ -121,6 +124,7 @@ lambda (plug)    :run-last
       Gets emitted when the plug becomes embedded in a socket.
     @end{signal}
   @end{dictionary}
+  @see-constructor{gtk:plug-new}
   @see-slot{gtk:plug-embedded}
   @see-slot{gtk:plug-socket-window}
   @see-class{gtk:socket}")
@@ -141,13 +145,12 @@ lambda (plug)    :run-last
 (setf (liber:alias-for-function 'plug-embedded)
       "Accessor"
       (documentation 'plug-embedded 'function)
- "@version{#2023-02-28}
+ "@version{#2026-06-04}
   @syntax{(gtk:plug-embedded object) => embedded}
   @argument[object]{a @class{gtk:plug} widget}
   @argument[embedded]{a boolean whether the plug is embedded in a socket}
   @begin{short}
-    Accessor of the @slot[gtk:plug]{embedded} slot of the @class{gtk:plug}
-    class.
+    The accessor for the @slot[gtk:plug]{embedded} slot.
   @end{short}
   Determines whether the plug is embedded in a socket.
   @see-class{gtk:plug}")
@@ -163,13 +166,12 @@ lambda (plug)    :run-last
 (setf (liber:alias-for-function 'plug-socket-window)
       "Accessor"
       (documentation 'plug-socket-window 'function)
- "@version{#2023-02-28}
-  @syntax{(gtk:plug-socket-window object) => socket-window}
+ "@version{#2026-06-04}
+  @syntax{(gtk:plug-socket-window object) => socket}
   @argument[object]{a @class{gtk:plug} widget}
-  @argument[socket-window]{a @class{gdk:window} of the socket}
+  @argument[socket]{a @class{gdk:window} of the socket}
   @begin{short}
-    Accessor of the @slot[gtk:plug]{socket-window} slot of the @class{gtk:plug}
-    class.
+    The accessor for the @slot[gtk:plug]{socket-window} slot.
   @end{short}
   Retrieves the socket the plug is embedded in.
   @see-class{gtk:plug}
@@ -210,8 +212,6 @@ lambda (plug)    :run-last
 ;;;
 ;;; socket_id :
 ;;;     the XID of the socket's window.
-;;;
-;;; Since 2.2
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -220,20 +220,20 @@ lambda (plug)    :run-last
 
 (cffi:defcfun ("gtk_plug_new" plug-new) (g:object plug)
  #+liber-documentation
- "@version{#2025-07-07}
-  @argument[socket-id]{a pointer for the window ID of the socket, or 0}
+ "@version{#2026-06-04}
+  @argument[socketid]{a pointer for the window ID of the socket, or 0}
   @return{The new @class{gtk:plug} widget.}
   @begin{short}
     Creates a new plug widget inside the @class{gtk:socket} widget identified
-    by @arg{socket-id}.
+    by @arg{socketid}.
   @end{short}
-  If @arg{socket-id} is 0, the plug is left \"unplugged\" and can later be
+  If @arg{socketid} is 0, the plug is left \"unplugged\" and can later be
   plugged into a @class{gtk:socket} widget by the @fun{gtk:socket-add-id}
   function.
   @see-class{gtk:plug}
   @see-class{gtk:socket}
   @see-function{gtk:socket-add-id}"
-  (socket-id :pointer))
+  (socketid :pointer))
 
 (export 'plug-new)
 
@@ -252,8 +252,6 @@ lambda (plug)    :run-last
 ;;;
 ;;; Returns :
 ;;;     the new GtkPlug widget.
-;;;
-;;; Since 2.2
 ;;; ----------------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------------
@@ -262,7 +260,7 @@ lambda (plug)    :run-last
 
 (cffi:defcfun ("gtk_plug_get_id" plug-id) :pointer
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-04}
   @argument[plug]{a @class{gtk:plug} widget}
   @return{The pointer for the window ID for the plug.}
   @begin{short}

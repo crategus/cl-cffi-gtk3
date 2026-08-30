@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,12 +35,15 @@
 ;;;
 ;;;     GtkMenuToolButton
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_menu_tool_button_set_menu
+;;;     gtk_menu_tool_button_get_menu
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_menu_tool_button_new
 ;;;     gtk_menu_tool_button_new_from_stock
-;;;     gtk_menu_tool_button_set_menu                      Accessor
-;;;     gtk_menu_tool_button_get_menu                      Accessor
 ;;;     gtk_menu_tool_button_set_arrow_tooltip_text
 ;;;     gtk_menu_tool_button_set_arrow_tooltip_markup
 ;;;
@@ -51,7 +54,6 @@
 ;;; Signals
 ;;;
 ;;;     show-menu
-;;;
 ;;;
 ;;; Object Hierarchy
 ;;;
@@ -90,23 +92,22 @@
 
 #+liber-documentation
 (setf (documentation 'menu-tool-button 'type)
- "@version{#2025-06-27}
+ "@version{2026-05-30}
   @begin{short}
     The @class{gtk:menu-tool-button} widget is a @class{gtk:tool-item} that
     contains a button and a small additional button with an arrow.
   @end{short}
   When clicked, the arrow button pops up a dropdown menu.
 
-  Use the @fun{gtk:menu-tool-button-new} function to create a new
-  @class{gtk:menu-tool-button} widget. Use the
-  @fun{gtk:menu-tool-button-new-from-stock} function to create a new
-  @class{gtk:menu-tool-button} widget containing a stock item.
+  Use the @fun{gtk:menu-tool-button-new} function to create a new menu tool
+  button and the @fun{gtk:menu-tool-button-new-from-stock} function to create
+  a new menu tool button containing a stock item.
   @begin[GtkMenuToolButton as GtkBuildable]{dictionary}
     The @class{gtk:menu-tool-button} implementation of the @class{gtk:buildable}
-    interface supports adding a menu by specifying \"menu\" as the \"type\"
-    attribute of a @code{<child>} element.
+    interface supports adding a menu by specifying @code{\"menu\"} as the
+    @code{type} attribute of a @code{<child>} element.
 
-    @b{Example:} A UI definition fragment with menus
+    @b{Example:} A UI definition fragment with menus:
     @begin{pre}
 <object class=\"GtkMenuToolButton\">
   <child type=\"menu\">
@@ -127,16 +128,14 @@ lambda (button)    :run-first
       The signal is emitted before the menu is shown. It can be used to populate
       the menu on demand, using the @fun{gtk:menu-tool-button-menu} function.
       Note that even if you populate the menu dynamically in this way, you must
-      set an empty menu on the @class{gtk:menu-tool-button} widget beforehand,
-      since the arrow is made insensitive if the menu is not set.
+      set an empty menu on the menu tool button beforehand, since the arrow is
+      made insensitive if the menu is not set.
     @end{signal}
   @end{dictionary}
   @see-constructor{gtk:menu-tool-button-new}
   @see-constructor{gtk:menu-tool-button-new-from-stock}
   @see-slot{gtk:menu-tool-button-menu}
-  @see-class{gtk:tool-item}
-  @see-class{gtk:tool-button}
-  @see-class{gtk:toolbar}")
+  @see-class{gtk:tool-item}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; Property and Accessor Details
@@ -144,27 +143,23 @@ lambda (button)    :run-first
 
 #+liber-documentation
 (setf (documentation (liber:slot-documentation "menu" 'menu-tool-button) t)
- "The @code{menu} property of type @class{gtk:menu-tool-button} (Read / Write)
-  @br{}
+ "The @code{menu} property of type @class{gtk:menu} (Read / Write) @br{}
   The dropdown menu.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'menu-tool-button-menu)
       "Accessor"
       (documentation 'menu-tool-button-menu 'function)
- "@version{#2023-02-27}
+ "@version{2026-05-31}
   @syntax{(gtk:menu-tool-button-menu object) => menu}
   @syntax{(setf (gtk:menu-tool-button-menu object) menu)}
   @argument[object]{a @class{gtk:menu-tool-button} widget}
-  @argument[menu]{a @class{gtk:menu} associated with @arg{button}}
+  @argument[menu]{a @class{gtk:menu} widget associated with @arg{button}}
   @begin{short}
-    Accessor of the @slot[gtk:menu-tool-button]{menu} slot of the
-    @class{gtk:menu-tool-button} class.
+    The accessor for the @slot[gtk:menu-tool-button]{menu} slot gets or sets the
+    menu that is popped up when the user clicks on the arrow of @arg{button}.
   @end{short}
-  The @fun{gtk:menu-tool-button-menu} function gets the menu associated with
-  @arg{button}. The @setf{gtk:menu-tool-button-menu} function sets the menu that
-  is popped up when the user clicks on the arrow. If @arg{menu} is @code{nil},
-  the arrow button becomes insensitive.
+  If @arg{menu} is @code{nil}, the arrow button becomes insensitive.
   @see-class{gtk:menu-tool-button}
   @see-class{gtk:menu}")
 
@@ -172,22 +167,22 @@ lambda (button)    :run-first
 ;;; gtk_menu_tool_button_new
 ;;; ----------------------------------------------------------------------------
 
-(defun menu-tool-button-new (icon-widget label)
+(defun menu-tool-button-new (&optional icon label)
  #+liber-documentation
- "@version{#2023-02-27}
-  @argument[icon-widget]{a @class{gtk:widget} object that will be used as icon
-    widget, or @code{nil}}
+ "@version{2026-05-30}
+  @argument[icon]{a @class{gtk:widget} object that will be used as icon, or
+    @code{nil}}
   @argument[label]{a string that will be used as label, or @code{nil}}
   @return{The new @class{gtk:menu-tool-button} widget.}
   @begin{short}
-    Creates a new menu tool button using @arg{icon-widget} as icon and
-    @arg{label} as label.
+    Creates a new menu tool button using @arg{icon} as icon and @arg{label} as
+    label.
   @end{short}
   @see-class{gtk:menu-tool-button}
   @see-function{gtk:menu-tool-button-new-from-stock}"
   (let ((button (make-instance 'menu-tool-button)))
-    (when icon-widget
-      (setf (tool-button-icon-widget button) icon-widget))
+    (when icon
+      (setf (tool-button-icon-widget button) icon))
     (when label
       (setf (tool-button-label button) label))
     button))
@@ -195,14 +190,14 @@ lambda (button)    :run-first
 (export 'menu-tool-button-new)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_tool_button_new_from_stock ()
+;;; gtk_menu_tool_button_new_from_stock
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline menu-tool-button-new-from-stock))
 
 (defun menu-tool-button-new-from-stock (stock-id)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-30}
   @argument[stock-id]{a string for the name of a stock item}
   @return{The new @class{gtk:menu-tool-button} widget.}
   @begin{short}
@@ -211,9 +206,9 @@ lambda (button)    :run-first
   The new menu tool button will contain an icon and label from the stock item
   indicated by @arg{stock-id}.
   @begin[Warning]{dictionary}
-    The @fun{gtk:menu-tool-button-new-from-stock} function has been deprecated
-    since version 3.10 and should not be used in newly written code. Use the
-    @fun{gtk:menu-tool-button-new} function instead.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code. Use the @fun{gtk:menu-tool-button-new} function
+    instead.
   @end{dictionary}
   @see-class{gtk:menu-tool-button}
   @see-function{gtk:menu-tool-button-new}"
@@ -223,16 +218,16 @@ lambda (button)    :run-first
 (export 'menu-tool-button-new-from-stock)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_tool_button_set_arrow_tooltip_text ()
+;;; gtk_menu_tool_button_set_arrow_tooltip_text
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_text"
                menu-tool-button-set-arrow-tooltip-text) :void
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-30}
   @argument[button]{a @class{gtk:menu-tool-button} widget}
-  @argument[text]{a string for the text to be used as tooltip text for
-    @arg{button}'s arrow button}
+  @argument[text]{a string for the text to be used as tooltip text for the
+    arrow button}
   @begin{short}
     Sets the tooltip text to be used as tooltip for the arrow button which pops
     up the menu.
@@ -247,16 +242,16 @@ lambda (button)    :run-first
 (export 'menu-tool-button-set-arrow-tooltip-text)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_menu_tool_button_set_arrow_tooltip_markup ()
+;;; gtk_menu_tool_button_set_arrow_tooltip_markup
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_menu_tool_button_set_arrow_tooltip_markup"
                menu-tool-button-set-arrow-tooltip-markup) :void
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-30}
   @argument[button]{a @class{gtk:menu-tool-button} widget}
   @argument[markup]{a string for the markup text to be used as tooltip text
-    for @arg{button}'s arrow button}
+    for the arrow button}
   @begin{short}
     Sets the tooltip markup text to be used as tooltip for the arrow button
     which pops up the menu.

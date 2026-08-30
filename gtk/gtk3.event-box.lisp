@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -84,7 +84,7 @@
 
 #+liber-documentation
 (setf (documentation 'event-box 'type)
- "@version{2023-02-23}
+ "@version{2026-06-02}
   @begin{short}
     The @class{gtk:event-box} widget is a subclass of the @class{gtk:bin} class
     which also has its own window.
@@ -153,25 +153,19 @@
 (setf (liber:alias-for-function 'event-box-above-child)
       "Accessor"
       (documentation 'event-box-above-child 'function)
- "@version{2023-02-23}
+ "@version{2026-06-02}
   @syntax{(gtk:event-box-above-child object) => above-child}
   @syntax{(setf gtk:event-box-above-child object) above-child)}
   @argument[object]{a @class{gtk:event-box} widget}
   @argument[above-child]{@em{true} if the event box window is above its child}
   @begin{short}
-    Accessor of the @slot[gtk:event-box]{above-child} slot of the
-    @class{gtk:event-box} class.
+    The accessor for the @slot[gtk:event-box]{above-child} slot gets or sets
+    whether the event box window is above or below the windows of its child.
   @end{short}
-  The @fun{gtk:event-box-above-child} function returns whether the event box
-  window is above or below the windows of its child. The
-  @setf{gtk:event-box-above-child} function sets whether the event box window
-  is positioned above the windows of its child, as opposed to below it.
-
   If the window is above, all events inside the event box will go to the event
   box. If the window is below, events in windows of child widgets will first
-  got to that widget, and then to its parents.
-
-  The default is to keep the window below the child.
+  got to that widget, and then to its parents. The default is to keep the window
+  below the child.
   @see-class{gtk:event-box}")
 
 ;;; --- gtk:event-box-visible-window -------------------------------------------
@@ -188,32 +182,26 @@
 (setf (liber:alias-for-function 'event-box-visible-window)
       "Accessor"
       (documentation 'event-box-visible-window 'function)
- "@version{2023-02-23}
+ "@version{2026-06-02}
   @syntax{(gtk:event-box-visible-window object) => visible-window}
   @syntax{(setf gtk:event-box-visible-window object) visible-window)}
   @argument[object]{a @class{gtk:event-box} widget}
   @argument[visible-window]{@em{true} to make the event box have a visible
     window}
   @begin{short}
-    Accessor of the @slot[gtk:event-box]{visible-window} slot of the
-    @class{gtk:event-box} class.
+    The accessor for the @slot[gtk:event-box]{visible-window} slot gets or sets
+    whether the event box has a visible window.
   @end{short}
-  The @fun{gtk:event-box-visible-window} function returns whether the event box
-  has a visible window. The @setf{gtk:event-box-visible-window} function sets
-  whether the event box uses a visible or invisible child window. The default
-  is to use visible windows.
+  The default is to use visible windows.
 
   In an invisible window event box, the window that the event box creates is a
-  @code{:input-only} window, which means that it is invisible and only serves
-  to receive events.
-
-  A visible window event box creates a visible @code{:input-output} window that
-  acts as the parent window for all the widgets contained in the event box.
-
-  You should generally make your event box invisible if you just want to trap
+  @val[gdk:window-window-class]{:input-only} window, which means that it is
+  invisible and only serves to receive events. A visible window event box
+  creates a visible @val[gdk:window-window-class]{:input-only} window that
+  acts as the parent window for all the widgets contained in the event box. You
+  should generally make your event box invisible if you just want to trap
   events. Creating a visible window may cause artifacts that are visible to
   the user, especially if the user is using a theme with gradients or pixmaps.
-
   The main reason to create a non input-only event box is if you want to set
   the background to a different color or draw on it.
   @begin[Notes]{dictionary}
@@ -242,7 +230,7 @@
 
 (defun event-box-new ()
  #+liber-documentation
- "@version{2023-02-23}
+ "@version{2026-06-02}
   @return{The new @class{gtk:event-box} widget.}
   @begin{short}
     Creates a new event box.

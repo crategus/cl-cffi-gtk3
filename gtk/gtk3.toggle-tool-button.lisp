@@ -88,7 +88,7 @@
 
 #+liber-documentation
 (setf (documentation 'toggle-tool-button 'type)
- "@version{#2025-07-16}
+ "@version{2026-06-23}
   @begin{short}
     The @class{gtk:toggle-tool-button} widget is a @class{gtk:tool-item} widget
     that contains a toggle button.
@@ -129,34 +129,30 @@ lambda (button)    :run-first
 (setf (liber:alias-for-function 'toggle-tool-button-active)
       "Accessor"
       (documentation 'toggle-tool-button-active 'function)
- "@version{2025-07-16}
+ "@version{2026-06-23}
   @syntax{(gtk:toggle-tool-button-active object) => setting}
   @syntax{(setf (gtk:toggle-tool-button-active object) setting)}
   @argument[object]{a @class{gtk:toggle-tool-button} widget}
   @argument[setting]{a boolean whether the toggle tool button should be
     active}
   @begin{short}
-    Accessor of the @slot[gtk:toggle-tool-button]{active} slot of the
-    @class{gtk:toggle-tool-button} class.
+    The accessor for the @slot[gtk:toggle-tool-button]{active} slot gets or
+    sets the current state of the toggle button.
   @end{short}
-  The @fun{gtk:toggle-tool-button-active} function queries a toggle tool button
-  and returns its current state. The @setf{gtk:toggle-tool-button-active}
-  function sets the status.
-
   Set to @em{true} if you want the toggle tool button to be 'pressed in',
   and @em{false} to raise it. This action causes the
   @sig[gtk:toggle-tool-button]{toggled} signal to be emitted.
   @see-class{gtk:toggle-tool-button}")
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_toggle_tool_button_new ()
+;;; gtk_toggle_tool_button_new
 ;;; ----------------------------------------------------------------------------
 
 (declaim (inline toggle-tool-button-new))
 
 (defun toggle-tool-button-new ()
  #+liber-documentation
- "@version{#2023-03-28}
+ "@version{#2026-06-23}
   @return{The newly created @class{gtk:toggle-tool-button} widget.}
   @begin{short}
     Returns a new toggle tool button.
@@ -174,7 +170,7 @@ lambda (button)    :run-first
 
 (defun toggle-tool-button-new-from-stock (stock)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-23}
   @argument[stock]{a string for the name of the stock item}
   @return{The new @class{gtk:toggle-tool-button} widget.}
   @begin{short}
@@ -183,9 +179,9 @@ lambda (button)    :run-first
   @end{short}
   It is an error if @arg{stock} is not a name of a stock item.
   @begin[Warning]{dictionary}
-    The @fun{gtk:toggle-tool-button-new-from-stock} function has been deprecated
-    since version 3.10 and should not be used in newly written code. Use the
-    @fun{gtk:toggle-tool-button-new} function instead.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code. Use the @fun{gtk:toggle-tool-button-new} function
+    instead.
   @end{dictionary}
   @see-class{gtk:toggle-tool-button}
   @see-function{gtk:toggle-tool-button-new}"

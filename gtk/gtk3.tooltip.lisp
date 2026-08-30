@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -68,8 +68,10 @@
 
 #+liber-documentation
 (setf (documentation 'tooltip 'type)
- "@version{#2025-07-02}
-  @short{Add tips to your widgets.}
+ "@version{2026-06-04}
+  @begin{short}
+    Add tips to your widgets.
+  @end{short}
   Basic tooltips can be realized simply by using the
   @fun{gtk:widget-tooltip-text} or @fun{gtk:widget-tooltip-markup} functions
   without any explicit tooltip object.
@@ -118,12 +120,9 @@
       @em{true} to show the window, @em{false} to not show it.
     @end{item}
   @end{itemize}
-  @see-class{gtk:tree-view}
-  @see-class{gtk:window}
   @see-function{gtk:widget-tooltip-text}
   @see-function{gtk:widget-tooltip-markup}
-  @see-function{gtk:widget-tooltip-window}
-  @see-function{gtk:tooltip-set-icon}")
+  @see-function{gtk:widget-tooltip-window}")
 
 ;;; ----------------------------------------------------------------------------
 ;;; gtk_tooltip_set_markup
@@ -131,7 +130,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_markup" tooltip-set-markup) :void
  #+liber-documentation
- "@version{#2023-02-23}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[markup]{a markup string, see Pango markup format, or @code{nil}}
   @begin{short}
@@ -152,7 +151,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_text" tooltip-set-text) :void
  #+liber-documentation
- "@version{#2023-02-23}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[text]{a text string or @code{nil}}
   @begin{short}
@@ -173,7 +172,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_icon" tooltip-set-icon) :void
  #+liber-documentation
- "@version{#2023-02-12}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[pixbuf]{a @class{gdk-pixbuf:pixbuf} object, or @code{nil}}
   @begin{short}
@@ -189,13 +188,13 @@
 (export 'tooltip-set-icon)
 
 ;;; ----------------------------------------------------------------------------
-;;; gtk_tooltip_set_icon_from_stock
+;;; gtk_tooltip_set_icon_from_stock                         Deprecated 3.10
 ;;; ----------------------------------------------------------------------------
 
 (cffi:defcfun ("gtk_tooltip_set_icon_from_stock" tooltip-set-icon-from-stock)
     :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[stockid]{a string for the stock ID, or @code{nil}}
   @argument[size]{a @sym{gtk:icon-size} value for the icon size}
@@ -206,9 +205,9 @@
   @end{short}
   If @arg{stockid} is @code{nil}, the image will be hidden.
   @begin[Warning]{dictionary}
-    The @fun{gtk:tooltip-set-icon-from-stock} function has been deprecated
-    since version 3.10 and should not be used in newly written code. Use the
-    @fun{gtk:tooltip-set-icon-from-icon-name} function instead.
+    This function has been deprecated since version 3.10 and should not be used
+    in newly written code. Use the @fun{gtk:tooltip-set-icon-from-icon-name}
+    function instead.
   @end{dictionary}
   @see-class{gtk:tooltip}
   @see-symbol{gtk:icon-size}
@@ -226,7 +225,7 @@
 (cffi:defcfun ("gtk_tooltip_set_icon_from_icon_name"
                tooltip-set-icon-from-icon-name) :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[name]{a string for the icon name, or @code{nil}}
   @argument[size]{a @sym{gtk:icon-size} value for the icon size}
@@ -250,7 +249,7 @@
 (cffi:defcfun ("gtk_tooltip_set_icon_from_gicon" tooltip-set-icon-from-gicon)
     :void
  #+liber-documentation
- "@version{#2025-07-04}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} widget}
   @argument[gicon]{a @class{g:icon} object representing the icon, or @code{nil}}
   @argument[size]{a @sym{gtk:icon-size} value for the icon size}
@@ -274,17 +273,17 @@
 
 (cffi:defcfun ("gtk_tooltip_set_custom" tooltip-set-custom) :void
  #+liber-documentation
- "@version{#2023-02-23}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[widget]{a @class{gtk:widget} widget, or @code{nil} to unset the old
     custom widget}
   @begin{short}
     Replaces the widget packed into the tooltip with a custom widget.
   @end{short}
-  @arg{widget} does not get destroyed when the @arg{tooltip} goes away. By
-  default a box with a @class{gtk:image} and @class{gtk:label} widget is
-  embedded in the tooltip, which can be configured using the
-  @fun{gtk:tooltip-set-markup} and @fun{gtk:tooltip-set-icon} functions.
+  @arg{widget} does not get destroyed when @arg{tooltip} goes away. By default
+  a box with a @class{gtk:image} and @class{gtk:label} widget is embedded in the
+  tooltip, which can be configured using the @fun{gtk:tooltip-set-markup} and
+  @fun{gtk:tooltip-set-icon} functions.
   @see-class{gtk:tooltip}
   @see-class{gtk:widget}
   @see-class{gtk:image}
@@ -303,7 +302,7 @@
 (cffi:defcfun ("gtk_tooltip_trigger_tooltip_query"
                tooltip-trigger-tooltip-query) :void
  #+liber-documentation
- "@version{#2023-02-23}
+ "@version{#2026-06-04}
   @argument[display]{a @class{gdk:display} object}
   @begin{short}
     Triggers a new tooltip query on @arg{display}, in order to update the
@@ -324,7 +323,7 @@
 
 (cffi:defcfun ("gtk_tooltip_set_tip_area" tooltip-set-tip-area) :void
  #+liber-documentation
- "@version{#2025-07-11}
+ "@version{#2026-06-04}
   @argument[tooltip]{a @class{gtk:tooltip} object}
   @argument[rectangle]{a @class{gdk:rectangle} instance}
   @begin{short}

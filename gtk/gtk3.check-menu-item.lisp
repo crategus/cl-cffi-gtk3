@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -35,18 +35,21 @@
 ;;;
 ;;;     GtkCheckMenuItem
 ;;;
+;;; Accessors
+;;;
+;;;     gtk_check_menu_item_get_active                     Accessor
+;;;     gtk_check_menu_item_set_active                     Accessor
+;;;     gtk_check_menu_item_get_inconsistent               Accessor
+;;;     gtk_check_menu_item_set_inconsistent               Accessor
+;;;     gtk_check_menu_item_set_draw_as_radio              Accessor
+;;;     gtk_check_menu_item_get_draw_as_radio              Accessor
+;;;
 ;;; Functions
 ;;;
 ;;;     gtk_check_menu_item_new
 ;;;     gtk_check_menu_item_new_with_label
 ;;;     gtk_check_menu_item_new_with_mnemonic
-;;;     gtk_check_menu_item_get_active                     Accessor
-;;;     gtk_check_menu_item_set_active                     Accessor
 ;;;     gtk_check_menu_item_toggled
-;;;     gtk_check_menu_item_get_inconsistent               Accessor
-;;;     gtk_check_menu_item_set_inconsistent               Accessor
-;;;     gtk_check_menu_item_set_draw_as_radio              Accessor
-;;;     gtk_check_menu_item_get_draw_as_radio              Accessor
 ;;;
 ;;; Properties
 ;;;
@@ -104,13 +107,12 @@
 
 #+liber-documentation
 (setf (documentation 'check-menu-item 'type)
- "@version{2025-07-14}
+ "@version{2026-05-27}
   @begin{short}
-    A @class{gtk:check-menu-item} widget is a menu item that maintains the state
-    of a boolean value in addition to a @class{gtk:menu-item} usual role in
-    activating application code.
+    The @class{gtk:check-menu-item} widget is a menu item that maintains the
+    state of a boolean value in addition to a @class{gtk:menu-item} usual role
+    in activating application code.
   @end{short}
-
   A check box indicating the state of the boolean value is displayed at the
   left side of the @class{gtk:menu-item} widget. Activating the
   @class{gtk:menu-item} widget toggles the value.
@@ -128,10 +130,10 @@ menuitem
     @begin[check-menu-item:indicator-size]{property}
       The @code{indicator-size} style property of type @code{:int} (Read) @br{}
       Size of check or radio indicator. @br{}
-      @em{Warning:} The @code{indicator-size} style property has been
-      deprecated since version 3.20 and should not be used in newly written
-      code. Use the standard @code{min-width} CSS property on the check or
-      radio nodes. The value of this style property is ignored. @br{}
+      @em{Warning:} This property has been deprecated since version 3.20 and
+      should not be used in newly written code. Use the standard
+      @code{min-width} CSS property on the check or radio nodes. The value of
+      this style property is ignored. @br{}
       Allowed values: >= 0 @br{}
       Default value: 16
     @end{property}
@@ -174,19 +176,15 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-active)
       "Accessor"
       (documentation 'check-menu-item-active 'function)
- "@version{2023-02-27}
+ "@version{2026-05-31}
   @syntax{(gtk:check-menu-item-active object) => is-active}
   @syntax{(setf (gtk:checkk-menu-item-active object) is-active)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
-  @argument[is-active]{a boolean value indicating whether the check box
-    is active}
+  @argument[is-active]{a boolean indicating whether the check box is active}
   @begin{short}
-    Accessor of the @slot[gtk:check-menu-item]{active} slot of the
-    @class{gtk:check-menu-item} class.
+    The accessor for the @slot[gtk:check-menu-item]{active} slot gets or sets
+    whether the check menu item is active.
   @end{short}
-  The @fun{gtk:check-menu-item-active} returns whether the check menu item is
-  active. The @setf{gtk:check-menu-item-active} function sets the active state
-  of the menu item's check box.
   @see-class{gtk:check-menu-item}")
 
 ;;; --- gtk:check-menu-item-draw-as-radio --------------------------------------
@@ -202,20 +200,17 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-draw-as-radio)
       "Accessor"
       (documentation 'check-menu-item-draw-as-radio 'function)
- "@version{2023-02-27}
+ "@version{2026-05-31}
   @syntax{(gtk:check-menu-item-draw-as-radio object) => setting}
   @syntax{(setf (gtk:checkk-menu-item-draw-as-radio object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
-  @argument[setting]{a boolean whether @arg{objct} is drawn like a
+  @argument[setting]{a boolean whether @arg{object} is drawn like a
     @class{gtk:radio-menu-item} widget}
   @begin{short}
-    Accessor of the @slot[gtk:check-menu-item]{draw-as-radio} slot of the
-    @class{gtk:check-menu-item} class.
+    The accessor for the @slot[gtk:check-menu-item]{draw-as-radio} slot gets
+    or sets whether @arg{object} is drawn like a @class{gtk:radio-menu-item}
+    widget.
   @end{short}
-  The @fun{gtk:check-menu-item-draw-as-radio} function returns whether
-  @arg{object} looks like a @class{gtk:radio-menu-item} widget. The
-  @setf{gtk:check-menu-item-draw-as-radio} function sets whether @arg{object}
-  is drawn like a @class{gtk:radio-menu-item} widget.
   @see-class{gtk:check-menu-item}
   @see-class{gtk:radio-menu-item}")
 
@@ -232,23 +227,19 @@ lambda (item)    :run-first
 (setf (liber:alias-for-function 'check-menu-item-inconsistent)
       "Accessor"
       (documentation 'check-menu-item-inconsistent 'function)
- "@version{2023-02-27}
+ "@version{2026-05-31}
   @syntax{(gtk:check-menu-item-inconsistent object) => setting}
   @syntax{(setf (gtk:checkk-menu-item-inconsistent object) setting)}
   @argument[object]{a @class{gtk:check-menu-item} widget}
   @argument[setting]{@em{true} to display an \"inconsistent\" third state check}
   @begin{short}
-    Accessor of the @slot[gtk:check-menu-item]{inconsistent} slot of the
-    @class{gtk:check-menu-item} class.
+    The accessor for the @slot[gtk:check-menu-item]{inconsistent} slot.
   @end{short}
   If the user has selected a range of elements, such as some text or spreadsheet
   cells, that are affected by a boolean setting, and the current values in that
   range are inconsistent, you may want to display the check in an \"in between\"
-  state.
-
-  This function turns on \"in between\" display. Normally you would turn off the
-  inconsistent state again if the user explicitly selects a setting. This has to
-  be done manually, the @fun{gtk:check-menu-item-inconsistent} function only
+  state. Normally you would turn off the inconsistent state again if the user
+  explicitly selects a setting. This has to be done manually, this function only
   affects visual appearance, it does not affect the semantics of the widget.
   @see-class{gtk:check-menu-item}")
 
@@ -260,7 +251,7 @@ lambda (item)    :run-first
 
 (defun check-menu-item-new ()
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-27}
   @return{The new @class{gtk:check-menu-item} widget.}
   @short{Creates a new check menu item.}
   @see-class{gtk:check-menu-item}"
@@ -276,7 +267,7 @@ lambda (item)    :run-first
 
 (defun check-menu-item-new-with-label (label)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-27}
   @argument[label]{a string to use for the label}
   @return{The new @class{gtk:check-menu-item} widget.}
   @short{Creates a new check menu item with a label.}
@@ -294,7 +285,7 @@ lambda (item)    :run-first
 
 (defun check-menu-item-new-with-mnemonic (label)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{2026-05-27}
   @argument[label]{a string for the text of the button, with an underscore in
     front of the character}
   @return{The new @class{gtk:check-menu-item} widget.}
@@ -303,7 +294,8 @@ lambda (item)    :run-first
   @end{short}
   The label will be created using the @fun{gtk:label-new-with-mnemonic}
   function, so underscores in label indicate the mnemonic for the menu item.
-  @see-class{gtk:check-menu-item}"
+  @see-class{gtk:check-menu-item}
+  @see-function{gtk:label-new-with-mnemonic}"
   (make-instance 'check-menu-item
                  :label label
                  :use-underline t))
@@ -316,10 +308,10 @@ lambda (item)    :run-first
 
 (cffi:defcfun ("gtk_check_menu_item_toggled" check-menu-item-toggled) :void
  #+liber-documentation
- "@version{#2025-07-16}
+ "@version{2026-05-27}
   @argument[item]{a @class{gtk:check-menu-item} widget}
   @begin{short}
-    Emits the @sig[gtk:check-menu-item-toggled]{toggled} signal.
+    Emits the @sig[gtk:check-menu-item]{toggled} signal.
   @end{short}
   @see-class{gtk:check-menu-item}"
   (item (g:object check-menu-item)))

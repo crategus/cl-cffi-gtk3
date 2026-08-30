@@ -160,14 +160,13 @@
 (setf (liber:alias-for-function 'tree-model-sort-model)
       "Accessor"
       (documentation 'tree-model-sort-model 'function)
- "@version{2026-05-06}
+ "@version{2026-05-31}
   @syntax{(gtk:tree-model-sort-model object) => model}
   @argument[object]{a @class{gtk:tree-model-sort} object}
   @argument[model]{a @class{gtk:tree-model} child model being sorted}
   @begin{short}
-    The accessor for the @slot[gtk:tree-model-sort]{model} slot of the
-    @class{gtk:tree-model-sort} class returns the model the
-    @class{gtk:tree-model-sort} object is sorting.
+    The accessor for the @slot[gtk:tree-model-sort]{model} slot returns the
+    model the @class{gtk:tree-model-sort} object is sorting.
   @end{short}
   @see-class{gtk:tree-model}
   @see-class{gtk:tree-model-sort}")

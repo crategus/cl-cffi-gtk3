@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -81,7 +81,7 @@
 
 #+liber-documentation
 (setf (documentation 'volume-button 'type)
- "@version{#2023-03-29}
+ "@version{2026-06-28}
   @begin{short}
     The @class{gtk:volume-button} class is a subclass of the
     @class{gtk:scale-button} class that has been tailored for use as a volume
@@ -107,18 +107,17 @@
 (setf (liber:alias-for-function 'volume-button-use-symbolic)
       "Accessor"
       (documentation 'volume-button-use-symbolic 'function)
- "@version{#2023-03-29}
+ "@version{2026-06-28}
   @syntax{(gtk:volume-button-use-symbolic object) => use-symbolic}
   @syntax{(setf (gtk:volume-button-use-symbolic object) use-symbolic)}
   @argument[object]{a @class{gtk:volume-button} widget}
   @argument[use-symbolic]{a boolean whether to use symbolic icons}
   @begin{short}
-    Accessor of the @slot[gtk:volume-button]{use-symbolic} slot of the
-    @class{gtk:volume-button} class.
+    The accessor for the @slot[gtk:volume-button]{use-symbolic} slot gets or
+    sets whether to use symbolic icons as the icons.
   @end{short}
-  Whether to use symbolic icons as the icons. Note that if the symbolic icons
-  are not available in your installed theme, then the normal, potentially
-  colorful icons will be used.
+  Note that if the symbolic icons are not available in your installed theme,
+  then the normal, potentially colorful icons will be used.
   @see-class{gtk:volume-button}")
 
 ;;; ----------------------------------------------------------------------------
@@ -129,7 +128,7 @@
 
 (defun volume-button-new ()
  #+liber-documentation
- "@version{#2023-03-29}
+ "@version{2026-06-28}
   @return{The new @class{gtk:volume-button} widget.}
   @begin{short}
     Creates a volume button, with a range between 0.0 and 1.0, with

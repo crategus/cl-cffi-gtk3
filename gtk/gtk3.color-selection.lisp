@@ -498,7 +498,7 @@ lambda (selection)    :run-first
 
 (defun color-selection-palette-from-string (str)
  #+liber-documentation
- "@version{#2023-03-16}
+ "@version{#2026-06-28}
   @argument[str]{a string encoding a color palette}
   @return{@em{True} if a color palette was successfully parsed.}
   @begin{short}
@@ -507,8 +507,8 @@ lambda (selection)    :run-first
   The string is a colon-separated list of color names readable by the
   @fun{gdk:color-parse} function.
   @begin[Warning]{dictionary}
-    The @fun{gtk:color-selection-palette-from-string} function is deprecated
-    since version 3.4 and should not be used in newly written code.
+    This function is deprecated since version 3.4 and should not be used in
+    newly written code.
   @end{dictionary}
   @see-class{gtk:color-selection}
   @see-function{gdk:color-parse}"
@@ -521,7 +521,7 @@ lambda (selection)    :run-first
                          colors-ar
                          ;; TODO: We have direct access to the structure.
                          ;; Check to replace this access.
-                         (* i (cffi:foreign-type-size 'gdk::color-cstruct))))
+                         (* i (cffi:foreign-type-size '(:struct gdk::color-cstruct)))))
             (for color = (cffi:convert-from-foreign color-ptr
                                                     '(g:boxed gdk:color)))
             (collect color)

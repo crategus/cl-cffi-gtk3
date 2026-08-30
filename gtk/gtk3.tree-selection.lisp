@@ -153,15 +153,14 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-function 'tree-selection-mode)
       "Accessor"
       (documentation 'tree-selection-mode 'function)
- "@version{2026-05-13}
+ "@version{2026-05-31}
   @syntax{(gtk:tree-selection-mode object) => mode}
   @syntax{(setf (gtk:tree-selection-mode object) mode)}
   @argument[object]{a @class{gtk:tree-selection} object}
   @argument[mode]{a @sym{gtk:selection-mode} value}
   @begin{short}
-    The accessor for the @slot[gtk:tree-selection]{mode} slot of the
-    @class{gtk:tree-selection} class gets or sets the selection mode of the
-    selection.
+    The accessor for the @slot[gtk:tree-selection]{mode} slot gets or sets the
+    selection mode of the selection.
   @end{short}
   If the previous mode was @val[gtk:selection-mode]{:multiple}, then the anchor
   is kept selected, if it was previously selected.
@@ -188,7 +187,7 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-symbol 'tree-selection-func)
       "Callback"
       (liber:symbol-documentation 'tree-selection-func)
- "@version{2026-05-13}
+ "@version{2026-05-30}
   @syntax{lambda (selection model path selected) => result}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @argument[model]{a @class{gtk:tree-model} object being viewed}
@@ -196,8 +195,9 @@ lambda (selection)    :run-first
   @argument[selected]{@em{true}, if @arg{path} is currently selected}
   @argument[result]{@em{true}, if the selection state of the row can be toggled}
   @begin{short}
-    A callback function used by the @fun{gtk:tree-selection-set-select-function}
-    function to filter whether or not a row may be selected.
+    The callback function used by the
+    @fun{gtk:tree-selection-set-select-function} function to filter whether or
+    not a row may be selected.
   @end{short}
   It is called whenever the selection state of a row might change. A return
   value of @em{true} indicates to @arg{selection} that it is okay to change the
@@ -283,10 +283,10 @@ lambda (selection)    :run-first
 
 (defun tree-selection-selected (selection)
  #+liber-documentation
- "@version{2026-05-13}
+ "@version{2026-05-30}
   @argument[selection]{a @class{gtk:tree-selection} object}
   @begin{return}
-    The @class{gtk:tree-iter} iterator for the selected node, or @code{nil}
+    The @class{gtk:tree-iter} instance for the selected node, or @code{nil}
     if there is no selected node.
   @end{return}
   @begin{short}
@@ -345,13 +345,13 @@ lambda (selection)    :run-first
 (setf (liber:alias-for-symbol 'tree-selection-foreach-func)
       "Callback"
       (liber:symbol-documentation 'tree-selection-foreach-func)
- "@version{2026-05-13}
+ "@version{2026-05-30}
   @syntax{lambda (model path iter)}
   @argument[model]{a @class{gtk:tree-model} object being viewed}
   @argument[path]{a @class{gtk:tree-path} instance of a selected row}
   @argument[iter]{a @class{gtk:tree-iter} instance pointing to a selected row}
   @begin{short}
-    A callback function used by the @fun{gtk:tree-selection-selected-foreach}
+    The callback function used by the @fun{gtk:tree-selection-selected-foreach}
     function to map all selected rows.
   @end{short}
   It will be called on every selected row in the view.
@@ -527,9 +527,9 @@ lambda (selection)    :run-first
 (cffi:defcfun ("gtk_tree_selection_select_iter" tree-selection-select-iter)
     :void
  #+liber-documentation
- "@version{2026-05-13}
+ "@version{2026-05-30}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator to be selected}
+  @argument[iter]{a @class{gtk:tree-iter} instance to be selected}
   @short{Selects the specified iterator.}
   @see-class{gtk:tree-selection}
   @see-class{gtk:tree-iter}
@@ -550,7 +550,7 @@ lambda (selection)    :run-first
  #+liber-documentation
  "@version{#2026-05-13}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator to be unselected}
+  @argument[iter]{a @class{gtk:tree-iter} instance to be unselected}
   @begin{short}
     Unselects the specified iterator.
   @end{short}
@@ -571,7 +571,7 @@ lambda (selection)    :run-first
  #+liber-documentation
  "@version{#2026-05-13}
   @argument[selection]{a @class{gtk:tree-selection} object}
-  @argument[iter]{a @class{gtk:tree-iter} iterator}
+  @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{@em{True}, if @arg{iter} is selected.}
   @begin{short}
     Returns @em{true} if the row at @arg{iter} is currently selected.

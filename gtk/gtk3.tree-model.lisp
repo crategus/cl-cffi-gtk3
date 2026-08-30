@@ -638,7 +638,7 @@
 (setf (liber:alias-for-class 'tree-row-reference)
       "GBoxed"
       (documentation 'tree-row-reference 'type)
- "@version{2026-05-14}
+ "@version{2026-05-30}
   @begin{declaration}
 (glib:define-gboxed-opaque tree-row-reference \"GtkTreeRowReference\"
   :export t
@@ -649,10 +649,9 @@
     The @class{gtk:tree-row-reference} instance tracks model changes so that it
     always refers to the same row.
   @end{short}
-  A @class{gtk:tree-path} instance refers to a position, not a fixed row. The
-  @class{gtk:tree-row-reference} structure is opaque, and has no user visible
-  fields. Create a new @class{gtk:tree-row-reference} instance with the
-  @fun{gtk:tree-row-reference-new} function.
+  A @class{gtk:tree-path} instance refers to a position, not a fixed row. This
+  structure is opaque, and has no user visible fields. Create a new tree row
+  reference with the @fun{gtk:tree-row-reference-new} function.
   @see-constructor{gtk:tree-row-reference-new}
   @see-constructor{gtk:tree-row-reference-copy}
   @see-class{gtk:tree-path}")
@@ -664,14 +663,14 @@
 (cffi:defcfun ("gtk_tree_row_reference_new" tree-row-reference-new)
     (g:boxed tree-row-reference :return)
  #+liber-documentation
- "@version{2026-05-14}
+ "@version{2026-05-30}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[path]{a valid @class{gtk:tree-path} instance to monitor}
   @begin{return}
     The newly allocated @class{gtk:tree-row-reference} instance, or @code{nil}.
   @end{return}
   @begin{short}
-    Creates a row reference based on @arg{path}.
+    Creates a tree row reference based on @arg{path}.
   @end{short}
   This reference will keep pointing to the node pointed to by @arg{path}, so
   long as it exists. Any changes that occur on @arg{model} are propagated, and
@@ -708,10 +707,10 @@
 (cffi:defcfun ("gtk_tree_row_reference_get_model" tree-row-reference-model)
     (g:object tree-model)
  #+liber-documentation
- "@version{2026-05-14}
+ "@version{2026-05-30}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
   @return{The @class{gtk:tree-model} object.}
-  @short{Returns the model that the row reference is monitoring.}
+  @short{Returns the model that the tree row reference is monitoring.}
   @see-class{gtk:tree-row-reference}
   @see-class{gtk:tree-model}"
   (reference (g:boxed tree-row-reference)))
@@ -725,12 +724,12 @@
 (cffi:defcfun ("gtk_tree_row_reference_get_path" tree-row-reference-path)
     (g:boxed tree-path :return)
  #+liber-documentation
- "@version{2026-05-14}
+ "@version{2026-05-30}
   @argument[reference]{a @class{gtk:tree-row-reference} instance}
   @return{The current @class{gtk:tree-path} instance, or @code{nil}.}
   @begin{short}
-    Returns a path that the row reference currently points to, or @code{nil} if
-    the path pointed to is no longer valid.
+    Returns a path that the tree row reference currently points to, or
+    @code{nil} if the path pointed to is no longer valid.
   @end{short}
   @see-class{gtk:tree-row-reference}
   @see-class{gtk:tree-path}"
@@ -827,7 +826,7 @@
 (setf (liber:alias-for-class 'tree-model)
       "Interface"
       (documentation 'tree-model 'type)
- "@version{2026-05-14}
+ "@version{2026-05-30}
   @begin{short}
     The @class{gtk:tree-model} interface defines a generic tree interface for
     use by the @class{gtk:tree-view} widget.
@@ -998,8 +997,8 @@ lambda (model path)    :run-first
       The signal is emitted when a row has been deleted. Note that no iterator
       is passed to the signal handler, since the row is already deleted. This
       should be called by models after a row has been removed. The location
-      pointed to by path should be the location that the row previously was at.
-      It may not be a valid location anymore.
+      pointed to by @arg{path} should be the location that the row previously
+      was at. It may not be a valid location anymore.
     @end{signal}
     @begin[tree-model::row-has-child-toggled]{signal}
       @begin{pre}
@@ -1034,7 +1033,7 @@ lambda (model path iter)    :run-first
     @end{signal}
     @begin[tree-model::rows-reordered]{signal}
       @begin{pre}
-lambda (model path iter new-order)    :run-first
+lambda (model path iter order)    :run-first
       @end{pre}
       @begin[code]{simple-table}
         @entry[model]{The @class{gtk:tree-model} object on which the signal
@@ -1043,9 +1042,9 @@ lambda (model path iter new-order)    :run-first
           node whose children have been reordered.}
         @entry[iter]{The valid @class{gtk:tree-iter} instance pointing to the
          node whose children have been reordered.}
-        @entry[new-order]{The array of integers mapping the current position of
-          each child to its old position before the re-ordering, that is
-          @code{@arg{new-order}[newpos] = oldpos}.}
+        @entry[order]{The array of integers mapping the current position of
+        each child to its old position before the re-ordering, that is
+        @code{@arg{order}[newpos] = oldpos}.}
       @end{simple-table}
       The signal is emitted when the children of a node in the
       @class{gtk:tree-model} object have been reordered. Note that the signal
@@ -1487,10 +1486,19 @@ lambda (model path iter new-order)    :run-first
 ;;; gtk_tree_model_get_string_from_iter
 ;;; ----------------------------------------------------------------------------
 
+;; FIXME: We get a new error. The documentation says:
+;;   The caller of the method takes ownership of the returned data, and is
+;;   responsible for freeing it.
+;; But if we implement (:string :free-from-foreign t), we get a memory error
+;;   Unexpected Error: #<SB-SYS:FOREIGN-HEAP-CORRUPTION {1104C77523}>
+;;   A foreign heap corruption exception occurred. (Exception code: 3221226356).
+;; This error is new. What is wrong?
+;; Workaround: We use the default value for :free-from-foreign, that is NIL.
+
 (cffi:defcfun ("gtk_tree_model_get_string_from_iter"
-               tree-model-string-from-iter) (:string :free-from-foreign t)
+               tree-model-string-from-iter) :string
  #+liber-documentation
- "@version{2026-05-14}
+ "@version{2026-05-21}
   @argument[model]{a @class{gtk:tree-model} object}
   @argument[iter]{a @class{gtk:tree-iter} instance}
   @return{The string representation for @arg{iter}.}

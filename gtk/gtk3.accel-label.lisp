@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,7 +85,7 @@
 
 #+liber-documentation
 (setf (documentation 'accel-label 'type)
- "@version{#2025-06-28}
+ "@version{2026-06-21}
   @begin{short}
     The @class{gtk:accel-label} widget is a subclass of the @class{gtk:label}
     class that also displays an accelerator key on the right of the label text,
@@ -161,16 +161,15 @@
 (setf (liber:alias-for-function 'accel-label-accel-closure)
       "Accessor"
       (documentation 'accel-label-accel-closure 'function)
- "@version{#2025-10-09}
+ "@version{2026-06-21}
   @syntax{(gtk:accel-label-accel-closure object) => closure}
   @syntax{(setf (gtk:accel-label-accel-closure object) closure)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[closure]{a @sym{g:closure} instance to monitor for accelerator
     changes}
   @begin{short}
-    The accessor for the @slot[gtk:accel-label]{accel-closure} slot of the
-    @class{gtk:accel-label} class gets or sets the closure to be monitored by
-    this accelerator.
+    The accessor for the @slot[gtk:accel-label]{accel-closure} slot gets or
+    sets the closure to be monitored by this accelerator.
   @end{short}
   The closure must be connected to an accelerator group, see the
   @code{gtk_accel_group_connect()} function.
@@ -189,15 +188,14 @@
 (setf (liber:alias-for-function 'accel-label-accel-widget)
       "Accessor"
       (documentation 'accel-label-accel-widget 'function)
- "@version{#2025-10-09}
+ "@version{2026-06-21}
   @syntax{(gtk:accel-label-accel-widget object) => widget}
   @syntax{(setf (gtk:accel-label-accel-widget object) widget)}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[widget]{a @class{gtk:widget} object to be monitored}
   @begin{short}
-    The accessor for the @slot[gtk:accel-label]{accel-widget} slot of the
-    @class{gtk:accel-label} class gets or sets the widget monitored by the
-    accelerator label.
+    The accessor for the @slot[gtk:accel-label]{accel-widget} slot gets or sets
+    the widget monitored by the accelerator label.
   @end{short}
   @see-class{gtk:accel-label}
   @see-class{gtk:widget}")
@@ -210,7 +208,7 @@
 
 (defun accel-label-new (text)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{2026-06-21}
   @argument[text]{a string for the text of the label}
   @return{The new @class{gtk:accel-label} widget.}
   @begin{short}
@@ -228,7 +226,7 @@
 
 (cffi:defcfun ("gtk_accel_label_get_accel_width" accel-label-accel-width) :int
   #+liber-documentation
- "@version{#2025-07-15}
+ "@version{2026-06-21}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{The integer for the width needed to display the accelerator key(s).}
   @begin{short}
@@ -248,7 +246,7 @@
 
 (cffi:defcfun ("gtk_accel_label_set_accel" accel-label-set-accel) :void
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{2026-06-21}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[key]{an unsigned integer for a keyval, or 0}
   @argument[mods]{a @sym{gdk:modifier-type} modifier mask for the accel}
@@ -278,7 +276,7 @@
 
 (defun accel-label-get-accel (label)
  #+liber-documentation
- "@version{#2025-06-28}
+ "@version{2026-06-21}
   @syntax{(gtk:accel-label-accel label) => key, mods}
   @argument[label]{a @class{gtk:accel-label} widget}
   @argument[key]{an unsigned integer for a keyval}
@@ -304,7 +302,7 @@
 
 (cffi:defcfun ("gtk_accel_label_refetch" accel-label-refetch) :boolean
  #+liber-documentation
- "@version{#2023-03-15}
+ "@version{#2026-06-21}
   @argument[label]{a @class{gtk:accel-label} widget}
   @return{Always returns @em{false}.}
   @begin{short}

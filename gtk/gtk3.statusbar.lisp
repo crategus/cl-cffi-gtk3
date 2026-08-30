@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -85,7 +85,7 @@
  nil)
 
 (setf (documentation 'statusbar 'type)
- "@version{2025-07-17}
+ "@version{2026-06-21}
   @begin{short}
     The @class{gtk:statusbar} widget is usually placed along the bottom of the
     main @class{gtk:window} widget of the application.
@@ -129,10 +129,10 @@
       The @code{shadow-type} style property of type @sym{gtk:shadow-type} (Read)
       @br{}
       The style of bevel around the text of the statusbar. @br{}
-      @em{Warning:} The @code{shadow-type} style property has been deprecated
-      since version 3.20 and should not be used in newly written code. Use CSS
-      properties to determine the appearance, the value of this style property
-      is ignored. @br{}
+      @em{Warning:} This style property has been deprecated since version 3.20
+      and should not be used in newly written code. Use CSS properties to
+      determine the appearance, the value of this style property is ignored.
+      @br{}
       Default value: @val[gtk:shadow-type]{:in}
     @end{property}
   @end{dictionary}
@@ -176,7 +176,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-new ()
  #+liber-documentation
- "@version{#2023-03-27}
+ "@version{2026-06-21}
   @return{The new @class{gtk:statusbar} widget.}
   @short{Creates a new statusbar ready for messages.}
   @see-class{gtk:statusbar}"
@@ -194,7 +194,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-context-id (statusbar context)
  #+liber-documentation
- "@version{2025-07-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{a string for the textual description of what context the
     new message is being used in}
@@ -221,7 +221,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-push (statusbar context text)
  #+liber-documentation
- "@version{2025-07-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer for the context ID of the message, as
     returned by the @fun{gtk:statusbar-context-id} function}
@@ -250,7 +250,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-pop (statusbar context)
  #+liber-documentation
- "@version{2025-06-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer for a context identifier}
   @begin{short}
@@ -277,7 +277,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-remove (statusbar context message)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an unsigned integer for a context identifier}
   @argument[message]{an unsigned integer for a message identifier, as returned
@@ -304,7 +304,7 @@ lambda (statusbar context text)    :run-last
 
 (defun statusbar-remove-all (statusbar context)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget}
   @argument[context]{an integer for a context identifier}
   @begin{short}
@@ -324,7 +324,7 @@ lambda (statusbar context text)    :run-last
 (cffi:defcfun ("gtk_statusbar_get_message_area" statusbar-message-area)
     (g:object widget)
  #+liber-documentation
- "@version{#2025-06-17}
+ "@version{2026-06-21}
   @argument[statusbar]{a @class{gtk:statusbar} widget.}
   @return{The @class{gtk:box} widget.}
   @short{Retrieves the box containing the label widget.}

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -31,9 +31,11 @@
 ;;;
 ;;;     Container for widgets from other processes
 ;;;
-;;; Synopsis
+;;; Types and Values
 ;;;
 ;;;     GtkSocket
+;;;
+;;; Functions
 ;;;
 ;;;     gtk_socket_new
 ;;;     gtk_socket_add_id
@@ -74,7 +76,7 @@
 
 #+liber-documentation
 (setf (documentation 'socket 'type)
- "@version{#2025-07-14}
+ "@version{2026-06-04}
   @begin{short}
     Together with the @class{gtk:plug} widget, the @class{gtk:socket} widget
     provides the ability to embed widgets from one process into another process
@@ -85,7 +87,7 @@
   with that window ID. Any widgets contained in the @class{gtk:plug} widget
   then will appear inside the first application's window.
 
-  The socket's window ID is obtained by using the@fun{gtk:socket-id} function.
+  The socket's window ID is obtained by using the @fun{gtk:socket-id} function.
   Before using this function, the socket must have been realized, and for hence,
   have been added to its parent.
 
@@ -116,7 +118,7 @@ g_print (\"The ID of the sockets window is
   will destroy the socket as well. You should always, therefore, be prepared
   for your sockets to be destroyed at any time when the main event loop is
   running. To prevent this from happening, you can connect to the
-  @code{\"plug-removed\"} signal.
+  @sig[gtk:socket]{plug-removed} signal.
 
   The communication between a @class{gtk:socket} and a @class{gtk:plug} widget
   follows the XEmbed protocol. This protocol has also been implemented in other
@@ -149,6 +151,7 @@ lambda (socket)    :run-last
       to reuse it you must add a signal handler that returns @em{true}.
     @end{signal}
   @end{dictionary}
+  @see-constructor{gtk:socket-new}
   @see-class{gtk:plug}")
 
 ;;; ----------------------------------------------------------------------------
@@ -159,7 +162,7 @@ lambda (socket)    :run-last
 
 (defun socket-new ()
  #+liber-documentation
- "@version{#2023-02-28}
+ "@version{#2026-06-04}
   @return{The new @class{gtk:socket} widget.}
   @short{Create a new empty socket widget.}
   @see-class{gtk:socket}"
@@ -173,7 +176,7 @@ lambda (socket)    :run-last
 
 (cffi:defcfun ("gtk_socket_add_id" socket-add-id) :void
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-04}
   @argument[socket]{a @class{gtk:socket} widget}
   @argument[window]{a pointer for the window of a client participating in the
     XEMBED protocol}
@@ -207,7 +210,7 @@ lambda (socket)    :run-last
 
 (cffi:defcfun ("gtk_socket_get_id" socket-id) :pointer
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-04}
   @argument[socket]{a @class{gtk:socket} widget}
   @return{The pointer for the window ID for the socket.}
   @begin{short}
@@ -215,7 +218,6 @@ lambda (socket)    :run-last
     to create a client embedded inside the socket, for instance with the
     @fun{gtk:plug-new} function.
   @end{short}
-
   The @class{gtk:socket} widget must have already be added into a toplevel
   window before you can make this call.
   @see-class{gtk:socket}
@@ -231,7 +233,7 @@ lambda (socket)    :run-last
 (cffi:defcfun ("gtk_socket_get_plug_window" socket-plug-window)
     (g:object gdk:window)
  #+liber-documentation
- "@version{#2025-07-07}
+ "@version{#2026-06-04}
   @argument[socket]{a @class{gtk:socket} widget}
   @begin{return}
     The @class{gdk:window} object for the plug if available, or @code{nil}.

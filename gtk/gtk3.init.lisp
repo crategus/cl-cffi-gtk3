@@ -125,10 +125,13 @@
 
 (cffi:defcallback call-from-main-loop-callback :boolean
     ((data :pointer))
-  (restart-case
-      (progn (funcall (glib:get-stable-pointer-value data))
-             nil)
-    (return-from-callback () nil)))
+  (let ((func (glib:get-stable-pointer-value data)))
+    (declare (type function func))
+    (restart-case
+      (progn
+        (funcall func)
+        nil)
+      (return-from-callback () nil))))
 
 (defun call-from-gtk-main-loop (func
                                 &key (priority glib:+priority-default-idle+))

@@ -211,14 +211,14 @@ lambda (manager)    :run-first
 (setf (liber:alias-for-function 'recent-manager-filename)
       "Accessor"
       (documentation 'recent-manager-filename 'function)
- "@version{2026-05-10}
+ "@version{2026-05-31}
   @syntax{(gtk:recent-manager-filename object) => filename}
   @argument[object]{a @class{gtk:recent-manager} object}
   @argument[filename]{a string for the full path to the file}
   @begin{short}
-    The accessor for the @slot[gtk:recent-manager]{filename} slot of the
-    @class{gtk:recent-manager} class returns the full path to the file to be
-    used to store and read the recently used resources list.
+    The accessor for the @slot[gtk:recent-manager]{filename} slot returns the
+    full path to the file to be used to store and read the recently used
+    resources list.
   @end[short}
   @see-class{gtk:recent-manager}")
 
@@ -235,14 +235,13 @@ lambda (manager)    :run-first
 (setf (liber:alias-for-function 'recent-manager-size)
       "Accessor"
       (documentation 'recent-manager-size 'function)
- "@version{2026-05-10}
+ "@version{2026-05-31}
   @syntax{(gtk:recent-manager-size object) => size}
   @argument[object]{a @class{gtk:recent-manager} object}
   @argument[size]{an integer for the size of the resources list}
   @begin{short}
-    The accessor for the @slot[gtk:recent-manager]{size} slot of the
-    @class{gtk:recent-manager} class returns the size of the recently used
-    resources list.
+    The accessor for the @slot[gtk:recent-manager]{size} slot returns the size
+    of the recently used resources list.
   @end{short}
   @see-class{gtk:recent-manager}")
 

@@ -431,6 +431,7 @@ lambda (job)    :run-last
      (err :pointer))
   (glib:with-catching-to-error (err)
     (let ((func (glib:get-stable-pointer-value data)))
+      (declare (type function func))
       (restart-case
         (progn
           (funcall func job)

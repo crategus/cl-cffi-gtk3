@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2019 - 2025 Dieter Kaiser
+;;; Copyright (C) 2019 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -87,7 +87,7 @@
 (setf (liber:alias-for-symbol 'shortcut-type)
       "GEnum"
       (liber:symbol-documentation 'shortcut-type)
- "@version{#2024-03-22}
+ "@version{2026-06-03}
   @begin{declaration}
 (gobject:define-genum \"GtkShortcutType\" shortcut-type
   (:export t
@@ -175,7 +175,7 @@
 
 #+liber-documentation
 (setf (documentation 'shortcuts-shortcut 'type)
- "@version{#2023-03-13}
+ "@version{2026-06-03}
   @begin{short}
     The @class{gtk:shortcuts-shortcut} widget represents a single keyboard
     shortcut or gesture with a short text.
@@ -213,14 +213,12 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-accel-size-group)
       "Accessor"
       (documentation 'shortcuts-shortcut-accel-size-group 'function)
- "@version{#2023-02-28}
-  @syntax{(gtk:shortcuts-shortcut-accel-size-group object) => group}
+ "@version{2026-06-03}
   @syntax{(setf (gtk:shortcuts-shortcut-accel-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{accel-size-group} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{accel-size-group} slot.
   @end{short}
   The size group for the accelerator portion of this shortcut. This is used
   internally by GTK, and must not be modified by applications.
@@ -234,57 +232,48 @@
                       'shortcuts-shortcut) t)
  "The @code{accelerator} property of type @code{:string} (Read / Write) @br{}
   The accelerator(s) represented by this object. This property is used if the
-  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of
+  @slot[gtk:shortcuts-shortcut]{shortcut-type} property is set to the
+  @val[gtk:shortcut-type]{:accelerator} value. The syntax of
   this property is (an extension of) the syntax understood by the
   @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified
   by separating them with a space, but keep in mind that the available width is
   limited. It is also possible to specify ranges of shortcuts, using ... between
   the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&}
   between the keys. @br{}
-  @em{Examples:} @br{}
-  A single shortcut: @kbd{<ctl><alt>delete} @br{}
-  Two alternative shortcuts: @kbd{<shift>a Home} @br{}
-  A range of shortcuts: @kbd{<alt>1} ... @kbd{<alt>9} @br{}
-  Several keys pressed together: @kbd{Control_L} & @kbd{Control_R} @br{}
-  A sequence of shortcuts or keys: @kbd{<ctl>c+<ctl>x} @br{}
-  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed
-  sequentially (e.g use @kbd{t+t} for 'press the @kbd{t} key twice'). @br{}
-  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<},
-  @kbd{>} and @kbd{&} when used in @file{.ui} files. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-accelerator)
       "Accessor"
       (documentation 'shortcuts-shortcut-accelerator 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-accelerator object) => accelerator}
   @syntax{(setf (gtk:shortcuts-shortcut-accelerator object) accelerator)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[accelerator]{a string for the accelerator}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{accelerator} of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{accelerator} slot.
   @end{short}
   The accelerator(s) represented by this object. This property is used if the
-  @code{shortcut-type} property is set to @code{:accelerator}. The syntax of
-  this property is (an extension of) the syntax understood by the
-  @fun{gtk:accelerator-parse} function. Multiple accelerators can be specified
-  by separating them with a space, but keep in mind that the available width is
-  limited. It is also possible to specify ranges of shortcuts, using ... between
-  the keys. Sequences of keys can be specified using a @kbd{+} or @kbd{&}
-  between the keys.
-
-  @em{Examples:} @br{}
-  A single shortcut: @kbd{<ctl><alt>delete} @br{}
-  Two alternative shortcuts: @kbd{<shift>a Home} @br{}
-  A range of shortcuts: @kbd{<alt>1} ... @kbd{<alt>9} @br{}
-  Several keys pressed together: @kbd{Control_L} & @kbd{Control_R} @br{}
-  A sequence of shortcuts or keys: @kbd{<ctl>c+<ctl>x} @br{}
-  Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed
-  sequentially (e.g use @kbd{t+t} for 'press the @kbd{t} key twice'). @br{}
-  Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<},
-  @kbd{>} and @kbd{&} when used in @file{.ui} files. @br{}
+  @slot[gtk:shortcuts-shortcut]{shortcut-type} property is set to
+  @val[gtk:shortcut-type]{:accelerator}. The syntax of this property is (an
+  extension of) the syntax understood by the @fun{gtk:accelerator-parse}
+  function. Multiple accelerators can be specified by separating them with a
+  space, but keep in mind that the available width is limited. It is also
+  possible to specify ranges of shortcuts, using ... between the keys. Sequences
+  of keys can be specified using a @kbd{+} or @kbd{&} between the keys.
+  @begin[Examples]{dictionary}
+    A single shortcut: @kbd{<ctl><alt>delete} @br{}
+    Two alternative shortcuts: @kbd{<shift>a Home} @br{}
+    A range of shortcuts: @kbd{<alt>1} ... @kbd{<alt>9} @br{}
+    Several keys pressed together: @kbd{Control_L} & @kbd{Control_R} @br{}
+    A sequence of shortcuts or keys: @kbd{<ctl>c+<ctl>x} @br{}
+    Use @kbd{+} instead of @kbd{&} when the keys may (or have to be) pressed
+    sequentially (for example, use @kbd{t+t} for 'press the @kbd{t} key twice').
+    @br{}
+    Note that @kbd{<}, @kbd{>} and @kbd{&} need to be escaped as @kbd{<},
+    @kbd{>} and @kbd{&} when used in @file{.ui} files. @br{}
+  @end{dictionary}
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:accelerator-parse}")
 
@@ -294,29 +283,30 @@
 (setf (documentation (liber:slot-documentation "action-name"
                       'shortcuts-shortcut) t)
  "The @code{action-name} property of type @code{:string} (Read / Write) @br{}
-  A detailed action name. If this is set for a shortcut of @code{:accelerator}
-  type, then GTK will use the accelerators that are associated with the action
-  via the @fun{gtk:application-accels-for-action} function, and setting
-  @code{accelerator} is not necessary. @br{}
+  The detailed action name. If this is set for a shortcut of
+  @val[gtk:shortcut-type]{:accelerator} type, then GTK will use the accelerators
+  that are associated with the action via the
+  @fun{gtk:application-accels-for-action} function, and setting
+  @val[gtk:shortcut-type]{accelerator} is not necessary. @br{}
   Default value: @code{nil}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-action-name)
       "Accessor"
       (documentation 'shortcuts-shortcut-action-name 'function)
- "@version{#2025-07-07}
-  @syntax{(gtk:shortcuts-shortcut-action-name object) => action-name}
-  @syntax{(setf (gtk:shortcuts-shortcut-action-name object) action-name)}
+ "@version{2026-06-03}
+  @syntax{(gtk:shortcuts-shortcut-action-name object) => name}
+  @syntax{(setf (gtk:shortcuts-shortcut-action-name object) name)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[action-name]{a string for the detailed action name}
+  @argument[name]{a string for the detailed action name}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{action-name} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{action-name} slot.
   @end{short}
-  A detailed action name. If this is set for a shortcut of @code{:accelerator}
-  type, then GTK will use the accelerators that are associated with the action
-  via the @fun{gtk:application-accels-for-action} function, and setting
-  @code{accelerator} is not necessary.
+  The detailed action name. If this is set for a shortcut of
+  @val[gtk:shortcut-type]{:accelerator} type, then GTK will use the accelerators
+  that are associated with the action via the
+  @fun{gtk:application-accels-for-action} function, and setting
+  @slot[gtk:shortcuts-shortcut]{accelerator} is not necessary.
   @see-class{gtk:shortcuts-shortcut}
   @see-function{gtk:application-accels-for-action}")
 
@@ -330,23 +320,23 @@
   The text direction for which this shortcut is active. If the shortcut is used
   regardless of the text direction, set this property to
   @val[gtk:text-direction]{:none}. @br{}
-  Default value: @val[gtk:text-direction]{:dir-none}")
+  Default value: @val[gtk:text-direction]{:none}")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-direction)
       "Accessor"
       (documentation 'shortcuts-shortcut-direction 'function)
- "@version{#2025-07-11}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-direction object) => direction}
   @syntax{(setf (gtk:shortcuts-shortcut-direction object) direction)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[direction]{a value of the @sym{gtk:text-direction} enumeration}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{direction} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{direction} slot.
   @end{short}
   The text direction for which this shortcut is active. If the shortcut is used
-  regardless of the text direction, set this property to @code{:none}.
+  regardless of the text direction, set this property to
+  @val[gtk:text-direction]{:none}.
   @see-class{gtk:shortcuts-shortcut}
   @see-symbol{gtk:text-direction}")
 
@@ -356,26 +346,26 @@
 (setf (documentation (liber:slot-documentation "icon"
                       'shortcuts-shortcut) t)
  "The @code{icon} property of type @class{g:icon} (Read / Write) @br{}
-  An icon to represent the shortcut or gesture. This property is used if
-  @code{shortcut-type} is set to @code{:gesture}. For the other predefined
-  gesture types, GTK provides an icon on its own.")
+  The icon to represent the shortcut or gesture. This property is used if
+  @slot[gtk:shortcuts-shortcut]{shortcut-type} is set to
+  @val[gtk:shortcut-type]{:gesture}. For the other predefined gesture types,
+  GTK provides an icon on its own.")
 
 #+liber-documentation
 (setf (liber:alias-for-function 'shortcuts-shortcut-icon)
       "Accessor"
       (documentation 'shortcuts-shortcut-icon 'function)
- "@version{#2023-02-28}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-icon object) => icon}
   @syntax{(setf (gtk:shortcuts-shortcut-icon object) icon)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[icon]{a @class{g:icon} object}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{icon} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{icon} slot.
   @end{short}
-  An icon to represent the shortcut or gesture. This property is used if
-  @code{shortcut-type} is set to @code{:gesture}. For the other predefined
-  gesture types, GTK provides an icon on its own.
+  The icon to represent the shortcut or gesture. This property is used if
+  @symbol{gtk:shortcut-type} is set to @val[gtk:shortcut-type]{:gesture}. For
+  the other predefined gesture types, GTK provides an icon on its own.
   @see-class{gtk:shortcuts-shortcut}
   @see-class{g:icon}")
 
@@ -392,14 +382,13 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-icon-set)
       "Accessor"
       (documentation 'shortcuts-shortcut-icon-set 'function)
- "@version{#2023-02-28}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-icon-set object) => setting}
   @syntax{(setf (gtk:shortcuts-shortcut-icon-set object) setting)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[setting]{a boolean whether an icon has been set}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{icon-set} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{icon-set} slot.
   @end{short}
   @em{True} if an icon has been set.
   @see-class{gtk:shortcuts-shortcut}")
@@ -418,14 +407,13 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-shortcut-type)
       "Accessor"
       (documentation 'shortcuts-shortcut-shortcut-type 'function)
- "@version{#2025-07-11}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-shortcut-type object) => shortcut-type}
   @syntax{(setf (gtk:shortcuts-shortcut-shortcut-type object) shortcut-type)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[shortcut-type]{a value of the @sym{gtk:shortcut-type} enumeration}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{shortcut-type} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{shortcut-type} slot.
   @end{short}
   The type of shortcut that is represented.
   @see-class{gtk:shortcuts-shortcut}
@@ -446,14 +434,13 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-subtitle)
       "Accessor"
       (documentation 'shortcuts-shortcut-subtitle 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-subtitle object) => subtitle}
   @syntax{(setf (gtk:shortcuts-shortcut-subtitle object) subtitle)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[subtitle]{a string for the subtitle for the shortcut}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{subtitle} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{subtitle} slot.
   @end{short}
   The subtitle for the shortcut or gesture. This is typically used for gestures
   and should be a short, one-line text that describes the gesture itself. For
@@ -473,14 +460,13 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-subtitle-set)
       "Accessor"
       (documentation 'shortcuts-shortcut-subtitle-set 'function)
- "@version{#2023-02-28}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-subtitle-set object) => setting}
   @syntax{(setf (gtk:shortcuts-shortcut-subtitle-set object) setting)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[setting]{a boolean whether a subtitle has been set}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{subtitle-set} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{subtitle-set} slot.
   @end{short}
   @em{True} if a subtitle has been set.
   @see-class{gtk:shortcuts-shortcut}")
@@ -488,8 +474,7 @@
 ;;; --- gtk:shortcuts-shortcut-title -------------------------------------------
 
 #+liber-documentation
-(setf (documentation (liber:slot-documentation "title"
-                      'shortcuts-shortcut) t)
+(setf (documentation (liber:slot-documentation "title" 'shortcuts-shortcut) t)
  "The @code{title} property of type @code{:string} (Read / Write) @br{}
   The textual description for the shortcut or gesture represented by this
   object. This should be a short string that can fit in a single line. @br{}
@@ -499,14 +484,13 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-title)
       "Accessor"
       (documentation 'shortcuts-shortcut-title 'function)
- "@version{#2025-07-07}
+ "@version{2026-06-03}
   @syntax{(gtk:shortcuts-shortcut-title object) => title}
   @syntax{(setf (gtk:shortcuts-shortcut-title object) title)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
   @argument[title]{a string for the textual description for the shortcut}
   @begin{short}
-    Accessor of the @slot[gtk:shortcuts-shortcut]{title} slot of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{title} slot.
   @end{short}
   The textual description for the shortcut or gesture represented by this
   object. This should be a short string that can fit in a single line.
@@ -526,17 +510,17 @@
 (setf (liber:alias-for-function 'shortcuts-shortcut-title-size-group)
       "Accessor"
       (documentation 'shortcuts-shortcut-title-size-group 'function)
- "@version{#2023-02-28}
-  @syntax{(gtk:shortcuts-shortcut-title-size-group object) => title-size-group}
-  @syntax{(setf (gtk:shortcuts-shortcut-title-size-group object) title-size-group)}
+ "@version{2026-06-03}
+  @syntax{(gtk:shortcuts-shortcut-title-size-group object) => group}
+  @syntax{(setf (gtk:shortcuts-shortcut-title-size-group object) group)}
   @argument[object]{a @class{gtk:shortcuts-shortcut} widget}
-  @argument[title-size-group]{a @class{gtk:size-group} object}
+  @argument[group]{a @class{gtk:size-group} object}
   @begin{short}
-    Accessor of the slot @slot[gtk:shortcuts-shortcut]{title-size-group} of the
-    @class{gtk:shortcuts-shortcut} class.
+    The accessor for the @slot[gtk:shortcuts-shortcut]{title-size-group} slot.
   @end{short}
   The size group for the textual portion of this shortcut. This is used
   internally by GTK, and must not be modified by applications.
-  @see-class{gtk:shortcuts-shortcut}")
+  @see-class{gtk:shortcuts-shortcut}
+  @see-class{gtk:size-group}")
 
 ;;; --- End of file gtk3.shortcuts-shortcut.lisp -------------------------------

@@ -184,14 +184,13 @@
 (setf (liber:alias-for-function 'tree-model-filter-child-model)
       "Accessor"
       (documentation 'tree-model-filter-child-model 'function)
- "@version{2026-05-08}
+ "@version{2026-05-31}
   @syntax{(gtk:tree-model-filter-child-model object) => model}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[model]{a @class{gtk:tree-model} object}
   @begin{short}
-    The accessor for the @slot[gtk:tree-model-filter]{child-model} slot of the
-    @class{gtk:tree-model-filter} class returns the model for the filter model
-    to filter.
+    The accessor for the @slot[gtk:tree-model-filter]{child-model} slot returns
+    the model for the filter model to filter.
   @end{short}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-model}")
@@ -209,14 +208,13 @@
 (setf (liber:alias-for-function 'tree-model-filter-virtual-root)
       "Accessor"
       (documentation 'tree-model-filter-virtual-root 'function)
- "@version{2026-05-08}
+ "@version{2026-05-31}
   @syntax{(gtk:tree-model-filter-virtual-root object) => root}
   @argument[object]{a @class{gtk:tree-model-filter} object}
   @argument[root]{a @class{gtk:tree-path} instance}
   @begin{short}
-    The accessor for the @slot[gtk:tree-model-filter]{virtual-root} slot of the
-    @class{gtk:tree-model-filter} class returns the virtual root, relative to
-    the child model, for this filter model.
+    The accessor for the @slot[gtk:tree-model-filter]{virtual-root} slot returns
+    the virtual root, relative to the child model, for this filter model.
   @end{short}
   @see-class{gtk:tree-model-filter}
   @see-class{gtk:tree-path}")
@@ -261,14 +259,14 @@
 (setf (liber:alias-for-symbol 'tree-model-filter-visible-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-visible-func)
- "@version{#2026-05-08}
+ "@version{#2026-05-30}
   @syntax{lambda (model iter) => result}
   @argument[model]{a child model of the @class{gtk:tree-model-filter} object}
   @argument[iter]{a @class{gtk:tree-iter} instance pointing to the row in model
     whose visibility is determined}
   @argument[result]{whether the row indicated by @arg{iter} is visible}
   @begin{short}
-    A callback function which decides whether the row indicated by the
+    The callback function which decides whether the row indicated by the
     @arg{iter} argument is visible.
   @end{short}
   @see-class{gtk:tree-model-filter}
@@ -337,7 +335,7 @@
 (setf (liber:alias-for-symbol 'tree-model-filter-modify-func)
       "Callback"
       (liber:symbol-documentation 'tree-model-filter-modify-func)
- "@version{#2026-05-08}
+ "@version{#2026-05-30}
   @syntax{lambda (model iter value column)}
   @argument[model]{a @class{gtk:tree-model-filter} object}
   @argument[iter]{a @class{gtk:tree-iter} instance pointing to the row whose
@@ -346,7 +344,7 @@
     the correct type for the column @arg{column}}
   @argument[column]{an integer for the column whose display value is determined}
   @begin{short}
-    A callback function which calculates display values from raw values in the
+    The callback function which calculates display values from raw values in the
     model.
   @end{short}
   It must fill @arg{value} with the display value for the column @arg{column}
