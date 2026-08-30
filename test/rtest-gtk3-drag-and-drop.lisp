@@ -281,6 +281,7 @@
                  ("text/ico" NIL 0)
                  ("image/jpeg" NIL 0)
                  ("image/tiff" NIL 0)
+                 ("image/png" NIL 0)
                  ("image/bmp" NIL 0)
                  ("image/x-bmp" NIL 0)
                  ("image/x-MS-bmp" NIL 0)
@@ -293,8 +294,6 @@
                  ("image/icon" NIL 0)
                  ("text/ico" NIL 0)
                  ("image/jpeg" NIL 0)
-                 ("image/jxl" NIL 0)
-                 ("image/png" NIL 0)
                  ("image/tiff" NIL 0))
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
@@ -312,4 +311,4 @@
                (gtk:target-table-new-from-list
                    (gtk:drag-source-target-list source))))))
 
-;;; 2025-06-02
+;;; 2026-05-21

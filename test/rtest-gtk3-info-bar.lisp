@@ -39,133 +39,157 @@
              (glib-test:list-signals "GtkInfoBar")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkInfoBar" GTK:INFO-BAR
-                       (:SUPERCLASS GTK:BOX
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_info_bar_get_type")
-                       ((MESSAGE-TYPE INFO-BAR-MESSAGE-TYPE
-                         "message-type" "GtkMessageType" T T)
-                        (REVEALED INFO-BAR-REVEALED "revealed" "gboolean" T T)
-                        (SHOW-CLOSE-BUTTON INFO-BAR-SHOW-CLOSE-BUTTON
-                         "show-close-button" "gboolean" T T)))
+                      (:SUPERCLASS GTK:BOX
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_info_bar_get_type")
+                      ((MESSAGE-TYPE INFO-BAR-MESSAGE-TYPE
+                        "message-type" "GtkMessageType" T T)
+                       (REVEALED INFO-BAR-REVEALED "revealed" "gboolean" T T)
+                       (SHOW-CLOSE-BUTTON INFO-BAR-SHOW-CLOSE-BUTTON
+                        "show-close-button" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkInfoBar"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-info-bar-properties
-  (let ((info-bar (make-instance 'gtk:info-bar)))
+  (glib-test:with-check-memory (infobar)
+    (setf infobar (make-instance 'gtk:info-bar))
     ;; message-type
-    (is (eq :info (gtk:info-bar-message-type info-bar)))
-    (is (eq :error (setf (gtk:info-bar-message-type info-bar) :error)))
-    (is (eq :error (gtk:info-bar-message-type info-bar)))
+    (is (eq :info (gtk:info-bar-message-type infobar)))
+    (is (eq :error (setf (gtk:info-bar-message-type infobar) :error)))
+    (is (eq :error (gtk:info-bar-message-type infobar)))
     ;; revealed
-    (is-true (gtk:info-bar-revealed info-bar))
-    (is-false (setf (gtk:info-bar-revealed info-bar) nil))
-    (is-false (gtk:info-bar-revealed info-bar))
+    (is-true (gtk:info-bar-revealed infobar))
+    (is-false (setf (gtk:info-bar-revealed infobar) nil))
+    (is-false (gtk:info-bar-revealed infobar))
     ;; show-close-button
-    (is-false (gtk:info-bar-show-close-button info-bar))
-    (is-true (setf (gtk:info-bar-show-close-button info-bar) t))
-    (is-true (gtk:info-bar-show-close-button info-bar))))
+    (is-false (gtk:info-bar-show-close-button infobar))
+    (is-true (setf (gtk:info-bar-show-close-button infobar) t))
+    (is-true (gtk:info-bar-show-close-button infobar))))
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-info-bar-style-properties
-  (let ((info-bar (make-instance 'gtk:info-bar)))
-    (is (=  5 (gtk:widget-style-property info-bar "action-area-border")))
-    (is (=  6 (gtk:widget-style-property info-bar "button-spacing")))
-    (is (=  8 (gtk:widget-style-property info-bar "content-area-border")))
-    (is (= 16 (gtk:widget-style-property info-bar "content-area-spacing")))))
+  (glib-test:with-check-memory (infobar)
+    (setf infobar (make-instance 'gtk:info-bar))
+    (is (=  5 (gtk:widget-style-property infobar "action-area-border")))
+    (is (=  6 (gtk:widget-style-property infobar "button-spacing")))
+    (is (=  8 (gtk:widget-style-property infobar "content-area-border")))
+    (is (= 16 (gtk:widget-style-property infobar "content-area-spacing")))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_info_bar_new
 
 (test gtk-info-bar-new
-  (is (eq 'gtk:info-bar (type-of (gtk:info-bar-new)))))
+  (glib-test:with-check-memory (infobar)
+    (is (typep (setf infobar (gtk:info-bar-new)) 'gtk:info-bar))))
 
 ;;;     gtk_info_bar_new_with_buttons
 
+;; 2 strong references for the button box of the action area
+
 (test gtk-info-bar-new-with-buttons
-  (let ((info-bar nil))
-    (is (eq 'gtk:info-bar
-            (type-of (setf info-bar
-                           (gtk:info-bar-new-with-buttons "gtk-ok" 1)))))
+  (glib-test:with-check-memory (infobar :strong 2)
+    (is (typep (setf infobar
+                     (gtk:info-bar-new-with-buttons "gtk-ok" 1)) 'gtk:info-bar))
     (is (= 1
            (length
-               (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is (eq 'gtk:info-bar
-            (type-of (setf info-bar
-                           (gtk:info-bar-new-with-buttons "gtk-ok" 1
-                                                          "gtk-cancel" 2)))))
+               (gtk:container-children (gtk:info-bar-action-area infobar)))))
+
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))
+
+    (is (typep (setf infobar
+                     (gtk:info-bar-new-with-buttons "gtk-ok" 1
+                                                    "gtk-cancel" 2)) 'gtk:info-bar))
     (is (= 2
            (length
-               (gtk:container-children (gtk:info-bar-action-area info-bar)))))))
+               (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))))
 
 ;;;     gtk_info_bar_add_action_widget
 
 (test gtk-info-bar-add-action-widget
-  (let ((info-bar (make-instance 'gtk:info-bar)))
+  (glib-test:with-check-memory (infobar :strong 1)
+    (setf infobar (make-instance 'gtk:info-bar))
     (is (= 0
            (length
-               (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is-false (gtk:info-bar-add-action-widget info-bar
+               (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is-false (gtk:info-bar-add-action-widget infobar
                                               (make-instance 'gtk:button) 1))
     (is (= 1
-           (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is-false (gtk:info-bar-add-action-widget info-bar
+           (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is-false (gtk:info-bar-add-action-widget infobar
                                               (make-instance 'gtk:button) 2))
     (is (= 2
            (length
-               (gtk:container-children (gtk:info-bar-action-area info-bar)))))))
+               (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))))
 
 ;;;     gtk_info_bar_add_button
 
 (test gtk-info-bar-add-button
-  (let ((info-bar (make-instance 'gtk:info-bar)))
-    (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is (eq 'gtk:button (type-of (gtk:info-bar-add-button info-bar "gtk-ok" 1))))
-    (is (= 1 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is (eq 'gtk:button (type-of (gtk:info-bar-add-button info-bar "gtk-cancel" 2))))
-    (is (= 2 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))))
+  (glib-test:with-check-memory (infobar :strong 1)
+    (setf infobar (make-instance 'gtk:info-bar))
+    (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is (eq 'gtk:button (type-of (gtk:info-bar-add-button infobar "gtk-ok" 1))))
+    (is (= 1 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is (eq 'gtk:button (type-of (gtk:info-bar-add-button infobar "gtk-cancel" 2))))
+    (is (= 2 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    ;; Remove references
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))))
 
 ;;;     gtk_info_bar_add_buttons
 
 (test gtk-info-bar-add-buttons
-  (let ((info-bar (make-instance 'gtk:info-bar)))
-    (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is-false (gtk:info-bar-add-buttons info-bar "gtk-ok" 1))
-    (is (= 1 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))
-    (is-false (gtk:info-bar-add-buttons info-bar "gtk-cancel" 2 "gtk-no" 3))
-    (is (= 3 (length (gtk:container-children (gtk:info-bar-action-area info-bar)))))))
+  (glib-test:with-check-memory (infobar :strong 1)
+    (setf infobar (make-instance 'gtk:info-bar))
+    (is (= 0 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is-false (gtk:info-bar-add-buttons infobar "gtk-ok" 1))
+    (is (= 1 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    (is-false (gtk:info-bar-add-buttons infobar "gtk-cancel" 2 "gtk-no" 3))
+    (is (= 3 (length (gtk:container-children (gtk:info-bar-action-area infobar)))))
+    ;; Remove references
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))))
 
 ;;;     gtk_info_bar_set_response_sensitive
 
 (test gtk-info-bar-set-response-sensitive
-  (let ((info-bar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3)))
-    (is-false (gtk:info-bar-set-response-sensitive info-bar 1 nil))))
+  (glib-test:with-check-memory (infobar :strong 1)
+    (setf infobar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3))
+    (is-false (gtk:info-bar-set-response-sensitive infobar 1 nil))
+    ;; Remove references
+    (dolist (child (gtk:container-children (gtk:info-bar-action-area infobar)))
+      (gtk:container-remove (gtk:info-bar-action-area infobar) child))))
 
 ;;;     gtk_info_bar_set_default_response
 
 (test gtk-info-bar-set-default-response
-  (let ((window (make-instance 'gtk:window))
-        (info-bar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3)))
+  (glib-test:with-check-memory (window infobar)
+    (setf window (make-instance 'gtk:window))
+    (setf infobar (gtk:info-bar-new-with-buttons "gtk-ok" 1 "gtk-cancel" 2 "gtk-no" 3))
     ;; The info bar must be within a GtkWindow
-    (is-false (gtk:container-add window info-bar))
-    (is-false (gtk:info-bar-set-default-response info-bar 1))))
+    (is-false (gtk:container-add window infobar))
+    (is-false (gtk:info-bar-set-default-response infobar 1))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_info_bar_response
 
 ;;;     gtk_info_bar_get_action_area
-
-(test gtk-info-bar-action-area
-  (let ((info-bar (make-instance 'gtk:info-bar)))
-    (is (eq 'gtk:button-box (type-of (gtk:info-bar-action-area info-bar))))))
-
 ;;;     gtk_info_bar_get_content_area
 
-(test gtk-info-bar-content-area
-  (let ((info-bar (make-instance 'gtk:info-bar)))
-    (is (eq 'gtk:box (type-of (gtk:info-bar-content-area info-bar))))))
+(test gtk-info-bar-action/content-area
+  (glib-test:with-check-memory (infobar :strong 2)
+    (setf infobar (make-instance 'gtk:info-bar))
+    (is (eq 'gtk:button-box (type-of (gtk:info-bar-action-area infobar))))
+    (is (eq 'gtk:box (type-of (gtk:info-bar-content-area infobar))))))
 
-;;; 2024-9-22
+;;; 2026-06-20

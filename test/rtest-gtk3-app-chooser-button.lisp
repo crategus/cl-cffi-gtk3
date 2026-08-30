@@ -40,18 +40,18 @@
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAppChooserButton"
                                       GTK:APP-CHOOSER-BUTTON
-                       (:SUPERCLASS GTK:COMBO-BOX
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkAppChooser" "GtkBuildable"
-                         "GtkCellEditable" "GtkCellLayout")
-                        :TYPE-INITIALIZER "gtk_app_chooser_button_get_type")
-                       ((HEADING  APP-CHOOSER-BUTTON-HEADING
-                         "heading" "gchararray" T T)
-                        (SHOW-DEFAULT-ITEM APP-CHOOSER-BUTTON-SHOW-DEFAULT-ITEM
-                         "show-default-item" "gboolean" T T)
-                        (SHOW-DIALOG-ITEM APP-CHOOSER-BUTTON-SHOW-DIALOG-ITEM
-                         "show-dialog-item" "gboolean" T T)))
+                      (:SUPERCLASS GTK:COMBO-BOX
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkAppChooser" "GtkBuildable"
+                        "GtkCellEditable" "GtkCellLayout")
+                       :TYPE-INITIALIZER "gtk_app_chooser_button_get_type")
+                      ((HEADING  APP-CHOOSER-BUTTON-HEADING
+                        "heading" "gchararray" T T)
+                       (SHOW-DEFAULT-ITEM APP-CHOOSER-BUTTON-SHOW-DEFAULT-ITEM
+                        "show-default-item" "gboolean" T T)
+                       (SHOW-DIALOG-ITEM APP-CHOOSER-BUTTON-SHOW-DIALOG-ITEM
+                        "show-dialog-item" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkAppChooserButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -80,4 +80,4 @@
 ;;;     gtk_app_chooser_button_append_separator
 ;;;     gtk_app_chooser_button_set_active_custom_item
 
-;;; 2024-9-23
+;;; 2025-06-02

@@ -128,49 +128,11 @@
 
 ;;; --- Functions --------------------------------------------------------------
 
-;;;     gtk_image_get_icon_set
-;;;     gtk_image_get_stock
+;;;     gtk_image_new
 
-;;;     gtk_image_get_animation
-
-(test gtk-image-get-animation
-  (glib-test:with-check-memory (image animation)
-    (let* ((path (glib-sys:sys-path "test/resource/floppybuddy.gif")))
-      (is (typep (setf animation
-                       (gdk:pixbuf-animation-new-from-file path))
-                 'gdk:pixbuf-animation))
-      (is (typep (setf image
-                       (gtk:image-new-from-animation animation)) 'gtk:image))
-      (is (typep (gtk:image-get-animation image) 'gdk:pixbuf-animation))
-      ;; Remove references
-      (is-false (setf (gtk:image-pixbuf-animation image) nil)))))
-
-;;;     gtk_image_get_icon_name
-
-(test gtk-image-get-icon-name
+(test gtk-image-new
   (glib-test:with-check-memory (image)
-    (is (typep (setf image
-                     (gtk:image-new-from-icon-name "gtk-ok" :dialog))
-               'gtk:image))
-    (is (string= "gtk-ok" (gtk:image-get-icon-name image)))
-    (multiple-value-bind (icon-set icon-size)
-        (gtk:image-get-icon-name image)
-      (is (string= "gtk-ok" icon-set))
-      (is (eq :dialog icon-size)))))
-
-;;;     gtk_image_get_gicon
-
-(test gtk-image-get-gicon
-  (glib-test:with-check-memory (icon image)
-    (is (typep (setf icon (g:themed-icon-new-from-names "gtk-ok"))
-               'g:themed-icon))
-    (is (typep (setf image (gtk:image-new-from-gicon icon :dialog)) 'gtk:image))
-    (multiple-value-bind (icon-set icon-size)
-        (gtk:image-get-gicon image)
-      (is (typep icon-set 'g:themed-icon))
-      (is (eq :dialog icon-size)))
-    ;; Remove references
-    (is-false (gtk:image-clear image))))
+    (is (typep (setf image (gtk:image-new)) 'gtk:image))))
 
 ;;;     gtk_image_new_from_file
 
@@ -271,8 +233,9 @@
 ;;;     gtk_image_new_from_gicon
 
 (test gtk-image-new-from-gicon
-  (let* ((icon (g:themed-icon-new-from-names "gtk-ok"))
-         (image (gtk:image-new-from-gicon icon :dialog)))
+  (glib-test:with-check-memory (image icon)
+    (setf icon (g:themed-icon-new-from-names "gtk-ok"))
+    (setf image (gtk:image-new-from-gicon icon :dialog))
     (is (typep image 'gtk:image))
     (is-false (gtk:image-file image))
     (is (typep (gtk:image-gicon image) 'g:themed-icon))
@@ -343,6 +306,86 @@
       (is-false (gtk:image-use-fallback image))
       ;; Remove references
       (is-false (gtk:image-clear image)))))
+
+;;;     gtk_image_clear
+
+(test gtk-image-clear
+  (glib-test:with-check-memory (image)
+    (is (typep (setf image
+                     (gtk:image-new-from-icon-name "gtk-ok" 4)) 'gtk:image))
+    ;; Create image from icon name
+    (is-false (gtk:image-file image))
+    (is-false (gtk:image-gicon image))
+    (is (string= "gtk-ok" (gtk:image-icon-name image)))
+    (is-false (gtk:image-icon-set image))
+    (is (= 4 (gtk:image-icon-size image)))
+    (is-false (gtk:image-pixbuf image))
+    (is-false (gtk:image-pixbuf-animation image))
+    (is (= -1 (gtk:image-pixel-size image)))
+    (is-false (gtk:image-resource image))
+    (is-false (gtk:image-stock image))
+    (is (eq :icon-name (gtk:image-storage-type image)))
+    (is (cffi:pointer-eq (cffi:null-pointer) (gtk:image-surface image)))
+    (is-false (gtk:image-use-fallback image))
+    ;; Clear the image
+    (is-false (gtk:image-clear image))
+    (is-false (gtk:image-file image))
+    (is-false (gtk:image-gicon image))
+    (is-false (gtk:image-icon-name image))
+    (is-false (gtk:image-icon-set image))
+    (is (= 0 (gtk:image-icon-size image)))
+    (is-false (gtk:image-pixbuf image))
+    (is-false (gtk:image-pixbuf-animation image))
+    (is (= -1 (gtk:image-pixel-size image)))
+    (is-false (gtk:image-resource image))
+    (is-false (gtk:image-stock image))
+    (is (eq :empty (gtk:image-storage-type image)))
+    (is (cffi:pointer-eq (cffi:null-pointer) (gtk:image-surface image)))
+    (is-false (gtk:image-use-fallback image))))
+
+;;;     gtk_image_get_icon_set
+;;;     gtk_image_get_stock
+
+;;;     gtk_image_get_animation
+
+(test gtk-image-get-animation
+  (glib-test:with-check-memory (image animation)
+    (let* ((path (glib-sys:sys-path "test/resource/floppybuddy.gif")))
+      (is (typep (setf animation
+                       (gdk:pixbuf-animation-new-from-file path))
+                 'gdk:pixbuf-animation))
+      (is (typep (setf image
+                       (gtk:image-new-from-animation animation)) 'gtk:image))
+      (is (typep (gtk:image-get-animation image) 'gdk:pixbuf-animation))
+      ;; Remove references
+      (is-false (setf (gtk:image-pixbuf-animation image) nil)))))
+
+;;;     gtk_image_get_icon_name
+
+(test gtk-image-get-icon-name
+  (glib-test:with-check-memory (image)
+    (is (typep (setf image
+                     (gtk:image-new-from-icon-name "gtk-ok" :dialog))
+               'gtk:image))
+    (is (string= "gtk-ok" (gtk:image-get-icon-name image)))
+    (multiple-value-bind (icon-set icon-size)
+        (gtk:image-get-icon-name image)
+      (is (string= "gtk-ok" icon-set))
+      (is (eq :dialog icon-size)))))
+
+;;;     gtk_image_get_gicon
+
+(test gtk-image-get-gicon
+  (glib-test:with-check-memory (icon image)
+    (is (typep (setf icon (g:themed-icon-new-from-names "gtk-ok"))
+               'g:themed-icon))
+    (is (typep (setf image (gtk:image-new-from-gicon icon :dialog)) 'gtk:image))
+    (multiple-value-bind (icon-set icon-size)
+        (gtk:image-get-gicon image)
+      (is (typep icon-set 'g:themed-icon))
+      (is (eq :dialog icon-size)))
+    ;; Remove references
+    (is-false (gtk:image-clear image))))
 
 ;;;     gtk_image_set_from_file
 
@@ -533,46 +576,4 @@
       (is (not (cffi:pointer-eq (cffi:null-pointer) (gtk:image-surface image))))
       (is-false (gtk:image-use-fallback image)))))
 
-;;;     gtk_image_clear
-
-(test gtk-image-clear
-  (glib-test:with-check-memory (image)
-    (is (typep (setf image
-                     (gtk:image-new-from-icon-name "gtk-ok" 4)) 'gtk:image))
-    ;; Create image from icon name
-    (is-false (gtk:image-file image))
-    (is-false (gtk:image-gicon image))
-    (is (string= "gtk-ok" (gtk:image-icon-name image)))
-    (is-false (gtk:image-icon-set image))
-    (is (= 4 (gtk:image-icon-size image)))
-    (is-false (gtk:image-pixbuf image))
-    (is-false (gtk:image-pixbuf-animation image))
-    (is (= -1 (gtk:image-pixel-size image)))
-    (is-false (gtk:image-resource image))
-    (is-false (gtk:image-stock image))
-    (is (eq :icon-name (gtk:image-storage-type image)))
-    (is (cffi:pointer-eq (cffi:null-pointer) (gtk:image-surface image)))
-    (is-false (gtk:image-use-fallback image))
-    ;; Clear the image
-    (is-false (gtk:image-clear image))
-    (is-false (gtk:image-file image))
-    (is-false (gtk:image-gicon image))
-    (is-false (gtk:image-icon-name image))
-    (is-false (gtk:image-icon-set image))
-    (is (= 0 (gtk:image-icon-size image)))
-    (is-false (gtk:image-pixbuf image))
-    (is-false (gtk:image-pixbuf-animation image))
-    (is (= -1 (gtk:image-pixel-size image)))
-    (is-false (gtk:image-resource image))
-    (is-false (gtk:image-stock image))
-    (is (eq :empty (gtk:image-storage-type image)))
-    (is (cffi:pointer-eq (cffi:null-pointer) (gtk:image-surface image)))
-    (is-false (gtk:image-use-fallback image))))
-
-;;;     gtk_image_new
-
-(test gtk-image-new
-  (glib-test:with-check-memory (image)
-    (is (typep (setf image (gtk:image-new)) 'gtk:image))))
-
-;;; 2025-06-04
+;;; 2026-06-18

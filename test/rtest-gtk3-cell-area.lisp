@@ -34,16 +34,16 @@
              (glib-test:list-signals "GtkCellArea")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkCellArea" GTK:CELL-AREA
-                       (:SUPERCLASS G:INITIALLY-UNOWNED
-                        :EXPORT T
-                        :INTERFACES ("GtkBuildable" "GtkCellLayout")
-                        :TYPE-INITIALIZER "gtk_cell_area_get_type")
-                       ((EDIT-WIDGET CELL-AREA-EDIT-WIDGET
-                         "edit-widget" "GtkCellEditable" T NIL)
-                        (EDITED-CELL CELL-AREA-EDITED-CELL
-                         "edited-cell" "GtkCellRenderer" T NIL)
-                        (FOCUS-CELL CELL-AREA-FOCUS-CELL
-                         "focus-cell" "GtkCellRenderer" T T)))
+                      (:SUPERCLASS G:INITIALLY-UNOWNED
+                       :EXPORT T
+                       :INTERFACES ("GtkBuildable" "GtkCellLayout")
+                       :TYPE-INITIALIZER "gtk_cell_area_get_type")
+                      ((EDIT-WIDGET CELL-AREA-EDIT-WIDGET
+                        "edit-widget" "GtkCellEditable" T NIL)
+                       (EDITED-CELL CELL-AREA-EDITED-CELL
+                        "edited-cell" "GtkCellRenderer" T NIL)
+                       (FOCUS-CELL CELL-AREA-FOCUS-CELL
+                        "focus-cell" "GtkCellRenderer" T T)))
              (gobject:get-gtype-definition "GtkCellArea"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -138,7 +138,9 @@
                  (GTK:CELL-RENDERER-PIXBUF (94 35) (94 35))
                  (GTK:CELL-RENDERER-PROGRESS (129 71) (129 71))
                  (GTK:CELL-RENDERER-SPINNER (200 50) (200 50)))
-               (reverse message)))))
+               (reverse message)))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy widget))))
 
 #+windows
 (test gtk-cell-area-foreach-alloc
@@ -177,7 +179,9 @@
                  (GTK:CELL-RENDERER-PIXBUF (44 10) (44 10))
                  (GTK:CELL-RENDERER-PROGRESS (54 40) (54 40))
                  (GTK:CELL-RENDERER-SPINNER (94 26) (94 26)))
-               (reverse message)))))
+               (reverse message)))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy widget))))
 
 ;;;     gtk_cell_area_event
 ;;;     gtk_cell_area_render
@@ -272,4 +276,4 @@
 ;;;     gtk_cell_area_inner_cell_area
 ;;;     gtk_cell_area_request_renderer
 
-;;; 2024-9-21
+;;; 2026-07-09

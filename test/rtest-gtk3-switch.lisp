@@ -1,0 +1,121 @@
+(in-package :gtk-test)
+
+(def-suite gtk-switch :in gtk-suite)
+(in-suite gtk-switch)
+
+;;; --- Types and Values -------------------------------------------------------
+
+;;;     GtkSwitch
+
+(test gtk-switch-class
+  ;; Check type
+  (is (g:type-is-object "GtkSwitch"))
+  ;; Check registered name
+  (is (eq 'gtk:switch
+          (glib:symbol-for-gtype "GtkSwitch")))
+  ;; Check type initializer
+  (is (eq (g:gtype "GtkSwitch")
+          (g:gtype (cffi:foreign-funcall "gtk_switch_get_type" :size))))
+  ;; Check parent
+  (is (eq (g:gtype "GtkWidget")
+          (g:type-parent "GtkSwitch")))
+  ;; Check children
+  (is (equal '()
+             (glib-test:list-children "GtkSwitch")))
+  ;; Check interfaces
+  (is (equal '("AtkImplementorIface" "GtkBuildable" "GtkActionable"
+               "GtkActivatable")
+             (glib-test:list-interfaces "GtkSwitch")))
+  ;; Check class properties
+  (is (equal '("action-name" "action-target" "active" "related-action" "state"
+               "use-action-appearance")
+             (glib-test:list-properties "GtkSwitch")))
+  ;; Check style properties
+  (is (equal '("slider-height" "slider-width")
+             (gtk-test:list-style-properties "GtkSwitch")))
+  ;; Check signals
+  (is (equal '("activate" "state-set")
+             (glib-test:list-signals "GtkSwitch")))
+  ;; CSS information
+  (is (string= "switch"
+               (gtk:widget-class-css-name "GtkSwitch")))
+  ;; Check class definition
+  (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkSwitch" GTK:SWITCH
+                      (:SUPERCLASS GTK:WIDGET
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkActionable"
+                                    "GtkActivatable" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_switch_get_type")
+                      ((ACTIVE SWITCH-ACTIVE "active" "gboolean" T T)
+                       (STATE SWITCH-STATE "state" "gboolean" T T)))
+             (gobject:get-gtype-definition "GtkSwitch"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     activate
+
+(test gtk-switch-activate-signal
+  (let* ((name "activate")
+         (gtype (g:gtype "GtkSwitch"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:ACTION :RUN-FIRST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '()
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     state-set
+
+(test gtk-switch-state-set-signal
+  (let* ((name "state-set")
+         (gtype (g:gtype "GtkSwitch"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "gboolean") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("gboolean")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;; --- Properties -------------------------------------------------------------
+
+;;;     active
+;;;     state
+
+(test gtk-switch-properties
+  (glib-test:with-check-memory (switch)
+    (is (typep (setf switch (make-instance 'gtk:switch)) 'gtk:switch))
+    (is-false (gtk:switch-active switch))
+    (is-false (gtk:switch-state switch))))
+
+;;; --- Style Properties -------------------------------------------------------
+
+;;;     slider-height
+;;;     slider-width
+
+(test gtk-switch-style-properties
+  (glib-test:with-check-memory (switch)
+    (is (typep (setf switch (make-instance 'gtk:switch)) 'gtk:switch))
+    (is (= 22 (gtk:widget-style-property switch "slider-height")))
+    (is (= 36 (gtk:widget-style-property switch "slider-width")))))
+
+;;; --- Functions --------------------------------------------------------------
+
+;;;     gtk_switch_new
+
+(test gtk-switch-new
+  (glib-test:with-check-memory (switch)
+    (is (typep (setf switch (gtk:switch-new)) 'gtk:switch))))
+
+;;; 2026-06-27

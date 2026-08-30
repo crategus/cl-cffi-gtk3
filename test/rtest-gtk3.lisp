@@ -1,5 +1,5 @@
 (defpackage :gtk-test
-  (:use :fiveam :common-lisp)
+  (:use :fiveam :iterate :common-lisp)
   (:export #:run!
            #:list-child-properties
            #:list-style-properties
@@ -58,4 +58,4 @@
     ;; Return the new list store
     store))
 
-;;; 2025-4-26
+;;; 2026-06-17

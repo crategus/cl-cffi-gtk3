@@ -43,17 +43,17 @@
                (gtk:widget-class-css-name "GtkToggleButton")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkToggleButton" GTK:TOGGLE-BUTTON
-                       (:SUPERCLASS GTK:BUTTON
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
-                         "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_toggle_button_get_type")
-                       ((ACTIVE TOGGLE-BUTTON-ACTIVE "active" "gboolean" T T)
-                        (DRAW-INDICATOR TOGGLE-BUTTON-DRAW-INDICATOR
-                         "draw-indicator" "gboolean" T T)
-                        (INCONSISTENT TOGGLE-BUTTON-INCONSISTENT
-                         "inconsistent" "gboolean" T T)))
+                      (:SUPERCLASS GTK:BUTTON
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkActionable" "GtkActivatable"
+                        "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_toggle_button_get_type")
+                      ((ACTIVE TOGGLE-BUTTON-ACTIVE "active" "gboolean" T T)
+                       (DRAW-INDICATOR TOGGLE-BUTTON-DRAW-INDICATOR
+                        "draw-indicator" "gboolean" T T)
+                       (INCONSISTENT TOGGLE-BUTTON-INCONSISTENT
+                        "inconsistent" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkToggleButton"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -63,7 +63,8 @@
 ;;;     inconsistent
 
 (test gtk-toggle-button-properties
-  (let ((button (make-instance 'gtk:toggle-button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button (make-instance 'gtk:toggle-button)) 'gtk:toggle-button))
     (is-false (gtk:toggle-button-active button))
     (is-false (gtk:toggle-button-draw-indicator button))
     (is-false (gtk:toggle-button-inconsistent button))))
@@ -73,38 +74,45 @@
 ;;;     toggled
 
 (test gtk-toggle-button-toggled-signal
-  (let ((query (g:signal-query (g:signal-lookup "toggled" "GtkToggleButton"))))
-    (is (string= "toggled" (g:signal-query-signal-name query)))
-    (is (string= "GtkToggleButton"
-                 (g:type-name (g:signal-query-owner-type query))))
+  (let* ((name "toggled")
+         (gtype (g:gtype "GtkToggleButton"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
     (is (equal '(:RUN-FIRST)
                (sort (g:signal-query-signal-flags query) #'string<)))
-    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
     (is (equal '()
-               (sort (mapcar #'g:type-name (g:signal-query-param-types query))
-                     #'string<)))
-    (is-false (g:signal-query-signal-detail query))))
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_toggle_button_new
 
 (test gtk-toggle-button-new
-  (is (typep (gtk:toggle-button-new) 'gtk:toggle-button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button (gtk:toggle-button-new)) 'gtk:toggle-button))))
 
 ;;;     gtk_toggle_button_new_with_label
 
 (test gtk-toggle-button-new-with-label
-  (is (typep (gtk:toggle-button-new-with-label "label") 'gtk:toggle-button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button
+                     (gtk:toggle-button-new-with-label "label")) 'gtk:toggle-button))))
 
 ;;;     gtk_toggle_button_new_with_mnemonic
 
 (test gtk-toggle-button-new-with-mnemonic
-  (is (typep (gtk:toggle-button-new-with-mnemonic "_label")
-             'gtk:toggle-button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button
+                     (gtk:toggle-button-new-with-mnemonic "_label")) 'gtk:toggle-button))))
 
 ;;;     gtk_toggle_button_set_mode
 ;;;     gtk_toggle_button_get_mode
 ;;;     gtk_toggle_button_toggled
 
-;;; 2024-9-22
+;;; 2026-06-26

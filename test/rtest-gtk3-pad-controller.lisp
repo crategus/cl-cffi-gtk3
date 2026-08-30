@@ -81,7 +81,9 @@
          (controller (gtk:pad-controller-new window group nil)))
     (is (typep (gtk:pad-controller-action-group controller)
                'g:simple-action-group))
-    (is-false (gtk:pad-controller-pad controller))))
+    (is-false (gtk:pad-controller-pad controller))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;; --- Functions --------------------------------------------------------------
 
@@ -91,7 +93,9 @@
   (let ((window (make-instance 'gtk:window
                                :type :toplevel))
         (group (make-instance 'g:simple-action-group)))
-  (is (typep (gtk:pad-controller-new window group nil) 'gtk:pad-controller))))
+    (is (typep (gtk:pad-controller-new window group nil) 'gtk:pad-controller))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_pad_controller_set_action_entries
 
@@ -107,7 +111,9 @@
     ;; TODO: Does not return a GAction object. Why?
     (is-false (g:action-map-lookup-action group "action1"))
     (is-false (g:action-map-lookup-action group "action2"))
-    (is-false (g:action-map-lookup-action group "action3"))))
+    (is-false (g:action-map-lookup-action group "action3"))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_pad_controller_set_action
 
@@ -123,6 +129,8 @@
                                              "Action"
                                              "action"))
     ;; TODO: Does not return a GAction object. Why?
-    (is-false (g:action-map-lookup-action group "action"))))
+    (is-false (g:action-map-lookup-action group "action"))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
-;;; 2024-9-23
+;;; 2026-06-10

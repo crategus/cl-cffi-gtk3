@@ -61,38 +61,44 @@
                          "width-chars" "gint" T T)))
              (gobject:get-gtype-definition "GtkFileChooserButton"))))
 
-;;; --- Properties -------------------------------------------------------------
-
-(test gtk-file-chooser-button-properties
-  (let ((button (make-instance 'gtk:file-chooser-button)))
-;    (signals(error) (gtk:file-chooser-button-dialog button))
-    (is-true (gtk:file-chooser-button-focus-on-click button))
-    (is (string= "Datei auswählen" (gtk:file-chooser-button-title button)))
-    (is (= -1 (gtk:file-chooser-button-width-chars button)))))
-
 ;;; --- Signals ----------------------------------------------------------------
 
 ;;;     file-set
 
 (test gtk-file-chooser-button-file-set-signal
-  (let ((query (g:signal-query (g:signal-lookup "file-set"
-                                                "GtkFileChooserButton"))))
-    (is (string= "file-set" (g:signal-query-signal-name query)))
-    (is (string= "GtkFileChooserButton"
-                 (g:type-name (g:signal-query-owner-type query))))
+  (let* ((name "file-set")
+         (gtype (g:gtype "GtkFileChooserButton"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
     (is (equal '(:RUN-FIRST)
                (sort (g:signal-query-signal-flags query) #'string<)))
-    (is (string= "void" (g:type-name (g:signal-query-return-type query))))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
     (is (equal '()
-               (mapcar #'g:type-name (g:signal-query-param-types query))))
-    (is-false (g:signal-query-signal-detail query))))
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;; --- Properties -------------------------------------------------------------
+
+;; TODO: Button gets 12 references. Is this correct?
+
+(test gtk-file-chooser-button-properties
+  (glib-test:with-check-memory ((button 12) :strong 1)
+    (setf button (make-instance 'gtk:file-chooser-button))
+;   (signals(error) (gtk:file-chooser-button-dialog button))
+    (is-true (gtk:file-chooser-button-focus-on-click button))
+    (is (string= "Datei auswählen" (gtk:file-chooser-button-title button)))
+    (is (= -1 (gtk:file-chooser-button-width-chars button)))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_file_chooser_button_new
 
 (test gtk-file-chooser-button-new.1
-  (let ((button nil))
+  (glib-test:with-check-memory ((button 12) :strong 1)
     (is (typep (setf button
                      (gtk:file-chooser-button-new "title" :open))
                'gtk:file-chooser-button))
@@ -100,7 +106,7 @@
     (is (eq :open (gtk:file-chooser-action button)))))
 
 (test gtk-file-chooser-button-new.2
-  (let ((button nil))
+  (glib-test:with-check-memory ((button 12) :strong 1)
     (is (typep (setf button
                      (gtk:file-chooser-button-new "title" :select-folder))
                'gtk:file-chooser-button))
@@ -110,12 +116,14 @@
 ;;;     gtk_file_chooser_button_new_with_dialog
 
 (test gtk-file-chooser-button-new-with-dialog
-  (let ((button nil)
-        (dialog (make-instance 'gtk:file-chooser-dialog)))
+  (glib-test:with-check-memory (dialog (button 12) :strong 1)
+    (setf dialog (make-instance 'gtk:file-chooser-dialog))
     (is (typep (setf button
                      (gtk:file-chooser-button-new-with-dialog dialog))
                'gtk:file-chooser-button))
     (is (string= "Datei auswählen" (gtk:file-chooser-button-title button)))
-    (is (eq :open (gtk:file-chooser-action button)))))
+    (is (eq :open (gtk:file-chooser-action button)))
+    ;; Destroy dialog
+    (is-false (gtk:widget-destroy dialog))))
 
-;;; 2024-9-23
+;;; 2026-06-10

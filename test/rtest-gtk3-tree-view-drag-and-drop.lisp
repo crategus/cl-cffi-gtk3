@@ -21,8 +21,8 @@
              (glib-test:list-interface-properties "GtkTreeDragSource")))
   ;; Check interface definition
   (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkTreeDragSource" GTK:TREE-DRAG-SOURCE
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_tree_drag_source_get_type"))
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_tree_drag_source_get_type"))
              (gobject:get-gtype-definition "GtkTreeDragSource"))))
 
 ;;;     GtkTreeDragDest
@@ -41,8 +41,8 @@
              (glib-test:list-interface-properties "GtkTreeDragDest")))
   ;; Check interface definition
   (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkTreeDragDest" GTK:TREE-DRAG-DEST
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_tree_drag_dest_get_type"))
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_tree_drag_dest_get_type"))
              (gobject:get-gtype-definition "GtkTreeDragDest"))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -56,4 +56,4 @@
 ;;;     gtk_tree_set_row_drag_data
 ;;;     gtk_tree_get_row_drag_data
 
-;;; 2024-9-21
+;;; 2026-07-08

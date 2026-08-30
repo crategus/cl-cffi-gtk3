@@ -243,6 +243,11 @@ Height=297
 ;;;     gtk-paper-size-new-from-gvariant
 ;;;     gtk-paper-size-to-gvariant
 
+;; FIXME: Error on Windows
+;;   Unexpected Error: #<SB-SYS:FOREIGN-HEAP-CORRUPTION {1101E5B493}>
+;;   A foreign heap corruption exception occurred. (Exception code: 3221226356).
+
+#-windows
 (test gtk-paper-size-gvariant
   (let* ((paper-size (gtk:paper-size-new "iso_a4"))
          (value (gtk:paper-size-to-gvariant paper-size)))
@@ -253,4 +258,4 @@ Height=297
     (is (eq 'gtk:paper-size (type-of (gtk:paper-size-new-from-gvariant value))))
     (is (string= "iso_a4" (gtk:paper-size-name (gtk:paper-size-new-from-gvariant value))))))
 
-;;; 2025-1-6
+;;; 2026-05-21

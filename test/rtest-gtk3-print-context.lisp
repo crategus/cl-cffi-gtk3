@@ -30,11 +30,11 @@
              (glib-test:list-signals "GtkPrintContext")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrintContext" GTK:PRINT-CONTEXT
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_print_context_get_type")
-                       NIL)
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_print_context_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkPrintContext"))))
 
 ;;;     Functions
@@ -51,4 +51,4 @@
 ;;;     gtk_print_context_create_pango_layout
 ;;;     gtk_print_context_get_hard_margins
 
-;;; 2024-9-23
+;;; 2026-06-01

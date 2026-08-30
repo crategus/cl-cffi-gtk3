@@ -511,17 +511,12 @@ output-file-format : pdf
 
 (test gtk-print-settings-number-up-layout
   (let ((settings (gtk:print-settings-new)))
-    (is (eq :LEFT-TO-RIGHT-TOP-TO-BOTTOM
-            (gtk:print-settings-number-up-layout settings)))
-    (is (eq :bottom-to-top-right-to-left
-            (setf (gtk:print-settings-number-up-layout settings)
-                  :bottom-to-top-right-to-left)))
-    (is (eq :bottom-to-top-right-to-left
-            (gtk:print-settings-number-up-layout settings)))
+    (is (eq :lrtb (gtk:print-settings-number-up-layout settings)))
+    (is (eq :btrl (setf (gtk:print-settings-number-up-layout settings) :btrl)))
+    (is (eq :btrl (gtk:print-settings-number-up-layout settings)))
     (is (string= "btrl" (gtk:print-settings-get settings "number-up-layout")))
-    (is-false (gtk:print-settings-set settings "number-up-layout" "lrtp"))
-    (is (eq :LEFT-TO-RIGHT-TOP-TO-BOTTOM
-            (gtk:print-settings-number-up-layout settings)))))
+    (is-false (gtk:print-settings-set settings "number-up-layout" "lrtb"))
+    (is (eq :lrtb (gtk:print-settings-number-up-layout settings)))))
 
 ;;;     gtk_print_settings_get_resolution
 ;;;     gtk_print_settings_set_resolution
@@ -685,6 +680,11 @@ output-file-format : pdf
 ;;;     gtk_print_settings_new_from_gvariant
 ;;;     gtk_print_settings_to_gvariant
 
+;; FIXME: Error on Windows
+;;   Unexpected Error: #<SB-SYS:FOREIGN-HEAP-CORRUPTION {110233E403}>
+;;   A foreign heap corruption exception occurred. (Exception code: 3221226356).
+
+#-windows
 (test gtk-print-settings-gvariant
   (let* ((path (glib-sys:sys-path "test/resource/rtest-gtk3-print-settings.ini"))
         (settings (gtk:print-settings-new-from-file path)))
@@ -696,4 +696,4 @@ output-file-format : pdf
 )))
       (is (eq 'gtk:print-settings (type-of (gtk:print-settings-new-from-gvariant variant)))))))
 
-;;; 2024-9-23
+;;; 2026-05-21

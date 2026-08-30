@@ -34,20 +34,77 @@
              (glib-test:list-signals "GtkTextTagTable")))
   ;; Check the class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTextTagTable" GTK:TEXT-TAG-TABLE
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES ("GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_text_tag_table_get_type")
-                       NIL)
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES ("GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_text_tag_table_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkTextTagTable"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     tag-added
+
+(test gtk-text-tag-table-tag-added-signal
+  (let* ((name "tag-added")
+         (gtype (g:gtype "GtkTextTagTable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTextTag")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     tag-changed
+
+(test gtk-text-tag-table-tag-changed-signal
+  (let* ((name "tag-changed")
+         (gtype (g:gtype "GtkTextTagTable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTextTag" "gboolean")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
+
+;;;     tag-removed
+
+(test gtk-text-tag-table-tag-removed-signal
+  (let* ((name "tag-removed")
+         (gtype (g:gtype "GtkTextTagTable"))
+         (query (g:signal-query (g:signal-lookup name gtype))))
+    ;; Retrieve name and gtype
+    (is (string= name (g:signal-query-signal-name query)))
+    (is (eq gtype (g:signal-query-owner-type query)))
+    ;; Check flags
+    (is (equal '(:RUN-LAST)
+               (sort (g:signal-query-signal-flags query) #'string<)))
+    ;; Check return type
+    (is (eq (g:gtype "void") (g:signal-query-return-type query)))
+    ;; Check parameter types
+    (is (equal '("GtkTextTag")
+               (mapcar #'g:type-name (g:signal-query-param-types query))))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_text_tag_table_new
 
 (test gtk-text-tag-table-new
-  (is (typep (gtk:text-tag-table-new) 'gtk:text-tag-table))
-  (is (= 0 (gtk:text-tag-table-size (gtk:text-tag-table-new)))))
+  (glib-test:with-check-memory (table)
+    (is (typep (setf table (gtk:text-tag-table-new)) 'gtk:text-tag-table))
+    (is (= 0 (gtk:text-tag-table-size (gtk:text-tag-table-new))))))
 
 ;;;     gtk_text_tag_table_add
 ;;;     gtk_text_tag_table_remove
@@ -55,7 +112,8 @@
 ;;;     gtk_text_tag_table_get_size
 
 (test gtk-text-tag-table-add
-  (let ((table (gtk:text-tag-table-new)))
+  (glib-test:with-check-memory (table)
+    (is (typep (setf table (gtk:text-tag-table-new)) 'gtk:text-tag-table))
     (is (= 0 (gtk:text-tag-table-size table)))
     (is-true (gtk:text-tag-table-add table
                                      (gtk:text-tag-new "bold"
@@ -83,12 +141,15 @@
       (is (typep tag 'gtk:text-tag))
       (is-false (gtk:text-tag-table-remove table tag))
       (is-false (gtk:text-tag-table-lookup table "bold")
-      (is (= 4 (gtk:text-tag-table-size table)))))))
+      (is (= 4 (gtk:text-tag-table-size table)))))
+    ;; Remove references
+    (is-false (gtk:text-tag-table-remove-all table))))
 
 ;;;     gtk_text_tag_table_foreach
 
 (test gtk-text-tag-table-foreach
-  (let ((table (gtk:text-tag-table-new)))
+  (glib-test:with-check-memory (table)
+    (is (typep (setf table (gtk:text-tag-table-new)) 'gtk:text-tag-table))
     (is-true (gtk:text-tag-table-add table
                                      (gtk:text-tag-new "bold"
                                                        :weight 700)))
@@ -110,43 +171,8 @@
     (is-false (gtk:text-tag-table-foreach table
                   (lambda (tag)
                     (when *verbose-gtk-text-tag-table*
-                      (format t "  name : ~a~%" (gtk:text-tag-name tag))))))))
+                      (format t "  name : ~a~%" (gtk:text-tag-name tag))))))
+    ;; Remove references
+    (is-false (gtk:text-tag-table-remove-all table))))
 
-;;; --- Signals ----------------------------------------------------------------
-
-;;;     void   tag-added      Run Last
-;;;     void   tag-changed    Run Last
-;;;     void   tag-removed    Run Last
-
-#+nil
-(test gtk-text-tag-table-signals
-  (let* ((result nil)
-         (table (gtk:text-tag-table-new))
-         (added (g-signal-connect table "tag-added"
-                                  (lambda (table tag)
-                                    (setf result (cons "added" result))
-                                    (is (typep table 'gtk:text-tag-table))
-                                    (is (typep tag 'gtk:text-tag)))))
-         (changed (g-signal-connect table "tag-changed"
-                                    (lambda (table tag changed)
-                                      (setf result (cons "changed" result))
-                                      (is (typep table 'gtk:text-tag-table))
-                                      (is (typep tag 'gtk:text-tag))
-                                      (is (typep changed 'boolean)))))
-         (removed (g-signal-connect table "tag-removed"
-                                    (lambda (table tag)
-                                      (setf result (cons "removed" result))
-                                      (is (typep table 'gtk:text-tag-table))
-                                      (is (typep tag 'gtk:text-tag))))))
-    (is (every #'integerp (list added changed removed)))
-    (is-true (gtk:text-tag-table-add table
-                                     (gtk:text-tag-new "bold" :weight 700)))
-    (is-true (gtk:text-tag-table-add table
-                                     (gtk:text-tag-new "font" :font "fixed")))
-    (is-false (gtk:text-tag-table-remove table
-                                         (gtk:text-tag-table-lookup table
-                                                                    "bold")))
-    (setf (gtk:text-tag-font (gtk:text-tag-table-lookup table "font")) "italic")
-    (is (equal '("changed" "removed" "added" "added") result))))
-
-;;; 2024-9-22
+;;; 2026-07-04

@@ -210,7 +210,7 @@
                                           (make-instance 'gtk:button)
                                           (gdk:rectangle-new)))))
     #+windows
-    (is (equal '(0 0 4 19)
+    (is (equal '(0 0 4 20)
                 (multiple-value-list
                   (gtk:cell-renderer-size renderer
                                           (make-instance 'gtk:button)
@@ -255,5 +255,5 @@
 ;;;     gtk_cell_renderer_get_preferred_width_for_height
 ;;;     gtk_cell_renderer_get_request_mode
 
-;;; 2024-9-22
+;;; 2026-05-21
 

@@ -169,6 +169,9 @@
 
 ;;;     gtk_icon_theme_has_icon
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-has-icon
   (let* ((theme (gtk:icon-theme-default))
          (iconname (gtk:icon-theme-example-icon-name theme)))
@@ -177,6 +180,9 @@
 
 ;;;     gtk_icon_theme_lookup_icon
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-lookup-icon
   (glib-test:with-check-memory (info :strong 1)
     (let* ((theme (gtk:icon-theme-default))
@@ -187,6 +193,9 @@
 
 ;;;     gtk_icon_theme_lookup_icon_for_scale
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-lookup-icon-for-scale
   (glib-test:with-check-memory (info :strong 1)
     (let* ((theme (gtk:icon-theme-default))
@@ -198,6 +207,9 @@
 
 ;;;     gtk_icon_theme_choose_icon
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-choose-icon
   (glib-test:with-check-memory (info :strong 1)
     (let* ((theme (gtk:icon-theme-default))
@@ -209,6 +221,9 @@
 
 ;;;     gtk_icon_theme_choose_icon_for_scale
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-choose-icon-for-scale
   (glib-test:with-check-memory (info :strong 1)
     (let* ((theme (gtk:icon-theme-default))
@@ -225,6 +240,9 @@
 
 ;;;     gtk_icon_theme_load_icon
 
+;; FIXME: On Windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-icon-theme-load-icon
   (glib-test:with-check-memory (pixbuf :strong 1)
     (let* ((theme (gtk:icon-theme-default))

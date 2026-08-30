@@ -34,18 +34,19 @@
   ;; Check flags definition
   (is (equal '(GOBJECT:DEFINE-GFLAGS "GtkPrintCapabilities"
                                      GTK:PRINT-CAPABILITIES
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_print_capabilities_get_type")
-                       (:PAGE-SET 1)
-                       (:COPIES 2)
-                       (:COLLATE 4)
-                       (:REVERSE 8)
-                       (:SCALE 16)
-                       (:GENERATE-PDF 32)
-                       (:GENERATE-PS 64)
-                       (:PREVIEW 128)
-                       (:NUMBER-UP 256)
-                       (:NUMBER-UP-LAYOUT 512))
+                                     (:EXPORT T
+                                      :TYPE-INITIALIZER
+                                      "gtk_print_capabilities_get_type")
+                                     (:PAGE-SET 1)
+                                     (:COPIES 2)
+                                     (:COLLATE 4)
+                                     (:REVERSE 8)
+                                     (:SCALE 16)
+                                     (:GENERATE-PDF 32)
+                                     (:GENERATE-PS 64)
+                                     (:PREVIEW 128)
+                                     (:NUMBER-UP 256)
+                                     (:NUMBER-UP-LAYOUT 512))
              (gobject:get-gtype-definition "GtkPrintCapabilities"))))
 
 ;;;     GtkPrintUnixDialog
@@ -83,27 +84,27 @@
              (glib-test:list-signals "GtkPrintUnixDialog")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkPrintUnixDialog" GTK:PRINT-UNIX-DIALOG
-                       (:SUPERCLASS GTK:DIALOG
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_print_unix_dialog_get_type")
-                       ((CURRENT-PAGE PRINT-UNIX-DIALOG-CURRENT-PAGE
-                         "current-page" "gint" T T)
-                        (EMBED-PAGE-SETUP PRINT-UNIX-DIALOG-EMBED-PAGE-SETUP
-                         "embed-page-setup" "gboolean" T T)
-                        (HAS-SELECTION PRINT-UNIX-DIALOG-HAS-SELECTION
-                         "has-selection" "gboolean" T T)
-                        (MANUAL-CAPABILITIES
-                         PRINT-UNIX-DIALOG-MANUAL-CAPABILITIES
-                         "manual-capabilities" "GtkPrintCapabilities" T T)
-                        (PAGE-SETUP PRINT-UNIX-DIALOG-PAGE-SETUP
-                         "page-setup" "GtkPageSetup" T T)
-                        (PRINT-SETTINGS PRINT-UNIX-DIALOG-PRINT-SETTINGS
-                         "print-settings" "GtkPrintSettings" T T)
-                        (SELECTED-PRINTER PRINT-UNIX-DIALOG-SELECTED-PRINTER
-                         "selected-printer" "GtkPrinter" T NIL)
-                        (SUPPORT-SELECTION PRINT-UNIX-DIALOG-SUPPORT-SELECTION
-                         "support-selection" "gboolean" T T)))
+                      (:SUPERCLASS GTK:DIALOG
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_print_unix_dialog_get_type")
+                      ((CURRENT-PAGE PRINT-UNIX-DIALOG-CURRENT-PAGE
+                        "current-page" "gint" T T)
+                       (EMBED-PAGE-SETUP PRINT-UNIX-DIALOG-EMBED-PAGE-SETUP
+                        "embed-page-setup" "gboolean" T T)
+                       (HAS-SELECTION PRINT-UNIX-DIALOG-HAS-SELECTION
+                        "has-selection" "gboolean" T T)
+                       (MANUAL-CAPABILITIES
+                        PRINT-UNIX-DIALOG-MANUAL-CAPABILITIES
+                        "manual-capabilities" "GtkPrintCapabilities" T T)
+                       (PAGE-SETUP PRINT-UNIX-DIALOG-PAGE-SETUP
+                        "page-setup" "GtkPageSetup" T T)
+                       (PRINT-SETTINGS PRINT-UNIX-DIALOG-PRINT-SETTINGS
+                        "print-settings" "GtkPrintSettings" T T)
+                       (SELECTED-PRINTER PRINT-UNIX-DIALOG-SELECTED-PRINTER
+                        "selected-printer" "GtkPrinter" T NIL)
+                       (SUPPORT-SELECTION PRINT-UNIX-DIALOG-SUPPORT-SELECTION
+                        "support-selection" "gboolean" T T)))
              (gobject:get-gtype-definition "GtkPrintUnixDialog"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -157,16 +158,29 @@
 ;;;     gtk_print_unix_dialog_new
 
 (test gtk-print-unix-dialog-new
-  (let ((window (make-instance 'gtk:window)))
-    (is (typep (gtk:print-unix-dialog-new nil nil) 'gtk:print-unix-dialog))
-    (is (typep (gtk:print-unix-dialog-new "title" window) 'gtk:print-unix-dialog))
-    (is (typep (gtk:print-unix-dialog-new nil window) 'gtk:print-unix-dialog))
-    (is (typep (gtk:print-unix-dialog-new "title" window)
-               'gtk:print-unix-dialog))))
+  (glib-test:with-check-memory (dialog window)
+    (is (typep (setf dialog
+                     (gtk:print-unix-dialog-new nil nil)) 'gtk:print-unix-dialog))
+    (gtk:widget-destroy dialog)
+    (setf window (gtk:window-new :toplevel))
+    (is (typep (setf dialog
+                     (gtk:print-unix-dialog-new "title" window)) 'gtk:print-unix-dialog))
+    (gtk:widget-destroy window)
+    (gtk:widget-destroy dialog)
+    (setf window (gtk:window-new :toplevel))
+    (is (typep (setf dialog
+                     (gtk:print-unix-dialog-new nil window)) 'gtk:print-unix-dialog))
+    (gtk:widget-destroy window)
+    (gtk:widget-destroy dialog)
+    (setf window (gtk:window-new :toplevel))
+    (is (typep (setf dialog
+                     (gtk:print-unix-dialog-new "title" window)) 'gtk:print-unix-dialog))
+    (gtk:widget-destroy window)
+    (gtk:widget-destroy dialog)))
 
 ;;;     gtk_print_unix_dialog_set_settings
 ;;;     gtk_print_unix_dialog_get_settings
 ;;;     gtk_print_unix_dialog_add_custom_tab
 ;;;     gtk_print_unix_dialog_get_page_setup_set
 
-;;; 2024-9-21
+;;; 2026-06-10

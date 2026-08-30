@@ -58,7 +58,8 @@
 ;;;     indicator-spacing
 
 (test gtk-check-button-style-properties
-  (let ((button (make-instance 'gtk:check-button)))
+  (glib-test:with-check-memory (button)
+    (is (typep (setf button (make-instance 'gtk:check-button)) 'gtk:check-button))
     (is (= 16 (gtk:widget-style-property button "indicator-size")))
     (is (= 2 (gtk:widget-style-property button "indicator-spacing")))))
 
@@ -86,4 +87,4 @@
                      (gtk:check-button-new-with-mnemonic "_label"))
                'gtk:check-button))))
 
-;;; 2025-3-9
+;;; 2026-06-21

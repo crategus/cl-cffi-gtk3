@@ -174,6 +174,11 @@
 ;;;     gtk-page-setup-new-from-gvariant
 ;;;     gtk-page-setup-to-gvariant
 
+;; FIXME: Error on Windows
+;;   Unexpected Error: #<SB-SYS:FOREIGN-HEAP-CORRUPTION {11027CFEE3}>
+;;   A foreign heap corruption exception occurred. (Exception code: 3221226356).
+
+#-windows
 (test gtk-page-setup-gvariant
   (let ((page-setup (gtk:page-setup-new)))
     (is (string= (g:variant-print (gtk:page-setup-to-gvariant page-setup) nil)

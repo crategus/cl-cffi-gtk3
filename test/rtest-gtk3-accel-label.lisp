@@ -35,51 +35,56 @@
              (glib-test:list-signals "GtkAccelLabel")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkAccelLabel" GTK:ACCEL-LABEL
-                       (:SUPERCLASS GTK:LABEL
-                        :EXPORT T
-                        :INTERFACES ("AtkImplementorIface" "GtkBuildable")
-                        :TYPE-INITIALIZER "gtk_accel_label_get_type")
-                       ((ACCEL-CLOSURE ACCEL-LABEL-ACCEL-CLOSURE
-                         "accel-closure" "GClosure" T T)
-                        (ACCEL-WIDGET ACCEL-LABEL-ACCEL-WIDGET
-                         "accel-widget" "GtkWidget" T T)))
+                      (:SUPERCLASS GTK:LABEL
+                       :EXPORT T
+                       :INTERFACES ("AtkImplementorIface" "GtkBuildable")
+                       :TYPE-INITIALIZER "gtk_accel_label_get_type")
+                      ((ACCEL-CLOSURE ACCEL-LABEL-ACCEL-CLOSURE
+                        "accel-closure" "GClosure" T T)
+                       (ACCEL-WIDGET ACCEL-LABEL-ACCEL-WIDGET
+                        "accel-widget" "GtkWidget" T T)))
              (gobject:get-gtype-definition "GtkAccelLabel"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-accel-label-properties
-  (let ((accel-label (make-instance 'gtk:accel-label :label "text")))
+  (glib-test:with-check-memory (label)
+    (is (typep (setf label
+                     (make-instance 'gtk:accel-label :label "text")) 'gtk:accel-label))
     ;; TODO: GClosure is in C implemented as a boxed type, but not in Lisp
     ;; therefore we get an error with the accessor
 ;    (is-false (gtk:accel-label-accel-closure accel-label))
-    (is-false (gtk:accel-label-accel-widget accel-label))))
+    (is-false (gtk:accel-label-accel-widget label))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_accel_label_new
 
 (test gtk-accel-label-new
-  (is (eq 'gtk:accel-label (gtk:accel-label-new "text"))))
+  (glib-test:with-check-memory (label)
+    (is (typep (setf label (gtk:accel-label-new "text")) 'gtk:accel-label))))
 
 ;;;     gtk_accel_label_get_accel_width
 
 (test gtk-accel-label-new
-  (let ((accel-label (gtk:accel-label-new "text")))
-    (is (= 0 (gtk:accel-label-accel-width accel-label)))))
+  (glib-test:with-check-memory (label)
+    (is (typep (setf label (gtk:accel-label-new "text")) 'gtk:accel-label))
+    (is (= 0 (gtk:accel-label-accel-width label)))))
 
 ;;;     gtk_accel_label_set_accel
 ;;;     gtk_accel_label_get_accel
 
 (test gtk-accel-label-accel
-  (let ((accel-label (gtk:accel-label-new "text")))
-    (is-false (gtk:accel-label-set-accel accel-label
+  (glib-test:with-check-memory (label)
+    (is (typep (setf label (gtk:accel-label-new "text")) 'gtk:accel-label))
+    (is-false (gtk:accel-label-set-accel label
                                          (gdk:keyval-from-name "p")
                                          :control-mask))
     (multiple-value-bind (key mods)
-        (gtk:accel-label-get-accel accel-label)
+        (gtk:accel-label-get-accel label)
       (is (= 112 key))
       (is (equal '(:control-mask) mods)))))
 
 ;;;     gtk_accel_label_refetch
 
-;;; 2024-9-22
+;;; 2026-06-21

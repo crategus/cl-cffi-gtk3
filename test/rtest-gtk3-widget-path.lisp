@@ -36,11 +36,14 @@
 ;;;     gtk_widget_path_append_for_widget
 
 (test gtk-widget-path-append-for-widget
-  (let ((path (gtk:widget-path-new))
-        (window (make-instance 'gtk:window)))
-    (is (= 0 (gtk:widget-path-append-for-widget path window)))
-    (is (string= "window:dir-ltr.background"
-                 (gtk:widget-path-to-string path)))))
+  (glib-test:with-check-memory (window)
+    (let ((path (gtk:widget-path-new)))
+      (setf window (gtk:window-new :toplevel))
+      (is (= 0 (gtk:widget-path-append-for-widget path window)))
+      (is (string= "window:dir-ltr.background"
+                   (gtk:widget-path-to-string path)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gtk_widget_path_copy
 ;;;     gtk_widget_path_ref

@@ -18,10 +18,10 @@
              (glib-test:list-interface-properties "GtkAppChooser")))
   ;; Check interface definition
   (is (equal '(GOBJECT:DEFINE-GINTERFACE "GtkAppChooser" GTK:APP-CHOOSER
-                       (:EXPORT T
-                        :TYPE-INITIALIZER "gtk_app_chooser_get_type")
-                       (CONTENT-TYPE APP-CHOOSER-CONTENT-TYPE
-                        "content-type" "gchararray" T NIL))
+                      (:EXPORT T
+                       :TYPE-INITIALIZER "gtk_app_chooser_get_type")
+                      (CONTENT-TYPE APP-CHOOSER-CONTENT-TYPE
+                       "content-type" "gchararray" T NIL))
              (gobject:get-gtype-definition "GtkAppChooser"))))
 
 ;;; --- Properties -------------------------------------------------------------
@@ -49,4 +49,4 @@
                                 :content-type "plain/text")))
     (is-false (gtk:app-chooser-refresh chooser))))
 
-;;; 2024-9-23
+;;; 2026-06-02

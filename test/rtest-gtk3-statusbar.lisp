@@ -38,18 +38,24 @@
              (glib-test:list-signals "GtkStatusbar")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkStatusbar" GTK:STATUSBAR
-                       (:SUPERCLASS GTK:BOX
-                        :EXPORT T
-                        :INTERFACES
-                        ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
-                        :TYPE-INITIALIZER "gtk_statusbar_get_type")
-                       NIL)
+                      (:SUPERCLASS GTK:BOX
+                       :EXPORT T
+                       :INTERFACES
+                       ("AtkImplementorIface" "GtkBuildable" "GtkOrientable")
+                       :TYPE-INITIALIZER "gtk_statusbar_get_type")
+                      NIL)
              (gobject:get-gtype-definition "GtkStatusbar"))))
+
+;;; --- Signals ----------------------------------------------------------------
+
+;;;     text-popped
+;;;     text-pushed
 
 ;;; --- Style Properties -------------------------------------------------------
 
 (test gtk-statusbar-style-properties
-  (let ((statusbar (make-instance 'gtk:statusbar)))
+  (glib-test:with-check-memory (statusbar)
+    (is (typep (setf statusbar (make-instance 'gtk:statusbar)) 'gtk:statusbar))
     (is (eq :in (gtk:widget-style-property statusbar "shadow-type")))))
 
 ;;; --- Functions --------------------------------------------------------------
@@ -57,12 +63,14 @@
 ;;;     gtk_statusbar_new
 
 (test gtk-statusbar-new
-  (is (eq 'gtk:statusbar (type-of (gtk:statusbar-new)))))
+  (glib-test:with-check-memory (statusbar)
+    (is (typep (setf statusbar (gtk:statusbar-new)) 'gtk:statusbar))))
 
 ;;;     gtk_statusbar_get_context_id
 
 (test gtk-statusbar-context-id
-  (let ((statusbar (gtk:statusbar-new)))
+  (glib-test:with-check-memory (statusbar)
+    (is (typep (setf statusbar (gtk:statusbar-new)) 'gtk:statusbar))
     ;; Get the context IDs
     (is (= 1 (gtk:statusbar-context-id statusbar "context1")))
     (is (= 2 (gtk:statusbar-context-id statusbar "context2")))
@@ -78,25 +86,26 @@
 ;;;     gtk_statusbar_remove_all
 
 (test gtk-statusbar-push
-  (let* ((statusbar (gtk:statusbar-new))
-         (context-id-1 (gtk:statusbar-context-id statusbar "context1"))
-         (context-id-2 (gtk:statusbar-context-id statusbar "context2")))
-    (is (eq 'gtk:statusbar (type-of statusbar)))
-    (is (= 1 context-id-1))
-    (is (= 2 context-id-2))
-    ;; Set some message IDs on the contexts
-    (is (= 1 (gtk:statusbar-push statusbar context-id-1 "message1")))
-    (is (= 2 (gtk:statusbar-push statusbar context-id-1 "message2")))
-    (is (= 3 (gtk:statusbar-push statusbar context-id-2 "message1")))
-    (is (= 4 (gtk:statusbar-push statusbar context-id-2 "message2")))
-    ;; Remove some messages
-    (is-false (gtk:statusbar-remove statusbar "context1" 1))
-    (is-false (gtk:statusbar-remove-all statusbar "context2"))))
+  (glib-test:with-check-memory (statusbar)
+    (is (typep (setf statusbar (gtk:statusbar-new)) 'gtk:statusbar))
+    (let ((context-id-1 (gtk:statusbar-context-id statusbar "context1"))
+          (context-id-2 (gtk:statusbar-context-id statusbar "context2")))
+      (is (= 1 context-id-1))
+      (is (= 2 context-id-2))
+      ;; Set some message IDs on the contexts
+      (is (= 1 (gtk:statusbar-push statusbar context-id-1 "message1")))
+      (is (= 2 (gtk:statusbar-push statusbar context-id-1 "message2")))
+      (is (= 3 (gtk:statusbar-push statusbar context-id-2 "message1")))
+      (is (= 4 (gtk:statusbar-push statusbar context-id-2 "message2")))
+      ;; Remove some messages
+      (is-false (gtk:statusbar-remove statusbar "context1" 1))
+      (is-false (gtk:statusbar-remove-all statusbar "context2")))))
 
 ;;;     gtk_statusbar_get_message_area
 
 (test gtk-statusbar-message-area
-  (let ((statusbar (gtk:statusbar-new)))
-    (is (eq 'gtk:box (type-of (gtk:statusbar-message-area statusbar))))))
+  (glib-test:with-check-memory (statusbar :strong 1)
+    (is (typep (setf statusbar (gtk:statusbar-new)) 'gtk:statusbar))
+    (is (typep (gtk:statusbar-message-area statusbar) 'gtk:box))))
 
-;;; 2025-09-17
+;;; 2026-06-21

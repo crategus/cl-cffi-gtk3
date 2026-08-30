@@ -183,9 +183,9 @@
     (gtk:target-list-add-image-targets tlist 0 nil)
     (is (equal '("application/emf" "application/ico" "application/ico"
                  "application/x-emf" "application/x-navi-animation"
-                 "application/x-navi-animation" "image/bmp" "image/bmp"
-                 "image/emf" "image/gif" "image/gif" "image/ico" "image/ico"
-                 "image/icon" "image/icon" "image/jpeg" "image/jpeg" "image/jxl"
+                 "application/x-navi-animation" "image/bmp"
+                 "image/bmp" "image/emf" "image/gif" "image/gif" "image/ico"
+                 "image/ico" "image/icon" "image/icon" "image/jpeg" "image/jpeg"
                  "image/png" "image/png" "image/qtif" "image/qtif" "image/svg"
                  "image/svg+xml" "image/svg+xml-compressed" "image/svg-xml"
                  "image/tiff" "image/tiff" "image/vnd.adobe.svg+xml"
@@ -298,6 +298,7 @@
                                           "PRIMARY"
                                           gdk:+current-time+) 'boolean)))
     (gtk:widget-unrealize widget)
+    ;; Destroy window
     (is-false (gtk:widget-destroy widget))))
 
 #+nil
@@ -310,8 +311,9 @@
       (is (eq 'gdk:window (type-of window)))
       (is (typep (gtk:selection-owner-set widget
                                           "SECONDARY"
-                                          gdk:+current-time+) 'boolean)))))
-
+                                          gdk:+current-time+) 'boolean))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 #+nil
 (test gtk-selection-owner-set.3
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
@@ -352,7 +354,9 @@
       (is-true (gtk:selection-owner-set-for-display display
                                                     nil
                                                     "PRIMARY"
-                                                    gdk:+current-time+)))))
+                                                    gdk:+current-time+))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;   gtk_selection_add_target
 
@@ -364,7 +368,9 @@
     (let ((window (gtk:widget-window widget)))
       ;; Check the presence of a gdk:window
       (is (eq 'gdk:window (type-of window)))
-      (gtk:selection-add-target widget "PRIMARY" "TEXT" 0))))
+      (gtk:selection-add-target widget "PRIMARY" "TEXT" 0)
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;   gtk_selection_add_targets
 
@@ -378,7 +384,9 @@
       (is (eq 'gdk:window (type-of window)))
       (gtk:selection-add-targets widget
                                  "PRIMARY"
-                                 '(("TEXT" 0) ("PIXBUF" 1) ("IMAGE" 2))))))
+                                 '(("TEXT" 0) ("PIXBUF" 1) ("IMAGE" 2)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;   gtk_selection_clear_targets
 
@@ -395,7 +403,9 @@
     (gtk:widget-realize widget)
     (gtk:selection-owner-set widget "CLIPBOARD" gdk:+current-time+)
     (gtk:selection-clear-targets widget "CLIPBOARD")
-    (gtk:selection-convert widget "CLIPBOARD" "TARGETS" gdk:+current-time+)))
+    (gtk:selection-convert widget "CLIPBOARD" "TARGETS" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy widget))))
 
 ;;;   gtk_selection_convert
 
@@ -413,7 +423,9 @@
 ;                   (gtk:selection-data-targets selection-data))
     ))
     (gtk:selection-add-target window "CLIPBOARD" "STRING" 0)
-    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;   gtk_selection_data_set
 
@@ -444,7 +456,9 @@
              (gtk:selection-data-get-data-with-length selection-data)
            (is (= 9 length))
            (is (cffi:pointerp data)))))
-    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;   gtk_selection_data_get_text
 
@@ -473,7 +487,9 @@
        (lambda (widget selection-data time)
          (declare (ignore widget time))
            (is-true (gtk:selection-data-targets-include-image selection-data nil))))
-    (gtk:selection-convert window "CLIPBOARD" "BITMAP" gdk:+current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "BITMAP" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;   gtk_selection_data_targets_include_text
 
@@ -485,7 +501,9 @@
        (lambda (widget selection-data time)
          (declare (ignore widget time))
            (is-true (gtk:selection-data-targets-include-text selection-data))))
-    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TEXT" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;   gtk_selection_data_targets_include_uri
 ;;;   gtk_selection_data_targets_include_rich_text
@@ -520,7 +538,9 @@
              (gtk:selection-data-get-data-with-length selection-data)
            (is (= 12 length))
            (is (cffi:pointerp data)))))
-    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)))
+    (gtk:selection-convert window "CLIPBOARD" "TARGETS" gdk:+current-time+)
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_targets_include_image
 
@@ -542,4 +562,4 @@
 ;;;     gtk_selection_data_copy
 ;;;     gtk_selection_data_free
 
-;;; 2026-05-14
+;;; 2026-06-10

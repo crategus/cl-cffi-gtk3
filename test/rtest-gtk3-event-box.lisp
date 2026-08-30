@@ -63,4 +63,4 @@
 (test gtk-event-box-new
   (is (typep (gtk:event-box-new) 'gtk:event-box)))
 
-;;; 2024-9-23
+;;; 2025-06-02

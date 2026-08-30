@@ -2,11 +2,42 @@
 
 (in-suite gtk-test)
 
+(test g-type-fundamentals
+  (let* ((glib::*warn-unknown-gtype* nil)
+         (nmax (cffi:foreign-funcall "g_type_fundamental_next" :size))
+         (gtypes (iter (for x from 1 below nmax)
+                       (for gtype = (g:gtype (ash x 2)))
+                       (when gtype (collect gtype)))))
+  (is (equal '("void"
+               "GInterface"
+               "gchar"
+               "guchar"
+               "gboolean"
+               "gint"
+               "guint"
+               "glong"
+               "gulong"
+               "gint64"
+               "guint64"
+               "GEnum"
+               "GFlags"
+               "gfloat"
+               "gdouble"
+               "gchararray"
+               "gpointer"
+               "GBoxed"
+               "GParam"
+               "GObject"
+               "GVariant")
+             (mapcar #'glib:gtype-name gtypes)))))
+
 (test gtk-test-finished
   (cond (*first-run-testsuite*
          (setf *first-run-testsuite* nil)
-         (format t "~%First run of the gtk-test suite finished.~%"))
+         (when *test-dribble*
+           (format t "~%First run of the gtk-test suite finished.~%")))
         (t
-         (format t "~%Second or more run of the gtk-test suite finished.~%"))))
+         (when *test-dribble*
+           (format t "~%Second or more run of the gtk-test suite finished.~%")))))
 
-;;; 2025-4-26
+;;; 2026-06-17

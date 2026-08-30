@@ -57,16 +57,23 @@
 ;;; --- Properties -------------------------------------------------------------
 
 (test gtk-color-chooser-dialog-properties
-  (let ((dialog (make-instance 'gtk:color-chooser-dialog)))
-    (is-false (gtk:color-chooser-dialog-show-editor dialog))))
+  (glib-test:with-check-memory (dialog)
+    (setf dialog (make-instance 'gtk:color-chooser-dialog))
+    (is-false (gtk:color-chooser-dialog-show-editor dialog))
+    ;; Destroy dialog
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;; --- Functions --------------------------------------------------------------
 
 ;;;     gtk_color_chooser_dialog_new
 
 (test gtk-color-chooser-dialog-new.1
-  (is (typep (gtk:color-chooser-dialog-new "title" nil)
-             'gtk:color-chooser-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:color-chooser-dialog-new "title" nil))
+               'gtk:color-chooser-dialog))
+    ;; Destroy dialog
+    (is-false (gtk:widget-destroy dialog))))
 
 ;; TODO: We get a warning:
 ;;   (sbcl:13528): Gtk-WARNING **: Can't set a parent on a toplevel widget
@@ -76,5 +83,4 @@
   (is (typep (gtk:color-chooser-dialog-new "title" (gtk:window-new :toplevel))
              'gtk:color-chooser-dialog)))
 
-;;; 2024-9-23
-
+;;; 2026-06-10

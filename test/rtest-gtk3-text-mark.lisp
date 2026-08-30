@@ -32,23 +32,23 @@
              (glib-test:list-signals "GtkTextMark")))
   ;; Check class definition
   (is (equal '(GOBJECT:DEFINE-GOBJECT "GtkTextMark" GTK:TEXT-MARK
-                       (:SUPERCLASS G:OBJECT
-                        :EXPORT T
-                        :INTERFACES NIL
-                        :TYPE-INITIALIZER "gtk_text_mark_get_type")
-                       ((LEFT-GRAVITY TEXT-MARK-LEFT-GRAVITY
-                         "left-gravity" "gboolean" T NIL)
-                        (NAME TEXT-MARK-NAME "name" "gchararray" T NIL)))
+                      (:SUPERCLASS G:OBJECT
+                       :EXPORT T
+                       :INTERFACES NIL
+                       :TYPE-INITIALIZER "gtk_text_mark_get_type")
+                      ((LEFT-GRAVITY TEXT-MARK-LEFT-GRAVITY
+                        "left-gravity" "gboolean" T NIL)
+                       (NAME TEXT-MARK-NAME "name" "gchararray" T NIL)))
              (gobject:get-gtype-definition "GtkTextMark"))))
 
 ;;; --- Properties -------------------------------------------------------------
 
-;;;     gboolean   left-gravity    Read / Write / Construct Only
-;;;        gchar*  name            Read / Write / Construct Only
+;;;     left-gravity
+;;;     name
 
 (test gtk-text-mark-properties
-  (let ((mark (make-instance 'gtk:text-mark)))
-    (is (eq 'gtk:text-mark (type-of mark)))
+  (glib-test:with-check-memory (mark)
+    (is (typep (setf mark (make-instance 'gtk:text-mark)) 'gtk:text-mark))
     (is-false (gtk:text-mark-left-gravity mark))
     (is-false (gtk:text-mark-name mark))
     (is (eq 'gtk:text-mark
@@ -63,12 +63,11 @@
 ;;;     gtk_text_mark_new
 
 (test gtk-text-mark-new
-  (let ((mark (gtk:text-mark-new nil nil)))
-    (is (eq 'gtk:text-mark (type-of mark)))
+  (glib-test:with-check-memory (mark)
+    (is (typep (setf mark (gtk:text-mark-new nil nil)) 'gtk:text-mark))
     (is-false (gtk:text-mark-left-gravity mark))
     (is-false (gtk:text-mark-name mark))
-    (is (eq 'gtk:text-mark
-            (type-of (setq mark (gtk:text-mark-new "name" t)))))
+    (is (typep (setq mark (gtk:text-mark-new "name" t)) 'gtk:text-mark))
     (is-true (gtk:text-mark-left-gravity mark))
     (is (string= "name" (gtk:text-mark-name mark)))))
 
@@ -76,7 +75,8 @@
 ;;;     gtk_text_mark_get_visible
 
 (test gtk-text-mark-visible
-  (let ((mark (make-instance 'gtk:text-mark)))
+  (glib-test:with-check-memory (mark)
+    (is (typep (setf mark (make-instance 'gtk:text-mark)) 'gtk:text-mark))
     (is-false (gtk:text-mark-visible mark))
     (is-false (setf (gtk:text-mark-visible mark) nil))
     (is-false (gtk:text-mark-visible mark))))
@@ -84,21 +84,30 @@
 ;;;     gtk_text_mark_get_deleted
 
 (test gtk-text-mark-deleted
-  (let* ((buffer (make-instance 'gtk:text-buffer :text "Some sample text"))
-         (mark (gtk:text-mark-new "Name" t))
-         (iter (gtk:text-buffer-start-iter buffer)))
-    (is-false (gtk:text-buffer-add-mark buffer mark iter))
-    (is-false (gtk:text-mark-deleted mark))
-    (is-false (gtk:text-buffer-delete-mark buffer mark))
-    (is-true (gtk:text-mark-deleted mark))))
+  (glib-test:with-check-memory (buffer mark)
+    (let (iter)
+      (is (typep (setf buffer
+                       (make-instance 'gtk:text-buffer :text "Some sample text"))
+                 'gtk:text-buffer))
+      (is (typep (setf mark (gtk:text-mark-new "Name" t)) 'gtk:text-mark))
+      (is (typep (setf iter (gtk:text-buffer-start-iter buffer)) 'gtk:text-iter))
+      (is-false (gtk:text-buffer-add-mark buffer mark iter))
+      (is-false (gtk:text-mark-deleted mark))
+      (is-false (gtk:text-buffer-delete-mark buffer mark))
+      (is-true (gtk:text-mark-deleted mark)))))
 
 ;;;     gtk_text_mark_get_buffer
 
 (test gtk-text-mark-buffer
-  (let* ((buffer (make-instance 'gtk:text-buffer :text "Some sample text"))
-         (mark (gtk:text-mark-new "Name" t))
-         (iter (gtk:text-buffer-start-iter buffer)))
-    (is-false (gtk:text-buffer-add-mark buffer mark iter))
-    (is (eq 'gtk:text-buffer (type-of (gtk:text-mark-buffer mark))))))
+  (glib-test:with-check-memory (buffer mark)
+    (let (iter)
+      (is (typep (setf buffer
+                       (make-instance 'gtk:text-buffer :text "Some sample text"))
+                 'gtk:text-buffer))
+      (is (typep (setf mark (gtk:text-mark-new "Name" t)) 'gtk:text-mark))
+      (is (typep (setf iter (gtk:text-buffer-start-iter buffer)) 'gtk:text-iter))
+      (is-false (gtk:text-buffer-add-mark buffer mark iter))
+      (is (typep (gtk:text-mark-buffer mark) 'gtk:text-buffer))
+      (is-false (gtk:text-buffer-delete-mark buffer mark)))))
 
-;;; 2024-9-22
+;;; 2026-06-29

@@ -52,19 +52,42 @@
 ;;;     gtk_page_setup_unix_dialog_new
 
 (test gtk-page-setup-unix-dialog-new.1
-  (let ((window (make-instance 'gtk:window)))
-    (is (eq 'gtk:page-setup-unix-dialog (type-of (gtk:page-setup-unix-dialog-new nil nil))))
-    (is (eq 'gtk:page-setup-unix-dialog (type-of (gtk:page-setup-unix-dialog-new "title" nil))))
-    (is (eq 'gtk:page-setup-unix-dialog (type-of (gtk:page-setup-unix-dialog-new nil window))))
-    (is (eq 'gtk:page-setup-unix-dialog (type-of (gtk:page-setup-unix-dialog-new "title" window))))))
+  (glib-test:with-check-memory (window dialog)
+
+    (is (typep (setf dialog
+                     (gtk:page-setup-unix-dialog-new nil nil))
+               'gtk:page-setup-unix-dialog))
+    (is-false (gtk:widget-destroy dialog))
+
+    (is (typep (setf dialog
+                     (gtk:page-setup-unix-dialog-new "title" nil))
+               'gtk:page-setup-unix-dialog))
+    (is-false (gtk:widget-destroy dialog))
+
+    (setf window (gtk:window-new :toplevel))
+    (is (typep (setf dialog
+                     (gtk:page-setup-unix-dialog-new nil window))
+               'gtk:page-setup-unix-dialog))
+    (is-false (gtk:widget-destroy dialog))
+    (is-false (gtk:widget-destroy window))
+
+    (setf window (gtk:window-new :toplevel))
+    (is (typep (setf dialog
+                     (gtk:page-setup-unix-dialog-new "title" window))
+               'gtk:page-setup-unix-dialog))
+    (is-false (gtk:widget-destroy dialog))
+    (is-false (gtk:widget-destroy window))))
 
 (test gtk-page-setup-unix-dialog-new.2
-  (let* ((window (make-instance 'gtk:window))
-         (dialog (gtk:page-setup-unix-dialog-new "title" window)))
-
+  (glib-test:with-check-memory (window dialog)
+    (setf window (make-instance 'gtk:window))
+    (setf dialog (gtk:page-setup-unix-dialog-new "title" window))
     (is (eq 'gtk:page-setup-unix-dialog (type-of dialog)))
     (is (string= "title" (gtk:window-title dialog)))
-    (is (eq window (gtk:window-transient-for dialog)))))
+    (is (eq window (gtk:window-transient-for dialog)))
+    ;; Destroy window and dialog
+    (is-false (gtk:widget-destroy window))
+    (is-false (gtk:widget-destroy dialog))))
 
 ;;;     gtk_page_setup_unix_dialog_set_page_setup
 ;;;     gtk_page_setup_unix_dialog_get_page_setup
@@ -91,4 +114,4 @@
     (is-false (eq 'gtk:print-settings
               (type-of (gtk:page-setup-unix-dialog-print-settings dialog))))))
 
-;;; 2024-9-23
+;;; 2026-06-06

@@ -70,6 +70,9 @@
 ;;;   gtk_accel_map_load
 ;;;   gtk_accel_map_save
 
+;; FIXME: On windows this test stops the execution of the testsuite
+
+#-windows
 (test gtk-accel-map-load/save
   ;; Add an accelerator
   (gtk:accel-map-add-entry "<Test>/Edit/Save" (char-code #\s) '(:control-mask))

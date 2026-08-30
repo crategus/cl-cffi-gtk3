@@ -59,13 +59,17 @@
 ;;;     gtk_file_chooser_dialog_new
 
 (test gtk-file-chooser-dialog-new
-  (is (typep (gtk:file-chooser-dialog-new "title"
-                                          nil
-                                          :save
-                                          "_OK"
-                                          :accept
-                                          "_Canel"
-                                          :reject)
-               'gtk:file-chooser-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:file-chooser-dialog-new "title"
+                                                  nil
+                                                  :save
+                                                  "_OK"
+                                                  :accept
+                                                  "_Canel"
+                                                  :reject))
+               'gtk:file-chooser-dialog))
+    ;; Destroy dialog
+    (gtk:widget-destroy dialog)))
 
-;;; 2025-09-17
+;;; 2026-06-10

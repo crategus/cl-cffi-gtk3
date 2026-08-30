@@ -543,7 +543,9 @@
     (is-true (gtk:widget-can-default button))
     ;; Grab focus on button and check "has-default"
     (gtk:widget-grab-focus button)
-    (is-true (gtk:widget-has-default button))))
+    (is-true (gtk:widget-has-default button))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;; --- gtk:widget-has-focus ---------------------------------------------------
 
@@ -560,7 +562,9 @@
     (is-true (gtk:widget-can-focus button))
     (gtk:widget-grab-focus button)
     ;; This dos not return the expected true value.
-    (is-false (gtk:widget-has-focus button))))
+    (is-false (gtk:widget-has-focus button))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;; --- gtk:widget-has-tooltip -------------------------------------------------
 
@@ -941,7 +945,9 @@
 (test gtk-widget-screen
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-true (gtk:widget-has-screen window))
-    (is (typep (gtk:widget-screen window) 'gdk:screen))))
+    (is (typep (gtk:widget-screen window) 'gdk:screen))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_widget_size_request
 
@@ -1016,7 +1022,9 @@
     (is (= (gtk:widget-allocated-width window)
            (gdk:rectangle-width (gtk:widget-allocation window))))
     (is (= (gtk:widget-allocated-height window)
-           (gdk:rectangle-height (gtk:widget-allocation window))))))
+           (gdk:rectangle-height (gtk:widget-allocation window))))
+    ;; Destroy window
+    (is-false (gtk:widget-destroy window))))
 
 ;;;     gtk_widget_get_app_paintable
 ;;;     gtk_widget_get_can_default
@@ -1157,4 +1165,4 @@
 ;;;     gtk_widget_queue_compute_expand
 ;;;     gtk_widget_compute_expand
 
-;;; 2025-4-26
+;;; 2026-06-10

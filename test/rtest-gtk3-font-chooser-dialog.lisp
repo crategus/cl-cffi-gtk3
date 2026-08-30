@@ -57,11 +57,17 @@
 ;;;     gtk_font_chooser_dialog_new
 
 (test gtk-font-chooser-dialog-new.1
-  (is (typep (gtk:font-chooser-dialog-new "title" nil)
-             'gtk:font-chooser-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                     (gtk:font-chooser-dialog-new "title" nil)) 'gtk:font-chooser-dialog))
+    ;; Destroy dialog
+    (is-false (gtk:widget-destroy dialog))))
 
 (test gtk-font-chooser-dialog-new.2
-  (is (typep (gtk:font-chooser-dialog-new nil nil)
-             'gtk:font-chooser-dialog)))
+  (glib-test:with-check-memory (dialog)
+    (is (typep (setf dialog
+                    (gtk:font-chooser-dialog-new nil nil)) 'gtk:font-chooser-dialog))
+    ;; Destroy dialog
+    (is-false (gtk:widget-destroy dialog))))
 
-;;; 2024-9-23
+;;; 2026-06-10

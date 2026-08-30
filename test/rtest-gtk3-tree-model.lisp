@@ -566,30 +566,22 @@
     (setf model (create-and-fill-tree-store))
     (let* ((parent (gtk:tree-model-iter-first model))
            (child (gtk:tree-model-iter-children model parent)))
-
       (is-true (gtk:tree-model-iter-has-child model parent))
       (is-false (gtk:tree-model-iter-has-child model child))
-
       (is (= 2 (gtk:tree-model-iter-n-children model parent)))
       (is (= 0 (gtk:tree-model-iter-n-children model child)))
-
       (is (string= "0" (gtk:tree-model-string-from-iter model parent)))
       (is (string= "0:0" (gtk:tree-model-string-from-iter model child)))
-
       (is (string= "0" (gtk:tree-model-value model parent 0)))
       (is (string= "Songs" (gtk:tree-model-value model parent 1)))
-
       (is (string= "0:0" (gtk:tree-model-value model child 0)))
       (is (string= "MP3s" (gtk:tree-model-value model child 1)))
-
       (let ((iter (gtk:tree-model-iter-parent model child)))
         (is (string= "0" (gtk:tree-model-value model iter 0)))
         (is (string= "Songs" (gtk:tree-model-value model iter 1))))
-
       (let ((iter (gtk:tree-model-iter-nth-child model parent 0)))
         (is (string= "0:0" (gtk:tree-model-value model iter 0)))
         (is (string= "MP3s" (gtk:tree-model-value model iter 1))))
-
       (let ((iter (gtk:tree-model-iter-nth-child model parent 1)))
         (is (string= "0:1" (gtk:tree-model-value model iter 0)))
         (is (string= "Oggs" (gtk:tree-model-value model iter 1)))))))
@@ -625,4 +617,4 @@
 ;;;     gtk_tree_model_rows_reordered
 ;;;     gtk_tree_model_rows_reordered_with_length
 
-;;; 2026-05-14
+;;; 2026-05-21
