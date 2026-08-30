@@ -27,8 +27,7 @@
   (when *first-run-testsuite*
     (is (equal '("GtkAppChooserWidget" "GtkButtonBox" "GtkColorChooserWidget"
                  "GtkColorSelection" "GtkFileChooserButton"
-                 "GtkFileChooserWidget" "GtkFontChooserWidget"
-                 "GtkInfoBar" "GtkPlacesView"
+                 "GtkFileChooserWidget" "GtkFontChooserWidget" "GtkInfoBar"
                  "GtkPrinterOptionWidget" "GtkRecentChooserWidget"
                  "GtkShortcutsGroup" "GtkShortcutsSection"
                  "GtkShortcutsShortcut" "GtkStackSwitcher" "GtkStatusbar"
@@ -285,4 +284,4 @@
     ;; Remove references
     (is-false (setf (gtk:box-center-widget box) nil))))
 
-;;; 2025-04-26
+;;; 2026-08-30

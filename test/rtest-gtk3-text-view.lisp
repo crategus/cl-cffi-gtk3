@@ -3,6 +3,8 @@
 (def-suite gtk-text-view :in gtk-suite)
 (in-suite gtk-text-view)
 
+;; TODO: Work on this tests is neeeded
+
 ;;; --- Types and Values -------------------------------------------------------
 
 ;;;     GtkTextViewLayer                                    not exported
@@ -298,7 +300,7 @@
 
 
 (test gtk-text-view-new
-  (glib-test:with-check-memory ((view 2) :strong 1)
+  (glib-test:with-check-memory (view)
     (is (typep (setf view (gtk:text-view-new)) 'gtk:text-view))))
 
 ;;;     gtk_text_view_new_with_buffer
@@ -354,4 +356,4 @@
 ;;;     gtk_text_view_im_context_filter_keypress
 ;;;     gtk_text_view_reset_im_context
 
-;;; 2026-07-04
+;;; 2026-08-30
