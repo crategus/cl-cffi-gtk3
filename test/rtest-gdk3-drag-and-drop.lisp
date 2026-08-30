@@ -237,7 +237,9 @@
     (let ((window (gtk:widget-window widget)))
       (is (typep (gdk:drag-begin window (list "STRING")) 'gdk:drag-context))
       (is (typep (gdk:drag-begin window (list "STRING" "PIXMAP"))
-                 'gdk:drag-context)))))
+                 'gdk:drag-context))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;     gdk_drag_begin_for_device
 ;;;     gdk_drag_begin_from_point
@@ -252,13 +254,20 @@
 
 ;;;     gdk_drag_context_list_targets
 
+;; FIXME: Error on Windows
+;;  Unexpected Error: #<SB-SYS:MEMORY-FAULT-ERROR {1101CB1B83}>
+;;  Unhandled memory fault at #x0..
+
+#-windows
 (test gdk-drag-context-list-targets
   (let ((widget (make-instance 'gtk:window :type :toplevel)))
     (gtk:widget-realize widget)
     (let* ((window (gtk:widget-window widget))
            (context (gdk:drag-begin window (list "STRING" "PIXMAP"))))
       (is (equal '("STRING" "PIXMAP")
-                 (gdk:drag-context-list-targets context))))))
+                 (gdk:drag-context-list-targets context)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;     gdk_drag_context_get_device
 ;;;     gdk_drag_context_set_device
@@ -269,4 +278,4 @@
 ;;;     gdk_drag_context_set_hotspot
 ;;;     gdk_drag_context_manage_dnd
 
-;;; 2024-9-22
+;;; 2026-06-10

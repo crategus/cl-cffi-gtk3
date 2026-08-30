@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -100,7 +100,7 @@
 
 #+liber-documentation
 (setf (documentation 'keymap 'type)
- "@version{2025-07-01}
+ "@version{2026-06-28}
   @begin{short}
     The @class{gdk:keymap} object defines the translation from keyboard state,
     including a hardware key, a modifier mask, and active keyboard group, to a
@@ -136,25 +136,25 @@
   @fun{gdk:unicode-to-keyval} functions.
 
   @subheading{Groups}
-  One @class{gdk:keymap} object exists for each user display. To obtain the keymap
-  for the display, use the @fun{gdk:keymap-for-display} function. A keymap is a
-  mapping from a keycode, group, and level to key values. You can think of these
-  values as a representation of a symbol printed on a physical keyboard key.
-  That is, it contains three pieces of information. First, it contains the
-  hardware keycode. This is an identifying number for a physical key. Second, it
-  contains the \"level\" of the key. The level indicates which symbol on the key
-  will be used, in a vertical direction. So on a standard US keyboard, the key
-  with the number \"1\" on it also has the exclamation point \"!\" character on
-  it. The level indicates whether to use the \"1\" or the \"!\" symbol. The
-  letter keys are considered to have a lowercase letter at level 0, and an
-  uppercase letter at level 1, though only the uppercase letter is printed.
-  Third, there is the group. Groups are not used on standard US keyboards, but
-  are used in many other countries. On a keyboard with groups, there can be 3
-  or 4 symbols printed on a single key. The group indicates movement in a
-  horizontal direction. Usually groups are used for two different languages. In
-  group 0, a key might have two English characters, and in group 1 it might have
-  two Hebrew characters. The Hebrew characters will be printed on the key next
-  to the English characters.
+  One @class{gdk:keymap} object exists for each user display. To obtain the
+  keymap for the display, use the @fun{gdk:keymap-for-display} function. A
+  keymap is a mapping from a keycode, group, and level to key values. You can
+  think of these values as a representation of a symbol printed on a physical
+  keyboard key. That is, it contains three pieces of information. First, it
+  contains the hardware keycode. This is an identifying number for a physical
+  key. Second, it contains the \"level\" of the key. The level indicates which
+  symbol on the key will be used, in a vertical direction. So on a standard US
+  keyboard, the key with the number \"1\" on it also has the exclamation point
+  \"!\" character on it. The level indicates whether to use the \"1\" or the
+  \"!\" symbol. The letter keys are considered to have a lowercase letter at
+  level 0, and an uppercase letter at level 1, though only the uppercase letter
+  is printed. Third, there is the group. Groups are not used on standard US
+  keyboards, but are used in many other countries. On a keyboard with groups,
+  there can be 3 or 4 symbols printed on a single key. The group indicates
+  movement in a horizontal direction. Usually groups are used for two different
+  languages. In group 0, a key might have two English characters, and in group 1
+  it might have two Hebrew characters. The Hebrew characters will be printed on
+  the key next to the English characters.
 
   In order to use a keymap to interpret a key event, it is necessary to first
   convert the keyboard state into an effective group and level. This is done
@@ -216,15 +216,15 @@ lambda (keymap)    :run-last
 
 (cffi:defcfun ("gdk_keymap_get_default" keymap-default) (g:object keymap)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @return{The @class{gdk:keymap} object attached to the default display.}
   @begin{short}
     Returns the keymap attached to the default display.
   @end{short}
   @begin[Warning]{dictionary}
-    The @fun{gdk:keymap-default} function has been deprecated since version
-    3.22 and should not be used in newly written code. Use the
-    @fun{gdk:keymap-for-display} function instead.
+    This function has been deprecated since version 3.22 and should not be used
+    in newly written code. Use the @fun{gdk:keymap-for-display} function
+    instead.
   @end{dictionary}
   @see-class{gdk:keymap}
   @see-function{gdk:keymap-for-display}")
@@ -237,7 +237,7 @@ lambda (keymap)    :run-last
 
 (cffi:defcfun ("gdk_keymap_get_for_display" keymap-for-display) (g:object keymap)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[display]{a @class{gdk:display} object}
   @return{The @class{gdk:keymap} object attached to @arg{display}.}
   @short{Returns the keymap attached to the display.}
@@ -256,7 +256,7 @@ lambda (keymap)    :run-last
   (key (:pointer (:struct %keymap-key))))
 
 (defun keymap-lookup-key (keymap keycode group level)
- "@version{2025-07-17}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an unsigned integer for the hardware keycode}
   @argument[group]{an integer which indicates movement in a horizontal
@@ -312,7 +312,7 @@ lambda (keymap)    :run-last
 
 (defun keymap-translate-keyboard-state (keymap keycode state group)
  #+liber-documentation
- "@version{2025-08-31}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an unsigned integer for the keycode}
   @argument[state]{a @sym{gdk:modifier-type} modifier state}
@@ -386,7 +386,7 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-entries-for-keyval (keymap keyval)
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keyval]{a keyval, such as @code{GDK_a}, @code{GDK_Up},
     @code{GDK_Return}, etc.}
@@ -417,13 +417,13 @@ if (keyval == GDK_PLUS &&
     (when (%keymap-entries-for-keyval keymap keyval keys n-keys)
       (let ((keys (cffi:mem-ref keys :pointer))
             (n-keys (cffi:mem-ref n-keys :int)))
-        (loop for i from 0 below n-keys
-              for key = (cffi:mem-aptr keys '(:struct %keymap-key) i)
-              collect (cffi:with-foreign-slots ((keycode group level)
-                                                key
-                                                (:struct %keymap-key))
-                      (list keycode group level))
-              finally (g:free keys))))))
+        (iter (for i from 0 below n-keys)
+              (for key = (cffi:mem-aptr keys '(:struct %keymap-key) i))
+              (collect (cffi:with-foreign-slots ((keycode group level)
+                                                 key
+                                                 (:struct %keymap-key))
+                      (list keycode group level)))
+              (finally (g:free keys)))))))
 
 (export 'keymap-entries-for-keyval)
 
@@ -441,7 +441,7 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-entries-for-keycode (keymap keycode)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[keycode]{an integer for a hardware keycode}
   @begin{return}
@@ -469,15 +469,15 @@ if (keyval == GDK_PLUS &&
         (let ((keys (cffi:mem-ref keys :pointer))
               (keyvals (cffi:mem-ref keyvals :pointer))
               (n-keys (cffi:mem-ref n-keys :int)))
-          (loop for i from 0 below n-keys
-                for keyval = (cffi:mem-aref keyvals :uint i)
-                for key = (cffi:mem-aptr keys '(:struct %keymap-key) i)
-                collect (cffi:with-foreign-slots ((keycode group level)
-                                                  key
-                                                  (:struct %keymap-key))
-                          (list keyval keycode group level))
-                finally (g:free keys)
-                        (g:free keyvals))))))
+          (iter (for i from 0 below n-keys)
+                (for keyval = (cffi:mem-aref keyvals :uint i))
+                (for key = (cffi:mem-aptr keys '(:struct %keymap-key) i))
+                (collect (cffi:with-foreign-slots ((keycode group level)
+                                                   key
+                                                   (:struct %keymap-key))
+                           (list keyval keycode group level)))
+                (finally (g:free keys)
+                         (g:free keyvals)))))))
 
 (export 'keymap-entries-for-keycode)
 
@@ -487,11 +487,12 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_direction" keymap-direction) pango:direction
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @begin{return}
-    The @code{:ltr} or @code{:rtl} value if it can determine the direction.
-    The @code{:neutral} value otherwise.
+    The @val[pango:direction]{:ltr} or @val[pango:direction]{:rtl} value if it
+    can determine the direction. The @val[pango:direction]{:neutral} value
+    otherwise.
   @end{return}
   @begin{short}
     Returns the Pango direction of the effective layout of the keymap.
@@ -508,7 +509,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_have_bidi_layouts" keymap-have-bidi-layouts) :boolean
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @begin{return}
     @em{True} if there are layouts in both directions, @em{false} otherwise.
@@ -528,7 +529,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_caps_lock_state" keymap-caps-lock-state) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Caps Lock} key is on.}
   @short{Returns whether the @kbd{Caps Lock} modifier is locked.}
@@ -543,7 +544,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_num_lock_state" keymap-num-lock-state) :boolean
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Num Lock} key is on.}
   @short{Returns whether the @kbd{Num Lock} modifier is locked.}
@@ -559,7 +560,7 @@ if (keyval == GDK_PLUS &&
 (cffi:defcfun ("gdk_keymap_get_scroll_lock_state" keymap-scroll-lock-state)
     :boolean
  #+liber-documentation
- "@version{2023-03-13}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{@em{True} if the @kbd{Scroll Lock} key is on.}
   @short{Returns whether the @kbd{Scroll Lock} modifier is locked.}
@@ -575,7 +576,7 @@ if (keyval == GDK_PLUS &&
 (cffi:defcfun ("gdk_keymap_get_modifier_state" keymap-modifier-state)
     modifier-type
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @return{The current @sym{gdk:modifier-type} modifier state.}
   @short{Returns the current modifier state.}
@@ -596,14 +597,14 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-add-virtual-modifiers (keymap state)
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[state]{a value of the @sym{gdk:modifier-type} flags}
-  @return{The @sym{gdk:modfier-type} flags.}
+  @return{The @sym{gdk:modifier-type} flags.}
   @begin{short}
-    Adds virtual modifiers, that is Super, Hyper and Meta, which correspond to
-    the real modifiers, that is Mod2, Mod3, ... in modifiers and set the
-    corresponding bits in state.
+    Adds virtual modifiers, that is @code{Super}, @code{Hyper} and @code{Meta},
+    which correspond to the real modifiers, that is @code{Mod2}, @code{Mod3},
+    ... in modifiers and set the corresponding bits in @arg{state}.
   @end{short}
 
   GDK already does this before delivering key events, but for compatibility
@@ -638,14 +639,15 @@ if (keyval == GDK_PLUS &&
 
 (defun keymap-map-virtual-modifiers (keymap state)
  #+liber-documentation
- "@version{2025-08-23}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[state]{a @sym{gdk:modifier-type} value}
   @return{The @sym{gdk:modifier-type} value.}
   @begin{short}
-    Maps the virtual modifiers, that is Super, Hyper and Meta, which are set in
-    @arg{state} to their non-virtual counterparts, that is Mod2, Mod3, ..., and
-    set the corresponding bits in the return value.
+    Maps the virtual modifiers, that is @code{Super}, @code{Hyper} and
+    @code{Meta}, which are set in @arg{state} to their non-virtual counterparts,
+    that is @code{Mod2}, @code{Mod3}, ..., and set the corresponding bits in
+    the return value.
   @end{short}
   This function is useful when matching key events against accelerators.
   @begin[Example]{dictionary}
@@ -669,7 +671,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keymap_get_modifier_mask" keymap-modifier-mask) modifier-type
  #+liber-documentation
- "@version{2025-07-01}
+ "@version{2026-06-28}
   @argument[keymap]{a @class{gdk:keymap} object}
   @argument[intent]{a value of the @sym{gdk:modifier-intent} enumeration for
     the use case for the modifier mask}
@@ -678,10 +680,9 @@ if (keyval == GDK_PLUS &&
     Returns the modifier mask the windowing system backend of the keymap uses
     for a particular purpose.
   @end{short}
-
   Note that this function always returns real hardware modifiers, not virtual
   ones, for example, it will return @val[gdk:modifier-type]{:mod1-mask} rather
-  than @val[gdk:modifier-mask]{:meta-mask} if the backend maps @code{MOD1} to
+  than @val[gdk:modifier-type]{:meta-mask} if the backend maps @code{MOD1} to
   @code{META}), so there are use cases where the return value of this function
   has to be transformed by the @fun{gdk:keymap-add-virtual-modifiers} function
   in order to contain the expected result.
@@ -700,7 +701,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_name" keyval-name) (:string :free-from-foreign nil)
  #+liber-documentation
- "@version{2023-03-04}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     The string containing the name of the key, or @code{nil} if @arg{keyval} is
@@ -730,7 +731,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_from_name" keyval-from-name) :uint
  #+liber-documentation
- "@version{2025-07-17}
+ "@version{2026-06-28}
   @argument[name]{a string for the key name}
   @begin{return}
     The unsigned integer for the corresponding key value, or the @code{#xffffff}
@@ -765,7 +766,7 @@ if (keyval == GDK_PLUS &&
 
 (defun keyval-convert-case (keyval)
  #+liber-documentation
- "@version{2025-08-31}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for the keyval}
   @begin{return}
     @arg{lower} -- an unsigned integer for the lowercase version @br{}
@@ -788,7 +789,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_upper" keyval-to-upper) :uint
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     The upper case form of @arg{keyval}, or @arg{keyval} itself if it is already
@@ -809,7 +810,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_lower" keyval-to-lower) :uint
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     The lower case form of @arg{keyval}, or @arg{keyval} itself if it is already
@@ -830,7 +831,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_upper" keyval-is-upper) :boolean
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     @em{True} if @arg{keyval} is in upper case, or if @arg{keyval} is not
@@ -851,7 +852,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_is_lower" keyval-is-lower) :boolean
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a key value}
   @begin{return}
     @em{True} if @arg{keyval} is in lower case, or if @arg{keyval} is not
@@ -872,7 +873,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_keyval_to_unicode" keyval-to-unicode) g:unichar
  #+liber-documentation
- "@version{2025-10-09}
+ "@version{2026-06-28}
   @argument[keyval]{an unsigned integer for a GDK key symbol}
   @begin{return}
     The corresponding unicode character, or @code{#\\Nul} if there is no
@@ -900,7 +901,7 @@ if (keyval == GDK_PLUS &&
 
 (cffi:defcfun ("gdk_unicode_to_keyval" unicode-to-keyval) :uint
  #+liber-documentation
- "@version{2025-07-17}
+ "@version{2026-06-28}
   @argument[unichar]{a ISO10646 encoded character}
   @begin{return}
     The unsigned integer for the corresponding GDK key symbol, if one exists,

@@ -91,4 +91,4 @@
   (let ((color (gdk:color-parse "#ffff0000aaaa")))
     (is (string= "#ffff0000aaaa" (gdk:color-to-string color)))))
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2026-05-21

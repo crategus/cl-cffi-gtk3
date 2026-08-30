@@ -34,7 +34,8 @@
       (is (typep frame-clock 'gdk:frame-clock))
       ;; No gdk:fram-timings instance
       (is-false timings)
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_timings_get_complete
 ;;;     gdk_frame_timings_get_frame_time
@@ -42,4 +43,4 @@
 ;;;     gdk_frame_timings_get_refresh_interval
 ;;;     gdk_frame_timings_get_predicted_presentation_time
 
-;;; --- 2023-7-19 --------------------------------------------------------------
+;;; 2026-06-10

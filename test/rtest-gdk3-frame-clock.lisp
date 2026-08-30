@@ -28,7 +28,9 @@
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
       (is (typep frame-clock 'gdk:frame-clock))
-      (is (integerp (gdk:frame-clock-frame-time frame-clock))))))
+      (is (integerp (gdk:frame-clock-frame-time frame-clock)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_request_phase
 
@@ -38,8 +40,8 @@
     (let ((frame-clock (gtk:widget-frame-clock window)))
 
       (is-false (gdk:frame-clock-request-phase frame-clock :update))
-
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_begin_updating
 ;;;     gdk_frame_clock_end_updating
@@ -48,11 +50,10 @@
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
-
       (is-false (gdk:frame-clock-begin-updating frame-clock))
       (is-false (gdk:frame-clock-end-updating frame-clock))
-
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_frame_counter
 
@@ -60,10 +61,9 @@
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
-
       (is (integerp (gdk:frame-clock-frame-counter frame-clock)))
-
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_history_start
 
@@ -71,10 +71,9 @@
   (let ((window (make-instance 'gtk:window :type :toplevel)))
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
-
       (is (integerp (gdk:frame-clock-history-start frame-clock)))
-
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_timings
 
@@ -84,7 +83,8 @@
     (let ((frame-clock (gtk:widget-frame-clock window)))
       ;; No gdk:frame-timing instance
       (is-false (gdk:frame-clock-timings frame-clock 0))
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_current_timings
 
@@ -97,7 +97,8 @@
       (is (typep frame-clock 'gdk:frame-clock))
       ;; No gdk:frame-timing instance
       (is-false (gdk:frame-clock-current-timings frame-clock))
-)))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
 ;;;     gdk_frame_clock_refresh_info
 
@@ -106,9 +107,10 @@
     (is-false (gtk:widget-realize window))
     (let ((frame-clock (gtk:widget-frame-clock window)))
       (is (typep frame-clock 'gdk:frame-clock))
-
       (is (every #'integerp
                  (multiple-value-list
-                   (gdk:frame-clock-refresh-info frame-clock 0)))))))
+                   (gdk:frame-clock-refresh-info frame-clock 0))))
+      ;; Destroy window
+      (is-false (gtk:widget-destroy window)))))
 
-;;; 2024-9-22
+;;; 20226-06-10

@@ -6,7 +6,7 @@
 ;;; see <http://www.gtk.org>. The API documentation for the Lisp binding is
 ;;; available at <http://www.crategus.com/books/cl-cffi-gtk3/>.
 ;;;
-;;; Copyright (C) 2011 - 2025 Dieter Kaiser
+;;; Copyright (C) 2011 - 2026 Dieter Kaiser
 ;;;
 ;;; Permission is hereby granted, free of charge, to any person obtaining a
 ;;; copy of this software and associated documentation files (the "Software"),
@@ -355,10 +355,9 @@
 ;;; gdk_color_to_string
 ;;; ----------------------------------------------------------------------------
 
-(cffi:defcfun ("gdk_color_to_string" color-to-string)
-    (:string :free-from-foreign t)
+(cffi:defcfun ("gdk_color_to_string" color-to-string) :string
  #+liber-documentation
- "@version{2025-01-15}
+ "@version{2026-05-21}
   @argument[color]{a @class{gdk:color} instance}
   @return{The text string representing @arg{color}.}
   @begin{short}
@@ -368,9 +367,8 @@
   @end{short}
   The returned string can be parsed by the @fun{gdk:color-parse} function.
   @begin[Warning]{dictionary}
-    The @fun{gdk:color-to-string} function has been deprecated since version
-    3.14 and should not be used in newly written code. Use the @class{gdk:rgba}
-    structure.
+    This function has been deprecated since version 3.14 and should not be used
+    in newly written code. Use the @class{gdk:rgba} structure.
   @end{dictionary}
   @see-class{gdk:color}
   @see-class{gdk:rgba}

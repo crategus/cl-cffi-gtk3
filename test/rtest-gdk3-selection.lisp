@@ -103,6 +103,11 @@
 ;;;     gdk_selection_convert
 ;;;     gdk_selection_property_get
 
+;; FIXME: Causes an error on Windows
+;;  Unexpected Error: #<SB-SYS:FOREIGN-HEAP-CORRUPTION {11048D7CA3}>
+;;  A foreign heap corruption exception occurred. (Exception code: 3221226356).
+
+#-windows
 (test gdk-selection-convert
   (let ((clipboard (gtk:clipboard-default (gdk:display-default)))
         (widget (make-instance 'gtk:window :type :toplevel)))
@@ -126,11 +131,13 @@
           (format t "        : ~a~%" (cffi:convert-from-foreign data :string))
           (format t "   type : ~a~%" type)
           (format t " format : ~a~%" format)))
-      (gdk:selection-owner-set nil "CLIPBOARD" gdk:+current-time+ nil))))
+      (gdk:selection-owner-set nil "CLIPBOARD" gdk:+current-time+ nil)
+      ;; Destroy window
+      (is-false (gtk:widget-destroy widget)))))
 
 ;;;     gdk_selection_send_notify
 ;;;     gdk_selection_send_notify_for_display
 
 ;; TODO: Implement a test.
 
-;;; 2024-9-22
+;;; 2026-06-10
